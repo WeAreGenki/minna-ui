@@ -1,0 +1,8 @@
+/* Clearfix */
+@define-mixin test-target {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

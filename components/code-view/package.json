@@ -1,0 +1,37 @@
+{
+  "name": "@minna-ui/code-view",
+  "version": "0.0.0",
+  "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/code-view",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://ui.wearegenki.com",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "component",
+    "design-system",
+    "minna-ui",
+    "postcss",
+    "svelte",
+    "sveltejs",
+    "wearegenki",
+    "web-components"
+  ],
+  "scripts": {
+    "build": "build-component"
+  },
+  "svelte": "src/MinnaCodeView.html",
+  "module": "dist/index.es.mjs",
+  "main": "dist/index.js",
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@minna-ui/css": "^0.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

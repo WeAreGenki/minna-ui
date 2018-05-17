@@ -1,0 +1,31 @@
+{
+  "name": "@minna-ui/eslint-config",
+  "version": "0.0.0",
+  "description": "ESLint config presets for use in minna-ui projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-config",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://ui.wearegenki.com",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "eslint",
+    "minna-ui",
+    "wearegenki"
+  ],
+  "main": "index.js",
+  "files": [
+    "jest.js"
+  ],
+  "peerDependencies": {
+    "eslint": "^4.19.1"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-html": "^4.0.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

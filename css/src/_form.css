@@ -1,0 +1,103 @@
+/*
+  FORMS
+*/
+
+.form-group {
+  margin-bottom: var(--form-group-margin);
+}
+
+label {
+  display: block; /* forces label to appear above the input */
+  margin-bottom: var(--form-help-margin);
+  color: var(--grey-800);
+  text-transform: uppercase;
+
+  input[type="radio"] + &,
+  input[type="checkbox"] + & {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
+
+.input,
+.select,
+.textarea,
+input,
+select,
+textarea {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-size: var(--input-font-size);
+  color: var(--input-font-colour);
+  background-color: var(--input-bg-colour);
+  border: var(--input-border);
+  border-radius: var(--input-radius);
+
+  &:hover {
+    border-color: var(--input-hover-border-colour);
+  }
+
+  &:focus,
+  &:active {
+    outline: var(--input-focus-outline);
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder-font-colour);
+  }
+
+  &[disabled],
+  &[disabled]:focus,
+  &[disabled]:active {
+    color: var(--input-disabled-font-colour);
+    background-color: var(--input-bg-colour);
+    border: var(--input-border-width) solid var(--input-disabled-border-colour);
+    outline: none;
+
+    &::placeholder {
+      color: var(--input-disabled-placeholder-font-colour);
+    }
+  }
+}
+
+/* FIXME: Create custom checkbox styles */
+/* input[type="checkbox"] {} */
+
+/* Grouped form elements */
+
+.input-group {
+  display: inline-flex;
+
+  & > .btn {
+    filter: none;
+    border: var(--input-border);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  & > input {
+    margin-right: calc(-1 * var(--radius-1));
+  }
+}
+
+/* Form assistance & validation */
+
+.form-help {
+  display: block;
+  margin-top: var(--form-help-margin);
+  color: var(--form-help-font-colour);
+}
+
+.invalid {
+  border: var(--input-invalid-border);
+  outline-color: var(--input-invalid-colour);
+}
+
+.invalid-feedback {
+  display: none;
+  margin-top: var(--form-help-margin);
+  color: var(--input-invalid-colour);
+
+  .invalid + & {
+    display: block;
+  }
+}

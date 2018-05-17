@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostCSS config compiles CSS mixin with custom path 1`] = `
+".target::after {
+    display: block;
+    clear: both;
+    content: \\"\\";
+  }
+"
+`;
+
+exports[`PostCSS config compiles CSS with minimal option 1`] = `
+":root {
+  --margin: 0;
+  --colour: hsl(0, 100%, 50%); /* red */
+}
+body {
+  margin: var(--margin);
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: var(--colour);
+}
+#target .focus,
+  #target:focus {
+    background: hsl(0, 0%, 0%);
+  }
+.wrapper + #target {
+    background: hsl(0, 0%, 13%);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=import.css */"
+`;
+
+exports[`PostCSS config compiles valid CSS 1`] = `
+":root { /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: hsl(0, 100%, 50%);
+}
+#target .focus,
+  #target:focus {
+    background: hsl(0, 0%, 0%);
+  }
+.wrapper + #target {
+    background: hsl(0, 0%, 13%);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=import.css */"
+`;

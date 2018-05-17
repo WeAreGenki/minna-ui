@@ -1,0 +1,69 @@
+/*
+  POSITION
+*/
+
+.pos-f { position: fixed; }
+.pos-a { position: absolute; }
+.pos-r { position: relative; }
+.pos-s { position: static; }
+.pos-i { position: initial; } /* default */
+
+/* Direction */
+
+/* TODO: If we never use anything other than .t0, .r0, .b0, l0 then remove the other steps here */
+
+@each $step, $val in (var(--spacing-steps)), (var(--spacing-values)) {
+  .t$(step) { top: $val; }
+  .r$(step) { right: $val; }
+  .b$(step) { bottom: $val; }
+  .l$(step) { left: $val; }
+
+  .a$(step) {
+    top: $val;
+    right: $val;
+    bottom: $val;
+    left: $val;
+  }
+
+  @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+    @media ($media) {
+      .t$(step)-$(ext) { top: $val; }
+      .r$(step)-$(ext) { right: $val; }
+      .b$(step)-$(ext) { bottom: $val; }
+      .l$(step)-$(ext) { left: $val; }
+
+      .a$(step)-$(ext) {
+        top: $val;
+        right: $val;
+        bottom: $val;
+        left: $val;
+      }
+    }
+  }
+}
+
+.t-unset { top: unset; }
+.r-unset { right: unset; }
+.b-unset { bottom: unset; }
+.l-unset { left: unset; }
+
+.a-unset {
+  top: unset;
+  right: unset;
+  bottom: unset;
+  left: unset;
+}
+
+/* stylelint-disable declaration-no-important */
+.t-unset-i { top: unset !important; }
+.r-unset-i { right: unset !important; }
+.b-unset-i { bottom: unset !important; }
+.l-unset-i { left: unset !important; }
+
+.a-unset-i {
+  top: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+}
+/* stylelint-enable declaration-no-important */

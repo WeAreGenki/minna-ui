@@ -1,0 +1,18 @@
+body {
+  margin: var(--margin);
+}
+
+/* stylelint-disable selector-max-id */
+#target {
+  color: var(--colour);
+
+  .focus,
+  &:focus {
+    background: hsl(0, 0%, 0%);
+  }
+
+  .wrapper + & {
+    background: hsl(0, 0%, 13%);
+  }
+}
+/* stylelint-enable selector-max-id */

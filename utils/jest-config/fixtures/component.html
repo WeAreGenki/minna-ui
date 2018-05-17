@@ -1,0 +1,59 @@
+<!--
+  COMPONENT
+
+  A simple Svelte component for use in tests.
+
+-->
+
+<div class="wrapper">
+  <a href="">
+    <img src="#">
+  </a>
+
+  <!-- Yo yo comment -->
+  <div class="text" ref:target>
+    test {name}
+  </div>
+
+  <div class="text" ref:reversed>
+    test <span>{reversed}</span>
+  </div>
+</div>
+
+<script>
+  export default {
+    data: () => ({
+      name: 'Elon Musk',
+    }),
+    computed: {
+      reversed: ({ name }) => name.split('').reverse().join(''),
+    },
+  };
+</script>
+
+<style type="text/postcss">
+  :global(:root) {
+    --body-margin: 0;
+  }
+
+  :global(body) {
+    @media screen and (min-width: 30em) {
+      margin: var(--body-margin);
+    }
+  }
+
+  /* svelte should remove this since it doesn't match any elements in the component */
+  body { filter: blur(10px); }
+
+  .text {
+    color: hsl(0, 100%, 50%); /* red */
+
+    &:focus {
+      background: hsl(0, 0%, 0%);  /* black */
+    }
+
+    .wrapper > & {
+      margin-top: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+/*
+  REBOOT
+
+    Browser consistency changes (in addition to _normalise.css).
+
+*/
+
+/* Better box model */
+
+html,
+body,
+div,
+nav,
+article,
+section,
+main,
+footer,
+header,
+form,
+fieldset,
+legend,
+pre,
+code,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+input,
+textarea,
+table,
+td,
+th,
+tr {
+  box-sizing: border-box;
+}
+
+/* Form elements */
+
+.btn,
+.select,
+button,
+select {
+  cursor: pointer;
+  outline-offset: -2px; /* consistency between browsers */
+}
+
+input,
+textarea {
+  cursor: text;
+  outline-offset: -2px; /* consistency between browsers */
+}
+
+/* Disabled elements */
+
+.disabled,
+[disabled] {
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+}
+
+/* Responsive images */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Simple horizontal rule */
+
+hr {
+  margin: var(--hr-margin);
+  border: 0;
+  border-top: 1px solid var(--grey-300);
+}
+
+/* Abbreviations */
+
+abbr[title] {
+  cursor: help;
+}

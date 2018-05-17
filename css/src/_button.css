@@ -1,0 +1,107 @@
+/*
+  BUTTONS
+*/
+
+/*
+ * Because plain .btn is be the most common button, it has no gradient
+ * background for performance reasons. Use the other button styles sparingly
+ * when emphasis is required.
+ */
+.btn {
+  display: inline-block;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  color: var(--btn-font-colour);
+  background-color: var(--btn-bg-colour);
+  filter: var(--btn-shadow);
+  border: 0;
+  border-radius: var(--btn-radius);
+
+  &:hover,
+  &:focus {
+    color: var(--btn-font-colour); /* prevents repaint on hover */
+    text-decoration: none;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: var(--btn-active-bg-colour);
+    filter: none;
+    transform: scale(1);
+  }
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--btn-disabled-font-colour);
+    filter: none;
+    border: 1px solid var(--btn-disabled-border-colour);
+    transform: unset;
+  }
+}
+
+.btn-main {
+  background-image: var(--btn-main-bg-gradient);
+  filter: var(--btn-main-shadow);
+}
+
+.btn-dark {
+  background-image: var(--btn-dark-bg-gradient);
+  filter: var(--btn-dark-shadow);
+}
+
+.btn-cta {
+  background-image: var(--btn-cta-bg-gradient);
+  filter: var(--btn-cta-shadow);
+}
+
+.btn-main,
+.btn-dark,
+.btn-cta {
+  color: var(--white);
+
+  &:hover,
+  &:focus {
+    color: var(--white); /* prevents repaint on hover */
+  }
+}
+
+/* Remove browser default <button> styles */
+
+.btn-clear {
+  background: transparent;
+  filter: none;
+  border: 0;
+
+  &:hover,
+  &:focus {
+    /* prevent change when applied to links */
+    color: unset;
+    transform: unset;
+  }
+}
+
+/* Make <a> whitespace same as .btn */
+
+.btn-link {
+  display: inline-block;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  margin: 0;
+  line-height: 1;
+}
+
+/* Smaller button */
+
+.btn-mini {
+  padding: calc(var(--btn-padding-y) / 2) calc(var(--btn-padding-x) / 2);
+}
+
+/* Add whitespace between buttons */
+
+.btn + .btn {
+  margin-left: var(--btn-margin-between);
+
+  /* but not when in a flex column */
+  .f-col & {
+    margin-left: unset;
+  }
+}

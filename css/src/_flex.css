@@ -1,0 +1,110 @@
+/*
+  FLEXBOX
+
+  NOTE:
+    Things that are shared between both flexbox and CSS grid are found in
+    "_grid.css" because this framework prioritises CSS grid first.
+
+*/
+
+/**
+ * Much of the time when using flexbox you really just want to vertically align
+ * elements, so this class is a shortcut for that.
+ */
+.dfc {
+  display: flex;
+  align-items: center;
+}
+
+/* Flexbox utilities */
+
+.fwn { flex-wrap: nowrap; } /* default */
+.fww { flex-wrap: wrap; }
+.fwr { flex-wrap: wrap-reverse; }
+.fwu { flex-wrap: unset; }
+
+.f-col { flex-direction: column; }
+.f-colr { flex-direction: column-reverse; }
+.f-row { flex-direction: row; }
+.f-rowr { flex-direction: row-reverse; }
+
+.fba { flex-basis: auto; } /* default */
+.fbc { flex-basis: content; }
+.fbx { flex-basis: max-content; }
+.fbm { flex-basis: min-content; }
+.fbf { flex-basis: fit-content; }
+.fb0 { flex-basis: 0; }
+.fbu { flex-basis: unset; }
+
+.fs0 { flex-shrink: 0; }
+.fs1 { flex-shrink: 1; }
+.fsu { flex-shrink: unset; }
+
+.fg0 { flex-grow: 0; }
+.fg1 { flex-grow: 1; }
+.fgu { flex-grow: unset; }
+
+.order-3 { order: -3; }
+.order-2 { order: -2; }
+.order-1 { order: -1; }
+.order0 { order: 0; }
+.order1 { order: 1; }
+.order2 { order: 2; }
+.order3 { order: 3; }
+.order4 { order: 4; }
+.order5 { order: 5; }
+.order6 { order: 6; }
+.order7 { order: 7; }
+.order8 { order: 8; }
+.order9 { order: 9; }
+.order-unset { order: unset; }
+
+@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+  @media ($media) {
+    .dfc-$(ext) {
+      display: flex;
+      align-items: center;
+    }
+
+    .fwn-$(ext) { flex-wrap: nowrap; }
+    .fww-$(ext) { flex-wrap: wrap; }
+    .fwr-$(ext) { flex-wrap: wrap-reverse; }
+    .fwu-$(ext) { flex-wrap: unset; }
+
+    .f-col-$(ext) { flex-direction: column; }
+    .f-colr-$(ext) { flex-direction: column-reverse; }
+    .f-row-$(ext) { flex-direction: row; }
+    .f-rowr-$(ext) { flex-direction: row-reverse; }
+
+    .fba-$(ext) { flex-basis: auto; }
+    .fbc-$(ext) { flex-basis: content; }
+    .fb-max-$(ext) { flex-basis: max-content; }
+    .fb-min-$(ext) { flex-basis: min-content; }
+    .fb-fit-$(ext) { flex-basis: fit-content; }
+    .fb0-$(ext) { flex-basis: 0; }
+    .fbu-$(ext) { flex-basis: unset; }
+
+    .fs0-$(ext) { flex-shrink: 0; }
+    .fs1-$(ext) { flex-shrink: 1; }
+    .fsu-$(ext) { flex-shrink: unset; }
+
+    .fg0-$(ext) { flex-grow: 0; }
+    .fg1-$(ext) { flex-grow: 1; }
+    .fgu-$(ext) { flex-grow: unset; }
+
+    .order-3-$(ext) { order: -3; }
+    .order-2-$(ext) { order: -2; }
+    .order-1-$(ext) { order: -1; }
+    .order0-$(ext) { order: 0; }
+    .order1-$(ext) { order: 1; }
+    .order2-$(ext) { order: 2; }
+    .order3-$(ext) { order: 3; }
+    .order4-$(ext) { order: 4; }
+    .order5-$(ext) { order: 5; }
+    .order6-$(ext) { order: 6; }
+    .order7-$(ext) { order: 7; }
+    .order8-$(ext) { order: 8; }
+    .order9-$(ext) { order: 9; }
+    .order-unset-$(ext) { order: unset; }
+  }
+}

@@ -1,0 +1,17 @@
+/*
+  LABELS
+*/
+
+.label {
+  display: inline-block;
+  padding: var(--label-padding);
+  font-size: var(--label-font-size);
+  color: var(--label-font-colour);
+  vertical-align: var(--label-alignment);
+  border: var(--label-border);
+  border-radius: var(--label-border-radius);
+}
+
+/* Whitespace between labels */
+
+.label + .label { margin-left: var(--label-margin-between); }

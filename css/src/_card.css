@@ -1,0 +1,54 @@
+/*
+  CARDS
+*/
+
+.card {
+  padding: var(--card-padding-y) var(--card-padding-x);
+  word-wrap: break-word;
+  background-color: var(--card-bg-colour);
+  filter: var(--card-shadow);
+  border-radius: var(--radius-2);
+}
+
+.card-touch {
+  z-index: var(--card-touch-zindex);
+  margin: 0;
+  color: var(--card-touch-font-colour);
+  filter: var(--card-touch-shadow);
+  transition: all var(--card-touch-animate-speed) ease;
+
+  @if var(--card-touch-optimize) {
+    will-change: transform, filter;
+  }
+
+  &:hover {
+    color: var(--card-touch-font-colour);
+    text-decoration: unset;
+    filter: var(--card-touch-hover-shadow);
+    transform: translateY(var(--card-touch-animate-distance));
+  }
+}
+
+.card-has-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card-img {
+  border-top-left-radius: var(--radius-2);
+  border-top-right-radius: var(--radius-2);
+}
+
+.card-body {
+  margin: 1.2rem 2rem;
+}
+
+.card-btn {
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  margin-top: auto;
+  text-align: center;
+  border-top: var(--card-btn-border);
+  border-bottom-right-radius: var(--radius-2);
+  border-bottom-left-radius: var(--radius-2);
+}

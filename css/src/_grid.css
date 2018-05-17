@@ -1,0 +1,172 @@
+/*
+  CSS GRID LAYOUT
+*/
+
+/* Grid base */
+
+.grid,
+.grid-c,
+.grid-c0 {
+  grid-auto-rows: var(--auto-rows);
+  grid-auto-columns: var(--auto-cols);
+  grid-gap: var(--gutter-row) var(--gutter-col);
+  grid-template-rows: var(--rows);
+  grid-template-columns: var(--cols);
+
+  @media (--screen-large) {
+    grid-gap: var(--gutter-row-l) var(--gutter-col-l);
+  }
+}
+
+/* Compact gaps between rows and columns */
+
+.grid-c { grid-gap: calc(var(--gutter-row) / 2) 0 !important; } /* stylelint-disable-line declaration-no-important */
+.grid-c0 { grid-gap: 0 0 !important; } /* stylelint-disable-line declaration-no-important */
+
+.col-fluid { grid-template-columns: auto; }
+
+/*
+  .x = number of columns in grid
+  .y = number of rows in grid
+  .c = starting column
+  .r = starting row
+  .w = item width
+  .h = item height
+
+  cols = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+  rows = 1, 2, 3, 4, 5, 6
+
+     = (default, no suffix) anything smaller than small
+  -s = small
+  -l = large
+*/
+
+/* TODO: Research: Will the file gzip better if all the .x1 .x2 .x3 etc. are next to each other? */
+
+@each $step in var(--col-steps) {
+  .x$(step) { grid-template-columns: repeat($step, var(--item-size)); }
+  .c$(step) { grid-column-start: $step; }
+  .w$(step) { grid-column-end: span $step; }
+
+  @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+    @media ($media) {
+      .x$(step)-$(ext) { grid-template-columns: repeat($step, var(--item-size)); }
+      .c$(step)-$(ext) { grid-column-start: $step; }
+      .w$(step)-$(ext) { grid-column-end: span $step; }
+    }
+  }
+}
+
+@each $step in var(--row-steps) {
+  .y$(step) { grid-template-rows: repeat($step, auto); }
+  .r$(step) { grid-row-start: $step; }
+  .h$(step) { grid-row-end: span $step; }
+
+  @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+    @media ($media) {
+      .y$(step)-$(ext) { grid-template-rows: repeat($step, auto); }
+      .r$(step)-$(ext) { grid-row-start: $step; }
+      .h$(step)-$(ext) { grid-row-end: span $step; }
+    }
+  }
+}
+
+/* FIXME: Rename these to make them easier to understand and shorter too, ideally */
+
+.middle {
+  align-items: center;
+  justify-content: center;
+}
+
+.align-row-start { justify-items: start; }
+.align-row-end { justify-items: end; }
+.align-row-center { justify-items: center; }
+.align-row-stretch { justify-items: stretch; } /* default */
+
+.align-col-start { align-items: start; }
+.align-col-end { align-items: end; }
+.align-col-center { align-items: center; }
+.align-col-stretch { align-items: stretch; } /* default */
+
+.align-item-row-start { justify-self: start; }
+.align-item-row-end { justify-self: end; }
+.align-item-row-center { justify-self: center; }
+.align-item-row-stretch { justify-self: stretch; } /* default */
+
+.align-item-col-start { align-self: start; }
+.align-item-col-end { align-self: end; }
+.align-item-col-center { align-self: center; }
+.align-item-col-stretch { align-self: stretch; } /* default */
+
+.justify-row-start { justify-content: start; }
+.justify-row-end { justify-content: end; }
+.justify-row-center { justify-content: center; }
+.justify-row-space-around { justify-content: space-around; }
+.justify-row-space-between { justify-content: space-between; }
+.justify-row-space-evenly { justify-content: space-evenly; }
+.justify-row-stretch { justify-content: stretch; } /* default */
+
+.justify-col-start { align-content: start; }
+.justify-col-end { align-content: end; }
+.justify-col-center { align-content: center; }
+.justify-col-space-around { align-content: space-around; }
+.justify-col-space-between { align-content: space-between; }
+.justify-col-space-evenly { align-content: space-evenly; }
+.justify-col-stretch { align-content: stretch; } /* default */
+
+.flow-row-dense { grid-auto-flow: row dense; }
+.flow-row { grid-auto-flow: row; }
+
+.flow-col-dense { grid-auto-flow: column dense; }
+.flow-col { grid-auto-flow: column; } /* default */
+
+@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+  @media ($media) {
+    .middle-$(ext) {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .align-row-start-$(ext) { justify-items: start; }
+    .align-row-end-$(ext) { justify-items: end; }
+    .align-row-center-$(ext) { justify-items: center; }
+    .align-row-stretch-$(ext) { justify-items: stretch; }
+
+    .align-col-start-$(ext) { align-items: start; }
+    .align-col-end-$(ext) { align-items: end; }
+    .align-col-center-$(ext) { align-items: center; }
+    .align-col-stretch-$(ext) { align-items: stretch; }
+
+    .align-item-row-start-$(ext) { justify-self: start; }
+    .align-item-row-end-$(ext) { justify-self: end; }
+    .align-item-row-center-$(ext) { justify-self: center; }
+    .align-item-row-stretch-$(ext) { justify-self: stretch; }
+
+    .align-item-col-start-$(ext) { align-self: start; }
+    .align-item-col-end-$(ext) { align-self: end; }
+    .align-item-col-center-$(ext) { align-self: center; }
+    .align-item-col-stretch-$(ext) { align-self: stretch; }
+
+    .justify-row-start-$(ext) { justify-content: start; }
+    .justify-row-end-$(ext) { justify-content: end; }
+    .justify-row-center-$(ext) { justify-content: center; }
+    .justify-row-space-around-$(ext) { justify-content: space-around; }
+    .justify-row-space-between-$(ext) { justify-content: space-between; }
+    .justify-row-space-evenly-$(ext) { justify-content: space-evenly; }
+    .justify-row-stretch-$(ext) { justify-content: stretch; }
+
+    .justify-col-start-$(ext) { align-content: start; }
+    .justify-col-end-$(ext) { align-content: end; }
+    .justify-col-center-$(ext) { align-content: center; }
+    .justify-col-space-around-$(ext) { align-content: space-around; }
+    .justify-col-space-between-$(ext) { align-content: space-between; }
+    .justify-col-space-evenly-$(ext) { align-content: space-evenly; }
+    .justify-col-stretch-$(ext) { align-content: stretch; }
+
+    .flow-row-dense-$(ext) { grid-auto-flow: row dense; }
+    .flow-row-$(ext) { grid-auto-flow: row; }
+
+    .flow-col-dense-$(ext) { grid-auto-flow: column dense; }
+    .flow-col-$(ext) { grid-auto-flow: column; }
+  }
+}

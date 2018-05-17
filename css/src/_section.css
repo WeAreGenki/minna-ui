@@ -1,0 +1,148 @@
+/*
+  SECTION
+
+    A way to break up long pages and add visual interest.
+
+  HTML LAYOUT:
+    <section class="tilt">
+      <div class="con pv4 tc">
+        <h2 class="mt0">Example tilt section</h2>
+        <p class="lead">Your text.</p>
+      </div>
+    </section>
+
+    <section class="tilt-cta">
+      <div class="con pv4 tc">
+        <h2 class="mt0">Example CTA tilt</h2>
+        <p class="lead">Your text.</p>
+      </div>
+    </section>
+
+*/
+
+/* Hero section */
+
+.hero {
+  padding: var(--hero-padding);
+  margin: var(--hero-margin);
+  color: var(--hero-font-colour);
+  background-image: var(--hero-bg-gradient);
+}
+
+.hero-dark {
+  background-image: var(--gradient-dark);
+}
+
+/* Off-angle; tilted section */
+
+.tilt {
+  background-color: var(--tilt-bg-colour);
+
+  &::before,
+  &::after {
+    display: block;
+    height: var(--tilt-hight);
+    content: "";
+  }
+
+  &::before {
+    background-image:
+      linear-gradient(
+        to bottom right,
+        var(--body-bg-colour),
+        var(--body-bg-colour) var(--tilt-stop-point),
+        var(--tilt-bg-colour) 50%,
+        var(--tilt-bg-colour)
+      );
+  }
+
+  &::after {
+    background-image:
+      linear-gradient(
+        to bottom right,
+        var(--tilt-bg-colour),
+        var(--tilt-bg-colour) var(--tilt-stop-point),
+        var(--body-bg-colour) 50%,
+        var(--body-bg-colour)
+      );
+  }
+}
+
+.tilt-cta {
+  color: var(--tilt-cta-font-colour);
+  background-color: var(--tilt-cta-bg-colour);
+
+  &::before,
+  &::after {
+    display: block;
+    height: var(--tilt-hight);
+    content: "";
+  }
+
+  &::before {
+    background-image:
+      linear-gradient(
+        to bottom right,
+        var(--body-bg-colour),
+        var(--body-bg-colour) var(--tilt-stop-point),
+        var(--tilt-cta-bg-colour) 50%,
+        var(--tilt-cta-bg-colour)
+      );
+  }
+
+  &::after {
+    background-image:
+      linear-gradient(
+        to bottom right,
+        var(--tilt-cta-bg-colour),
+        var(--tilt-cta-bg-colour) var(--tilt-stop-point),
+        var(--body-bg-colour) 50%,
+        var(--body-bg-colour)
+      );
+  }
+
+  label,
+  strong {
+    color: var(--tilt-cta-font-colour);
+  }
+
+  a {
+    color: var(--tilt-cta-link-colour);
+  }
+
+  .input,
+  .select,
+  .textarea,
+  input,
+  select,
+  textarea {
+    outline-color: var(--tilt-cta-link-colour);
+  }
+
+  .invalid {
+    border: var(--tilt-cta-input-invalid-border);
+    outline-color: var(--tilt-cta-input-invalid-colour);
+  }
+
+  .form-help {
+    color: inherit;
+  }
+
+  .invalid-feedback {
+    color: var(--tilt-cta-input-invalid-colour);
+  }
+}
+
+.tilt-offset {
+  &::before {
+    margin-top: calc(-1 * var(--tilt-hight));
+    background-image: linear-gradient(to bottom right, var(--tilt-bg-colour), var(--tilt-bg-colour) var(--tilt-stop-point), var(--tilt-cta-bg-colour) 50%, var(--tilt-cta-bg-colour));
+  }
+}
+
+.tilt-cta-offset {
+  &::before {
+    margin-top: calc(-1 * var(--tilt-hight));
+    background-image: linear-gradient(to bottom right, var(--tilt-cta-bg-colour), var(--tilt-cta-bg-colour) var(--tilt-stop-point), var(--tilt-bg-colour) 50%, var(--tilt-bg-colour));
+  }
+}

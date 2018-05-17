@@ -1,0 +1,43 @@
+/*
+  DISPLAY
+
+  BASE:
+    .d = display
+
+  TYPE:
+    n = none
+    b = block
+    i = inline
+    ib = inline block
+    f = flex
+    if = inline flex
+    g = grid
+    ig = inline grid
+
+  RESPONSIVE:
+       = (no suffix) default root; anything before small media breakpoint
+    -s = small screen breakpoint
+    -l = large screen breakpoint
+*/
+
+.dn { display: none; }
+.db { display: block; }
+.di { display: inline; }
+.dib { display: inline-block; }
+.df { display: flex; }
+.dif { display: inline-flex; }
+.dg { display: grid; }
+.dig { display: inline-grid; }
+
+@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
+  @media ($media) {
+    .dn-$(ext) { display: none; }
+    .db-$(ext) { display: block; }
+    .di-$(ext) { display: inline; }
+    .dib-$(ext) { display: inline-block; }
+    .df-$(ext) { display: flex; }
+    .dif-$(ext) { display: inline-flex; }
+    .dg-$(ext) { display: grid; }
+    .dig-$(ext) { display: inline-grid; }
+  }
+}

@@ -1,0 +1,37 @@
+/*
+  NAVIGATION
+*/
+
+/* Side menu */
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-link {
+  padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
+  margin: var(--side-nav-link-margin-y) 0;
+  border-left: var(--side-nav-border-width) solid transparent;
+}
+
+.sidenav-link-active {
+  color: var(--side-nav-active-font-colour);
+  text-decoration: none;
+  background-color: var(--side-nav-active-bg-colour);
+  border-color: var(--side-nav-border-colour);
+}
+
+/* Footer */
+
+.footer {
+  margin-top: var(--footer-margin-y);
+  margin-bottom: var(--footer-margin-y);
+  color: var(--footer-font-colour);
+}
+
+.footer-link {
+  display: inline-block;
+  padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
+  margin: 0 var(--gutter-col) 0 calc(-1 * var(--gutter-col));
+}

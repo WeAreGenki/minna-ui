@@ -1,0 +1,24 @@
+{
+  "name": "@minna-ui/tooltip-action",
+  "version": "0.0.0",
+  "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip-action",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://ui.wearegenki.com",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "component",
+    "design-system",
+    "minna-ui",
+    "postcss",
+    "svelte",
+    "sveltejs",
+    "wearegenki"
+  ],
+  "main": "index.mjs",
+  "styles": "index.css",
+  "publishConfig": {
+    "access": "public"
+  }
+}

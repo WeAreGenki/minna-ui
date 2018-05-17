@@ -1,0 +1,226 @@
+<!--
+  NAVBAR COMPONENT
+
+  A simple fixed top navigation bar with a floating effect upon scrolling. It
+  will collapse into a hamburger menu when the screen width is small.
+
+  USAGE:
+    The "items" property should be an array of objects which look like this:
+
+      <MinnaNavbar items="[
+        { url: '/page-one', name: 'Page One' },
+        { url: '/page-two', name: 'Page Two' },
+        { url: '/about', name: 'About Us' },
+      ]"/>
+
+    FIXME: Update instructions about how to set up SVG correctly:
+    Menu and close icons are already included but you need to supply your logo
+    as a SVG. Place the file in "assets/logo.svg" and it will be automatically
+    resolved by this component.
+
+    You may need to adjust size and whitespace to suite your logo. See the CSS
+    variables below in .navbar-icon + .logo and .nav-logo.
+
+  NOTE:
+    In the code, object properties starting with __ are safe to mangle; the name
+    can be shortened at build time for smaller JavaScript bundles.
+
+-->
+
+<header class="navbar {__hasScrolled || __show ? 'navbar-active' : ''}">
+  <nav class="dfc fww con" role="navigation">
+    <button
+      type="button"
+      class="dn-l btn-clear btn-menu"
+      aria-label="menu toggle"
+      aria-expanded="{__show}"
+      on:click="set({ __show: !__show })"
+    >
+      <svg class="navbar-icon link">
+        <use xlink:href="{__show ? '#x' : '#menu'}"/>
+      </svg>
+    </button>
+
+    <a href="/" title="Home">
+      <svg class="logo">
+        <use xlink:href="#logo"/>
+      </svg>
+    </a>
+
+    <div class="navbar-links dn {__show ? 'df' : ''}">
+      <a href="/" class="navbar-link dn-l">Home</a>
+
+      {#each items as __item}
+        <!-- URLs which start with the same path as the nav item get an active class -->
+        <a
+          href="{__item.url}"
+          class="navbar-link {page.indexOf(__item.url) === 0 ? 'navbar-link-active' : ''}"
+        >
+          {__item.name}
+        </a>
+      {/each}
+    </div>
+  </nav>
+</header>
+
+<script>
+  export default {
+    data: () => ({
+      __show: false, // show hamburger menu?
+      __hasScrolled: false,
+
+      /** Required props */
+      // items: [],
+
+      /** Optional props */
+      // page: '', // should be "props.path"
+    }),
+    oncreate() {
+      let ticking = false;
+
+      const setState = () => {
+        // document.documentElement.scrollTop is faster but window.pageYOffset is more compatible
+        this.set({ __hasScrolled: window.pageYOffset !== 0 });
+        ticking = false;
+      };
+
+      // debounce using requestAnimationFrame
+      document.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(setState);
+        }
+        ticking = true;
+      });
+    },
+  };
+</script>
+
+<style type="text/postcss">
+  @import "import.css";
+
+  :root {
+    /* FIXME: Can't parse when "--optimize-all" is not set */
+    /* --navbar-optimize: var(--optimize-all, true); */
+    --navbar-optimize: true;
+    --navbar-zindex: 5;
+    --navbar-bg-colour: var(--body-bg-colour);
+    --navbar-animate-distance: 3px;
+    --navbar-animate-speed: 200ms;
+    --navbar-shadow-fade-speed: 300ms;
+    --navbar-shadow: drop-shadow(0 0.5rem 1rem var(--shadow-base));
+    --navbar-shadow-before: drop-shadow(0 0.5rem 1rem color-mod(var(--shadow-colour) alpha(0))); /* same as --navbar-shadow but 0 alpha */
+    --navbar-icon-size: 2rem;
+    --navbar-icon-padding: 0.4rem 0.4rem 0.25rem;
+    --navbar-logo-size-x: 4.2rem;
+    --navbar-logo-size-y: 1.6rem;
+    --navbar-body-offset: 3.26rem; /* offset body so contents are not covered */
+    --navbar-anchor-offset: calc(var(--navbar-body-offset) + 1rem); /* offset in-page links; navbar + shadow */
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--navbar-zindex);
+    padding-top: var(--navbar-animate-distance); /* offset for animation movement */
+    background-color: var(--navbar-bg-colour);
+    filter: var(--navbar-shadow-before);
+    transition:
+      filter var(--navbar-shadow-fade-speed) ease,
+      transform var(--navbar-animate-speed) ease;
+
+    @if var(--navbar-optimize) {
+      will-change: filter, transform;
+    }
+
+    .navbar-link-active {
+      text-decoration: underline;
+    }
+  }
+
+  .navbar-active {
+    filter: var(--navbar-shadow);
+    transform: translateY(calc(-1 * var(--navbar-animate-distance)));
+  }
+
+  .btn-menu {
+    padding: 0;
+    margin-right: 1.2rem;
+  }
+
+  .navbar-icon {
+    width: var(--navbar-icon-size);
+    height: var(--navbar-icon-size);
+    padding: var(--navbar-icon-padding);
+    margin: 0;
+  }
+
+  .logo {
+    width: var(--navbar-logo-size-x);
+    height: var(--navbar-logo-size-y);
+  }
+
+  .navbar-links {
+    flex-basis: 100%;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: calc(var(--nav-link-padding-y) / 2) 0;
+    margin: 0 -1rem;
+    border-top: 1px solid transparent;
+
+    .navbar-active > .con > & {
+      border-color: var(--grey-300);
+    }
+
+    @media (--screen-large) {
+      display: flex;
+      flex-basis: auto;
+      flex-direction: row;
+      flex-grow: 0;
+      padding: 0;
+      margin: 0 -1rem 0 auto;
+    }
+  }
+
+  .navbar-link {
+    padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
+    margin: 0;
+  }
+
+  /* offset page content so it's not covered by the fixed navbar */
+  :global(body) {
+    margin-top: var(--navbar-body-offset);
+  }
+
+  /**
+  * This is a workaround when clicking on a link with a internal target location
+  * (a link to another place within the same page). Since the target element is
+  * moved to the top of the page it becomes covered by the fixed navbar. We get
+  * around this using an invisible pseudo element with an offset position which
+  * is attached to any heading with an id.
+  *
+  * Only add an id property to a heading when truly necessary to avoid the small
+  * CSS rendering performance hit.
+  */
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6),
+  :global(.h1),
+  :global(.h2),
+  :global(.h3),
+  :global(.h4),
+  :global(.h5),
+  :global(.h6) {
+    &[id]::before {
+      display: block;
+      height: var(--navbar-anchor-offset);
+      margin-top: calc(-1 * var(--navbar-anchor-offset));
+      visibility: hidden;
+      content: "";
+    }
+  }
+</style>

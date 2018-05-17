@@ -1,0 +1,384 @@
+<!--
+  INPUT SELECT COMPONENT
+
+  A custom form input component similar to a native <select> element. Allows the
+  user to select from a list of shown options.
+
+  Features:
+    - Automatically opens on focus for taster form input when using a keyboard
+      for navigating.
+    - User can filter through options (enabled by default).
+
+  USAGE:
+    Typical use example (all properties are required):
+
+      <MinnaSelect id="select-example" bind:value="example" options="[
+        { id: 'ex1', text: 'Example 1' },
+        { id: 'ex2', text: 'Example 2' },
+        { id: 'ex3', text: 'Example 3', disabled: true },
+      ]"/>
+
+    Other optional properties are `readonly` and `disabled`.
+
+  NOTE:
+    In the code, object properties starting with __ are safe to mangle; the name
+    can be shortened at build time for smaller JavaScript bundles.
+
+  REFERENCE:
+    - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/#Listbox
+    - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/listbox/listbox-collapsible.html
+
+-->
+
+<!--
+  TODO: Possible future features (but avoid bloat or performance impact):
+    - Incorporate WAI-ARIA recommendations (once svelte can handle custom
+      boolean attributes).
+    - Scroll when overflowing.
+    - Multi-select (might be better to make a separate component).
+    - Horizontal divider to visually group options (maybe with optional title).
+    - Different listbox position when not enough space OR maybe just move the
+      viewport to be able to see the currently selected item if it's outside the
+      viewport.
+-->
+
+<div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {__isOpen ? 'select-active' : ''}">
+  <input
+    id="{id}"
+    ref:__target
+    bind:value="__input"
+    class="select"
+    tabindex="{disabled ? -1 : 0}"
+    placeholder="{filterable && __isOpen ? filterHelp : placeholder}"
+    readonly="{!filterable || readonly || !__isOpen}"
+    disabled="{disabled}"
+    required="{required}"
+    aria-haspopup="listbox"
+    on:click="__open()"
+    on:focus="__open()"
+    on:blur="__close()"
+    on:keydown="__onKeyDown(event)"
+  >
+  <div class="select-caret"/>
+
+  <div
+    class="select-listbox {__isOpen ? '' : 'hide'}"
+    role="listbox"
+    on:mousedown="__select(event)"
+  >
+    {#each __filteredOptions as __option, __index}
+      <div
+        class="option {__option.disabled ? 'option-disabled' : ''} {__index === __selected ? 'option-active' : ''}"
+        value="{__option.id}"
+        role="option"
+      >
+        {__option.text}
+      </div>
+    {/each}
+    {#if !__filteredOptions.length}
+      <div class="pa3 grey">
+        No matches
+      </div>
+    {/if}
+  </div>
+</div>
+
+<script>
+  export default {
+    data: () => ({
+      __isOpen: false,
+      __input: '',
+      __selected: 0, // index of the currently selected item
+
+      /** Bind prop */
+      // value: true,
+
+      /** Required props */
+      // id: '',
+      // options: [],
+
+      /** Optional props */
+      filterable: true,
+      filterHelp: 'Filter...',
+      placeholder: 'Choose...',
+
+      /** Optional native props */
+      // readonly: false,
+      // disabled: false,
+      // required: false,
+    }),
+    computed: {
+      __filteredOptions({ __isOpen, __input, filterable, options }) {
+        if (!__isOpen || !filterable || __input === '') return options;
+
+        return options.filter(option =>
+          option.text.toLowerCase().indexOf(__input.toLowerCase()) > -1);
+      },
+    },
+    onstate({ changed, current }) {
+      if (changed.__filteredOptions) {
+        this.__setIndex();
+      }
+
+      if (changed.value && current.value) {
+        this.__setInput();
+      }
+    },
+    methods: {
+      __setIndex() {
+        const { __filteredOptions, value } = this.get();
+
+        if (value) {
+          // save the current item's index for highlighting in the options
+          this.set({ __selected: __filteredOptions.findIndex(option => option.id === value) });
+        }
+      },
+
+      __setInput() {
+        const { options, value } = this.get();
+
+        this.set({
+          __input: value
+            ? options.find(option => option.id === value).text
+            : '',
+        });
+      },
+
+      __open() {
+        this.__setIndex();
+
+        // FIXME: Don't call this.set() twice because svelte doesn't queue changes
+        if (this.get().filterable) {
+          this.set({ __input: '' });
+        }
+        this.set({ __isOpen: true });
+      },
+
+      __close() {
+        this.set({ __isOpen: false });
+        this.__setInput();
+      },
+
+      __emitInput() {
+        // fire a synthetic "input" event (useful to trigger validation)
+        this.refs.__target.dispatchEvent(new Event('input', { bubbles: true }));
+        this.__close();
+      },
+
+      __select(event) {
+        if (event) {
+          // option selected via mouse
+          event.preventDefault(); // don't trigger <input> blur event
+
+          if (!event.target.classList.contains('disabled')) {
+            this.set({
+              value: event.target.getAttribute('value'),
+              __input: event.target.innerText,
+            });
+            this.__emitInput();
+          }
+        } else {
+          // option selected via keyboard
+          const { __filteredOptions, __selected } = this.get();
+          const option = __filteredOptions[__selected];
+
+          if (!option.disabled) {
+            this.set({
+              value: option.id,
+              __input: option.text,
+            });
+            this.__emitInput();
+          }
+        }
+      },
+
+      __up() {
+        const { __selected, __filteredOptions } = this.get();
+
+        if (__selected <= 0) return;
+
+        let steps = 1;
+
+        // skip over disabled items or if there's no items left
+        while (__filteredOptions[__selected - steps].disabled) {
+          steps += 1;
+          if (__filteredOptions[__selected - steps] === undefined) return;
+        }
+
+        this.set({ __selected: __selected - steps });
+      },
+
+      __down() {
+        const { __selected, __filteredOptions } = this.get();
+
+        // jump to last availiable item if index is out of bounds (e,g, after filtering)
+        if (__selected >= __filteredOptions.length - 1) {
+          this.set({ __selected: __filteredOptions.length - 1 });
+          return;
+        }
+
+        let steps = 1;
+
+        // skip over disabled items or if there's no items left
+        while (__filteredOptions[__selected + steps].disabled) {
+          steps += 1;
+          if (__filteredOptions[__selected + steps] === undefined) return;
+        }
+
+        this.set({ __selected: __selected + steps });
+      },
+
+      __onKeyDown(event) {
+        const { __isOpen } = this.get();
+
+        // choose key with graceful fallback for old browsers
+        switch (event.key || event.keyCode) {
+          case ' ':
+          case 'Spacebar':
+          case 32:
+            if (!__isOpen) {
+              this.__open();
+            }
+            break;
+          case 'Enter':
+          case 13:
+            event.preventDefault(); // don't submit form
+            if (__isOpen) {
+              this.__select();
+            } else {
+              this.__open();
+            }
+            break;
+          case 'Escape':
+          case 27:
+            this.__close();
+            break;
+          case 'ArrowUp':
+          case 'Up':
+          case 38:
+            event.preventDefault(); // don't scroll page or move cursor
+            if (__isOpen) {
+              this.__up();
+            } else {
+              this.__open();
+            }
+            break;
+          case 'ArrowDown':
+          case 'Down':
+          case 40:
+            event.preventDefault(); // don't scroll page or move cursor
+            if (__isOpen) {
+              this.__down();
+            } else {
+              this.__open();
+            }
+            break;
+          default:
+            // no matching key
+        }
+      },
+    },
+  };
+</script>
+
+<style type="text/postcss">
+  @import "import.css";
+
+  :root {
+    /* FIXME: Can't parse when "--optimize-all" is not set */
+    /* --select-optimize: var(--optimize-all, false); */
+    --select-optimize: false;
+    --select-zindex: 4;
+    --select-bg-colour: var(--white);
+    --select-shadow: drop-shadow(var(--shadow));
+    --select-selected-font-colour: var(--white);
+    --select-selected-bg-colour: var(--link-hover-font-colour);
+    --select-caret-colour: var(--blue-grey-800);
+    --select-caret-size: 0.3rem;
+    --select-animate-speed: 150ms;
+    --select-disabled-font-colour: var(--btn-disabled-font-colour);
+    --select-disabled-caret-colour: var(--grey-500);
+  }
+
+  :global(.hide) {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .select {
+    .select-active > & {
+      cursor: auto;
+    }
+  }
+
+  .select-caret {
+    position: absolute;
+    top: calc(50% - (var(--select-caret-size) / 2));
+    right: 0.75rem;
+    pointer-events: none;
+
+    @if var(--select-optimize) {
+      will-change: transform;
+    }
+
+    @mixin draw-triangle bottom, var(--select-caret-size), var(--select-caret-colour);
+
+    .select-active > & {
+      transform: rotate(180deg);
+    }
+
+    .select-disabled > & {
+      border-top-color: var(--select-disabled-caret-colour);
+    }
+  }
+
+  .select-listbox {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--select-zindex);
+    width: 100%;
+    padding: var(--input-padding-y) 0;
+    font-size: var(--input-font-size);
+    color: var(--input-font-colour);
+    text-align: left;
+    background-color: var(--input-bg-colour);
+    filter: var(--select-shadow);
+    transition:
+      transform var(--select-animate-speed) ease,
+      opacity var(--select-animate-speed) ease;
+
+    @if var(--select-optimize) {
+      will-change: transform, opacity;
+    }
+
+    &.hide {
+      transform: translateY(-1rem);
+    }
+
+    /* don't render when disabled for better performance */
+    .select-disabled > & {
+      display: none;
+
+      @if var(--select-optimize) {
+        will-change: auto;
+      }
+    }
+  }
+
+  .option {
+    padding: var(--input-padding-y) var(--input-padding-x);
+  }
+
+  .option-active,
+  .option:hover {
+    color: var(--select-selected-font-colour);
+    background-color: var(--select-selected-bg-colour);
+  }
+
+  .option-disabled,
+  .option-disabled:hover {
+    color: var(--select-disabled-font-colour);
+    background-color: unset;
+  }
+</style>

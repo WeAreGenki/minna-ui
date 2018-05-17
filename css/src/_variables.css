@@ -1,0 +1,270 @@
+/*
+  GLOBAL VARIABLES
+
+  NOTE:
+    Components may also contain their own CSS variables.
+
+*/
+
+/* Media queries */
+@custom-media --screen-small screen and (min-width: 30.01em) and (max-width: 48em);
+@custom-media --screen-large screen and (min-width: 48.01em);
+
+:root {
+  /* Breakpoints */
+
+  --breakpoints-media: --screen-small, --screen-large;
+  --breakpoints: s, l;
+
+  /* Global options */
+
+  /**
+   * Force hardware acceleration on key animations. We've already set
+   * acceleration where it makes sense but you can uncomment this to
+   * experiment. It's recommended to change individual animation options once
+   * you understand which animations need it. This can actually have a negative
+   * impact on performance so use sparingly. Buggy in old browsers and not
+   * supported at all in IE or Edge - https://caniuse.com/#feat=will-change
+   */
+  /* --optimize-all: true; */
+
+  /* General */
+
+  --spacing-steps: 0, 1, 2, 3, 4, 5, 6, 7;
+  --spacing-values: 0, 0.25rem, 0.5rem, 1rem, 2rem, 4rem, 8rem, 16rem;
+  --radius-1: 0.1875rem; /* 3px at root */
+  --radius-2: 0.2875rem; /* 4.6px at root */
+  --angle-1: 151deg;
+  --angle-2: 45deg;
+  --angle-3: -27deg;
+
+  /* Grid */
+
+  --container-width-max: 75rem; /* 1200px */
+  --container-fluid-font-size-width-max: 57rem; /* only used when --use-fluid-font-size is true */
+  --container-narrow-width-max: 30rem;
+  --item-size: 1fr;
+  --cols: auto;
+  --rows: auto;
+  --auto-cols: var(--item-size);
+  --auto-rows: auto;
+  --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+  --row-steps: 1, 2, 3, 4, 5, 6;
+  --gutter-col: 1rem;
+  --gutter-col-l: 2rem;
+  --gutter-row: 2rem;
+  --gutter-row-l: 2rem;
+
+  /* Gradients */
+
+  --gradient-primary-0: hsl(188, 100%, 51%);
+  --gradient-primary-100: hsl(215, 98%, 46%);
+  --gradient-secondary-0: hsl(270, 96%, 73%);
+  --gradient-secondary-100: hsl(263, 60%, 49%);
+  --gradient-dark-0: hsl(246, 30%, 32%);
+  --gradient-dark-100: hsl(249, 33%, 16%);
+  --gradient-primary-10: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 10%));
+  --gradient-primary-20: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 20%));
+  --gradient-primary-30: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 30%));
+  --gradient-primary-40: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 40%));
+  --gradient-primary-50: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 50%));
+  --gradient-primary-60: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 60%));
+  --gradient-primary-70: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 70%));
+  --gradient-primary-80: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 80%));
+  --gradient-primary-90: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 90%));
+  --gradient-secondary-10: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 10%));
+  --gradient-secondary-20: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 20%));
+  --gradient-secondary-30: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 30%));
+  --gradient-secondary-50: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 50%));
+  --gradient-secondary-60: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 60%));
+  --gradient-secondary-70: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 70%));
+  --gradient-secondary-80: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 80%));
+  --gradient-secondary-90: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 90%));
+  --gradient-dark-10: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 10%));
+  --gradient-dark-20: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 20%));
+  --gradient-dark-30: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 30%));
+  --gradient-dark-40: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 40%));
+  --gradient-dark-50: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 50%));
+  --gradient-dark-60: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 60%));
+  --gradient-dark-70: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 70%));
+  --gradient-dark-80: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 80%));
+  --gradient-dark-90: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 90%));
+  --gradient-primary: linear-gradient(var(--angle-1), var(--gradient-primary-0), var(--gradient-primary-100));
+  --gradient-secondary: linear-gradient(var(--angle-1), var(--gradient-secondary-0), var(--gradient-secondary-100));
+  --gradient-dark: linear-gradient(var(--angle-2), var(--gradient-dark-0), var(--gradient-dark-100));
+
+  /* Colours */
+
+  --primary: var(--gradient-primary-90);
+  --secondary: var(--gradient-secondary-90);
+  --dark: var(--gradient-dark-90);
+  --light: hsl(213, 35%, 94%);
+  --subtle: var(--blue-grey-200);
+  --body-font-colour: var(--gradient-dark-80);
+  --body-bg-colour: var(--grey-50);
+  --alt-bg-colour: var(--grey-100);
+
+  /* Shadows */
+
+  --shadow-colour: hsl(258, 49%, 18%);
+  --shadow-colour-subtle: hsl(230, 24%, 51%);
+  --shadow-base: color-mod(var(--shadow-colour) alpha(0.39));
+  --shadow: 0 1rem 0.95rem var(--shadow-base);
+  --shadow-subtle: 0 0.3125rem 0.28rem color-mod(var(--shadow-colour-subtle) alpha(0.2));
+  --shadow-light-1: 0 0.625rem 1.5rem color-mod(var(--shadow-colour) alpha(0.06));
+  --shadow-light-2: 0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.076));
+
+  /* Typography */
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-monospace: monospace;
+  --font-rendering: optimizeSpeed;
+  --font-variant: none;
+  --use-fluid-font-size: false; /* dynamic font size based on viewport width */
+  --fluid-font-size-from: 30em; /* start growing font from this screen width */
+  --fluid-font-size-until: 90em; /* stop growing font size at this screen width */
+  --font-size: 1rem; /* use the browser's default font size, normally 16px */
+  --font-size-s: 1.125rem; /* only used when --use-fluid-font-size is false */
+  --font-size-l: 1.3125rem;
+  --font-weight-light: 300;
+  --font-weight: 400; /* browser default */
+  --font-weight-heavy: 700; /* browser default */
+  --line-height: 1.25;
+  --headline-font-size: 6rem;
+  --h1-font-size: 3rem;
+  --h2-font-size: 2.25rem;
+  --h3-font-size: 1.5rem;
+  --h4-font-size: 1.25rem;
+  --h5-font-size: 1rem;
+  --h6-font-size: 0.875rem;
+  --heading-small-font-colour: var(--grey-500);
+  --paragraph-line-height: 1.5;
+  --paragraph-lead-font-size: 1.625rem;
+  --link-click-area: 0.4rem; /* reduce this if your links are overlapping */
+  --link-font-colour: var(--primary);
+  --link-hover-font-colour: color-mod(var(--primary) blackness(22%));
+  --hr-margin: 3rem 0;
+  --li-margin-between: 0.5rem;
+  --quote-font-size: 2rem;
+  --quote-mark-font-size: 3em; /* em (not rem) so it's relative to the parent font size */
+  --abbr-underline-colour: color-mod(var(--body-font-colour lightness(25%)));
+
+  /* Navigation */
+
+  --nav-link-padding-x: 1.3rem;
+  --nav-link-padding-y: 0.9rem;
+  --side-nav-link-margin-y: 0.2rem;
+  --side-nav-active-font-colour: var(--link-hover-font-colour);
+  --side-nav-active-bg-colour: var(--light);
+  --side-nav-border-width: 0.2rem;
+  --side-nav-border-colour: var(--gradient-primary-70);
+  --footer-margin-y: 5rem;
+  --footer-font-colour: var(--subtle);
+
+  /* Buttons */
+
+  --btn-padding-x: 1.875rem;
+  --btn-padding-y: 0.75rem;
+  --btn-font-colour: var(--blue-grey-800);
+  --btn-bg-colour: var(--white);
+  --btn-radius: var(--radius-1);
+  --btn-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-colour) alpha(0.16)));
+  --btn-active-bg-colour: var(--light);
+  --btn-disabled-font-colour: var(--blue-grey-200);
+  --btn-disabled-border-colour: var(--blue-grey-50);
+  --btn-arrow-animate-speed: 200ms;
+  --btn-margin-between: 1.5rem; /* space between buttons */
+  --btn-cta-bg-gradient: linear-gradient(var(--angle-1), var(--gradient-secondary-0), var(--gradient-secondary-100));
+  --btn-cta-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--gradient-secondary-100) alpha(0.5)));
+  --btn-dark-bg-gradient: var(--gradient-dark);
+  --btn-dark-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--dark) alpha(0.4)));
+  --btn-main-bg-gradient: linear-gradient(var(--angle-1), var(--gradient-primary-20), var(--gradient-primary-100));
+  --btn-main-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--gradient-primary-100) alpha(0.5)));
+
+  /* Forms */
+
+  --form-group-margin: 1.5rem;
+  --input-padding-x: 1rem;
+  --input-padding-y: 0.6rem;
+  --input-font-size: 1.2rem;
+  --input-font-colour: var(--body-font-colour);
+  --input-bg-colour: var(--white);
+  --input-border-width: 1px;
+  --input-border: var(--input-border-width) solid var(--grey-300);
+  --input-radius: var(--radius-1);
+  --input-hover-border-colour: var(--grey-400);
+  --input-focus-outline: 2px solid var(--primary);
+  --input-invalid-colour: var(--red-500);
+  --input-invalid-border: 2px solid var(--input-invalid-colour);
+  --input-placeholder-font-colour: var(--blue-grey-400);
+  --input-disabled-font-colour: var(--blue-grey-200);
+  --input-disabled-border-colour: var(--blue-grey-50);
+  --input-disabled-placeholder-font-colour: var(--blue-grey-100);
+  --form-help-margin: 0.5rem;
+  --form-help-font-colour: var(--grey-600);
+
+  /* Cards */
+
+  --card-padding-x: 1.3rem;
+  --card-padding-y: 1.2rem;
+  --card-bg-colour: var(--blue-grey-100);
+  --card-bg-colour: var(--white);
+  --card-shadow: drop-shadow(var(--shadow-subtle));
+  /* FIXME: */
+  /* --card-touch-optimize: var(--optimize-all, false); */
+  --card-touch-optimize: false;
+  --card-touch-zindex: 1;
+  --card-touch-font-colour: var(--body-font-colour);
+  --card-touch-shadow:
+    drop-shadow(var(--shadow-light-1))
+    drop-shadow(var(--shadow-light-2));
+  --card-touch-animate-speed: 160ms;
+  --card-touch-animate-distance: -7px;
+  --card-touch-hover-shadow:
+    drop-shadow(var(--shadow))
+    drop-shadow(0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.07)));
+  --card-btn-border: 1px solid hsl(240, 67%, 96%);
+
+  /* Alerts */
+
+  --alert-padding: 1rem;
+  --alert-margin-y: 2rem;
+  --alert-border-size: 4px;
+  --alert-tip-font-colour: var(--green-900);
+  --alert-tip-bg-colour: var(--green-50);
+  --alert-tip-border-colour: var(--green-500);
+  --alert-info-font-colour: var(--blue-900);
+  --alert-info-bg-colour: var(--blue-50);
+  --alert-info-border-colour: var(--blue-500);
+  --alert-warning-font-colour: var(--deep-orange-900);
+  --alert-warning-bg-colour: var(--amber-50);
+  --alert-warning-border-colour: var(--amber-600);
+  --alert-error-font-colour: var(--red-900);
+  --alert-error-bg-colour: var(--red-50);
+  --alert-error-border-colour: var(--red-400);
+
+  /* Labels */
+
+  --label-padding: 0.04rem 0.4rem 0.185rem;
+  --label-font-size: 90%;
+  --label-font-colour: var(--dark);
+  --label-alignment: 0.1rem;
+  --label-border: 1px solid var(--gradient-dark-40);
+  --label-border-radius: var(--radius-1);
+  --label-margin-between: 1rem;
+
+  /* Sections */
+
+  --tilt-hight: 6rem;
+  --tilt-stop-point: 49.6%; /* prevents jagged edges, tweak if editing --tilt-height */
+  --tilt-bg-colour: var(--light);
+  --tilt-cta-font-colour: var(--white);
+  --tilt-cta-bg-colour: var(--dark);
+  --tilt-cta-link-colour: color-mod(var(--link-font-colour) hue(-5) lightness(58%));
+  --tilt-cta-input-invalid-colour: color-mod(var(--input-invalid-colour) lightness(65%));
+  --tilt-cta-input-invalid-border: 2px solid var(--tilt-cta-input-invalid-colour);
+  --hero-padding: 1.5rem 0;
+  --hero-margin: 2rem 0;
+  --hero-font-colour: var(--white);
+  --hero-bg-gradient: linear-gradient(var(--angle-3), var(--gradient-primary-20), var(--gradient-primary-100));
+}

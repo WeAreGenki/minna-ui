@@ -1,0 +1,3 @@
+.target {
+  @mixin test-target;
+}

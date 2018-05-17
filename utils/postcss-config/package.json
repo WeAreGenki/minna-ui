@@ -1,0 +1,39 @@
+{
+  "name": "@minna-ui/postcss-config",
+  "version": "0.0.0",
+  "description": "PostCSS config preset for use in minna-ui projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://ui.wearegenki.com",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "css",
+    "minna-ui",
+    "postcss",
+    "postcss-plugin",
+    "wearegenki"
+  ],
+  "main": "index.js",
+  "peerDependencies": {
+    "postcss": "^6.0.21"
+  },
+  "dependencies": {
+    "autoprefixer": "^8.5.0",
+    "css-mqpacker": "^6.0.2",
+    "postcss-at-rules-variables": "^0.1.5",
+    "postcss-calc": "^6.0.1",
+    "postcss-color-mod-function": "^2.4.2",
+    "postcss-conditionals": "^3.0.0-beta.0",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-custom-properties": "^7.0.0",
+    "postcss-each": "^0.10.0",
+    "postcss-import": "^11.1.0",
+    "postcss-load-config": "^1.2.0",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

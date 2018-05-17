@@ -1,0 +1,24 @@
+/*
+  Z-INDEX
+*/
+
+.z0 { z-index: 0; }
+.z1 { z-index: 1; }
+.z2 { z-index: 2; }
+.z3 { z-index: 3; }
+.z4 { z-index: 4; }
+.z5 { z-index: 5; }
+.z6 { z-index: 6; }
+.z7 { z-index: 7; }
+.z8 { z-index: 8; }
+.z9 { z-index: 9; }
+.z999 { z-index: 999; }
+.z9999 { z-index: 9999; }
+
+.z-max { z-index: 2147483647; }
+
+.z-1 { z-index: -1; }
+
+.z-inherit { z-index: inherit; }
+.z-initial { z-index: initial; }
+.z-unset { z-index: unset; }

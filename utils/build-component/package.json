@@ -1,0 +1,16 @@
+{
+  "name": "@minna-ui/build-component",
+  "private": true,
+  "version": "0.0.0",
+  "bin": {
+    "build-component": "cli.js"
+  },
+  "peerDependencies": {
+    "svelte": "*"
+  },
+  "dependencies": {
+    "@minna-ui/svelte-preprocess-markup": "file:../svelte-preprocess-markup",
+    "@minna-ui/svelte-preprocess-style": "file:../svelte-preprocess-style",
+    "del": "3.0.0"
+  }
+}

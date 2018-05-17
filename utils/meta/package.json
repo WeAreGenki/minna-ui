@@ -9,11 +9,13 @@
   "license": "Apache-2.0",
   "keywords": [
     "css",
+    "css-framework",
     "design-system",
     "javascript",
     "minna-ui",
     "postcss",
     "svelte",
+    "sveltejs",
     "wearegenki",
     "web-components"
   ],

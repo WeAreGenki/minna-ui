@@ -4,10 +4,6 @@
 
 // FIXME: Minify browser targeted JS bundle
 
-// FIXME: Not exiting with code > 0 on error
-
-// TODO: Add source map annotation to output
-
 // TODO: Add banner to generated JS code without impacting the JS source map
 
 // TODO: Generate a "custom element" web component
@@ -31,7 +27,7 @@ const mkdir = promisify(fs.mkdir);
  * @param {string} dir The dist directory.
  */
 function cleanDistDir(dir) {
-  if (/dist$/.test(dir)) {
+  if (dir !== process.cwd()) {
     fs.stat(dir, async (err) => {
       if (err) {
         // dir doesn't exist, make new dir
@@ -72,7 +68,7 @@ module.exports = async function run(env) {
       style: preprocessStyle({ from: pkgSvelte, to: pkgSvelte, banner }),
     });
 
-    const commonOpts = {
+    const opts = {
       css: false,
       filename: basename(pkgSvelte),
       name: basename(pkgSvelte, '.html'),
@@ -84,31 +80,38 @@ module.exports = async function run(env) {
       },
     };
 
-    const esModule = compile(source.toString(), {
-      ...commonOpts,
+    const esm = compile(source.toString(), {
+      ...opts,
     });
 
-    writeFile(`${pkgStyle}.map`, esModule.css.map.toString());
-    writeFile(pkgStyle, esModule.css.code);
-    writeFile(`${pkgModule}.map`, esModule.js.map.toString());
-    writeFile(pkgModule, esModule.js.code);
+    writeFile(`${pkgStyle}.map`, esm.css.map.toString());
+    writeFile(pkgStyle, esm.css.code);
+    writeFile(`${pkgModule}.map`, esm.js.map.toString());
+    writeFile(pkgModule, esm.js.code);
 
-    const iifeBrowser = compile(source.toString(), {
-      ...commonOpts,
+    const main = compile(source.toString(), {
+      ...opts,
       format: 'iife',
     });
 
-    writeFile(`${pkgMain}.map`, iifeBrowser.js.map.toString());
-    writeFile(pkgMain, iifeBrowser.js.code);
+    main.js.code = `${main.js.code}\n/*# sourceMappingURL=${basename(pkgMain)}.map */`;
+    writeFile(`${pkgMain}.map`, main.js.map.toString());
+    writeFile(pkgMain, main.js.code);
 
     // const webComponent = compile(source.toString(), {
-    //   ...commonOpts,
+    //   ...opts,
     //   customElement: true,
     //   // format: 'iife',
     // });
     // console.log('!!!! webComponent', webComponent);
+
+    return {
+      opts,
+      esm,
+      main,
+      // webComponent,
+    };
   } catch (error) {
-    /* istanbul ignore next */
     throw error;
   }
 };

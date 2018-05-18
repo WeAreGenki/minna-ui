@@ -19,20 +19,20 @@
     "web-components"
   ],
   "dependencies": {
-    "@minna-ui/code-view": "0.0.0",
-    "@minna-ui/css": "0.0.0",
-    "@minna-ui/eslint-config": "0.0.0",
-    "@minna-ui/jest-config": "0.0.0",
-    "@minna-ui/navbar": "0.0.0",
-    "@minna-ui/postcss-config": "0.0.0",
-    "@minna-ui/select": "0.0.0",
-    "@minna-ui/stylelint-config": "0.0.0",
-    "@minna-ui/svelte-preprocess-markup": "0.0.0",
-    "@minna-ui/svelte-preprocess-style": "0.0.0",
-    "@minna-ui/tabs": "0.0.0",
-    "@minna-ui/toasts": "0.0.0",
-    "@minna-ui/tooltip-action": "0.0.0",
-    "@minna-ui/toggle": "0.0.0"
+    "@minna-ui/code-view": "^0.0.0",
+    "@minna-ui/css": "^0.0.0",
+    "@minna-ui/eslint-config": "^0.0.0",
+    "@minna-ui/jest-config": "^0.0.0",
+    "@minna-ui/navbar": "^0.0.0",
+    "@minna-ui/postcss-config": "^0.0.0",
+    "@minna-ui/select": "^0.0.0",
+    "@minna-ui/stylelint-config": "^0.0.0",
+    "@minna-ui/svelte-preprocess-markup": "^0.0.0",
+    "@minna-ui/svelte-preprocess-style": "^0.0.0",
+    "@minna-ui/tabs": "^0.0.0",
+    "@minna-ui/toasts": "^0.0.0",
+    "@minna-ui/toggle": "^0.0.0",
+    "@minna-ui/tooltip-action": "^0.0.0"
   },
   "publishConfig": {
     "access": "public"

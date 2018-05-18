@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Draw triangle mixin outputs bottom triangle 1`] = `
+Object {
+  "border-left": "1rem solid transparent",
+  "border-right": "1rem solid transparent",
+  "border-top": "1rem solid #000",
+  "height": 0,
+  "width": 0,
+}
+`;
+
+exports[`Draw triangle mixin outputs bottom triangle 2`] = `
+"
+    div {
+      width: 0;
+      height: 0;
+      border-top: 1rem solid #000;
+      border-right: 1rem solid transparent;
+      border-left: 1rem solid transparent;
+    }
+  "
+`;
+
+exports[`Draw triangle mixin outputs left triangle 1`] = `
+Object {
+  "border-bottom": "1rem solid transparent",
+  "border-right": "1rem solid #000",
+  "border-top": "1rem solid transparent",
+  "height": 0,
+  "width": 0,
+}
+`;
+
+exports[`Draw triangle mixin outputs left triangle 2`] = `
+"
+    div {
+      width: 0;
+      height: 0;
+      border-top: 1rem solid transparent;
+      border-right: 1rem solid #000;
+      border-bottom: 1rem solid transparent;
+    }
+  "
+`;
+
+exports[`Draw triangle mixin outputs right triangle 1`] = `
+Object {
+  "border-bottom": "1rem solid transparent",
+  "border-left": "1rem solid #000",
+  "border-top": "1rem solid transparent",
+  "height": 0,
+  "width": 0,
+}
+`;
+
+exports[`Draw triangle mixin outputs right triangle 2`] = `
+"
+    div {
+      width: 0;
+      height: 0;
+      border-top: 1rem solid transparent;
+      border-bottom: 1rem solid transparent;
+      border-left: 1rem solid #000;
+    }
+  "
+`;
+
+exports[`Draw triangle mixin outputs top triangle 1`] = `
+Object {
+  "border-bottom": "1rem solid #000",
+  "border-left": "1rem solid transparent",
+  "border-right": "1rem solid transparent",
+  "height": 0,
+  "width": 0,
+}
+`;
+
+exports[`Draw triangle mixin outputs top triangle 2`] = `
+"
+    div {
+      width: 0;
+      height: 0;
+      border-right: 1rem solid transparent;
+      border-bottom: 1rem solid #000;
+      border-left: 1rem solid transparent;
+    }
+  "
+`;
+
+exports[`Draw triangle mixin outputs triangle in pseudo element 1`] = `
+Object {
+  "&::before": Object {
+    "border-bottom": "1rem solid #000",
+    "border-left": "1rem solid transparent",
+    "border-right": "1rem solid transparent",
+    "content": "\\"\\"",
+    "display": "block",
+    "height": 0,
+    "left": "calc(50% - 1rem)",
+    "position": "absolute",
+    "top": "calc(-1 * 1rem)",
+    "width": 0,
+  },
+}
+`;
+
+exports[`Draw triangle mixin outputs triangle in pseudo element 2`] = `
+"
+    div {
+      &::before {
+            position: absolute;
+            content: \\"\\";
+            display: block;
+            left: calc(50% - 1rem);
+            top: calc(-1 * 1rem);
+            width: 0;
+            height: 0;
+            border-right: 1rem solid transparent;
+            border-bottom: 1rem solid #000;
+            border-left: 1rem solid transparent
+      }
+    }
+  "
+`;
+
+exports[`Fluid font size mixin generates CSS rules 1`] = `
+Object {
+  "&": Object {
+    "@media screen and (min-width: 100em)": Object {
+      "font-size": "2rem",
+    },
+    "@media screen and (min-width: 30em) and (max-width: 100em)": Object {
+      "font-size": "calc(1rem + 1 * (100vw - 30rem) / 70);",
+    },
+  },
+}
+`;
+
+exports[`Fluid font size mixin generates CSS rules 2`] = `
+"
+    div {
+      & {
+            @media screen and (min-width: 30em) and (max-width: 100em) {
+                  font-size: calc(1rem + 1 * (100vw - 30rem) / 70);
+            }
+            @media screen and (min-width: 100em) {
+                  font-size: 2rem
+            }
+      }
+    }
+  "
+`;
+
+exports[`Fluid font size mixin generates CSS rules in px 1`] = `
+Object {
+  "&": Object {
+    "@media screen and (min-width: 100em)": Object {
+      "font-size": "32px",
+    },
+    "@media screen and (min-width: 30em) and (max-width: 100em)": Object {
+      "font-size": "calc(16px + 16 * (100vw - 480px) / 1120);",
+    },
+  },
+}
+`;
+
+exports[`Fluid font size mixin generates CSS rules in px 2`] = `
+"
+    div {
+      & {
+            @media screen and (min-width: 30em) and (max-width: 100em) {
+                  font-size: calc(16px + 16 * (100vw - 480px) / 1120);
+            }
+            @media screen and (min-width: 100em) {
+                  font-size: 32px
+            }
+      }
+    }
+  "
+`;
+
+exports[`Fluid font size mixin includes base font-size when minFontSize isn't browser default 1`] = `
+"
+    div {
+      & {
+            font-size: 1.5rem;
+            @media screen and (min-width: 30em) and (max-width: 100em) {
+                  font-size: calc(1.5rem + 0.5 * (100vw - 30rem) / 70);
+            }
+            @media screen and (min-width: 100em) {
+                  font-size: 2rem
+            }
+      }
+    }
+  "
+`;
+
+exports[`Fluid font size mixin includes base font-size when minFontSize isn't browser default in px 1`] = `
+"
+    div {
+      & {
+            font-size: 1.25rem;
+            @media screen and (min-width: 30em) and (max-width: 100em) {
+                  font-size: calc(1.25rem + 0.75 * (100vw - 30rem) / 70);
+            }
+            @media screen and (min-width: 100em) {
+                  font-size: 2rem
+            }
+      }
+    }
+  "
+`;
+
+exports[`Make font face mixin generates CSS rules 1`] = `
+Object {
+  "@font-face": Object {
+    "font-display": "optional",
+    "font-family": "Target",
+    "font-style": "normal",
+    "font-weight": "normal",
+    "src": "local(\\"Target-Regular\\"),
+      url(\\"/fonts/Target-Regular.woff2\\") format(\\"woff2\\"),
+      url(\\"/fonts/Target-Regular.woff\\") format(\\"woff\\")",
+  },
+}
+`;
+
+exports[`Make font face mixin generates CSS rules 2`] = `
+"
+    div {
+      @font-face {
+            font-family: Target;
+            src: local(\\"Target-Regular\\"),
+      url(\\"/fonts/Target-Regular.woff2\\") format(\\"woff2\\"),
+      url(\\"/fonts/Target-Regular.woff\\") format(\\"woff\\");
+            font-style: normal;
+            font-weight: normal;
+            font-display: optional
+      }
+    }
+  "
+`;
+
+exports[`Make font face mixin generates CSS rules with custom options 1`] = `
+Object {
+  "@font-face": Object {
+    "font-display": "optional",
+    "font-family": "Target",
+    "font-style": "normal",
+    "font-weight": "bold",
+    "src": "local(\\"Target-Bold\\"),
+      url(\\"/static/fonts/Target-Bold.woff2\\") format(\\"woff2\\"),
+      url(\\"/static/fonts/Target-Bold.woff\\") format(\\"woff\\")",
+  },
+}
+`;
+
+exports[`Make font face mixin generates CSS rules with custom options 2`] = `
+"
+    div {
+      @font-face {
+            font-family: Target;
+            src: local(\\"Target-Bold\\"),
+      url(\\"/static/fonts/Target-Bold.woff2\\") format(\\"woff2\\"),
+      url(\\"/static/fonts/Target-Bold.woff\\") format(\\"woff\\");
+            font-style: normal;
+            font-weight: bold;
+            font-display: optional
+      }
+    }
+  "
+`;

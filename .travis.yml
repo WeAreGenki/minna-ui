@@ -26,5 +26,6 @@ install:
 
 script:
   - yarn run lint
+  - yarn jest --showConfig
   - yarn run test-ci
   - codecov

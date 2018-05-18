@@ -5,10 +5,6 @@
     "^.+\\.css$": "@minna-ui/jest-config/lib/null-transform.js"
   },
   "testPathIgnorePatterns": [
-    "/\\.sapper/",
-    "/app\\/manifest/",
-    "/build/",
-    "/coverage/",
     "/dist/",
     "/export/",
     "/node_modules/"

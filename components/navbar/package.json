@@ -13,7 +13,8 @@
     "minna-ui",
     "postcss",
     "svelte",
-    "sveltejs",
+    "svelte-components",
+    "ui-components",
     "wearegenki",
     "web-components"
   ],

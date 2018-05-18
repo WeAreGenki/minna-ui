@@ -12,8 +12,10 @@
     "design-system",
     "minna-ui",
     "postcss",
+    "prismjs",
     "svelte",
-    "sveltejs",
+    "svelte-components",
+    "ui-components",
     "wearegenki",
     "web-components"
   ],

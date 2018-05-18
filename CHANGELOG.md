@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- New standalone option for `@minna-ui/postcss-config` to be used when `@minna-ui/css` is not installed.
+
 ## 0.0.0 - 2018-05-18
 
 ### Added

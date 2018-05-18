@@ -8,5 +8,5 @@ exports[`MinnaNavbar component should render correctly 1`] = `
 
     <div class=\\"navbar-links dn \\"><a href=\\"/\\" class=\\"navbar-link dn-l\\">Home</a>
 
-      <a href=\\"/our-brands\\" class=\\"navbar-link \\">Our Brands</a><a href=\\"/pro\\" class=\\"navbar-link \\">Genki Pro</a><a href=\\"/consulting\\" class=\\"navbar-link \\">Consulting</a></div></nav></header>"
+      <a href=\\"/page-one\\" class=\\"navbar-link \\">Page One</a><a href=\\"/page-two\\" class=\\"navbar-link \\">Page Two</a><a href=\\"/about\\" class=\\"navbar-link \\">About Us</a></div></nav></header>"
 `;

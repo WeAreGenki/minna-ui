@@ -108,6 +108,7 @@ module.exports = async function run(env) {
     // });
     // console.log('!!!! webComponent', webComponent);
   } catch (error) {
+    /* istanbul ignore next */
     throw error;
   }
 };

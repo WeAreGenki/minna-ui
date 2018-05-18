@@ -12,7 +12,7 @@
     "jest-preset",
     "minna-ui",
     "svelte",
-    "sveltejs",
+    "testing",
     "unit-testing",
     "wearegenki"
   ],

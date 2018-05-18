@@ -8,9 +8,11 @@
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
+    "css",
     "minna-ui",
+    "postcss",
+    "postcss",
     "svelte",
-    "sveltejs",
     "wearegenki"
   ],
   "main": "index.js",

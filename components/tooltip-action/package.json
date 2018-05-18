@@ -13,7 +13,8 @@
     "minna-ui",
     "postcss",
     "svelte",
-    "sveltejs",
+    "svelte-actions",
+    "ui-components",
     "wearegenki"
   ],
   "main": "index.mjs",

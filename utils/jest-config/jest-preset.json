@@ -25,6 +25,7 @@
   "coveragePathIgnorePatterns": [
     "/dist/",
     "/export/",
+    "/fixtures/",
     "/node_modules/",
     "/test/"
   ],

@@ -27,6 +27,7 @@ const mkdir = promisify(fs.mkdir);
  * @param {string} dir The dist directory.
  */
 function cleanDistDir(dir) {
+  /* XXistanbul ignore next */
   if (dir !== process.cwd()) {
     fs.stat(dir, async (err) => {
       if (err) {

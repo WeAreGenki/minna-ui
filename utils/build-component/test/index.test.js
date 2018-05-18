@@ -11,9 +11,9 @@ const buildComponent = require('../index.js');
 const writeFile = promisify(fs.writeFile);
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
-const outputPathModule = path.join(__dirname, 'dist', 'index.es.mjs');
-const outputPathMain = path.join(__dirname, 'dist', 'index.js');
-const outputPathStyle = path.join(__dirname, 'dist', 'index.css');
+const outputPathModule = path.join(__dirname, 'dist/index.es.mjs');
+const outputPathMain = path.join(__dirname, 'dist/index.js');
+const outputPathStyle = path.join(__dirname, 'dist/index.css');
 
 const pkg = {
   npm_package_name: 'test-component',
@@ -25,10 +25,7 @@ const pkg = {
   npm_package_style: outputPathStyle,
 };
 
-afterAll(() => del([
-  path.join(__dirname, 'dist'),
-  path.join(__dirname, 'someDIr'),
-]));
+afterAll(() => del([path.join(__dirname, 'dist')]));
 
 describe('build-component', () => {
   it('compiles a Svelte component package', async () => {
@@ -50,7 +47,7 @@ describe('build-component', () => {
   });
 
   it('cleans existing dist dir when exists', async () => {
-    const checkFile = path.join(__dirname, 'dist', 'check');
+    const checkFile = path.join(__dirname, 'dist/check.txt');
     await writeFile(checkFile, 'exists');
 
     // file should exist (no error)
@@ -62,10 +59,10 @@ describe('build-component', () => {
     fs.stat(checkFile, (err) => { expect(err).not.toEqual(null); });
   });
 
-  it('compiles when output path is not /dist$', async () => {
-    const altOutputPathModule = path.join(__dirname, 'someDir', 'index.es.mjs');
-    const altOutputPathMain = path.join(__dirname, 'someDir', 'index.js');
-    const altOutputPathStyle = path.join(__dirname, 'someDir', 'index.css');
+  it('compiles when output path is not "dist"', async () => {
+    const altOutputPathModule = path.join(__dirname, 'dist/minna-ui/index.es.mjs');
+    const altOutputPathMain = path.join(__dirname, 'dist/minna-ui/index.js');
+    const altOutputPathStyle = path.join(__dirname, 'dist/minna-ui/index.css');
     const build = buildComponent({
       ...pkg,
       npm_package_module: altOutputPathModule,

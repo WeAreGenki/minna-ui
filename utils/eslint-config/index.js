@@ -46,8 +46,8 @@ module.exports = {
       functions: 'only-multiline', // awkward comma on multiline function params
     }],
     'import/extensions': ['error', 'ignorePackages'],
-    'no-console': isProd ? 'error' : 'off',
-    'no-debugger': isProd ? 'error' : 'off',
+    'no-console': /* istanbul ignore next */ isProd ? 'error' : 'off',
+    'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'off',
     'no-return-assign': ['error', 'except-parens'],
     'no-underscore-dangle': 'off',
     'object-curly-newline': ['error', { consistent: true }],

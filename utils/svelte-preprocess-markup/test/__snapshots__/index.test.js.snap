@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Svelte markup preprocessor compiles and mounts a component 1`] = `"<div class=\\"wrapper\\"><a href=\\"\\"><img src=\\"#\\"></a>  <div class=\\"text\\">test Elon Musk</div> <div class=\\"text\\">test <span>ksuM nolE</span></div></div>"`;
+exports[`Svelte markup preprocessor creates and mounts a component 1`] = `"<div class=\\"wrapper\\"><a href=\\"\\"><img src=\\"#\\"></a>  <div class=\\"text\\">test Elon Musk</div> <div class=\\"text\\">test <span>ksuM nolE</span></div></div>"`;
 
 exports[`Svelte markup preprocessor processes a component 1`] = `
 "<!--

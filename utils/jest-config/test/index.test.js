@@ -11,7 +11,7 @@ const svelteTransform = require('../lib/svelte-transform.js');
 const nullTransform = require('../lib/null-transform.js');
 
 const readFile = promisify(fs.readFile);
-const sourcePath = path.join(__dirname, '../fixtures/component.html');
+const sourcePath = path.join(__dirname, '../fixtures/TestComponent.html');
 const sourceCssPath = path.join(__dirname, '../fixtures/styles.css');
 
 let source = '';
@@ -99,9 +99,9 @@ describe('Svelte transform', () => {
   it('mounts components which import ES6 modules', () => {
     function wrapper() {
       // eslint-disable-next-line global-require
-      const ImportsComponent = require('../fixtures/component-imports.html');
+      const ComponentImports = require('../fixtures/TestComponentImports.html');
       const target = document.createElement('div');
-      const component = new ImportsComponent({ target });
+      const component = new ComponentImports({ target });
       expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');
       expect(component.get().loud).toEqual('ELON MUSK');
       expect(component.get().quiet).toEqual('elon musk');

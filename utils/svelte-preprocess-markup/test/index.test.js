@@ -4,13 +4,13 @@
 
 const fs = require('fs');
 const { promisify } = require('util');
-const { preprocess, compile } = require('svelte');
+const { preprocess, create } = require('svelte');
 const preprocessMarkup = require('../index.js');
 
 const readFile = promisify(fs.readFile);
 
 // don't require() components to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/fixtures/component.html');
+const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 
 const preprocessOpts = {
   markup: preprocessMarkup(),
@@ -19,6 +19,16 @@ const preprocessOpts = {
 const preprocessOptsUnsafe = {
   markup: preprocessMarkup({ unsafe: true }),
   style: () => ({ code: '/*discarded*/' }),
+};
+const svelteOpts = {
+  filename: 'TestComponent.html',
+  name: 'TestComponent',
+  onwarn(warning, onwarn) {
+    /* istanbul ignore if */
+    if (process.env.NODE_ENV !== 'development' && !/A11y:/.test(warning.message)) {
+      onwarn(warning);
+    }
+  },
 };
 
 const sourceSimple = `
@@ -66,12 +76,11 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('compiles and mounts a component', async () => {
+  it('creates and mounts a component', async () => {
     const processed = await preprocess(source, preprocessOpts);
-    const compiled = compile(processed.toString(), { format: 'eval' });
-    const SvelteComponent = eval(compiled.js.code); // eslint-disable-line no-eval
+    const TestComponent = create(processed.toString(), svelteOpts);
     const target = document.createElement('div');
-    new SvelteComponent({ target });
+    new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 

@@ -76,6 +76,12 @@ module.exports = async function run(env) {
       css: false,
       filename: basename(pkgSvelte),
       name: basename(pkgSvelte, '.html'),
+      onwarn(warning, onwarn) {
+        /* istanbul ignore if */
+        if (process.env.NODE_ENV !== 'development' && !/A11y:/.test(warning.message)) {
+          onwarn(warning);
+        }
+      },
     };
 
     const esModule = compile(source.toString(), {

@@ -66,7 +66,7 @@ yarn add @minna-ui/select
 
 2. Add to your Svelte component:
 
-`my-svelte-component.html`:
+`MySvelteComponent.html`:
 
 ```html
 <MinnaSelect/>

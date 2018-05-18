@@ -23,16 +23,10 @@
     "!**/*.config.js"
   ],
   "coveragePathIgnorePatterns": [
-    "/\\.sapper/",
-    "/app\\/manifest/",
-    "/build/",
-    "/coverage/",
     "/dist/",
     "/export/",
-    "/fixtures/",
     "/node_modules/",
-    "/test/",
-    "/webpack/"
+    "/test/"
   ],
   "coverageDirectory": "<rootDir>/test/unit/coverage"
 }

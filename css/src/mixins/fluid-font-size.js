@@ -46,10 +46,10 @@ function getUnit(value) {
 /**
  * Convert a CSS size value into rem or px.
  * @param {string} size A CSS size value to convert.
- * @param {Boolean} outputPx Pass true to output px instead of default rem.
+ * @param {Boolean} [outputPx] Pass true to output px instead of default rem.
  * @returns {string} The converted CSS size value.
  */
-function convertSize(size, outputPx) {
+function convertSize(size, outputPx = false) {
   const baseSize = 16; // 16px is the normal browser default font size
   const unit = getUnit(size);
 
@@ -98,7 +98,7 @@ module.exports = (
   return {
     '&': {
       // only set a base font size if different from browser default
-      ...(minFont === '1rem' ? {} : {
+      ...(convertSize(minFont) === '1rem' ? {} : {
         'font-size': minFont,
       }),
 

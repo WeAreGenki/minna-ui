@@ -6,7 +6,7 @@
   },
   "testPathIgnorePatterns": [
     "/\\.sapper/",
-    "/app/manifest/",
+    "/app\\/manifest/",
     "/build/",
     "/coverage/",
     "/dist/",
@@ -21,17 +21,22 @@
   ],
   "collectCoverageFrom": [
     "**/*.{html,js,mjs}",
+    "!.*rc.js",
     "!**/.*rc.js",
-    "!**/*.config.js",
-    "!**/.sapper/**",
-    "!**/app/manifest/**",
-    "!**/build/**",
-    "!**/dist/**",
-    "!**/export/**",
-    "!**/fixtures/**",
-    "!**/node_modules/**",
-    "!**/test/**",
-    "!**/webpack/**"
+    "!*.config.js",
+    "!**/*.config.js"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/\\.sapper/",
+    "/app\\/manifest/",
+    "/build/",
+    "/coverage/",
+    "/dist/",
+    "/export/",
+    "/fixtures/",
+    "/node_modules/",
+    "/test/",
+    "/webpack/"
   ],
   "coverageDirectory": "<rootDir>/test/unit/coverage"
 }

@@ -5,11 +5,38 @@
 
 # `@minna-ui/postcss-config`
 
-PostCSS config preset for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects.
+PostCSS config preset for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects or standalone.
 
 ## Usage
 
-TODO: Write me.
+1. Install this package and its `postcss` dependency:
+
+```sh
+yarn add -D postcss @minna-ui/postcss-config
+```
+
+2. Create a `postcss.config.js` file in your project root with this package as a plugin:
+
+```js
+const minnaUiPostcssConfig = require('@minna-ui/postcss-config');
+
+module.exports = {
+  plugins: [
+    minnaUiPostcssConfig({
+      verbose: process.env.NODE_ENV === 'development',
+    }),
+  ],
+};
+```
+
+### Options
+
+| Option | Default value | Type | Description |
+| --- | --- | :---: | --- |
+| importPaths | `['css', 'src/css', process.cwd(), '@minna-ui/css/src/mixins']` | array | A list of paths to search when resolving `@import` rules in CSS. |
+| mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
+| standalone | `false` | boolean | Set to `true` when `@minna-ui/css` is not installed. |
+| verbose | `false` | boolean | Show additional warnings. |
 
 ## Licence
 

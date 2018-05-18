@@ -5,10 +5,6 @@
     "^.+\\.css$": "@minna-ui/jest-config/lib/null-transform.js"
   },
   "testPathIgnorePatterns": [
-    "/\\.sapper/",
-    "/app/manifest/",
-    "/build/",
-    "/coverage/",
     "/dist/",
     "/export/",
     "/node_modules/"
@@ -21,18 +17,16 @@
   ],
   "collectCoverageFrom": [
     "**/*.{html,js,mjs}",
+    "!.*rc.js",
     "!**/.*rc.js",
-    "!**/*.config.js",
-    "!**/.sapper/**",
-    "!**/app/manifest/**",
-    "!**/build/**",
-    "!**/coverage/**",
-    "!**/dist/**",
-    "!**/export/**",
-    "!**/fixtures/**",
-    "!**/node_modules/**",
-    "!**/test/**",
-    "!**/webpack/**"
+    "!*.config.js",
+    "!**/*.config.js"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/dist/",
+    "/export/",
+    "/node_modules/",
+    "/test/"
   ],
   "coverageDirectory": "<rootDir>/test/unit/coverage"
 }

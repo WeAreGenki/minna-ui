@@ -62,10 +62,9 @@ describe('ESLint config', () => {
     expect(output.warningCount).toEqual(0);
   });
 
-  it('detects linting issues', () => {
+  it('detects linting errors', () => {
     const output = linterCli.executeOnText(sourceInValid);
     expect(output.errorCount).not.toEqual(0);
-    expect(output.warningCount).not.toEqual(0);
   });
 });
 
@@ -76,7 +75,7 @@ describe('Jest ESLint config', () => {
     expect(output.warningCount).toEqual(0);
   });
 
-  it('detects linting issues', () => {
+  it('detects linting errors', () => {
     const output = linterCliJest.executeOnText(sourceJestInValid);
     expect(output.errorCount).not.toEqual(0);
   });

@@ -81,6 +81,12 @@ describe('Draw triangle mixin', () => {
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
   });
+
+  it('throws error when invalid direction', () => {
+    expect(() => {
+      drawTriangle(null, 'under', '1rem', '#000');
+    }).toThrow();
+  });
 });
 
 describe('Fluid font size mixin', () => {
@@ -120,6 +126,12 @@ describe('Fluid font size mixin', () => {
     const result = await compileMixin(fluidFontSize, '20px, 2rem, 30em, 100em');
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
+  });
+
+  it('throws error when invalid size unit', () => {
+    expect(() => {
+      fluidFontSize(null, '16', '32pops', '30em', '100em');
+    }).toThrow('Only px, rem, and em units are supported');
   });
 });
 

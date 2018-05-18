@@ -19,8 +19,8 @@ const preprocessOpts = {
   }),
 };
 
-const sourceSimple =
-`<div id="target">test</div>
+const sourceSimple = `
+<div id="target">test</div>
 
 <style type="text/postcss">
   #target {
@@ -30,10 +30,10 @@ const sourceSimple =
       background: #000;
     }
   }
-</style>`;
-
-const sourceNoTypeAttr =
-`<div id="target">test</div>
+</style>
+`;
+const sourceNoTypeAttr = `
+<div id="target">test</div>
 
 <style>
   #target {
@@ -43,10 +43,10 @@ const sourceNoTypeAttr =
       background: #000;
     }
   }
-</style>`;
-
-const sourceForceGlobal =
-`<style type="text/postcss" global>
+</style>
+`;
+const sourceForceGlobal = `
+<style type="text/postcss" global>
   body { margin: 0; }
 
   #target {
@@ -61,16 +61,15 @@ const sourceForceGlobal =
       background: #222;
     }
   }
-</style>`;
-
-const sourceBadSyntax =
-`<style type="text/postcss">
+</style>
+`;
+const sourceBadSyntax = `
+<style type="text/postcss">
   #target {
     color: red;
-</style>`;
-
-/** @type {string} */
-let source;
+</style>
+`;
+let source = '';
 
 beforeAll(async () => {
   source = await readFile(componentPath, 'utf8');

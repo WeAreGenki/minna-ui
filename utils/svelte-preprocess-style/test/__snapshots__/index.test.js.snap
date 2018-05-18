@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Svelte style preprocessor adds global pseudo when global attribute 1`] = `
-"<style>
+"
+<style>
   :global(body) { margin: 0; }
 
   :global(#target) {
@@ -16,7 +17,8 @@ exports[`Svelte style preprocessor adds global pseudo when global attribute 1`] 
   :global(.wrapper)+#target {
       background: #222;
     }
-</style>"
+</style>
+"
 `;
 
 exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
@@ -25,7 +27,8 @@ exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
 `;
 
 exports[`Svelte style preprocessor does not process without type attribute 1`] = `
-"<div id=\\"target\\">test</div>
+"
+<div id=\\"target\\">test</div>
 
 <style>
   #target {
@@ -35,7 +38,8 @@ exports[`Svelte style preprocessor does not process without type attribute 1`] =
       background: #000;
     }
   }
-</style>"
+</style>
+"
 `;
 
 exports[`Svelte style preprocessor processes a component 1`] = `
@@ -105,7 +109,8 @@ exports[`Svelte style preprocessor processes a component 1`] = `
 `;
 
 exports[`Svelte style preprocessor processes a simple component 1`] = `
-"<div id=\\"target\\">test</div>
+"
+<div id=\\"target\\">test</div>
 
 <style>
   #target {
@@ -115,5 +120,6 @@ exports[`Svelte style preprocessor processes a simple component 1`] = `
     #target:focus {
       background: #000;
     }
-</style>"
+</style>
+"
 `;

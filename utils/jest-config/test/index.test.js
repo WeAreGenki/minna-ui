@@ -14,11 +14,8 @@ const readFile = promisify(fs.readFile);
 const sourcePath = path.join(__dirname, '../fixtures/component.html');
 const sourceCssPath = path.join(__dirname, '../fixtures/styles.css');
 
-/** @type {string} */
-let source;
-
-/** @type {string} */
-let sourceCss;
+let source = '';
+let sourceCss = '';
 
 beforeAll(async () => {
   [source, sourceCss] = await Promise.all([

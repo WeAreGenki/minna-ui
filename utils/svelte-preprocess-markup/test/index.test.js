@@ -36,11 +36,8 @@ const sourceSimple = `
   <!-- comment -->
   <!---->
 `;
-
 const sourceBadSyntax = '<div id="" class=">test</span>';
-
-/** @type {string} */
-let source;
+let source = '';
 
 beforeAll(async () => {
   source = await readFile(componentPath, 'utf8');

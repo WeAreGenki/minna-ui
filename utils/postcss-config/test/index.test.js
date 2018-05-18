@@ -23,11 +23,8 @@ const options = {
   },
 };
 
-/** @type {string} */
-let sourceCss;
-
-/** @type {string} */
-let sourceCssMixin;
+let sourceCss = '';
+let sourceCssMixin = '';
 
 beforeAll(async () => {
   [sourceCss, sourceCssMixin] = await Promise.all([

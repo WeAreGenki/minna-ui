@@ -13,7 +13,7 @@ const jestConfigPath = require.resolve('@minna-ui/jest-config');
 const fixturesPath = path.join(path.dirname(jestConfigPath), 'fixtures');
 const sourceCssPath = path.join(fixturesPath, 'import.css');
 const sourceCssMixinPath = path.join(fixturesPath, 'mixin.css');
-const mixinsDir = path.join(fixturesPath, 'css-mixins');
+const mixinsPath = path.join(fixturesPath, 'css-mixins');
 
 const options = {
   from: sourceCssPath,
@@ -46,17 +46,8 @@ describe('PostCSS config', () => {
     expect(result.css).toMatchSnapshot();
   });
 
-  it('compiles CSS with minimal option', async () => {
-    const result = await postcss(postcssConfig({ minimal: true }))
-      .process(sourceCss, options);
-    expect(result.processor.plugins).not.toHaveLength(0);
-    expect(result.opts.from).toBeDefined();
-    expect(result.map).toBeDefined();
-    expect(result.css).toMatchSnapshot();
-  });
-
-  it('compiles CSS mixin with custom path', async () => {
-    const result = await postcss(postcssConfig({ mixinsDir }))
+  it('compiles CSS with custom mixin', async () => {
+    const result = await postcss(postcssConfig({ mixinsPath }))
       .process(sourceCssMixin, { from: sourceCssMixinPath });
     expect(result.css).toMatch('.target::after');
     expect(result.css).toMatchSnapshot();

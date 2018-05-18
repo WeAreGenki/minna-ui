@@ -18,36 +18,45 @@ const autoprefixer = require('autoprefixer');
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
-module.exports = postcss.plugin('postcss-config', (opts = {}) => {
-  if (opts.minimal) {
-    // reduced feature set version
-    return postcss()
-      .use(atImport)
-      .use(nested)
-      .use(customMedia)
-      .use(autoprefixer);
-  }
-
+module.exports = postcss.plugin('postcss-config', ({
+  importPaths = ['css', 'src/css', process.cwd()],
+  mixinsPath = '',
+  standalone = false,
+  verbose = false,
+} = {}) => {
   const mixinsDir = [];
-  const pkgDir = path.dirname(require.resolve('@minna-ui/css'));
-  mixinsDir.push(path.join(pkgDir, 'mixins'));
 
-  if (opts.mixinsDir) {
-    mixinsDir.unshift(opts.mixinsDir);
+  if (mixinsPath !== '') {
+    mixinsDir.push(mixinsPath);
   }
 
-  // default full featured version
+  if (!standalone) {
+    const minnaUiCssSrc = path.dirname(require.resolve('@minna-ui/css'));
+    mixinsDir.push(path.join(minnaUiCssSrc, 'mixins'));
+    importPaths.push(minnaUiCssSrc);
+  }
+
   return postcss()
-    .use(atImport({ path: opts.importPath || ['css', 'src/css', process.cwd(), pkgDir] }))
+    .use(atImport({
+      path: importPaths,
+    }))
     .use(atVariables)
     .use(each)
     .use(mixins({ mixinsDir }))
     .use(nested)
-    .use(customProperties({ preserve: false, warnings: opts.verbose }))
+    .use(customProperties({
+      preserve: false,
+      warnings: verbose,
+    }))
     .use(conditionals)
     .use(customMedia)
-    .use(calc({ warnWhenCannotResolve: opts.verbose }))
+    .use(calc({
+      warnWhenCannotResolve: verbose,
+    }))
     .use(colorModFunction)
     .use(mediaQueryPacker)
-    .use(autoprefixer({ remove: false, flexbox: 'no-2009' }));
+    .use(autoprefixer({
+      remove: false,
+      flexbox: 'no-2009',
+    }));
 });

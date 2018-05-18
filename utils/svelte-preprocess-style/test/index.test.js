@@ -45,7 +45,7 @@ const sourceNoTypeAttr = `
   }
 </style>
 `;
-const sourceForceGlobal = `
+const sourceGlobal = `
 <style type="text/postcss" global>
   body { margin: 0; }
 
@@ -61,6 +61,18 @@ const sourceForceGlobal = `
       background: #222;
     }
   }
+</style>
+`;
+const sourceGlobalOnly = `
+<style global>
+  body { margin: 0; }
+  #target > .child { color: red; }
+</style>
+`;
+const sourceGlobalExists = `
+<style global>
+  :global(body) { margin: 0; }
+  :global(#target) > .child { color: red; }
 </style>
 `;
 const sourceBadSyntax = `
@@ -83,6 +95,16 @@ describe('Svelte style preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('adds a banner comment', async () => {
+    let result = await preprocess(sourceSimple, {
+      ...preprocessOpts,
+      banner: '/*!\n * minna-ui\n */\n',
+    });
+    result = result.toString();
+    expect(result).not.toMatch('&:focus');
+    expect(result).toMatchSnapshot();
+  });
+
   it('does not process without type attribute', async () => {
     let result = await preprocess(sourceNoTypeAttr, preprocessOpts);
     result = result.toString();
@@ -90,11 +112,27 @@ describe('Svelte style preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('adds global pseudo when global attribute', async () => {
-    let result = await preprocess(sourceForceGlobal, preprocessOpts);
+  it('adds global pseudo when global + type attributes', async () => {
+    let result = await preprocess(sourceGlobal, preprocessOpts);
     result = result.toString();
     expect(result).toMatch(':global(#target):focus');
     expect(result).toMatch(':global(.wrapper)+#target');
+    expect(result).toMatchSnapshot();
+  });
+
+  it('adds global pseudo when global attribute only', async () => {
+    let result = await preprocess(sourceGlobalOnly, preprocessOpts);
+    result = result.toString();
+    expect(result).toMatch(':global(body)');
+    expect(result).toMatch(':global(#target)>.child');
+    expect(result).toMatchSnapshot();
+  });
+
+  it('doesn\'t add global pseudo when already exists', async () => {
+    let result = await preprocess(sourceGlobalExists, preprocessOpts);
+    result = result.toString();
+    expect(result).toMatch(':global(body)');
+    expect(result).toMatch(':global(#target)>.child');
     expect(result).toMatchSnapshot();
   });
 

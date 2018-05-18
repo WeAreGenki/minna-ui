@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Svelte style preprocessor adds global pseudo when global attribute 1`] = `
+exports[`Svelte style preprocessor adds a banner comment 1`] = `
+"
+<div id=\\"target\\">test</div>
+
+<style>
+  #target {
+    color: red;
+  }
+
+    #target:focus {
+      background: #000;
+    }
+</style>
+"
+`;
+
+exports[`Svelte style preprocessor adds global pseudo when global + type attributes 1`] = `
 "
 <style>
   :global(body) { margin: 0; }
@@ -9,14 +25,22 @@ exports[`Svelte style preprocessor adds global pseudo when global attribute 1`] 
     color: red;
   }
 
-  :global(#target) .focus,
-    :global(#target):focus {
+  :global(#target) .focus,:global(#target):focus {
       background: #000;
     }
 
   :global(.wrapper)+#target {
       background: #222;
     }
+</style>
+"
+`;
+
+exports[`Svelte style preprocessor adds global pseudo when global attribute only 1`] = `
+"
+<style>
+  :global(body) { margin: 0; }
+  :global(#target)>.child { color: red; }
 </style>
 "
 `;
@@ -38,6 +62,15 @@ exports[`Svelte style preprocessor does not process without type attribute 1`] =
       background: #000;
     }
   }
+</style>
+"
+`;
+
+exports[`Svelte style preprocessor doesn't add global pseudo when already exists 1`] = `
+"
+<style>
+  :global(body) { margin: 0; }
+  :global(#target)>.child { color: red; }
 </style>
 "
 `;

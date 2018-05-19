@@ -57,12 +57,14 @@ export default output;
 
 describe('ESLint config', () => {
   it('runs without linting errors on valid JS', () => {
+    expect.assertions(2);
     const output = linterCli.executeOnText(sourceValid);
     expect(output.errorCount).toEqual(0);
     expect(output.warningCount).toEqual(0);
   });
 
   it('detects linting errors', () => {
+    expect.assertions(1);
     const output = linterCli.executeOnText(sourceInValid);
     expect(output.errorCount).not.toEqual(0);
   });
@@ -70,12 +72,14 @@ describe('ESLint config', () => {
 
 describe('Jest ESLint config', () => {
   it('runs without linting errors on valid JS', () => {
+    expect.assertions(2);
     const output = linterCliJest.executeOnText(sourceJestValid);
     expect(output.errorCount).toEqual(0);
     expect(output.warningCount).toEqual(0);
   });
 
   it('detects linting errors', () => {
+    expect.assertions(1);
     const output = linterCliJest.executeOnText(sourceJestInValid);
     expect(output.errorCount).not.toEqual(0);
   });

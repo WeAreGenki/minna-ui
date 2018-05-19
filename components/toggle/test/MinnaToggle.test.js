@@ -3,13 +3,24 @@
 const MinnaToggle = require('../src/MinnaToggle.html');
 
 describe('MinnaToggle component', () => {
-  it('renders correctly with defaults', () => {
-    const target = document.createElement('div');
-    new MinnaToggle({ target });
-    expect(target.innerHTML).toMatchSnapshot();
+  it('renders correctly with no props', () => {
+    expect.assertions(7);
+    function wrapper() {
+      const target = document.createElement('div');
+      new MinnaToggle({ target });
+      const toggle = target.querySelector('.toggle');
+      expect(toggle.getAttribute('tabindex')).toEqual('0');
+      expect(toggle.getAttribute('disabled')).toBeNull();
+      expect(toggle.getAttribute('required')).toBeNull();
+      expect(document.querySelector('toggle-checked')).toBeNull();
+      expect(document.querySelector('toggle-disabled')).toBeNull();
+      expect(target.innerHTML).toMatchSnapshot();
+    }
+    expect(wrapper).not.toThrow();
   });
 
   it('renders with value true', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -22,6 +33,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('renders with value false', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -33,7 +45,8 @@ describe('MinnaToggle component', () => {
     expect(target.querySelector('.toggle-checked')).toBeNull();
   });
 
-  it('renders with textOn/textOff attributes', () => {
+  it('renders with textOn/textOff props', () => {
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -48,7 +61,8 @@ describe('MinnaToggle component', () => {
     expect(target.querySelector('.toggle-off').innerHTML).toEqual('NO');
   });
 
-  it('renders with mini attribute', () => {
+  it('renders with mini prop', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -56,12 +70,12 @@ describe('MinnaToggle component', () => {
         mini: true,
       },
     });
-
     expect(component.get().mini).toBeTruthy();
     expect(target.querySelector('.toggle-mini')).not.toBeNull();
   });
 
-  it('renders with disabled attribute', () => {
+  it('renders with disabled prop', () => {
+    expect.assertions(3);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -75,6 +89,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('toggles class when value changes', () => {
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -91,6 +106,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('toggles value on click', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -107,6 +123,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('does not toggle value on click when disabled', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -151,6 +168,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('changes state on valid key press', () => {
+    expect.assertions(5);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -176,6 +194,7 @@ describe('MinnaToggle component', () => {
   });
 
   it('does not change state on invalid key press', () => {
+    expect.assertions(5);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,

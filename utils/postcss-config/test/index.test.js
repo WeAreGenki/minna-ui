@@ -35,8 +35,11 @@ beforeAll(async () => {
 
 describe('PostCSS config', () => {
   it('compiles valid CSS', async () => {
-    const result = await postcss(postcssConfig())
+    expect.assertions(5);
+    const output = postcss(postcssConfig())
       .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
     expect(result.processor.plugins).not.toHaveLength(0);
     expect(result.opts.from).toBeDefined();
     expect(result.map).toBeDefined();
@@ -44,8 +47,11 @@ describe('PostCSS config', () => {
   });
 
   it('compiles CSS when standalone', async () => {
-    const result = await postcss(postcssConfig({ standalone: true }))
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ standalone: true }))
       .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
     expect(result.processor.plugins).not.toHaveLength(0);
     expect(result.opts.from).toBeDefined();
     expect(result.map).toBeDefined();
@@ -53,8 +59,11 @@ describe('PostCSS config', () => {
   });
 
   it('compiles CSS with custom mixin', async () => {
-    const result = await postcss(postcssConfig({ mixinsPath }))
+    expect.assertions(3);
+    const output = postcss(postcssConfig({ mixinsPath }))
       .process(sourceCssMixin, { from: sourceCssMixinPath });
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
     expect(result.css).toMatch('.target::after');
     expect(result.css).toMatchSnapshot();
   });

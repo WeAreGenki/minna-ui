@@ -89,13 +89,16 @@ beforeAll(async () => {
 
 describe('Svelte style preprocessor', () => {
   it('processes a simple component', async () => {
-    let result = await preprocess(sourceSimple, preprocessOpts);
-    result = result.toString();
+    expect.assertions(3);
+    const output = preprocess(sourceSimple, preprocessOpts);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
     expect(result).not.toMatch('&:focus');
     expect(result).toMatchSnapshot();
   });
 
   it('adds a banner comment', async () => {
+    expect.assertions(2);
     let result = await preprocess(sourceSimple, {
       ...preprocessOpts,
       banner: '/*!\n * minna-ui\n */\n',
@@ -106,6 +109,7 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('does not process without type attribute', async () => {
+    expect.assertions(2);
     let result = await preprocess(sourceNoTypeAttr, preprocessOpts);
     result = result.toString();
     expect(result).toMatch('&:focus');
@@ -113,6 +117,7 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('adds global pseudo when global + type attributes', async () => {
+    expect.assertions(3);
     let result = await preprocess(sourceGlobal, preprocessOpts);
     result = result.toString();
     expect(result).toMatch(':global(#target):focus');
@@ -121,6 +126,7 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('adds global pseudo when global attribute only', async () => {
+    expect.assertions(3);
     let result = await preprocess(sourceGlobalOnly, preprocessOpts);
     result = result.toString();
     expect(result).toMatch(':global(body)');
@@ -129,6 +135,7 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('doesn\'t add global pseudo when already exists', async () => {
+    expect.assertions(3);
     let result = await preprocess(sourceGlobalExists, preprocessOpts);
     result = result.toString();
     expect(result).toMatch(':global(body)');
@@ -137,14 +144,17 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('processes a component', async () => {
-    let result = await preprocess(source, preprocessOpts);
-    result = result.toString();
+    expect.assertions(4);
+    const output = preprocess(source, preprocessOpts);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
     expect(result).not.toBeFalsy();
     expect(result).not.toEqual('');
     expect(result).toMatchSnapshot();
   });
 
   it('compiles a component\'s CSS', async () => {
+    expect.assertions(3);
     const spy = jest.spyOn(console, 'warn').mockImplementation(() => {});
     const processed = await preprocess(source, preprocessOpts);
     const result = compile(processed.toString());
@@ -156,6 +166,7 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('prints error on bad CSS syntax', async () => {
+    expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
     await preprocess(sourceBadSyntax, preprocessOpts);
     expect(spy).toHaveBeenCalled();

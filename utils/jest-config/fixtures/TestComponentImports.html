@@ -1,15 +1,15 @@
-{name} {loud} {quiet}
+{__name} {__loud} {__quiet}
 
 <script>
   import { shout, whisper } from './importable.js';
 
   export default {
     data: () => ({
-      name: 'Elon Musk',
+      __name: 'Elon Musk',
     }),
     computed: {
-      loud: ({ name }) => shout(name),
-      quiet: ({ name }) => whisper(name),
+      __loud: ({ __name }) => shout(__name),
+      __quiet: ({ __name }) => whisper(__name),
     },
   };
 </script>

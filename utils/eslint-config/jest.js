@@ -29,5 +29,6 @@ module.exports = {
       peerDependencies: true,
     }],
     'no-new': 'off', // allow new keyword to create svelte component instances
+    'no-underscore-dangle': 'off', // allow access to properties with leading underscores
   },
 };

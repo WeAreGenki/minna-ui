@@ -4,16 +4,20 @@ exports[`Svelte markup preprocessor creates and mounts a component 1`] = `"<div 
 
 exports[`Svelte markup preprocessor processes a component 1`] = `
 "<!--
-  COMPONENT
+  TEST COMPONENT
 
   A simple Svelte component for use in tests.
 
---> <div class=\\"wrapper\\"> <a href=\\"\\"> <img src=\\"#\\"> </a> <!-- Yo yo comment --> <div class=\\"text\\" ref:target> test {name} </div> <div class=\\"text\\" ref:reversed> test <span>{reversed}</span> </div> </div> <script> export default {
+  NOTE:
+    In the code, object properties starting with __ are safe to mangle; the name
+    can be shortened at build time for smaller JavaScript bundles.
+
+--> <div class=\\"wrapper\\"> <a href=\\"\\"> <img src=\\"#\\"> </a> <!-- Yo yo comment --> <div class=\\"text\\" ref:__target> test {__name} </div> <div class=\\"text\\" ref:__nameReversed> test <span>{__reversed}</span> </div> </div> <script> export default {
     data: () => ({
-      name: 'Elon Musk',
+      __name: 'Elon Musk',
     }),
     computed: {
-      reversed: ({ name }) => name.split('').reverse().join(''),
+      __reversed: ({ __name }) => __name.split('').reverse().join(''),
     },
   }; </script> <style>/*discarded*/</style> "
 `;

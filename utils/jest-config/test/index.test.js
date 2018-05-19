@@ -88,11 +88,11 @@ describe('Svelte transform', () => {
     expect(prototype).toHaveProperty('on');
     expect(prototype).toHaveProperty('set');
 
-    expect(component.get().name).toEqual('Elon Musk');
-    expect(component.get().reversed).toEqual('ksuM nolE');
-    component.set({ name: 'Vladimir Putin' });
-    expect(component.refs.target.textContent).toEqual('test Vladimir Putin');
-    expect(component.refs.reversed.textContent).toEqual('test nituP rimidalV');
+    expect(component.get().__name).toEqual('Elon Musk');
+    expect(component.get().__reversed).toEqual('ksuM nolE');
+    component.set({ __name: 'Vladimir Putin' });
+    expect(component.refs.__target.textContent).toEqual('test Vladimir Putin');
+    expect(component.refs.__nameReversed.textContent).toEqual('test nituP rimidalV');
   });
 
   // XXX: Uses require() instead of process() then eval() so imports are relative
@@ -103,8 +103,8 @@ describe('Svelte transform', () => {
       const target = document.createElement('div');
       const component = new ComponentImports({ target });
       expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');
-      expect(component.get().loud).toEqual('ELON MUSK');
-      expect(component.get().quiet).toEqual('elon musk');
+      expect(component.get().__loud).toEqual('ELON MUSK');
+      expect(component.get().__quiet).toEqual('elon musk');
       expect(target.innerHTML).toMatchSnapshot();
     }
     expect(wrapper).not.toThrow();

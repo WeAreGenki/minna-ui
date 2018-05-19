@@ -36,6 +36,7 @@ const compileWarn = (origin, level, warnings) => {
  * @param {string} dir The dist directory.
  */
 function cleanDistDir(dir) {
+  /* istanbul ignore else */
   if (dir !== process.cwd()) {
     fs.stat(dir, (err) => {
       if (!err) {

@@ -3,10 +3,14 @@
 const MinnaToggle = require('../src/MinnaToggle.html');
 
 describe('MinnaToggle component', () => {
-  it('renders correctly with defaults', () => {
-    const target = document.createElement('div');
-    new MinnaToggle({ target });
-    expect(target.innerHTML).toMatchSnapshot();
+  it('renders correctly with no props', () => {
+    expect.assertions(2);
+    function wrapper() {
+      const target = document.createElement('div');
+      new MinnaToggle({ target });
+      expect(target.innerHTML).toMatchSnapshot();
+    }
+    expect(wrapper).not.toThrow();
   });
 
   it('renders with value true', () => {

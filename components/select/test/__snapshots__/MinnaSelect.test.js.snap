@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MinnaSelect component renders correctly with defaults 1`] = `
+exports[`MinnaSelect component renders correctly with props set 1`] = `
 "<div class=\\"pos-r dif f-col  \\"><input id=\\"undefined\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 

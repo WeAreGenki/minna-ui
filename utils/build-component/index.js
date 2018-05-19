@@ -47,10 +47,12 @@ module.exports = async function run(env) {
 
   const distDir = dirname(pkgMain);
 
+  // TODO: Better safety checks to make sure we don't delete something important
+  /* istanbul ignore else */
   if (!isClean.has(distDir)) {
     isClean.set(distDir, null);
 
-    // TODO: Better safety checks to make sure we don't delete something important
+    /* istanbul ignore else */
     if (distDir !== process.cwd()) {
       fs.stat(distDir, (err) => {
         /* istanbul ignore if */

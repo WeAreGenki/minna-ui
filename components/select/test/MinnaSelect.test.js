@@ -11,16 +11,29 @@ const selectOpts = [
 ];
 
 describe('MinnaSelect component', () => {
-  it('renders correctly with defaults', () => {
+  it('throws error with no props', () => {
+    expect.assertions(1);
+    function wrapper() {
+      const target = document.createElement('div');
+      new MinnaSelect({ target });
+    }
+    expect(wrapper).toThrow();
+  });
+
+  it('renders correctly with props set', () => {
     const target = document.createElement('div');
-    new MinnaSelect({
+    const component = new MinnaSelect({
       target,
       data: {
         options: selectOpts,
       },
     });
+    expect(Array.isArray(component.get().options)).toEqual(true);
+    expect(component.get().options).not.toHaveLength(0);
     expect(target.innerHTML).toMatchSnapshot();
   });
+
+  it.skip('can dynamically add options', () => {});
 });
 
 // const event = new KeyboardEvent('keydown', { key: 'Enter' });

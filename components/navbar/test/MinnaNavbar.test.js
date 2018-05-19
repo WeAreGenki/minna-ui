@@ -17,7 +17,16 @@ const menuItems = [
 ];
 
 describe('MinnaNavbar component', () => {
-  it('renders correctly with defaults', () => {
+  it('throws error with no props', () => {
+    expect.assertions(1);
+    function wrapper() {
+      const target = document.createElement('div');
+      new MinnaNavbar({ target });
+    }
+    expect(wrapper).toThrow();
+  });
+
+  it('renders correctly with props set', () => {
     const target = document.createElement('div');
     new MinnaNavbar({
       target,
@@ -125,7 +134,7 @@ describe('MinnaNavbar component', () => {
       .classList.contains('navbar-link-active')).not.toBeTruthy();
   });
 
-  it('allows dynamically adding menu items', () => {
+  it('can dynamically add menu items', () => {
     const target = document.createElement('div');
     const component = new MinnaNavbar({
       target,

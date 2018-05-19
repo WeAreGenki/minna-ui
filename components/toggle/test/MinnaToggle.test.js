@@ -140,35 +140,8 @@ describe('MinnaToggle component', () => {
     spy.mockRestore();
   });
 
-  it('toggles value on key press', () => {
-    const target = document.createElement('div');
-    const component = new MinnaToggle({
-      target,
-      data: {
-        value: true,
-      },
-    });
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.__onKeyDown(event);
-    expect(component.get().value).toEqual(false);
-  });
-
-  it('does not toggle value on key press when disabled', () => {
-    const target = document.createElement('div');
-    const component = new MinnaToggle({
-      target,
-      data: {
-        value: true,
-        disabled: true,
-      },
-    });
-    const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.__onKeyDown(event);
-    expect(component.get().value).toEqual(true);
-  });
-
-  it('changes state on valid key press', () => {
-    expect.assertions(5);
+  it('toggles on enter key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaToggle({
       target,
@@ -182,18 +155,43 @@ describe('MinnaToggle component', () => {
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
     component.__onKeyDown(event2);
     expect(component.get().value).toEqual(true);
-    const event3 = new KeyboardEvent('keydown', { key: ' ' });
-    component.__onKeyDown(event3);
+  });
+
+  it('toggles on spacebar key press', () => {
+    expect.assertions(3);
+    const target = document.createElement('div');
+    const component = new MinnaToggle({
+      target,
+      data: {
+        value: true,
+      },
+    });
+    const event1 = new KeyboardEvent('keydown', { key: ' ' });
+    component.__onKeyDown(event1);
     expect(component.get().value).toEqual(false);
-    const event4 = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    component.__onKeyDown(event4);
+    const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
+    component.__onKeyDown(event2);
     expect(component.get().value).toEqual(true);
-    const event5 = new KeyboardEvent('keydown', { keyCode: 32 });
-    component.__onKeyDown(event5);
+    const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
+    component.__onKeyDown(event3);
     expect(component.get().value).toEqual(false);
   });
 
-  it('does not change state on invalid key press', () => {
+  it('does not toggle on key press when disabled', () => {
+    const target = document.createElement('div');
+    const component = new MinnaToggle({
+      target,
+      data: {
+        value: true,
+        disabled: true,
+      },
+    });
+    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    component.__onKeyDown(event);
+    expect(component.get().value).toEqual(true);
+  });
+
+  it('does not toggle on invalid key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new MinnaToggle({

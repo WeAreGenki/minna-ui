@@ -43,15 +43,18 @@ module.exports = {
       objects: 'always-multiline',
       imports: 'always-multiline',
       exports: 'always-multiline',
-      functions: 'only-multiline', // awkward comma on multiline function params
+      functions: 'only-multiline', // awkward comma on multiline function params is OK
     }],
-    'import/extensions': ['error', 'ignorePackages'],
-    'no-console': isProd ? 'error' : 'off',
-    'no-debugger': isProd ? 'error' : 'off',
+    'import/extensions': ['error', 'ignorePackages'], // do use file extentions
+    'no-console': /* istanbul ignore next */ isProd ? 'error' : 'off',
+    'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'off',
     'no-return-assign': ['error', 'except-parens'],
-    'no-underscore-dangle': 'off',
+    'no-underscore-dangle': 'off', // we use __ to indicate properties to mangle
     'object-curly-newline': ['error', { consistent: true }],
-    'object-curly-spacing': ['error', 'always', { objectsInObjects: false }],
+    'object-curly-spacing': ['error', 'always', {
+      arraysInObjects: false,
+      objectsInObjects: false,
+    }],
   },
 
   // JS config files should be node/CommonJS format

@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PostCSS config compiles CSS when standalone 1`] = `
+":root { /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: hsl(0, 100%, 50%);
+}
+#target .focus,
+  #target:focus {
+    background: hsl(0, 0%, 0%);
+  }
+.wrapper + #target {
+    background: hsl(0, 0%, 13%);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
+`;
+
 exports[`PostCSS config compiles CSS with custom mixin 1`] = `
 ".target::after {
     display: block;
@@ -28,5 +50,5 @@ body {
   }
 /* stylelint-enable selector-max-id */
 
-/*# sourceMappingURL=import.css */"
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;

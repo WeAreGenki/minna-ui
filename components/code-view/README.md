@@ -72,7 +72,7 @@ yarn add @minna-ui/code-view
 
 2. Add to your Svelte component:
 
-`my-svelte-component.html`:
+`MySvelteComponent.html`:
 
 ```html
 <MinnaCodeView/>

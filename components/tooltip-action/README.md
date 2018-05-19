@@ -29,7 +29,7 @@ yarn add @minna-ui/tooltip-action
 
 2. Add to your Svelte component:
 
-`my-svelte-component.html`:
+`MySvelteComponent.html`:
 
 ```html
 <div use:tooltip="Example tooltip message">

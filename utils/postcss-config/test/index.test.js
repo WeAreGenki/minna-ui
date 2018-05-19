@@ -19,7 +19,7 @@ const options = {
   from: sourceCssPath,
   map: {
     inline: false,
-    annotation: path.basename(sourceCssPath),
+    annotation: true,
   },
 };
 
@@ -36,6 +36,15 @@ beforeAll(async () => {
 describe('PostCSS config', () => {
   it('compiles valid CSS', async () => {
     const result = await postcss(postcssConfig())
+      .process(sourceCss, options);
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS when standalone', async () => {
+    const result = await postcss(postcssConfig({ standalone: true }))
       .process(sourceCss, options);
     expect(result.processor.plugins).not.toHaveLength(0);
     expect(result.opts.from).toBeDefined();

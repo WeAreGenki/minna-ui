@@ -2,60 +2,112 @@
 
 'use strict';
 
-const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
+const del = require('del');
 const buildComponent = require('../index.js');
 
-const readFile = promisify(fs.readFile);
-const tmpDir = os.tmpdir();
-const tmpPath = fs.mkdtempSync(`${tmpDir}${path.sep}minna_ui_build_component_test_`);
-const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/component.html');
-const outputPathModule = path.join(tmpPath, 'dist', 'index.es.mjs');
-const outputPathMain = path.join(tmpPath, 'dist', 'index.js');
-const outputPathStyle = path.join(tmpPath, 'dist', 'index.css');
+const mkdir = promisify(fs.mkdir);
+const writeFile = promisify(fs.writeFile);
+const stat = promisify(fs.stat);
+const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
+const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
 
-describe('build-component', () => {
-  it('compiles a Svelte component package', async (done) => {
-    async function wrapper() {
-      // TODO: Not sure this actually detects unhandledRejection errs
-      if (!process.env.LISTENING_TO_UNHANDLED_REJECTION) {
-        process.on('unhandledRejection', (reason) => { throw reason; });
-        // avoid memory leak by adding too many listeners
-        process.env.LISTENING_TO_UNHANDLED_REJECTION = true;
-      }
+/**
+ * Generate mock package.json env variables.
+ * @param {string} dirName
+ */
+const pkg = dirName => ({
+  npm_package_name: 'test-component',
+  npm_package_version: '1.2.3',
+  npm_package_homepage: 'https://ui.wearegenki.com',
+  npm_package_svelte: sourcePath,
+  npm_package_module: path.join(__dirname, 'dist', dirName, 'index.es.mjs'),
+  npm_package_main: path.join(__dirname, 'dist', dirName, 'index.js'),
+  npm_package_style: path.join(__dirname, 'dist', dirName, 'index.css'),
+});
 
-      await buildComponent({
-        npm_package_name: 'test-component',
-        npm_package_version: '1.0.0',
-        npm_package_homepage: 'https://example.com',
-        npm_package_svelte: sourcePath,
-        npm_package_module: outputPathModule,
-        npm_package_main: outputPathMain,
-        npm_package_style: outputPathStyle,
-      });
+beforeAll(() => mkdir(path.join(__dirname, 'dist')));
 
-      /**
-       *  FIXME: Use a better way of testing result (not code snapshots) as
-       * output can differ between Svelte versions.
-       */
-      let resultModule = await readFile(outputPathModule, 'utf8');
-      resultModule = resultModule.replace(/Svelte v\d\.\d\.\d/, 'Svelte');
-      expect(resultModule).toMatchSnapshot();
+afterAll(() => del([path.join(__dirname, 'dist')]));
 
-      let resultMain = await readFile(outputPathMain, 'utf8');
-      resultMain = resultMain.replace(/Svelte v\d\.\d\.\d/, 'Svelte');
-      expect(resultMain).toMatchSnapshot();
-
-      const resultStyle = await readFile(outputPathStyle, 'utf8');
-      expect(resultStyle).toMatchSnapshot();
-      done();
-    }
-    expect(wrapper).not.toThrow();
+describe('build-component tool', () => {
+  it('compiles package esm bundle', async () => {
+    expect.assertions(6);
+    const build = buildComponent(pkg('esm'));
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    expect(built.esm.result.code).toMatch('export default TestComponent');
+    expect(built.esm.result.code).not.toMatch('TestComponent=function');
+    expect(built.esm.result.code).toMatch('name: \'Elon Musk\'');
+    expect(built.esm.result.code).toMatch('component.refs.__target ===');
+    expect(built.esm.result.map.sources).toHaveLength(2);
   });
 
-  it.skip('compiles with an existing dist dir', () => {});
+  it('compiles package main bundle', async () => {
+    expect.assertions(6);
+    const build = buildComponent(pkg('main'));
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    expect(built.main.result.code).toMatch('var TestComponent=function(');
+    expect(built.main.result.code).not.toMatch('export default TestComponent');
+    expect(built.main.result.code).toMatch('name:\'Elon Musk\'');
+    expect(built.main.result.code).toMatch('.refs.__target===');
+    expect(built.main.result.map.names).toContain('__name');
+  });
 
-  it.skip('throws an error when bad HTML syntax', () => {});
+  it('compiles package css bundle', async () => {
+    expect.assertions(3);
+    const build = buildComponent(pkg('css'));
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    expect(built.css.code).not.toEqual('');
+    expect(built.css.code).toMatchSnapshot();
+  });
+
+  // FIXME: Add banners in manually using https://github.com/Rich-Harris/magic-string
+  it('contains banner comments', async () => {
+    // expect.assertions(4);
+    expect.assertions(2);
+    const pkgData = pkg('banner');
+    const build = buildComponent(pkgData);
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.esm.result.code).toMatch(re);
+    // FIXME: rollup-plugin-butternut removes the banner
+    // expect(built.main.result.code).toMatch(re);
+    // FIXME: rollup-plugin-svelte doesn't have CSS banner support
+    // expect(built.css.code).toMatch(re);
+  });
+
+  it('cleans existing dist dir', async () => {
+    expect.assertions(2);
+    await mkdir(path.join(__dirname, 'dist/check'));
+    const checkFile = path.join(__dirname, 'dist/check/exists.txt');
+    await writeFile(checkFile, 'yes', 'utf8');
+    await expect(stat(checkFile)).resolves.toBeDefined();
+    await buildComponent(pkg('check'));
+    await expect(stat(checkFile)).rejects.toThrow();
+  });
+
+  it('writes data to disk', async () => {
+    expect.assertions(4);
+    const pkgData = pkg('some-dir');
+    const build = buildComponent(pkgData);
+    await expect(build).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_module)).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_main)).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
+  });
+
+  it('throws an error when bad HTML syntax', async () => {
+    expect.assertions(1);
+    const build = buildComponent({
+      ...pkg('bad-syntax'),
+      npm_package_svelte: sourcePathBadSyntax,
+    });
+    await expect(build).rejects.toThrow();
+  });
 });

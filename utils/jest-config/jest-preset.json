@@ -25,8 +25,13 @@
   "coveragePathIgnorePatterns": [
     "/dist/",
     "/export/",
+    "/fixtures/",
     "/node_modules/",
     "/test/"
   ],
-  "coverageDirectory": "<rootDir>/test/unit/coverage"
+  "coverageDirectory": "<rootDir>/test/unit/coverage",
+  "watchPathIgnorePatterns": [
+    "/dist/",
+    "/export/"
+  ]
 }

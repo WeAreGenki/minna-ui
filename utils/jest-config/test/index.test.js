@@ -24,27 +24,13 @@ beforeAll(async () => {
   ]);
 });
 
-describe('Babel preset', () => {
-  it('converts ES6 modules import into CJS', async () => {
-    const result = await babel.transform(`
-      import Target from '../fixtures/importable.js';
-      new Target();
-    `, {
-      babelrc: false,
-      presets: [babelPreset],
-    });
-    expect(result.code).not.toMatch('import Target');
-    expect(result.code).toMatch('use strict');
-    expect(result.code).toMatch('__esModule');
-  });
-});
-
 describe('Jest test runner', () => {
   it('runs basic test', () => {
     expect(2 + 3).toEqual(5);
   });
 
   it('handles ES6 modules correctly', () => {
+    expect.assertions(3);
     function wrapper() {
       // eslint-disable-next-line global-require
       const { shout, whisper } = require('../fixtures/importable.js');
@@ -52,6 +38,23 @@ describe('Jest test runner', () => {
       expect(whisper('Hello')).toEqual('hello');
     }
     expect(wrapper).not.toThrow();
+  });
+});
+
+describe('Babel preset', () => {
+  it('converts ES6 modules import into CJS', () => {
+    expect.assertions(3);
+    const sourceJs = `
+      import Target from '../fixtures/importable.js';
+      new Target();
+    `;
+    const result = babel.transform(sourceJs, {
+      babelrc: false,
+      presets: [babelPreset],
+    });
+    expect(result.code).not.toMatch('import Target');
+    expect(result.code).toMatch('use strict');
+    expect(result.code).toMatch('__esModule');
   });
 });
 
@@ -64,6 +67,7 @@ describe('Null transform', () => {
 
 describe('Svelte transform', () => {
   it('compiles and mounts a component', () => {
+    expect.assertions(2);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
     expect(typeof SvelteComponent.code).toEqual('string');
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
@@ -74,6 +78,7 @@ describe('Svelte transform', () => {
   });
 
   it('has access to Svelte prototype when mounted', () => {
+    expect.assertions(9);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
@@ -97,6 +102,7 @@ describe('Svelte transform', () => {
 
   // XXX: Uses require() instead of process() then eval() so imports are relative
   it('mounts components which import ES6 modules', () => {
+    expect.assertions(5);
     function wrapper() {
       // eslint-disable-next-line global-require
       const ComponentImports = require('../fixtures/TestComponentImports.html');

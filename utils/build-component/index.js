@@ -31,7 +31,7 @@ module.exports = async function run(env) {
   const pkgStyle = env.npm_package_style;
   const name = basename(pkgSvelte, '.html');
 
-  // FIXME: Banner is missing in resulting code
+  // FIXME: Banner is missing in resulting code due to butternut; add manually with magic-string
   const banner = `/*!
  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki

@@ -26,15 +26,21 @@ describe('MinnaNavbar component', () => {
     expect(wrapper).toThrow();
   });
 
-  it('renders correctly with props set', () => {
+  it('renders correctly with required props set', () => {
+    expect.assertions(4);
     const target = document.createElement('div');
-    new MinnaNavbar({
+    const component = new MinnaNavbar({
       target,
       data: {
         items: menuItems,
         page: '/',
       },
     });
+    expect(Array.isArray(component.get().items)).toEqual(true);
+    expect(component.get().items).not.toHaveLength(0);
+    expect(target
+      .querySelector('.navbar')
+      .getAttribute('navbar-active')).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -118,6 +124,7 @@ describe('MinnaNavbar component', () => {
   });
 
   it('adds class to active menu item in nested route', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     new MinnaNavbar({
       target,
@@ -135,6 +142,7 @@ describe('MinnaNavbar component', () => {
   });
 
   it('can dynamically add menu items', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaNavbar({
       target,

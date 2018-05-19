@@ -55,28 +55,35 @@ beforeAll(async () => {
 
 describe('Svelte markup preprocessor', () => {
   it('processes a simple component', async () => {
-    let result = await preprocess(sourceSimple, preprocessOpts);
-    result = result.toString();
+    expect.assertions(4);
+    const output = preprocess(sourceSimple, preprocessOpts);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
     expect(result).toMatch('> <');
     expect(result).not.toMatch('><');
     expect(result).toMatchSnapshot();
   });
 
   it('processes a simple component unsafe', async () => {
-    let result = await preprocess(sourceSimple, preprocessOptsUnsafe);
-    result = result.toString();
+    expect.assertions(4);
+    const output = preprocess(sourceSimple, preprocessOptsUnsafe);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
     expect(result).toMatch('><');
     expect(result).not.toMatch('> <');
     expect(result).toMatchSnapshot();
   });
 
   it('processes a component', async () => {
-    let result = await preprocess(source, preprocessOpts);
-    result = result.toString();
+    expect.assertions(2);
+    const output = preprocess(source, preprocessOpts);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
     expect(result).toMatchSnapshot();
   });
 
   it('creates and mounts a component', async () => {
+    expect.assertions(1);
     const processed = await preprocess(source, preprocessOpts);
     const TestComponent = create(processed.toString(), svelteOpts);
     const target = document.createElement('div');
@@ -85,6 +92,7 @@ describe('Svelte markup preprocessor', () => {
   });
 
   it('unsafe option makes output smaller', async () => {
+    expect.assertions(1);
     const [unsafe, safe] = await Promise.all([
       preprocess(source, preprocessOptsUnsafe),
       preprocess(source, preprocessOpts),
@@ -93,6 +101,7 @@ describe('Svelte markup preprocessor', () => {
   });
 
   it('prints error on bad HTML syntax', async () => {
+    expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
     await preprocess(sourceBadSyntax, preprocessOpts);
     expect(spy).toHaveBeenCalled();

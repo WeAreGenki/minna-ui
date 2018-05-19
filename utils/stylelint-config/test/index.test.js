@@ -54,51 +54,61 @@ const stylelintOpts = {
 
 describe('Stylelint config', () => {
   it('lints valid CSS', async () => {
-    const output = await stylelint.lint(stylelintOpts);
-    expect(output.results[0].errored).toBeFalsy();
-    expect(output.results[0].warnings).toHaveLength(0);
+    expect.assertions(3);
+    const output = stylelint.lint(stylelintOpts);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.results[0].errored).toBeFalsy();
+    expect(result.results[0].warnings).toHaveLength(0);
   });
 
   it('detects invalid CSS by lint rules', async () => {
-    const output = await stylelint.lint({
+    expect.assertions(3);
+    const output = stylelint.lint({
       config,
       code: sourceCssInvalid,
     });
-    expect(output.results[0].errored).toBeTruthy();
-    expect(output.results[0].warnings).not.toHaveLength(0);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].warnings).not.toHaveLength(0);
   });
 
   it('detects invalid CSS by bad syntax', async () => {
-    const output = await stylelint.lint({
+    expect.assertions(3);
+    const output = stylelint.lint({
       config,
       code: sourceSyntaxInvalid,
     });
-    expect(output.results[0].errored).toBeTruthy();
-    expect(output.results[0].warnings[0].rule).toEqual('CssSyntaxError');
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].warnings[0].rule).toEqual('CssSyntaxError');
   });
 
   it('detects invalid CSS property order', async () => {
-    const output = await stylelint.lint({
+    expect.assertions(3);
+    const result = await stylelint.lint({
       config,
       code: sourceOrderInvalid,
     });
-    expect(output.results[0].errored).toBeTruthy();
-    expect(output.results[0].warnings[0].rule).toEqual('order/properties-order');
-    expect(output.results[0].warnings[1].rule).toEqual('order/properties-order');
+    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].warnings[0].rule).toEqual('order/properties-order');
+    expect(result.results[0].warnings[1].rule).toEqual('order/properties-order');
   });
 
   it('has no config parse errors', async () => {
-    const output = await stylelint.lint(stylelintOpts);
-    expect(output.results[0].parseErrors).toHaveLength(0);
+    const result = await stylelint.lint(stylelintOpts);
+    expect(result.results[0].parseErrors).toHaveLength(0);
   });
 
   it('has no config deprecations', async () => {
-    const output = await stylelint.lint(stylelintOpts);
-    expect(output.results[0].deprecations).toHaveLength(0);
+    const result = await stylelint.lint(stylelintOpts);
+    expect(result.results[0].deprecations).toHaveLength(0);
   });
 
   it('has no invalid config options', async () => {
-    const output = await stylelint.lint(stylelintOpts);
-    expect(output.results[0].invalidOptionWarnings).toHaveLength(0);
+    const result = await stylelint.lint(stylelintOpts);
+    expect(result.results[0].invalidOptionWarnings).toHaveLength(0);
   });
 });

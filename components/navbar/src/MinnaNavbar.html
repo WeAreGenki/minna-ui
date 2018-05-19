@@ -31,7 +31,7 @@
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
-      class="dn-l btn-clear btn-menu"
+      class="navbar-btn dn-l btn-clear"
       aria-label="menu toggle"
       aria-expanded="{__show}"
       on:click="set({ __show: !__show })"
@@ -86,6 +86,7 @@
 
       // debounce using requestAnimationFrame
       document.addEventListener('scroll', () => {
+        /* istanbul ignore else */
         if (!ticking) {
           requestAnimationFrame(setState);
         }
@@ -144,7 +145,7 @@
     transform: translateY(calc(-1 * var(--navbar-animate-distance)));
   }
 
-  .btn-menu {
+  .navbar-btn {
     padding: 0;
     margin-right: 1.2rem;
   }

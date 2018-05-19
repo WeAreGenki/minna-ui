@@ -201,6 +201,3 @@ describe('MinnaToggle component', () => {
     spy.mockRestore();
   });
 });
-
-// console.log('!! HTML', target.innerHTML);
-// console.log('!! COMPONENT', component);

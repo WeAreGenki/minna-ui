@@ -11,7 +11,7 @@ const selectOpts = [
 ];
 
 describe('MinnaSelect component', () => {
-  it('should render correctly', () => {
+  it('renders correctly with defaults', () => {
     const target = document.createElement('div');
     new MinnaSelect({
       target,
@@ -22,3 +22,13 @@ describe('MinnaSelect component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 });
+
+// const event = new KeyboardEvent('keydown', { key: 'Enter' });
+// component.__onKeyDown(event);
+// expect(component.get().value).toEqual(false);
+
+// var event = new KeyboardEvent('keydown', { 'keyCode': 37 });
+// document.dispatchEvent(event);
+
+// console.log('!! HTML', target.innerHTML);
+// console.log('!! COMPONENT', component);

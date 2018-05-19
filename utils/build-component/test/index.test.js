@@ -13,6 +13,7 @@ const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
+const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
@@ -23,14 +24,14 @@ const pkg = dirName => ({
   npm_package_version: '1.2.3',
   npm_package_homepage: 'https://ui.wearegenki.com',
   npm_package_svelte: sourcePath,
-  npm_package_module: path.join(__dirname, 'dist', dirName, 'index.es.mjs'),
-  npm_package_main: path.join(__dirname, 'dist', dirName, 'index.js'),
-  npm_package_style: path.join(__dirname, 'dist', dirName, 'index.css'),
+  npm_package_module: path.join(dist, dirName, 'index.es.mjs'),
+  npm_package_main: path.join(dist, dirName, 'index.js'),
+  npm_package_style: path.join(dist, dirName, 'index.css'),
 });
 
-beforeAll(() => mkdir(path.join(__dirname, 'dist')));
+beforeAll(() => mkdir(dist));
 
-afterAll(() => del([path.join(__dirname, 'dist')]));
+afterAll(() => del([dist]));
 
 describe('build-component tool', () => {
   it('compiles package esm bundle', async () => {
@@ -84,8 +85,8 @@ describe('build-component tool', () => {
 
   it('cleans existing dist dir', async () => {
     expect.assertions(2);
-    await mkdir(path.join(__dirname, 'dist/check'));
-    const checkFile = path.join(__dirname, 'dist/check/exists.txt');
+    await mkdir(path.join(dist, 'check'));
+    const checkFile = path.join(dist, 'check/exists.txt');
     await writeFile(checkFile, 'yes', 'utf8');
     await expect(stat(checkFile)).resolves.toBeDefined();
     await buildComponent(pkg('check'));
@@ -93,13 +94,16 @@ describe('build-component tool', () => {
   });
 
   it('writes data to disk', async () => {
-    expect.assertions(4);
-    const pkgData = pkg('some-dir');
+    expect.assertions(7);
+    const pkgData = pkg('write-to-disk');
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_module)).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_module}.map`)).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_main)).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_main}.map`)).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
   it('throws an error when bad HTML syntax', async () => {

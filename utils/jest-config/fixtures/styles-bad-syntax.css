@@ -1,5 +1,3 @@
-/* stylelint-disable */
-
 body {
   margin: var);
 }
@@ -7,11 +5,11 @@ body {
 #target {
   color: --colour;
 
-  .wrapper + & {
-    background: hsl(0, 0%, 13%);
+  &wrapper {
+    background: #red;
   }
 }
 
 
-.class { }
+.class {
   font-size:

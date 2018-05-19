@@ -13,7 +13,6 @@ const postcssLoadConfig = require('postcss-load-config');
 const postcss = require('postcss');
 const CleanCSS = require('clean-css');
 
-const mkdir = promisify(fs.mkdir);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
@@ -25,7 +24,10 @@ const writeFile = promisify(fs.writeFile);
  */
 const compileWarn = (origin, level, warnings) => {
   warnings.forEach((err) => {
-    process.stderr.write(`[${origin}] ${level}: ${err.toString()}\n`);
+    /* istanbul ignore if */
+    if (!/^Ignoring local source map at/.test(err)) {
+      process.stderr.write(`[${origin}] ${level}: ${err.toString()}\n`);
+    }
   });
 };
 
@@ -34,47 +36,44 @@ const compileWarn = (origin, level, warnings) => {
  * @param {string} dir The dist directory.
  */
 function cleanDistDir(dir) {
-  if (/dist$/.test(dir)) {
-    fs.stat(dir, async (err) => {
-      if (err) {
-        // dir doesn't exist, make new dir
-        await mkdir(dir);
-      } else {
-        // dir does exist, remove first and then make new dir
-        await del([dir]);
-        await mkdir(dir);
+  if (dir !== process.cwd()) {
+    fs.stat(dir, (err) => {
+      if (!err) {
+        del.sync([dir]);
       }
+      fs.mkdirSync(dir);
     });
   }
 }
 
 module.exports = async function run(env) {
   process.env.NODE_ENV = env.NODE_ENV || 'production';
-  const version = env.npm_package_version;
-  const homepage = env.npm_package_homepage;
-  const src = env.npm_package_main;
-  const out = env.npm_package_style;
+  const pkgName = env.npm_package_name;
+  const pkgVersion = env.npm_package_version;
+  const pkgHomepage = env.npm_package_homepage;
+  // const pkgBrowser = env.npm_package_browser; // currently same as env.npm_package_style
+  const pkgStyle = env.npm_package_style;
+  const pkgMain = env.npm_package_main;
 
-  const licence = 'https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE';
   const banner = `/*!
- * minna-ui v${version} | ${homepage}
+ * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
- * Licensed under Apache 2.0 - ${licence}
- */\n`;
+ * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */
+`;
 
   try {
-    cleanDistDir(dirname(out));
+    cleanDistDir(dirname(pkgStyle));
 
-    const source = readFile(src, 'utf8');
+    const source = await readFile(pkgMain, 'utf8');
 
     const { plugins, options } = await postcssLoadConfig({
-      from: src,
-      to: out,
+      from: pkgMain,
+      to: pkgStyle,
       map: { inline: false },
     });
 
-    // compile PostCSS into CSS
-    const sourceCss = banner + (await source);
+    const sourceCss = banner + source;
     const result = await postcss(plugins).process(sourceCss, options);
 
     compileWarn('PostCSS', 'WARN', result.warnings());
@@ -93,16 +92,17 @@ module.exports = async function run(env) {
     compileWarn('CleanCSS', 'WARN', min.warnings);
 
     // clean-css removes the source map comment so we need to add it back in
-    const annotation = `\n/*# sourceMappingURL=${basename(options.to)}.map */`;
+    min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(options.to)}.map */`;
 
-    writeFile(options.to, min.styles.toString() + annotation);
+    writeFile(options.to, min.styles);
     writeFile(`${options.to}.map`, min.sourceMap.toString());
+
+    return {
+      result,
+      min,
+    };
   } catch (error) {
-    /* istanbul ignore else */
-    if (error.name === 'CssSyntaxError') {
-      process.stderr.write(error.message + error.showSourceCode());
-    } else {
-      throw error;
-    }
+    process.stderr.write(`[PostCSS] ERR: ${error.message}:\n${error.showSourceCode()}`);
+    throw error;
   }
 };

@@ -1,12 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MinnaNavbar component renders correctly 1`] = `
-"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"dn-l btn-clear btn-menu\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+exports[`MinnaNavbar component allows dynamically adding menu items 1`] = `
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-btn dn-l btn-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
 
     <a href=\\"/\\" title=\\"Home\\"><svg class=\\"logo\\"><use xlink:href=\\"#logo\\"></use>
       </svg></a>
 
     <div class=\\"navbar-links dn \\"><a href=\\"/\\" class=\\"navbar-link dn-l\\">Home</a>
 
-      <a href=\\"/page-one\\" class=\\"navbar-link \\">Page One</a><a href=\\"/page-two\\" class=\\"navbar-link \\">Page Two</a><a href=\\"/about\\" class=\\"navbar-link \\">About Us</a></div></nav></header>"
+      <a href=\\"/page-one\\" class=\\"navbar-link \\">Page One</a><a href=\\"/page-two\\" class=\\"navbar-link \\">Page Two</a><a href=\\"/page-two/child-one\\" class=\\"navbar-link \\">Child One - Page Two</a><a href=\\"/page-two/child-two\\" class=\\"navbar-link \\">Child Two - Page Two</a><a href=\\"/about\\" class=\\"navbar-link \\">About Us</a><a href=\\"page-new\\" class=\\"navbar-link \\">Page New</a></div></nav></header>"
+`;
+
+exports[`MinnaNavbar component renders correctly with defaults 1`] = `
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-btn dn-l btn-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+
+    <a href=\\"/\\" title=\\"Home\\"><svg class=\\"logo\\"><use xlink:href=\\"#logo\\"></use>
+      </svg></a>
+
+    <div class=\\"navbar-links dn \\"><a href=\\"/\\" class=\\"navbar-link dn-l\\">Home</a>
+
+      <a href=\\"/page-one\\" class=\\"navbar-link \\">Page One</a><a href=\\"/page-two\\" class=\\"navbar-link \\">Page Two</a><a href=\\"/page-two/child-one\\" class=\\"navbar-link \\">Child One - Page Two</a><a href=\\"/page-two/child-two\\" class=\\"navbar-link \\">Child Two - Page Two</a><a href=\\"/about\\" class=\\"navbar-link \\">About Us</a></div></nav></header>"
 `;

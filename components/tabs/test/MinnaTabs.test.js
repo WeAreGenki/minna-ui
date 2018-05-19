@@ -3,7 +3,7 @@
 const MinnaTabs = require('../src/MinnaTabs.html');
 
 describe('MinnaTabs component', () => {
-  it('should render correctly', () => {
+  it('renders correctly with defaults', () => {
     const target = document.createElement('div');
     new MinnaTabs({ target });
     expect(target.innerHTML).toMatchSnapshot();

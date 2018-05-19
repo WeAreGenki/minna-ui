@@ -11,7 +11,7 @@ const selectOpts = [
 ];
 
 describe('MinnaSelect component', () => {
-  it('should render correctly', () => {
+  it('renders correctly with defaults', () => {
     const target = document.createElement('div');
     new MinnaSelect({
       target,

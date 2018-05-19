@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MinnaNavbar component should render correctly 1`] = `
+exports[`MinnaNavbar component renders correctly 1`] = `
 "<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"dn-l btn-clear btn-menu\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
 
     <a href=\\"/\\" title=\\"Home\\"><svg class=\\"logo\\"><use xlink:href=\\"#logo\\"></use>

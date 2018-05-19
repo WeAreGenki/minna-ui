@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`build-css tool compiles package CSS bundle 1`] = `
+"/*!
+ * test-css v1.2.3 - https://ui.wearegenki.com
+ * Copyright 2018 We Are Genki
+ * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */
+body {
+  margin: var(--margin);
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: var(--colour);
+}
+#target .focus,
+  #target:focus {
+    background: hsl(0, 0%, 0%);
+  }
+.wrapper + #target {
+    background: hsl(0, 0%, 13%);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=index.css.map */"
+`;
+
+exports[`build-css tool compiles package CSS bundle 2`] = `
+"/*!
+ * test-css v1.2.3 - https://ui.wearegenki.com
+ * Copyright 2018 We Are Genki
+ * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */body{margin:var(--margin)}#target{color:var(--colour)}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+/*# sourceMappingURL=index.css.map */"
+`;
+
+exports[`build-css tool compiles package CSS bundle with imports 1`] = `
+"/*!
+ * test-css v1.2.3 - https://ui.wearegenki.com
+ * Copyright 2018 We Are Genki
+ * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */
+:root { /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: hsl(0, 100%, 50%);
+}
+#target .focus,
+  #target:focus {
+    background: hsl(0, 0%, 0%);
+  }
+.wrapper + #target {
+    background: hsl(0, 0%, 13%);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=index.css.map */"
+`;
+
+exports[`build-css tool compiles package CSS bundle with imports 2`] = `
+"/*!
+ * test-css v1.2.3 - https://ui.wearegenki.com
+ * Copyright 2018 We Are Genki
+ * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+/*# sourceMappingURL=index.css.map */"
+`;

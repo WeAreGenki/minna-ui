@@ -8,76 +8,104 @@ const { promisify } = require('util');
 const del = require('del');
 const buildComponent = require('../index.js');
 
+const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
+const stat = promisify(fs.stat);
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
-const outputPathModule = path.join(__dirname, 'dist/index.es.mjs');
-const outputPathMain = path.join(__dirname, 'dist/index.js');
-const outputPathStyle = path.join(__dirname, 'dist/index.css');
 
-const pkg = {
+/**
+ * Generate mock package.json env variables.
+ * @param {string} dirName
+ */
+const pkg = dirName => ({
   npm_package_name: 'test-component',
-  npm_package_version: '1.0.0',
-  npm_package_homepage: 'https://example.com',
+  npm_package_version: '1.2.3',
+  npm_package_homepage: 'https://ui.wearegenki.com',
   npm_package_svelte: sourcePath,
-  npm_package_module: outputPathModule,
-  npm_package_main: outputPathMain,
-  npm_package_style: outputPathStyle,
-};
+  npm_package_module: path.join(__dirname, 'dist', dirName, 'index.es.mjs'),
+  npm_package_main: path.join(__dirname, 'dist', dirName, 'index.js'),
+  npm_package_style: path.join(__dirname, 'dist', dirName, 'index.css'),
+});
+
+beforeAll(() => mkdir(path.join(__dirname, 'dist')));
 
 afterAll(() => del([path.join(__dirname, 'dist')]));
 
-describe('build-component', () => {
-  it('compiles a Svelte component package', async () => {
-    const build = buildComponent(pkg);
+describe('build-component tool', () => {
+  it('compiles package esm bundle', async () => {
+    expect.assertions(6);
+    const build = buildComponent(pkg('esm'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    expect(built.esm.stats.warnings).toHaveLength(2); // 2 a11y warnings
-    expect(built.esm.stats.warnings.every(warn => warn.code.indexOf('a11y') === 0)).toEqual(true);
-    expect(built.esm.js.code).toContain('export default TestComponent');
-    expect(built.esm.js.code).not.toContain('return TestComponent');
-    expect(built.esm.js.code).toContain('name: \'Elon Musk\'');
-    expect(built.esm.js.code).toContain('component.refs.target ===');
-    expect(built.main.js.code).toContain('return TestComponent');
-    expect(built.main.js.code).not.toContain('export default TestComponent');
-    expect(built.main.js.code).toContain('\n/*# sourceMappingURL=index.js.map */');
-    expect(built.main.js.code).toContain('name: \'Elon Musk\'');
-    expect(built.main.js.code).toContain('component.refs.target ===');
-    expect(built.esm.css.code).toMatchSnapshot();
+    expect(built.esm.result.code).toMatch('export default TestComponent');
+    expect(built.esm.result.code).not.toMatch('TestComponent=function');
+    expect(built.esm.result.code).toMatch('name: \'Elon Musk\'');
+    expect(built.esm.result.code).toMatch('component.refs.__target ===');
+    expect(built.esm.result.map.sources).toHaveLength(2);
   });
 
-  it('cleans existing dist dir when exists', async () => {
-    const checkFile = path.join(__dirname, 'dist/check.txt');
-    await writeFile(checkFile, 'exists');
-
-    // file should exist (no error)
-    fs.stat(checkFile, (err) => { expect(err).toEqual(null); });
-
-    await buildComponent(pkg);
-
-    // file should not exist (does error)
-    fs.stat(checkFile, (err) => { expect(err).not.toEqual(null); });
-  });
-
-  it('compiles when output path is not "dist"', async () => {
-    const altOutputPathModule = path.join(__dirname, 'dist/minna-ui/index.es.mjs');
-    const altOutputPathMain = path.join(__dirname, 'dist/minna-ui/index.js');
-    const altOutputPathStyle = path.join(__dirname, 'dist/minna-ui/index.css');
-    const build = buildComponent({
-      ...pkg,
-      npm_package_module: altOutputPathModule,
-      npm_package_main: altOutputPathMain,
-      npm_package_style: altOutputPathStyle,
-    });
+  it('compiles package main bundle', async () => {
+    expect.assertions(6);
+    const build = buildComponent(pkg('main'));
     await expect(build).resolves.toBeDefined();
-    fs.stat(altOutputPathModule, (err) => { expect(err).toEqual(null); });
-    fs.stat(altOutputPathMain, (err) => { expect(err).toEqual(null); });
-    fs.stat(altOutputPathStyle, (err) => { expect(err).toEqual(null); });
+    const built = await build;
+    expect(built.main.result.code).toMatch('var TestComponent=function(');
+    expect(built.main.result.code).not.toMatch('export default TestComponent');
+    expect(built.main.result.code).toMatch('name:\'Elon Musk\'');
+    expect(built.main.result.code).toMatch('.refs.__target===');
+    expect(built.main.result.map.names).toContain('__name');
   });
 
-  it('throws an error when bad component syntax', async () => {
+  it('compiles package css bundle', async () => {
+    expect.assertions(3);
+    const build = buildComponent(pkg('css'));
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    expect(built.css.code).not.toEqual('');
+    expect(built.css.code).toMatchSnapshot();
+  });
+
+  // FIXME: Add banners in manually using https://github.com/Rich-Harris/magic-string
+  it('contains banner comments', async () => {
+    // expect.assertions(4);
+    expect.assertions(2);
+    const pkgData = pkg('banner');
+    const build = buildComponent(pkgData);
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.esm.result.code).toMatch(re);
+    // FIXME: rollup-plugin-butternut removes the banner
+    // expect(built.main.result.code).toMatch(re);
+    // FIXME: rollup-plugin-svelte doesn't have CSS banner support
+    // expect(built.css.code).toMatch(re);
+  });
+
+  it('cleans existing dist dir', async () => {
+    expect.assertions(2);
+    await mkdir(path.join(__dirname, 'dist/check'));
+    const checkFile = path.join(__dirname, 'dist/check/exists.txt');
+    await writeFile(checkFile, 'yes', 'utf8');
+    await expect(stat(checkFile)).resolves.toBeDefined();
+    await buildComponent(pkg('check'));
+    await expect(stat(checkFile)).rejects.toThrow();
+  });
+
+  it('writes data to disk', async () => {
+    expect.assertions(4);
+    const pkgData = pkg('some-dir');
+    const build = buildComponent(pkgData);
+    await expect(build).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_module)).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_main)).resolves.toBeDefined();
+    await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
+  });
+
+  it('throws an error when bad HTML syntax', async () => {
+    expect.assertions(1);
     const build = buildComponent({
-      ...pkg,
+      ...pkg('bad-syntax'),
       npm_package_svelte: sourcePathBadSyntax,
     });
     await expect(build).rejects.toThrow();

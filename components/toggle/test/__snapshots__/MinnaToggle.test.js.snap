@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MinnaToggle component should render correctly 1`] = `
+exports[`MinnaToggle component renders correctly with defaults 1`] = `
 "<div class=\\"toggle   \\" role=\\"switch\\" tabindex=\\"0\\" aria-checked=\\"undefined\\"><div class=\\"toggle-slider\\"></div>
     <div class=\\"toggle-on\\">ON</div>
     <div class=\\"toggle-off\\">OFF</div></div>"

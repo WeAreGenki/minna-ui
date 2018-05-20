@@ -613,8 +613,8 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.0.0"
   dependencies:
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.59.1"
     rollup-plugin-buble "0.19.2"
@@ -626,7 +626,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.0.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v1/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.1.11"
     del "3.0.0"
     postcss-load-config "1.2.0"
@@ -675,7 +675,7 @@
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
   version "0.0.0"
   dependencies:
-    html-minifier "3.5.15"
+    html-minifier "3.5.16"
 
 "@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
   version "0.0.0"
@@ -2799,9 +2799,9 @@ html-encoding-sniffer@^1.0.2:
   dependencies:
     whatwg-encoding "^1.0.1"
 
-html-minifier@3.5.15:
-  version "3.5.15"
-  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.15.tgz#f869848d4543cbfd84f26d5514a2a87cbf9a05e0"
+html-minifier@3.5.16:
+  version "3.5.16"
+  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.16.tgz#39f5aabaf78bdfc057fe67334226efd7f3851175"
   dependencies:
     camel-case "3.0.x"
     clean-css "4.1.x"

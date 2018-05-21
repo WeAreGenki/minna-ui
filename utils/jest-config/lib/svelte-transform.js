@@ -12,15 +12,9 @@ function process(src, filename) {
   const normalised = src.replace(re, '');
 
   const result = svelte.compile(normalised, {
-    css: false,
-    format: 'cjs',
     filename,
-    onwarn(warning, onwarn) {
-      /* istanbul ignore if */
-      if (!/A11y:/.test(warning.message)) {
-        onwarn(warning);
-      }
-    },
+    format: 'cjs',
+    css: false,
   });
 
   return {

@@ -22,7 +22,7 @@
   "dependencies": {
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-html": "^4.0.3",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jest": "^21.15.1"
   },
   "publishConfig": {

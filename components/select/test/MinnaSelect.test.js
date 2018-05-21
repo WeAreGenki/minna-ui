@@ -59,33 +59,37 @@ describe('MinnaSelect component', () => {
 
   it.skip('renders with required prop', () => {});
 
-  it.skip('shows on click', () => { });
+  it.skip('shows on click', () => {});
 
-  it.skip('hides on click outside the component', () => { });
+  it.skip('does not show on click when disabled', () => {});
+
+  it.skip('hides on click outside the component', () => {});
 
   it.skip('selects an item on click', () => {});
 
-  it.skip('shows on keypress enter', () => {});
+  it.skip('shows on enter key press', () => {});
 
-  it.skip('shows on keypress spacebar', () => {});
+  it.skip('shows on spacebar key press', () => {});
 
-  it.skip('shows on keypress down', () => {});
+  it.skip('shows on down key press', () => {});
 
   it.skip('shows automatically on focus', () => {});
 
-  it.skip('hides on keypress ESC', () => { });
+  it.skip('does not show on key press when disabled', () => {});
 
-  it.skip('does nothing on invalid keypress', () => {});
+  it.skip('hides on ESC key press', () => {});
 
-  it.skip('selects item on keypress enter', () => {});
+  it.skip('does nothing on invalid key press', () => {});
 
-  it.skip('selects next item on keypress down', () => {});
+  it.skip('selects item on enter key press', () => {});
 
-  it.skip('selects previous item on keypress up', () => {});
+  it.skip('selects next item on down key press', () => {});
 
-  it.skip('typing in input filters the shown options', () => { });
+  it.skip('selects previous item on up key press', () => {});
 
-  it.skip('input is cleared on keypress ESC', () => {});
+  it.skip('typing in input filters the shown options', () => {});
+
+  it.skip('input is cleared on ESC key press', () => {});
 
   it.skip('can dynamically add options', () => {});
 });

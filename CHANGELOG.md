@@ -9,14 +9,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.0] - 2018-05-23
+
+### Added
+
+- Unit tests for all packages. Coverage now at 100% 🎉
+- Wrote a simple readme for some packages but these are still a work in progress.
+
 ### Changed
 
+- Component builds are now powered by rollup, replacing our custom build script. Builds are much more flexible and reliable now.
 - New standalone option for `@minna-ui/postcss-config` to be used when `@minna-ui/css` is not installed.
+- Simplify jest svelte transform.
+- Updated package dependencies.
+
+### Fixed
+
+- Tweaked `@minna-ui/eslint-config` and `@minna-ui/jest-config` to work better with unit tests.
+- Some edge cases in CSS mixins which were discovered via new unit tests.
 
 ## 0.0.0 - 2018-05-18
 
 ### Added
 
-- Initial public release.
+- Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.0.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/MaxMilton/new-tab/compare/v0.0.0...v0.1.0

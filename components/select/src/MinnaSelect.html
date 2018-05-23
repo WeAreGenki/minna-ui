@@ -43,6 +43,7 @@
 -->
 
 <div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {__isOpen ? 'select-active' : ''}">
+  <!-- required="{required}" -->
   <input
     id="{id}"
     ref:__target
@@ -52,7 +53,6 @@
     placeholder="{filterable && __isOpen ? filterHelp : placeholder}"
     readonly="{!filterable || readonly || !__isOpen}"
     disabled="{disabled}"
-    required="{required}"
     aria-haspopup="listbox"
     on:click="__open()"
     on:focus="__open()"
@@ -103,9 +103,9 @@
       placeholder: 'Choose...',
 
       /** Optional native props */
-      // readonly: false,
-      // disabled: false,
-      // required: false,
+      readonly: false,
+      disabled: false,
+      // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
       __filteredOptions({ __isOpen, __input, filterable, options }) {

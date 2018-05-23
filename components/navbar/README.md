@@ -1,6 +1,7 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/navbar.svg)](https://www.npmjs.com/package/@minna-ui/navbar)
+[![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/navbar.svg)](https://bundlephobia.com/result?p=@minna-ui/navbar)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/navbar.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
 # `@minna-ui/navbar`

@@ -1,6 +1,7 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/toasts.svg)](https://www.npmjs.com/package/@minna-ui/toasts)
+[![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/toasts.svg)](https://bundlephobia.com/result?p=@minna-ui/toasts)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/toasts.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
 # `@minna-ui/toasts`

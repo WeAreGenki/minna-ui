@@ -1,6 +1,7 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/css.svg)](https://www.npmjs.com/package/@minna-ui/css)
+[![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/css.svg)](https://bundlephobia.com/result?p=@minna-ui/css)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/css.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
 # `@minna-ui/css`

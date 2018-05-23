@@ -1,6 +1,7 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/tabs.svg)](https://www.npmjs.com/package/@minna-ui/tabs)
+[![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/tabs.svg)](https://bundlephobia.com/result?p=@minna-ui/tabs)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/tabs.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
 # `@minna-ui/tabs`

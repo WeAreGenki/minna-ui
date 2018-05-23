@@ -1,6 +1,7 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/toggle.svg)](https://www.npmjs.com/package/@minna-ui/toggle)
+[![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/toggle.svg)](https://bundlephobia.com/result?p=@minna-ui/toggle)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/toggle.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
 # `@minna-ui/toggle`

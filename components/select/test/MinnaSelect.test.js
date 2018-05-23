@@ -234,7 +234,7 @@ describe('MinnaSelect component', () => {
   });
 
   it('shows on spacebar key press', () => {
-    expect.assertions(4);
+    expect.assertions(7);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
@@ -244,10 +244,15 @@ describe('MinnaSelect component', () => {
     const spy2 = jest.spyOn(component, '__open');
     expect(component.get().__isOpen).toEqual(false);
     const select = target.querySelector('.select');
-    const event = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    select.dispatchEvent(event);
+    const event1 = new KeyboardEvent('keydown', { key: ' ' }); // Spacebar
+    select.dispatchEvent(event1);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
+    expect(component.get().__isOpen).toEqual(true);
+    const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
+    select.dispatchEvent(event2);
+    expect(spy1).toHaveBeenCalledTimes(2);
+    expect(spy2).toHaveBeenCalledTimes(1); // shouldn't open again
     expect(component.get().__isOpen).toEqual(true);
     spy1.mockReset();
     spy1.mockRestore();

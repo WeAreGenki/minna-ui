@@ -1,6 +1,6 @@
 {
   "transform": {
-    "^.+.js$": "babel-jest",
+    "^.+\\.js$": "babel-jest",
     "^.+\\.(html|svg)$": "@minna-ui/jest-config/lib/svelte-transform.js",
     "^.+\\.css$": "@minna-ui/jest-config/lib/null-transform.js"
   },

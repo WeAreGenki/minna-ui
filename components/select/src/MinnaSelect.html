@@ -52,7 +52,6 @@
     placeholder="{filterable && __isOpen ? filterHelp : placeholder}"
     readonly="{!filterable || readonly || !__isOpen}"
     disabled="{disabled}"
-    required="{required}"
     aria-haspopup="listbox"
     on:click="__open()"
     on:focus="__open()"
@@ -103,9 +102,9 @@
       placeholder: 'Choose...',
 
       /** Optional native props */
-      // readonly: false,
-      // disabled: false,
-      // required: false,
+      readonly: false,
+      disabled: false,
+      // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
       __filteredOptions({ __isOpen, __input, filterable, options }) {
@@ -148,6 +147,7 @@
         this.__setIndex();
 
         // FIXME: Don't call this.set() twice because svelte doesn't queue changes
+        /* istanbul ignore else */
         if (this.get().filterable) {
           this.set({ __input: '' });
         }
@@ -161,7 +161,7 @@
 
       __emitInput() {
         // fire a synthetic "input" event (useful to trigger validation)
-        this.refs.__target.dispatchEvent(new Event('input', { bubbles: true }));
+        this.refs.__target.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
         this.__close();
       },
 
@@ -170,10 +170,10 @@
           // option selected via mouse
           event.preventDefault(); // don't trigger <input> blur event
 
-          if (!event.target.classList.contains('disabled')) {
+          if (!event.target.classList.contains('option-disabled')) {
             this.set({
               value: event.target.getAttribute('value'),
-              __input: event.target.innerText,
+              __input: event.target.textContent,
             });
             this.__emitInput();
           }
@@ -182,6 +182,7 @@
           const { __filteredOptions, __selected } = this.get();
           const option = __filteredOptions[__selected];
 
+          /* istanbul ignore else */
           if (!option.disabled) {
             this.set({
               value: option.id,

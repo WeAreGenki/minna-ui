@@ -161,7 +161,7 @@
 
       __emitInput() {
         // fire a synthetic "input" event (useful to trigger validation)
-        this.refs.__target.dispatchEvent(new Event('input', { bubbles: true }));
+        this.refs.__target.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
         this.__close();
       },
 
@@ -170,10 +170,10 @@
           // option selected via mouse
           event.preventDefault(); // don't trigger <input> blur event
 
-          if (!event.target.classList.contains('disabled')) {
+          if (!event.target.classList.contains('option-disabled')) {
             this.set({
               value: event.target.getAttribute('value'),
-              __input: event.target.innerText,
+              __input: event.target.textContent,
             });
             this.__emitInput();
           }

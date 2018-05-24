@@ -45,10 +45,7 @@
 
 -->
 
-<!--
-  TODO: Add ability to drag the toggle from one side to the other using mouse or
-  touch — must be high performance and not cause UI jank.
--->
+<!-- TODO: Ability to drag the toggle using mouse/touch in a high performance way. -->
 
   <div
     class="toggle {mini ? 'toggle-mini' : ''} {disabled !== undefined ? 'toggle-disabled' : ''} {value ? 'toggle-checked' : ''}"
@@ -66,18 +63,18 @@
 <script>
   export default {
     data: () => ({
-      /** Bind prop */
+      /* required bind prop */
       // value: true,
 
-      /** Optional props */
+      /* optional props */
       textOn: 'ON',
       textOff: 'OFF',
       mini: false,
 
-      /** Optional native props */
+      /* optional native props */
       disabled: undefined,
       // readonly: false, // TODO: Do we need this prop?
-      // required: false, // TODO: Do we need this prop?
+      // required: false, // TODO: Do we need this prop? + // FIXME: Add custom validation
     }),
     methods: {
       __toggle() {

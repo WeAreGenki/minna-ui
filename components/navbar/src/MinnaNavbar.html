@@ -69,17 +69,20 @@
       __show: false, // show hamburger menu?
       __hasScrolled: false,
 
-      /** Required props */
+      /* required props */
       // items: [],
 
-      /** Optional props */
-      // page: '', // should be "props.path"
+      /* optional props */
+      // page: '', // URL path; in sapper, you should pass in "props.path"
     }),
     oncreate() {
       let ticking = false;
 
       const setState = () => {
-        // document.documentElement.scrollTop is faster but window.pageYOffset is more compatible
+        /**
+         * Although `document.documentElement.scrollTop` is faster,
+         * `window.pageYOffset` has better cross-browser compatibility.
+         */
         this.set({ __hasScrolled: window.pageYOffset !== 0 });
         ticking = false;
       };

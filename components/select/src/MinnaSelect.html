@@ -5,12 +5,12 @@
   user to select from a list of shown options.
 
   Features:
-    - Automatically opens on focus for taster form input when using a keyboard
+    - Automatically opens on focus for faster form input when using a keyboard
       for navigating.
-    - User can filter through options (enabled by default).
+    - User can filter through options with instant visual feedback.
 
   USAGE:
-    Typical use example (all properties are required):
+    HTML markup for typical use:
 
       <MinnaSelect id="select-example" bind:value="example" options="[
         { id: 'ex1', text: 'Example 1' },
@@ -18,7 +18,7 @@
         { id: 'ex3', text: 'Example 3', disabled: true },
       ]"/>
 
-    Other optional properties are `readonly` and `disabled`.
+    See more available options/properties in the component data() below.
 
   NOTE:
     In the code, object properties starting with __ are safe to mangle; the name
@@ -30,17 +30,9 @@
 
 -->
 
-<!--
-  TODO: Possible future features (but avoid bloat or performance impact):
-    - Incorporate WAI-ARIA recommendations (once svelte can handle custom
-      boolean attributes).
-    - Scroll when overflowing.
-    - Multi-select (might be better to make a separate component).
-    - Horizontal divider to visually group options (maybe with optional title).
-    - Different listbox position when not enough space OR maybe just move the
-      viewport to be able to see the currently selected item if it's outside the
-      viewport.
--->
+<!-- TODO: Incorporate WAI-ARIA recommendations (once svelte can handle custom boolean attributes) -->
+
+<!-- TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen -->
 
 <div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {__isOpen ? 'select-active' : ''}">
   <input
@@ -89,19 +81,19 @@
       __input: '',
       __selected: 0, // index of the currently selected item
 
-      /** Bind prop */
+      /* required bind prop */
       // value: '',
 
-      /** Required props */
+      /* required props */
       // id: '',
       // options: [],
 
-      /** Optional props */
+      /* optional props */
       filterable: true,
       filterHelp: 'Filter...',
       placeholder: 'Choose...',
 
-      /** Optional native props */
+      /* optional native props */
       readonly: false,
       disabled: false,
       // required: false, // FIXME: Add a way to do custom validation

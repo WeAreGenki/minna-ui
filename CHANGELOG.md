@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Improved accessibility for form inputs and the toggle component. More noticeable visual focus indicator.
+- Update jest to v23.0.0 and rewrite preset to use the newly supported `jest-preset.js` (instead of `jest-preset.json`).
+- Updated package dependencies.
 
 ## [0.1.0] - 2018-05-23
 

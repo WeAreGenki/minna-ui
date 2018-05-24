@@ -174,7 +174,6 @@
   --btn-disabled-font-colour: var(--blue-grey-200);
   --btn-disabled-border-colour: var(--blue-grey-50);
   --btn-arrow-animate-speed: 200ms;
-  --btn-margin-between: 1.5rem; /* space between buttons */
   --btn-cta-bg-gradient: linear-gradient(var(--angle-1), var(--gradient-secondary-0), var(--gradient-secondary-100));
   --btn-cta-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--gradient-secondary-100) alpha(0.5)));
   --btn-dark-bg-gradient: var(--gradient-dark);

@@ -103,10 +103,7 @@ module.exports = async function run(env) {
       min,
     };
   } catch (error) {
-    /* istanbul ignore next */
     process.stderr.write(`[PostCSS] ERR: ${error.message}:\n${error.showSourceCode()}`);
-
-    /* istanbul ignore next */
-    throw error;
+    throw new Error(error);
   }
 };

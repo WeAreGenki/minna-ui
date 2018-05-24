@@ -96,7 +96,7 @@ describe('build-css tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it('throws an error when bad CSS syntax', async () => {
+  it('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', sourcePathBadSyntax));

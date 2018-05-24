@@ -47,18 +47,18 @@
 
 <!-- TODO: Ability to drag the toggle using mouse/touch in a high performance way. -->
 
-  <div
-    class="toggle {mini ? 'toggle-mini' : ''} {disabled !== undefined ? 'toggle-disabled' : ''} {value ? 'toggle-checked' : ''}"
-    role="switch"
-    tabindex="{disabled === undefined ? 0 : -1}"
-    aria-checked="{value}"
-    on:click="__toggle()"
-    on:keydown="__onKeyDown(event)"
-  >
-    <div class="toggle-slider"/>
-    <div class="toggle-on">{textOn}</div>
-    <div class="toggle-off">{textOff}</div>
-  </div>
+<div
+  class="toggle {mini ? 'toggle-mini' : ''} {disabled !== undefined ? 'toggle-disabled' : ''} {value ? 'toggle-checked' : ''}"
+  role="switch"
+  tabindex="{disabled === undefined ? 0 : -1}"
+  aria-checked="{value}"
+  on:click="__toggle()"
+  on:keydown="__onKeyDown(event)"
+>
+  <div class="toggle-slider"/>
+  <div class="toggle-on">{textOn}</div>
+  <div class="toggle-off">{textOff}</div>
+</div>
 
 <script>
   export default {
@@ -108,7 +108,9 @@
     /* FIXME: Can't parse when "--optimize-all" is not set */
     /* --toggle-optimize: var(--optimize-all, false); */
     --toggle-optimize: false;
+    --toggle-zindex: 1;
     --toggle-width: 8rem;
+    --toggle-padding: var(--btn-padding-y) 0;
     --toggle-on-font-colour: var(--white);
     --toggle-on-bg-colour: var(--green-500);
     --toggle-off-font-colour: var(--btn-font-colour);
@@ -120,17 +122,17 @@
     --toggle-hover-slider-bg-colour: var(--grey-200);
     --toggle-disabled-slider-bg-colour: var(--grey-100);
     --toggle-mini-width: calc(var(--toggle-width) / 1.7);
+    --toggle-mini-padding: calc(var(--btn-padding-y) / 2) 0;
     --toggle-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-colour) alpha(0.05));
   }
 
   /* the toggle purposely looks like .btn and uses many of the button variables */
   .toggle {
     position: relative;
-    z-index: 1; /* prevent repaint of other elements; promote to new stacking context */
+    z-index: var(--toggle-zindex); /* prevent repaint of other elements; promote to new stacking context */
     display: inline-flex;
-    align-items: center;
     width: var(--toggle-width);
-    padding: var(--btn-padding-y) 0;
+    padding: var(--toggle-padding);
     line-height: 1;
     color: var(--toggle-off-font-colour);
     text-align: center;
@@ -148,16 +150,19 @@
 
     &.toggle-mini {
       width: var(--toggle-mini-width);
-      padding: calc(var(--btn-padding-y) / 2) 0;
+      padding: var(--toggle-mini-padding);
     }
 
-    &:hover,
+    &:hover {
+      outline: var(--input-hover-outline);
+    }
+
     &:focus {
-      outline: none;
+      outline: var(--input-focus-outline);
     }
 
-    /* spacing when next to buttons */
-    /* TODO: Keep this? */
+    /* spacing between toggles or when next to buttons */
+    & + &,
     & + .btn,
     .btn + & {
       margin-left: var(--btn-margin-between);
@@ -198,7 +203,8 @@
     }
 
     .toggle-checked > & {
-      transform: translateX(102%); /* +2% to workaround overlap bug */
+      /* FIXME: In chrome/webkit you can see part of .toggle-mini outside the slider */
+      transform: translateX(100%);
     }
 
     .toggle-mini > & {
@@ -239,6 +245,12 @@
 
     @if var(--toggle-optimize) {
       will-change: auto;
+    }
+
+    &:hover,
+    &:focus {
+      /* pointer-events: none; */
+      outline: none;
     }
   }
 </style>

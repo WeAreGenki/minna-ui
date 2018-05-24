@@ -144,6 +144,7 @@
   --link-font-colour: var(--primary);
   --link-hover-font-colour: color-mod(var(--primary) blackness(22%));
   --hr-margin: 3rem 0;
+  --hr-border: 1px solid var(--grey-300);
   --li-margin-between: 0.5rem;
   --quote-font-size: 2rem;
   --quote-mark-font-size: 3em; /* em (not rem) so it's relative to the parent font size */
@@ -192,7 +193,7 @@
   --input-border-width: 1px;
   --input-border: var(--input-border-width) solid var(--grey-300);
   --input-radius: var(--radius-1);
-  --input-hover-border-colour: var(--grey-400);
+  --input-hover-outline: 2px solid var(--subtle);
   --input-focus-outline: 2px solid var(--primary);
   --input-invalid-colour: var(--red-500);
   --input-invalid-border: 2px solid var(--input-invalid-colour);

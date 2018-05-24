@@ -33,7 +33,7 @@ textarea {
   border-radius: var(--input-radius);
 
   &:hover {
-    border-color: var(--input-hover-border-colour);
+    outline: var(--input-hover-outline);
   }
 
   &:focus,

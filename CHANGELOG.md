@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New file size badge in README of the [`@minna-ui/css`](https://github.com/WeAreGenki/minna-ui/tree/master/css) and each component package. Please keep in mind for components it shows the file size of the JavaScript bundle but not the CSS bundle due to a limitation in the service.
+
+### Changed
+
+- Improved accessibility for form inputs and the toggle component. More noticeable visual focus indicator.
+
 ## [0.1.0] - 2018-05-23
 
 ### Added

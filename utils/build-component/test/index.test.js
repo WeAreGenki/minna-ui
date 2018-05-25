@@ -6,11 +6,13 @@ const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
 const del = require('del');
+const { runBin } = require('@minna-ui/jest-config/lib/helpers.js'); // eslint-disable-line import/no-extraneous-dependencies
 const buildComponent = require('../index.js');
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
+const cliPath = require.resolve('../cli.js');
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
 const dist = path.join(__dirname, 'dist');
@@ -112,6 +114,24 @@ describe('build-component tool', () => {
       ...pkg('bad-syntax'),
       npm_package_svelte: sourcePathBadSyntax,
     });
-    await expect(build).rejects.toThrow();
+    await expect(build).rejects.toThrowErrorMatchingSnapshot();
+  });
+});
+
+
+describe('build-component CLI', () => {
+  it('runs without error', async () => {
+    expect.assertions(1);
+    const result = runBin(cliPath, [], pkg('cli'));
+    await expect(result).resolves.toBeDefined();
+  });
+
+  it('errors when bad HTML syntax', async () => {
+    expect.assertions(1);
+    const result = runBin(cliPath, [], {
+      ...pkg('cli-bad-syntax'),
+      npm_package_svelte: sourcePathBadSyntax,
+    });
+    await expect(result).rejects.toContain('ERR_INVALID_ARG_TYPE');
   });
 });

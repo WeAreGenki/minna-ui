@@ -23,6 +23,7 @@ module.exports = {
     '!**/.*rc.js',
     '!*.config.js',
     '!**/*.config.js',
+    '!**/jest-preset.js',
   ],
   coveragePathIgnorePatterns: [
     '/dist/',

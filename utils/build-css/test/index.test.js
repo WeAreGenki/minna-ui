@@ -119,7 +119,7 @@ describe('build-css CLI', () => {
   it('errors when bad CSS syntax', async () => {
     expect.assertions(2);
     const result = runBin(cliPath, [], pkg('cli-bad-syntax', sourcePathBadSyntax));
-    await expect(result).rejects.toMatch('Unclosed block');
-    await expect(result).rejects.toMatch('CssSyntaxError');
+    await expect(result).rejects.toContainEqual(expect.stringMatching('Unclosed block'));
+    await expect(result).rejects.toContainEqual(expect.stringMatching('CssSyntaxError'));
   });
 });

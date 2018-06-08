@@ -118,7 +118,6 @@ describe('build-component tool', () => {
   });
 });
 
-
 describe('build-component CLI', () => {
   it('runs without error', async () => {
     expect.assertions(1);
@@ -126,12 +125,13 @@ describe('build-component CLI', () => {
     await expect(result).resolves.toBeDefined();
   });
 
+  // TODO: Test is slow; improve performance
   it('errors when bad HTML syntax', async () => {
     expect.assertions(1);
     const result = runBin(cliPath, [], {
       ...pkg('cli-bad-syntax'),
       npm_package_svelte: sourcePathBadSyntax,
     });
-    await expect(result).rejects.toContain('ERR_INVALID_ARG_TYPE');
+    await expect(result).rejects.toContainEqual(expect.stringMatching('ERR_INVALID_ARG_TYPE'));
   });
 });

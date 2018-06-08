@@ -4,25 +4,26 @@ const { spawn } = require('child_process');
 
 function runBin(path, args = [], env = process.env) {
   return new Promise((resolve, reject) => {
-    let stdout = '';
-    let stderr = '';
+    const stdout = [];
+    const stderr = [];
 
-    const bin = spawn(path, args, { env });
+    const child = spawn(path, args, { env });
 
-    bin.on('error', (error) => {
+    child.on('error', (error) => {
+      /* istanbul ignore next */
       reject(error);
     });
 
-    bin.stdout.on('data', (data) => {
-      stdout += data.toString();
+    child.stdout.on('data', (data) => {
+      stdout.push(data.toString());
     });
 
-    bin.stderr.on('data', (data) => {
-      stderr += data.toString();
+    child.stderr.on('data', (data) => {
+      stderr.push(data.toString());
     });
 
-    bin.on('close', (code) => {
-      if (stderr || code !== 0) {
+    child.on('close', (code) => {
+      if (stderr.length || code !== 0) {
         reject(stderr);
       } else {
         resolve(stdout);

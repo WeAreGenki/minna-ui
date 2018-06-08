@@ -1,28 +1,15 @@
-/* eslint-env browser */
+/** @jest-environment node */
 
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
-const { promisify } = require('util');
 const babel = require('@babel/core');
 const babelPreset = require('../babel-preset.js');
-const svelteTransform = require('../lib/svelte-transform.js');
-const nullTransform = require('../lib/null-transform.js');
+const { runBin } = require('../lib/helpers.js');
 
-const readFile = promisify(fs.readFile);
-const sourcePath = path.join(__dirname, '../fixtures/TestComponent.html');
-const sourceCssPath = path.join(__dirname, '../fixtures/styles.css');
-
-let source = '';
-let sourceCss = '';
-
-beforeAll(async () => {
-  [source, sourceCss] = await Promise.all([
-    readFile(sourcePath, 'utf8'),
-    readFile(sourceCssPath, 'utf8'),
-  ]);
-});
+const cliGood = path.join(__dirname, '../fixtures/cli-good.js');
+const cliError = path.join(__dirname, '../fixtures/cli-error.js');
+const cliExitCode = path.join(__dirname, '../fixtures/cli-exit-code.js');
 
 describe('Jest test runner', () => {
   it('runs basic test', () => {
@@ -58,61 +45,25 @@ describe('Babel preset', () => {
   });
 });
 
-describe('Null transform', () => {
-  it('outputs empty content when importing CSS', () => {
-    const styles = nullTransform.process(sourceCss, sourceCssPath);
-    expect(styles).toEqual('');
-  });
-});
-
-describe('Svelte transform', () => {
-  it('compiles and mounts a component', () => {
+describe('Helper functions', () => {
+  it('run CLI binary without error', async () => {
     expect.assertions(2);
-    let SvelteComponent = svelteTransform.process(source, sourcePath);
-    expect(typeof SvelteComponent.code).toEqual('string');
-    SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
-
-    const target = document.createElement('div');
-    new SvelteComponent({ target });
-    expect(target.innerHTML).toMatchSnapshot();
+    const result = runBin(cliGood);
+    await expect(result).resolves.toBeDefined();
+    await expect(result).resolves.toContain('OK');
   });
 
-  it('has access to Svelte prototype when mounted', () => {
-    expect.assertions(9);
-    let SvelteComponent = svelteTransform.process(source, sourcePath);
-    SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
-
-    const target = document.createElement('div');
-    const component = new SvelteComponent({ target });
-
-    // Svelte public methods
-    const prototype = Object.getPrototypeOf(component);
-    expect(prototype).toHaveProperty('destroy');
-    expect(prototype).toHaveProperty('get');
-    expect(prototype).toHaveProperty('fire');
-    expect(prototype).toHaveProperty('on');
-    expect(prototype).toHaveProperty('set');
-
-    expect(component.get().__name).toEqual('Elon Musk');
-    expect(component.get().__reversed).toEqual('ksuM nolE');
-    component.set({ __name: 'Vladimir Putin' });
-    expect(component.refs.__target.textContent).toEqual('test Vladimir Putin');
-    expect(component.refs.__nameReversed.textContent).toEqual('test nituP rimidalV');
+  it('errors on CLI binary with error', async () => {
+    expect.assertions(2);
+    const result = runBin(cliError);
+    await expect(result).rejects.toBeDefined();
+    await expect(result).rejects.toContain('BAD');
   });
 
-  // XXX: Uses require() instead of process() then eval() so imports are relative
-  it('mounts components which import ES6 modules', () => {
-    expect.assertions(5);
-    function wrapper() {
-      // eslint-disable-next-line global-require
-      const ComponentImports = require('../fixtures/TestComponentImports.html');
-      const target = document.createElement('div');
-      const component = new ComponentImports({ target });
-      expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');
-      expect(component.get().__loud).toEqual('ELON MUSK');
-      expect(component.get().__quiet).toEqual('elon musk');
-      expect(target.innerHTML).toMatchSnapshot();
-    }
-    expect(wrapper).not.toThrow();
+  it('errors on CLI binary which has non-zero exit', async () => {
+    expect.assertions(2);
+    const result = runBin(cliExitCode);
+    await expect(result).rejects.toBeDefined();
+    await expect(result).rejects.toEqual([]); // empty array
   });
 });

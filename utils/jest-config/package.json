@@ -24,16 +24,16 @@
     "babel-preset.js"
   ],
   "peerDependencies": {
-    "jest": "^22.4.3",
-    "svelte": "^2.5.1"
+    "jest": "^23.0.1",
+    "svelte": "^2.7.2"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.48",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.48",
-    "@types/jest": "^22.2.3",
-    "@types/node": "^10.1.2",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.49",
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.2",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.0.0"
+    "babel-jest": "^23.0.1"
   },
   "publishConfig": {
     "access": "public"

@@ -25,6 +25,7 @@ install:
   - yarn install --frozen-lockfile
 
 script:
+  - ln -s /usr/bin/nodejs /usr/bin/node
   - yarn run lint
   - yarn run test-ci
   - codecov

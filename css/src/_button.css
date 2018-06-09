@@ -94,14 +94,3 @@
 .btn-mini {
   padding: calc(var(--btn-padding-y) / 2) calc(var(--btn-padding-x) / 2);
 }
-
-/* Add whitespace between buttons */
-
-.btn + .btn {
-  margin-left: var(--btn-margin-between);
-
-  /* but not when in a flex column */
-  .f-col & {
-    margin-left: unset;
-  }
-}

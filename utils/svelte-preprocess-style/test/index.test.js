@@ -154,15 +154,11 @@ describe('Svelte style preprocessor', () => {
   });
 
   it('compiles a component\'s CSS', async () => {
-    expect.assertions(3);
-    const spy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    expect.assertions(2);
     const processed = await preprocess(source, preprocessOpts);
     const result = compile(processed.toString());
     expect(result.css.code).not.toBeFalsy();
     expect(result.css.code).toMatchSnapshot();
-    expect(spy).toHaveBeenCalled(); // should have warned about unused CSS selector
-    spy.mockReset();
-    spy.mockRestore();
   });
 
   it('prints error on bad CSS syntax', async () => {

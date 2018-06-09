@@ -25,6 +25,7 @@ install:
   - yarn install --frozen-lockfile
 
 script:
+  - sudo ln -s $(which node) /usr/bin/node # fix missing bin in Ubuntu
   - yarn run lint
   - yarn run test-ci
   - codecov

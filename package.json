@@ -15,8 +15,8 @@
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
-    "lint:css": "stylelint \"**/*.{html,css}\" --cache --cache-location=/tmp/",
-    "lint:js": "eslint --ignore-path .gitignore --ext .js,.html .",
+    "lint:css": "stylelint **/*.{html,css} --cache --cache-location=/tmp/",
+    "lint:js": "eslint --ignore-path .gitignore --ext js,html .",
     "lint": "yarn lint:css && yarn lint:js",
     "test": "jest",
     "test-ci": "yarn test --coverage --runInBand --ci",
@@ -33,10 +33,10 @@
     "@minna-ui/stylelint-config": "file:utils/stylelint-config",
     "codecov": "3.0.2",
     "eslint": "4.19.1",
-    "jest": "22.4.4",
+    "jest": "23.1.0",
     "lerna": "3.0.0-beta.21",
     "postcss": "6.0.22",
     "stylelint": "9.2.0",
-    "svelte": "2.6.3"
+    "svelte": "2.7.2"
   }
 }

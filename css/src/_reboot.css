@@ -79,7 +79,7 @@ img {
 hr {
   margin: var(--hr-margin);
   border: 0;
-  border-top: 1px solid var(--grey-300);
+  border-top: var(--hr-border);
 }
 
 /* Abbreviations */

@@ -18,7 +18,7 @@
   "main": "index.js",
   "peerDependencies": {
     "postcss": "^6.0.22",
-    "svelte": "^2.5.1"
+    "svelte": "^2.7.2"
   },
   "dependencies": {
     "postcss-load-config": "^1.2.0",

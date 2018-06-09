@@ -4,7 +4,6 @@
 
 'use strict';
 
-/* istanbul ignore next */
 const fs = require('fs');
 const { basename, dirname } = require('path');
 const { promisify } = require('util');
@@ -23,6 +22,11 @@ const writeFile = promisify(fs.writeFile);
  * @param {Array} warnings List of warnings to iterate over.
  */
 const compileWarn = (origin, level, warnings) => {
+  /* istanbul ignore if */
+  if (warnings.length && level === 'ERR') {
+    process.exitCode = 1; // prevents tests running too long
+  }
+
   warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
@@ -103,10 +107,7 @@ module.exports = async function run(env) {
       min,
     };
   } catch (error) {
-    /* istanbul ignore next */
     process.stderr.write(`[PostCSS] ERR: ${error.message}:\n${error.showSourceCode()}`);
-
-    /* istanbul ignore next */
-    throw error;
+    throw new Error(error);
   }
 };

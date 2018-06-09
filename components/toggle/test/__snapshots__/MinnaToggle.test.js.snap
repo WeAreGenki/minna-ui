@@ -2,6 +2,6 @@
 
 exports[`MinnaToggle component renders correctly with no props 1`] = `
 "<div class=\\"toggle   \\" role=\\"switch\\" tabindex=\\"0\\" aria-checked=\\"undefined\\"><div class=\\"toggle-slider\\"></div>
-    <div class=\\"toggle-on\\">ON</div>
-    <div class=\\"toggle-off\\">OFF</div></div>"
+  <div class=\\"toggle-on\\">ON</div>
+  <div class=\\"toggle-off\\">OFF</div></div>"
 `;

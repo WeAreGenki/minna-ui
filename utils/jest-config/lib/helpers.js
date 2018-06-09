@@ -9,8 +9,7 @@ function runBin(path, args = [], env = process.env) {
 
     const child = spawn(path, args, { env });
 
-    child.on('error', (error) => {
-      /* istanbul ignore next */
+    child.on('error', /* istanbul ignore next */ (error) => {
       reject(error);
     });
 

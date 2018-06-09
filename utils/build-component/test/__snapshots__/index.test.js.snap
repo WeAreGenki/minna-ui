@@ -5,4 +5,4 @@ exports[`build-component tool compiles package css bundle 1`] = `
 "
 `;
 
-exports[`build-component tool throws an error when bad HTML syntax 1`] = `"The \\"chunk\\" argument must be one of type string or Buffer. Received type object"`;
+exports[`build-component tool throws an error when bad HTML syntax 1`] = `"Template must be a string"`;

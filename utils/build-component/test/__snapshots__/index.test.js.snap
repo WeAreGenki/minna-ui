@@ -4,5 +4,3 @@ exports[`build-component tool compiles package css bundle 1`] = `
 ":root{--body-margin:0}.text.svelte-1mn4hsh{color:hsl(0, 100%, 50%)}.text.svelte-1mn4hsh:focus{background:hsl(0, 0%, 0%)}.wrapper.svelte-1mn4hsh>.text.svelte-1mn4hsh{margin-top:1rem}@media screen and (min-width: 30em){body{margin:var(--body-margin) }}
 "
 `;
-
-exports[`build-component tool throws an error when bad HTML syntax 1`] = `"Template must be a string"`;

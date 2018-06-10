@@ -15,7 +15,7 @@
   margin: 0;
   color: var(--card-touch-font-colour);
   filter: var(--card-touch-shadow);
-  transition: all var(--card-touch-animate-speed) ease;
+  transition: transform var(--card-touch-animate-speed-1), filter var(--card-touch-animate-speed-2);
 
   @if var(--card-touch-optimize) {
     will-change: transform, filter;

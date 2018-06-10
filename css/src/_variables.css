@@ -218,8 +218,9 @@
   --card-touch-shadow:
     drop-shadow(var(--shadow-light-1))
     drop-shadow(var(--shadow-light-2));
-  --card-touch-animate-speed: 160ms;
-  --card-touch-animate-distance: -7px;
+  --card-touch-animate-speed-1: 180ms;
+  --card-touch-animate-speed-2: 240ms;
+  --card-touch-animate-distance: -3px;
   --card-touch-hover-shadow:
     drop-shadow(var(--shadow))
     drop-shadow(0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.07)));

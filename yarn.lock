@@ -656,7 +656,7 @@
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.1.0"
   dependencies:
-    autoprefixer "^8.6.1"
+    autoprefixer "^8.6.2"
     css-mqpacker "^6.0.2"
     postcss-at-rules-variables "^0.1.5"
     postcss-calc "^6.0.1"
@@ -964,12 +964,23 @@ atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
-autoprefixer@^8.0.0, autoprefixer@^8.6.1:
+autoprefixer@^8.0.0:
   version "8.6.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-8.6.1.tgz#cb186e6c904cd54a4af7bda078fd27a1fddc7be5"
   dependencies:
     browserslist "^3.2.8"
     caniuse-lite "^1.0.30000850"
+    normalize-range "^0.1.2"
+    num2fraction "^1.2.2"
+    postcss "^6.0.22"
+    postcss-value-parser "^3.2.3"
+
+autoprefixer@^8.6.2:
+  version "8.6.2"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-8.6.2.tgz#51d42ff13243820a582a53ecca20dedaeb7f2efd"
+  dependencies:
+    browserslist "^3.2.8"
+    caniuse-lite "^1.0.30000851"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^6.0.22"
@@ -1344,7 +1355,7 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000850:
+caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000850, caniuse-lite@^1.0.30000851:
   version "1.0.30000851"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000851.tgz#3b498aebf9f92cf6cff4ab54d13b557c0b590533"
 

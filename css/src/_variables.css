@@ -155,11 +155,9 @@
 
   --nav-link-padding-x: 1.3rem;
   --nav-link-padding-y: 0.9rem;
-  --side-nav-link-margin-y: 0.2rem;
+  --side-nav-link-margin: 0;
   --side-nav-active-font-colour: var(--link-hover-font-colour);
   --side-nav-active-bg-colour: var(--light);
-  --side-nav-border-width: 0.2rem;
-  --side-nav-border-colour: var(--gradient-primary-70);
   --footer-margin-y: 5rem;
   --footer-font-colour: var(--subtle);
 

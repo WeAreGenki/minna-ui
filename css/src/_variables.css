@@ -248,9 +248,9 @@
 
   --label-padding: 0.04rem 0.4rem 0.185rem;
   --label-font-size: 90%;
-  --label-font-colour: var(--dark);
+  --label-font-colour: var(--blue-grey-700);
+  --label-bg-colour: var(--light);
   --label-alignment: 0.1rem;
-  --label-border: 1px solid var(--gradient-dark-40);
   --label-border-radius: var(--radius-1);
   --label-margin-between: 1rem;
 

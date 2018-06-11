@@ -8,7 +8,7 @@
   font-size: var(--label-font-size);
   color: var(--label-font-colour);
   vertical-align: var(--label-alignment);
-  border: var(--label-border);
+  background-color: var(--label-bg-colour);
   border-radius: var(--label-border-radius);
 }
 

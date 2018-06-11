@@ -99,6 +99,7 @@
   --secondary: var(--gradient-secondary-90);
   --dark: var(--gradient-dark-90);
   --light: hsl(213, 35%, 94%);
+  --neutral: hsl(200, 18%, 44%);
   --subtle: var(--blue-grey-200);
   --body-font-colour: var(--gradient-dark-80);
   --body-bg-colour: var(--grey-50);

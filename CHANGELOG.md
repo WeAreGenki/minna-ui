@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2018-06-14
+
 ### Added
 
-- New file size badge in README of the [`@minna-ui/css`](https://github.com/WeAreGenki/minna-ui/tree/master/css) and each component package. Please keep in mind for components it shows the file size of the JavaScript bundle but not the CSS bundle due to a limitation in the service.
+- New file size badge in README of the [`@minna-ui/css`](https://github.com/WeAreGenki/minna-ui/tree/master/css) and each component package. Please keep in mind, for components, it shows the file size of the JavaScript bundle but not the CSS bundle due to a limitation in the service.
+- New neutral font colour.
+- Unit tests for CLI scripts.
 
 ### Removed
 
@@ -20,6 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Improved accessibility for form inputs and the toggle component. More noticeable visual focus indicator.
+- Simplified side nav styles.
+- Labels are now less prominent.
+- Refine CSS animations for `.card-touch`.
 - Update jest to v23.0.0 and rewrite preset to use the newly supported `jest-preset.js` (instead of `jest-preset.json`).
 - Updated package dependencies.
 
@@ -48,5 +55,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/MaxMilton/new-tab/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/MaxMilton/new-tab/compare/v0.0.0...v0.1.0

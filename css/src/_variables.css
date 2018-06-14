@@ -99,6 +99,7 @@
   --secondary: var(--gradient-secondary-90);
   --dark: var(--gradient-dark-90);
   --light: hsl(213, 35%, 94%);
+  --neutral: hsl(200, 18%, 44%);
   --subtle: var(--blue-grey-200);
   --body-font-colour: var(--gradient-dark-80);
   --body-bg-colour: var(--grey-50);
@@ -154,11 +155,9 @@
 
   --nav-link-padding-x: 1.3rem;
   --nav-link-padding-y: 0.9rem;
-  --side-nav-link-margin-y: 0.2rem;
+  --side-nav-link-margin: 0;
   --side-nav-active-font-colour: var(--link-hover-font-colour);
   --side-nav-active-bg-colour: var(--light);
-  --side-nav-border-width: 0.2rem;
-  --side-nav-border-colour: var(--gradient-primary-70);
   --footer-margin-y: 5rem;
   --footer-font-colour: var(--subtle);
 
@@ -218,8 +217,9 @@
   --card-touch-shadow:
     drop-shadow(var(--shadow-light-1))
     drop-shadow(var(--shadow-light-2));
-  --card-touch-animate-speed: 160ms;
-  --card-touch-animate-distance: -7px;
+  --card-touch-animate-speed-1: 180ms;
+  --card-touch-animate-speed-2: 240ms;
+  --card-touch-animate-distance: -3px;
   --card-touch-hover-shadow:
     drop-shadow(var(--shadow))
     drop-shadow(0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.07)));
@@ -247,9 +247,9 @@
 
   --label-padding: 0.04rem 0.4rem 0.185rem;
   --label-font-size: 90%;
-  --label-font-colour: var(--dark);
+  --label-font-colour: var(--blue-grey-700);
+  --label-bg-colour: var(--light);
   --label-alignment: 0.1rem;
-  --label-border: 1px solid var(--gradient-dark-40);
   --label-border-radius: var(--radius-1);
   --label-margin-between: 1rem;
 

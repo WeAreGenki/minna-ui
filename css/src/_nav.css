@@ -11,15 +11,13 @@
 
 .sidenav-link {
   padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
-  margin: var(--side-nav-link-margin-y) 0;
-  border-left: var(--side-nav-border-width) solid transparent;
+  margin: var(--side-nav-link-margin);
 }
 
 .sidenav-link-active {
   color: var(--side-nav-active-font-colour);
-  text-decoration: none;
+  text-decoration: underline;
   background-color: var(--side-nav-active-bg-colour);
-  border-color: var(--side-nav-border-colour);
 }
 
 /* Footer */

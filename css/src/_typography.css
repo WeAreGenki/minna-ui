@@ -17,6 +17,11 @@
 /* Font base */
 
 body {
+  /**
+   * TODO: Add to docs: if using a web font add "font-display: optional;" and
+   * still use fallback for best accessibility (browser will decide if it should
+   * use the web font or not, e.g. when connection speed is slow).
+   */
   font-family: var(--font-family);
   text-rendering: var(--font-rendering);
   font-variant-ligatures: var(--font-variant);
@@ -103,6 +108,28 @@ li { margin-bottom: var(--li-margin-between); } /* more space between list items
   list-style: none;
 }
 
+/* Tables */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tbody > tr:nth-child(odd) {
+  background: #eee;
+
+  /* REF: https://stripe.com/au/connect/pricing#pricing-table */
+
+  /* &:before {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    content: "";
+    background: #eee;
+  } */
+}
+
 /* Quotes */
 
 .quote {
@@ -132,6 +159,7 @@ li { margin-bottom: var(--li-margin-between); } /* more space between list items
 
 /* Code */
 
+.mono,
 code {
   display: inline-block;
   padding: 0.1rem 0.4rem;

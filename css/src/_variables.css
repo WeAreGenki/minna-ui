@@ -117,8 +117,8 @@
 
   /* Typography */
 
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Cantarell, "Helvetica Neue", sans-serif;
-  --font-family-monospace: monospace;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --font-rendering: optimizeSpeed;
   --font-variant: none;
   --use-fluid-font-size: false; /* dynamic font size based on viewport width */

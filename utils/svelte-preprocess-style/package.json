@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "postcss-load-config": "^1.2.0",
-    "postcss-selector-parser": "^4.0.0"
+    "postcss-selector-parser": "^5.0.0-rc.3"
   },
   "publishConfig": {
     "access": "public"

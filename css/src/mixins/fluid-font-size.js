@@ -58,13 +58,18 @@ function convertSize(size, outputPx = false) {
   if (outputPx && (unit === 'rem' || unit === 'em')) {
     // convert rem or em into px
     return `${parseFloat(size) * baseSize}px`;
-  } else if (!outputPx && unit === 'px') {
+  }
+
+  if (!outputPx && unit === 'px') {
     // convert px into rem
     return `${parseFloat(size) / baseSize}rem`;
-  } else if (!outputPx && unit === 'em') {
+  }
+
+  if (!outputPx && unit === 'em') {
     // change unit from em to rem
     return `${parseFloat(size)}rem`;
   }
+
   // doesn't need converting so return as is
   return size;
 }

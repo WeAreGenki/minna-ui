@@ -116,7 +116,7 @@ table {
 }
 
 tbody > tr:nth-child(odd) {
-  background: #eee;
+  background: var(--blue-grey-100);
 
   /* REF: https://stripe.com/au/connect/pricing#pricing-table */
 

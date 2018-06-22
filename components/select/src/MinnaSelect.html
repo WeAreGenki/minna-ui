@@ -102,8 +102,9 @@
       __filteredOptions({ __isOpen, __input, filterable, options }) {
         if (!__isOpen || !filterable || __input === '') return options;
 
-        return options.filter(option =>
-          option.text.toLowerCase().indexOf(__input.toLowerCase()) > -1);
+        return options.filter(
+          option => option.text.toLowerCase().indexOf(__input.toLowerCase()) > -1
+        );
       },
     },
     onstate({ changed, current }) {
@@ -121,7 +122,9 @@
 
         if (value) {
           // save the current item's index for highlighting in the options
-          this.set({ __selected: __filteredOptions.findIndex(option => option.id === value) });
+          this.set({
+            __selected: __filteredOptions.findIndex(option => option.id === value),
+          });
         }
       },
 

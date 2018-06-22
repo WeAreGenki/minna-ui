@@ -30,10 +30,10 @@
  */
 module.exports = (mixin, side, size, colour, isPseudo) => {
   if (
-    side !== 'top' &&
-    side !== 'right' &&
-    side !== 'bottom' &&
-    side !== 'left'
+    side !== 'top'
+    && side !== 'right'
+    && side !== 'bottom'
+    && side !== 'left'
   ) {
     throw new Error(`Side is "${side}" but expected one of: top, right, bottom, left`);
   }

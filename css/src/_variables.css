@@ -40,8 +40,7 @@
 
   /* Grid */
 
-  --container-width-max: 75rem; /* 1200px */
-  --container-fluid-font-size-width-max: 57rem; /* only used when --use-fluid-font-size is true */
+  --container-width-max: 54em; /* 1188px @ 22px font size */
   --container-narrow-width-max: 30rem;
   --item-size: 1fr;
   --cols: auto;
@@ -119,42 +118,43 @@
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  --font-rendering: optimizeSpeed;
-  --font-variant: none;
-  --use-fluid-font-size: false; /* dynamic font size based on viewport width */
-  --fluid-font-size-from: 30em; /* start growing font from this screen width */
-  --fluid-font-size-until: 90em; /* stop growing font size at this screen width */
-  --font-size: 1rem; /* use the browser's default font size, normally 16px */
-  --font-size-s: 1.125rem; /* only used when --use-fluid-font-size is false */
-  --font-size-l: 1.3125rem;
+  --font-size-min: 1em; /* use the browser's default font size, normally 16px */
+  --font-size-max: 1.375em; /* 22px */
+  --font-size-from: 30.01em; /* start growing font from this screen width */
+  --font-size-until: var(--container-width-max); /* stop growing font size at this screen width */
   --font-weight-light: 300;
   --font-weight: 400; /* browser default */
   --font-weight-heavy: 700; /* browser default */
-  --line-height: 1.25;
-  --headline-font-size: 6rem;
-  --h1-font-size: 3rem;
-  --h2-font-size: 2.25rem;
-  --h3-font-size: 1.5rem;
-  --h4-font-size: 1.25rem;
-  --h5-font-size: 1rem;
-  --h6-font-size: 0.875rem;
+  --font-rendering: optimizeSpeed;
+  --font-variant: none;
+  --line-height: 1.5;
+  /* font size according to modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
+  --headline-font-size: 5.063em;
+  --h1-font-size: 3.375em;
+  --h2-font-size: 2.813em;
+  --h3-font-size: 2.25em;
+  --h4-font-size: 1.875em;
+  --h5-font-size: 1.5em;
+  --h6-font-size: 1.25em;
   --heading-small-font-colour: var(--grey-500);
-  --paragraph-line-height: 1.5;
-  --paragraph-lead-font-size: 1.625rem;
-  --link-click-area: 0.4rem; /* reduce this if your links are overlapping */
+  --heading-font-weight: var(--font-weight);
+  --paragraph-line-height: 1.762;
+  --paragraph-line-height: 1.7;
+  --paragraph-lead-font-size: 1.5em;
+  --link-click-area: 0.4em; /* reduce this if your links are overlapping */
   --link-font-colour: var(--primary);
   --link-hover-font-colour: color-mod(var(--primary) blackness(22%));
   --hr-margin: 3rem 0;
   --hr-border: 1px solid var(--grey-300);
   --li-margin-between: 0.5rem;
-  --quote-font-size: 2rem;
+  --quote-font-size: 2em;
   --quote-mark-font-size: 3em; /* em (not rem) so it's relative to the parent font size */
   --abbr-underline-colour: color-mod(var(--body-font-colour lightness(25%)));
 
   /* Navigation */
 
   --nav-link-padding-x: 1.3rem;
-  --nav-link-padding-y: 0.9rem;
+  --nav-link-padding-y: 0.7rem;
   --side-nav-link-margin: 0;
   --side-nav-active-font-colour: var(--link-hover-font-colour);
   --side-nav-active-bg-colour: var(--light);
@@ -163,8 +163,8 @@
 
   /* Buttons */
 
-  --btn-padding-x: 1.875rem;
-  --btn-padding-y: 0.75rem;
+  --btn-padding-x: 1.75rem;
+  --btn-padding-y: 0.682rem;
   --btn-font-colour: var(--blue-grey-800);
   --btn-bg-colour: var(--white);
   --btn-radius: var(--radius-1);
@@ -184,8 +184,8 @@
 
   --form-group-margin: 1.5rem;
   --input-padding-x: 1rem;
-  --input-padding-y: 0.6rem;
-  --input-font-size: 1.2rem;
+  --input-padding-y: 0.5rem;
+  --input-font-size: 1.2em;
   --input-font-colour: var(--body-font-colour);
   --input-bg-colour: var(--white);
   --input-border-width: 1px;
@@ -246,7 +246,7 @@
   /* Labels */
 
   --label-padding: 0.04rem 0.4rem 0.185rem;
-  --label-font-size: 90%;
+  --label-font-size: 0.9em;
   --label-font-colour: var(--blue-grey-700);
   --label-bg-colour: var(--light);
   --label-alignment: 0.1rem;

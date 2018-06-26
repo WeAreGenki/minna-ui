@@ -10,20 +10,11 @@
 */
 
 .con {
+  max-width: var(--container-width-max);
   padding-right: var(--gutter-col);
   padding-left: var(--gutter-col);
   margin-right: auto;
   margin-left: auto;
-
-  /**
-   * Because of the way fluid font size works you'll typically want a more
-   * narrow max-width.
-   */
-  @if var(--use-fluid-font-size) {
-    max-width: var(--container-fluid-font-size-width-max);
-  } @else { /* stylelint-disable-line */
-    max-width: var(--container-width-max);
-  }
 
   @media (--screen-large) {
     padding-right: calc(var(--gutter-col) * 2);

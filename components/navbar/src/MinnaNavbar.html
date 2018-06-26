@@ -59,7 +59,7 @@
       </svg>
     </button>
 
-    <a href="/" title="Home">
+    <a href="/" class="lh1" title="Home">
       <svg class="logo">
         <use xlink:href="#logo"/>
       </svg>
@@ -126,15 +126,17 @@
     --navbar-optimize: true;
     --navbar-zindex: 5;
     --navbar-bg-colour: var(--body-bg-colour);
+    --navbar-active-font-colour: var(--link-hover-font-colour);
     --navbar-animate-distance: 3px;
     --navbar-animate-speed: 200ms;
     --navbar-shadow-fade-speed: 300ms;
     --navbar-shadow: drop-shadow(0 0.5rem 1rem var(--shadow-base));
     --navbar-shadow-before: drop-shadow(0 0.5rem 1rem color-mod(var(--shadow-colour) alpha(0))); /* same as --navbar-shadow but 0 alpha */
     --navbar-icon-size: 2rem;
-    --navbar-icon-padding: 0.4rem 0.4rem 0.25rem;
+    --navbar-icon-padding: 0.4rem 0.4rem;
     --navbar-logo-size-x: 4.2rem;
     --navbar-logo-size-y: 1.6rem;
+    --navbar-links-padding: var(--nav-link-padding-y) 0;
     --navbar-body-offset: 3.26rem; /* offset body so contents are not covered */
     --navbar-anchor-offset: calc(var(--navbar-body-offset) + 1rem); /* offset in-page links; navbar + shadow */
   }
@@ -157,7 +159,8 @@
     }
 
     .navbar-link-active {
-      text-decoration: underline;
+      font-weight: var(--font-weight-heavy);
+      color: var(--navbar-active-font-colour);
     }
   }
 
@@ -169,6 +172,7 @@
   .navbar-btn {
     padding: 0;
     margin-right: 1.2rem;
+    line-height: 0;
   }
 
   .navbar-icon {
@@ -187,7 +191,7 @@
     flex-basis: 100%;
     flex-direction: column;
     flex-grow: 1;
-    padding: calc(var(--nav-link-padding-y) / 2) 0;
+    padding: var(--navbar-links-padding);
     margin: 0 -1rem;
     border-top: 1px solid transparent;
 

@@ -18,7 +18,7 @@
     <max-font-size>      = font size above until-screen-width
     <from-screen-width>  = start growing font size from this width
     <until-screen-width> = stop growing font size at this width
-    [use-px]             = if true, output px value not default rem (optional)
+    [use-px]             = if true output px value instead of em (optional)
 
   NOTE:
     When using this together with `@minna-ui/postcss-config` or `postcss-calc`
@@ -44,16 +44,16 @@ function getUnit(value) {
 }
 
 /**
- * Convert a CSS size value into rem or px.
+ * Convert a CSS size value into em or px.
  * @param {string} size A CSS size value to convert.
- * @param {Boolean} [outputPx] Pass true to output px instead of default rem.
+ * @param {Boolean} [outputPx] Pass true to output px instead of em.
  * @returns {string} The converted CSS size value.
  */
 function convertSize(size, outputPx = false) {
   const baseSize = 16; // 16px is the normal browser default font size
   const unit = getUnit(size);
 
-  if (unit === null) throw new Error('Only px, rem, and em units are supported');
+  if (!unit) throw new Error('Only px, rem, and em units are supported');
 
   if (outputPx && (unit === 'rem' || unit === 'em')) {
     // convert rem or em into px
@@ -61,13 +61,13 @@ function convertSize(size, outputPx = false) {
   }
 
   if (!outputPx && unit === 'px') {
-    // convert px into rem
-    return `${parseFloat(size) / baseSize}rem`;
+    // convert px into em
+    return `${parseFloat(size) / baseSize}em`;
   }
 
-  if (!outputPx && unit === 'em') {
-    // change unit from em to rem
-    return `${parseFloat(size)}rem`;
+  if (!outputPx && unit === 'rem') {
+    // change unit from rem to em
+    return `${parseFloat(size)}em`;
   }
 
   // doesn't need converting so return as is
@@ -103,7 +103,7 @@ module.exports = (
   return {
     '&': {
       // only set a base font size if different from browser default
-      ...(convertSize(minFont) === '1rem' ? {} : {
+      ...(convertSize(minFont) === '1em' ? {} : {
         'font-size': minFont,
       }),
 

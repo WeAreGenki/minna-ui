@@ -128,10 +128,10 @@ exports[`Fluid font size mixin generates CSS rules 1`] = `
 Object {
   "&": Object {
     "@media screen and (min-width: 100em)": Object {
-      "font-size": "2rem",
+      "font-size": "2em",
     },
     "@media screen and (min-width: 30em) and (max-width: 100em)": Object {
-      "font-size": "calc(1rem + 1 * (100vw - 30rem) / 70);",
+      "font-size": "calc(1em + 1 * (100vw - 30em) / 70);",
     },
   },
 }
@@ -142,10 +142,10 @@ exports[`Fluid font size mixin generates CSS rules 2`] = `
     div {
       & {
             @media screen and (min-width: 30em) and (max-width: 100em) {
-                  font-size: calc(1rem + 1 * (100vw - 30rem) / 70);
+                  font-size: calc(1em + 1 * (100vw - 30em) / 70);
             }
             @media screen and (min-width: 100em) {
-                  font-size: 2rem
+                  font-size: 2em
             }
       }
     }
@@ -184,12 +184,12 @@ exports[`Fluid font size mixin includes base font-size when minFontSize isn't br
 "
     div {
       & {
-            font-size: 1.5rem;
+            font-size: 1.5em;
             @media screen and (min-width: 30em) and (max-width: 100em) {
-                  font-size: calc(1.5rem + 0.5 * (100vw - 30rem) / 70);
+                  font-size: calc(1.5em + 0.5 * (100vw - 30em) / 70);
             }
             @media screen and (min-width: 100em) {
-                  font-size: 2rem
+                  font-size: 2em
             }
       }
     }
@@ -200,12 +200,12 @@ exports[`Fluid font size mixin includes base font-size when minFontSize isn't br
 "
     div {
       & {
-            font-size: 1.25rem;
+            font-size: 1.25em;
             @media screen and (min-width: 30em) and (max-width: 100em) {
-                  font-size: calc(1.25rem + 0.75 * (100vw - 30rem) / 70);
+                  font-size: calc(1.25em + 0.75 * (100vw - 30em) / 70);
             }
             @media screen and (min-width: 100em) {
-                  font-size: 2rem
+                  font-size: 2em
             }
       }
     }

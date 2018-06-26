@@ -19,7 +19,7 @@
     "postcss": "^6.0.21"
   },
   "dependencies": {
-    "autoprefixer": "^8.6.3",
+    "autoprefixer": "^8.6.4",
     "css-mqpacker": "^6.0.2",
     "postcss-at-rules-variables": "^0.1.5",
     "postcss-calc": "^6.0.1",

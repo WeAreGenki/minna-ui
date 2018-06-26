@@ -4,13 +4,13 @@
 
 /* Fluid font size */
 
-  html {
-    @mixin fluid-font-size
+html {
+  @mixin fluid-font-size
     var(--font-size-min),
     var(--font-size-max),
     var(--font-size-from),
     var(--font-size-until);
-  }
+}
 
 /* Font base */
 
@@ -35,7 +35,7 @@ body {
   @if var(--font-weight) != 400 {
     font-weight: var(--font-weight);
   }
-    }
+}
 
 /* Headings */
 
@@ -44,11 +44,25 @@ h2 > small,
 h3 > small,
 h4 > small,
 h5 > small,
-h6 > small { color: var(--heading-small-font-colour); }
+h6 > small {
+  color: var(--heading-small-font-colour);
+}
 
 /* stylelint-disable selector-list-comma-newline-after */
-/* stylelint-disable-next-line declaration-block-single-line-max-declarations */
-.h1, h1 { font-size: var(--h1-font-size); font-weight: var(--font-weight-light); }
+.h1, h1,
+.h2, h2,
+.h3, h3,
+.h4, h4,
+.h5, h5,
+.h6, h6 {
+  font-weight: var(--heading-font-weight);
+
+  /* prevent long words causing the page to overflow */
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.h1, h1 { font-size: var(--h1-font-size); }
 .h2, h2 { font-size: var(--h2-font-size); }
 .h3, h3 { font-size: var(--h3-font-size); }
 .h4, h4 { font-size: var(--h4-font-size); }
@@ -114,13 +128,13 @@ tbody > tr:nth-child(odd) {
     position: relative;
 
     &::before {
-    position: absolute;
-    top: 0;
+      position: absolute;
+      top: 0;
       left: -50vw;
       z-index: -1;
       width: 150vw;
       height: 100%;
-    content: "";
+      content: "";
       background: var(--blue-grey-50);
     }
   } */

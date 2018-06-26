@@ -4,15 +4,13 @@
 
 /* Fluid font size */
 
-@if var(--use-fluid-font-size) {
   html {
     @mixin fluid-font-size
-      var(--font-size),
-      var(--font-size-l),
-      var(--fluid-font-size-from),
-      var(--fluid-font-size-until);
+    var(--font-size-min),
+    var(--font-size-max),
+    var(--font-size-from),
+    var(--font-size-until);
   }
-}
 
 /* Font base */
 
@@ -29,27 +27,15 @@ body {
   background-color: var(--body-bg-colour);
 
   /* only set when different from browser default */
-  @if var(--font-size) != 1rem AND var(--font-size) != 16px {
-    font-size: var(--font-size);
+  @if var(--font-size-min) != 1em AND var(--font-size-min) != 1rem AND var(--font-size-min) != 16px {
+    font-size: var(--font-size-min);
   }
 
   /* only set when different from browser default */
   @if var(--font-weight) != 400 {
     font-weight: var(--font-weight);
   }
-
-  @media (--screen-small) {
-    @if NOT (var(--use-fluid-font-size)) AND var(--font-size-s) != var(--font-size) {
-      font-size: var(--font-size-s);
     }
-  }
-
-  @media (--screen-large) {
-    @if NOT (var(--use-fluid-font-size)) AND var(--font-size-l) != var(--font-size-s) {
-      font-size: var(--font-size-l);
-    }
-  }
-}
 
 /* Headings */
 

@@ -101,18 +101,28 @@ table {
   border-collapse: collapse;
 }
 
+th,
+td {
+  padding: 0.9rem 1rem;
+}
+
 tbody > tr:nth-child(odd) {
-  background: var(--blue-grey-100);
+  background: var(--blue-grey-50);
 
-  /* REF: https://stripe.com/au/connect/pricing#pricing-table */
+  /* FIXME: These selector chain makes me sad, come up with a better solution */
+  /* & > td:first-child {
+    position: relative;
 
-  /* &:before {
+    &::before {
     position: absolute;
     top: 0;
-    right: 100%;
-    width: 100%;
+      left: -50vw;
+      z-index: -1;
+      width: 150vw;
+      height: 100%;
     content: "";
-    background: #eee;
+      background: var(--blue-grey-50);
+    }
   } */
 }
 

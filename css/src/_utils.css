@@ -71,6 +71,7 @@
 .pointer { cursor: pointer; }
 .help { cursor: help; } /* useful with the tooltip action */
 
-/* Line height hack */
+/* Line height hacks */
 
+.lh1 { line-height: 1; }
 .lh0 { line-height: 0; }

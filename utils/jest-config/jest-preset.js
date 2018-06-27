@@ -10,6 +10,7 @@ module.exports = {
     '/dist/',
     '/export/',
     '/node_modules/',
+    '/public/',
   ],
   moduleFileExtensions: [
     'html',
@@ -30,11 +31,13 @@ module.exports = {
     '/export/',
     '/fixtures/',
     '/node_modules/',
+    '/public/',
     '/test/',
   ],
   coverageDirectory: '<rootDir>/test/unit/coverage',
   watchPathIgnorePatterns: [
     '/dist/',
     '/export/',
+    '/public/',
   ],
 };

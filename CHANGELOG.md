@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2018-06-27
+
 ### Added
 
-- Simple tables styles.
+- Simple table styles.
 
 ### Changed
 
@@ -19,12 +21,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Change some whitespace to suit new font sizes.
 - Better font family system stack, now more inclusive of all common operating systems.
 - Use bold font weight to show active nav items.
-- Better icon alignment in `@minna-ui/navbar`.
+- Better SVG image alignment in `@minna-ui/navbar`.
+- Adjust `@minna-ui/navbar` body offset for better compatibility with system fonts.
 - Updated package dependencies.
 
 ### Fixed
 
-- Headers causing the page to overflow (but you need to be careful about where the words may be split when overflowing).
+- Headers causing the page to overflow (but be mindful about where words may be split when overflowing).
 - `.mono` class should not look like `.code`.
 
 ## [0.2.0] - 2018-06-14

@@ -7,13 +7,15 @@
 
 # `minna-ui`
 
-A friendly <abbr title="User Interface">UI</abbr> framework which aims to be straightforward, intuitive, and high performance. It can be used as standalone CSS and components or in Svelte or JavaScript projects.
+A friendly <abbr title="User Interface">UI</abbr> framework which aims to be straightforward, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte or other JavaScript framework project.
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 
 ## Overview
 
-The `minna-ui` framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — e-commerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web.
+The `minna-ui` framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web.
+
+Under the hood components use the Svelte JavaScript framework so `minna-ui` is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
 
 **Features:**
 
@@ -30,7 +32,7 @@ The `minna-ui` framework is designed around the types of projects we do at [We A
 
 ## Documentation
 
-To see [live examples](https://ui.wearegenki.com/examples) and the docs, visit [ui.wearegenki.com](https://ui.wearegenki.com).
+To see [live examples](https://ui.wearegenki.com/examples) and the docs, visit [ui.wearegenki.com](https://ui.wearegenki.com) _(coming soon)_.
 
 ### Quick start
 

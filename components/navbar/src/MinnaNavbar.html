@@ -69,7 +69,6 @@
       <a href="/" class="navbar-link dn-l">Home</a>
 
       {#each items as __item}
-        <!-- URLs which start with the same path as the nav item get an active class -->
         <a
           href="{__item.url}"
           class="navbar-link {page.indexOf(__item.url) === 0 ? 'navbar-link-active' : ''}"

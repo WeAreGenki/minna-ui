@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.3.0",
   "bin": {
-    "build-component": "cli.js"
+    "build-component": "cli/index.js"
   },
   "peerDependencies": {
     "svelte": "*"

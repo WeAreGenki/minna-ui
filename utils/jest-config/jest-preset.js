@@ -20,6 +20,8 @@ module.exports = {
   ],
   collectCoverageFrom: [
     '**/*.{html,js,mjs}',
+    '!**/bin/**',
+    '!**/cli/**',
     '!.*rc.js',
     '!**/.*rc.js',
     '!*.config.js',

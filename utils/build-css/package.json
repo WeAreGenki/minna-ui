@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.3.0",
   "bin": {
-    "build-css": "cli.js"
+    "build-css": "cli/index.js"
   },
   "peerDependencies": {
     "postcss": "*"

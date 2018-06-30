@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "setup": "yarn; lerna bootstrap",
-    "update": "ncu && lerna exec --parallel -- ncu --reject /minna-ui/",
-    "publish:prerelease": "lerna publish --canary=prerelease --exact --npm-tag=next",
+    "update": "yarn upgrade-interactive --latest",
+    "publish:alpha": "lerna publish --canary=prerelease --exact --npm-tag=next",
     "publish:beta": "lerna publish --cd-version=prerelease --preid=beta --npm-tag=beta",
+    "publish": "lerna publish",
     "prepack": "yarn lint && yarn test && yarn build",
     "prebuild": "yarn clean",
     "build": "lerna run build",
@@ -18,10 +19,8 @@
     "lint:css": "stylelint **/*.{html,css} --cache --cache-location=/tmp/",
     "lint:js": "eslint --ignore-path .gitignore --ext js,html .",
     "lint": "yarn lint:css && yarn lint:js",
-    "test": "jest",
-    "test-ci": "yarn test --coverage --runInBand --ci",
-    "pretest:dev": "yarn lint",
-    "test:dev": "yarn test --watch",
+    "test": "yarn lint && jest --coverage",
+    "test-ci": "jest --runInBand --ci --verbose --coverage",
     "debug:browsers": "yarn autoprefixer --info"
   },
   "devDependencies": {
@@ -37,6 +36,6 @@
     "lerna": "3.0.0-beta.21",
     "postcss": "6.0.23",
     "stylelint": "9.3.0",
-    "svelte": "2.8.1"
+    "svelte": "2.9.0"
   }
 }

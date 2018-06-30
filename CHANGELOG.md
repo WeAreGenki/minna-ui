@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Bracket parsing doesn't match in `@minna-ui/svelte-preprocess-markup`. NOTE that this is only a partial fix and you need to quote any `{}` tags that contain `{` or `}` characters.
+
 ## [0.3.0] - 2018-06-27
 
 ### Added

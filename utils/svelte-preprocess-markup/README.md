@@ -9,6 +9,8 @@ Svelte markup preprocessor for use in [`minna-ui`](https://github.com/WeAreGenki
 
 ## Usage
 
+**IMPORTANT: You must wrap `{}` tags in quotes when there are `{` or `}` characters inside the tag.**
+
 TODO: Write me.
 
 ## Licence

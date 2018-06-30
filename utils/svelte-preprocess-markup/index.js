@@ -13,7 +13,7 @@ module.exports = (options = {}) => ({ content }) => {
       caseSensitive: true,
       collapseWhitespace: true,
       conservativeCollapse: !unsafe,
-      ignoreCustomFragments: [/{[^]*?}/],
+      ignoreCustomFragments: [/\{[^]*?\}/m],
       keepClosingSlash: true,
 
       // potentially dangerous

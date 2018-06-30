@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "setup": "yarn; lerna bootstrap",
-    "update": "ncu && lerna exec --parallel -- ncu --reject /minna-ui/",
+    "update": "yarn upgrade-interactive --latest",
     "publish:prerelease": "lerna publish --canary=prerelease --exact --npm-tag=next",
     "publish:beta": "lerna publish --cd-version=prerelease --preid=beta --npm-tag=beta",
     "prepack": "yarn lint && yarn test && yarn build",
@@ -37,6 +37,6 @@
     "lerna": "3.0.0-beta.21",
     "postcss": "6.0.23",
     "stylelint": "9.3.0",
-    "svelte": "2.8.1"
+    "svelte": "2.9.0"
   }
 }

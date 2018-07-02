@@ -96,6 +96,7 @@ This is a large release centred around refactoring colours and simplifying and c
   - `.rad0*` renamed to `.not-rounded*`
 - BREAKING CHANGE: All colour classes in `_color.css` have been changed.
 - BREAKING CHANGE: CSS mixin `fluid-font-size` to `fluid-text-size`.
+- Colours now must be defined using `rgb()` or `rgba()` only.
 - Some more CSS sizes were converted from `rem` to `em`.
 - Updated package dependencies.
 

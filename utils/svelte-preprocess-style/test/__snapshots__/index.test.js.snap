@@ -47,7 +47,7 @@ exports[`Svelte style preprocessor adds global pseudo when global attribute only
 
 exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
 ":root{--body-margin:0}@media screen and (min-width: 30em){body{margin:var(--body-margin)
-  }}.text.svelte-hwsgkx{color:hsl(0, 100%, 50%)}.text.svelte-hwsgkx:focus{background:hsl(0, 0%, 0%)}.wrapper.svelte-hwsgkx>.text.svelte-hwsgkx{margin-top:1rem}"
+  }}.text.svelte-15nvu0z{color:rgb(255, 0, 0)}.text.svelte-15nvu0z:focus{background:rgb(0, 0, 0)}.wrapper.svelte-15nvu0z>.text.svelte-15nvu0z{margin-top:1rem}"
 `;
 
 exports[`Svelte style preprocessor does not process without type attribute 1`] = `
@@ -121,13 +121,13 @@ exports[`Svelte style preprocessor processes a component 1`] = `
     }
 
   .text {
-    color: hsl(0, 100%, 50%);
+    color: rgb(255, 0, 0);
   }
 
   /* red */
 
   .text:focus {
-      background: hsl(0, 0%, 0%);  /* black */
+      background: rgb(0, 0, 0);  /* black */
     }
 
   .wrapper > .text {

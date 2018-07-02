@@ -8,14 +8,14 @@ body {
 }
 /* stylelint-disable selector-max-id */
 #target {
-  color: hsl(0, 100%, 50%);
+  color: rgb(255, 0, 0);
 }
 #target .focus,
   #target:focus {
-    background: hsl(0, 0%, 0%);
+    background: rgb(0, 0, 0);
   }
 .wrapper + #target {
-    background: hsl(0, 0%, 13%);
+    background: rgb(33, 33, 33);
   }
 /* stylelint-enable selector-max-id */
 
@@ -39,14 +39,14 @@ body {
 }
 /* stylelint-disable selector-max-id */
 #target {
-  color: hsl(0, 100%, 50%);
+  color: rgb(255, 0, 0);
 }
 #target .focus,
   #target:focus {
-    background: hsl(0, 0%, 0%);
+    background: rgb(0, 0, 0);
   }
 .wrapper + #target {
-    background: hsl(0, 0%, 13%);
+    background: rgb(33, 33, 33);
   }
 /* stylelint-enable selector-max-id */
 

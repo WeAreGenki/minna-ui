@@ -9,8 +9,8 @@ const sourceCssValid = `
 body {
   margin: 0;
   font-family: "Roboto Mono Regular", sans-serif;
-  color: hsl(249, 33%, 19%);
-  background-color: hsl(0, 0%, 98%);
+  color: rgb(37, 32, 64);
+  background-color: rgb(250, 250, 250);
 }
 `;
 
@@ -19,7 +19,7 @@ body {
   /* comment */
   font-family: "Roboto Mono Regular", sans-serif;
   color: rgb(38, 33, 65);
-  background-color: hsl(0, 0%, 98%);
+  background-color: rgb(250, 250, 250);
   margin: 0rem;
 }
 
@@ -35,7 +35,7 @@ body {
   // inline comment
   font-family: Roboto Mono Regular, sans-serif;
   color:
-  background-colors: hsl(0, 0%, 98%);
+  background-colors: rgb(250, 250, 250);
   margin: 5pigs;
 }`;
 

@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1] - 2018-07-02
+
+### Fixed
+
+- Remove conflicting `.h*` CSS classes. Now these classes only refer to grid height (the number of rows).
+- `@minna-ui/navbar` link fragment fix is now optional.
+
 ## [0.4.0] - 2018-07-02
 
 This is a large release centred around refactoring colours and simplifying and cleaning up the styles. There were many breaking changes especially in CSS variables so please be mindful when upgrading.
@@ -172,7 +179,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/MaxMilton/new-tab/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MaxMilton/new-tab/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/MaxMilton/new-tab/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/MaxMilton/new-tab/compare/v0.1.0...v0.2.0

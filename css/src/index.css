@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-@import "_variables-md-colour.css";
+@import "_variables-color.css";
 @import "_variables.css";
 @import "_normalise.css";
 @import "_reboot.css";
 @import "_typography.css";
 @import "_form.css";
 @import "_button.css";
-@import "_label.css";
+@import "_tag.css";
 @import "_alert.css";
 @import "_nav.css";
 @import "_card.css";
@@ -32,7 +32,7 @@
 @import "_container.css";
 @import "_flex.css";
 @import "_grid.css";
-@import "_colour.css";
+@import "_color.css";
 @import "_spacing.css";
 @import "_display.css";
 @import "_position.css";

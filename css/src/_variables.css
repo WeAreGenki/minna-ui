@@ -2,7 +2,8 @@
   GLOBAL VARIABLES
 
   NOTE:
-    Components may also contain their own CSS variables.
+    - Colour variables are in _variables-color.css.
+    - Components also contain their own CSS variables.
 
 */
 
@@ -16,32 +17,20 @@
   --breakpoints-media: --screen-small, --screen-large;
   --breakpoints: s, l;
 
-  /* Global options */
-
-  /**
-   * Force hardware acceleration on key animations. We've already set
-   * acceleration where it makes sense but you can uncomment this to
-   * experiment. It's recommended to change individual animation options once
-   * you understand which animations need it. This can actually have a negative
-   * impact on performance so use sparingly. Buggy in old browsers and not
-   * supported at all in IE or Edge - https://caniuse.com/#feat=will-change
-   */
-  /* --optimize-all: true; */
-
   /* General */
 
   --spacing-steps: 0, 1, 2, 3, 4, 5, 6, 7;
-  --spacing-values: 0, 0.25rem, 0.5rem, 1rem, 2rem, 4rem, 8rem, 16rem;
-  --radius-1: 0.1875rem; /* 3px at root */
-  --radius-2: 0.2875rem; /* 4.6px at root */
-  --angle-1: 151deg;
-  --angle-2: 45deg;
-  --angle-3: -27deg;
+  --spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em;
+  --radius: 0.2rem; /* 3.2px at root */
+  --radius-large: 0.32rem; /* 5px at root */
+  --angle1: 151deg;
+  --angle2: 45deg;
+  --angle3: -27deg;
 
   /* Grid */
 
   --container-width-max: 54em; /* 1188px @ 22px font size */
-  --container-narrow-width-max: 30rem;
+  --container-narrow-width-max: 30em;
   --item-size: 1fr;
   --cols: auto;
   --rows: auto;
@@ -50,221 +39,172 @@
   --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
   --row-steps: 1, 2, 3, 4, 5, 6;
   --gutter-col: 1rem;
-  --gutter-col-l: 2rem;
+  --gutter-col-large: 2rem;
   --gutter-row: 2rem;
-  --gutter-row-l: 2rem;
-
-  /* Gradients */
-
-  --gradient-primary-0: hsl(188, 100%, 51%);
-  --gradient-primary-100: hsl(215, 98%, 46%);
-  --gradient-secondary-0: hsl(270, 96%, 73%);
-  --gradient-secondary-100: hsl(263, 60%, 49%);
-  --gradient-dark-0: hsl(246, 30%, 32%);
-  --gradient-dark-100: hsl(249, 33%, 16%);
-  --gradient-primary-10: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 10%));
-  --gradient-primary-20: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 20%));
-  --gradient-primary-30: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 30%));
-  --gradient-primary-40: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 40%));
-  --gradient-primary-50: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 50%));
-  --gradient-primary-60: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 60%));
-  --gradient-primary-70: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 70%));
-  --gradient-primary-80: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 80%));
-  --gradient-primary-90: color-mod(var(--gradient-primary-0) blend(var(--gradient-primary-100) 90%));
-  --gradient-secondary-10: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 10%));
-  --gradient-secondary-20: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 20%));
-  --gradient-secondary-30: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 30%));
-  --gradient-secondary-50: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 50%));
-  --gradient-secondary-60: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 60%));
-  --gradient-secondary-70: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 70%));
-  --gradient-secondary-80: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 80%));
-  --gradient-secondary-90: color-mod(var(--gradient-secondary-0) blend(var(--gradient-secondary-100) 90%));
-  --gradient-dark-10: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 10%));
-  --gradient-dark-20: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 20%));
-  --gradient-dark-30: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 30%));
-  --gradient-dark-40: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 40%));
-  --gradient-dark-50: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 50%));
-  --gradient-dark-60: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 60%));
-  --gradient-dark-70: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 70%));
-  --gradient-dark-80: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 80%));
-  --gradient-dark-90: color-mod(var(--gradient-dark-0) blend(var(--gradient-dark-100) 90%));
-  --gradient-primary: linear-gradient(var(--angle-1), var(--gradient-primary-0), var(--gradient-primary-100));
-  --gradient-secondary: linear-gradient(var(--angle-1), var(--gradient-secondary-0), var(--gradient-secondary-100));
-  --gradient-dark: linear-gradient(var(--angle-2), var(--gradient-dark-0), var(--gradient-dark-100));
-
-  /* Colours */
-
-  --primary: var(--gradient-primary-90);
-  --secondary: var(--gradient-secondary-90);
-  --dark: var(--gradient-dark-90);
-  --light: hsl(213, 35%, 94%);
-  --neutral: hsl(200, 18%, 44%);
-  --subtle: var(--blue-grey-200);
-  --body-font-colour: var(--gradient-dark-80);
-  --body-bg-colour: var(--grey-50);
-  --alt-bg-colour: var(--grey-100);
+  --gutter-row-large: 2rem;
+  --gutter-compact: calc(var(--gutter-row) / 4) 0;
 
   /* Shadows */
 
-  --shadow-colour: hsl(258, 49%, 18%);
-  --shadow-colour-subtle: hsl(230, 24%, 51%);
-  --shadow-base: color-mod(var(--shadow-colour) alpha(0.39));
-  --shadow: 0 1rem 0.95rem var(--shadow-base);
-  --shadow-subtle: 0 0.3125rem 0.28rem color-mod(var(--shadow-colour-subtle) alpha(0.2));
-  --shadow-light-1: 0 0.625rem 1.5rem color-mod(var(--shadow-colour) alpha(0.06));
-  --shadow-light-2: 0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.076));
+  --shadow-color: var(--cobalt1);
+  --shadow: drop-shadow(0 1rem 0.95rem color-mod(var(--shadow-color) alpha(0.39)));
+  --shadow-light: drop-shadow(0 0.4rem 0.6rem color-mod(var(--shadow-color) alpha(0.15)));
+  --shadow-light-edge: drop-shadow(0 0.1rem 0.1rem color-mod(var(--shadow-color) alpha(0.06)));
 
   /* Typography */
 
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  --font-size-min: 1em; /* use the browser's default font size, normally 16px */
-  --font-size-max: 1.375em; /* 22px */
-  --font-size-from: 30.01em; /* start growing font from this screen width */
-  --font-size-until: var(--container-width-max); /* stop growing font size at this screen width */
-  --font-weight-light: 300;
-  --font-weight: 400; /* browser default */
-  --font-weight-heavy: 700; /* browser default */
-  --font-rendering: optimizeSpeed;
-  --font-variant: none;
+  --font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Helvetica Neue",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-family-monospace:
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
+  --text-size-min: 1em; /* use the browser's default font size, normally 16px */
+  --text-size-max: 1.375em; /* 22px */
+  --text-size-from: 30.01em; /* start growing font from this screen width */
+  --text-size-until: var(--container-width-max); /* stop growing font size at this screen width */
+  --text-weight-light: 300;
+  --text-weight: 400; /* browser default */
+  --text-weight-heavy: 700; /* browser default */
+  --text-rendering: optimizeSpeed;
+  --text-variant: none;
   --line-height: 1.5;
   /* font size according to modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
-  --headline-font-size: 5.063em;
-  --h1-font-size: 3.375em;
-  --h2-font-size: 2.813em;
-  --h3-font-size: 2.25em;
-  --h4-font-size: 1.875em;
-  --h5-font-size: 1.5em;
-  --h6-font-size: 1.25em;
-  --heading-small-font-colour: var(--grey-500);
-  --heading-font-weight: var(--font-weight);
+  --headline-text-size: 5.063em;
+  --h1-text-size: 3.375em;
+  --h2-text-size: 2.813em;
+  --h3-text-size: 2.25em;
+  --h4-text-size: 1.875em;
+  --h5-text-size: 1.5em;
+  --h6-text-size: 1.25em;
+  --heading-text-weight: var(--text-weight);
   --paragraph-line-height: 1.762;
   --paragraph-line-height: 1.7;
-  --paragraph-lead-font-size: 1.5em;
+  --paragraph-lead-text-size: 1.5em;
   --link-click-area: 0.4em; /* reduce this if your links are overlapping */
-  --link-font-colour: var(--primary);
-  --link-hover-font-colour: color-mod(var(--primary) blackness(22%));
   --hr-margin: 3rem 0;
-  --hr-border: 1px solid var(--grey-300);
+  --hr-border: 1px solid var(--divider-black);
   --li-margin-between: 0.5rem;
-  --quote-font-size: 2em;
-  --quote-mark-font-size: 3em; /* em (not rem) so it's relative to the parent font size */
-  --abbr-underline-colour: color-mod(var(--body-font-colour lightness(25%)));
+  --quote-text-size: 2em;
+  --quote-mark-text-size: 3em; /* em (not rem) so it's relative to the parent font size */
+  /* --abbr-underline-color: color-mod(var(--text-color lightness(25%))); */
+  --abbr-underline-color: var(--dark-gray3);
 
   /* Navigation */
 
   --nav-link-padding-x: 1.3rem;
   --nav-link-padding-y: 0.7rem;
   --side-nav-link-margin: 0;
-  --side-nav-active-font-colour: var(--link-hover-font-colour);
-  --side-nav-active-bg-colour: var(--light);
+  --side-nav-active-text-color: var(--link-color-hover);
+  --side-nav-active-background-color: var(--background-color-muted);
   --footer-margin-y: 5rem;
-  --footer-font-colour: var(--subtle);
+  --footer-text-color: var(--text-color-muted);
 
   /* Buttons */
 
-  --btn-padding-x: 1.75rem;
-  --btn-padding-y: 0.682rem;
-  --btn-font-colour: var(--blue-grey-800);
-  --btn-bg-colour: var(--white);
-  --btn-radius: var(--radius-1);
-  --btn-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-colour) alpha(0.16)));
-  --btn-active-bg-colour: var(--light);
-  --btn-disabled-font-colour: var(--blue-grey-200);
-  --btn-disabled-border-colour: var(--blue-grey-50);
-  --btn-arrow-animate-speed: 200ms;
-  --btn-cta-bg-gradient: linear-gradient(var(--angle-1), var(--gradient-secondary-0), var(--gradient-secondary-100));
-  --btn-cta-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--gradient-secondary-100) alpha(0.5)));
-  --btn-dark-bg-gradient: var(--gradient-dark);
-  --btn-dark-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--dark) alpha(0.4)));
-  --btn-main-bg-gradient: linear-gradient(var(--angle-1), var(--gradient-primary-20), var(--gradient-primary-100));
-  --btn-main-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--gradient-primary-100) alpha(0.5)));
+  --button-padding-x: 1.75rem;
+  --button-padding-y: 0.682rem;
+  --button-text-color: var(--dark-gray2);
+  --button-background-color: var(--white);
+  --button-radius: var(--radius);
+  --button-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-color) alpha(0.2)));
+  --button-active-background-color: var(--light-gray4);
+  --button-disabled-text-color: var(--text-color-disabled);
+  --button-disabled-border-color: var(--light-gray2);
 
   /* Forms */
 
   --form-group-margin: 1.5rem;
+  --label-margin: 0.5rem;
+  --label-text-color: var(--dark-gray2);
   --input-padding-x: 1rem;
   --input-padding-y: 0.5rem;
-  --input-font-size: 1.2em;
-  --input-font-colour: var(--body-font-colour);
-  --input-bg-colour: var(--white);
-  --input-border-width: 1px;
-  --input-border: var(--input-border-width) solid var(--grey-300);
-  --input-radius: var(--radius-1);
-  --input-hover-outline: 2px solid var(--subtle);
-  --input-focus-outline: 2px solid var(--primary);
-  --input-invalid-colour: var(--red-500);
-  --input-invalid-border: 2px solid var(--input-invalid-colour);
-  --input-placeholder-font-colour: var(--blue-grey-400);
-  --input-disabled-font-colour: var(--blue-grey-200);
-  --input-disabled-border-colour: var(--blue-grey-50);
-  --input-disabled-placeholder-font-colour: var(--blue-grey-100);
-  --form-help-margin: 0.5rem;
-  --form-help-font-colour: var(--grey-600);
+  --input-text-size: 1.2em;
+  --input-text-color: var(--text-color);
+  --input-background-color: var(--white);
+  --input-border: 1px solid var(--gray5);
+  --input-radius: var(--radius);
+  --input-hover-outline: 3px solid var(--outline-color-hover);
+  --input-focus-outline: 3px solid var(--outline-color);
+  --input-invalid-color: var(--red2);
+  --input-invalid-border: 3px solid var(--intent-danger);
+  --input-placeholder-text-color: var(--gray2);
+  --input-disabled-text-color: var(--text-color-disabled);
+  --input-disabled-background-color: initial;
+  --input-disabled-border: 1px solid var(--light-gray2);
+  --input-disabled-placeholder-text-color: var(--gray5);
+  --form-help-margin: var(--label-margin);
+  --form-help-text-color: var(--dark-gray5);
 
   /* Cards */
 
-  --card-padding-x: 1.3rem;
-  --card-padding-y: 1.2rem;
-  --card-bg-colour: var(--blue-grey-100);
-  --card-bg-colour: var(--white);
-  --card-shadow: drop-shadow(var(--shadow-subtle));
-  /* FIXME: */
-  /* --card-touch-optimize: var(--optimize-all, false); */
-  --card-touch-optimize: false;
-  --card-touch-zindex: 1;
-  --card-touch-font-colour: var(--body-font-colour);
-  --card-touch-shadow:
-    drop-shadow(var(--shadow-light-1))
-    drop-shadow(var(--shadow-light-2));
-  --card-touch-animate-speed-1: 180ms;
-  --card-touch-animate-speed-2: 240ms;
-  --card-touch-animate-distance: -3px;
-  --card-touch-hover-shadow:
-    drop-shadow(var(--shadow))
-    drop-shadow(0 0.125rem 0.25rem color-mod(var(--shadow-colour) alpha(0.07)));
-  --card-btn-border: 1px solid hsl(240, 67%, 96%);
+  --card-background-color: var(--white);
+  --card-shadow: drop-shadow(0 0.2rem 0.2rem color-mod(var(--shadow-color) alpha(0.18)));
+  --card-hover-optimize: false;
+  --card-hover-zindex: 1;
+  --card-hover-text-color: var(--text-color);
+  --card-hover-shadow:
+    var(--shadow-light)
+    var(--shadow-light-edge);
+  --card-hover-animate-speed-1: 180ms;
+  --card-hover-animate-speed-2: 240ms;
+  --card-hover-animate-distance: -3px;
+  --card-hover-hover-shadow: var(--shadow);
+  --card-body-margin: 1.2rem 2rem;
+  --card-button-border: 1px solid var(--light-gray4);
 
   /* Alerts */
 
   --alert-padding: 1rem;
   --alert-margin-y: 2rem;
-  --alert-border-size: 4px;
-  --alert-tip-font-colour: var(--green-900);
-  --alert-tip-bg-colour: var(--green-50);
-  --alert-tip-border-colour: var(--green-500);
-  --alert-info-font-colour: var(--blue-900);
-  --alert-info-bg-colour: var(--blue-50);
-  --alert-info-border-colour: var(--blue-500);
-  --alert-warning-font-colour: var(--deep-orange-900);
-  --alert-warning-bg-colour: var(--amber-50);
-  --alert-warning-border-colour: var(--amber-600);
-  --alert-error-font-colour: var(--red-900);
-  --alert-error-bg-colour: var(--red-50);
-  --alert-error-border-colour: var(--red-400);
+  --alert-background-color: var(--light-gray4);
+  --alert-border-size: 0.4rem;
+  --alert-tip-text-color: var(--green1);
+  --alert-tip-border-color: var(--green5);
+  --alert-info-text-color: var(--blue1);
+  --alert-info-border-color: var(--blue5);
+  --alert-warning-text-color: var(--orange1);
+  --alert-warning-border-color: var(--orange5);
+  --alert-error-text-color: var(--red1);
+  --alert-error-border-color: var(--red5);
 
-  /* Labels */
+  /* Tags */
 
-  --label-padding: 0.04rem 0.4rem 0.185rem;
-  --label-font-size: 0.9em;
-  --label-font-colour: var(--blue-grey-700);
-  --label-bg-colour: var(--light);
-  --label-alignment: 0.1rem;
-  --label-border-radius: var(--radius-1);
-  --label-margin-between: 1rem;
+  --tag-padding: 0.04em 0.44em 0.185em;
+  --tag-text-size: 0.9em;
+  --tag-text-color: var(--gray1);
+  --tag-background-color: var(--light-gray4);
+  --tag-alignment: 0.1em;
+  --tag-border-radius: var(--radius);
+  --tag-margin-between: 1rem;
 
   /* Sections */
 
+  /* TODO: Refactor this whole thing */
   --tilt-hight: 6rem;
   --tilt-stop-point: 49.6%; /* prevents jagged edges, tweak if editing --tilt-height */
-  --tilt-bg-colour: var(--light);
-  --tilt-cta-font-colour: var(--white);
-  --tilt-cta-bg-colour: var(--dark);
-  --tilt-cta-link-colour: color-mod(var(--link-font-colour) hue(-5) lightness(58%));
-  --tilt-cta-input-invalid-colour: color-mod(var(--input-invalid-colour) lightness(65%));
-  --tilt-cta-input-invalid-border: 2px solid var(--tilt-cta-input-invalid-colour);
+  --tilt-background-color: var(--light-gray4);
+  --tilt-cta-text-color: var(--white);
+  --tilt-cta-background-color: var(--black);
+  --tilt-cta-link-color: color-mod(var(--link-color) hue(-5) lightness(58%));
+  --tilt-cta-input-invalid-color: color-mod(var(--input-invalid-color) lightness(65%));
+  --tilt-cta-input-invalid-border: 2px solid var(--tilt-cta-input-invalid-color);
   --hero-padding: 1.5rem 0;
   --hero-margin: 2rem 0;
-  --hero-font-colour: var(--white);
-  --hero-bg-gradient: linear-gradient(var(--angle-3), var(--gradient-primary-20), var(--gradient-primary-100));
+  --hero-text-color: var(--white);
+  --hero-background-gradient: linear-gradient(var(--angle3), var(--gradient-primary-20), var(--gradient-primary-100));
 }

@@ -67,7 +67,7 @@
       </div>
     {/each}
     {#if !__filteredOptions.length}
-      <div class="pa3 grey">
+      <div class="pa3 gray">
         No matches
       </div>
     {/if}
@@ -281,19 +281,17 @@
   @import "import.css";
 
   :root {
-    /* FIXME: Can't parse when "--optimize-all" is not set */
-    /* --select-optimize: var(--optimize-all, false); */
     --select-optimize: false;
     --select-zindex: 4;
-    --select-bg-colour: var(--white);
-    --select-shadow: drop-shadow(var(--shadow));
-    --select-selected-font-colour: var(--white);
-    --select-selected-bg-colour: var(--link-hover-font-colour);
-    --select-caret-colour: var(--blue-grey-800);
-    --select-caret-size: 0.3rem;
+    --select-background-color: var(--white);
+    --select-shadow: var(--shadow);
+    --select-selected-text-color: var(--white);
+    --select-selected-background-color: var(--link-color-hover);
+    --select-caret-color: var(--input-text-color);
+    --select-caret-size: 0.3em;
     --select-animate-speed: 150ms;
-    --select-disabled-font-colour: var(--btn-disabled-font-colour);
-    --select-disabled-caret-colour: var(--grey-500);
+    --select-disabled-text-color: var(--input-disabled-text-color);
+    --select-disabled-caret-color: var(--input-disabled-text-color);
   }
 
   :global(.hide) {
@@ -317,14 +315,17 @@
       will-change: transform;
     }
 
-    @mixin draw-triangle bottom, var(--select-caret-size), var(--select-caret-colour);
+    @mixin draw-triangle
+      bottom,
+      var(--select-caret-size),
+      var(--select-caret-color);
 
     .select-active > & {
       transform: rotate(180deg);
     }
 
     .select-disabled > & {
-      border-top-color: var(--select-disabled-caret-colour);
+      border-top-color: var(--select-disabled-caret-color);
     }
   }
 
@@ -335,10 +336,10 @@
     z-index: var(--select-zindex);
     width: 100%;
     padding: var(--input-padding-y) 0;
-    font-size: var(--input-font-size);
-    color: var(--input-font-colour);
+    font-size: var(--input-text-size);
+    color: var(--input-text-color);
     text-align: left;
-    background-color: var(--input-bg-colour);
+    background-color: var(--input-background-color);
     filter: var(--select-shadow);
     transition:
       transform var(--select-animate-speed) ease,
@@ -368,13 +369,13 @@
 
   .option-active,
   .option:hover {
-    color: var(--select-selected-font-colour);
-    background-color: var(--select-selected-bg-colour);
+    color: var(--select-selected-text-color);
+    background-color: var(--select-selected-background-color);
   }
 
   .option-disabled,
   .option-disabled:hover {
-    color: var(--select-disabled-font-colour);
+    color: var(--select-disabled-text-color);
     background-color: unset;
   }
 </style>

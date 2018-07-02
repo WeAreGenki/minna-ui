@@ -136,7 +136,8 @@
     --navbar-links-padding: var(--nav-link-padding-y) 0;
     --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
     --navbar-body-offset: 3rem; /* offset body so contents are not covered */
-    --navbar-anchor-offset: calc(var(--navbar-body-offset) + 1rem); /* offset in-page links; navbar + shadow */
+    --navbar-link-fragment-fix: true; /* see code and comments below */
+    --navbar-link-fragment-offset: calc(var(--navbar-body-offset) + 1rem); /* offset in-page links; navbar + shadow */
   }
 
   .navbar {
@@ -226,18 +227,20 @@
   * Only add an id property to a heading when truly necessary to avoid the small
   * CSS rendering performance hit.
   */
-  :global(h1),
-  :global(h2),
-  :global(h3),
-  :global(h4),
-  :global(h5),
-  :global(h6) {
-    &[id]::before {
-      display: block;
-      height: var(--navbar-anchor-offset);
-      margin-top: calc(-1 * var(--navbar-anchor-offset));
-      visibility: hidden;
-      content: "";
+  @if var(--navbar-link-fragment-fix) {
+    :global(h1),
+    :global(h2),
+    :global(h3),
+    :global(h4),
+    :global(h5),
+    :global(h6) {
+      &[id]::before {
+        display: block;
+        height: var(--navbar-link-fragment-offset);
+        margin-top: calc(-1 * var(--navbar-link-fragment-offset));
+        visibility: hidden;
+        content: "";
+      }
     }
   }
 </style>

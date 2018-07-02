@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1] - 2018-07-02
+
+### Fixed
+
+- Remove conflicting `.h*` CSS classes. Now these classes only refer to grid height (the number of rows).
+
 ## [0.4.0] - 2018-07-02
 
 This is a large release centred around refactoring colours and simplifying and cleaning up the styles. There were many breaking changes especially in CSS variables so please be mindful when upgrading.

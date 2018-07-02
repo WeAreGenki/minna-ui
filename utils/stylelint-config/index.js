@@ -15,14 +15,14 @@ module.exports = {
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',
     'color-named': 'never',
-    'color-no-hex': true, // hsl() or hsla() only
+    'color-no-hex': true, // rgb() or rgba() only
     'comment-empty-line-before': null, // not helpful for rapid development
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'declaration-block-semicolon-space-after': 'always-single-line',
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-where-recommended',
     'font-weight-notation': 'numeric',
-    'function-blacklist': ['rgb', 'rgba'], // hsl() or hsla() only
+    'function-blacklist': ['hsl', 'hsla'], // rgb() or rgba() only
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
     // XXX: 'max-line-length' causes problems in non-CSS files when using CSS code blocks.

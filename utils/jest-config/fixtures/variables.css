@@ -1,4 +1,4 @@
 :root {
   --margin: 0;
-  --color: hsl(0, 100%, 50%); /* red */
+  --color: rgb(255, 0, 0); /* red */
 }

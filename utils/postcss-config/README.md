@@ -38,7 +38,7 @@ module.exports = {
 
 h1 {
   & a {
-    color: hsla(0, 69%, 54%, 0.8);
+    color: rgba(219, 57, 57, 0.8);
   }
 }
 ```

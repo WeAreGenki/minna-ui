@@ -8,11 +8,11 @@ body {
 
   .focus,
   &:focus {
-    background: hsl(0, 0%, 0%);
+    background: rgb(0, 0, 0);
   }
 
   .wrapper + & {
-    background: hsl(0, 0%, 13%);
+    background: rgb(33, 33, 33);
   }
 }
 /* stylelint-enable selector-max-id */

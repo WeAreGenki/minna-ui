@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/tooltip-action",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip-action",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

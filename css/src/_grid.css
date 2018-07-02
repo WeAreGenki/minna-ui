@@ -14,14 +14,16 @@
   grid-template-columns: var(--cols);
 
   @media (--screen-large) {
-    grid-gap: var(--gutter-row-l) var(--gutter-col-l);
+    grid-gap: var(--gutter-row-large) var(--gutter-col-large);
   }
 }
 
 /* Compact gaps between rows and columns */
 
-.grid-c { grid-gap: calc(var(--gutter-row) / 2) 0 !important; } /* stylelint-disable-line declaration-no-important */
-.grid-c0 { grid-gap: 0 0 !important; } /* stylelint-disable-line declaration-no-important */
+/* stylelint-disable declaration-no-important */
+.grid-c { grid-gap: var(--gutter-compact) !important; }
+.grid-c0 { grid-gap: 0 0 !important; }
+/* stylelint-enable declaration-no-important */
 
 .col-fluid { grid-template-columns: auto; }
 

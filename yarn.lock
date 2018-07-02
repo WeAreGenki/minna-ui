@@ -745,6 +745,7 @@
     postcss-load-config "^1.2.0"
     postcss-mixins "^6.2.0"
     postcss-nested "^3.0.0"
+    postcss-use "^3.0.0"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
   version "0.3.0"
@@ -844,8 +845,8 @@ ajv@^5.1.0:
     json-schema-traverse "^0.3.0"
 
 ajv@^6.0.1, ajv@^6.5.0:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.1.tgz#88ebc1263c7133937d108b80c5572e64e1d9322d"
+  version "6.5.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.5.2.tgz#678495f9b82f7cca6be248dd92f59bff5e1f4360"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -4956,6 +4957,13 @@ postcss-syntax@^0.28.0:
   version "0.28.0"
   resolved "https://registry.yarnpkg.com/postcss-syntax/-/postcss-syntax-0.28.0.tgz#e17572a7dcf5388f0c9b68232d2dad48fa7f0b12"
 
+postcss-use@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-use/-/postcss-use-3.0.0.tgz#dea046dcdeae2e471c3876623aa174be0139e99e"
+  dependencies:
+    postcss "^6.0.17"
+    resolve-from "^4.0.0"
+
 postcss-value-parser@^3.2.3, postcss-value-parser@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.0.tgz#87f38f9f18f774a4ab4c8a232f5c5ce8872a9d15"
@@ -4976,7 +4984,7 @@ postcss@6.0.22:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@6.0.23, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.21, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.8, postcss@^6.0.9:
+postcss@6.0.23, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.21, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.8, postcss@^6.0.9:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   dependencies:
@@ -6005,9 +6013,9 @@ supports-color@^5.3.0, supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.9.0.tgz#edd8ce7d141e2424a0297eb6fa753f2606627a0d"
+svelte@2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.9.1.tgz#a7edbad10fa0281d9f250f517d90c45d0d8c7ad0"
 
 svg-tags@^1.0.0:
   version "1.0.0"

@@ -1,0 +1,17 @@
+/*
+  TAGS
+*/
+
+.tag {
+  display: inline-block;
+  padding: var(--tag-padding);
+  font-size: var(--tag-text-size);
+  color: var(--tag-text-color);
+  vertical-align: var(--tag-alignment);
+  background-color: var(--tag-background-color);
+  border-radius: var(--tag-border-radius);
+}
+
+/* Whitespace between tags */
+
+.tag + .tag { margin-left: var(--tag-margin-between); }

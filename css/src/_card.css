@@ -3,52 +3,54 @@
 */
 
 .card {
-  padding: var(--card-padding-y) var(--card-padding-x);
   word-wrap: break-word;
-  background-color: var(--card-bg-colour);
+  background-color: var(--card-background-color);
   filter: var(--card-shadow);
-  border-radius: var(--radius-2);
+  border-radius: var(--radius-large);
 }
 
-.card-touch {
-  z-index: var(--card-touch-zindex);
+.card-hover {
+  z-index: var(--card-hover-zindex);
+  padding: 0;
   margin: 0;
-  color: var(--card-touch-font-colour);
-  filter: var(--card-touch-shadow);
-  transition: transform var(--card-touch-animate-speed-1), filter var(--card-touch-animate-speed-2);
+  color: var(--card-hover-text-color);
+  filter: var(--card-hover-shadow);
+  transition:
+    transform var(--card-hover-animate-speed-1),
+    filter var(--card-hover-animate-speed-2);
 
-  @if var(--card-touch-optimize) {
+  @if var(--card-hover-optimize) {
     will-change: transform, filter;
   }
 
   &:hover {
-    color: var(--card-touch-font-colour);
+    color: var(--card-hover-text-color);
     text-decoration: unset;
-    filter: var(--card-touch-hover-shadow);
-    transform: translateY(var(--card-touch-animate-distance));
+    filter: var(--card-hover-hover-shadow);
+    transform: translateY(var(--card-hover-animate-distance));
   }
 }
 
-.card-has-btn {
+.card-has-button {
   display: flex;
   flex-direction: column;
-  padding: 0;
 }
 
 .card-img {
-  border-top-left-radius: var(--radius-2);
-  border-top-right-radius: var(--radius-2);
+  border-top-left-radius: var(--radius-large);
+  border-top-right-radius: var(--radius-large);
 }
 
 .card-body {
-  margin: 1.2rem 2rem;
+  display: inline-block; /* prevents margin collapsing */
+  margin: var(--card-body-margin);
 }
 
-.card-btn {
-  padding: var(--btn-padding-y) var(--btn-padding-x);
+.card-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
   margin-top: auto;
   text-align: center;
-  border-top: var(--card-btn-border);
-  border-bottom-right-radius: var(--radius-2);
-  border-bottom-left-radius: var(--radius-2);
+  border-top: var(--card-button-border);
+  border-bottom-right-radius: var(--radius-large);
+  border-bottom-left-radius: var(--radius-large);
 }

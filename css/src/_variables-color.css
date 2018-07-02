@@ -1,0 +1,173 @@
+/*
+  TODO: Add a note referencing original work these colours are from:
+    ↳ Palantir Technologies, Inc.
+    ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_colors.scss
+    ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_color-aliases.scss
+*/
+
+/* TODO: */
+/* stylelint-disable color-no-hex, custom-property-empty-line-before */
+
+:root {
+  /* Gray scale */
+
+  --black: #10161a;
+
+  --dark-gray1: #182026;
+  --dark-gray2: #202b33;
+  --dark-gray3: #293742;
+  --dark-gray4: #30404d;
+  --dark-gray5: #394b59;
+
+  --gray1: #5c7080;
+  --gray2: #738694;
+  --gray3: #8a9ba8;
+  --gray4: #a7b6c2;
+  --gray5: #bfccd6;
+
+  --light-gray1: #ced9e0;
+  --light-gray2: #d8e1e8;
+  --light-gray3: #e1e8ed;
+  --light-gray4: #ebf1f5;
+  --light-gray5: #f5f8fa;
+
+  --white: #fff;
+
+  /* Core colors */
+
+  --blue1: #0e5a8a;
+  --blue2: #106ba3;
+  --blue3: #137cbd;
+  --blue4: #2b95d6;
+  --blue5: #48aff0;
+
+  --green1: #0a6640;
+  --green2: #0d8050;
+  --green3: #0f9960;
+  --green4: #15b371;
+  --green5: #3dcc91;
+
+  --orange1: #a66321;
+  --orange2: #bf7326;
+  --orange3: #d9822b;
+  --orange4: #f29d49;
+  --orange5: #ffb366;
+
+  --red1: #a82a2a;
+  --red2: #c23030;
+  --red3: #db3737;
+  --red4: #f55656;
+  --red5: #ff7373;
+
+  /* Extended colors */
+
+  --vermilion1: #9e2b0e;
+  --vermilion2: #b83211;
+  --vermilion3: #d13913;
+  --vermilion4: #eb532d;
+  --vermilion5: #ff6e4a;
+
+  --rose1: #a82255;
+  --rose2: #c22762;
+  --rose3: #db2c6f;
+  --rose4: #f5498b;
+  --rose5: #ff66a1;
+
+  --violet1: #5c255c;
+  --violet2: #752f75;
+  --violet3: #8f398f;
+  --violet4: #a854a8;
+  --violet5: #c274c2;
+
+  --indigo1: #5642a6;
+  --indigo2: #634dbf;
+  --indigo3: #7157d9;
+  --indigo4: #9179f2;
+  --indigo5: #ad99ff;
+
+  --cobalt1: #1f4b99;
+  --cobalt2: #2458b3;
+  --cobalt3: #2965cc;
+  --cobalt4: #4580e6;
+  --cobalt5: #669eff;
+
+  --turquoise1: #008075;
+  --turquoise2: #00998c;
+  --turquoise3: #00b3a4;
+  --turquoise4: #14ccbd;
+  --turquoise5: #2ee6d6;
+
+  --forest1: #1d7324;
+  --forest2: #238c2c;
+  --forest3: #29a634;
+  --forest4: #43bf4d;
+  --forest5: #62d96b;
+
+  --lime1: #728c23;
+  --lime2: #87a629;
+  --lime3: #9bbf30;
+  --lime4: #b6d94c;
+  --lime5: #d1f26d;
+
+  --gold1: #a67908;
+  --gold2: #bf8c0a;
+  --gold3: #d99e0b;
+  --gold4: #f2b824;
+  --gold5: #ffc940;
+
+  --sepia1: #63411e;
+  --sepia2: #7d5125;
+  --sepia3: #96622d;
+  --sepia4: #b07b46;
+  --sepia5: #c99765;
+
+  /* Aliases */
+
+  --intent-primary: var(--blue3);
+  --intent-success: var(--green3);
+  --intent-warning: var(--orange3);
+  --intent-danger: var(--red3);
+
+  /* --app-background-color: var(--light-gray5); */
+  --app-background-color: #fafafa;
+  --dark-app-background-color: var(--dark-gray3);
+
+  /* --outline-color: color-mod(var(--blue3) alpha(0.60)); */
+  --outline-color: var(--intent-primary);
+  --outline-color-hover: var(--gray3);
+
+  --text-color: var(--dark-gray1);
+  --text-color-muted: var(--gray1);
+  --text-color-disabled: color-mod(var(--text-color-muted) alpha(0.5));
+  --heading-color: var(--text-color);
+  /* --link-color: var(--blue2); */
+  --link-color: var(--cobalt3);
+  --link-color-hover: var(--blue2);
+  --dark-text-color: var(--light-gray5);
+  --dark-text-color-muted: var(--gray5);
+  --dark-text-color-disabled: color-mod(var(--dark-text-color-muted) alpha(0.5));
+  --dark-heading-color: var(--dark-text-color);
+  --dark-link-color: var(--blue5);
+  /* Default text selection color using #7dbcff */
+  --text-selection-color: rgba(125, 188, 255, 0.6); /* stylelint-disable-line */
+
+  --background-color-muted: var(--light-gray4);
+
+  --icon-color: var(--text-color-muted);
+  --icon-color-hover: var(--text-color);
+  --icon-color-disabled: var(--text-color-disabled);
+  --icon-color-selected: var(--intent-primary);
+  --dark-icon-color: var(--dark-text-color-muted);
+  --dark-icon-color-hover: var(--dark-text-color);
+  --dark-icon-color-disabled: var(--dark-text-color-disabled);
+  --dark-icon-color-selected: var(--intent-primary);
+
+  --divider-black: color-mod(var(--black) alpha(0.15));
+  --dark-divider-black: color-mod(var(--black) alpha(0.4));
+  --dark-divider-white: color-mod(var(--white) alpha(0.15));
+
+  --code-text-color: var(--text-color-muted);
+  --dark-code-text-color: var(--dark-text-color-muted);
+  --code-background-color: color-mod(var(--white) alpha(0.7));
+  --dark-code-background-color: color-mod(var(--black) alpha(0.3));
+}

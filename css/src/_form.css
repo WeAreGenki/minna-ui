@@ -8,8 +8,8 @@
 
 label {
   display: block; /* forces label to appear above the input */
-  margin-bottom: var(--form-help-margin);
-  color: var(--grey-800);
+  margin-bottom: var(--label-margin);
+  color: var(--label-text-color);
   text-transform: uppercase;
 
   input[type="radio"] + &,
@@ -26,9 +26,9 @@ input,
 select,
 textarea {
   padding: var(--input-padding-y) var(--input-padding-x);
-  font-size: var(--input-font-size);
-  color: var(--input-font-colour);
-  background-color: var(--input-bg-colour);
+  font-size: var(--input-text-size);
+  color: var(--input-text-color);
+  background-color: var(--input-background-color);
   border: var(--input-border);
   border-radius: var(--input-radius);
 
@@ -42,19 +42,19 @@ textarea {
   }
 
   &::placeholder {
-    color: var(--input-placeholder-font-colour);
+    color: var(--input-placeholder-text-color);
   }
 
   &[disabled],
   &[disabled]:focus,
   &[disabled]:active {
-    color: var(--input-disabled-font-colour);
-    background-color: var(--input-bg-colour);
-    border: var(--input-border-width) solid var(--input-disabled-border-colour);
+    color: var(--input-disabled-text-color);
+    background-color: var(--input-disabled-background-color);
+    border: var(--input-disabled-border);
     outline: none;
 
     &::placeholder {
-      color: var(--input-disabled-placeholder-font-colour);
+      color: var(--input-disabled-placeholder-text-color);
     }
   }
 }
@@ -64,10 +64,11 @@ textarea {
 
 /* Grouped form elements */
 
+/* TODO: Make groups more flexible */
 .input-group {
   display: inline-flex;
 
-  & > .btn {
+  & > .button {
     filter: none;
     border: var(--input-border);
     border-top-left-radius: 0;
@@ -75,7 +76,7 @@ textarea {
   }
 
   & > input {
-    margin-right: calc(-1 * var(--radius-1));
+    margin-right: calc(-1 * var(--radius));
   }
 }
 
@@ -84,18 +85,18 @@ textarea {
 .form-help {
   display: block;
   margin-top: var(--form-help-margin);
-  color: var(--form-help-font-colour);
+  color: var(--form-help-text-color);
 }
 
 .invalid {
   border: var(--input-invalid-border);
-  outline-color: var(--input-invalid-colour);
+  outline-color: var(--input-invalid-color);
 }
 
 .invalid-feedback {
   display: none;
   margin-top: var(--form-help-margin);
-  color: var(--input-invalid-colour);
+  color: var(--input-invalid-color);
 
   .invalid + & {
     display: block;

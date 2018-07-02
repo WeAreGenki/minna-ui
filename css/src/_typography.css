@@ -2,14 +2,14 @@
   TYPOGRAPHY
 */
 
-/* Fluid font size */
+/* Fluid text size */
 
 html {
-  @mixin fluid-font-size
-    var(--font-size-min),
-    var(--font-size-max),
-    var(--font-size-from),
-    var(--font-size-until);
+  @mixin fluid-text-size
+    var(--text-size-min),
+    var(--text-size-max),
+    var(--text-size-from),
+    var(--text-size-until);
 }
 
 /* Font base */
@@ -21,32 +21,23 @@ body {
    * use the web font or not, e.g. when connection speed is slow).
    */
   font-family: var(--font-family);
-  text-rendering: var(--font-rendering);
-  font-variant-ligatures: var(--font-variant);
-  color: var(--body-font-colour);
-  background-color: var(--body-bg-colour);
+  text-rendering: var(--text-rendering);
+  font-variant-ligatures: var(--text-variant);
+  color: var(--text-color);
+  background-color: var(--app-background-color);
 
   /* only set when different from browser default */
-  @if var(--font-size-min) != 1em AND var(--font-size-min) != 1rem AND var(--font-size-min) != 16px {
-    font-size: var(--font-size-min);
+  @if var(--text-size-min) != 1em AND var(--text-size-min) != 1rem AND var(--text-size-min) != 16px {
+    font-size: var(--text-size-min);
   }
 
   /* only set when different from browser default */
-  @if var(--font-weight) != 400 {
-    font-weight: var(--font-weight);
+  @if var(--text-weight) != 400 {
+    font-weight: var(--text-weight);
   }
 }
 
 /* Headings */
-
-h1 > small,
-h2 > small,
-h3 > small,
-h4 > small,
-h5 > small,
-h6 > small {
-  color: var(--heading-small-font-colour);
-}
 
 /* stylelint-disable selector-list-comma-newline-after */
 .h1, h1,
@@ -55,22 +46,26 @@ h6 > small {
 .h4, h4,
 .h5, h5,
 .h6, h6 {
-  font-weight: var(--heading-font-weight);
+  font-weight: var(--heading-text-weight);
 
   /* prevent long words causing the page to overflow */
   word-break: break-word;
   word-wrap: break-word;
+
+  @if var(--heading-color) != var(--text-color) {
+    color: var(--heading-color);
+  }
 }
 
-.h1, h1 { font-size: var(--h1-font-size); }
-.h2, h2 { font-size: var(--h2-font-size); }
-.h3, h3 { font-size: var(--h3-font-size); }
-.h4, h4 { font-size: var(--h4-font-size); }
-.h5, h5 { font-size: var(--h5-font-size); }
-.h6, h6 { font-size: var(--h6-font-size); }
+.h1, h1 { font-size: var(--h1-text-size); }
+.h2, h2 { font-size: var(--h2-text-size); }
+.h3, h3 { font-size: var(--h3-text-size); }
+.h4, h4 { font-size: var(--h4-text-size); }
+.h5, h5 { font-size: var(--h5-text-size); }
+.h6, h6 { font-size: var(--h6-text-size); }
 /* stylelint-enable selector-list-comma-newline-after */
 
-.headline { font-size: var(--headline-font-size); }
+.headline { font-size: var(--headline-text-size); }
 
 /* Paragraphs */
 
@@ -79,8 +74,8 @@ p {
 }
 
 .lead {
-  font-size: var(--paragraph-lead-font-size);
-  font-weight: var(--font-weight-light);
+  font-size: var(--paragraph-lead-text-size);
+  font-weight: var(--text-weight-light);
 }
 
 /* Links */
@@ -89,12 +84,12 @@ p {
 a {
   padding: var(--link-click-area); /* larger link click area size */
   margin: calc(-1 * var(--link-click-area));
-  color: var(--link-font-colour);
+  color: var(--link-color);
   text-decoration: none;
   word-wrap: break-word;
 
   &:hover {
-    color: var(--link-hover-font-colour);
+    color: var(--link-color-hover);
     text-decoration: underline;
   }
 }
@@ -121,7 +116,7 @@ td {
 }
 
 tbody > tr:nth-child(odd) {
-  background: var(--blue-grey-50);
+  background: var(--background-color-muted);
 
   /* FIXME: These selector chain makes me sad, come up with a better solution */
   /* & > td:first-child {
@@ -135,7 +130,7 @@ tbody > tr:nth-child(odd) {
       width: 150vw;
       height: 100%;
       content: "";
-      background: var(--blue-grey-50);
+      background: var(--background-color-muted);
     }
   } */
 }
@@ -144,12 +139,12 @@ tbody > tr:nth-child(odd) {
 
 .quote {
   position: relative;
-  font-size: var(--quote-font-size);
+  font-size: var(--quote-text-size);
 
   &::before,
   &::after {
     position: absolute;
-    font-size: var(--quote-mark-font-size);
+    font-size: var(--quote-mark-text-size);
   }
 
   /* use em not rem so it's relative to font size */
@@ -176,9 +171,9 @@ code {
 
 code {
   display: inline-block;
-  padding: 0.1rem 0.4rem;
-  color: var(--red-500);
-  background-color: var(--grey-100);
-  border: 1px solid var(--grey-300);
-  border-radius: var(--radius-1);
+  padding: 0.1em 0.4em;
+  color: var(--code-text-color);
+  background-color: var(--code-background-color);
+  border: 1px solid var(--light-gray1);
+  border-radius: var(--radius);
 }

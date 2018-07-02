@@ -4,7 +4,7 @@ body {
 
 /* stylelint-disable selector-max-id */
 #target {
-  color: var(--colour);
+  color: var(--color);
 
   .focus,
   &:focus {

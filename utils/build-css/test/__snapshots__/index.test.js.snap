@@ -11,7 +11,7 @@ body {
 }
 /* stylelint-disable selector-max-id */
 #target {
-  color: var(--colour);
+  color: var(--color);
 }
 #target .focus,
   #target:focus {
@@ -30,7 +30,7 @@ exports[`build-css tool compiles package CSS bundle 2`] = `
  * test-css v1.2.3 - https://ui.wearegenki.com
  * Copyright 2018 We Are Genki
  * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */body{margin:var(--margin)}#target{color:var(--colour)}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+ */body{margin:var(--margin)}#target{color:var(--color)}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
 /*# sourceMappingURL=index.css.map */"
 `;
 

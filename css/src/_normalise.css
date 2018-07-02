@@ -151,7 +151,7 @@ textarea {
   font-family: var(--font-family); /* 1 */
   font-size: 100%; /* 1 */
   line-height: var(--line-height); /* 1 */
-  font-weight: var(--font-weight); /* WAG */
+  font-weight: var(--text-weight); /* WAG */
   margin: 0; /* 2 */
 }
 

@@ -3,7 +3,7 @@ body {
 }
 
 #target {
-  color: --colour;
+  color: --color;
 
   &wrapper {
     background: #red;

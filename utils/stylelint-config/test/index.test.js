@@ -35,7 +35,7 @@ body {
   // inline comment
   font-family: Roboto Mono Regular, sans-serif;
   color:
-  background-colours: hsl(0, 0%, 98%);
+  background-colors: hsl(0, 0%, 98%);
   margin: 5pigs;
 }`;
 

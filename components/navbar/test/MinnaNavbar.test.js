@@ -76,7 +76,7 @@ describe('MinnaNavbar component', () => {
       },
     });
     const spy = jest.spyOn(component, 'set');
-    const navbarBtn = target.querySelector('.navbar-btn');
+    const navbarBtn = target.querySelector('.navbar-button');
     navbarBtn.click();
     expect(component.get().__show).toBeTruthy();
     navbarBtn.click();
@@ -96,11 +96,11 @@ describe('MinnaNavbar component', () => {
         page: '/',
       },
     });
-    const icon = target.querySelector('.navbar-btn > svg > use');
+    const icon = target.querySelector('.navbar-button > svg > use');
     const navbarLinks = target.querySelector('.navbar-links');
     expect(icon.getAttribute('xlink:href')).toEqual('#menu');
     expect(navbarLinks.classList.contains('df')).toBeFalsy();
-    target.querySelector('.navbar-btn').click();
+    target.querySelector('.navbar-button').click();
     expect(icon.getAttribute('xlink:href')).toEqual('#x');
     expect(navbarLinks.classList.contains('df')).toBeTruthy();
   });

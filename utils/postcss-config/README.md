@@ -7,6 +7,8 @@
 
 PostCSS config preset for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects or standalone.
 
+TODO: List included plugins, what they do, and documentation links.
+
 ## Usage
 
 1. Install this package and its `postcss` dependency:
@@ -27,6 +29,18 @@ module.exports = {
     }),
   ],
 };
+```
+
+3. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can optionally specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
+
+```css
+@use postcss-preset-env(stage: 0, browsers: "last 2 versions");
+
+h1 {
+  & a {
+    color: hsla(0, 69%, 54%, 0.8);
+  }
+}
 ```
 
 ### Options

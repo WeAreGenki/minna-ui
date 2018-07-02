@@ -1,23 +1,23 @@
 /*
-  FLUID FONT SIZE
+  FLUID TEXT SIZE
 
-  Generates a responsive set of font sizes which automatically adapt to the
+  Generates a responsive set of text sizes which automatically adapt to the
   screen viewport width.
 
   USAGE:
     html {
-      @mixin fluid-font-size
-        <min-font-size>,
-        <max-font-size>,
+      @mixin fluid-text-size
+        <min-text-size>,
+        <max-text-size>,
         <from-screen-width>,
         <until-screen-width>,
         [use-px];
     }
 
-    <min-font-size>      = font size below from-screen-width
-    <max-font-size>      = font size above until-screen-width
-    <from-screen-width>  = start growing font size from this width
-    <until-screen-width> = stop growing font size at this width
+    <min-text-size>      = text size below from-screen-width
+    <max-text-size>      = text size above until-screen-width
+    <from-screen-width>  = start growing text size from this width
+    <until-screen-width> = stop growing text size at this width
     [use-px]             = if true output px value instead of em (optional)
 
   NOTE:
@@ -50,7 +50,7 @@ function getUnit(value) {
  * @returns {string} The converted CSS size value.
  */
 function convertSize(size, outputPx = false) {
-  const baseSize = 16; // 16px is the normal browser default font size
+  const baseSize = 16; // 16px is the normal browser default text size
   const unit = getUnit(size);
 
   if (!unit) throw new Error('Only px, rem, and em units are supported');
@@ -75,7 +75,7 @@ function convertSize(size, outputPx = false) {
 }
 
 /**
- * PostCSS mixin to generate a set of fluid font sizes.
+ * PostCSS mixin to generate a set of fluid text sizes.
  * @param {any} mixin
  * @param {string} minFontSize
  * @param {string} maxFontSize
@@ -92,19 +92,19 @@ module.exports = (
   untilScreenWidth,
   usePxUnit = false,
 ) => {
-  const minFont = convertSize(minFontSize, usePxUnit);
-  const maxFont = convertSize(maxFontSize, usePxUnit);
+  const minSize = convertSize(minFontSize, usePxUnit);
+  const maxSize = convertSize(maxFontSize, usePxUnit);
   const minMedia = convertSize(fromScreenWidth, usePxUnit);
   const maxMedia = convertSize(untilScreenWidth, usePxUnit);
-  const fontRange = parseFloat(maxFont) - parseFloat(minFont);
+  const sizeRange = parseFloat(maxSize) - parseFloat(minSize);
   const mediaRange = parseFloat(maxMedia) - parseFloat(minMedia);
-  const sizeCalc = `calc(${minFont} + ${fontRange} * (100vw - ${minMedia}) / ${mediaRange});`;
+  const sizeCalc = `calc(${minSize} + ${sizeRange} * (100vw - ${minMedia}) / ${mediaRange});`;
 
   return {
     '&': {
-      // only set a base font size if different from browser default
-      ...(convertSize(minFont) === '1em' ? {} : {
-        'font-size': minFont,
+      // only set a base text size if different from browser default
+      ...(convertSize(minSize) === '1em' ? {} : {
+        'font-size': minSize,
       }),
 
       [`@media screen and (min-width: ${fromScreenWidth}) and (max-width: ${untilScreenWidth})`]: {
@@ -112,7 +112,7 @@ module.exports = (
       },
 
       [`@media screen and (min-width: ${untilScreenWidth})`]: {
-        'font-size': maxFont,
+        'font-size': maxSize,
       },
     },
   };

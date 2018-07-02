@@ -1,8 +1,11 @@
+// TODO: Look into using https://github.com/csstools/postcss-preset-env
+
 'use strict';
 
 const path = require('path');
 const postcss = require('postcss');
 const atImport = require('postcss-import');
+const cssUse = require('postcss-use');
 const atVariables = require('postcss-at-rules-variables');
 const each = require('postcss-each');
 const mixins = require('postcss-mixins');
@@ -40,6 +43,7 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(atImport({
       path: importPaths,
     }))
+    .use(cssUse)
     .use(atVariables)
     .use(each)
     .use(mixins({ mixinsDir }))

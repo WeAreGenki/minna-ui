@@ -105,28 +105,29 @@
   @import "import.css";
 
   :root {
-    /* FIXME: Can't parse when "--optimize-all" is not set */
-    /* --toggle-optimize: var(--optimize-all, false); */
     --toggle-optimize: false;
     --toggle-zindex: 1;
     --toggle-width: 8rem;
-    --toggle-padding: var(--btn-padding-y) 0;
-    --toggle-on-font-colour: var(--white);
-    --toggle-on-bg-colour: var(--green-500);
-    --toggle-off-font-colour: var(--btn-font-colour);
-    --toggle-off-bg-colour: var(--grey-400);
-    --toggle-inner-shadow: inset 0 -0.125rem 0.6rem color-mod(var(--shadow-colour) alpha(0.15));
-    --toggle-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod(var(--shadow-colour) alpha(0.05));
+    --toggle-padding: var(--button-padding-y) 0;
+    --toggle-shadow: var(--button-shadow);
+    --toggle-on-text-color: var(--white);
+    --toggle-on-background-color: var(--intent-success);
+    --toggle-off-text-color: var(--button-text-color);
+    --toggle-off-background-color: var(--light-gray1);
+    --toggle-inner-shadow: inset 0 -0.125rem 0.6rem color-mod(var(--shadow-color) alpha(0.15));
+    --toggle-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
     --toggle-animate-in-speed: 180ms;
     --toggle-animate-out-speed: 130ms;
-    --toggle-hover-slider-bg-colour: var(--grey-200);
-    --toggle-disabled-slider-bg-colour: var(--grey-100);
+    --toggle-hover-slider-background-color: var(--light-gray4);
+    --toggle-disabled-text-color: var(--button-disabled-text-color);
+    --toggle-disabled-slider-background-color: var(--light-gray3);
+    --toggle-disabled-border: 1px solid var(--button-disabled-border-color);
     --toggle-mini-width: calc(var(--toggle-width) / 1.7);
-    --toggle-mini-padding: calc(var(--btn-padding-y) / 2) 0;
-    --toggle-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-colour) alpha(0.05));
+    --toggle-mini-padding: calc(var(--button-padding-y) / 2) 0;
+    --toggle-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
   }
 
-  /* the toggle purposely looks like .btn and uses many of the button variables */
+  /* the toggle purposely looks like .button and uses many of the button variables */
   .toggle {
     position: relative;
     z-index: var(--toggle-zindex); /* prevent repaint of other elements; promote to new stacking context */
@@ -134,12 +135,12 @@
     width: var(--toggle-width);
     padding: var(--toggle-padding);
     line-height: 1;
-    color: var(--toggle-off-font-colour);
+    color: var(--toggle-off-text-color);
     text-align: center;
     cursor: pointer;
-    background-color: var(--toggle-off-bg-colour);
-    filter: var(--btn-shadow);
-    border-radius: var(--btn-radius);
+    background-color: var(--toggle-off-background-color);
+    filter: var(--toggle-shadow);
+    border-radius: var(--button-radius);
     box-shadow: var(--toggle-inner-shadow);
     transition: background-color var(--toggle-animate-out-speed) ease-out;
     transition-delay: 0s;
@@ -163,7 +164,7 @@
   }
 
   .toggle-checked {
-    background-color: var(--toggle-on-bg-colour);
+    background-color: var(--toggle-on-background-color);
     transition: background-color var(--toggle-animate-in-speed) ease-in;
     transition-delay: var(--toggle-animate-out-speed);
   }
@@ -174,10 +175,10 @@
   }
 
   .toggle-on {
-    color: var(--toggle-on-font-colour);
+    color: var(--toggle-on-text-color);
 
     .toggle-disabled > & {
-      color: var(--btn-disabled-font-colour);
+      color: var(--toggle-disabled-text-color);
     }
   }
 
@@ -186,8 +187,8 @@
     top: 0;
     bottom: 0;
     width: 50%;
-    background: var(--btn-bg-colour);
-    border-radius: var(--btn-radius);
+    background: var(--button-background-color);
+    border-radius: var(--button-radius);
     box-shadow: var(--toggle-slider-inner-shadow);
     transition: transform var(--toggle-animate-in-speed) ease-out;
 
@@ -206,7 +207,7 @@
 
     .toggle:hover > &,
     .toggle:focus > & {
-      background: var(--toggle-hover-slider-bg-colour);
+      background: var(--toggle-hover-slider-background-color);
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
@@ -223,16 +224,16 @@
     .toggle-disabled > &,
     .toggle-disabled:hover > &,
     .toggle-disabled:focus > & {
-      background: var(--toggle-disabled-slider-bg-colour);
+      background: var(--toggle-disabled-slider-background-color);
     }
   }
 
   .toggle-disabled {
-    color: var(--btn-disabled-font-colour);
+    color: var(--button-disabled-text-color);
     cursor: not-allowed;
-    background-color: var(--btn-bg-colour);
+    background-color: var(--button-background-color);
     filter: none;
-    border: 1px solid var(--btn-disabled-border-colour);
+    border: var(--toggle-disabled-border);
     box-shadow: none; /* inner shadow */
     transition: none;
 
@@ -242,7 +243,6 @@
 
     &:hover,
     &:focus {
-      /* pointer-events: none; */
       outline: none;
     }
   }

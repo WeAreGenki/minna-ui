@@ -36,12 +36,12 @@
 
 /* Font variants and decoration */
 
-.bold { font-weight: var(--font-weight-heavy); }
+.bold { font-weight: var(--text-weight-heavy); }
 .italic { font-style: italic; }
 
 .normal {
   font-style: normal;
-  font-weight: var(--font-weight);
+  font-weight: var(--text-weight);
 }
 
 .underline { text-decoration: underline; }
@@ -53,9 +53,9 @@
 .bb0 { border-bottom: 0; }
 .bl0 { border-left: 0; }
 
-.rad { border-radius: var(--radius-1); }
-.rad2 { border-radius: var(--radius-2); }
-.rad0 { border-radius: 0; }
+.rounded { border-radius: var(--radius); }
+.rounded-large { border-radius: var(--radius-large); }
+.not-rounded { border-radius: 0; }
 
 /* stylelint-disable declaration-no-important */
 .bt0-i { border-top: 0 !important; }
@@ -63,7 +63,7 @@
 .bb0-i { border-bottom: 0 !important; }
 .bl0-i { border-left: 0 !important; }
 
-.rad0-i { border-radius: 0 !important; }
+.not-rounded-i { border-radius: 0 !important; }
 /* stylelint-enable declaration-no-important */
 
 /* Cursors */

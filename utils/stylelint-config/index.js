@@ -10,7 +10,7 @@ module.exports = {
   plugins: ['stylelint-order'],
   rules: {
     'at-rule-no-unknown': [true, {
-      ignoreAtRules: ['if', 'else', 'each', 'mixin', 'define-mixin'],
+      ignoreAtRules: ['if', 'else', 'each', 'mixin', 'define-mixin', 'use'],
     }],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',

@@ -15,9 +15,9 @@
 }
 
 .sidenav-link-active {
-  font-weight: var(--font-weight-heavy);
-  color: var(--side-nav-active-font-colour);
-  background-color: var(--side-nav-active-bg-colour);
+  font-weight: var(--text-weight-heavy);
+  color: var(--side-nav-active-text-color);
+  background-color: var(--side-nav-active-background-color);
 }
 
 /* Footer */
@@ -25,7 +25,7 @@
 .footer {
   margin-top: var(--footer-margin-y);
   margin-bottom: var(--footer-margin-y);
-  color: var(--footer-font-colour);
+  color: var(--footer-text-color);
 }
 
 .footer-link {

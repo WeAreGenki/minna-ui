@@ -2,10 +2,10 @@
 
 'use strict';
 
-const postcss = require('postcss'); // eslint-disable-line import/no-extraneous-dependencies
-const postcssMixins = require('postcss-mixins'); // eslint-disable-line import/no-extraneous-dependencies
+const postcss = require('postcss');
+const postcssMixins = require('postcss-mixins');
 const drawTriangle = require('../src/mixins/draw-triangle.js');
-const fluidFontSize = require('../src/mixins/fluid-font-size.js');
+const fluidTextSize = require('../src/mixins/fluid-text-size.js');
 const makeFontFace = require('../src/mixins/make-font-face.js');
 
 /**
@@ -91,46 +91,46 @@ describe('Draw triangle mixin', () => {
 
 describe('Fluid font size mixin', () => {
   it('generates CSS rules', async () => {
-    const output = fluidFontSize(null, '16px', '32px', '30em', '100em');
+    const output = fluidTextSize(null, '16px', '32px', '30em', '100em');
     expect(output).not.toHaveProperty('&.font-size');
     expect(output).toMatchSnapshot();
 
-    const result = await compileMixin(fluidFontSize, '16px, 32px, 30em, 100em');
+    const result = await compileMixin(fluidTextSize, '16px, 32px, 30em, 100em');
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
   });
 
   it('generates CSS rules in px', async () => {
-    const output = fluidFontSize(null, '1rem', '2rem', '30em', '100em', true);
+    const output = fluidTextSize(null, '1rem', '2rem', '30em', '100em', true);
     expect(output).not.toHaveProperty('&.font-size');
     expect(output).toMatchSnapshot();
 
-    const result = await compileMixin(fluidFontSize, '1rem, 2rem, 30em, 100em, true');
+    const result = await compileMixin(fluidTextSize, '1rem, 2rem, 30em, 100em, true');
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
   });
 
   it('includes base font-size when minFontSize isn\'t browser default', async () => {
-    const output = fluidFontSize(null, '1.5rem', '2rem', '30em', '100em');
+    const output = fluidTextSize(null, '1.5rem', '2rem', '30em', '100em');
     expect(output).toHaveProperty('&.font-size');
 
-    const result = await compileMixin(fluidFontSize, '1.5rem, 2rem, 30em, 100em');
+    const result = await compileMixin(fluidTextSize, '1.5rem, 2rem, 30em, 100em');
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
   });
 
   it('includes base font-size when minFontSize isn\'t browser default in px', async () => {
-    const output = fluidFontSize(null, '20px', '2rem', '30em', '100em');
+    const output = fluidTextSize(null, '20px', '2rem', '30em', '100em');
     expect(output).toHaveProperty('&.font-size');
 
-    const result = await compileMixin(fluidFontSize, '20px, 2rem, 30em, 100em');
+    const result = await compileMixin(fluidTextSize, '20px, 2rem, 30em, 100em');
     expect(result.warnings).toHaveLength(0);
     expect(result.css).toMatchSnapshot();
   });
 
   it('throws error when invalid size unit', () => {
     expect(() => {
-      fluidFontSize(null, '16', '32pops', '30em', '100em');
+      fluidTextSize(null, '16', '32pops', '30em', '100em');
     }).toThrow('Only px, rem, and em units are supported');
   });
 });

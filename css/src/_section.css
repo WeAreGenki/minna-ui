@@ -25,8 +25,8 @@
 .hero {
   padding: var(--hero-padding);
   margin: var(--hero-margin);
-  color: var(--hero-font-colour);
-  background-image: var(--hero-bg-gradient);
+  color: var(--hero-text-color);
+  background-image: var(--hero-background-gradient);
 }
 
 .hero-dark {
@@ -36,7 +36,7 @@
 /* Off-angle; tilted section */
 
 .tilt {
-  background-color: var(--tilt-bg-colour);
+  background-color: var(--tilt-background-color);
 
   &::before,
   &::after {
@@ -49,10 +49,10 @@
     background-image:
       linear-gradient(
         to bottom right,
-        var(--body-bg-colour),
-        var(--body-bg-colour) var(--tilt-stop-point),
-        var(--tilt-bg-colour) 50%,
-        var(--tilt-bg-colour)
+        var(--app-background-color),
+        var(--app-background-color) var(--tilt-stop-point),
+        var(--tilt-background-color) 50%,
+        var(--tilt-background-color)
       );
   }
 
@@ -60,17 +60,17 @@
     background-image:
       linear-gradient(
         to bottom right,
-        var(--tilt-bg-colour),
-        var(--tilt-bg-colour) var(--tilt-stop-point),
-        var(--body-bg-colour) 50%,
-        var(--body-bg-colour)
+        var(--tilt-background-color),
+        var(--tilt-background-color) var(--tilt-stop-point),
+        var(--app-background-color) 50%,
+        var(--app-background-color)
       );
   }
 }
 
 .tilt-cta {
-  color: var(--tilt-cta-font-colour);
-  background-color: var(--tilt-cta-bg-colour);
+  color: var(--tilt-cta-text-color);
+  background-color: var(--tilt-cta-background-color);
 
   &::before,
   &::after {
@@ -83,10 +83,10 @@
     background-image:
       linear-gradient(
         to bottom right,
-        var(--body-bg-colour),
-        var(--body-bg-colour) var(--tilt-stop-point),
-        var(--tilt-cta-bg-colour) 50%,
-        var(--tilt-cta-bg-colour)
+        var(--app-background-color),
+        var(--app-background-color) var(--tilt-stop-point),
+        var(--tilt-cta-background-color) 50%,
+        var(--tilt-cta-background-color)
       );
   }
 
@@ -94,20 +94,20 @@
     background-image:
       linear-gradient(
         to bottom right,
-        var(--tilt-cta-bg-colour),
-        var(--tilt-cta-bg-colour) var(--tilt-stop-point),
-        var(--body-bg-colour) 50%,
-        var(--body-bg-colour)
+        var(--tilt-cta-background-color),
+        var(--tilt-cta-background-color) var(--tilt-stop-point),
+        var(--app-background-color) 50%,
+        var(--app-background-color)
       );
   }
 
   label,
   strong {
-    color: var(--tilt-cta-font-colour);
+    color: var(--tilt-cta-text-color);
   }
 
   a {
-    color: var(--tilt-cta-link-colour);
+    color: var(--tilt-cta-link-color);
   }
 
   .input,
@@ -116,12 +116,12 @@
   input,
   select,
   textarea {
-    outline-color: var(--tilt-cta-link-colour);
+    outline-color: var(--tilt-cta-link-color);
   }
 
   .invalid {
     border: var(--tilt-cta-input-invalid-border);
-    outline-color: var(--tilt-cta-input-invalid-colour);
+    outline-color: var(--tilt-cta-input-invalid-color);
   }
 
   .form-help {
@@ -129,20 +129,20 @@
   }
 
   .invalid-feedback {
-    color: var(--tilt-cta-input-invalid-colour);
+    color: var(--tilt-cta-input-invalid-color);
   }
 }
 
 .tilt-offset {
   &::before {
     margin-top: calc(-1 * var(--tilt-hight));
-    background-image: linear-gradient(to bottom right, var(--tilt-bg-colour), var(--tilt-bg-colour) var(--tilt-stop-point), var(--tilt-cta-bg-colour) 50%, var(--tilt-cta-bg-colour));
+    background-image: linear-gradient(to bottom right, var(--tilt-background-color), var(--tilt-background-color) var(--tilt-stop-point), var(--tilt-cta-background-color) 50%, var(--tilt-cta-background-color));
   }
 }
 
 .tilt-cta-offset {
   &::before {
     margin-top: calc(-1 * var(--tilt-hight));
-    background-image: linear-gradient(to bottom right, var(--tilt-cta-bg-colour), var(--tilt-cta-bg-colour) var(--tilt-stop-point), var(--tilt-bg-colour) 50%, var(--tilt-bg-colour));
+    background-image: linear-gradient(to bottom right, var(--tilt-cta-background-color), var(--tilt-cta-background-color) var(--tilt-stop-point), var(--tilt-background-color) 50%, var(--tilt-background-color));
   }
 }

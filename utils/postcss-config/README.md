@@ -49,6 +49,7 @@ h1 {
 | --- | --- | :---: | --- |
 | importPaths | `['css', 'src/css', process.cwd(), '@minna-ui/css/src/mixins']` | array | A list of paths to search when resolving `@import` rules in CSS. |
 | mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
+| variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
 | standalone | `false` | boolean | Set to `true` when `@minna-ui/css` is not installed. |
 | verbose | `false` | boolean | Show additional warnings. |
 

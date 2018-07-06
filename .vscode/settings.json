@@ -1,5 +1,11 @@
 {
   "javascript.implicitProjectConfig.checkJs": true,
+  // XXX: Optional
+  //"files.associations": {
+  //  // better syntax highlighting for PostCSS (only .css files; component styles still use the CSS language unfortunately)
+  //  "*.css": "less"
+  //},
+  "css.validate": false,
   "eslint.enable": true,
   "eslint.validate": ["html", "javascript"],
   // recommended dictionary: https://github.com/WeAreGenki/dictionary
@@ -17,7 +23,6 @@
     "yml"
   ],
   "spellright.spellContext": "body code comments strings",
-  "css.validate": false,
   "stylelint.enable": true,
   "todohighlight.keywords": [
     {
@@ -29,7 +34,7 @@
     "README:",
     "REFERENCE:", // for references (e.g. a link to an article)
     "TIPS:",
-    "USAGE:",
+    "USAGE:"
   ],
   "todohighlight.defaultStyle": {
     "color": "unset",

@@ -26,6 +26,7 @@ module.exports = postcss.plugin('postcss-config', ({
   mixinsPath = '',
   standalone = false,
   verbose = false,
+  variables = {},
 } = {}) => {
   const mixinsDir = [];
 
@@ -49,6 +50,7 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(mixins({ mixinsDir }))
     .use(nested)
     .use(customProperties({
+      variables,
       preserve: false,
       warnings: verbose,
     }))

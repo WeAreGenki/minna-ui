@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MinnaCollapse component renders correctly with no props 1`] = `
+"<button class=\\"button\\">Expand ▾</button>
+
+<div class=\\"collapse-hide\\"></div>"
+`;

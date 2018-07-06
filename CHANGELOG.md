@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New `@minna-ui/collapse` component.
+- Add support for overriding CSS variables (custom properties) via JavaScript.
+
 ## [0.4.1] - 2018-07-02
 
 ### Fixed
@@ -40,7 +45,7 @@ This is a large release centred around refactoring colours and simplifying and c
 ### Removed
 
 - BREAKING CHANGE: Delete `_variables-md-colour.css`.
-- BREAKING CHANGE: Unnecessary CSS variables:
+- BREAKING CHANGE: Removed CSS variables:
   - `--gradient-*` - we no longer have predefined gradients by default
   - `--primary`
   - `--secondary`
@@ -63,7 +68,7 @@ This is a large release centred around refactoring colours and simplifying and c
   - `--card-padding-*`
   - `--alert-*-bg-colour`
   - `--navbar-shadow-before`
-- BREAKING CHANGE: CSS classes:
+- BREAKING CHANGE: Removed CSS classes:
   - `.btn-cta`
   - `.btn-dark`
   - `.btn-main`

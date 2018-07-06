@@ -52,6 +52,8 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(customProperties({
       variables,
       preserve: false,
+      // preserve: 'computed', // DEBUGGING ONLY
+      // appendVariables: true, // DEBUGGING ONLY
       warnings: verbose,
     }))
     .use(conditionals)
@@ -63,6 +65,7 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(mediaQueryPacker)
     .use(autoprefixer({
       remove: false,
+      grid: true, // adds -ms- prefix for IE 11 support
       flexbox: 'no-2009',
     }));
 });

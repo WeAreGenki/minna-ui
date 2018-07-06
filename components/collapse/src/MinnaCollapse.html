@@ -1,0 +1,39 @@
+<!--
+  COLLAPSE COMPONENT
+
+  TODO: Write basic info.
+
+  USAGE:
+    Example:
+
+      <MinnaCollapse>
+        <p>Your content.</p>
+      </MinnaCollapse>
+
+  NOTE:
+    In the code, object properties starting with __ are safe to mangle; the name
+    can be shortened at build time for smaller JavaScript bundles.
+
+-->
+
+<button class="button" on:click="set({ __show: !__show })">
+  {__show ? 'Collapse ▴' : 'Expand ▾'}
+</button>
+
+<div class="{__show ? '' : 'collapse-hide'}">
+  <slot/>
+</div>
+
+<script>
+  export default {
+    data: () => ({
+      __show: false,
+    }),
+  };
+</script>
+
+<style>
+  .collapse-hide {
+    display: none;
+  }
+</style>

@@ -121,7 +121,8 @@
   --button-text-color: var(--dark-gray2);
   --button-background-color: var(--white);
   --button-radius: var(--radius);
-  --button-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-color) alpha(0.2)));
+  --button-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-color) alpha(0.24)));
+  --button-hover-background-color: var(--light-gray2);
   --button-active-background-color: var(--light-gray4);
   --button-disabled-text-color: var(--text-color-disabled);
   --button-disabled-border-color: var(--light-gray2);

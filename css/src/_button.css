@@ -2,10 +2,6 @@
   BUTTONS
 */
 
-/*
- * Because plain .button is the most common, it has no gradient background for
- * performance reasons. Use button-* styles sparingly when emphasis is required.
- */
 .button {
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
@@ -14,24 +10,24 @@
   filter: var(--button-shadow);
   border: 0;
   border-radius: var(--button-radius);
+  transition: background-color 150ms ease-in-out;
 
   &:hover,
   &:focus {
-    color: var(--button-text-color); /* prevents repaint on hover */
     text-decoration: none;
-    transform: scale(1.05);
+    background-color: var(--button-hover-background-color);
   }
 
   &:active {
     background-color: var(--button-active-background-color);
     filter: none;
-    transform: scale(1);
   }
 
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
     color: var(--button-disabled-text-color);
+    background-color: var(--button-background-color);
     filter: none;
     border: 1px solid var(--button-disabled-border-color);
     transform: unset;

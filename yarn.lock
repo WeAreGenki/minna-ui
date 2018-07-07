@@ -693,8 +693,8 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.4.0"
   dependencies:
-    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.62.0"
     rollup-plugin-buble "0.19.2"
@@ -706,7 +706,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.4.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:utils/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v1/npm-@minna-ui/postcss-config"
     clean-css "4.1.11"
     del "3.0.0"
     postcss-load-config "1.2.0"
@@ -732,7 +732,7 @@
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.4.0"
   dependencies:
-    autoprefixer "^8.6.4"
+    autoprefixer "^8.6.5"
     css-mqpacker "^6.0.2"
     postcss-at-rules-variables "^0.1.5"
     postcss-calc "^6.0.1"
@@ -1027,12 +1027,12 @@ atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
-autoprefixer@^8.0.0, autoprefixer@^8.6.4:
-  version "8.6.4"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-8.6.4.tgz#6bf501de426a3b95973f5d237dbcc9181e9904d2"
+autoprefixer@^8.0.0, autoprefixer@^8.6.5:
+  version "8.6.5"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-8.6.5.tgz#343f3d193ed568b3208e00117a1b96eb691d4ee9"
   dependencies:
     browserslist "^3.2.8"
-    caniuse-lite "^1.0.30000859"
+    caniuse-lite "^1.0.30000864"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
     postcss "^6.0.23"
@@ -1418,7 +1418,7 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000859:
+caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864:
   version "1.0.30000864"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000864.tgz#7a08c78da670f23c06f11aa918831b8f2dd60ddc"
 
@@ -2905,8 +2905,8 @@ home-or-tmp@^2.0.0:
     os-tmpdir "^1.0.1"
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.6.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.6.1.tgz#6e4cee78b01bb849dcf93527708c69fdbee410df"
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"

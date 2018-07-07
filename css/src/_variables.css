@@ -78,8 +78,8 @@
   --text-size-from: 30.01em; /* start growing font from this screen width */
   --text-size-until: var(--container-width-max); /* stop growing font size at this screen width */
   --text-weight-light: 300;
-  --text-weight: 400; /* browser default */
-  --text-weight-heavy: 700; /* browser default */
+  --text-weight: 400; /* 400 is browser default */
+  --text-weight-heavy: 700; /* 700 is browser default */
   --text-rendering: optimizeSpeed;
   --text-variant: none;
   --line-height: 1.5;

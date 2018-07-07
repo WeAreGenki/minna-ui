@@ -1,22 +1,30 @@
 /*
   SECTION
 
-    A way to break up long pages and add visual interest.
+    A way to break up long pages or add visual interest.
 
   HTML LAYOUT:
-    <section class="tilt">
-      <div class="con pv4 tc">
-        <h2 class="mt0">Example tilt section</h2>
-        <p class="lead">Your text.</p>
-      </div>
-    </section>
+    Hero:
 
-    <section class="tilt-cta">
-      <div class="con pv4 tc">
-        <h2 class="mt0">Example CTA tilt</h2>
-        <p class="lead">Your text.</p>
-      </div>
-    </section>
+      <section class="hero">
+        <h1>Your Hero Content</h1>
+      </section>
+
+    Diagonal:
+
+      <section class="diagonal">
+        <div class="con pv4 tc">
+          <h2 class="mt0">Example diagonal section</h2>
+          <p class="lead">Your text.</p>
+        </div>
+      </section>
+
+      <section class="diagonal-cta">
+        <div class="con pv4 tc">
+          <h2 class="mt0">Example CTA diagonal</h2>
+          <p class="lead">Your text.</p>
+        </div>
+      </section>
 
 */
 
@@ -26,102 +34,51 @@
   padding: var(--hero-padding);
   margin: var(--hero-margin);
   color: var(--hero-text-color);
-  background-image: var(--hero-background-gradient);
+  background: var(--hero-background);
 }
 
 .hero-dark {
-  background-image: var(--gradient-dark);
+  background: var(--hero-dark-background);
 }
 
-/* Off-angle; tilted section */
+/* Diagonal section */
 
-.tilt {
-  background-color: var(--tilt-background-color);
+.diagonal {
+  background-color: var(--diagonal-background-color);
 
   &::before,
   &::after {
     display: block;
-    height: var(--tilt-hight);
+    width: 100%;
+    height: var(--diagonal-hight);
     content: "";
-  }
+    background-image: var(--diagonal-image);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
-  &::before {
-    background-image:
-      linear-gradient(
-        to bottom right,
-        var(--app-background-color),
-        var(--app-background-color) var(--tilt-stop-point),
-        var(--tilt-background-color) 50%,
-        var(--tilt-background-color)
-      );
+    @media (--screen-large) {
+      @if var(--diagonal-hight-l) != var(--diagonal-hight) {
+        height: var(--diagonal-hight-l);
+      }
+    }
   }
 
   &::after {
-    background-image:
-      linear-gradient(
-        to bottom right,
-        var(--tilt-background-color),
-        var(--tilt-background-color) var(--tilt-stop-point),
-        var(--app-background-color) 50%,
-        var(--app-background-color)
-      );
+    transform: rotateX(180deg) rotateY(180deg);
   }
 }
 
-.tilt-cta {
-  color: var(--tilt-cta-text-color);
-  background-color: var(--tilt-cta-background-color);
-
-  &::before,
-  &::after {
-    display: block;
-    height: var(--tilt-hight);
-    content: "";
-  }
-
-  &::before {
-    background-image:
-      linear-gradient(
-        to bottom right,
-        var(--app-background-color),
-        var(--app-background-color) var(--tilt-stop-point),
-        var(--tilt-cta-background-color) 50%,
-        var(--tilt-cta-background-color)
-      );
-  }
-
-  &::after {
-    background-image:
-      linear-gradient(
-        to bottom right,
-        var(--tilt-cta-background-color),
-        var(--tilt-cta-background-color) var(--tilt-stop-point),
-        var(--app-background-color) 50%,
-        var(--app-background-color)
-      );
-  }
+.diagonal-dark {
+  color: var(--diagonal-dark-text-color);
+  background-color: var(--diagonal-dark-background-color);
 
   label,
   strong {
-    color: var(--tilt-cta-text-color);
+    color: var(--diagonal-dark-text-color);
   }
 
   a {
-    color: var(--tilt-cta-link-color);
-  }
-
-  .input,
-  .select,
-  .textarea,
-  input,
-  select,
-  textarea {
-    outline-color: var(--tilt-cta-link-color);
-  }
-
-  .invalid {
-    border: var(--tilt-cta-input-invalid-border);
-    outline-color: var(--tilt-cta-input-invalid-color);
+    color: var(--diagonal-dark-link-color);
   }
 
   .form-help {
@@ -129,20 +86,6 @@
   }
 
   .invalid-feedback {
-    color: var(--tilt-cta-input-invalid-color);
-  }
-}
-
-.tilt-offset {
-  &::before {
-    margin-top: calc(-1 * var(--tilt-hight));
-    background-image: linear-gradient(to bottom right, var(--tilt-background-color), var(--tilt-background-color) var(--tilt-stop-point), var(--tilt-cta-background-color) 50%, var(--tilt-cta-background-color));
-  }
-}
-
-.tilt-cta-offset {
-  &::before {
-    margin-top: calc(-1 * var(--tilt-hight));
-    background-image: linear-gradient(to bottom right, var(--tilt-cta-background-color), var(--tilt-cta-background-color) var(--tilt-stop-point), var(--tilt-background-color) 50%, var(--tilt-background-color));
+    color: var(--diagonal-dark-input-invalid-color);
   }
 }

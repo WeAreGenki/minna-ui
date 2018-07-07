@@ -1,0 +1,42 @@
+<!--
+  ORIGINAL MARKUP
+
+  Used to draw a diagonal line for the `.diagonal` section CSS.
+
+  NOTE:
+    - The rgb() colour is the same as the --app-background-color CSS variable but
+      must be hardcoded because there's no cross-browser compatible way to pass
+      this when using SVG in a CSS background-color or as an SVG inlined in CSS.
+
+  REFERENCE:
+    - https://github.com/ahmadnassri/css-diagonal-separators/blob/master/svg/source.svg
+    - https://www.ahmadnassri.com/blog/non-rectangular-headers-part-1/
+
+-->
+<!--
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <polygon fill="rgb(250, 250, 250)" points="100 0, 0 100, 0 0"/>
+  <polygon fill="transparent" points="100 0, 0 100, 100 100"/>
+</svg>
+-->
+
+<!--
+  OPTIMISED MARKUP
+
+  NOTE:
+    - Manual optimisations:
+      - Minimise viewbox size.
+    - Use https://jakearchibald.github.io/svgomg/ to achive the following:
+      - Convert polygon shapes to path.
+      - Convert rgb() colour to HEX.
+      - Reorder <svg> properties for better compression.
+      - Remove whitespace.
+    - The best way to serve this SVG is by inlining it in the CSS. To generate
+      compatible code copy your optimised markup and run it though:
+      https://codepen.io/anon/embed/doMoML?default-tab=result&height=3000
+
+  REFERENCE:
+    - https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
+
+-->
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1 1"><path fill="#fafafa" d="M1 0L0 1V0z"/><path fill="transparent" d="M1 0L0 1h1z"/></svg>

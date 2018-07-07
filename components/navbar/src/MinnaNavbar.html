@@ -119,7 +119,7 @@
             document.removeEventListener('click', clickHandler);
           };
 
-          // 0 timeout to re-queue at the end of the execution queue
+          // re-queue to the end of the execution queue to avoid race condition
           setTimeout(() => {
             // close when user clicks anywhere
             document.addEventListener('click', clickHandler);

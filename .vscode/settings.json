@@ -6,6 +6,7 @@
   //  "*.css": "less"
   //},
   "css.validate": false,
+  "less.validate": false,
   "eslint.enable": true,
   "eslint.validate": ["html", "javascript"],
   // recommended dictionary: https://github.com/WeAreGenki/dictionary

@@ -16,18 +16,22 @@
 
 -->
 
-<button class="button" on:click="set({ __show: !__show })">
-  {__show ? 'Collapse ▴' : 'Expand ▾'}
+<button class="button button-collapse" on:click="set({ __isOpen: !__isOpen })">
+  {__isOpen ? textClose : textOpen}
 </button>
 
-<div class="{__show ? '' : 'collapse-hide'}">
+<div class="collapse {__isOpen ? '' : 'collapse-hide'}">
   <slot/>
 </div>
 
 <script>
   export default {
     data: () => ({
-      __show: false,
+      __isOpen: false,
+
+      /* optional props */
+      textOpen: 'Expand ▾',
+      textClose: 'Collapse ▴',
     }),
   };
 </script>

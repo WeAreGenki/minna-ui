@@ -33,9 +33,9 @@ The easiest way to use the component is to add the CDN hosted version directly i
 Or use a specific version:
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/toggle@0.0.0/dist/index.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@minna-ui/toggle@0.5.0/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui@0.0.0/toggle"></script>
+<script src="https://cdn.jsdelivr.net/npm/@minna-ui/toggle@0.5.0"></script>
 ```
 
 2. Add an element where you want the component to show in your document `<body></body>`:

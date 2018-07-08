@@ -2,10 +2,6 @@
   BUTTONS
 */
 
-/*
- * Because plain .button is the most common, it has no gradient background for
- * performance reasons. Use button-* styles sparingly when emphasis is required.
- */
 .button {
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
@@ -17,28 +13,26 @@
 
   &:hover,
   &:focus {
-    color: var(--button-text-color); /* prevents repaint on hover */
     text-decoration: none;
-    transform: scale(1.05);
+    background-color: var(--button-hover-background-color);
   }
 
   &:active {
     background-color: var(--button-active-background-color);
     filter: none;
-    transform: scale(1);
   }
 
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
     color: var(--button-disabled-text-color);
+    background-color: var(--button-background-color);
     filter: none;
     border: 1px solid var(--button-disabled-border-color);
-    transform: unset;
   }
 }
 
-/* Remove browser default <button> styles */
+/* Remove browser default `<button>` styles */
 
 .button-clear {
   background: transparent;
@@ -47,13 +41,12 @@
 
   &:hover,
   &:focus {
-    /* prevent change when applied to links */
+    /* prevent change when applied to `<a>` */
     color: unset;
-    transform: unset;
   }
 }
 
-/* Make <a> whitespace same as .button */
+/* Make `<a>` tag whitespace same as `.button` */
 
 .button-link {
   display: inline-block;
@@ -65,5 +58,5 @@
 /* Smaller button */
 
 .button-mini {
-  padding: calc(var(--button-padding-y) / 2) calc(var(--button-padding-x) / 2);
+  padding: var(--button-mini-padding);
 }

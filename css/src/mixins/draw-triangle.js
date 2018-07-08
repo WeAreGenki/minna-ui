@@ -8,11 +8,11 @@
   interfering with the document flow.
 
   USAGE:
-    @mixin draw-triangle <side>, <size>, <colour>, [isPseudo];
+    @mixin draw-triangle <side>, <size>, <color>, [isPseudo];
 
     <side>     = one of: top, right, bottom, left
     <size>     = any CSS size with unit, e.g. 0.5rem or 8px
-    <colour>   = any CSS colour, e.g. red, #f00, rgba(255, 0, 0, 0.5)
+    <color>   = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
     [isPseudo] = if true will output as a pseudo element (optional)
 
 */
@@ -24,11 +24,11 @@
  * @param {any} mixin
  * @param {string} side
  * @param {string} size
- * @param {string} colour
+ * @param {string} color
  * @param {Boolean} [isPseudo]
  * @returns {object}
  */
-module.exports = (mixin, side, size, colour, isPseudo) => {
+module.exports = (mixin, side, size, color, isPseudo) => {
   if (
     side !== 'top'
     && side !== 'right'
@@ -45,22 +45,22 @@ module.exports = (mixin, side, size, colour, isPseudo) => {
   const position = {
     top: {
       'border-right': `${size} solid transparent`,
-      'border-bottom': `${size} solid ${colour}`,
+      'border-bottom': `${size} solid ${color}`,
       'border-left': `${size} solid transparent`,
     },
     right: {
       'border-top': `${size} solid transparent`,
       'border-bottom': `${size} solid transparent`,
-      'border-left': `${size} solid ${colour}`,
+      'border-left': `${size} solid ${color}`,
     },
     bottom: {
-      'border-top': `${size} solid ${colour}`,
+      'border-top': `${size} solid ${color}`,
       'border-right': `${size} solid transparent`,
       'border-left': `${size} solid transparent`,
     },
     left: {
       'border-top': `${size} solid transparent`,
-      'border-right': `${size} solid ${colour}`,
+      'border-right': `${size} solid ${color}`,
       'border-bottom': `${size} solid transparent`,
     },
   };

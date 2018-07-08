@@ -9,10 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2018-07-08
+
 ### Added
 
 - New `@minna-ui/collapse` component.
 - Add support for overriding CSS variables (custom properties) via JavaScript.
+
+### Changed
+
+- Refactor section styles to use a more cross-browser compatible technique to draw diagonal lines and better hero styles.
+- Refactor button shadow and hover state.
+- `@minna-ui/navbar` link fragment fix disabled by default + minor optimisations.
+- Updated package dependencies.
+
+### Fixed
+
+- `@minna-ui/navbar` hamburger menu does not close if user clicks when open.
 
 ## [0.4.1] - 2018-07-02
 
@@ -20,6 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Remove conflicting `.h*` CSS classes. Now these classes only refer to grid height (the number of rows).
 - `@minna-ui/navbar` link fragment fix is now optional.
+- `@minna-ui/navbar` menu border shown at the wrong time.
 
 ## [0.4.0] - 2018-07-02
 

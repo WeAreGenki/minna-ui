@@ -43,19 +43,17 @@
 
 -->
 
-<!-- FIXME: Close hamburger menu if user clicks (or scrolls?) -->
-
-<header class="navbar {__hasScrolled || __show ? 'navbar-active' : ''}">
+<header class="navbar {__hasScrolled || __isOpen ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
       class="navbar-button dn-l button-clear"
       aria-label="menu toggle"
-      aria-expanded="{__show}"
-      on:click="set({ __show: !__show })"
+      aria-expanded="{__isOpen}"
+      on:click="__openMenu(__isOpen)"
     >
       <svg class="navbar-icon link">
-        <use xlink:href="{__show ? '#x' : '#menu'}"/>
+        <use xlink:href="{__isOpen ? '#x' : '#menu'}"/>
       </svg>
     </button>
 
@@ -65,7 +63,7 @@
       </svg>
     </a>
 
-    <div class="navbar-links dn {__show ? 'df' : ''}">
+    <div class="navbar-links {__isOpen ? 'df' : 'dn'}">
       <a href="/" class="navbar-link dn-l">Home</a>
 
       {#each items as __item}
@@ -83,13 +81,11 @@
 <script>
   export default {
     data: () => ({
-      __show: false, // show hamburger menu?
+      __isOpen: false,
       __hasScrolled: false,
 
       /* required props */
       // items: [],
-
-      /* optional props */
       // page: '', // URL path; in sapper, you should pass in "props.path"
     }),
     oncreate() {
@@ -112,6 +108,24 @@
         }
         ticking = true;
       });
+    },
+    methods: {
+      __openMenu(openState) {
+        if (!openState) {
+          this.set({ __isOpen: true });
+
+          const clickHandler = () => {
+            this.set({ __isOpen: false });
+            document.removeEventListener('click', clickHandler);
+          };
+
+          // re-queue to the end of the execution queue to avoid race condition
+          setTimeout(() => {
+            // close when user clicks anywhere
+            document.addEventListener('click', clickHandler);
+          }, 0);
+        }
+      },
     },
   };
 </script>
@@ -137,7 +151,8 @@
     --navbar-links-padding: var(--nav-link-padding-y) 0;
     --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
     --navbar-body-offset: 3rem; /* offset body so contents are not covered */
-    --navbar-link-fragment-fix: true; /* see code and comments below */
+    /* FIXME: Set this to true once we work out how to override variables correctly */
+    --navbar-link-fragment-fix: false; /* see code and comments below */
     --navbar-link-fragment-offset: calc(var(--navbar-body-offset) + 1rem); /* offset in-page links; navbar + shadow */
   }
 
@@ -192,10 +207,9 @@
     flex-grow: 1;
     padding: var(--navbar-links-padding);
     margin: 0 -1rem;
-    border-top: 1px solid transparent;
 
-    .navbar-active > .con > & {
-      border-color: var(--navbar-border-color);
+    &.df {
+      border-top: 1px solid var(--navbar-border-color);
     }
 
     @media (--screen-large) {

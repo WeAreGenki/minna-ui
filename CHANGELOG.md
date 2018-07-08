@@ -41,7 +41,7 @@ This is a large release centred around refactoring colours and simplifying and c
 
 ### Added
 
-- New at rule `@use` in `@minna-ui/postcss-config` for developer flexibility.
+- New CSS at-rule, `@use`, in `@minna-ui/postcss-config` for better flexibility.
 - New colour variables in `_variables-color.css`.
 - New CSS variables:
   - `--gutter-compact`
@@ -198,7 +198,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/MaxMilton/new-tab/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/MaxMilton/new-tab/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MaxMilton/new-tab/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/MaxMilton/new-tab/compare/v0.2.0...v0.3.0

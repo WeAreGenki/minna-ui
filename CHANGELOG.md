@@ -9,11 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.0] - 2018-07-08
+
 ### Changed
 
-- BREAKING CHANGE: Don't style default form elements; require classes for custom form element styles.
+- BREAKING CHANGE: Rename `@minna-ui/toggle` component to `@minna-ui/switch`.
+- BREAKING CHANGE: Rename `--toggle-*` CSS variables to `--switch-*`.
 - Convert more CSS size units to `em`.
 - Simplify SVG image used to create diagonal sections.
+
+### Fixed
+
+- BREAKING CHANGE: Don't style default form elements; require classes for custom form element styles.
+- NPM publish script now correctly lints, tests, and builds packages before publishing.
 
 ## [0.5.0] - 2018-07-08
 
@@ -204,7 +212,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/MaxMilton/new-tab/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/MaxMilton/new-tab/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/MaxMilton/new-tab/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MaxMilton/new-tab/compare/v0.3.0...v0.4.0

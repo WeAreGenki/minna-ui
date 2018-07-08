@@ -6,14 +6,14 @@
   margin-bottom: var(--form-group-margin);
 }
 
-label {
+.label {
   display: block; /* forces label to appear above the input */
   margin-bottom: var(--label-margin);
   color: var(--label-text-color);
   text-transform: uppercase;
 
-  input[type="radio"] + &,
-  input[type="checkbox"] + & {
+  .input[type="radio"] + &,
+  .input[type="checkbox"] + & {
     display: inline-block;
     margin-bottom: 0;
   }
@@ -21,10 +21,7 @@ label {
 
 .input,
 .select,
-.textarea,
-input,
-select,
-textarea {
+.textarea {
   padding: var(--input-padding-y) var(--input-padding-x);
   font-size: var(--input-text-size);
   color: var(--input-text-color);
@@ -75,7 +72,7 @@ textarea {
     border-bottom-left-radius: 0;
   }
 
-  & > input {
+  & > .input {
     margin-right: calc(-1 * var(--radius));
   }
 }

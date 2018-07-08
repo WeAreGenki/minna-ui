@@ -38,18 +38,11 @@
   --auto-rows: auto;
   --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
   --row-steps: 1, 2, 3, 4, 5, 6;
-  --gutter-col: 1rem;
-  --gutter-col-large: 2rem;
-  --gutter-row: 2rem;
-  --gutter-row-large: 2rem;
+  --gutter-col: 1em;
+  --gutter-col-large: 2em;
+  --gutter-row: 2em;
+  --gutter-row-large: 2em;
   --gutter-compact: calc(var(--gutter-row) / 4) 0;
-
-  /* Shadows */
-
-  --shadow-color: var(--cobalt1);
-  --shadow: drop-shadow(0 1rem 0.95rem color-mod(var(--shadow-color) alpha(0.39)));
-  --shadow-light: drop-shadow(0 0.4rem 0.6rem color-mod(var(--shadow-color) alpha(0.15)));
-  --shadow-light-edge: drop-shadow(0 0.1rem 0.1rem color-mod(var(--shadow-color) alpha(0.06)));
 
   /* Typography */
 
@@ -96,18 +89,25 @@
   --paragraph-line-height: 1.7;
   --paragraph-lead-text-size: 1.5em;
   --link-click-area: 0.4em; /* reduce this if your links are overlapping */
-  --hr-margin: 3rem 0;
+  --hr-margin: 3em 0;
   --hr-border: 1px solid var(--divider-black);
-  --li-margin-between: 0.5rem;
+  --li-margin-between: 0.5em;
   --quote-text-size: 2em;
-  --quote-mark-text-size: 3em; /* em (not rem) so it's relative to the parent font size */
+  --quote-mark-text-size: 3em;
   /* --abbr-underline-color: color-mod(var(--text-color lightness(25%))); */
   --abbr-underline-color: var(--dark-gray3);
 
+  /* Shadows */
+
+  --shadow-color: var(--cobalt1);
+  --shadow: drop-shadow(0 1rem 0.95rem color-mod(var(--shadow-color) alpha(0.39)));
+  --shadow-light: drop-shadow(0 0.4rem 0.6rem color-mod(var(--shadow-color) alpha(0.15)));
+  --shadow-light-edge: drop-shadow(0 0.1rem 0.1rem color-mod(var(--shadow-color) alpha(0.06)));
+
   /* Navigation */
 
-  --nav-link-padding-x: 1.3rem;
-  --nav-link-padding-y: 0.7rem;
+  --nav-link-padding-x: 1.3em;
+  --nav-link-padding-y: 0.7em;
   --side-nav-link-margin: 0;
   --side-nav-active-text-color: var(--link-color-hover);
   --side-nav-active-background-color: var(--background-color-muted);
@@ -116,14 +116,14 @@
 
   /* Buttons */
 
-  --button-padding-x: 1.75rem;
-  --button-padding-y: 0.682rem;
+  --button-padding-x: 1.75em;
+  --button-padding-y: 0.682em;
   --button-text-color: var(--dark-gray2);
   --button-background-color: var(--white);
   --button-radius: var(--radius);
   --button-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-color) alpha(0.24)));
   --button-hover-background-color: var(--light-gray2);
-  --button-active-background-color: var(--light-gray4);
+  --button-active-background-color: var(--light-gray1);
   --button-disabled-text-color: var(--text-color-disabled);
   --button-disabled-border-color: var(--light-gray2);
   --button-mini-padding:
@@ -133,7 +133,7 @@
   /* Forms */
 
   --form-group-margin: 1.5rem;
-  --label-margin: 0.5rem;
+  --label-margin: 0.5em;
   --label-text-color: var(--dark-gray2);
   --input-padding-x: 1rem;
   --input-padding-y: 0.5rem;
@@ -169,12 +169,13 @@
   --card-hover-animate-distance: -3px;
   --card-hover-hover-shadow: var(--shadow);
   --card-body-margin: 1.2rem 2rem;
+  --card-button-text-color: var(--button-text-color);
   --card-button-border: 1px solid var(--light-gray4);
 
   /* Alerts */
 
-  --alert-padding: 1rem;
-  --alert-margin-y: 2rem;
+  --alert-padding: 1em;
+  --alert-margin-y: 2em;
   --alert-background-color: var(--light-gray4);
   --alert-border-size: 0.4rem;
   --alert-tip-text-color: var(--green1);
@@ -194,7 +195,7 @@
   --tag-background-color: var(--light-gray4);
   --tag-alignment: 0.1em;
   --tag-border-radius: var(--radius);
-  --tag-margin-between: 1rem;
+  --tag-margin-between: 1em;
 
   /* Sections */
 
@@ -210,7 +211,7 @@
    * customise the diagonal image.
    */
   /* --diagonal-image: url("diagonal.svg"); */
-  --diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3Cpath fill='transparent' d='M1 0L0 1h1z'/%3E%3C/svg%3E");
+  --diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E");
   --diagonal-background-color: var(--light-gray3);
   --diagonal-dark-text-color: var(--white);
   --diagonal-dark-background-color: var(--dark-gray1);

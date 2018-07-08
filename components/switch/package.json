@@ -1,8 +1,8 @@
 {
-  "name": "@minna-ui/toggle",
+  "name": "@minna-ui/switch",
   "version": "0.5.0",
   "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/toggle",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/switch",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://ui.wearegenki.com",
   "author": "Max Milton <max@wearegenki.com>",
@@ -21,7 +21,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/MinnaToggle.html",
+  "svelte": "src/MinnaSwitch.html",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

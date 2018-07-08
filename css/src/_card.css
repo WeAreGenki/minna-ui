@@ -49,6 +49,7 @@
 .card-button {
   padding: var(--button-padding-y) var(--button-padding-x);
   margin-top: auto;
+  color: var(--card-button-text-color);
   text-align: center;
   border-top: var(--card-button-border);
   border-bottom-right-radius: var(--radius-large);

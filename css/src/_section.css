@@ -7,7 +7,9 @@
     Hero:
 
       <section class="hero">
-        <h1>Your Hero Content</h1>
+        <div class="con">
+          <h1>Your Hero Content</h1>
+        </div>
       </section>
 
     Diagonal:
@@ -19,9 +21,9 @@
         </div>
       </section>
 
-      <section class="diagonal-cta">
+      <section class="diagonal diagonal-dark">
         <div class="con pv4 tc">
-          <h2 class="mt0">Example CTA diagonal</h2>
+          <h2 class="mt0">Another example diagonal section</h2>
           <p class="lead">Your text.</p>
         </div>
       </section>
@@ -87,5 +89,16 @@
 
   .invalid-feedback {
     color: var(--diagonal-dark-input-invalid-color);
+  }
+}
+
+/* reverse the diagonal angle; top left to bottom right */
+.diagonal-reverse {
+  &::before {
+    transform: rotateY(180deg);
+  }
+
+  &::after {
+    transform: rotateX(180deg);
   }
 }

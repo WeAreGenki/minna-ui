@@ -1,5 +1,4 @@
 {
-  "javascript.implicitProjectConfig.checkJs": true,
   // XXX: Optional
   //"files.associations": {
   //  // better syntax highlighting for PostCSS (only .css files; component styles still use the CSS language unfortunately)
@@ -7,6 +6,7 @@
   //},
   "css.validate": false,
   "less.validate": false,
+  "javascript.implicitProjectConfig.checkJs": true,
   "eslint.enable": true,
   "eslint.validate": ["html", "javascript"],
   // recommended dictionary: https://github.com/WeAreGenki/dictionary

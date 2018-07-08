@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/tabs",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tabs",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -30,7 +30,7 @@
     "src"
   ],
   "dependencies": {
-    "@minna-ui/css": "^0.5.0"
+    "@minna-ui/css": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"

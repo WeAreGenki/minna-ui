@@ -10,7 +10,6 @@
   filter: var(--button-shadow);
   border: 0;
   border-radius: var(--button-radius);
-  transition: background-color 150ms ease-in-out;
 
   &:hover,
   &:focus {
@@ -30,11 +29,10 @@
     background-color: var(--button-background-color);
     filter: none;
     border: 1px solid var(--button-disabled-border-color);
-    transform: unset;
   }
 }
 
-/* Remove browser default <button> styles */
+/* Remove browser default `<button>` styles */
 
 .button-clear {
   background: transparent;
@@ -43,13 +41,12 @@
 
   &:hover,
   &:focus {
-    /* prevent change when applied to links */
+    /* prevent change when applied to `<a>` */
     color: unset;
-    transform: unset;
   }
 }
 
-/* Make <a> whitespace same as .button */
+/* Make `<a>` tag whitespace same as `.button` */
 
 .button-link {
   display: inline-block;
@@ -61,5 +58,5 @@
 /* Smaller button */
 
 .button-mini {
-  padding: calc(var(--button-padding-y) / 2) calc(var(--button-padding-x) / 2);
+  padding: var(--button-mini-padding);
 }

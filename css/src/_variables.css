@@ -126,6 +126,9 @@
   --button-active-background-color: var(--light-gray4);
   --button-disabled-text-color: var(--text-color-disabled);
   --button-disabled-border-color: var(--light-gray2);
+  --button-mini-padding:
+    calc(var(--button-padding-y) / 2)
+    calc(var(--button-padding-x) / 2);
 
   /* Forms */
 

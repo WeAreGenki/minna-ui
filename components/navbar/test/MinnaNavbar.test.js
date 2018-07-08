@@ -65,8 +65,8 @@ describe('MinnaNavbar component', () => {
     spy.mockRestore();
   });
 
-  it('toggle hamburger menu on button click', () => {
-    expect.assertions(3);
+  it('open menu on button click', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaNavbar({
       target,
@@ -75,13 +75,79 @@ describe('MinnaNavbar component', () => {
         page: '/',
       },
     });
-    const spy = jest.spyOn(component, 'set');
-    const navbarBtn = target.querySelector('.navbar-button');
-    navbarBtn.click();
-    expect(component.get().__show).toBeTruthy();
-    navbarBtn.click();
-    expect(component.get().__show).toBeFalsy();
+    const spy = jest.spyOn(component, '__openMenu');
+    const button = target.querySelector('.navbar-button');
+    button.click();
+    expect(component.get().__isOpen).toBeTruthy();
     expect(spy).toHaveBeenCalled();
+    spy.mockReset();
+    spy.mockRestore();
+  });
+
+  it('close menu on document click', () => {
+    expect.assertions(2);
+    jest.useFakeTimers();
+    const target = document.createElement('div');
+    const component = new MinnaNavbar({
+      target,
+      data: {
+        items: menuItems,
+        page: '/',
+      },
+    });
+    component.__openMenu();
+    jest.runAllTimers(); // for component setTimeout
+    expect(component.get().__isOpen).toBeTruthy();
+    const event = new MouseEvent('click');
+    document.dispatchEvent(event);
+    expect(component.get().__isOpen).toBeFalsy();
+  });
+
+  it('attaches event listener on menu open but not close', () => {
+    expect.assertions(3);
+    jest.useFakeTimers();
+    const target = document.createElement('div');
+    const component = new MinnaNavbar({
+      target,
+      data: {
+        items: menuItems,
+        page: '/',
+      },
+    });
+    const spy = jest.spyOn(document, 'addEventListener');
+    component.__openMenu();
+    jest.runAllTimers();
+    expect(spy).toHaveBeenCalled();
+    spy.mockReset();
+    const event = new MouseEvent('click');
+    document.dispatchEvent(event);
+    expect(component.get().__isOpen).toBeFalsy();
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockReset();
+    spy.mockRestore();
+  });
+
+  it('doesn\'t attach extra event listeners on multiple button clicks', () => {
+    expect.assertions(2);
+    jest.useFakeTimers();
+    const target = document.createElement('div');
+    const component = new MinnaNavbar({
+      target,
+      data: {
+        items: menuItems,
+        page: '/',
+      },
+    });
+    const spy = jest.spyOn(document, 'addEventListener');
+    const button = target.querySelector('.navbar-button');
+    button.click();
+    jest.runAllTimers();
+    button.click();
+    jest.runAllTimers();
+    expect(component.get().__isOpen).toBeTruthy();
+    button.click();
+    jest.runAllTimers();
+    expect(spy).toHaveBeenCalledTimes(1);
     spy.mockReset();
     spy.mockRestore();
   });

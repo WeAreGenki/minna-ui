@@ -169,6 +169,7 @@
   --card-hover-animate-distance: -3px;
   --card-hover-hover-shadow: var(--shadow);
   --card-body-margin: 1.2rem 2rem;
+  --card-button-text-color: var(--button-text-color);
   --card-button-border: 1px solid var(--light-gray4);
 
   /* Alerts */

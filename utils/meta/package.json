@@ -31,7 +31,7 @@
     "@minna-ui/svelte-preprocess-style": "^0.5.0",
     "@minna-ui/tabs": "^0.5.0",
     "@minna-ui/toasts": "^0.5.0",
-    "@minna-ui/toggle": "^0.5.0",
+    "@minna-ui/switch": "^0.5.0",
     "@minna-ui/tooltip-action": "^0.5.0"
   },
   "publishConfig": {

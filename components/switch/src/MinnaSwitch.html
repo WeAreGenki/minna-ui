@@ -1,5 +1,5 @@
 <!--
-  INPUT TOGGLE COMPONENT
+  INPUT SWITCH COMPONENT
 
   This component is intended to be an alternative to checkbox inputs in forms
   when there's a need to toggle something with an on and off state. From a UX
@@ -15,24 +15,24 @@
     Simply import this component into your vue file and use it in your template
     as if it was a normal input; bind it to a vue model. Example:
 
-      <MinnaToggle bind:value="toggle"/>
+      <MinnaSwitch bind:value="switch"/>
 
-    The default toggle is the same size as buttons. If this is too big, you can
+    The default switch is the same size as buttons. If this is too big, you can
     add a "mini" property for a compact version. Example:
 
-      <MinnaToggle bind:value="toggle" mini/>
+      <MinnaSwitch bind:value="switch" mini/>
 
     It's possible to change the text from "ON"/"OFF" by passing the props textOn
     and textOff. If you change this you may need to modify the width too, which
-    can be done via the --toggle-width CSS variable. Example:
+    can be done via the --switch-width CSS variable. Example:
 
-      <MinnaToggle bind:value="toggle" textOn="YES" textOff="NO"/>
+      <MinnaSwitch bind:value="switch" textOn="YES" textOff="NO"/>
 
   TIPS:
     - It's a good idea to add a title attribute so desktop users can understand
       the elements purpose more clearly.
     - If following accessibility guidelines it's recommended to label the
-      purpose of the toggle by adding an `aria-label` or `aria-labelledby`
+      purpose of the switch by adding an `aria-label` or `aria-labelledby`
       attribute.
     - If used in a form this component won't send any data by default. If you
       wish to use it as a form input you'll need to bind the v-model to a
@@ -45,19 +45,19 @@
 
 -->
 
-<!-- TODO: Ability to drag the toggle using mouse/touch in a high performance way. -->
+<!-- TODO: Ability to drag the switch using mouse/touch in a high performance way. -->
 
 <div
-  class="toggle {mini ? 'toggle-mini' : ''} {disabled !== undefined ? 'toggle-disabled' : ''} {value ? 'toggle-checked' : ''}"
+  class="switch {mini ? 'switch-mini' : ''} {disabled !== undefined ? 'switch-disabled' : ''} {value ? 'switch-checked' : ''}"
   role="switch"
   tabindex="{disabled === undefined ? 0 : -1}"
   aria-checked="{value}"
   on:click="__toggle()"
   on:keydown="__onKeyDown(event)"
 >
-  <div class="toggle-slider"/>
-  <div class="toggle-on">{textOn}</div>
-  <div class="toggle-off">{textOff}</div>
+  <div class="switch-slider"/>
+  <div class="switch-on">{textOn}</div>
+  <div class="switch-off">{textOff}</div>
 </div>
 
 <script>
@@ -106,53 +106,53 @@
 
   /* TODO: Add documentation explaining how to override these variables using postcss-custom-properties variable overrides */
   :root {
-    --toggle-optimize: false;
-    --toggle-zindex: 1;
-    --toggle-width: 8rem;
-    --toggle-padding: var(--button-padding-y) 0;
-    --toggle-shadow: var(--button-shadow);
-    --toggle-on-text-color: var(--white);
-    --toggle-on-background-color: var(--intent-success);
-    --toggle-off-text-color: var(--button-text-color);
-    --toggle-off-background-color: var(--light-gray1);
-    --toggle-inner-shadow: inset 0 -0.125rem 0.6rem color-mod(var(--shadow-color) alpha(0.15));
-    --toggle-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
-    --toggle-animate-in-speed: 180ms;
-    --toggle-animate-out-speed: 130ms;
-    --toggle-hover-slider-background-color: var(--light-gray4);
-    --toggle-disabled-text-color: var(--button-disabled-text-color);
-    --toggle-disabled-slider-background-color: var(--light-gray3);
-    --toggle-disabled-border: 1px solid var(--button-disabled-border-color);
-    --toggle-mini-width: calc(var(--toggle-width) / 1.7);
-    --toggle-mini-padding: calc(var(--button-padding-y) / 2) 0;
-    --toggle-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
+    --switch-optimize: false;
+    --switch-zindex: 1;
+    --switch-width: 8rem;
+    --switch-padding: var(--button-padding-y) 0;
+    --switch-shadow: var(--button-shadow);
+    --switch-on-text-color: var(--white);
+    --switch-on-background-color: var(--intent-success);
+    --switch-off-text-color: var(--button-text-color);
+    --switch-off-background-color: var(--light-gray1);
+    --switch-inner-shadow: inset 0 -0.125rem 0.6rem color-mod(var(--shadow-color) alpha(0.15));
+    --switch-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
+    --switch-animate-in-speed: 180ms;
+    --switch-animate-out-speed: 130ms;
+    --switch-hover-slider-background-color: var(--light-gray4);
+    --switch-disabled-text-color: var(--button-disabled-text-color);
+    --switch-disabled-slider-background-color: var(--light-gray3);
+    --switch-disabled-border: 1px solid var(--button-disabled-border-color);
+    --switch-mini-width: calc(var(--switch-width) / 1.7);
+    --switch-mini-padding: calc(var(--button-padding-y) / 2) 0;
+    --switch-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
   }
 
-  /* the toggle purposely looks like .button and uses many of the button variables */
-  .toggle {
+  /* the switch purposely looks like .button and uses many of the button variables */
+  .switch {
     position: relative;
-    z-index: var(--toggle-zindex); /* prevent repaint of other elements; promote to new stacking context */
+    z-index: var(--switch-zindex); /* prevent repaint of other elements; promote to new stacking context */
     display: inline-flex;
-    width: var(--toggle-width);
-    padding: var(--toggle-padding);
+    width: var(--switch-width);
+    padding: var(--switch-padding);
     line-height: 1;
-    color: var(--toggle-off-text-color);
+    color: var(--switch-off-text-color);
     text-align: center;
     cursor: pointer;
-    background-color: var(--toggle-off-background-color);
-    filter: var(--toggle-shadow);
+    background-color: var(--switch-off-background-color);
+    filter: var(--switch-shadow);
     border-radius: var(--button-radius);
-    box-shadow: var(--toggle-inner-shadow);
-    transition: background-color var(--toggle-animate-out-speed) ease-out;
+    box-shadow: var(--switch-inner-shadow);
+    transition: background-color var(--switch-animate-out-speed) ease-out;
     transition-delay: 0s;
 
-    @if var(--toggle-optimize) {
+    @if var(--switch-optimize) {
       will-change: background-color;
     }
 
-    &.toggle-mini {
-      width: var(--toggle-mini-width);
-      padding: var(--toggle-mini-padding);
+    &.switch-mini {
+      width: var(--switch-mini-width);
+      padding: var(--switch-mini-padding);
     }
 
     &:hover {
@@ -164,81 +164,81 @@
     }
   }
 
-  .toggle-checked {
-    background-color: var(--toggle-on-background-color);
-    transition: background-color var(--toggle-animate-in-speed) ease-in;
-    transition-delay: var(--toggle-animate-out-speed);
+  .switch-checked {
+    background-color: var(--switch-on-background-color);
+    transition: background-color var(--switch-animate-in-speed) ease-in;
+    transition-delay: var(--switch-animate-out-speed);
   }
 
-  .toggle-on,
-  .toggle-off {
-    flex-basis: calc(var(--toggle-width) / 2);
+  .switch-on,
+  .switch-off {
+    flex-basis: calc(var(--switch-width) / 2);
   }
 
-  .toggle-on {
-    color: var(--toggle-on-text-color);
+  .switch-on {
+    color: var(--switch-on-text-color);
 
-    .toggle-disabled > & {
-      color: var(--toggle-disabled-text-color);
+    .switch-disabled > & {
+      color: var(--switch-disabled-text-color);
     }
   }
 
-  .toggle-slider {
+  .switch-slider {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 50%;
     background: var(--button-background-color);
     border-radius: var(--button-radius);
-    box-shadow: var(--toggle-slider-inner-shadow);
-    transition: transform var(--toggle-animate-in-speed) ease-out;
+    box-shadow: var(--switch-slider-inner-shadow);
+    transition: transform var(--switch-animate-in-speed) ease-out;
 
-    @if var(--toggle-optimize) {
+    @if var(--switch-optimize) {
       will-change: transform;
     }
 
-    .toggle-checked > & {
-      /* FIXME: In chrome/webkit you can see part of .toggle-mini outside the slider */
+    .switch-checked > & {
+      /* FIXME: In chrome/webkit you can see part of .switch-mini outside the slider */
       transform: translateX(100%);
     }
 
-    .toggle-mini > & {
-      box-shadow: var(--toggle-mini-slider-inner-shadow);
+    .switch-mini > & {
+      box-shadow: var(--switch-mini-slider-inner-shadow);
     }
 
-    .toggle:hover > &,
-    .toggle:focus > & {
-      background: var(--toggle-hover-slider-background-color);
+    .switch:hover > &,
+    .switch:focus > & {
+      background: var(--switch-hover-slider-background-color);
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
-    .toggle-disabled > & {
+    .switch-disabled > & {
       box-shadow: none; /* inner shadow */
       transition: none;
 
-      @if var(--toggle-optimize) {
+      @if var(--switch-optimize) {
         will-change: auto;
       }
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
-    .toggle-disabled > &,
-    .toggle-disabled:hover > &,
-    .toggle-disabled:focus > & {
-      background: var(--toggle-disabled-slider-background-color);
+    .switch-disabled > &,
+    .switch-disabled:hover > &,
+    .switch-disabled:focus > & {
+      background: var(--switch-disabled-slider-background-color);
     }
   }
 
-  .toggle-disabled {
+  .switch-disabled {
     color: var(--button-disabled-text-color);
     cursor: not-allowed;
     background-color: var(--button-background-color);
     filter: none;
-    border: var(--toggle-disabled-border);
+    border: var(--switch-disabled-border);
     box-shadow: none; /* inner shadow */
     transition: none;
 
-    @if var(--toggle-optimize) {
+    @if var(--switch-optimize) {
       will-change: auto;
     }
 

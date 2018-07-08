@@ -47,15 +47,13 @@ tr {
 /* Form elements */
 
 .button,
-.select,
-button,
-select {
+.select {
   cursor: pointer;
   outline-offset: -2px; /* consistency between browsers */
 }
 
-input,
-textarea {
+.input,
+.textarea {
   cursor: text;
   outline-offset: -2px; /* consistency between browsers */
 }

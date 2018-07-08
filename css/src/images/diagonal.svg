@@ -26,6 +26,7 @@
   NOTE:
     - Manual optimisations:
       - Minimise viewbox size.
+      - Remove transparent shape.
     - Use https://jakearchibald.github.io/svgomg/ to achive the following:
       - Convert polygon shapes to path.
       - Convert rgb() colour to HEX.
@@ -39,4 +40,4 @@
     - https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
 
 -->
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1 1"><path fill="#fafafa" d="M1 0L0 1V0z"/><path fill="transparent" d="M1 0L0 1h1z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1 1"><path fill="#fafafa" d="M1 0L0 1V0z"/></svg>

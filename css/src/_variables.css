@@ -211,7 +211,7 @@
    * customise the diagonal image.
    */
   /* --diagonal-image: url("diagonal.svg"); */
-  --diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3Cpath fill='transparent' d='M1 0L0 1h1z'/%3E%3C/svg%3E");
+  --diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E");
   --diagonal-background-color: var(--light-gray3);
   --diagonal-dark-text-color: var(--white);
   --diagonal-dark-background-color: var(--dark-gray1);

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- BREAKING CHANGE: Don't style default form elements; require classes for custom form element styles.
+- Convert more CSS size units to `em`.
+- Simplify SVG image used to create diagonal sections.
+
 ## [0.5.0] - 2018-07-08
 
 ### Added

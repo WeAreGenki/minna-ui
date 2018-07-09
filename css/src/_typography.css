@@ -89,7 +89,6 @@ a {
   word-wrap: break-word;
 
   &:hover {
-    color: var(--link-color-hover);
     text-decoration: underline;
   }
 }

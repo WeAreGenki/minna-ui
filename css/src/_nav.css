@@ -16,7 +16,6 @@
 
 .sidenav-link-active {
   font-weight: var(--text-weight-heavy);
-  color: var(--side-nav-active-text-color);
   background-color: var(--side-nav-active-background-color);
 }
 

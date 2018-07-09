@@ -118,9 +118,7 @@
   --text-color-muted: var(--gray1);
   --text-color-disabled: color-mod(var(--text-color-muted) alpha(0.5));
   --heading-color: var(--text-color);
-  /* --link-color: var(--blue2); */
-  --link-color: var(--cobalt3);
-  --link-color-hover: var(--blue1);
+  --link-color: var(--blue2);
   --dark-text-color: var(--light-gray5);
   --dark-text-color-muted: var(--gray5);
   --dark-text-color-disabled: color-mod(var(--dark-text-color-muted) alpha(0.5));

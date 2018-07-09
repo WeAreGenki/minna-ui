@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- BREAKING CHANGE: `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.
 - Overly opinionated text styles and their CSS variables:
   - `--text-rendering`
   - `--text-variant`
@@ -33,6 +34,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- `@minna-ui/switch` component width.
 - `undefined [undefined]` warning when compiling CSS with `@minna-ui/postcss-config`.
 
 ## [0.6.0] - 2018-07-08

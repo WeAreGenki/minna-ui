@@ -22,6 +22,11 @@
     filter: none;
   }
 
+  a& {
+    /* fix alignment when applied to links */
+    margin: initial;
+  }
+
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {

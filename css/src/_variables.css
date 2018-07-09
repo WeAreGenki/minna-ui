@@ -47,7 +47,7 @@
 
   /* Typography */
 
-  --font-family:
+  --font-stack:
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
@@ -61,21 +61,17 @@
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
-  --font-family-monospace:
+  --font-stack-monospace:
     Consolas,
     "Liberation Mono",
     Menlo,
     Courier,
     monospace;
-  --text-size-min: 1em; /* use the browser's default font size, normally 16px */
-  --text-size-max: 1.375em; /* 22px */
-  --text-size-from: 30.01em; /* start growing font from this screen width */
-  --text-size-until: var(--container-width-max); /* stop growing font size at this screen width */
+  --text-size: 1.0625em; /* 17px */
+  --text-size-large: 1.3125em; /* 21px */
   --text-weight-light: 300;
-  --text-weight: 400; /* 400 is browser default */
-  --text-weight-heavy: 700; /* 700 is browser default */
-  --text-rendering: optimizeSpeed;
-  --text-variant: none;
+  --text-weight: 400;
+  --text-weight-heavy: 700;
   --line-height: 1.5;
   /* font size according to modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
   --headline-text-size: 5.063em;
@@ -86,9 +82,10 @@
   --h5-text-size: 1.5em;
   --h6-text-size: 1.25em;
   --heading-text-weight: var(--text-weight);
-  --paragraph-line-height: 1.762;
   --paragraph-line-height: 1.7;
   --paragraph-lead-text-size: 1.5em;
+  --paragraph-lead-text-weight: var(--text-weight-light);
+  --link-click-area: 0.4em; /* reduce if links overlap */
   --li-margin-between: 0.5em;
   --hr-margin: 3em 0;
   --hr-border: 1px solid var(--divider-black);

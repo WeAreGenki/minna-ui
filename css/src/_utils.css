@@ -2,10 +2,15 @@
   UTILITIES
 */
 
+/* Box model */
+
+.bb { box-sizing: border-box; }
+
 /* Width */
 
-.w100 { width: 100%; }
+.w100 { width: 100%; /* When using `.w100` it's also a good idea to add `.bb` too */ }
 .wfit { width: fit-content; }
+.wi { width: initial; }
 
 .mw0 { min-width: 0; }
 

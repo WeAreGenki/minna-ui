@@ -10,6 +10,7 @@
 */
 
 .con {
+  box-sizing: border-box;
   max-width: var(--container-width-max);
   padding-right: var(--gutter-col);
   padding-left: var(--gutter-col);

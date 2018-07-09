@@ -7,11 +7,15 @@
 .grid,
 .grid-c,
 .grid-c0 {
-  grid-auto-rows: var(--auto-rows);
-  grid-auto-columns: var(--auto-cols);
   grid-gap: var(--gutter-row) var(--gutter-col);
-  grid-template-rows: var(--rows);
-  grid-template-columns: var(--cols);
+
+  @if var(--auto-rows) != auto {
+    grid-auto-rows: var(--auto-rows);
+  }
+
+  @if var(--auto-cols) != auto {
+    grid-auto-columns: var(--auto-cols);
+  }
 
   @media (--screen-large) {
     grid-gap: var(--gutter-row-large) var(--gutter-col-large);

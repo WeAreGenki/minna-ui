@@ -5,8 +5,25 @@
 
 */
 
-/* Better box model */
+/* Box model */
 
+/*
+  FIXME: This may actually be unnecessary as initial testing shows few elements
+  need it as browsers already set border-box on `button`, `input` etc.
+    ↳ XXX: @TESTING: More cross-browser testing; which browsers don't set it?
+    ↳ Most developers don't know when to set box-sizing. Worth adding to docs.
+    ↳ REFERENCE: https://aastudio.fr/box-sizing.html
+*/
+/*
+  TODO: Also add to the docs the following snippet for developers who would
+  rather not worry about box-sizing at all:
+
+    /* stylelint-disable * /
+    html { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    /* stylelint-enable * /
+*/
+/*
 html,
 body,
 div,
@@ -43,6 +60,7 @@ th,
 tr {
   box-sizing: border-box;
 }
+*/
 
 /* Form elements */
 

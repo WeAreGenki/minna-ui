@@ -11,10 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- BREAKING CHANGE: `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.
 - Overly opinionated text styles and their CSS variables:
   - `--text-rendering`
   - `--text-variant`
 - Broken `.quote` blockquote styles.
+- Unnecessary default grid row and column size and CSS variables:
+  - `--rows`
+  - `--cols`
 
 ### Changed
 
@@ -24,13 +28,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - `--text-size-min` to `--text-size`
   - `--text-size-max` to `--text-size-large`
 - BREAKING CHANGE: Font size defaults.
+- BREAKING CHANGE: Styles are now opt-in for tables, radio and checkbox inputs, and code blocks; a class is now required.
 - Text size is no longer fluid by default.
 - Link hover no longer changes text colour.
 - Link text colour.
+- Simplify form input disabled styles.
+- Simplify grid styles for output CSS.
 - Convert more CSS size units to `em`.
 
 ### Fixed
 
+- `@minna-ui/switch` component width.
 - `undefined [undefined]` warning when compiling CSS with `@minna-ui/postcss-config`.
 
 ## [0.6.0] - 2018-07-08

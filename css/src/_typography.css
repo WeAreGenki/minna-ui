@@ -91,34 +91,34 @@ li {
 
 /* Tables */
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
-}
 
-th,
-td {
-  padding: 0.9rem 1rem;
-}
+  th,
+  td {
+    padding: 0.9rem 1rem;
+  }
 
-tbody > tr:nth-child(odd) {
-  background: var(--background-color-muted);
+  tbody > tr:nth-child(odd) {
+    background: var(--background-color-muted);
 
-  /* FIXME: These selector chain makes me sad, come up with a better solution */
-  /* & > td:first-child {
-    position: relative;
+    /* FIXME: These selector chain makes me sad, come up with a better solution */
+    /* & > td:first-child {
+      position: relative;
 
-    &::before {
-      position: absolute;
-      top: 0;
-      left: -50vw;
-      z-index: -1;
-      width: 150vw;
-      height: 100%;
-      content: "";
-      background: var(--background-color-muted);
-    }
-  } */
+      &::before {
+        position: absolute;
+        top: 0;
+        left: -50vw;
+        z-index: -1;
+        width: 150vw;
+        height: 100%;
+        content: "";
+        background: var(--background-color-muted);
+      }
+    } */
+  }
 }
 
 /* Quotes */
@@ -129,11 +129,11 @@ tbody > tr:nth-child(odd) {
 /* Code */
 
 .mono,
-code {
+.code {
   font-family: var(--font-stack-monospace);
 }
 
-code {
+.code {
   display: inline-block;
   padding: 0.1em 0.4em;
   color: var(--code-text-color);

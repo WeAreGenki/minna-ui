@@ -19,7 +19,7 @@ body {
   }
 /* stylelint-enable selector-max-id */
 
-/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with custom mixin 1`] = `
@@ -50,5 +50,5 @@ body {
   }
 /* stylelint-enable selector-max-id */
 
-/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;

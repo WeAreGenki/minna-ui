@@ -8,11 +8,7 @@
 
 /* Width */
 
-/**
- * When using `.w100` it's also a good idea to use `.bb`.
- * TODO: Add link to docs explaining why.
- */
-.w100 { width: 100%; }
+.w100 { width: 100%; /* When using `.w100` it's also a good idea to add `.bb` too */ }
 .wfit { width: fit-content; }
 .wi { width: initial; }
 

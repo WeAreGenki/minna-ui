@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Link hover no longer changes text colour.
 - Link text colour.
 - Simplify form input disabled styles.
+- Require class on radio and checkbox inputs.
 - Convert more CSS size units to `em`.
 
 ### Fixed

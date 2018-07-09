@@ -72,7 +72,7 @@ img {
   height: auto;
 }
 
-/* Simple horizontal rule */
+/* Horizontal rule */
 
 hr {
   margin: var(--hr-margin);

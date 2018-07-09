@@ -8,14 +8,15 @@
 */
 
 /* Media queries */
-@custom-media --screen-small screen and (min-width: 30.01em) and (max-width: 48em);
-@custom-media --screen-large screen and (min-width: 48.01em);
+@custom-media --screen-not-small screen and (min-width: 30.01em);
+@custom-media --screen-medium screen and (min-width: 30.01em) and (max-width: 60em);
+@custom-media --screen-large screen and (min-width: 60.01em);
 
 :root {
   /* Breakpoints */
 
-  --breakpoints-media: --screen-small, --screen-large;
-  --breakpoints: s, l;
+  --breakpoints-media: --screen-not-small, --screen-medium, --screen-large;
+  --breakpoints: ns, m, l;
 
   /* General */
 
@@ -29,7 +30,7 @@
 
   /* Grid */
 
-  --container-width-max: 54em; /* 1188px @ 22px font size */
+  --container-width-max: 50em; /* 1050px @ 21px font size */
   --container-narrow-width-max: 30em;
   --item-size: 1fr;
   --cols: auto;
@@ -46,7 +47,7 @@
 
   /* Typography */
 
-  --font-family:
+  --font-stack:
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
@@ -60,21 +61,17 @@
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     "Noto Color Emoji";
-  --font-family-monospace:
+  --font-stack-monospace:
     Consolas,
     "Liberation Mono",
     Menlo,
     Courier,
     monospace;
-  --text-size-min: 1em; /* use the browser's default font size, normally 16px */
-  --text-size-max: 1.375em; /* 22px */
-  --text-size-from: 30.01em; /* start growing font from this screen width */
-  --text-size-until: var(--container-width-max); /* stop growing font size at this screen width */
+  --text-size: 1.0625em; /* 17px */
+  --text-size-large: 1.3125em; /* 21px */
   --text-weight-light: 300;
-  --text-weight: 400; /* 400 is browser default */
-  --text-weight-heavy: 700; /* 700 is browser default */
-  --text-rendering: optimizeSpeed;
-  --text-variant: none;
+  --text-weight: 400;
+  --text-weight-heavy: 700;
   --line-height: 1.5;
   /* font size according to modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
   --headline-text-size: 5.063em;
@@ -85,17 +82,13 @@
   --h5-text-size: 1.5em;
   --h6-text-size: 1.25em;
   --heading-text-weight: var(--text-weight);
-  --paragraph-line-height: 1.762;
   --paragraph-line-height: 1.7;
   --paragraph-lead-text-size: 1.5em;
-  --link-click-area: 0.4em; /* reduce this if your links are overlapping */
+  --paragraph-lead-text-weight: var(--text-weight-light);
+  --link-click-area: 0.4em; /* reduce if links overlap */
+  --li-margin-between: 0.5em;
   --hr-margin: 3em 0;
   --hr-border: 1px solid var(--divider-black);
-  --li-margin-between: 0.5em;
-  --quote-text-size: 2em;
-  --quote-mark-text-size: 3em;
-  /* --abbr-underline-color: color-mod(var(--text-color lightness(25%))); */
-  --abbr-underline-color: var(--dark-gray3);
 
   /* Shadows */
 
@@ -109,7 +102,6 @@
   --nav-link-padding-x: 1.3em;
   --nav-link-padding-y: 0.7em;
   --side-nav-link-margin: 0;
-  --side-nav-active-text-color: var(--link-color-hover);
   --side-nav-active-background-color: var(--background-color-muted);
   --footer-margin-y: 5rem;
   --footer-text-color: var(--text-color-muted);

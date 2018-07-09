@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+
+- Overly opinionated text styles and their CSS variables:
+  - `--text-rendering`
+  - `--text-variant`
+- Broken `.quote` blockquote styles.
+
+### Changed
+
+- BREAKING CHANGE: New responsive breakpoints and max container widths.
+- BREAKING CHANGE: Rename CSS variables:
+  - `--font-family*` to `--font-stack*`
+  - `--text-size-min` to `--text-size`
+  - `--text-size-max` to `--text-size-large`
+- BREAKING CHANGE: Font size defaults.
+- Text size is no longer fluid by default.
+- Link hover no longer changes text colour.
+- Link text colour.
+- Convert more CSS size units to `em`.
+
+### Fixed
+
+- `undefined [undefined]` warning when compiling CSS with `@minna-ui/postcss-config`.
+
 ## [0.6.0] - 2018-07-08
 
 ### Changed
@@ -106,34 +130,34 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - BREAKING CHANGE: Switch to American English spelling (not British English) for CSS and component APIs to better match developer expectations.
 - BREAKING CHANGE: Rename files:
-  - `_colour.css` renamed to `_color.css`
-  - `_label.css` renamed to `_tag.css`
+  - `_colour.css` to `_color.css`
+  - `_label.css` to `_tag.css`
 - BREAKING CHANGE: Renamed CSS variables:
-  - `*-colour*` renamed to `*-color*`
-  - `*-bg-*` renamed to `*-background-*`
-  - `*font-*` renamed to `*text-*` (but not `--font-family*`)
-  - `btn-*` renamed to `button-*`
-  - `--radius-1` renamed to `--radius`
-  - `--radius-2` renamed to `--radius-large`
-  - `--angle-*` renamed to `--angle*`
-  - `--gutter-col-l` renamed to `--gutter-col-large`
-  - `--gutter-row-l` renamed to `--gutter-row-large`
-  - `--shadow-colour` renamed to `--shadow-color`
-  - `--shadow-light-1` renamed to `--shadow-light`
-  - `--shadow-light-2` renamed to `--shadow-light-edge`
-  - `--body-font-colour` renamed to `--text-color`
-  - `--body-bg-colour` renamed to `--app-background-color`
-  - `--link-font-colour` renamed to `XXXXX`
-  - `--link-hover-font-colour` renamed to `XXXXX`
-  - `--label-*` renamed to `--tag-*`
-  - `--card-touch-*` renamed to `--card-hover-*`
+  - `*-colour*` to `*-color*`
+  - `*-bg-*` to `*-background-*`
+  - `*font-*` to `*text-*` (but not `--font-family*`)
+  - `--btn-*` to `--button-*`
+  - `--radius-1` to `--radius`
+  - `--radius-2` to `--radius-large`
+  - `--angle-*` to `--angle*`
+  - `--gutter-col-l` to `--gutter-col-large`
+  - `--gutter-row-l` to `--gutter-row-large`
+  - `--shadow-colour` to `--shadow-color`
+  - `--shadow-light-1` to `--shadow-light`
+  - `--shadow-light-2` to `--shadow-light-edge`
+  - `--body-font-colour` to `--text-color`
+  - `--body-bg-colour` to `--app-background-color`
+  - `--link-font-colour` to `XXXXX`
+  - `--link-hover-font-colour` to `XXXXX`
+  - `--label-*` to `--tag-*`
+  - `--card-touch-*` to `--card-hover-*`
 - BREAKING CHANGE: Renamed CSS classes:
-  - `.*btn*` renamed to `.*button*`
-  - `.*grey*` renamed to `.*gray*`
-  - `.card-touch` renamed to `.card-hover`
-  - `.rad` renamed to `.rounded`
-  - `.rad2` renamed to `.rounded-large`
-  - `.rad0*` renamed to `.not-rounded*`
+  - `.*btn*` to `.*button*`
+  - `.*grey*` to `.*gray*`
+  - `.card-touch` to `.card-hover`
+  - `.rad` to `.rounded`
+  - `.rad2` to `.rounded-large`
+  - `.rad0*` to `.not-rounded*`
 - BREAKING CHANGE: All colour classes in `_color.css` have been changed.
 - BREAKING CHANGE: CSS mixin `fluid-font-size` to `fluid-text-size`.
 - Colours now must be defined using `rgb()` or `rgba()` only.

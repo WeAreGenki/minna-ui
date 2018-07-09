@@ -2,55 +2,39 @@
   TYPOGRAPHY
 */
 
-/* Fluid text size */
-
-html {
-  @mixin fluid-text-size
-    var(--text-size-min),
-    var(--text-size-max),
-    var(--text-size-from),
-    var(--text-size-until);
-}
-
-/* Font base */
+/* Text base */
 
 body {
-  /**
-   * TODO: Add to docs: if using a web font add "font-display: optional;" and
-   * still use fallback for best accessibility (browser will decide if it should
-   * use the web font or not, e.g. when connection speed is slow).
-   */
-  font-family: var(--font-family);
-  text-rendering: var(--text-rendering);
-  font-variant-ligatures: var(--text-variant);
+  font-family: var(--font-stack);
+  font-size: var(--text-size);
   color: var(--text-color);
   background-color: var(--app-background-color);
 
-  /* only set when different from browser default */
-  @if var(--text-size-min) != 1em AND var(--text-size-min) != 1rem AND var(--text-size-min) != 16px {
-    font-size: var(--text-size-min);
-  }
-
-  /* only set when different from browser default */
+  /* only if different from browser default */
   @if var(--text-weight) != 400 {
     font-weight: var(--text-weight);
+  }
+
+  @media (--screen-large) {
+    font-size: var(--text-size-large);
   }
 }
 
 /* Headings */
 
-/* stylelint-disable selector-list-comma-newline-after */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--heading-text-weight);
-
   /* prevent long words causing the page to overflow */
   word-break: break-word;
   word-wrap: break-word;
+
+  @if var(--heading-text-weight) != 800 AND var(--heading-text-weight) != bold {
+    font-weight: var(--heading-text-weight);
+  }
 
   @if var(--heading-color) != var(--text-color) {
     color: var(--heading-color);
@@ -63,7 +47,6 @@ h3 { font-size: var(--h3-text-size); }
 h4 { font-size: var(--h4-text-size); }
 h5 { font-size: var(--h5-text-size); }
 h6 { font-size: var(--h6-text-size); }
-/* stylelint-enable selector-list-comma-newline-after */
 
 .headline { font-size: var(--headline-text-size); }
 
@@ -75,7 +58,7 @@ p {
 
 .lead {
   font-size: var(--paragraph-lead-text-size);
-  font-weight: var(--text-weight-light);
+  font-weight: var(--paragraph-lead-text-weight);
 }
 
 /* Links */
@@ -89,16 +72,19 @@ a {
   word-wrap: break-word;
 
   &:hover {
-    color: var(--link-color-hover);
     text-decoration: underline;
   }
 }
 
 /* Lists */
 
-li { margin-bottom: var(--li-margin-between); } /* more space between list items */
+/* more space between list items */
+li {
+  margin-bottom: var(--li-margin-between);
+}
 
-.lsn { /* list style none */
+/* list style none */
+.lsn {
   padding-left: 0;
   list-style: none;
 }
@@ -137,36 +123,14 @@ tbody > tr:nth-child(odd) {
 
 /* Quotes */
 
-.quote {
-  position: relative;
-  font-size: var(--quote-text-size);
-
-  &::before,
-  &::after {
-    position: absolute;
-    font-size: var(--quote-mark-text-size);
-  }
-
-  /* use em not rem so it's relative to font size */
-  /* FIXME: This doesn't work and looks bad! */
-  &::before {
-    top: -0.28em;
-    left: -0.45em;
-    content: "“";
-  }
-
-  &::after {
-    top: -0.25em;
-    margin-left: 0.1em;
-    content: "”";
-  }
-}
+/* TODO: New blockquote styles */
+/* .blockquote {} */
 
 /* Code */
 
 .mono,
 code {
-  font-family: var(--font-family-monospace);
+  font-family: var(--font-stack-monospace);
 }
 
 code {

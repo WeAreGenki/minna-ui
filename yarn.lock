@@ -691,10 +691,10 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.62.0"
     rollup-plugin-buble "0.19.2"
@@ -704,15 +704,15 @@
     rollup-plugin-svelte "4.2.1"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v1/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.1.11"
     del "3.0.0"
     postcss-load-config "1.2.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     eslint-config-airbnb-base "^13.0.0"
     eslint-plugin-html "^4.0.5"
@@ -720,7 +720,7 @@
     eslint-plugin-jest "^21.17.0"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     "@babel/core" "^7.0.0-beta.52"
     "@babel/plugin-transform-modules-commonjs" "^7.0.0-beta.52"
@@ -730,7 +730,7 @@
     babel-jest "^23.2.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     autoprefixer "^8.6.5"
     css-mqpacker "^6.0.2"
@@ -748,18 +748,18 @@
     postcss-use "^3.0.0"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     stylelint-config-standard "^18.2.0"
     stylelint-order "^0.8.1"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     html-minifier "3.5.18"
 
 "@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
-  version "0.5.0"
+  version "0.6.0"
   dependencies:
     postcss-load-config "^1.2.0"
     postcss-selector-parser "^5.0.0-rc.3"
@@ -917,7 +917,7 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-argv@0.0.2:
+argv@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/argv/-/argv-0.0.2.tgz#ecbd16f8949b157183711b1bda334f37840185ab"
 
@@ -1568,14 +1568,14 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codecov@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.0.3.tgz#e6a209f1674f3e3a8ff6d889ab7ac0b4a8895fa2"
+codecov@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/codecov/-/codecov-3.0.4.tgz#37f2bf9ed71086923aac7496d982e32e5899dfd8"
   dependencies:
-    argv "0.0.2"
-    ignore-walk "3.0.0"
-    request "2.81.0"
-    urlgrey "0.4.4"
+    argv "^0.0.2"
+    ignore-walk "^3.0.1"
+    request "^2.87.0"
+    urlgrey "^0.4.4"
 
 collapse-white-space@^1.0.2:
   version "1.0.4"
@@ -2966,12 +2966,6 @@ iconv-lite@^0.4.17, iconv-lite@^0.4.4:
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
-
-ignore-walk@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-3.0.0.tgz#e407919edee5c47c63473b319bfe3ea4a771a57e"
-  dependencies:
-    minimatch "^3.0.4"
 
 ignore-walk@^3.0.1:
   version "3.0.1"
@@ -5369,7 +5363,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@2.81.0, "request@>=2.9.0 <2.82.0":
+"request@>=2.9.0 <2.82.0":
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -5396,7 +5390,7 @@ request@2.81.0, "request@>=2.9.0 <2.82.0":
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.83.0:
+request@^2.83.0, request@^2.87.0:
   version "2.87.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
   dependencies:
@@ -6357,7 +6351,7 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
-urlgrey@0.4.4:
+urlgrey@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/urlgrey/-/urlgrey-0.4.4.tgz#892fe95960805e85519f1cd4389f2cb4cbb7652f"
 

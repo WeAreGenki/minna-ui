@@ -22,27 +22,25 @@
 
   --spacing-steps: 0, 1, 2, 3, 4, 5, 6, 7;
   --spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em;
-  --radius: 0.2rem; /* 3.2px at root */
-  --radius-large: 0.32rem; /* 5px at root */
+  --radius: 0.2rem; /* 3.2px */
+  --radius-large: 0.32rem; /* 5px */
   --angle1: 151deg;
   --angle2: 45deg;
   --angle3: -27deg;
 
   /* Grid */
 
-  --container-width-max: 50em; /* 1050px @ 21px font size */
+  --container-width-max: 50em; /* 1050px @ 21px font-size */
   --container-narrow-width-max: 30em;
   --item-size: 1fr;
-  --cols: auto;
-  --rows: auto;
-  --auto-cols: var(--item-size);
   --auto-rows: auto;
-  --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+  --auto-cols: var(--item-size);
   --row-steps: 1, 2, 3, 4, 5, 6;
-  --gutter-col: 1em;
-  --gutter-col-large: 2em;
+  --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
   --gutter-row: 2em;
+  --gutter-col: 1em;
   --gutter-row-large: 2em;
+  --gutter-col-large: 2em;
   --gutter-compact: calc(var(--gutter-row) / 4) 0;
 
   /* Typography */

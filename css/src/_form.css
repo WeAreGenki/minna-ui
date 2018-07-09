@@ -12,8 +12,8 @@
   color: var(--label-text-color);
   text-transform: uppercase;
 
-  .input[type="radio"] + &,
-  .input[type="checkbox"] + & {
+  .radio + &,
+  .checkbox + & {
     display: inline-block;
     margin-bottom: 0;
   }
@@ -55,7 +55,7 @@
 }
 
 /* FIXME: Create custom checkbox styles */
-/* .input[type="checkbox"] {} */
+/* .checkbox {} */
 
 /* Grouped form elements */
 

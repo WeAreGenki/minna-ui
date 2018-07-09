@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - `--font-family*` to `--font-stack*`
   - `--text-size-min` to `--text-size`
   - `--text-size-max` to `--text-size-large`
+  - `--navbar-link-fragment-*` to `--navbar-hash-link-*`
 - BREAKING CHANGE: Font size defaults.
 - BREAKING CHANGE: Styles are now opt-in for tables, radio and checkbox inputs, and code blocks; a class is now required.
 - Text size is no longer fluid by default.

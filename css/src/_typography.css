@@ -63,7 +63,6 @@ p {
 
 /* Links */
 
-.link,
 a {
   padding: var(--link-click-area); /* larger link click area size */
   margin: calc(-1 * var(--link-click-area));

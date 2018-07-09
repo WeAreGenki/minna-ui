@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - BREAKING CHANGE: `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.
+- BREAKING CHANGE: Remove `.link` class; always just use plain `<a>` tags.
 - Overly opinionated text styles and their CSS variables:
   - `--text-rendering`
   - `--text-variant`

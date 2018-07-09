@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+- Incorrect alignment when `.button` class is applied to links.
 - `@minna-ui/switch` component width.
 - `undefined [undefined]` warning when compiling CSS with `@minna-ui/postcss-config`.
 

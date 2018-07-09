@@ -38,26 +38,24 @@
     outline: var(--input-focus-outline);
   }
 
-  &::placeholder {
-    color: var(--input-placeholder-text-color);
-  }
-
-  &[disabled],
-  &[disabled]:focus,
-  &[disabled]:active {
+  &[disabled] {
     color: var(--input-disabled-text-color);
     background-color: var(--input-disabled-background-color);
     border: var(--input-disabled-border);
     outline: none;
+  }
+}
 
-    &::placeholder {
-      color: var(--input-disabled-placeholder-text-color);
-    }
+::placeholder {
+  color: var(--input-placeholder-text-color);
+
+  [disabled]& {
+    color: var(--input-disabled-placeholder-text-color);
   }
 }
 
 /* FIXME: Create custom checkbox styles */
-/* input[type="checkbox"] {} */
+/* .input[type="checkbox"] {} */
 
 /* Grouped form elements */
 

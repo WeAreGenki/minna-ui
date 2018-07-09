@@ -33,9 +33,10 @@
     7 = 16em
 
   RESPONSIVE:
-       = (default, no suffix) anything smaller than small
-    -s = small
-    -l = large
+       = (no suffix) default small
+    -ns = not small screen breakpoint; anything medium or bigger
+    -m = medium screen breakpoint
+    -l = large screen breakpoint
 
   MODIFIER:
     -i = force using !important (only available on margin auto directions)

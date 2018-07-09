@@ -15,8 +15,9 @@
     ig = inline grid
 
   RESPONSIVE:
-       = (no suffix) default root; anything before small media breakpoint
-    -s = small screen breakpoint
+       = (no suffix) default small
+    -ns = not small screen breakpoint; anything medium or bigger
+    -m = medium screen breakpoint
     -l = large screen breakpoint
 */
 

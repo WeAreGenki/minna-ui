@@ -8,14 +8,15 @@
 */
 
 /* Media queries */
-@custom-media --screen-small screen and (min-width: 30.01em) and (max-width: 48em);
-@custom-media --screen-large screen and (min-width: 48.01em);
+@custom-media --screen-not-small screen and (min-width: 30.01em);
+@custom-media --screen-medium screen and (min-width: 30.01em) and (max-width: 60em);
+@custom-media --screen-large screen and (min-width: 60.01em);
 
 :root {
   /* Breakpoints */
 
-  --breakpoints-media: --screen-small, --screen-large;
-  --breakpoints: s, l;
+  --breakpoints-media: --screen-not-small, --screen-medium, --screen-large;
+  --breakpoints: ns, m, l;
 
   /* General */
 
@@ -29,7 +30,7 @@
 
   /* Grid */
 
-  --container-width-max: 54em; /* 1188px @ 22px font size */
+  --container-width-max: 50em; /* 1050px @ 21px font size */
   --container-narrow-width-max: 30em;
   --item-size: 1fr;
   --cols: auto;

@@ -89,14 +89,9 @@
   --paragraph-line-height: 1.762;
   --paragraph-line-height: 1.7;
   --paragraph-lead-text-size: 1.5em;
-  --link-click-area: 0.4em; /* reduce this if your links are overlapping */
+  --li-margin-between: 0.5em;
   --hr-margin: 3em 0;
   --hr-border: 1px solid var(--divider-black);
-  --li-margin-between: 0.5em;
-  --quote-text-size: 2em;
-  --quote-mark-text-size: 3em;
-  /* --abbr-underline-color: color-mod(var(--text-color lightness(25%))); */
-  --abbr-underline-color: var(--dark-gray3);
 
   /* Shadows */
 

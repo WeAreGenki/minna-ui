@@ -136,30 +136,8 @@ tbody > tr:nth-child(odd) {
 
 /* Quotes */
 
-.quote {
-  position: relative;
-  font-size: var(--quote-text-size);
-
-  &::before,
-  &::after {
-    position: absolute;
-    font-size: var(--quote-mark-text-size);
-  }
-
-  /* use em not rem so it's relative to font size */
-  /* FIXME: This doesn't work and looks bad! */
-  &::before {
-    top: -0.28em;
-    left: -0.45em;
-    content: "“";
-  }
-
-  &::after {
-    top: -0.25em;
-    margin-left: 0.1em;
-    content: "”";
-  }
-}
+/* TODO: New blockquote styles */
+/* .blockquote {} */
 
 /* Code */
 

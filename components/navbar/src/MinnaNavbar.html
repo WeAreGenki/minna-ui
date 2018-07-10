@@ -34,6 +34,16 @@
         </defs>
       </svg>
 
+    Also add this to your CSS:
+
+      .icon {
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+      }
+
     You may need to adjust size and whitespace to suite your logo. See the CSS
     variables below.
 
@@ -57,7 +67,7 @@
       aria-expanded="{__isOpen}"
       on:click="__openMenu(__isOpen)"
     >
-      <svg class="navbar-icon link">
+      <svg class="navbar-icon">
         <use xlink:href="{__isOpen ? '#x' : '#menu'}"/>
       </svg>
     </button>
@@ -148,7 +158,8 @@
     --navbar-shadow-fade-speed: 300ms;
     --navbar-shadow: var(--shadow);
     --navbar-icon-size: 2em;
-    --navbar-icon-padding: 0.4em 0.4em;
+    --navbar-icon-padding: 0.4em;
+    --navbar-icon-color: var(--link-color);
     --navbar-logo-size-x: 4.2em;
     --navbar-logo-size-y: 1.6em;
     --navbar-border-color: var(--divider-black);
@@ -196,7 +207,7 @@
     width: var(--navbar-icon-size);
     height: var(--navbar-icon-size);
     padding: var(--navbar-icon-padding);
-    margin: 0;
+    color: var(--navbar-icon-color);
   }
 
   .logo {

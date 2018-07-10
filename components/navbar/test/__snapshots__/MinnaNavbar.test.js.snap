@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MinnaNavbar component can dynamically add menu items 1`] = `
-"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button dn-l button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button dn-l button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon\\"><use xlink:href=\\"#menu\\"></use></svg></button>
 
     <a href=\\"/\\" class=\\"lh1\\" title=\\"Home\\"><svg class=\\"logo\\"><use xlink:href=\\"#logo\\"></use>
       </svg></a>
@@ -12,7 +12,7 @@ exports[`MinnaNavbar component can dynamically add menu items 1`] = `
 `;
 
 exports[`MinnaNavbar component renders correctly with required props set 1`] = `
-"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button dn-l button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon link\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button dn-l button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon\\"><use xlink:href=\\"#menu\\"></use></svg></button>
 
     <a href=\\"/\\" class=\\"lh1\\" title=\\"Home\\"><svg class=\\"logo\\"><use xlink:href=\\"#logo\\"></use>
       </svg></a>

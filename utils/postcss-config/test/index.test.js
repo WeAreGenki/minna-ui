@@ -46,9 +46,49 @@ describe('PostCSS config', () => {
     expect(result.css).toMatchSnapshot();
   });
 
-  it('compiles CSS when standalone', async () => {
+  it('compiles CSS with variable override', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({
+      variables: {
+        color: 'rgb(0, 0, 255)', // blue
+      },
+    }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with standalone option true', async () => {
     expect.assertions(5);
     const output = postcss(postcssConfig({ standalone: true }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with verbose option true', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ verbose: true }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with debug option true', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ debug: true }))
       .process(sourceCss, options);
     await expect(output).resolves.toBeDefined();
     const result = await output;

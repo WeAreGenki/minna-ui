@@ -1,6 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PostCSS config compiles CSS when standalone 1`] = `
+exports[`PostCSS config compiles CSS with custom mixin 1`] = `
+".target::after {
+    display: block;
+    clear: both;
+    content: \\"\\";
+  }
+"
+`;
+
+exports[`PostCSS config compiles CSS with debug option true 1`] = `
+":root {
+  --margin: 0;
+  --color: rgb(255, 0, 0); /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable selector-max-id */
+:root {
+  --margin: 0;
+  --color: rgb(255, 0, 0);
+}
+
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with standalone option true 1`] = `
 ":root { /* red */
 }
 body {
@@ -22,13 +59,48 @@ body {
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
 
-exports[`PostCSS config compiles CSS with custom mixin 1`] = `
-".target::after {
-    display: block;
-    clear: both;
-    content: \\"\\";
+exports[`PostCSS config compiles CSS with variable override 1`] = `
+":root { /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(0, 0, 255);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
   }
-"
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with verbose option true 1`] = `
+":root { /* red */
+}
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable selector-max-id */
+
+/*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles valid CSS 1`] = `

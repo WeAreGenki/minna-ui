@@ -52,6 +52,7 @@ h1 {
 | variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
 | standalone | `false` | boolean | Set to `true` when `@minna-ui/css` is not installed. |
 | verbose | `false` | boolean | Show additional warnings. |
+| debug | `false` | boolean | Unlock additional debugging features; preserve and append CSS variables, and show warnings. |
 
 ## Licence
 

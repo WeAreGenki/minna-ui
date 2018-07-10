@@ -26,6 +26,7 @@ module.exports = postcss.plugin('postcss-config', ({
   mixinsPath = '',
   standalone = false,
   verbose = false,
+  debug = false,
   variables = {},
 } = {}) => {
   const mixinsDir = [];
@@ -51,10 +52,9 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(nested)
     .use(customProperties({
       variables,
-      preserve: false,
-      // preserve: 'computed', // DEBUGGING ONLY
-      // appendVariables: true, // DEBUGGING ONLY
-      warnings: verbose,
+      warnings: debug || verbose,
+      preserve: debug && 'computed',
+      appendVariables: debug,
     }))
     .use(conditionals)
     .use(customMedia)

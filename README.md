@@ -11,7 +11,7 @@ A friendly <abbr title="User Interface">UI</abbr> framework which aims to be str
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 
-___NOTE: `minna-ui` is in early development and so the APIs should be considered unstable. Before we reach v1.0.0, minor releases may contain breaking changes.___
+___NOTE: `minna-ui` is in early development. Before we reach v1.0.0, minor releases may contain breaking changes.___
 
 ## Overview
 

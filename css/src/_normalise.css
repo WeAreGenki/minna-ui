@@ -151,7 +151,6 @@ textarea {
   font-family: var(--font-stack); /* 1 */
   font-size: 100%; /* 1 */
   line-height: var(--line-height); /* 1 */
-  font-weight: var(--text-weight); /* minna-ui */
   margin: 0; /* 2 */
 }
 

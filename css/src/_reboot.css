@@ -85,7 +85,6 @@ tr {
 
 /* Disabled elements */
 
-.disabled,
 [disabled] {
   cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
 }

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Add `@extend` to list of allowed at-rules in `@minna-ui/stylelint-config`.
+- `@minna-ui/navbar` SVG icon colour.
 
 ## [0.7.0] - 2018-07-10
 

@@ -5,12 +5,13 @@
 const path = require('path');
 const postcss = require('postcss');
 const atImport = require('postcss-import');
-const cssUse = require('postcss-use');
 const atVariables = require('postcss-at-rules-variables');
+const atUse = require('postcss-use');
+const atExtend = require('postcss-extend-rule');
 const each = require('postcss-each');
 const mixins = require('postcss-mixins');
 const nested = require('postcss-nested');
-const customProperties = require('postcss-custom-properties');
+const cssVariables = require('postcss-custom-properties');
 const conditionals = require('postcss-conditionals');
 const customMedia = require('postcss-custom-media');
 const calc = require('postcss-calc');
@@ -26,6 +27,7 @@ module.exports = postcss.plugin('postcss-config', ({
   mixinsPath = '',
   standalone = false,
   verbose = false,
+  debug = false,
   variables = {},
 } = {}) => {
   const mixinsDir = [];
@@ -44,17 +46,17 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(atImport({
       path: importPaths,
     }))
-    .use(cssUse)
     .use(atVariables)
+    .use(atUse)
+    .use(atExtend)
     .use(each)
     .use(mixins({ mixinsDir }))
     .use(nested)
-    .use(customProperties({
+    .use(cssVariables({
       variables,
-      preserve: false,
-      // preserve: 'computed', // DEBUGGING ONLY
-      // appendVariables: true, // DEBUGGING ONLY
-      warnings: verbose,
+      warnings: debug || verbose,
+      preserve: debug && 'computed',
+      appendVariables: debug,
     }))
     .use(conditionals)
     .use(customMedia)

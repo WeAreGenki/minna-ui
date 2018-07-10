@@ -741,6 +741,7 @@
     postcss-custom-media "^6.0.0"
     postcss-custom-properties "^7.0.0"
     postcss-each "^0.10.0"
+    postcss-extend-rule "^2.0.0"
     postcss-import "^11.1.0"
     postcss-load-config "^1.2.0"
     postcss-mixins "^6.2.0"
@@ -4815,6 +4816,13 @@ postcss-each@^0.10.0:
     postcss "^6.0.1"
     postcss-simple-vars "^4.0.0"
 
+postcss-extend-rule@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-extend-rule/-/postcss-extend-rule-2.0.0.tgz#031fe6f608cf6efd20cb58b11f343b164c18d370"
+  dependencies:
+    postcss "^6.0.22"
+    postcss-nesting "^5.0.0"
+
 postcss-html@^0.28.0:
   version "0.28.0"
   resolved "https://registry.yarnpkg.com/postcss-html/-/postcss-html-0.28.0.tgz#3dd0f5b5d7f886b8181bf844396d43a7898162cb"
@@ -4893,6 +4901,12 @@ postcss-nested@^3.0.0:
   dependencies:
     postcss "^6.0.14"
     postcss-selector-parser "^3.1.1"
+
+postcss-nesting@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-5.0.0.tgz#973e3a7dc6426543affc0b0beb367c3b2a8d9923"
+  dependencies:
+    postcss "^6.0.21"
 
 postcss-reporter@^5.0.0:
   version "5.0.0"
@@ -4995,7 +5009,7 @@ postcss@6.0.22:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@6.0.23, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.21, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.8, postcss@^6.0.9:
+postcss@6.0.23, postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.11, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.21, postcss@^6.0.22, postcss@^6.0.23, postcss@^6.0.6, postcss@^6.0.8, postcss@^6.0.9:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   dependencies:

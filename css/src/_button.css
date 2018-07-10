@@ -23,7 +23,7 @@
   }
 
   a& {
-    /* fix alignment when applied to links */
+    /* fix alignment when applied to `<a>` */
     margin: initial;
   }
 

@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.7.1] - 2018-07-10
 
+### Added
+
+- More `@minna-ui/postcss-config` tests for full code coverage.
+
 ### Fixed
 
 - Add `@extend` to list of allowed at-rules in `@minna-ui/stylelint-config`.

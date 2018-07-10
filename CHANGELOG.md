@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.1] - 2018-07-10
+
+### Fixed
+
+- Add `@extend` to list of allowed at-rules in `@minna-ui/stylelint-config`.
+
 ## [0.7.0] - 2018-07-10
 
 ### Added

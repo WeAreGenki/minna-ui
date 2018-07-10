@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New `@extend` at-rule in `@minna-ui/postcss-config` for easy CSS customisation without directly overriding existing selectors.
+- New debug option in `@minna-ui/postcss-config`.
+
 ### Removed
 
 - BREAKING CHANGE: `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.

@@ -12,6 +12,6 @@
     "@minna-ui/postcss-config": "file:../postcss-config",
     "clean-css": "4.1.11",
     "del": "3.0.0",
-    "postcss-load-config": "1.2.0"
+    "postcss-load-config": "2.0.0"
   }
 }

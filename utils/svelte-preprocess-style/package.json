@@ -21,7 +21,7 @@
     "svelte": "^2.7.2"
   },
   "dependencies": {
-    "postcss-load-config": "^1.2.0",
+    "postcss-load-config": "^2.0.0",
     "postcss-selector-parser": "^5.0.0-rc.3"
   },
   "publishConfig": {

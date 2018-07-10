@@ -28,6 +28,7 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^7.0.0",
     "postcss-each": "^0.10.0",
+    "postcss-extend-rule": "^2.0.0",
     "postcss-import": "^11.1.0",
     "postcss-load-config": "^1.2.0",
     "postcss-mixins": "^6.2.0",

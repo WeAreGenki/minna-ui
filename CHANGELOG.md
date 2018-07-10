@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Allow resizing `<textarea>` blocks.
+
 ## [0.7.1] - 2018-07-10
 
 ### Added

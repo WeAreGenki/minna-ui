@@ -67,13 +67,20 @@ tr {
 .button,
 .select {
   cursor: pointer;
-  outline-offset: -2px; /* consistency between browsers */
+  /* consistency between browsers */
+  outline-offset: -2px;
 }
 
 .input,
 .textarea {
   cursor: text;
-  outline-offset: -2px; /* consistency between browsers */
+  /* consistency between browsers */
+  outline-offset: -2px;
+}
+
+.textarea {
+  /* allow resize but not horizontally to prevent breaking layout */
+  resize: vertical;
 }
 
 /* Disabled elements */

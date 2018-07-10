@@ -7,74 +7,40 @@
 
 /* Box model */
 
-/*
-  FIXME: This may actually be unnecessary as initial testing shows few elements
-  need it as browsers already set border-box on `button`, `input` etc.
-    ↳ XXX: @TESTING: More cross-browser testing; which browsers don't set it?
-    ↳ Most developers don't know when to set box-sizing. Worth adding to docs.
-    ↳ REFERENCE: https://aastudio.fr/box-sizing.html
-*/
-/*
-  TODO: Also add to the docs the following snippet for developers who would
-  rather not worry about box-sizing at all:
+/**
+ * In general it's not necessary to use `border-box` as the box model everywhere,
+ * so this is disabled by default. You will need to add it manually or via the
+ * `.bb` class when necessary. When prototyping or if you don't want to worry
+ * about the box model you can set `--use-global-border-box: true;`.
+ *
+ * REFERENCE:
+ *  - https://aastudio.fr/box-sizing.html
+ *
+ */
+@if var(--use-global-border-box) {
+  html {
+    box-sizing: border-box;
+  }
 
-    /* stylelint-disable * /
-    html { box-sizing: border-box; }
-    *, ::before, ::after { box-sizing: inherit; }
-    /* stylelint-enable * /
-*/
-/*
-html,
-body,
-div,
-nav,
-article,
-section,
-main,
-footer,
-header,
-form,
-fieldset,
-legend,
-pre,
-code,
-a,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li,
-dl,
-dt,
-dd,
-input,
-textarea,
-table,
-td,
-th,
-tr {
-  box-sizing: border-box;
+  /* stylelint-disable-next-line selector-max-universal */
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
 }
-*/
 
 /* Form elements */
 
 .button,
 .select {
   cursor: pointer;
-  /* consistency between browsers */
   outline-offset: -2px;
 }
 
 .input,
 .textarea {
   cursor: text;
-  /* consistency between browsers */
   outline-offset: -2px;
 }
 

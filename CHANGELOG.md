@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New global `border-box` box model styles, which are behind a CSS variables and disabled by default. Set `--use-global-border-box: true;` to enable.
+
 ### Removed
 
 - Unused CSS class `.disabled`.

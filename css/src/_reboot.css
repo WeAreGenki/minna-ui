@@ -55,11 +55,17 @@
   cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
 }
 
-/* Responsive images */
+/* Images */
 
 img {
+  /* responsive scaling by default */
   max-width: 100%;
   height: auto;
+}
+
+svg {
+  /* match the text color */
+  fill: currentColor;
 }
 
 /* Horizontal rule */

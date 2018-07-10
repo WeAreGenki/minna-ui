@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Allow resizing `<textarea>` blocks.
+- `<svg>` tag `fill` will inherit text `color` when no fill colour is set.
 
 ## [0.7.1] - 2018-07-10
 

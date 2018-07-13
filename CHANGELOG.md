@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2018-07-14
+
 ### Added
 
 - New global `border-box` box model styles, but disable by default. Set `--use-global-border-box: true;` to enable.
@@ -16,11 +18,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - Unused CSS class `.disabled`.
+- CLI binary script tests because they were unnecessary; the functionality is already covered by other tests, plus they were slow and cumbersome to maintain.
 
 ### Fixed
 
 - Allow resizing `<textarea>` blocks.
 - `<svg>` tag `fill` will inherit text `color` when no fill colour is set.
+- Use a more universal shebang for CLI binary scripts and remove workaround from Travis config.
 
 ## [0.7.1] - 2018-07-10
 
@@ -278,7 +282,9 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/MaxMilton/new-tab/compare/v0.7.1...v0.8.0
+[0.7.1]: https://github.com/MaxMilton/new-tab/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/MaxMilton/new-tab/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/MaxMilton/new-tab/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/MaxMilton/new-tab/compare/v0.4.1...v0.5.0

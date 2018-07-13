@@ -1,3 +1,3 @@
-#!/usr/bin/env node
-'use strict'; // eslint-disable-line
+#!/bin/sh
+':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 require('../index.js')(process.env);

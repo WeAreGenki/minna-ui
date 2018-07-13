@@ -12,7 +12,9 @@ const { spawn } = require('child_process');
  */
 function runBin(path, args = [], env = process.env) {
   return new Promise((resolve, reject) => {
+    /** @type {string[]} */
     const stdout = [];
+    /** @type {string[]} */
     const stderr = [];
 
     const child = spawn(path, args, { env });

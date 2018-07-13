@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Unused CSS class `.disabled`.
 - CLI binary script tests because they were unnecessary; the functionality is already covered by other tests, plus they were slow and cumbersome to maintain.
 
+### Changed
+
+- Updated package dependencies.
+
 ### Fixed
 
 - Allow resizing `<textarea>` blocks.

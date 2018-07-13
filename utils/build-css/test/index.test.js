@@ -6,13 +6,11 @@ const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
 const del = require('del');
-const { runBin } = require('@minna-ui/jest-config/lib/helpers.js'); // eslint-disable-line import/no-extraneous-dependencies
 const buildCss = require('../index.js');
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const cliPath = require.resolve('../cli/index.js');
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/styles.css');
 const sourcePathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
 const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
@@ -106,20 +104,5 @@ describe('build-css tool', () => {
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     spy.mockRestore();
-  });
-});
-
-describe('build-css CLI', () => {
-  it('runs without error', async () => {
-    expect.assertions(1);
-    const result = runBin(cliPath, [], pkg('cli'));
-    await expect(result).resolves.toBeDefined();
-  });
-
-  it('errors when bad CSS syntax', async () => {
-    expect.assertions(2);
-    const result = runBin(cliPath, [], pkg('cli-bad-syntax', sourcePathBadSyntax));
-    await expect(result).rejects.toContainEqual(expect.stringMatching('Unclosed block'));
-    await expect(result).rejects.toContainEqual(expect.stringMatching('CssSyntaxError'));
   });
 });

@@ -16,8 +16,6 @@ branches:
 cache: yarn
 
 before_install:
-  # link missing node bin (for testing node CLI scripts)
-  - sudo ln -s $(which node) /usr/bin/node && node -v
   # use newer version of yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"

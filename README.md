@@ -4,6 +4,7 @@
 [![Coverage status](https://img.shields.io/codecov/c/github/WeAreGenki/minna-ui.svg)](https://codecov.io/gh/WeAreGenki/minna-ui)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 # `minna-ui`
 

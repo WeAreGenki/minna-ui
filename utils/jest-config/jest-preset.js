@@ -6,6 +6,9 @@ module.exports = {
     '^.+\\.(html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.css$': '@minna-ui/jest-config/lib/null-transform.js',
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!svelte/)',
+  ],
   testPathIgnorePatterns: [
     '/dist/',
     '/export/',

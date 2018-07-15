@@ -73,8 +73,7 @@
 
       /* optional native props */
       disabled: undefined,
-      // readonly: false, // TODO: Do we need this prop?
-      // required: false, // TODO: Do we need this prop? + // FIXME: Add custom validation
+      // required: false, // FIXME: Add custom validation
     }),
     methods: {
       __toggle() {
@@ -107,7 +106,6 @@
   /* TODO: Add documentation explaining how to override these variables using postcss-custom-properties variable overrides */
   :root {
     --switch-optimize: false;
-    --switch-zindex: 1;
     --switch-width: 6em;
     --switch-padding: var(--button-padding-y) 0;
     --switch-shadow: var(--button-shadow);
@@ -131,7 +129,6 @@
   /* the switch purposely looks like .button and uses many of the button variables */
   .switch {
     position: relative;
-    z-index: var(--switch-zindex); /* prevent repaint of other elements; promote to new stacking context */
     display: inline-flex;
     width: var(--switch-width);
     padding: var(--switch-padding);
@@ -140,11 +137,13 @@
     text-align: center;
     cursor: pointer;
     background-color: var(--switch-off-background-color);
-    filter: var(--switch-shadow);
     border-radius: var(--button-radius);
-    box-shadow: var(--switch-inner-shadow);
+    box-shadow:
+      var(--switch-inner-shadow),
+      var(--switch-shadow);
     transition: background-color var(--switch-animate-out-speed) ease-out;
     transition-delay: 0s;
+    backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
     @if var(--switch-optimize) {
       will-change: background-color;
@@ -233,7 +232,6 @@
     color: var(--button-disabled-text-color);
     cursor: not-allowed;
     background-color: var(--button-background-color);
-    filter: none;
     border: var(--switch-disabled-border);
     box-shadow: none; /* inner shadow */
     transition: none;

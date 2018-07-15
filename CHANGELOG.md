@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.9.1] - 2018-07-16
+
+### Fixed
+
+- Fix Jest es6 modules transform when testing Svelte store.
+
 ## [0.9.0] - 2018-07-16
 
 ### Changed
@@ -298,7 +304,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.9.1...HEAD
+[0.9.1]: https://github.com/MaxMilton/new-tab/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/MaxMilton/new-tab/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/MaxMilton/new-tab/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/MaxMilton/new-tab/compare/v0.7.0...v0.7.1

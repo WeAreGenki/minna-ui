@@ -5,8 +5,8 @@
 .card {
   word-wrap: break-word;
   background-color: var(--card-background-color);
-  filter: var(--card-shadow);
   border-radius: var(--radius-large);
+  box-shadow: var(--card-shadow);
 }
 
 .card-hover {
@@ -14,20 +14,13 @@
   padding: 0;
   margin: 0;
   color: var(--card-hover-text-color);
-  filter: var(--card-hover-shadow);
-  transition:
-    transform var(--card-hover-animate-speed-1),
-    filter var(--card-hover-animate-speed-2);
-
-  @if var(--card-hover-optimize) {
-    will-change: transform, filter;
-  }
+  box-shadow: var(--card-hover-shadow);
+  transition: box-shadow var(--card-hover-animate-speed) ease-out;
 
   &:hover {
     color: var(--card-hover-text-color);
     text-decoration: unset;
-    filter: var(--card-hover-hover-shadow);
-    transform: translateY(var(--card-hover-animate-distance));
+    box-shadow: var(--card-hover-hover-shadow);
   }
 }
 

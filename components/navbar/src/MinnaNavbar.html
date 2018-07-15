@@ -73,7 +73,7 @@
     </button>
 
     <a href="/" class="lh1" title="Home">
-      <svg class="logo">
+      <svg class="navbar-logo">
         <use xlink:href="#logo"/>
       </svg>
     </a>
@@ -104,25 +104,31 @@
       // page: '', // URL path; in sapper, you should pass in "props.path"
     }),
     oncreate() {
-      let ticking = false;
+      let wait = false;
+      let lastHasScrolled = false;
 
-      const setState = () => {
-        /**
-         * Although `document.documentElement.scrollTop` is faster,
-         * `window.pageYOffset` has better cross-browser compatibility.
-         */
-        this.set({ __hasScrolled: window.pageYOffset !== 0 });
-        ticking = false;
+      const update = () => {
+        const __hasScrolled = window.pageYOffset !== 0;
+
+        // don't set component state if nothing has changed
+        /* istanbul ignore else */
+        if (__hasScrolled !== lastHasScrolled) {
+          this.set({ __hasScrolled });
+          lastHasScrolled = __hasScrolled;
+        }
+
+        wait = false;
       };
 
-      // debounce using requestAnimationFrame
-      document.addEventListener('scroll', () => {
-        /* istanbul ignore else */
-        if (!ticking) {
-          requestAnimationFrame(setState);
-        }
-        ticking = true;
-      });
+      // debounce scroll event using rAF
+      const scrollHandler = () => {
+        /* istanbul ignore if */
+        if (wait) return;
+        wait = true;
+        requestAnimationFrame(update);
+      };
+
+      document.addEventListener('scroll', scrollHandler, false);
     },
     methods: {
       __openMenu(openState) {
@@ -150,13 +156,11 @@
 
   /* TODO: Add documentation explaining how to override these variables using postcss-custom-properties variable overrides */
   :root {
-    --navbar-optimize: false;
+    --navbar-optimize: true;
     --navbar-zindex: 5;
     --navbar-background-color: var(--app-background-color);
-    --navbar-animate-distance: 3px;
-    --navbar-animate-speed: 200ms;
     --navbar-shadow-fade-speed: 300ms;
-    --navbar-shadow: var(--shadow);
+    --navbar-shadow: 0 2px 6px color-mod(var(--shadow-color) alpha(0.39));
     --navbar-icon-size: 2em;
     --navbar-icon-padding: 0.4em;
     --navbar-icon-color: var(--link-color);
@@ -177,24 +181,29 @@
     right: 0;
     left: 0;
     z-index: var(--navbar-zindex);
-    padding-top: var(--navbar-animate-distance); /* offset for animation movement */
     background-color: var(--navbar-background-color);
-    transition:
-      filter var(--navbar-shadow-fade-speed) ease,
-      transform var(--navbar-animate-speed) ease;
+    backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
-    @if var(--navbar-optimize) {
-      will-change: filter, transform;
-    }
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      content: "";
+      box-shadow: var(--navbar-shadow);
+      opacity: 0;
+      transition: opacity var(--navbar-shadow-fade-speed) ease;
 
-    .navbar-link-active {
-      font-weight: var(--text-weight-heavy);
+      @if var(--navbar-optimize) {
+        will-change: opacity;
+      }
     }
   }
 
-  .navbar-active {
-    filter: var(--navbar-shadow);
-    transform: translateY(calc(-1 * var(--navbar-animate-distance)));
+  .navbar-active::after {
+    opacity: 1;
   }
 
   .navbar-button {
@@ -210,7 +219,7 @@
     color: var(--navbar-icon-color);
   }
 
-  .logo {
+  .navbar-logo {
     width: var(--navbar-logo-size-x);
     height: var(--navbar-logo-size-y);
   }
@@ -239,6 +248,10 @@
   .navbar-link {
     padding: var(--navbar-link-padding);
     margin: 0;
+  }
+
+  .navbar-link-active {
+    font-weight: var(--text-weight-heavy);
   }
 
   /* offset page content so it's not covered by the fixed navbar */

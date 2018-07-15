@@ -286,7 +286,7 @@
     --select-optimize: false;
     --select-zindex: 4;
     --select-background-color: var(--white);
-    --select-shadow: var(--shadow);
+    --select-shadow: var(--shadow-hover);
     --select-selected-text-color: var(--white);
     --select-selected-background-color: var(--link-color);
     --select-caret-color: var(--input-text-color);
@@ -342,10 +342,11 @@
     color: var(--input-text-color);
     text-align: left;
     background-color: var(--input-background-color);
-    filter: var(--select-shadow);
+    box-shadow: var(--select-shadow);
     transition:
       transform var(--select-animate-speed) ease,
       opacity var(--select-animate-speed) ease;
+    backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
     @if var(--select-optimize) {
       will-change: transform, opacity;

@@ -691,10 +691,10 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
-    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v1/npm-@minna-ui/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.62.0"
     rollup-plugin-buble "0.19.2"
@@ -704,15 +704,15 @@
     rollup-plugin-svelte "4.2.1"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:utils/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v1/npm-@minna-ui/postcss-config"
     clean-css "4.1.11"
     del "3.0.0"
     postcss-load-config "2.0.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
     eslint-config-airbnb-base "^13.0.0"
     eslint-plugin-html "^4.0.5"
@@ -720,17 +720,17 @@
     eslint-plugin-jest "^21.17.0"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
     "@babel/core" "^7.0.0-beta.53"
     "@babel/plugin-transform-modules-commonjs" "^7.0.0-beta.53"
-    "@types/jest" "^23.1.5"
+    "@types/jest" "^23.1.6"
     "@types/node" "^10.5.2"
     babel-core "^7.0.0-bridge.0"
     babel-jest "^23.4.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
     autoprefixer "^8.6.5"
     css-mqpacker "^6.0.2"
@@ -749,18 +749,18 @@
     postcss-use "^3.0.0"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.7.1"
+  version "0.8.0"
   dependencies:
     stylelint-config-standard "^18.2.0"
     stylelint-order "^0.8.1"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
     html-minifier "3.5.19"
 
 "@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
-  version "0.7.0"
+  version "0.8.0"
   dependencies:
     postcss-load-config "^2.0.0"
     postcss-selector-parser "^5.0.0-rc.3"
@@ -780,9 +780,9 @@
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
 
-"@types/jest@^23.1.5":
-  version "23.1.5"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.1.5.tgz#e31be003956e1fa8c860124d99bea9ae327ae37b"
+"@types/jest@^23.1.6":
+  version "23.1.6"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.1.6.tgz#11c88f738f5b57d1a9dd4970c576a6639b8f0f37"
 
 "@types/node@*", "@types/node@^10.5.2":
   version "10.5.2"
@@ -2122,8 +2122,8 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
 escodegen@^1.9.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.10.0.tgz#f647395de22519fbd0d928ffcf1d17e0dec2603e"
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.11.0.tgz#b27a9389481d5bfd5bec76f7bb1eb3f8f4556589"
   dependencies:
     esprima "^3.1.3"
     estraverse "^4.2.0"
@@ -6035,9 +6035,9 @@ supports-color@^5.3.0, supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.9.3.tgz#09ac1740c26b4d3394ec623bd9d17cac5713ab6f"
+svelte@2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.9.4.tgz#35d43c2b24b7a3f5ebd883e6c9458fb58205b2db"
 
 svg-tags@^1.0.0:
   version "1.0.0"

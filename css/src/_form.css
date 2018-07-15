@@ -64,10 +64,10 @@
   display: inline-flex;
 
   & > .button {
-    filter: none;
     border: var(--input-border);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    box-shadow: none;
   }
 
   & > .input {

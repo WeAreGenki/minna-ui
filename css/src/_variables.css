@@ -28,6 +28,10 @@
   --angle1: 151deg;
   --angle2: 45deg;
   --angle3: -27deg;
+  --shadow: 0 4px 20px 1px color-mod(var(--shadow-color) alpha(0.2));
+  --shadow-hover:
+    var(--shadow),
+    0 13px 42px 0 color-mod(var(--shadow-color) alpha(0.3));
 
   /* Grid */
 
@@ -89,13 +93,6 @@
   --hr-margin: 3em 0;
   --hr-border: 1px solid var(--divider-black);
 
-  /* Shadows */
-
-  --shadow-color: var(--cobalt1);
-  --shadow: drop-shadow(0 1rem 0.95rem color-mod(var(--shadow-color) alpha(0.39)));
-  --shadow-light: drop-shadow(0 0.4rem 0.6rem color-mod(var(--shadow-color) alpha(0.15)));
-  --shadow-light-edge: drop-shadow(0 0.1rem 0.1rem color-mod(var(--shadow-color) alpha(0.06)));
-
   /* Navigation */
 
   --nav-link-padding-x: 1.3em;
@@ -112,7 +109,7 @@
   --button-text-color: var(--dark-gray2);
   --button-background-color: var(--white);
   --button-radius: var(--radius);
-  --button-shadow: drop-shadow(0 0.18rem 0.18rem color-mod(var(--shadow-color) alpha(0.24)));
+  --button-shadow: 0 2px 8px 0 color-mod(var(--shadow-color) alpha(0.3));
   --button-hover-background-color: var(--light-gray2);
   --button-active-background-color: var(--light-gray1);
   --button-disabled-text-color: var(--text-color-disabled);
@@ -148,17 +145,12 @@
   /* Cards */
 
   --card-background-color: var(--white);
-  --card-shadow: drop-shadow(0 0.2rem 0.2rem color-mod(var(--shadow-color) alpha(0.18)));
-  --card-hover-optimize: false;
+  --card-shadow: 0 2px 8px 1px color-mod(var(--shadow-color) alpha(0.18));
   --card-hover-zindex: 1;
   --card-hover-text-color: var(--text-color);
-  --card-hover-shadow:
-    var(--shadow-light)
-    var(--shadow-light-edge);
-  --card-hover-animate-speed-1: 180ms;
-  --card-hover-animate-speed-2: 240ms;
-  --card-hover-animate-distance: -3px;
-  --card-hover-hover-shadow: var(--shadow);
+  --card-hover-shadow: var(--shadow);
+  --card-hover-animate-speed: 220ms;
+  --card-hover-hover-shadow: var(--shadow-hover);
   --card-body-margin: 1.2rem 2rem;
   --card-button-text-color: var(--button-text-color);
   --card-button-border: 1px solid var(--light-gray4);

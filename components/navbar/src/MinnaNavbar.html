@@ -104,25 +104,31 @@
       // page: '', // URL path; in sapper, you should pass in "props.path"
     }),
     oncreate() {
-      let ticking = false;
+      let wait = false;
+      let lastHasScrolled = false;
 
-      const setState = () => {
-        /**
-         * Although `document.documentElement.scrollTop` is faster,
-         * `window.pageYOffset` has better cross-browser compatibility.
-         */
-        this.set({ __hasScrolled: window.pageYOffset !== 0 });
-        ticking = false;
+      const update = () => {
+        const __hasScrolled = window.pageYOffset !== 0;
+
+        // don't set component state if nothing has changed
+        /* istanbul ignore else */
+        if (__hasScrolled !== lastHasScrolled) {
+          this.set({ __hasScrolled });
+          lastHasScrolled = __hasScrolled;
+        }
+
+        wait = false;
       };
 
-      // debounce using requestAnimationFrame
-      document.addEventListener('scroll', () => {
-        /* istanbul ignore else */
-        if (!ticking) {
-          requestAnimationFrame(setState);
-        }
-        ticking = true;
-      });
+      // debounce scroll event using rAF
+      const scrollHandler = () => {
+        /* istanbul ignore if */
+        if (wait) return;
+        wait = true;
+        requestAnimationFrame(update);
+      };
+
+      document.addEventListener('scroll', scrollHandler, false);
     },
     methods: {
       __openMenu(openState) {

@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.9.0] - 2018-07-14
+
+### Changed
+
+- Updated package dependencies.
+
+### Fixed
+
+- BREAKING CHANGE: Refactor shadows to use `box-shadow` instead of `filter: drop-shadow()`. This greatly increases scroll and rendering performance, especially on low-powered mobile devices. There were also a number of CSS variables which have changed because of this.
+- Don't move navbar on scroll and `.card-hover` on hover because it can be hard to read at and hurts performance.
+- Refactor navbar scroll logic to avoid excessive processing.
+
 ## [0.8.0] - 2018-07-14
 
 ### Added

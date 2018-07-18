@@ -733,7 +733,7 @@
   version "0.9.0"
   dependencies:
     autoprefixer "^8.6.5"
-    css-mqpacker "^6.0.2"
+    css-mqpacker "^7.0.0"
     postcss-at-rules-variables "^0.1.5"
     postcss-calc "^6.0.1"
     postcss-color-mod-function "^2.4.2"
@@ -1809,12 +1809,12 @@ css-color-converter@^1.0.2:
     color-convert "^0.5.2"
     color-name "^1.0.0"
 
-css-mqpacker@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/css-mqpacker/-/css-mqpacker-6.0.2.tgz#ced48675c644e846b3c9459e0a473f2aead1ff31"
+css-mqpacker@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/css-mqpacker/-/css-mqpacker-7.0.0.tgz#48f4a0ff45b81ec661c4a33ed80b9db8a026333b"
   dependencies:
     minimist "^1.2.0"
-    postcss "^6.0.16"
+    postcss "^7.0.0"
 
 css-unit-converter@^1.0.0, css-unit-converter@^1.1.1:
   version "1.1.1"
@@ -5022,6 +5022,14 @@ postcss@^5.2.16:
     js-base64 "^2.1.9"
     source-map "^0.5.6"
     supports-color "^3.2.3"
+
+postcss@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.0.tgz#163f70d2fe2715c6d4a4b3d300051c1ea9594aa9"
+  dependencies:
+    chalk "^2.4.1"
+    source-map "^0.6.1"
+    supports-color "^5.4.0"
 
 prelude-ls@~1.1.2:
   version "1.1.2"

@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "autoprefixer": "^8.6.5",
-    "css-mqpacker": "^6.0.2",
+    "css-mqpacker": "^7.0.0",
     "postcss-at-rules-variables": "^0.1.5",
     "postcss-calc": "^6.0.1",
     "postcss-color-mod-function": "^2.4.2",

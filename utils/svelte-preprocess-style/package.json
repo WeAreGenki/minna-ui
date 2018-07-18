@@ -17,7 +17,7 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "postcss": "^6.0.22",
+    "postcss": "^6.0.22 || ^7.0.0",
     "svelte": "^2.7.2"
   },
   "dependencies": {

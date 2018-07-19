@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Whitespace collapse too aggressive in `@minna-ui/svelte-preprocess-markup`. Now it will always leave a single space between tags unless, new option `unsafeWhitespace` is true.
+
 ## [0.9.1] - 2018-07-16
 
 ### Fixed

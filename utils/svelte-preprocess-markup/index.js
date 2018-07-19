@@ -6,13 +6,13 @@ const htmlMinifier = require('html-minifier');
  * Svelte markup preprocessor to minify HTML.
  */
 module.exports = (options = {}) => ({ content }) => {
-  const { unsafe } = options;
+  const { unsafeWhitespace, unsafe } = options;
 
   try {
     const code = htmlMinifier.minify(content, Object.assign({
       caseSensitive: true,
       collapseWhitespace: true,
-      conservativeCollapse: !unsafe,
+      conservativeCollapse: !unsafeWhitespace,
       ignoreCustomFragments: [/\{[^]*?\}/m],
       keepClosingSlash: true,
 

@@ -24,4 +24,6 @@ exports[`Svelte markup preprocessor processes a component 1`] = `
 
 exports[`Svelte markup preprocessor processes a simple component 1`] = `" <div id=\\"target\\"> test </div> <hr class=\\"one two three\\"> <input type=\\"text\\" name=\\"test\\" class=\\"\\" readonly=\\"readonly\\"> whitespace <!-- comment --> <!----> "`;
 
-exports[`Svelte markup preprocessor processes a simple component unsafe 1`] = `"<div id=\\"target\\">test</div><hr class=\\"one three two\\"><input class=\\"\\" name=\\"test\\" readonly> whitespace<!-- comment --><!---->"`;
+exports[`Svelte markup preprocessor processes a simple component with unsafe 1`] = `" <div id=\\"target\\"> test </div> <hr class=\\"one three two\\"> <input class=\\"\\" name=\\"test\\" readonly> whitespace <!-- comment --> <!----> "`;
+
+exports[`Svelte markup preprocessor processes a simple component with unsafeWhitespace 1`] = `"<div id=\\"target\\">test</div><hr class=\\"one two three\\"><input type=\\"text\\" name=\\"test\\" class=\\"\\" readonly=\\"readonly\\"> whitespace<!-- comment --><!---->"`;

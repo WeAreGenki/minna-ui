@@ -3,6 +3,7 @@
 'use strict';
 
 const fs = require('fs');
+const zlib = require('zlib');
 const { promisify } = require('util');
 const { preprocess, create } = require('svelte');
 const preprocessMarkup = require('../index.js');
@@ -12,12 +13,16 @@ const readFile = promisify(fs.readFile);
 // don't require() components to avoid Jest transform
 const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 
-const preprocessOpts = {
+const opts = {
   markup: preprocessMarkup(),
   style: () => ({ code: '/*discarded*/' }),
 };
-const preprocessOptsUnsafe = {
+const optsUnsafe = {
   markup: preprocessMarkup({ unsafe: true }),
+  style: () => ({ code: '/*discarded*/' }),
+};
+const optsUnsafeWhitespace = {
+  markup: preprocessMarkup({ unsafeWhitespace: true }),
   style: () => ({ code: '/*discarded*/' }),
 };
 const svelteOpts = {
@@ -54,9 +59,21 @@ beforeAll(async () => {
 });
 
 describe('Svelte markup preprocessor', () => {
+  it('processes without any error', () => {
+    expect.assertions(2);
+    const spy = jest.spyOn(process.stderr, 'write');
+    function wrapper() {
+      preprocess(sourceSimple, opts);
+    }
+    expect(wrapper).not.toThrow();
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockReset();
+    spy.mockRestore();
+  });
+
   it('processes a simple component', async () => {
     expect.assertions(4);
-    const output = preprocess(sourceSimple, preprocessOpts);
+    const output = preprocess(sourceSimple, opts);
     await expect(output).resolves.toBeDefined();
     const result = (await output).toString();
     expect(result).toMatch('> <');
@@ -64,9 +81,19 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('processes a simple component unsafe', async () => {
+  it('processes a simple component with unsafe', async () => {
     expect.assertions(4);
-    const output = preprocess(sourceSimple, preprocessOptsUnsafe);
+    const output = preprocess(sourceSimple, optsUnsafe);
+    await expect(output).resolves.toBeDefined();
+    const result = (await output).toString();
+    expect(result).toMatch('> <');
+    expect(result).not.toMatch('><');
+    expect(result).toMatchSnapshot();
+  });
+
+  it('processes a simple component with unsafeWhitespace', async () => {
+    expect.assertions(4);
+    const output = preprocess(sourceSimple, optsUnsafeWhitespace);
     await expect(output).resolves.toBeDefined();
     const result = (await output).toString();
     expect(result).toMatch('><');
@@ -76,7 +103,7 @@ describe('Svelte markup preprocessor', () => {
 
   it('processes a component', async () => {
     expect.assertions(2);
-    const output = preprocess(source, preprocessOpts);
+    const output = preprocess(source, opts);
     await expect(output).resolves.toBeDefined();
     const result = (await output).toString();
     expect(result).toMatchSnapshot();
@@ -84,7 +111,7 @@ describe('Svelte markup preprocessor', () => {
 
   it('creates and mounts a component', async () => {
     expect.assertions(1);
-    const processed = await preprocess(source, preprocessOpts);
+    const processed = await preprocess(source, opts);
     const TestComponent = create(processed.toString(), svelteOpts);
     const target = document.createElement('div');
     new TestComponent({ target });
@@ -92,18 +119,40 @@ describe('Svelte markup preprocessor', () => {
   });
 
   it('unsafe option makes output smaller', async () => {
+    expect.assertions(2);
+    const [unsafe, safe] = await Promise.all([
+      preprocess(sourceSimple, optsUnsafe),
+      preprocess(sourceSimple, opts),
+    ]);
+    expect(unsafe.toString()).not.toEqual(safe.toString());
+    expect(unsafe.toString().length).toBeLessThan(safe.toString().length);
+  });
+
+  it('unsafe option makes output smaller when gzip\'d', async () => {
     expect.assertions(1);
     const [unsafe, safe] = await Promise.all([
-      preprocess(source, preprocessOptsUnsafe),
-      preprocess(source, preprocessOpts),
+      preprocess(sourceSimple, optsUnsafe),
+      preprocess(sourceSimple, opts),
     ]);
-    expect(unsafe.toString().length).toBeLessThan(safe.toString().length);
+    const unsafeGZip = zlib.gzipSync(unsafe.toString());
+    const safeGZip = zlib.gzipSync(safe.toString());
+    expect(unsafeGZip.length).toBeLessThan(safeGZip.length);
+  });
+
+  it('unsafeWhitespace option makes output smaller', async () => {
+    expect.assertions(2);
+    const [unsafeWhitespace, safe] = await Promise.all([
+      preprocess(sourceSimple, optsUnsafeWhitespace),
+      preprocess(sourceSimple, opts),
+    ]);
+    expect(unsafeWhitespace.toString()).not.toEqual(safe.toString());
+    expect(unsafeWhitespace.toString().length).toBeLessThan(safe.toString().length);
   });
 
   it('prints error on bad HTML syntax', async () => {
     expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
-    await preprocess(sourceBadSyntax, preprocessOpts);
+    await preprocess(sourceBadSyntax, opts);
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     spy.mockRestore();

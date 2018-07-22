@@ -9,9 +9,16 @@ Svelte markup preprocessor for use in [`minna-ui`](https://github.com/WeAreGenki
 
 ## Usage
 
+TODO: Write me.
+
 **IMPORTANT: You must wrap `{}` tags in quotes when there are `{` or `}` characters inside the tag.**
 
-TODO: Write me.
+### Options
+
+| Name | Default | Type | Description |
+| --- | --- | --- | --- |
+| unsafeWhitespace | `false` | Boolean | Collapse all whitespace between tags. When false, whitespace will collapse down to a single space.|
+| unsafe | `false` | Boolean | Enable aggressive and potentially dangerous optimisations. |
 
 ## Licence
 

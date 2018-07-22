@@ -79,7 +79,12 @@
     </a>
 
     <div class="navbar-links {__isOpen ? 'df' : 'dn'}">
-      <a href="/" class="navbar-link dn-l">Home</a>
+      <a
+        href="/"
+        class="navbar-link dn-l {page === '/' ? 'navbar-link-active' : ''}"
+      >
+        Home
+      </a>
 
       {#each items as __item}
         <a

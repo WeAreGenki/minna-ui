@@ -5,9 +5,9 @@
   will collapse into a hamburger menu when the screen width is small.
 
   USAGE:
-    The "items" property should be an array of objects which look like this:
+    The "menuItems" property should be an array of objects which look like this:
 
-      <MinnaNavbar items="[
+      <MinnaNavbar menuItems="[
         { url: '/page-one', name: 'Page One' },
         { url: '/page-two', name: 'Page Two' },
         { url: '/about', name: 'About Us' },
@@ -53,11 +53,6 @@
 
 -->
 
-<!--
-  FIXME: position:fixed navbar with a drop-shadow() causes poor scrolling
-  performance on low powered devices
--->
-
 <header class="navbar {__hasScrolled || __isOpen ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
@@ -81,15 +76,15 @@
     <div class="navbar-links {__isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link dn-l {page === '/' ? 'navbar-link-active' : ''}"
+        class="navbar-link dn-l {segment === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
 
-      {#each items as __item}
+      {#each menuItems as __item}
         <a
           href="{__item.url}"
-          class="navbar-link {page.indexOf(__item.url) === 0 ? 'navbar-link-active' : ''}"
+          class="navbar-link {segment === __item.url ? 'navbar-link-active' : ''}"
         >
           {__item.name}
         </a>
@@ -105,8 +100,8 @@
       __hasScrolled: false,
 
       /* required props */
-      // items: [],
-      // page: '', // URL path; in sapper, you should pass in "props.path"
+      // menuItems: [],
+      // segment: '', // URL path; in sapper, you should pass in "props.path"
     }),
     oncreate() {
       let wait = false;

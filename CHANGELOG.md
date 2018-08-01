@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Whitespace collapse too aggressive in `@minna-ui/svelte-preprocess-markup` resulting in no space between text and links. Now it will always leave a single space between tags unless, new option `unsafeWhitespace` is true.
 - Add active class to `@minna-ui/navbar` component home link.
 - Update `@minna-ui/navbar` to work with Sapper `0.15.x`.
+- Security error in `@minna-ui/jest-config` due to updated jsdom package (see <https://git.io/fNwN0>).
 
 ## [0.9.1] - 2018-07-16
 

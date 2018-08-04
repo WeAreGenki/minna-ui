@@ -53,7 +53,13 @@ module.exports = postcss.plugin('postcss-config', ({
         },
       }),
     }))
+    .use(atVariables({
+      variables,
+    }))
+    .use(atUse({
       modules: '*',
+      resolveFromFile: true,
+    }))
     .use(each)
     .use(mixins({ mixinsDir }))
     .use(nested)
@@ -72,11 +78,11 @@ module.exports = postcss.plugin('postcss-config', ({
 
   if (optimize) {
     processor
-    .use(mediaQueryPacker)
-    .use(autoprefixer({
-      remove: false,
-      grid: true, // adds -ms- prefix for IE 11 support
-      flexbox: 'no-2009',
+      .use(mediaQueryPacker)
+      .use(autoprefixer({
+        remove: false,
+        grid: true, // adds -ms- prefix for IE 11 support
+        flexbox: 'no-2009',
       }))
       .use(cssnano({
         preset: optimizeSafe
@@ -85,7 +91,7 @@ module.exports = postcss.plugin('postcss-config', ({
             autoprefixer: false,
             zindex: false,
           }],
-    }));
+      }));
   }
 
   return processor;

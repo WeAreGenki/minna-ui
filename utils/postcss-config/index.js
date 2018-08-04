@@ -1,5 +1,3 @@
-// TODO: Look into using https://github.com/csstools/postcss-preset-env
-
 'use strict';
 
 const path = require('path');
@@ -45,7 +43,17 @@ module.exports = postcss.plugin('postcss-config', ({
   return postcss()
     .use(atImport({
       path: importPaths,
+      ...(!debug ? {} : {
+        load: (filename) => {
+          console.log('[postcss-import]', filename);
+          // eslint-disable-next-line global-require
+          return require('postcss-import/lib/load-content.js')(filename);
+        },
+      }),
     }))
+    // .use(atVariables({
+    //   variables,
+    // }))
     .use(atVariables)
     .use(atUse)
     .use(atExtend)

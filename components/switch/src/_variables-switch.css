@@ -1,0 +1,23 @@
+@import "import.css";
+
+:root {
+  --switch-optimize: false;
+  --switch-width: 6em;
+  --switch-padding: var(--button-padding-y) 0;
+  --switch-shadow: var(--button-shadow);
+  --switch-on-text-color: var(--white);
+  --switch-on-background-color: var(--intent-success);
+  --switch-off-text-color: var(--button-text-color);
+  --switch-off-background-color: var(--light-gray1);
+  --switch-inner-shadow: inset 0 -0.125rem 0.6rem color-mod(var(--shadow-color) alpha(0.15));
+  --switch-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
+  --switch-animate-in-speed: 180ms;
+  --switch-animate-out-speed: 130ms;
+  --switch-hover-slider-background-color: var(--light-gray4);
+  --switch-disabled-text-color: var(--button-disabled-text-color);
+  --switch-disabled-slider-background-color: var(--light-gray3);
+  --switch-disabled-border: 1px solid var(--button-disabled-border-color);
+  --switch-mini-width: 4.6em;
+  --switch-mini-padding: calc(var(--button-padding-y) / 2) 0;
+  --switch-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(var(--shadow-color) alpha(0.05));
+}

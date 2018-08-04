@@ -1,0 +1,15 @@
+@import "import.css";
+
+:root {
+  --select-optimize: false;
+  --select-zindex: 4;
+  --select-background-color: var(--white);
+  --select-shadow: var(--shadow-hover);
+  --select-selected-text-color: var(--white);
+  --select-selected-background-color: var(--link-color);
+  --select-caret-color: var(--input-text-color);
+  --select-caret-size: 0.3em;
+  --select-animate-speed: 150ms;
+  --select-disabled-text-color: var(--input-disabled-text-color);
+  --select-disabled-caret-color: var(--input-disabled-text-color);
+}

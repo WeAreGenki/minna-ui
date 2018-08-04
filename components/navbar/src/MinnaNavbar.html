@@ -152,28 +152,8 @@
 </script>
 
 <style type="text/postcss">
+  @import "./_variables-navbar.css";
   @import "import.css";
-
-  /* TODO: Add documentation explaining how to override these variables using postcss-custom-properties variable overrides */
-  :root {
-    --navbar-optimize: true;
-    --navbar-zindex: 5;
-    --navbar-background-color: var(--app-background-color);
-    --navbar-shadow-fade-speed: 300ms;
-    --navbar-shadow: 0 2px 6px color-mod(var(--shadow-color) alpha(0.39));
-    --navbar-icon-size: 2em;
-    --navbar-icon-padding: 0.4em;
-    --navbar-icon-color: var(--link-color);
-    --navbar-logo-size-x: 4.2em;
-    --navbar-logo-size-y: 1.6em;
-    --navbar-border-color: var(--divider-black);
-    --navbar-links-padding: var(--nav-link-padding-y) 0;
-    --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
-    --navbar-body-offset: 3em; /* offset body so contents are not covered */
-    /* FIXME: Set this to true once we work out how to override variables correctly */
-    --navbar-hash-link-fix: false; /* see code and comments below */
-    --navbar-hash-link-offset: calc(var(--navbar-body-offset) + 1em); /* offset in-page links; navbar + shadow */
-  }
 
   .navbar {
     position: fixed;

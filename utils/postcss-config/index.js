@@ -53,12 +53,7 @@ module.exports = postcss.plugin('postcss-config', ({
         },
       }),
     }))
-    // .use(atVariables({
-    //   variables,
-    // }))
-    .use(atVariables)
-    .use(atUse)
-    .use(atExtend)
+      modules: '*',
     .use(each)
     .use(mixins({ mixinsDir }))
     .use(nested)

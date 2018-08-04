@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- CSS variable `--navbar-hash-link-fix` is now `true` by default in `@minna-ui/navbar`.
 - Move component CSS variables into separate files for easy reuse in multiple components.
 - Updated package dependencies.
 

@@ -16,7 +16,6 @@
   --navbar-links-padding: var(--nav-link-padding-y) 0;
   --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
   --navbar-body-offset: 3em; /* offset body so contents are not covered */
-  /* FIXME: Make this true once we have a good vars override strategy */
-  --navbar-hash-link-fix: false; /* see TODO: Add link to docs */
+  --navbar-hash-link-fix: true; /* see TODO: Add link to docs */
   --navbar-hash-link-offset: calc(var(--navbar-body-offset) + 1em); /* offset in-page links; navbar + shadow */
 }

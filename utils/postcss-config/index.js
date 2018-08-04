@@ -23,7 +23,7 @@ const autoprefixer = require('autoprefixer');
  * PostCSS configuration preset for minna-ui projects.
  */
 module.exports = postcss.plugin('postcss-config', ({
-  importPaths = ['css', 'src/css', process.cwd()],
+  importPaths = [process.cwd(), 'css', 'src', 'src/css'],
   mixinsPath = '',
   standalone = false,
   verbose = false,

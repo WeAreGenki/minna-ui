@@ -21,6 +21,8 @@
   "dependencies": {
     "autoprefixer": "^9.1.0",
     "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.0.5",
+    "cssnano-preset-advanced": "^4.0.0",
     "postcss-at-rules-variables": "^0.1.5",
     "postcss-calc": "^6.0.1",
     "postcss-color-mod-function": "^2.4.3",
@@ -28,7 +30,6 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^7.0.0",
     "postcss-each": "^0.10.0",
-    "postcss-extend-rule": "^2.0.0",
     "postcss-import": "^12.0.0",
     "postcss-load-config": "^2.0.0",
     "postcss-mixins": "^6.2.0",

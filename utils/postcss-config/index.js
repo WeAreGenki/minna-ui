@@ -5,7 +5,6 @@ const postcss = require('postcss');
 const atImport = require('postcss-import');
 const atVariables = require('postcss-at-rules-variables');
 const atUse = require('postcss-use');
-const atExtend = require('postcss-extend-rule');
 const each = require('postcss-each');
 const mixins = require('postcss-mixins');
 const nested = require('postcss-nested');
@@ -16,6 +15,7 @@ const calc = require('postcss-calc');
 const colorModFunction = require('postcss-color-mod-function');
 const mediaQueryPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 /**
  * PostCSS configuration preset for minna-ui projects.
@@ -24,6 +24,8 @@ module.exports = postcss.plugin('postcss-config', ({
   importPaths = [process.cwd(), 'css', 'src', 'src/css'],
   mixinsPath = '',
   standalone = false,
+  optimize = true,
+  optimizeSafe = false,
   verbose = false,
   debug = false,
   variables = {},
@@ -40,7 +42,7 @@ module.exports = postcss.plugin('postcss-config', ({
     importPaths.push(minnaUiCssSrc);
   }
 
-  return postcss()
+  const processor = postcss()
     .use(atImport({
       path: importPaths,
       ...(!debug ? {} : {
@@ -71,11 +73,25 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(calc({
       warnWhenCannotResolve: verbose,
     }))
-    .use(colorModFunction)
+    .use(colorModFunction);
+
+  if (optimize) {
+    processor
     .use(mediaQueryPacker)
     .use(autoprefixer({
       remove: false,
       grid: true, // adds -ms- prefix for IE 11 support
       flexbox: 'no-2009',
+      }))
+      .use(cssnano({
+        preset: optimizeSafe
+          ? 'default'
+          : ['advanced', {
+            autoprefixer: false,
+            zindex: false,
+          }],
     }));
+  }
+
+  return processor;
 });

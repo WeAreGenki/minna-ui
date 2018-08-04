@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for submenus in `@minna-ui/navbar`.
+- Advanced CSS optimisation in `@minna-ui/postcss-config` using `cssnano`. Some quick tests revealed cssnano yielded better results (after brotli compression) than using `clean-css` and/or `csso` during [Sapper](https://sapper.svelte.technology) export.
+- New options to `@minna-ui/postcss-config`, `optimize` and `optimizeSafe`.
+- Show more info with `debug` option in `@minna-ui/postcss-config`.
+
+### Removed
+
+- Support for `@extend` in `@minna-ui/postcss-config`. If you need this functionality you can use `@use postcss-extend-rule();` instead.
+
+### Changed
+
+- Move component CSS variables into separate files for easy reuse in multiple components.
+- Updated package dependencies.
+
+### Fixed
+
+- Default `importPaths` option in `@minna-ui/postcss-config` does not follow a logical order.
+- CSS variables not injected for at rules in `@minna-ui/postcss-config`.
+- Not able to utilise `@use` at rule in `@minna-ui/postcss-config`.
+
 ## [0.10.0] - 2018-08-01
 
 ### Changed

@@ -82,19 +82,19 @@
       </a>
 
       {#each menuItems as __item}
-        <a
-          href="{__item.url}"
-          class="navbar-link {segment === __item.url ? 'navbar-link-active' : ''}"
-        >
-          {__item.name}
-        </a>
+        <MinnaNavbarItem __item="{__item}" segment="{segment}"/>
       {/each}
     </div>
   </nav>
 </header>
 
 <script>
+  import MinnaNavbarItem from './MinnaNavbarItem.html';
+
   export default {
+    components: {
+      MinnaNavbarItem,
+    },
     data: () => ({
       __isOpen: false,
       __hasScrolled: false,
@@ -182,7 +182,7 @@
     }
   }
 
-  .navbar-active::after {
+  :global(.navbar-active)::after {
     opacity: 1;
   }
 
@@ -225,17 +225,19 @@
     }
   }
 
-  .navbar-link {
+  /* the following 2 selectors also appear in MinnaNavbarItem */
+  :global(.navbar-link) {
     padding: var(--navbar-link-padding);
     margin: 0;
+    color: var(--navbar-link-color);
   }
 
-  .navbar-link-active {
+  :global(.navbar-link-active) {
     font-weight: var(--text-weight-heavy);
   }
 
   /* offset page content so it's not covered by the fixed navbar */
-  :global(body) {
+  :global(body) { /* stylelint-disable-line no-descending-specificity */
     margin-top: var(--navbar-body-offset);
   }
 

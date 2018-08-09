@@ -31,7 +31,7 @@
     "@babel/core": "^7.0.0-beta.55",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.55",
     "@types/jest": "^23.3.1",
-    "@types/node": "^10.5.5",
+    "@types/node": "^10.5.7",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2"
   },

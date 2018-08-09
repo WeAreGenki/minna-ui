@@ -47,6 +47,13 @@
     You may need to adjust size and whitespace to suite your logo. See the CSS
     variables below.
 
+    Alternatively, you may replace the SVG logo with your own markup by passing
+    the markup via a slot, that is, by adding it in between MinnaNavbar tags:
+
+      <MinnaNavbar menuItems="[...]">
+        <span class="navbar-logo">YOUR LOGO</span>
+      </MinnaNavbar>
+
   NOTE:
     In the code, object properties starting with __ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
@@ -68,9 +75,11 @@
     </button>
 
     <a href="/" class="lh1" title="Home">
-      <svg class="navbar-logo">
-        <use xlink:href="#logo"/>
-      </svg>
+      <slot>
+        <svg class="navbar-logo">
+          <use xlink:href="#logo"/>
+        </svg>
+      </slot>
     </a>
 
     <div class="navbar-links {__isOpen ? 'df' : 'dn'}">

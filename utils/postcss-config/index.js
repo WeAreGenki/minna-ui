@@ -24,7 +24,7 @@ module.exports = postcss.plugin('postcss-config', ({
   importPaths = [process.cwd(), 'css', 'src', 'src/css'],
   mixinsPath = '',
   standalone = false,
-  optimize = true,
+  optimize = process.env.NODE_ENV === 'production',
   optimizeSafe = false,
   verbose = false,
   debug = false,

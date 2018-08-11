@@ -7,11 +7,11 @@
   USAGE:
     The "menuItems" property should be an array of objects which look like this:
 
-      <MinnaNavbar menuItems="[
+      <MinnaNavbar menuItems="{[
         { url: '/page-one', name: 'Page One' },
         { url: '/page-two', name: 'Page Two' },
         { url: '/about', name: 'About Us' },
-      ]"/>
+      ]}"/>
 
     The menu hamburger, menu close, and logo images are referenced using the
     inline SVG sprite with <symbol> + <use> elements technique. Because these
@@ -50,7 +50,7 @@
     Alternatively, you may replace the SVG logo with your own markup by passing
     the markup via a slot, that is, by adding it in between MinnaNavbar tags:
 
-      <MinnaNavbar menuItems="[...]">
+      <MinnaNavbar menuItems="{[...]}">
         <span class="navbar-logo">YOUR LOGO</span>
       </MinnaNavbar>
 

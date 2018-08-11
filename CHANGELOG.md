@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Optimisations in `@minna-ui/postcss-config` will now only occur in production builds for faster development iteration.
 - CSS variable `--navbar-hash-link-fix` is now `true` by default in `@minna-ui/navbar`.
 - Move component CSS variables into separate files for easy reuse in multiple components.
+- Improved regex in `@minna-ui/svelte-preprocess-markup`.
 - Updated package dependencies.
 
 ### Fixed

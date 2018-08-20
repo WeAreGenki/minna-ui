@@ -795,7 +795,7 @@
     rollup "0.63.5"
     rollup-plugin-buble "0.19.2"
     rollup-plugin-butternut "0.1.0"
-    rollup-plugin-commonjs "9.1.4"
+    rollup-plugin-commonjs "9.1.5"
     rollup-plugin-node-resolve "3.3.0"
     rollup-plugin-svelte "4.2.1"
 
@@ -5705,9 +5705,9 @@ rollup-plugin-butternut@0.1.0:
   dependencies:
     butternut "^0.3.0"
 
-rollup-plugin-commonjs@9.1.4:
-  version "9.1.4"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-9.1.4.tgz#525b701adfd40e314b5bb6888d88edc28e10442f"
+rollup-plugin-commonjs@9.1.5:
+  version "9.1.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-9.1.5.tgz#c167d545d0d01f273e632748bff56fe7487b0145"
   dependencies:
     estree-walker "^0.5.1"
     magic-string "^0.22.4"

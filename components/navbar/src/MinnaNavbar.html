@@ -7,11 +7,11 @@
   USAGE:
     The "menuItems" property should be an array of objects which look like this:
 
-      <MinnaNavbar menuItems="[
+      <MinnaNavbar menuItems="{[
         { url: '/page-one', name: 'Page One' },
         { url: '/page-two', name: 'Page Two' },
         { url: '/about', name: 'About Us' },
-      ]"/>
+      ]}"/>
 
     The menu hamburger, menu close, and logo images are referenced using the
     inline SVG sprite with <symbol> + <use> elements technique. Because these
@@ -47,6 +47,13 @@
     You may need to adjust size and whitespace to suite your logo. See the CSS
     variables below.
 
+    Alternatively, you may replace the SVG logo with your own markup by passing
+    the markup via a slot, that is, by adding it in between MinnaNavbar tags:
+
+      <MinnaNavbar menuItems="{[...]}">
+        <span class="navbar-logo">YOUR LOGO</span>
+      </MinnaNavbar>
+
   NOTE:
     In the code, object properties starting with __ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
@@ -68,9 +75,11 @@
     </button>
 
     <a href="/" class="lh1" title="Home">
-      <svg class="navbar-logo">
-        <use xlink:href="#logo"/>
-      </svg>
+      <slot>
+        <svg class="navbar-logo">
+          <use xlink:href="#logo"/>
+        </svg>
+      </slot>
     </a>
 
     <div class="navbar-links {__isOpen ? 'df' : 'dn'}">
@@ -82,19 +91,19 @@
       </a>
 
       {#each menuItems as __item}
-        <a
-          href="{__item.url}"
-          class="navbar-link {segment === __item.url ? 'navbar-link-active' : ''}"
-        >
-          {__item.name}
-        </a>
+        <MinnaNavbarItem __item="{__item}" segment="{segment}"/>
       {/each}
     </div>
   </nav>
 </header>
 
 <script>
+  import MinnaNavbarItem from './MinnaNavbarItem.html';
+
   export default {
+    components: {
+      MinnaNavbarItem,
+    },
     data: () => ({
       __isOpen: false,
       __hasScrolled: false,
@@ -152,28 +161,8 @@
 </script>
 
 <style type="text/postcss">
+  @import "./_variables.css";
   @import "import.css";
-
-  /* TODO: Add documentation explaining how to override these variables using postcss-custom-properties variable overrides */
-  :root {
-    --navbar-optimize: true;
-    --navbar-zindex: 5;
-    --navbar-background-color: var(--app-background-color);
-    --navbar-shadow-fade-speed: 300ms;
-    --navbar-shadow: 0 2px 6px color-mod(var(--shadow-color) alpha(0.39));
-    --navbar-icon-size: 2em;
-    --navbar-icon-padding: 0.4em;
-    --navbar-icon-color: var(--link-color);
-    --navbar-logo-size-x: 4.2em;
-    --navbar-logo-size-y: 1.6em;
-    --navbar-border-color: var(--divider-black);
-    --navbar-links-padding: var(--nav-link-padding-y) 0;
-    --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
-    --navbar-body-offset: 3em; /* offset body so contents are not covered */
-    /* FIXME: Set this to true once we work out how to override variables correctly */
-    --navbar-hash-link-fix: false; /* see code and comments below */
-    --navbar-hash-link-offset: calc(var(--navbar-body-offset) + 1em); /* offset in-page links; navbar + shadow */
-  }
 
   .navbar {
     position: fixed;
@@ -245,17 +234,19 @@
     }
   }
 
-  .navbar-link {
+  /* the following 2 selectors also appear in MinnaNavbarItem */
+  :global(.navbar-link) {
     padding: var(--navbar-link-padding);
     margin: 0;
+    color: var(--navbar-link-color);
   }
 
-  .navbar-link-active {
+  :global(.navbar-link-active) {
     font-weight: var(--text-weight-heavy);
   }
 
   /* offset page content so it's not covered by the fixed navbar */
-  :global(body) {
+  :global(body) { /* stylelint-disable-line no-descending-specificity */
     margin-top: var(--navbar-body-offset);
   }
 

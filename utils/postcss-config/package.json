@@ -16,20 +16,21 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "postcss": "^6.0.21 || ^7.0.0"
+    "postcss": "^7.0.0"
   },
   "dependencies": {
-    "autoprefixer": "^9.0.2",
+    "autoprefixer": "^9.1.2",
     "css-mqpacker": "^7.0.0",
-    "postcss-at-rules-variables": "^0.1.5",
+    "cssnano": "^4.0.5",
+    "cssnano-preset-advanced": "^4.0.0",
+    "postcss-at-rules-variables": "^0.1.6",
     "postcss-calc": "^6.0.1",
     "postcss-color-mod-function": "^2.4.3",
     "postcss-conditionals": "^3.0.0-beta.0",
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^7.0.0",
     "postcss-each": "^0.10.0",
-    "postcss-extend-rule": "^2.0.0",
-    "postcss-import": "^11.1.0",
+    "postcss-import": "^12.0.0",
     "postcss-load-config": "^2.0.0",
     "postcss-mixins": "^6.2.0",
     "postcss-nested": "^3.0.0",

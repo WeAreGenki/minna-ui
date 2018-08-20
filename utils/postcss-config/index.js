@@ -1,5 +1,3 @@
-// TODO: Look into using https://github.com/csstools/postcss-preset-env
-
 'use strict';
 
 const path = require('path');
@@ -7,7 +5,6 @@ const postcss = require('postcss');
 const atImport = require('postcss-import');
 const atVariables = require('postcss-at-rules-variables');
 const atUse = require('postcss-use');
-const atExtend = require('postcss-extend-rule');
 const each = require('postcss-each');
 const mixins = require('postcss-mixins');
 const nested = require('postcss-nested');
@@ -18,14 +15,17 @@ const calc = require('postcss-calc');
 const colorModFunction = require('postcss-color-mod-function');
 const mediaQueryPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
 module.exports = postcss.plugin('postcss-config', ({
-  importPaths = ['css', 'src/css', process.cwd()],
+  importPaths = [process.cwd(), 'css', 'src', 'src/css'],
   mixinsPath = '',
   standalone = false,
+  optimize = process.env.NODE_ENV === 'production',
+  optimizeSafe = false,
   verbose = false,
   debug = false,
   variables = {},
@@ -42,13 +42,24 @@ module.exports = postcss.plugin('postcss-config', ({
     importPaths.push(minnaUiCssSrc);
   }
 
-  return postcss()
+  const processor = postcss()
     .use(atImport({
       path: importPaths,
+      ...(!debug ? {} : {
+        load: (filename) => {
+          console.log('[postcss-import]', filename);
+          // eslint-disable-next-line global-require
+          return require('postcss-import/lib/load-content.js')(filename);
+        },
+      }),
     }))
-    .use(atVariables)
-    .use(atUse)
-    .use(atExtend)
+    .use(atVariables({
+      variables,
+    }))
+    .use(atUse({
+      modules: '*',
+      resolveFromFile: true,
+    }))
     .use(each)
     .use(mixins({ mixinsDir }))
     .use(nested)
@@ -63,11 +74,25 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(calc({
       warnWhenCannotResolve: verbose,
     }))
-    .use(colorModFunction)
-    .use(mediaQueryPacker)
-    .use(autoprefixer({
-      remove: false,
-      grid: true, // adds -ms- prefix for IE 11 support
-      flexbox: 'no-2009',
-    }));
+    .use(colorModFunction);
+
+  if (optimize) {
+    processor
+      .use(mediaQueryPacker)
+      .use(autoprefixer({
+        remove: false,
+        grid: true, // adds -ms- prefix for IE 11 support
+        flexbox: 'no-2009',
+      }))
+      .use(cssnano({
+        preset: optimizeSafe
+          ? 'default'
+          : ['advanced', {
+            autoprefixer: false,
+            zindex: false,
+          }],
+      }));
+  }
+
+  return processor;
 });

@@ -34,12 +34,10 @@ module.exports = {
 3. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can optionally specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
 
 ```css
-@use postcss-preset-env(stage: 0, browsers: "last 2 versions");
+@use postcss-extend-rule();
 
-h1 {
-  & a {
-    color: rgba(219, 57, 57, 0.8);
-  }
+.navbar-icon {
+  @extend .icon; /* stylelint-disable-line at-rule-no-unknown */
 }
 ```
 
@@ -47,9 +45,11 @@ h1 {
 
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
-| importPaths | `['css', 'src/css', process.cwd(), '@minna-ui/css/src/mixins']` | array | A list of paths to search when resolving `@import` rules in CSS. |
+| importPaths | `[process.cwd(), 'css', 'src', 'src/css', '@minna-ui/css/src']` | array | A list of paths to search when resolving `@import` rules in CSS. |
 | mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
 | variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
+| optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform additional optimisations to prepare for production use and minimise output file size. |
+| optimizeSafe | `false` | boolean | Don't apply potentially unsafe transformations. See [cssnano advanced transforms](https://cssnano.co/guides/advanced-transforms/). |
 | standalone | `false` | boolean | Set to `true` when `@minna-ui/css` is not installed. |
 | verbose | `false` | boolean | Show additional warnings. |
 | debug | `false` | boolean | Unlock additional debugging features; preserve and append CSS variables, and show warnings. |

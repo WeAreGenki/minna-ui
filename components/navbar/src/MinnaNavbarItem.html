@@ -1,0 +1,63 @@
+{#if __item.children !== undefined}
+  <!-- submenu -->
+  <!-- <span class="navbar-link navbar-nested"> -->
+  <span class="navbar-nested">
+    <span class="dn dib-l">{__item.name}</span>
+
+    <div class="navbar-submenu">
+      {#each __item.children as __subitem}
+        <svelte:self __item="{__subitem}" segment="{segment}"/>
+      {/each}
+    </div>
+  </span>
+{:else}
+  <!-- menu item -->
+  <a
+    href="{__item.url}"
+    class="navbar-link {segment === __item.url ? 'navbar-link-active' : ''}"
+  >
+    {__item.name}
+  </a>
+{/if}
+
+<style type="text/postcss">
+  @import "./_variables.css";
+  @import "import.css";
+
+  .navbar-nested {
+    position: relative;
+
+    @media (--screen-large) {
+      padding: var(--navbar-link-padding);
+      margin: 0;
+      color: var(--navbar-link-color);
+    }
+  }
+
+  .navbar-submenu {
+    display: flex;
+    flex-direction: column;
+
+    @media (--screen-large) {
+      position: absolute;
+      top: 100%;
+      z-index: var(--navbar-zindex);
+      white-space: nowrap;
+      pointer-events: none;
+      background-color: var(--navbar-background-color);
+      box-shadow: var(--navbar-shadow);
+      opacity: 0;
+      transition: all 150ms ease-out;
+      transform: scale(0.8);
+      transform-origin: 0 0;
+      will-change: opacity, transform;
+
+      .navbar-nested:hover &,
+      .navbar-nested:focus & {
+        pointer-events: initial;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+</style>

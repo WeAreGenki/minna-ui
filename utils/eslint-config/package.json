@@ -20,10 +20,10 @@
     "eslint": "^4.19.1 || ^5.0.0"
   },
   "dependencies": {
-    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^4.0.5",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^21.18.0"
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.21.0"
   },
   "publishConfig": {
     "access": "public"

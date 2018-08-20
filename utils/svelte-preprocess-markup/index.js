@@ -19,11 +19,30 @@ module.exports = (options = {}) => ({ content }) => {
       caseSensitive: true,
       collapseWhitespace: true,
       conservativeCollapse: !unsafeWhitespace,
-      ignoreCustomFragments: [/\{[\s\S]*?\}/],
+      ignoreCustomFragments: [
+        // REF: https://dassur.ma/things/regexp-quote/
+
+        // svelte {...} tags and attributes
+        /\{([^}"\\]|\\.)*\}/su,
+
+        // sapper %...% template tags
+        /%.+%/su,
+      ],
       keepClosingSlash: true,
+
+      // event attributes which contain "javascript: ..." will be minified
       customEventAttributes: [
-        /^on:[a-z]{3,}$/,
-        /^bind:[a-z]{1,}$/,
+        // regular html
+        /^on[a-z]{3,}$/su,
+
+        // svelte
+        /^bind:\S+$/su,
+        /^in:\S+$/su,
+        /^on:\S+$/su,
+        /^out:\S+$/su,
+        /^ref:\S+$/su,
+        /^transition:\S+$/su,
+        /^use:\S+$/su,
       ],
 
       // potentially dangerous

@@ -32,7 +32,7 @@ svelte({
 
 ### Known issues
 
-**You must wrap `{}` tags in quotes when there are `{` or `}` characters inside the tag.** For example:
+**You must wrap `{}` tags in quotes when there are `{` or `}` characters inside the tag.** The exception to this is when using spread attributes (e.g. `{...child.props}`) in which case you must _not_ use quotes.
 
 Incorrect:
 

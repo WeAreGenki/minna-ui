@@ -14,7 +14,6 @@ module.exports = {
         'define-mixin',
         'each',
         'else',
-        'extend',
         'if',
         'mixin',
         'use',

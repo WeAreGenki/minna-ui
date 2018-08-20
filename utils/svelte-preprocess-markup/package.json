@@ -19,7 +19,7 @@
     "svelte": "^2.7.2"
   },
   "dependencies": {
-    "html-minifier": "3.5.19"
+    "html-minifier": "3.5.20"
   },
   "publishConfig": {
     "access": "public"

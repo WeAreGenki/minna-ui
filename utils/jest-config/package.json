@@ -28,8 +28,8 @@
     "svelte": "^2.7.2"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/plugin-transform-modules-commonjs": "^7.0.0-rc.1",
+    "@babel/core": "^7.0.0-rc.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-rc.2",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.7.1",
     "babel-core": "^7.0.0-bridge.0",

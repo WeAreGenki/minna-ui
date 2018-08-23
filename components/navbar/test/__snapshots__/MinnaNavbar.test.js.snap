@@ -21,3 +21,15 @@ exports[`MinnaNavbar component renders correctly with required props set 1`] = `
 
       <a href=\\"page-one\\" class=\\"navbar-link \\">Page One</a><a href=\\"page-two\\" class=\\"navbar-link \\">Page Two</a><a href=\\"page-two/child-one\\" class=\\"navbar-link \\">Child One - Page Two</a><a href=\\"page-two/child-two\\" class=\\"navbar-link \\">Child Two - Page Two</a><a href=\\"about\\" class=\\"navbar-link \\">About Us</a></div></nav></header>"
 `;
+
+exports[`MinnaNavbar component renders custom markup when slot content is used 1`] = `
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button dn-l button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+
+    <a href=\\"/\\" class=\\"lh1\\" title=\\"Home\\"><svg class=\\"navbar-logo\\"><use xlink:href=\\"#logo\\"></use></svg></a>
+
+    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link dn-l navbar-link-active\\">Home</a>
+
+      <a href=\\"page-one\\" class=\\"navbar-link \\">Page One</a><!----><a href=\\"page-two\\" class=\\"navbar-link \\">Page Two</a><!----><span class=\\"navbar-nested\\"><span class=\\"dn dib-l\\">More ▾</span>
+
+    <div class=\\"navbar-submenu\\"><a href=\\"more/child-one\\" class=\\"navbar-link \\">Child One - More</a><!----><a href=\\"more/child-two\\" class=\\"navbar-link \\">Child Two - More</a><!----></div></span><!----><a href=\\"about\\" class=\\"navbar-link \\">About Us</a><!----></div></nav></header>"
+`;

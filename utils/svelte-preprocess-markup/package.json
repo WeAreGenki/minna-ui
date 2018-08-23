@@ -16,7 +16,7 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "svelte": "^2.7.2"
+    "svelte": "^2.0.0"
   },
   "dependencies": {
     "html-minifier": "3.5.20"

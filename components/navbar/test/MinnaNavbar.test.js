@@ -237,7 +237,8 @@ describe('MinnaNavbar component', () => {
   it('renders custom markup when slot content is used', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    // const component = new MinnaNavbar({
+    new MinnaNavbar({
       target,
       data: {
         menuItems,

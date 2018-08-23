@@ -31,7 +31,8 @@ describe('MinnaNavbarItem component', () => {
   it('renders item correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaNavbarItem({
+    // const component = new MinnaNavbarItem({
+    new MinnaNavbarItem({
       target,
       data: menuItem,
     });
@@ -46,7 +47,8 @@ describe('MinnaNavbarItem component', () => {
   it('renders submenu correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaNavbarItem({
+    // const component = new MinnaNavbarItem({
+    new MinnaNavbarItem({
       target,
       data: subMenu,
     });

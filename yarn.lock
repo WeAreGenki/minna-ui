@@ -762,8 +762,8 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.10.0"
   dependencies:
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.64.1"
     rollup-plugin-buble "0.19.2"
@@ -775,7 +775,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.10.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
@@ -6861,9 +6861,9 @@ supports-color@^5.3.0, supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.11.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.11.0.tgz#959417a0a1bc2c931135581d7da5e3ba6c796026"
+svelte@2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.12.0.tgz#9ad94f0ee47898d15a52a0d0a6908bfcb1095471"
 
 svg-tags@^1.0.0:
   version "1.0.0"

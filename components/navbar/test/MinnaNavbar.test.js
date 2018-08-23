@@ -11,8 +11,13 @@ const MinnaNavbar = require('../src/MinnaNavbar.html');
 const menuItems = [
   { url: 'page-one', name: 'Page One' },
   { url: 'page-two', name: 'Page Two' },
-  { url: 'page-two/child-one', name: 'Child One - Page Two' },
-  { url: 'page-two/child-two', name: 'Child Two - Page Two' },
+  {
+    name: 'More ▾',
+    children: [
+      { url: 'more/child-one', name: 'Child One - More' },
+      { url: 'more/child-two', name: 'Child Two - More' },
+    ],
+  },
   { url: 'about', name: 'About Us' },
 ];
 
@@ -226,6 +231,23 @@ describe('MinnaNavbar component', () => {
       menuItems: [...menuItems, { url: 'page-new', name: 'Page New' }],
     });
     expect(component.get().menuItems).toHaveLength(6);
+    expect(target.innerHTML).toMatchSnapshot();
+  });
+
+  it('renders custom markup when slot content is used', () => {
+    expect.assertions(2);
+    const target = document.createElement('div');
+    const component = new MinnaNavbar({
+      target,
+      data: {
+        menuItems,
+        segment: undefined,
+      },
+    });
+    // component.set({
+    //   menuItems: [...menuItems, { url: 'page-new', name: 'Page New' }],
+    // });
+    // expect(component.get().menuItems).toHaveLength(6);
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

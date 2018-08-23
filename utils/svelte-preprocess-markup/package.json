@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/svelte-preprocess-markup",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Svelte markup preprocessor for use in minna-ui projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/svelte-preprocess-markup",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

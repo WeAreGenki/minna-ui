@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.11.0] - 2018-08-23
+
 ### Added
 
-- Support for submenus in `@minna-ui/navbar`.
+- Experimental support for submenus in `@minna-ui/navbar`.
 - Add a slot in `@minna-ui/navbar` to make it easy to use custom logo markup.
 - Advanced CSS optimisation in `@minna-ui/postcss-config` using `cssnano`. Some quick tests revealed cssnano yielded better results (after brotli compression) than using `clean-css` and/or `csso` during [Sapper](https://sapper.svelte.technology) export.
 - New options to `@minna-ui/postcss-config`, `optimize` and `optimizeSafe`.
@@ -23,7 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Optimisations in `@minna-ui/postcss-config` will now only occur in production builds for faster development iteration.
+- Optimisations in `@minna-ui/postcss-config` will now only occur in production builds for faster iterations for development.
 - CSS variable `--navbar-hash-link-fix` is now `true` by default in `@minna-ui/navbar`.
 - Move component CSS variables into separate files for easy reuse in multiple components.
 - Improved regex in `@minna-ui/svelte-preprocess-markup`.
@@ -347,7 +349,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.10.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/MaxMilton/new-tab/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/MaxMilton/new-tab/compare/v0.9.1...v0.10.0
 [0.9.1]: https://github.com/MaxMilton/new-tab/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/MaxMilton/new-tab/compare/v0.8.0...v0.9.0

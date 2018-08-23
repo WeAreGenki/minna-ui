@@ -16,9 +16,9 @@
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
+    "lint": "yarn lint:css && yarn lint:js",
     "lint:css": "stylelint **/*.{html,css} --cache",
     "lint:js": "eslint --ext js,html .",
-    "lint": "yarn lint:css && yarn lint:js",
     "test": "yarn lint && jest --coverage",
     "test-ci": "jest --runInBand --ci --verbose --coverage",
     "coverage:browsers": "yarn browserslist",
@@ -37,6 +37,6 @@
     "lerna": "3.1.4",
     "postcss": "7.0.2",
     "stylelint": "9.5.0",
-    "svelte": "2.11.0"
+    "svelte": "2.12.0"
   }
 }

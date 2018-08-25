@@ -1,6 +1,6 @@
 <!-- markdownlint-disable first-line-h1 no-inline-html -->
 
-[![Build status](https://img.shields.io/travis/WeAreGenki/minna-ui.svg)](https://travis-ci.org/WeAreGenki/minna-ui)
+[![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
 [![Coverage status](https://img.shields.io/codecov/c/github/WeAreGenki/minna-ui.svg)](https://codecov.io/gh/WeAreGenki/minna-ui)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)

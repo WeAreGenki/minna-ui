@@ -217,7 +217,7 @@ describe('MinnaNavbar component', () => {
       .classList.contains('navbar-link-active')).not.toBeTruthy();
   });
 
-  it('can dynamically add menu items', () => {
+  it.skip('can dynamically add menu items', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new MinnaNavbar({
@@ -234,7 +234,7 @@ describe('MinnaNavbar component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it('renders custom markup when slot content is used', () => {
+  it.skip('renders custom markup when slot content is used', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     // const component = new MinnaNavbar({

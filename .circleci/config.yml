@@ -4,8 +4,8 @@
 aliases:
   - &restore-cache
     keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-        - v1-dependencies-
+      - v1-dependencies-{{ checksum "package.json" }}
+      - v1-dependencies-
 
   - &save-cache
     paths:

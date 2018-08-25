@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Change default test coverage directory from `/test/unit/coverage` to `/test/coverage` since most of the time we only do unit tests.
 - Switch from Travis to Circle CI for faster and better continuous integration.
+- Updated package dependencies.
 
 ## [0.11.0] - 2018-08-23
 

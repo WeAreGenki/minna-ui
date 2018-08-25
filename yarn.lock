@@ -743,6 +743,45 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@minna-ui/build-component@file:utils/build-component":
+  version "0.11.0"
+  dependencies:
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
+    del "3.0.0"
+    rollup "0.64.1"
+    rollup-plugin-buble "0.19.2"
+    rollup-plugin-butternut "0.1.0"
+    rollup-plugin-commonjs "9.1.5"
+    rollup-plugin-node-resolve "3.3.0"
+    rollup-plugin-svelte "4.2.1"
+
+"@minna-ui/build-css@file:utils/build-css":
+  version "0.11.0"
+  dependencies:
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
+    clean-css "4.2.1"
+    del "3.0.0"
+    postcss-load-config "2.0.0"
+
+"@minna-ui/eslint-config@file:utils/eslint-config":
+  version "0.11.0"
+  dependencies:
+    eslint-config-airbnb-base "^13.1.0"
+    eslint-plugin-html "^4.0.5"
+    eslint-plugin-import "^2.14.0"
+    eslint-plugin-jest "^21.21.0"
+
+"@minna-ui/jest-config@file:utils/jest-config":
+  version "0.11.0"
+  dependencies:
+    "@babel/core" "^7.0.0-rc.2"
+    "@babel/plugin-transform-modules-commonjs" "^7.0.0-rc.2"
+    "@types/jest" "^23.3.1"
+    "@types/node" "^10.9.0"
+    babel-core "^7.0.0-bridge.0"
+    babel-jest "^23.4.2"
+
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.11.0"
   dependencies:
@@ -762,6 +801,12 @@
     postcss-mixins "^6.2.0"
     postcss-nested "^3.0.0"
     postcss-use "^3.0.0"
+
+"@minna-ui/stylelint-config@file:utils/stylelint-config":
+  version "0.11.0"
+  dependencies:
+    stylelint-config-standard "^18.2.0"
+    stylelint-order "^1.0.0"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
   version "0.11.0"
@@ -6790,9 +6835,9 @@ supports-color@^5.3.0, supports-color@^5.4.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.12.0.tgz#9ad94f0ee47898d15a52a0d0a6908bfcb1095471"
+svelte@2.13.1:
+  version "2.13.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.13.1.tgz#90afc1a4e53ffaef3d3b10f351e08e3e651d46d2"
 
 svg-tags@^1.0.0:
   version "1.0.0"

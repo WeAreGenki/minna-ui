@@ -1,6 +1,5 @@
 # https://circleci.com/docs/2.0/language-javascript/
 
-
 aliases:
   - &restore-cache
     keys:

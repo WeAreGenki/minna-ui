@@ -20,7 +20,7 @@
     "lint:css": "stylelint **/*.{html,css} --cache",
     "lint:js": "eslint --ext js,html .",
     "test": "yarn lint && jest --coverage",
-    "test-ci": "jest --runInBand --ci --verbose --coverage",
+    "test-ci": "jest --runInBand --ci --coverage",
     "coverage:browsers": "yarn browserslist",
     "coverage:css": "yarn autoprefixer --info"
   },

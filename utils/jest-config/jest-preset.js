@@ -40,6 +40,7 @@ module.exports = {
     '/public/',
     '/test/',
   ],
+  coverageReporters: ['lcov', 'text'],
   coverageDirectory: '<rootDir>/test/coverage',
   watchPathIgnorePatterns: [
     '/dist/',

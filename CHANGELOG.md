@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Default setting for `coverageReporters` in `@minna-ui/jest-config`.
+
 ### Changed
 
 - Change default test coverage directory from `/test/unit/coverage` to `/test/coverage` since most of the time we only do unit tests.

@@ -3,13 +3,13 @@
 aliases:
   - &restore-cache
     keys:
-      - v1-dependencies-{{ checksum "yarn.lock" }}
-      - v1-dependencies-
+      - v2-dependencies-{{ checksum "yarn.lock" }}
+      - v2-dependencies-
 
   - &save-cache
     paths:
       - node_modules
-    key: v1-dependencies-{{ checksum "yarn.lock" }}
+    key: v2-dependencies-{{ checksum "yarn.lock" }}
 
 version: 2
 jobs:

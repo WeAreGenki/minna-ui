@@ -1,37 +1,49 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
+# https://circleci.com/docs/2.0/language-javascript/
+
+
+aliases:
+  - &restore-cache
+    keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        - v1-dependencies-
+
+  - &save-cache
+    paths:
+      - node_modules
+    key: v1-dependencies-{{ checksum "package.json" }}
+
 version: 2
 jobs:
-  build:
+  build-node-10:
     docker:
       - image: circleci/node:10
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
-      # download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+      - restore-cache: *restore-cache
       - run: yarn install --frozen-lockfile
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      # run tests!
+      - save-cache: *save-cache
       - run: yarn run lint
       - run: yarn run test-ci
       - run: yarn codecov
-
       - store_artifacts:
           path: test/coverage
           prefix: coverage
+
+  build-node-8:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore-cache: *restore-cache
+      - run: yarn install --frozen-lockfile
+      - save-cache: *save-cache
+      - run: yarn run test-ci
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-node-10
+      - build-node-8

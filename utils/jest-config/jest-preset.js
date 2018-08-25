@@ -40,7 +40,7 @@ module.exports = {
     '/public/',
     '/test/',
   ],
-  coverageDirectory: '<rootDir>/test/unit/coverage',
+  coverageDirectory: '<rootDir>/test/coverage',
   watchPathIgnorePatterns: [
     '/dist/',
     '/export/',

@@ -2746,8 +2746,8 @@ fb-watchman@^2.0.0:
     bser "^2.0.0"
 
 figgy-pudding@^3.1.0, figgy-pudding@^3.2.1, figgy-pudding@^3.4.1:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.0.tgz#50f18167ffb8d6ff199463f2c25e8875753d79bb"
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
 
 figures@^2.0.0:
   version "2.0.0"

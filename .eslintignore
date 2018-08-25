@@ -1,4 +1,4 @@
-/test/unit/coverage/
+/test/coverage/
 /utils/*/cli/index.js
 dist/
 node_modules/

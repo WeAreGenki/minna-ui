@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.12.1] - 2018-09-01
+
+### Fixed
+
+- Update CSS classes in `@minna-ui/navbar` component.
+
 ## [0.12.0] - 2018-09-01
 
 ### Changed
@@ -371,7 +377,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.12.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.12.1...HEAD
+[0.12.1]: https://github.com/MaxMilton/new-tab/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/MaxMilton/new-tab/compare/v0.11.1...v0.12.0
 [0.11.1]: https://github.com/MaxMilton/new-tab/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/MaxMilton/new-tab/compare/v0.10.0...v0.11.0

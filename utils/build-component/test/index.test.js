@@ -22,7 +22,7 @@ const dist = path.join(__dirname, 'dist');
 const pkg = dirName => ({
   npm_package_name: 'test-component',
   npm_package_version: '1.2.3',
-  npm_package_homepage: 'https://ui.wearegenki.com',
+  npm_package_homepage: 'https://ui.wearegenki.com/',
   npm_package_svelte: sourcePath,
   npm_package_module: path.join(dist, dirName, 'index.es.mjs'),
   npm_package_main: path.join(dist, dirName, 'index.js'),
@@ -47,40 +47,36 @@ describe('build-component tool', () => {
   });
 
   it('compiles package main bundle', async () => {
-    expect.assertions(6);
+    expect.assertions(4);
     const build = buildComponent(pkg('main'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
     expect(built.main.result.code).toMatch('var TestComponent=function(');
     expect(built.main.result.code).not.toMatch('export default TestComponent');
-    expect(built.main.result.code).toMatch('name:\'Elon Musk\'');
-    expect(built.main.result.code).toMatch('.refs.__target===');
-    expect(built.main.result.map.names).toContain('__name');
+    expect(built.main.result.code).toMatch(':"Elon Musk"');
   });
 
   it('compiles package css bundle', async () => {
-    expect.assertions(3);
+    expect.assertions(4);
     const build = buildComponent(pkg('css'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    expect(built.css.code).not.toEqual('');
+    expect(built.css.code).not.toBeFalsy();
+    expect(built.css.code).not.toBe('');
     expect(built.css.code).toMatchSnapshot();
   });
 
-  // FIXME: Add banners in manually using https://github.com/Rich-Harris/magic-string
   it('contains banner comments', async () => {
-    // expect.assertions(4);
-    expect.assertions(2);
+    expect.assertions(3);
     const pkgData = pkg('banner');
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
-    expect(built.esm.result.code).toMatch(re);
-    // FIXME: rollup-plugin-butternut removes the banner
-    // expect(built.main.result.code).toMatch(re);
-    // FIXME: rollup-plugin-svelte doesn't have CSS banner support
-    // expect(built.css.code).toMatch(re);
+    const re1 = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.esm.result.code).toMatch(re1);
+    // expect(built.css.code).toMatch(re1);
+    const re2 = new RegExp(`\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.main.result.code).toMatch(re2);
   });
 
   it('cleans existing dist dir', async () => {

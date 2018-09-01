@@ -122,8 +122,8 @@
         // don't set component state if nothing has changed
         /* istanbul ignore else */
         if (__hasScrolled !== lastHasScrolled) {
-          this.set({ __hasScrolled });
           lastHasScrolled = __hasScrolled;
+          this.set({ __hasScrolled });
         }
 
         wait = false;

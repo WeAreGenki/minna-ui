@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.m?js$': 'babel-jest',
     '^.+\\.(html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
@@ -21,7 +22,6 @@ module.exports = {
     'json',
     'mjs',
   ],
-  testURL: 'http://localhost', // fixes security error https://git.io/fNwN0
   collectCoverageFrom: [
     '**/*.{html,js,mjs}',
     '!**/bin/**',
@@ -31,6 +31,7 @@ module.exports = {
     '!*.config.js',
     '!**/*.config.js',
     '!**/jest-preset.js',
+    '!**/component-externs.js',
   ],
   coveragePathIgnorePatterns: [
     '/dist/',
@@ -40,7 +41,7 @@ module.exports = {
     '/public/',
     '/test/',
   ],
-  coverageReporters: ['lcov', 'text'],
+  coverageReporters: ['json', 'text'],
   coverageDirectory: '<rootDir>/test/coverage',
   watchPathIgnorePatterns: [
     '/dist/',

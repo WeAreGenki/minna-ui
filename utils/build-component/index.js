@@ -7,16 +7,29 @@
 'use strict';
 
 const fs = require('fs');
-const { basename, dirname } = require('path');
+const { basename, dirname, join } = require('path');
 const del = require('del');
 const { rollup } = require('rollup');
-const buble = require('rollup-plugin-buble');
-const butternut = require('rollup-plugin-butternut');
+const compiler = require('@ampproject/rollup-plugin-closure-compiler');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 const preprocessMarkup = require('@minna-ui/svelte-preprocess-markup');
 const preprocessStyle = require('@minna-ui/svelte-preprocess-style');
+
+const compilerOpts = {
+  externs: [
+    require.resolve('google-closure-compiler/contrib/externs/svg.js'),
+    join(__dirname, 'component-externs.js'),
+  ],
+  language_out: 'ECMASCRIPT5',
+  compilation_level: 'ADVANCED',
+  warning_level: 'VERBOSE',
+
+  // uncomment for debugging
+  // formatting: 'PRETTY_PRINT',
+  // debug: true,
+};
 
 const isClean = new Map();
 
@@ -78,8 +91,7 @@ module.exports = async function run(env) {
           css.write(pkgStyle);
         },
       }),
-      buble(),
-      butternut(),
+      compiler(compilerOpts),
     ],
   });
 

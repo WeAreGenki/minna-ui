@@ -32,6 +32,7 @@ module.exports = {
     '!*.config.js',
     '!**/*.config.js',
     '!**/jest-preset.js',
+    '!**/component-externs.js',
   ],
   coveragePathIgnorePatterns: [
     '/dist/',

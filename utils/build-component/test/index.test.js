@@ -22,7 +22,7 @@ const dist = path.join(__dirname, 'dist');
 const pkg = dirName => ({
   npm_package_name: 'test-component',
   npm_package_version: '1.2.3',
-  npm_package_homepage: 'https://ui.wearegenki.com',
+  npm_package_homepage: 'https://ui.wearegenki.com/',
   npm_package_svelte: sourcePath,
   npm_package_module: path.join(dist, dirName, 'index.es.mjs'),
   npm_package_main: path.join(dist, dirName, 'index.js'),

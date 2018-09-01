@@ -27,12 +27,12 @@
 
   @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
     @media ($media) {
-      .t$(step)-$(ext) { top: $val; }
-      .r$(step)-$(ext) { right: $val; }
-      .b$(step)-$(ext) { bottom: $val; }
-      .l$(step)-$(ext) { left: $val; }
+      .$(ext)-t$(step) { top: $val; }
+      .$(ext)-r$(step) { right: $val; }
+      .$(ext)-b$(step) { bottom: $val; }
+      .$(ext)-l$(step) { left: $val; }
 
-      .a$(step)-$(ext) {
+      .$(ext)-a$(step) {
         top: $val;
         right: $val;
         bottom: $val;

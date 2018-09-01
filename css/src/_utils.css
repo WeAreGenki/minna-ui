@@ -24,11 +24,11 @@
 
 @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
   @media ($media) {
-    .tl-$(ext) { text-align: left; }
-    .tr-$(ext) { text-align: right; }
-    .tc-$(ext) { text-align: center; }
-    .tj-$(ext) { text-align: justify; }
-    .tu-$(ext) { text-align: unset; }
+    .$(ext)-tl { text-align: left; }
+    .$(ext)-tr { text-align: right; }
+    .$(ext)-tc { text-align: center; }
+    .$(ext)-tj { text-align: justify; }
+    .$(ext)-tu { text-align: unset; }
   }
 }
 

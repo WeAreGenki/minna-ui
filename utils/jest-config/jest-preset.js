@@ -22,7 +22,6 @@ module.exports = {
     'json',
     'mjs',
   ],
-  testURL: 'http://localhost', // fixes security error https://git.io/fNwN0
   collectCoverageFrom: [
     '**/*.{html,js,mjs}',
     '!**/bin/**',

@@ -19,12 +19,16 @@ const preprocessStyle = require('@minna-ui/svelte-preprocess-style');
 
 const compilerOpts = {
   externs: [
-    require.resolve('google-closure-compiler/contrib/externs/svg.js'),
+    // require.resolve('google-closure-compiler/contrib/externs/svg.js'),
     join(__dirname, 'component-externs.js'),
   ],
   language_out: 'ECMASCRIPT5',
   compilation_level: 'ADVANCED',
+  use_types_for_optimization: true,
   warning_level: 'VERBOSE',
+
+  // FIXME: Shouldn't need this
+  jscomp_off: 'duplicate',
 
   // uncomment for debugging
   // formatting: 'PRETTY_PRINT',

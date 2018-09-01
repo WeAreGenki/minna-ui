@@ -44,11 +44,10 @@ module.exports = async function run(env) {
   const pkgStyle = env.npm_package_style;
   const name = basename(pkgSvelte, '.html');
 
-  // FIXME: Banner is missing in resulting code due to butternut; add manually with magic-string
   const banner = `/*!
- * ${pkgName} v${pkgVersion} - ${pkgHomepage}
+ * ${pkgName} v${pkgVersion} (${pkgHomepage})
  * Copyright ${new Date().getFullYear()} We Are Genki
- * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ * Licensed under Apache 2.0 (https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
  */
 `;
 
@@ -113,9 +112,6 @@ module.exports = async function run(env) {
   const resultMain = bundleMain.write({
     name,
     banner,
-    footer: banner,
-    intro: banner,
-    outro: banner,
     file: pkgMain,
     format: 'iife',
     sourcemap: true,
@@ -125,7 +121,7 @@ module.exports = async function run(env) {
     name,
     banner,
     file: pkgModule,
-    format: 'es',
+    format: 'esm',
     sourcemap: true,
   });
 

@@ -33,7 +33,7 @@
     "@types/jest": "^23.3.1",
     "@types/node": "^10.9.3",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2"
+    "jest-circus": "^23.5.0"
   },
   "publishConfig": {
     "access": "public"

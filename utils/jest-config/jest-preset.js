@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.m?js$': 'babel-jest',
     '^.+\\.(html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',

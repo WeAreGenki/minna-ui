@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`build-component tool compiles package css bundle 1`] = `
-":root{--body-margin:0}@media screen and (min-width: 30em){body{margin:var(--body-margin) }}.text.svelte-8rv9zt{color:rgb(255, 0, 0)}.text.svelte-8rv9zt:focus{background:rgb(0, 0, 0)}.wrapper.svelte-8rv9zt>.text.svelte-8rv9zt{margin-top:1rem}
+":root{--body-margin:0}@media screen and (min-width: 30em){body{margin:var(--body-margin) }}.text.svelte-hsyu21{color:rgb(255, 0, 0)}.text.svelte-hsyu21:focus{background:rgb(0, 0, 0)}.wrapper.svelte-hsyu21>.text.svelte-hsyu21{margin-top:1rem}
 "
 `;

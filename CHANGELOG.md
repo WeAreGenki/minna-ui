@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.11.2] - 2018-09-01
+
+### Changed
+
+- Components are now minified using Closure Compiler for smaller, faster bundles.
+- Default setting for `coverageReporters` in `@minna-ui/jest-config`; add `json` and remove `lcov`.
+- Use next-gen jest test runner `jest-circus` in `@minna-ui/jest-config`.
+- Updated package dependencies.
+
 ## [0.11.1] - 2018-08-26
 
 ### Added
@@ -361,7 +370,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.11.1...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.11.2...HEAD
+[0.11.2]: https://github.com/MaxMilton/new-tab/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/MaxMilton/new-tab/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/MaxMilton/new-tab/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/MaxMilton/new-tab/compare/v0.9.1...v0.10.0

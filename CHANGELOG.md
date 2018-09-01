@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Components are now minified using Closure Compiler for smaller, faster bundles.
 - Default setting for `coverageReporters` in `@minna-ui/jest-config`; add `json` and remove `lcov`.
-- Use next-gen jest test runner `jest-circus` in `@minna-ui/jest-config`.
+- Use next-gen jest test runner `jest-circus` in `@minna-ui/jest-config`. Note: it's necessary to set the `JEST_CIRCUS=1` env variable to actually use it.
 - Updated package dependencies.
 
 ## [0.11.1] - 2018-08-26

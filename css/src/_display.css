@@ -1,10 +1,18 @@
 /*
   DISPLAY
 
-  BASE:
-    .d = display
+  .<RESPONSIVE><BASE><MOD>
 
-  TYPE:
+  RESPONSIVE:
+       = (no prefix) default small
+    ns- = not small screen breakpoint; anything medium or bigger
+    m- = medium screen breakpoint
+    l- = large screen breakpoint
+
+  BASE:
+    d = display
+
+  MOD:
     n = none
     b = block
     i = inline
@@ -13,12 +21,6 @@
     if = inline flex
     g = grid
     ig = inline grid
-
-  RESPONSIVE:
-       = (no suffix) default small
-    -ns = not small screen breakpoint; anything medium or bigger
-    -m = medium screen breakpoint
-    -l = large screen breakpoint
 */
 
 .dn { display: none; }
@@ -32,13 +34,13 @@
 
 @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
   @media ($media) {
-    .dn-$(ext) { display: none; }
-    .db-$(ext) { display: block; }
-    .di-$(ext) { display: inline; }
-    .dib-$(ext) { display: inline-block; }
-    .df-$(ext) { display: flex; }
-    .dif-$(ext) { display: inline-flex; }
-    .dg-$(ext) { display: grid; }
-    .dig-$(ext) { display: inline-grid; }
+    .$(ext)-dn { display: none; }
+    .$(ext)-db { display: block; }
+    .$(ext)-di { display: inline; }
+    .$(ext)-dib { display: inline-block; }
+    .$(ext)-df { display: flex; }
+    .$(ext)-dif { display: inline-flex; }
+    .$(ext)-dg { display: grid; }
+    .$(ext)-dig { display: inline-grid; }
   }
 }

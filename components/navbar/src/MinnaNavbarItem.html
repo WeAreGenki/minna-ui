@@ -1,24 +1,30 @@
-{#if __item.children !== undefined}
+{#if _item.children !== undefined}
   <!-- submenu -->
   <!-- <span class="navbar-link navbar-nested"> -->
   <span class="navbar-nested">
-    <span class="dn l-dib">{__item.name}</span>
+    <span class="dn l-dib">{_item.text}</span>
 
     <div class="navbar-submenu">
-      {#each __item.children as __subitem}
-        <svelte:self __item="{__subitem}" segment="{segment}"/>
+      {#each _item.children as _subitem}
+        <svelte:self _item="{_subitem}" segment="{segment}"/>
       {/each}
     </div>
   </span>
 {:else}
   <!-- menu item -->
   <a
-    href="{__item.url}"
-    class="navbar-link {segment === __item.url ? 'navbar-link-active' : ''}"
+    href="{_item.url}"
+    class="navbar-link {segment === _item.url ? 'navbar-link-active' : ''}"
   >
-    {__item.name}
+    {_item.text}
   </a>
 {/if}
+
+<script>
+  export default {
+    tag: 'minna-navbar-item',
+  };
+</script>
 
 <style type="text/postcss">
   @import "./_variables.css";

@@ -45,6 +45,7 @@ module.exports = {
       exports: 'always-multiline',
       functions: 'only-multiline', // awkward comma on multiline function params is OK
     }],
+    'id-length': ['error', { min: 2 }], // encourage descriptive variable names
     'import/extensions': ['error', 'ignorePackages'], // do use file extentions
     'no-console': /* istanbul ignore next */ isProd ? 'error' : 'off',
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'off',

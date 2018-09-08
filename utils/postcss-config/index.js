@@ -22,6 +22,7 @@ const cssnano = require('cssnano');
  */
 module.exports = postcss.plugin('postcss-config', ({
   importPaths = [process.cwd(), 'css', 'src', 'src/css'],
+  importFilter = () => true,
   mixinsPath = '',
   standalone = false,
   optimize = process.env.NODE_ENV === 'production',
@@ -52,6 +53,7 @@ module.exports = postcss.plugin('postcss-config', ({
           return require('postcss-import/lib/load-content.js')(filename);
         },
       }),
+      filter: importFilter,
     }))
     .use(atVariables({
       variables,

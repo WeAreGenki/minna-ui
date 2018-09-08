@@ -46,6 +46,7 @@ module.exports = {
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
 | importPaths | `[process.cwd(), 'css', 'src', 'src/css', '@minna-ui/css/src']` | array | A list of paths to search when resolving `@import` rules in CSS. |
+| importFilter | `() => true` | function | A function which takes the import path and returns true for imports to inline or false for imports to keep. |
 | mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
 | variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
 | optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform additional optimisations to prepare for production use and minimise output file size. |

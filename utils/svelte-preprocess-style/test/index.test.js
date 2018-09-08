@@ -163,10 +163,10 @@ describe('Svelte style preprocessor', () => {
 
   it('prints error on bad CSS syntax', async () => {
     expect.assertions(1);
-    const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
+    const spy = jest.spyOn(process.stderr, 'write');
+    spy.mockImplementation(() => {});
     await preprocess(sourceBadSyntax, preprocessOpts);
     expect(spy).toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 });

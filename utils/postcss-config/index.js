@@ -22,6 +22,7 @@ const cssnano = require('cssnano');
  */
 module.exports = postcss.plugin('postcss-config', ({
   importPaths = [process.cwd(), 'css', 'src', 'src/css'],
+  importFilter = () => true,
   mixinsPath = '',
   standalone = false,
   optimize = process.env.NODE_ENV === 'production',
@@ -47,11 +48,13 @@ module.exports = postcss.plugin('postcss-config', ({
       path: importPaths,
       ...(!debug ? {} : {
         load: (filename) => {
+          /* eslint-disable-next-line no-console */
           console.log('[postcss-import]', filename);
-          // eslint-disable-next-line global-require
+          /* eslint-disable-next-line global-require */
           return require('postcss-import/lib/load-content.js')(filename);
         },
       }),
+      filter: importFilter,
     }))
     .use(atVariables({
       variables,

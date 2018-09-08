@@ -62,9 +62,69 @@ describe('PostCSS config', () => {
     expect(result.css).toMatchSnapshot();
   });
 
+  it('compiles CSS with optimize option true', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ optimize: true }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with optimize option false', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ optimize: false }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with optimizeSafe option true', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ optimize: true, optimizeSafe: true }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with optimizeSafe option false', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ optimize: true, optimizeSafe: false }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
   it('compiles CSS with standalone option true', async () => {
     expect.assertions(5);
     const output = postcss(postcssConfig({ standalone: true }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with standalone option false', async () => {
+    expect.assertions(5);
+    const output = postcss(postcssConfig({ standalone: false }))
       .process(sourceCss, options);
     await expect(output).resolves.toBeDefined();
     const result = await output;
@@ -86,8 +146,22 @@ describe('PostCSS config', () => {
     expect(result.css).toMatchSnapshot();
   });
 
-  it('compiles CSS with debug option true', async () => {
+  it('compiles CSS with verbose option false', async () => {
     expect.assertions(5);
+    const output = postcss(postcssConfig({ verbose: false }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+  });
+
+  it('compiles CSS with debug option true', async () => {
+    expect.assertions(6);
+    const spy = jest.spyOn(global.console, 'log');
+    spy.mockImplementation(() => {});
     const output = postcss(postcssConfig({ debug: true }))
       .process(sourceCss, options);
     await expect(output).resolves.toBeDefined();
@@ -96,6 +170,24 @@ describe('PostCSS config', () => {
     expect(result.opts.from).toBeDefined();
     expect(result.map).toBeDefined();
     expect(result.css).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledTimes(2); // should log import path twice
+    spy.mockRestore();
+  });
+
+  it('compiles CSS with debug option false', async () => {
+    expect.assertions(6);
+    const spy = jest.spyOn(global.console, 'log');
+    spy.mockImplementation(() => {});
+    const output = postcss(postcssConfig({ debug: false }))
+      .process(sourceCss, options);
+    await expect(output).resolves.toBeDefined();
+    const result = await output;
+    expect(result.processor.plugins).not.toHaveLength(0);
+    expect(result.opts.from).toBeDefined();
+    expect(result.map).toBeDefined();
+    expect(result.css).toMatchSnapshot();
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
   });
 
   it('compiles CSS with custom mixin', async () => {

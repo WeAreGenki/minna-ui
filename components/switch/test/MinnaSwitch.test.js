@@ -114,11 +114,10 @@ describe('MinnaSwitch component', () => {
         value: true,
       },
     });
-    const spy = jest.spyOn(component, '__toggle');
+    const spy = jest.spyOn(component, '_toggle');
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(false);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -132,11 +131,10 @@ describe('MinnaSwitch component', () => {
         disabled: true,
       },
     });
-    const spy = jest.spyOn(component, '__toggle');
+    const spy = jest.spyOn(component, '_toggle');
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(true);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -150,10 +148,10 @@ describe('MinnaSwitch component', () => {
       },
     });
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.__onKeyDown(event1);
+    component._onKeyDown(event1);
     expect(component.get().value).toEqual(false);
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
-    component.__onKeyDown(event2);
+    component._onKeyDown(event2);
     expect(component.get().value).toEqual(true);
   });
 
@@ -167,13 +165,13 @@ describe('MinnaSwitch component', () => {
       },
     });
     const event1 = new KeyboardEvent('keydown', { key: ' ' });
-    component.__onKeyDown(event1);
+    component._onKeyDown(event1);
     expect(component.get().value).toEqual(false);
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    component.__onKeyDown(event2);
+    component._onKeyDown(event2);
     expect(component.get().value).toEqual(true);
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
-    component.__onKeyDown(event3);
+    component._onKeyDown(event3);
     expect(component.get().value).toEqual(false);
   });
 
@@ -187,7 +185,7 @@ describe('MinnaSwitch component', () => {
       },
     });
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.__onKeyDown(event);
+    component._onKeyDown(event);
     expect(component.get().value).toEqual(true);
   });
 
@@ -200,21 +198,20 @@ describe('MinnaSwitch component', () => {
         value: true,
       },
     });
-    const spy = jest.spyOn(component, '__toggle');
+    const spy = jest.spyOn(component, '_toggle');
     const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
-    component.__onKeyDown(event1);
+    component._onKeyDown(event1);
     expect(component.get().value).toEqual(true);
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
-    component.__onKeyDown(event2);
+    component._onKeyDown(event2);
     expect(component.get().value).toEqual(true);
     const event3 = new KeyboardEvent('keydown', { key: '' });
-    component.__onKeyDown(event3);
+    component._onKeyDown(event3);
     expect(component.get().value).toEqual(true);
     const event4 = new KeyboardEvent('keydown');
-    component.__onKeyDown(event4);
+    component._onKeyDown(event4);
     expect(component.get().value).toEqual(true);
     expect(spy).not.toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 });

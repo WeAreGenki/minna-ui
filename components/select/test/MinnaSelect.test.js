@@ -2,14 +2,14 @@
 
 const MinnaSelect = require('../src/MinnaSelect.html');
 
-const options = [
+const items = [
   { id: 'au', text: 'Australia' },
   { id: 'cn', text: 'China' },
   { id: 'jp', text: 'Japan' },
   { id: 'kr', text: 'Korea' },
   { id: 'other', text: 'Other / Unknown' },
 ];
-const optionsDisabled = [
+const itemsDisabled = [
   { id: '0', text: 'Zero', disabled: true },
   { id: '1', text: 'One' },
   { id: '2', text: 'Two', disabled: true },
@@ -22,7 +22,7 @@ const optionsDisabled = [
   { id: '9', text: 'Nine', disabled: true },
 ];
 const selectOpts = {
-  options,
+  items,
   id: 'test-select',
   value: '',
 };
@@ -45,9 +45,9 @@ describe('MinnaSelect component', () => {
       data: selectOpts,
     });
     const select = target.querySelector('.select');
-    expect(Array.isArray(component.get().options)).toEqual(true);
-    expect(component.get().options).not.toHaveLength(0);
-    expect(component.refs.__target).toBeDefined();
+    expect(Array.isArray(component.get().items)).toEqual(true);
+    expect(component.get().items).not.toHaveLength(0);
+    expect(component.refs._target).toBeDefined();
     expect(select.getAttribute('tabindex')).toEqual('0');
     expect(select.getAttribute('disabled')).toBeNull();
     expect(select.getAttribute('required')).toBeNull();
@@ -67,7 +67,7 @@ describe('MinnaSelect component', () => {
         value: 'jp',
       },
     });
-    expect(component.get().__input).toEqual('Japan');
+    expect(component.get()._inputText).toEqual('Japan');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -79,7 +79,7 @@ describe('MinnaSelect component', () => {
       data: {
         ...selectOpts,
         filterable: false,
-        __isOpen: true,
+        _isOpen: true,
       },
     });
     expect(component.get().filterable).toEqual(false);
@@ -96,7 +96,7 @@ describe('MinnaSelect component', () => {
       data: {
         ...selectOpts,
         filterHelp: 'Filter me',
-        __isOpen: true,
+        _isOpen: true,
       },
     });
     expect(component.get().filterHelp).toEqual('Filter me');
@@ -168,10 +168,10 @@ describe('MinnaSelect component', () => {
         value: 'cn',
       },
     });
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     component.set({ value: 'kr' });
-    component.__setIndex();
-    expect(component.get().__selected).toEqual(3);
+    component._setIndex();
+    expect(component.get()._selected).toEqual(3);
   });
 
   it('shows on click', () => {
@@ -181,13 +181,12 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '__open');
+    const spy = jest.spyOn(component, '_open');
     const select = target.querySelector('.select');
-    expect(component.get().__isOpen).toEqual(false);
+    expect(component.get()._isOpen).toEqual(false);
     select.click();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(true);
     spy.mockRestore();
   });
 
@@ -201,13 +200,12 @@ describe('MinnaSelect component', () => {
         disabled: true,
       },
     });
-    const spy = jest.spyOn(component, '__open');
+    const spy = jest.spyOn(component, '_open');
     const select = target.querySelector('.select');
-    expect(component.get().__isOpen).toEqual(false);
+    expect(component.get()._isOpen).toEqual(false);
     select.click();
     expect(spy).not.toHaveBeenCalled(); // browsers shouldn't send MouseEvents for disabled inputs
-    expect(component.get().__isOpen).toEqual(false);
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(false);
     spy.mockRestore();
   });
 
@@ -218,18 +216,16 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(true);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -240,23 +236,21 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event1 = new KeyboardEvent('keydown', { key: ' ' }); // Spacebar
     select.dispatchEvent(event1);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
+    expect(component.get()._isOpen).toEqual(true);
     const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
     select.dispatchEvent(event2);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(1); // shouldn't open again
-    expect(component.get().__isOpen).toEqual(true);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(true);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -267,18 +261,16 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(true);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -289,18 +281,16 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(true);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -312,14 +302,13 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     select.focus();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(true);
+    expect(component.get()._isOpen).toEqual(true);
     expect(document.activeElement).toBe(select);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -331,16 +320,15 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '__close');
+    const spy = jest.spyOn(component, '_close');
     const select = target.querySelector('.select');
     select.focus();
-    expect(component.get().__isOpen).toEqual(true);
+    expect(component.get()._isOpen).toEqual(true);
     expect(document.activeElement).toBe(select);
     select.blur();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(false);
+    expect(component.get()._isOpen).toEqual(false);
     expect(document.activeElement).toBe(document.body);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -351,21 +339,19 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
+        _isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__close');
-    expect(component.get().__isOpen).toEqual(true);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_close');
+    expect(component.get()._isOpen).toEqual(true);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__isOpen).toEqual(false);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(false);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -376,18 +362,16 @@ describe('MinnaSelect component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__open');
-    expect(component.get().__isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_open');
+    expect(component.get()._isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'xxx' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).not.toHaveBeenCalled();
-    expect(component.get().__isOpen).toEqual(false);
-    spy1.mockReset();
+    expect(component.get()._isOpen).toEqual(false);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -398,27 +382,25 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
-        __selected: 0,
+        _isOpen: true,
+        _selected: 0,
       },
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__down');
-    expect(component.get().__isOpen).toEqual(true);
-    expect(component.get().__selected).toEqual(0);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_down');
+    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get()._selected).toEqual(0);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(2);
-    expect(component.get().__selected).toEqual(2);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy1.mockReset();
+    expect(component.get()._selected).toEqual(2);
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -429,133 +411,127 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
-        __selected: 2,
+        _isOpen: true,
+        _selected: 2,
       },
     });
-    const spy1 = jest.spyOn(component, '__onKeyDown');
-    const spy2 = jest.spyOn(component, '__up');
-    expect(component.get().__isOpen).toEqual(true);
-    expect(component.get().__selected).toEqual(2);
+    const spy1 = jest.spyOn(component, '_onKeyDown');
+    const spy2 = jest.spyOn(component, '_up');
+    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get()._selected).toEqual(2);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(2);
-    expect(component.get().__selected).toEqual(0);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy1.mockReset();
+    expect(component.get()._selected).toEqual(0);
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
-  it('skips over disabled options on down key press', () => {
+  it('skips over disabled items on down key press', () => {
     expect.assertions(6);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: {
         ...selectOpts,
-        options: optionsDisabled,
-        __isOpen: true,
-        __selected: 1,
+        items: itemsDisabled,
+        _isOpen: true,
+        _selected: 1,
       },
     });
-    const spy = jest.spyOn(component, '__down');
-    expect(component.get().__selected).toEqual(1);
+    const spy = jest.spyOn(component, '_down');
+    expect(component.get()._selected).toEqual(1);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(3);
+    expect(component.get()._selected).toEqual(3);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(7);
+    expect(component.get()._selected).toEqual(7);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(7);
+    expect(component.get()._selected).toEqual(7);
     expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
-  it('skips over disabled options on up key press', () => {
+  it('skips over disabled items on up key press', () => {
     expect.assertions(6);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: {
         ...selectOpts,
-        options: optionsDisabled,
-        __isOpen: true,
-        __selected: 7,
+        items: itemsDisabled,
+        _isOpen: true,
+        _selected: 7,
       },
     });
-    const spy = jest.spyOn(component, '__up');
-    expect(component.get().__selected).toEqual(7);
+    const spy = jest.spyOn(component, '_up');
+    expect(component.get()._selected).toEqual(7);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(3);
+    expect(component.get()._selected).toEqual(3);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
-  it('doesn\'t go past end of options on down key press', () => {
+  it('doesn\'t go past end of items on down key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
-        __selected: 3,
+        _isOpen: true,
+        _selected: 3,
       },
     });
-    const spy = jest.spyOn(component, '__down');
-    expect(component.get().__selected).toEqual(3);
+    const spy = jest.spyOn(component, '_down');
+    expect(component.get()._selected).toEqual(3);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(4);
+    expect(component.get()._selected).toEqual(4);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(4);
+    expect(component.get()._selected).toEqual(4);
     expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
-  it('doesn\'t go past end of options on up key press', () => {
+  it('doesn\'t go past end of items on up key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
-        __selected: 1,
+        _isOpen: true,
+        _selected: 1,
       },
     });
-    const spy = jest.spyOn(component, '__up');
-    expect(component.get().__selected).toEqual(1);
+    const spy = jest.spyOn(component, '_up');
+    expect(component.get()._selected).toEqual(1);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(0);
+    expect(component.get()._selected).toEqual(0);
     select.dispatchEvent(event);
-    expect(component.get().__selected).toEqual(0);
+    expect(component.get()._selected).toEqual(0);
     expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy.mockReset();
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
@@ -566,29 +542,26 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
+        _isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '__select');
-    const spy2 = jest.spyOn(component, '__emitInput');
-    expect(component.get().__isOpen).toEqual(true);
-    expect(component.get().__selected).toEqual(0);
+    const spy1 = jest.spyOn(component, '_select');
+    const spy2 = jest.spyOn(component, '_emitInput');
+    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get()._selected).toEqual(0);
     const option = target.querySelector('.option[value="jp"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
     Object.defineProperty(event, 'target', { value: option, enumerable: true });
-    const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of __select()
+    const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of _select()
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalled();
     expect(spy3).toHaveBeenCalled();
-    expect(component.get().__selected).toEqual(2);
-    expect(component.get().__isOpen).toEqual(false);
-    spy1.mockReset();
+    expect(component.get()._selected).toEqual(2);
+    expect(component.get()._isOpen).toEqual(false);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
@@ -599,18 +572,18 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        options: [
+        items: [
           { id: 'one', text: 'Opt 1' },
           { id: 'two', text: 'Opt 2', disabled: true },
           { id: 'three', text: 'Opt 3' },
         ],
-        __isOpen: true,
+        _isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '__select');
-    const spy2 = jest.spyOn(component, '__emitInput');
-    expect(component.get().__isOpen).toEqual(true);
-    expect(component.get().__selected).toEqual(0);
+    const spy1 = jest.spyOn(component, '_select');
+    const spy2 = jest.spyOn(component, '_emitInput');
+    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get()._selected).toEqual(0);
     const option = target.querySelector('.option[value="two"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
@@ -620,13 +593,10 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).not.toHaveBeenCalled();
     expect(spy3).toHaveBeenCalledTimes(1);
-    expect(component.get().__selected).toEqual(0);
-    expect(component.get().__isOpen).toEqual(true); // still open
-    spy1.mockReset();
+    expect(component.get()._selected).toEqual(0);
+    expect(component.get()._isOpen).toEqual(true); // still open
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
@@ -637,47 +607,60 @@ describe('MinnaSelect component', () => {
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
+        _isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '__select');
-    const spy2 = jest.spyOn(component, '__emitInput');
-    expect(component.get().__isOpen).toEqual(true);
-    expect(component.get().__selected).toEqual(0);
+    const spy1 = jest.spyOn(component, '_select');
+    const spy2 = jest.spyOn(component, '_emitInput');
+    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get()._selected).toEqual(0);
     const select = target.querySelector('.select');
     const event1 = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event1);
-    expect(component.get().__selected).toEqual(1);
+    expect(component.get()._selected).toEqual(1);
     const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
     const spy3 = jest.spyOn(event2, 'preventDefault');
     select.dispatchEvent(event2);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalled();
     expect(spy3).toHaveBeenCalledTimes(1);
-    expect(component.get().__selected).toEqual(1);
-    expect(component.get().__isOpen).toEqual(false);
-    spy1.mockReset();
+    expect(component.get()._selected).toEqual(1);
+    expect(component.get()._isOpen).toEqual(false);
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
-  it('typing in input filters the shown options', () => {
+  it('typing in input filters the shown items', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: {
         ...selectOpts,
-        __isOpen: true,
+        _isOpen: true,
       },
     });
-    expect(component.get().__filteredOptions).toHaveLength(5);
-    component.set({ __input: 'o' });
-    expect(component.get().__filteredOptions).toHaveLength(2);
-    expect(component.get().__filteredOptions).toMatchSnapshot();
+    expect(component.get()._filteredItems).toHaveLength(5);
+    component.set({ _inputText: 'o' });
+    expect(component.get()._filteredItems).toHaveLength(2);
+    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
+  });
+
+  it('shows feedback message when filter has no match', () => {
+    expect.assertions(3);
+    const target = document.createElement('div');
+    const component = new MinnaSelect({
+      target,
+      data: {
+        ...selectOpts,
+        _isOpen: true,
+      },
+    });
+    expect(component.get()._filteredItems).toHaveLength(5);
+    component.set({ _inputText: 'no match' });
+    expect(component.get()._filteredItems).toHaveLength(0);
+    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
   });
 
   it('input is reset on ESC key press', () => {
@@ -688,30 +671,29 @@ describe('MinnaSelect component', () => {
       data: {
         ...selectOpts,
         value: 'au',
-        __isOpen: true,
-        __input: 'filter text',
+        _isOpen: true,
+        _inputText: 'filter text',
       },
     });
-    const spy = jest.spyOn(component, '__setInput');
+    const spy = jest.spyOn(component, '_setInput');
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get().__input).toEqual('Australia');
-    spy.mockReset();
+    expect(component.get()._inputText).toEqual('Australia');
     spy.mockRestore();
   });
 
-  it('can dynamically add options', () => {
+  it('can dynamically add items', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new MinnaSelect({
       target,
       data: selectOpts,
     });
-    expect(component.get().options).toHaveLength(5);
-    component.set({ options: [...options, { id: 'new', text: 'New' }]});
-    expect(component.get().options).toHaveLength(6);
+    expect(component.get().items).toHaveLength(5);
+    component.set({ items: [...items, { id: 'new', text: 'New' }]});
+    expect(component.get().items).toHaveLength(6);
     const listbox = target.querySelector('.select-listbox');
     expect(listbox.innerHTML).toMatch('value="new" role="option">New</div>');
   });

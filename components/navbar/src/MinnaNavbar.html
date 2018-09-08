@@ -8,9 +8,9 @@
     The "menuItems" property should be an array of objects which look like this:
 
       <MinnaNavbar menuItems="{[
-        { url: '/page-one', name: 'Page One' },
-        { url: '/page-two', name: 'Page Two' },
-        { url: '/about', name: 'About Us' },
+        { url: '/page-one', text: 'Page One' },
+        { url: '/page-two', text: 'Page Two' },
+        { url: '/about', text: 'About Us' },
       ]}"/>
 
     The menu hamburger, menu close, and logo images are referenced using the
@@ -55,22 +55,22 @@
       </MinnaNavbar>
 
   NOTE:
-    In the code, object properties starting with __ are safe to mangle; the name
+    In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
 
 -->
 
-<header class="navbar {__hasScrolled || __isOpen ? 'navbar-active' : ''}">
+<header class="navbar {_hasScrolled || _isOpen ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
       class="navbar-button l-dn button-clear"
       aria-label="menu toggle"
-      aria-expanded="{__isOpen}"
-      on:click="__openMenu(__isOpen)"
+      aria-expanded="{_isOpen}"
+      on:click="_openMenu(_isOpen)"
     >
       <svg class="navbar-icon">
-        <use xlink:href="{__isOpen ? '#x' : '#menu'}"/>
+        <use xlink:href="{_isOpen ? '#x' : '#menu'}"/>
       </svg>
     </button>
 
@@ -82,16 +82,16 @@
       </slot>
     </a>
 
-    <div class="navbar-links {__isOpen ? 'df' : 'dn'}">
+    <div class="navbar-links {_isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
 
-      {#each menuItems as __item}
-        <MinnaNavbarItem __item="{__item}" segment="{segment}"/>
+      {#each menuItems as _item}
+        <MinnaNavbarItem _item="{_item}" current="{current}"/>
       {/each}
     </div>
   </nav>
@@ -101,29 +101,30 @@
   import MinnaNavbarItem from './MinnaNavbarItem.html';
 
   export default {
+    tag: 'minna-navbar',
     components: {
       MinnaNavbarItem,
     },
     data: () => ({
-      __isOpen: false,
-      __hasScrolled: false,
+      _isOpen: false,
+      _hasScrolled: false,
 
       /* required props */
       // menuItems: [],
-      // segment: '', // URL path; in sapper, you should pass in "props.path"
+      // current: '', // current URL path; in sapper, pass in "props.path"
     }),
     oncreate() {
       let wait = false;
       let lastHasScrolled = false;
 
       const update = () => {
-        const __hasScrolled = window.pageYOffset !== 0;
+        const _hasScrolled = window.pageYOffset !== 0;
 
         // don't set component state if nothing has changed
         /* istanbul ignore else */
-        if (__hasScrolled !== lastHasScrolled) {
-          lastHasScrolled = __hasScrolled;
-          this.set({ __hasScrolled });
+        if (_hasScrolled !== lastHasScrolled) {
+          lastHasScrolled = _hasScrolled;
+          this.set({ _hasScrolled });
         }
 
         wait = false;
@@ -140,12 +141,12 @@
       document.addEventListener('scroll', scrollHandler, false);
     },
     methods: {
-      __openMenu(openState) {
+      _openMenu(openState) {
         if (!openState) {
-          this.set({ __isOpen: true });
+          this.set({ _isOpen: true });
 
           const clickHandler = () => {
-            this.set({ __isOpen: false });
+            this.set({ _isOpen: false });
             document.removeEventListener('click', clickHandler);
           };
 

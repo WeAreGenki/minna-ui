@@ -98,11 +98,11 @@ describe('build-css tool', () => {
 
   it('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
-    const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
+    const spy = jest.spyOn(process.stderr, 'write');
+    spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', sourcePathBadSyntax));
     await expect(build).rejects.toThrowError();
     expect(spy).toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 });

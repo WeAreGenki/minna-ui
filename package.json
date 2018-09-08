@@ -21,8 +21,8 @@
     "lint:js": "eslint --ext js,html .",
     "test": "yarn lint && JEST_CIRCUS=1 jest --coverage",
     "test-ci": "JEST_CIRCUS=1 jest --runInBand --ci --coverage",
-    "coverage:browsers": "yarn browserslist",
-    "coverage:css": "yarn autoprefixer --info"
+    "report:browsers": "yarn browserslist",
+    "report:css": "yarn autoprefixer --info"
   },
   "devDependencies": {
     "@minna-ui/build-component": "file:utils/build-component",

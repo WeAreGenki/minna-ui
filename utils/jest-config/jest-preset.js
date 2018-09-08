@@ -41,7 +41,6 @@ module.exports = {
     '/public/',
     '/test/',
   ],
-  coverageReporters: ['json', 'text'],
   coverageDirectory: '<rootDir>/test/coverage',
   watchPathIgnorePatterns: [
     '/dist/',

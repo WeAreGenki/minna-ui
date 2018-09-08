@@ -40,7 +40,7 @@
     - The `disabled` attribute is not valid on <div> so we use a class.
 
   NOTE:
-    In the code, object properties starting with __ are safe to mangle; the name
+    In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
 
 -->
@@ -52,8 +52,8 @@
   role="switch"
   tabindex="{disabled === undefined ? 0 : -1}"
   aria-checked="{value}"
-  on:click="__toggle()"
-  on:keydown="__onKeyDown(event)"
+  on:click="_toggle()"
+  on:keydown="_onKeyDown(event)"
 >
   <div class="switch-slider"/>
   <div class="switch-on">{textOn}</div>
@@ -77,12 +77,12 @@
       // required: false, // FIXME: Add custom validation
     }),
     methods: {
-      __toggle() {
+      _toggle() {
         if (this.get().disabled === undefined) {
           this.set({ value: !this.get().value });
         }
       },
-      __onKeyDown(event) {
+      _onKeyDown(event) {
         // choose key with graceful fallback for old browsers
         switch (event.key || event.keyCode) {
           case 'Enter':
@@ -91,7 +91,7 @@
           case 'Spacebar':
           case 32:
             event.preventDefault(); // don't submit form (enter) or scroll page (space)
-            this.__toggle();
+            this._toggle();
             break;
           default:
           // no matching key

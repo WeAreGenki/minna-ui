@@ -18,12 +18,12 @@ describe('MinnaCollapse component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new MinnaCollapse({ target });
-    expect(component.get().__isOpen).toBeFalsy();
+    expect(component.get()._isOpen).toBeFalsy();
     const button = target.querySelector('button');
     button.click();
-    expect(component.get().__isOpen).toBeTruthy();
+    expect(component.get()._isOpen).toBeTruthy();
     button.click();
-    expect(component.get().__isOpen).toBeFalsy();
+    expect(component.get()._isOpen).toBeFalsy();
     expect(document.querySelector('collapse-hide')).toBeNull();
   });
 });

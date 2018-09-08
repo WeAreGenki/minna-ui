@@ -11,16 +11,16 @@
       </MinnaCollapse>
 
   NOTE:
-    In the code, object properties starting with __ are safe to mangle; the name
+    In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
 
 -->
 
-<button class="button button-collapse" on:click="set({ __isOpen: !__isOpen })">
-  {__isOpen ? textClose : textOpen}
+<button class="button button-collapse" on:click="set({ _isOpen: !_isOpen })">
+  {_isOpen ? textClose : textOpen}
 </button>
 
-<div class="collapse {__isOpen ? '' : 'collapse-hide'}">
+<div class="collapse {_isOpen ? '' : 'collapse-hide'}">
   <slot/>
 </div>
 
@@ -28,7 +28,7 @@
   export default {
     tag: 'minna-collapse',
     data: () => ({
-      __isOpen: false,
+      _isOpen: false,
 
       /* optional props */
       textOpen: 'Expand ▾',

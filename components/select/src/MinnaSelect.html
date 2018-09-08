@@ -12,7 +12,7 @@
   USAGE:
     HTML markup for typical use:
 
-      <MinnaSelect id="select-example" bind:value="example" opts="[
+      <MinnaSelect id="select-example" bind:value="example" items="[
         { id: 'ex1', text: 'Example 1' },
         { id: 'ex2', text: 'Example 2' },
         { id: 'ex3', text: 'Example 3', disabled: true },
@@ -21,7 +21,7 @@
     See more available options/properties in the component data() below.
 
   NOTE:
-    In the code, object properties starting with __ are safe to mangle; the name
+    In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
 
   REFERENCE:
@@ -34,40 +34,40 @@
 
 <!-- TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen -->
 
-<div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {__isOpen ? 'select-active' : ''}">
+<div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {_isOpen ? 'select-active' : ''}">
   <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
   <input
     id="{id}"
-    ref:__target
-    bind:value="__input"
+    ref:_target
+    bind:value="_inputText"
     class="select"
     tabindex="{disabled ? -1 : 0}"
-    placeholder="{filterable && __isOpen ? filterHelp : placeholder}"
-    readonly="{!filterable || readonly || !__isOpen}"
+    placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
+    readonly="{!filterable || readonly || !_isOpen}"
     disabled="{disabled}"
     aria-haspopup="listbox"
-    on:click="__open()"
-    on:focus="__open()"
-    on:blur="__close()"
-    on:keydown="__onKeyDown(event)"
+    on:click="_open()"
+    on:focus="_open()"
+    on:blur="_close()"
+    on:keydown="_onKeyDown(event)"
   >
   <div class="select-caret"/>
 
   <div
-    class="select-listbox {__isOpen ? '' : 'hide'}"
+    class="select-listbox {_isOpen ? '' : 'hide'}"
     role="listbox"
-    on:mousedown="__select(event)"
+    on:mousedown="_select(event)"
   >
-    {#each __filteredOptions as __option, __index}
+    {#each _filteredItems as _item, _index}
       <div
-        class="option {__option.disabled ? 'option-disabled' : ''} {__index === __selected ? 'option-active' : ''}"
-        value="{__option.id}"
+        class="option {_item.disabled ? 'option-disabled' : ''} {_index === _selected ? 'option-active' : ''}"
+        value="{_item.id}"
         role="option"
       >
-        {__option.text}
+        {_item.text}
       </div>
     {/each}
-    {#if !__filteredOptions.length}
+    {#if !_filteredItems.length}
       <div class="pa3 gray">
         No matches
       </div>
@@ -79,16 +79,16 @@
   export default {
     tag: 'minna-select',
     data: () => ({
-      __isOpen: false,
-      __input: '',
-      __selected: 0, // index of the currently selected item
+      _isOpen: false,
+      _inputText: '',
+      _selected: 0, // index of the currently selected item
 
       /* required bind prop */
-      value: '',
+      // value: '',
 
       /* required props */
       // id: '',
-      opts: [], // `options` is already defined on Svelte instances
+      // items: [], // `options` is already defined on Svelte instances
 
       /* optional props */
       filterable: true,
@@ -101,68 +101,68 @@
       // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
-      __filteredOptions({ __isOpen, __input, filterable, opts }) {
-        if (!__isOpen || !filterable || __input === '') return opts;
+      _filteredItems({ _isOpen, _inputText, filterable, items }) {
+        if (!_isOpen || !filterable || _inputText === '') return items;
 
-        return opts.filter(
-          option => option.text.toLowerCase().indexOf(__input.toLowerCase()) > -1
+        return items.filter(
+          option => option.text.toLowerCase().indexOf(_inputText.toLowerCase()) > -1
         );
       },
     },
     onstate({ changed, current }) {
-      if (changed.__filteredOptions) {
-        this.__setIndex();
+      if (changed._filteredItems) {
+        this._setIndex();
       }
 
       if (changed.value && current.value) {
-        this.__setInput();
+        this._setInput();
       }
     },
     methods: {
-      __setIndex() {
-        const { __filteredOptions, value } = this.get();
+      _setIndex() {
+        const { _filteredItems, value } = this.get();
 
         if (value) {
           // save the current item's index for highlighting in the options
           this.set({
-            __selected: __filteredOptions.findIndex(option => option.id === value),
+            _selected: _filteredItems.findIndex(option => option.id === value),
           });
         }
       },
 
-      __setInput() {
-        const { opts, value } = this.get();
+      _setInput() {
+        const { items, value } = this.get();
 
         this.set({
-          __input: value
-            ? opts.find(option => option.id === value).text
+          _inputText: value
+            ? items.find(option => option.id === value).text
             : '',
         });
       },
 
-      __open() {
-        this.__setIndex();
+      _open() {
+        this._setIndex();
 
         // FIXME: Don't call this.set() twice because svelte doesn't queue changes
         /* istanbul ignore else */
         if (this.get().filterable) {
-          this.set({ __input: '' });
+          this.set({ _inputText: '' });
         }
-        this.set({ __isOpen: true });
+        this.set({ _isOpen: true });
       },
 
-      __close() {
-        this.set({ __isOpen: false });
-        this.__setInput();
+      _close() {
+        this.set({ _isOpen: false });
+        this._setInput();
       },
 
-      __emitInput() {
+      _emitInput() {
         // fire a synthetic "input" event (useful to trigger validation)
-        this.refs.__target.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
-        this.__close();
+        this.refs._target.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
+        this._close();
       },
 
-      __select(event) {
+      _select(event) {
         if (event) {
           // option selected via mouse
           event.preventDefault(); // don't trigger <input> blur event
@@ -170,105 +170,105 @@
           if (!event.target.classList.contains('option-disabled')) {
             this.set({
               value: event.target.getAttribute('value'),
-              __input: event.target.textContent,
+              _inputText: event.target.textContent,
             });
-            this.__emitInput();
+            this._emitInput();
           }
         } else {
           // option selected via keyboard
-          const { __filteredOptions, __selected } = this.get();
-          const option = __filteredOptions[__selected];
+          const { _filteredItems, _selected } = this.get();
+          const option = _filteredItems[_selected];
 
           /* istanbul ignore else */
           if (!option.disabled) {
             this.set({
               value: option.id,
-              __input: option.text,
+              _inputText: option.text,
             });
-            this.__emitInput();
+            this._emitInput();
           }
         }
       },
 
-      __up() {
-        const { __selected, __filteredOptions } = this.get();
+      _up() {
+        const { _selected, _filteredItems } = this.get();
 
-        if (__selected <= 0) return;
+        if (_selected <= 0) return;
 
         let steps = 1;
 
         // skip over disabled items or if there's no items left
-        while (__filteredOptions[__selected - steps].disabled) {
+        while (_filteredItems[_selected - steps].disabled) {
           steps += 1;
-          if (__filteredOptions[__selected - steps] === undefined) return;
+          if (_filteredItems[_selected - steps] === undefined) return;
         }
 
-        this.set({ __selected: __selected - steps });
+        this.set({ _selected: _selected - steps });
       },
 
-      __down() {
-        const { __selected, __filteredOptions } = this.get();
+      _down() {
+        const { _selected, _filteredItems } = this.get();
 
         // jump to last availiable item if index is out of bounds (e,g, after filtering)
-        if (__selected >= __filteredOptions.length - 1) {
-          this.set({ __selected: __filteredOptions.length - 1 });
+        if (_selected >= _filteredItems.length - 1) {
+          this.set({ _selected: _filteredItems.length - 1 });
           return;
         }
 
         let steps = 1;
 
         // skip over disabled items or if there's no items left
-        while (__filteredOptions[__selected + steps].disabled) {
+        while (_filteredItems[_selected + steps].disabled) {
           steps += 1;
-          if (__filteredOptions[__selected + steps] === undefined) return;
+          if (_filteredItems[_selected + steps] === undefined) return;
         }
 
-        this.set({ __selected: __selected + steps });
+        this.set({ _selected: _selected + steps });
       },
 
-      __onKeyDown(event) {
-        const { __isOpen } = this.get();
+      _onKeyDown(event) {
+        const { _isOpen } = this.get();
 
         // choose key with graceful fallback for old browsers
         switch (event.key || event.keyCode) {
           case ' ':
           case 'Spacebar':
           case 32:
-            if (!__isOpen) {
-              this.__open();
+            if (!_isOpen) {
+              this._open();
             }
             break;
           case 'Enter':
           case 13:
             event.preventDefault(); // don't submit form
-            if (__isOpen) {
-              this.__select();
+            if (_isOpen) {
+              this._select();
             } else {
-              this.__open();
+              this._open();
             }
             break;
           case 'Escape':
           case 27:
-            this.__close();
+            this._close();
             break;
           case 'ArrowUp':
           case 'Up':
           case 38:
             event.preventDefault(); // don't scroll page or move cursor
-            if (__isOpen) {
-              this.__up();
+            if (_isOpen) {
+              this._up();
             } else {
-              this.__open();
+              this._open();
             }
             break;
           case 'ArrowDown':
           case 'Down':
           case 40:
             event.preventDefault(); // don't scroll page or move cursor
-            if (__isOpen) {
-              this.__down();
+            if (_isOpen) {
+              this._down();
             } else {
-              this.__open();
+              this._open();
             }
             break;
           default:

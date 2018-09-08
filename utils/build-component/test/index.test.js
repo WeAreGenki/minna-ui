@@ -42,7 +42,7 @@ describe('build-component tool', () => {
     expect(built.esm.result.code).toMatch('export default TestComponent');
     expect(built.esm.result.code).not.toMatch('TestComponent=function');
     expect(built.esm.result.code).toMatch('name: \'Elon Musk\'');
-    expect(built.esm.result.code).toMatch('component.refs.__target ===');
+    expect(built.esm.result.code).toMatch('component.refs._target ===');
     expect(built.esm.result.map.sources).toHaveLength(2);
   });
 

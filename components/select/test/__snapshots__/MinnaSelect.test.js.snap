@@ -56,7 +56,7 @@ exports[`MinnaSelect component renders with value set 1`] = `
     </div></div>"
 `;
 
-exports[`MinnaSelect component typing in input filters the shown options 1`] = `
+exports[`MinnaSelect component typing in input filters the shown items 1`] = `
 Array [
   Object {
     "id": "kr",

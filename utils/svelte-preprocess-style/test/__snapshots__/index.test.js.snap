@@ -82,28 +82,28 @@ exports[`Svelte style preprocessor processes a component 1`] = `
   A simple Svelte component for use in tests.
 
   NOTE:
-    In the code, object properties starting with __ are safe to mangle; the name
+    In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
 
 -->
 
 <div class=\\"wrapper\\">
-  <div class=\\"text\\" ref:__target>
-    test {__name}
+  <div class=\\"text\\" ref:_target>
+    test {_name}
   </div>
 
-  <div class=\\"text\\" ref:__nameReversed>
-    test <span>{__reversed}</span>
+  <div class=\\"text\\" ref:_nameReversed>
+    test <span>{_reversed}</span>
   </div>
 </div>
 
 <script>
   export default {
     data: () => ({
-      __name: 'Elon Musk',
+      _name: 'Elon Musk',
     }),
     computed: {
-      __reversed: ({ __name }) => __name.split('').reverse().join(''),
+      _reversed: ({ _name }) => _name.split('').reverse().join(''),
     },
   };
 </script>

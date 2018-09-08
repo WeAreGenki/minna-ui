@@ -50,7 +50,7 @@ module.exports = {
     'no-console': /* istanbul ignore next */ isProd ? 'error' : 'off',
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'off',
     'no-return-assign': ['error', 'except-parens'],
-    'no-underscore-dangle': 'off', // we use __ to indicate properties to mangle
+    'no-underscore-dangle': 'off', // we use _ to indicate properties to mangle
     'object-curly-newline': ['error', { consistent: true }],
     'object-curly-spacing': ['error', 'always', {
       arraysInObjects: false,

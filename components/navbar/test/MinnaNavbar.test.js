@@ -9,16 +9,16 @@
 const MinnaNavbar = require('../src/MinnaNavbar.html');
 
 const menuItems = [
-  { url: 'page-one', name: 'Page One' },
-  { url: 'page-two', name: 'Page Two' },
+  { url: 'page-one', text: 'Page One' },
+  { url: 'page-two', text: 'Page Two' },
   {
-    name: 'More ▾',
+    text: 'More ▾',
     children: [
-      { url: 'more/child-one', name: 'Child One - More' },
-      { url: 'more/child-two', name: 'Child Two - More' },
+      { url: 'more/child-one', text: 'Child One - More' },
+      { url: 'more/child-two', text: 'Child Two - More' },
     ],
   },
-  { url: 'about', name: 'About Us' },
+  { url: 'about', text: 'About Us' },
 ];
 
 describe('MinnaNavbar component', () => {
@@ -64,7 +64,7 @@ describe('MinnaNavbar component', () => {
     const event = new UIEvent('scroll');
     document.dispatchEvent(event);
     expect(spy).toHaveBeenCalled();
-    expect(component.get().__hasScrolled).toEqual(true);
+    expect(component.get()._hasScrolled).toEqual(true);
     expect(target.querySelector('.navbar-active')).not.toBeNull();
     spy.mockReset();
     spy.mockRestore();
@@ -80,10 +80,10 @@ describe('MinnaNavbar component', () => {
         segment: undefined,
       },
     });
-    const spy = jest.spyOn(component, '__openMenu');
+    const spy = jest.spyOn(component, '_openMenu');
     const button = target.querySelector('.navbar-button');
     button.click();
-    expect(component.get().__isOpen).toBeTruthy();
+    expect(component.get()._isOpen).toBeTruthy();
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     spy.mockRestore();
@@ -100,12 +100,12 @@ describe('MinnaNavbar component', () => {
         segment: undefined,
       },
     });
-    component.__openMenu();
+    component._openMenu();
     jest.runAllTimers(); // for component setTimeout
-    expect(component.get().__isOpen).toBeTruthy();
+    expect(component.get()._isOpen).toBeTruthy();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.get().__isOpen).toBeFalsy();
+    expect(component.get()._isOpen).toBeFalsy();
   });
 
   it('attaches event listener on menu open but not close', () => {
@@ -120,13 +120,13 @@ describe('MinnaNavbar component', () => {
       },
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    component.__openMenu();
+    component._openMenu();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.get().__isOpen).toBeFalsy();
+    expect(component.get()._isOpen).toBeFalsy();
     expect(spy).not.toHaveBeenCalled();
     spy.mockReset();
     spy.mockRestore();
@@ -149,7 +149,7 @@ describe('MinnaNavbar component', () => {
     jest.runAllTimers();
     button.click();
     jest.runAllTimers();
-    expect(component.get().__isOpen).toBeTruthy();
+    expect(component.get()._isOpen).toBeTruthy();
     button.click();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(1);

@@ -16,8 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- All precompiled component packages are now optimised using Closure Compiler for smaller compressed file size and slightly faster runtime performance.
+- BREAKING CHANGE: Rename some component props:
+  - `segment` to `current` in `@minna-ui/navbar`
+  - `menuItems` signature changed; `name` is now `text` in `@minna-ui/navbar`
+  - `options` to `items` in `@minna-ui/select` (conflicted with Svelte internals)
+  - `__*` to `_*` in all private internal names
+- Minor improvements to some components.
 - Updated package dependencies.
+
+### Removed
+
+- Preset value for `coverageReporters` in `@minna-ui/jest-config`. Now uses Jest defaults again.
 
 ## [0.12.1] - 2018-09-01
 

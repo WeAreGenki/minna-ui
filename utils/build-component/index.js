@@ -2,8 +2,6 @@
  * Tool to compile minna-ui web components.
  */
 
-// TODO: Generate a "custom element" web component
-
 'use strict';
 
 const fs = require('fs');
@@ -12,7 +10,7 @@ const del = require('del');
 const { rollup } = require('rollup');
 const compiler = require('@ampproject/rollup-plugin-closure-compiler');
 const commonjs = require('rollup-plugin-commonjs');
-const nodeResolve = require('rollup-plugin-node-resolve');
+const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 const preprocessMarkup = require('@minna-ui/svelte-preprocess-markup');
 const preprocessStyle = require('@minna-ui/svelte-preprocess-style');
@@ -24,11 +22,8 @@ const compilerOpts = {
   ],
   language_out: 'ECMASCRIPT5',
   compilation_level: 'ADVANCED',
-  use_types_for_optimization: true,
   warning_level: 'VERBOSE',
-
-  // FIXME: Shouldn't need this
-  jscomp_off: 'duplicate',
+  jscomp_off: 'duplicate', // FIXME: Deprecated `method` var
 
   // uncomment for debugging
   // formatting: 'PRETTY_PRINT',
@@ -37,6 +32,10 @@ const compilerOpts = {
 
 const isClean = new Map();
 
+/**
+ * Run component build process.
+ * @param {NodeJS.ProcessEnv} env
+ */
 module.exports = async function run(env) {
   process.env.NODE_ENV = env.NODE_ENV || 'production';
   const pkgName = env.npm_package_name;
@@ -52,13 +51,12 @@ module.exports = async function run(env) {
  * ${pkgName} v${pkgVersion} (${pkgHomepage})
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Licensed under Apache 2.0 (https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
- */
-`;
+ */`;
 
   /** @type {Function} */
   let resolveCss;
-  const resultCss = new Promise((resolve) => {
-    resolveCss = resolve;
+  const resultCss = new Promise((res) => {
+    resolveCss = res;
   });
 
   const distDir = dirname(pkgMain);
@@ -82,8 +80,6 @@ module.exports = async function run(env) {
   const bundleMain = await rollup({
     input: pkgSvelte,
     plugins: [
-      nodeResolve(),
-      commonjs(),
       svelte({
         preprocess: {
           markup: preprocessMarkup(),
@@ -94,15 +90,32 @@ module.exports = async function run(env) {
           css.write(pkgStyle);
         },
       }),
-      compiler(compilerOpts),
+      resolve(),
+      commonjs(),
+      compiler({ ...compilerOpts }),
     ],
   });
+
+  // const bundleElement = await rollup({
+  //   input: pkgSvelte,
+  //   plugins: [
+  //     svelte({
+  //       preprocess: {
+  //         markup: preprocessMarkup(),
+  //         style: preprocessStyle(),
+  //       },
+  //       css: false,
+  //       customElement: true,
+  //     }),
+  //     resolve(),
+  //     commonjs(),
+  //     compiler({ ...compilerOpts, language_out: 'ECMASCRIPT_2015' }),
+  //   ],
+  // });
 
   const bundleEsm = await rollup({
     input: pkgSvelte,
     plugins: [
-      nodeResolve(),
-      commonjs(),
       svelte({
         preprocess: {
           markup: preprocessMarkup(),
@@ -110,6 +123,8 @@ module.exports = async function run(env) {
         },
         css: false,
       }),
+      resolve(),
+      commonjs(),
     ],
   });
 
@@ -120,6 +135,14 @@ module.exports = async function run(env) {
     format: 'iife',
     sourcemap: true,
   });
+
+  // const resultElement = bundleElement.write({
+  //   name,
+  //   banner,
+  //   file: pkgMain.replace(/\.js/, '.element.js'),
+  //   format: 'iife',
+  //   sourcemap: true,
+  // });
 
   const resultEsm = bundleEsm.write({
     name,
@@ -135,6 +158,10 @@ module.exports = async function run(env) {
       bundle: await bundleMain,
       result: await resultMain,
     },
+    // element: {
+    //   bundle: await bundleElement,
+    //   result: await resultElement,
+    // },
     esm: {
       bundle: await bundleEsm,
       result: await resultEsm,

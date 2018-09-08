@@ -38,7 +38,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     expect(Array.isArray(component.get().menuItems)).toEqual(true);
@@ -51,13 +51,14 @@ describe('MinnaNavbar component', () => {
 
   it('adds class if page is scrolled', () => {
     expect.assertions(3);
-    const spy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => cb());
+    const spy = jest.spyOn(window, 'requestAnimationFrame');
+    spy.mockImplementation(cb => cb());
     const target = document.createElement('div');
     const component = new MinnaNavbar({
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     window.pageYOffset = 50;
@@ -66,7 +67,6 @@ describe('MinnaNavbar component', () => {
     expect(spy).toHaveBeenCalled();
     expect(component.get()._hasScrolled).toEqual(true);
     expect(target.querySelector('.navbar-active')).not.toBeNull();
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -77,7 +77,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     const spy = jest.spyOn(component, '_openMenu');
@@ -85,7 +85,6 @@ describe('MinnaNavbar component', () => {
     button.click();
     expect(component.get()._isOpen).toBeTruthy();
     expect(spy).toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -97,7 +96,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     component._openMenu();
@@ -116,7 +115,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     const spy = jest.spyOn(document, 'addEventListener');
@@ -128,7 +127,6 @@ describe('MinnaNavbar component', () => {
     document.dispatchEvent(event);
     expect(component.get()._isOpen).toBeFalsy();
     expect(spy).not.toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -140,7 +138,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     const spy = jest.spyOn(document, 'addEventListener');
@@ -153,7 +151,6 @@ describe('MinnaNavbar component', () => {
     button.click();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(1);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -164,7 +161,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     const icon = target.querySelector('.navbar-button > svg > use');
@@ -183,7 +180,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: 'page-two',
+        current: 'page-two',
       },
     });
     expect(target
@@ -203,8 +200,8 @@ describe('MinnaNavbar component', () => {
       data: {
         menuItems,
         // FIXME: Bring this up to date with how things work in Sapper 0.15.x
-        // segment: 'page-two/child-two',
-        segment: 'page-two',
+        // current: 'page-two/child-two',
+        current: 'page-two',
       },
     });
     // console.log('@@ 22 target', target.innerHTML);
@@ -224,7 +221,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     component.set({
@@ -242,7 +239,7 @@ describe('MinnaNavbar component', () => {
       target,
       data: {
         menuItems,
-        segment: undefined,
+        current: undefined,
       },
     });
     // component.set({

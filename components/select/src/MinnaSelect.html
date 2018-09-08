@@ -66,12 +66,11 @@
       >
         {_item.text}
       </div>
-    {/each}
-    {#if !_filteredItems.length}
+    {:else}
       <div class="pa3 gray">
         No matches
       </div>
-    {/if}
+    {/each}
   </div>
 </div>
 

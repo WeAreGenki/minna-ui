@@ -85,13 +85,13 @@
     <div class="navbar-links {_isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
 
       {#each menuItems as _item}
-        <MinnaNavbarItem _item="{_item}" segment="{segment}"/>
+        <MinnaNavbarItem _item="{_item}" current="{current}"/>
       {/each}
     </div>
   </nav>
@@ -111,7 +111,7 @@
 
       /* required props */
       // menuItems: [],
-      // segment: '', // current URL path; in sapper, pass in "props.path"
+      // current: '', // current URL path; in sapper, pass in "props.path"
     }),
     oncreate() {
       let wait = false;

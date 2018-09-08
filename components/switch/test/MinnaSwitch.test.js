@@ -118,7 +118,6 @@ describe('MinnaSwitch component', () => {
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(false);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -136,7 +135,6 @@ describe('MinnaSwitch component', () => {
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(true);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -214,7 +212,6 @@ describe('MinnaSwitch component', () => {
     component._onKeyDown(event4);
     expect(component.get().value).toEqual(true);
     expect(spy).not.toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 });

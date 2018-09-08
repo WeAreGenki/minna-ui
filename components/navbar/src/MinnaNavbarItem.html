@@ -6,7 +6,7 @@
 
     <div class="navbar-submenu">
       {#each _item.children as _subitem}
-        <svelte:self _item="{_subitem}" segment="{segment}"/>
+        <svelte:self _item="{_subitem}" current="{current}"/>
       {/each}
     </div>
   </span>
@@ -14,7 +14,7 @@
   <!-- menu item -->
   <a
     href="{_item.url}"
-    class="navbar-link {segment === _item.url ? 'navbar-link-active' : ''}"
+    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''}"
   >
     {_item.text}
   </a>

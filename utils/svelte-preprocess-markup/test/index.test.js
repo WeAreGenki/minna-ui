@@ -67,7 +67,6 @@ describe('Svelte markup preprocessor', () => {
     }
     expect(wrapper).not.toThrow();
     expect(spy).not.toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -151,10 +150,10 @@ describe('Svelte markup preprocessor', () => {
 
   it('prints error on bad HTML syntax', async () => {
     expect.assertions(1);
-    const spy = jest.spyOn(process.stderr, 'write').mockImplementation(() => {});
+    const spy = jest.spyOn(process.stderr, 'write');
+    spy.mockImplementation(() => {});
     await preprocess(sourceBadSyntax, opts);
     expect(spy).toHaveBeenCalled();
-    spy.mockReset();
     spy.mockRestore();
   });
 });

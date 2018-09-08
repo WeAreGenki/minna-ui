@@ -187,7 +187,6 @@ describe('MinnaSelect component', () => {
     select.click();
     expect(spy).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(true);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -207,7 +206,6 @@ describe('MinnaSelect component', () => {
     select.click();
     expect(spy).not.toHaveBeenCalled(); // browsers shouldn't send MouseEvents for disabled inputs
     expect(component.get()._isOpen).toEqual(false);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -227,9 +225,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(true);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -254,9 +250,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(1); // shouldn't open again
     expect(component.get()._isOpen).toEqual(true);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -276,9 +270,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(true);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -298,9 +290,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(true);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -319,7 +309,6 @@ describe('MinnaSelect component', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(true);
     expect(document.activeElement).toBe(select);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -340,7 +329,6 @@ describe('MinnaSelect component', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(false);
     expect(document.activeElement).toBe(document.body);
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -363,9 +351,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
     expect(component.get()._isOpen).toEqual(false);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -385,9 +371,7 @@ describe('MinnaSelect component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).not.toHaveBeenCalled();
     expect(component.get()._isOpen).toEqual(false);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -416,9 +400,7 @@ describe('MinnaSelect component', () => {
     expect(spy2).toHaveBeenCalledTimes(2);
     expect(component.get()._selected).toEqual(2);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -447,9 +429,7 @@ describe('MinnaSelect component', () => {
     expect(spy2).toHaveBeenCalledTimes(2);
     expect(component.get()._selected).toEqual(0);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
   });
 
@@ -477,7 +457,6 @@ describe('MinnaSelect component', () => {
     expect(component.get()._selected).toEqual(7);
     expect(spy).toHaveBeenCalledTimes(3);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -505,7 +484,6 @@ describe('MinnaSelect component', () => {
     expect(component.get()._selected).toEqual(1);
     expect(spy).toHaveBeenCalledTimes(3);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -530,7 +508,6 @@ describe('MinnaSelect component', () => {
     expect(component.get()._selected).toEqual(4);
     expect(spy).toHaveBeenCalledTimes(2);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -555,7 +532,6 @@ describe('MinnaSelect component', () => {
     expect(component.get()._selected).toEqual(0);
     expect(spy).toHaveBeenCalledTimes(2);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy.mockReset();
     spy.mockRestore();
   });
 
@@ -584,11 +560,8 @@ describe('MinnaSelect component', () => {
     expect(spy3).toHaveBeenCalled();
     expect(component.get()._selected).toEqual(2);
     expect(component.get()._isOpen).toEqual(false);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
@@ -622,11 +595,8 @@ describe('MinnaSelect component', () => {
     expect(spy3).toHaveBeenCalledTimes(1);
     expect(component.get()._selected).toEqual(0);
     expect(component.get()._isOpen).toEqual(true); // still open
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
@@ -656,11 +626,8 @@ describe('MinnaSelect component', () => {
     expect(spy3).toHaveBeenCalledTimes(1);
     expect(component.get()._selected).toEqual(1);
     expect(component.get()._isOpen).toEqual(false);
-    spy1.mockReset();
     spy1.mockRestore();
-    spy2.mockReset();
     spy2.mockRestore();
-    spy3.mockReset();
     spy3.mockRestore();
   });
 
@@ -677,7 +644,23 @@ describe('MinnaSelect component', () => {
     expect(component.get()._filteredItems).toHaveLength(5);
     component.set({ _inputText: 'o' });
     expect(component.get()._filteredItems).toHaveLength(2);
-    expect(component.get()._filteredItems).toMatchSnapshot();
+    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
+  });
+
+  it('shows feedback message when filter has no match', () => {
+    expect.assertions(3);
+    const target = document.createElement('div');
+    const component = new MinnaSelect({
+      target,
+      data: {
+        ...selectOpts,
+        _isOpen: true,
+      },
+    });
+    expect(component.get()._filteredItems).toHaveLength(5);
+    component.set({ _inputText: 'no match' });
+    expect(component.get()._filteredItems).toHaveLength(0);
+    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
   });
 
   it('input is reset on ESC key press', () => {
@@ -698,7 +681,6 @@ describe('MinnaSelect component', () => {
     select.dispatchEvent(event);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(component.get()._inputText).toEqual('Australia');
-    spy.mockReset();
     spy.mockRestore();
   });
 

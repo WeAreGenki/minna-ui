@@ -48,8 +48,9 @@ module.exports = postcss.plugin('postcss-config', ({
       path: importPaths,
       ...(!debug ? {} : {
         load: (filename) => {
+          /* eslint-disable-next-line no-console */
           console.log('[postcss-import]', filename);
-          // eslint-disable-next-line global-require
+          /* eslint-disable-next-line global-require */
           return require('postcss-import/lib/load-content.js')(filename);
         },
       }),

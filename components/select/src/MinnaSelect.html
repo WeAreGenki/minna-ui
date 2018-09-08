@@ -12,7 +12,7 @@
   USAGE:
     HTML markup for typical use:
 
-      <MinnaSelect id="select-example" bind:value="example" options="[
+      <MinnaSelect id="select-example" bind:value="example" opts="[
         { id: 'ex1', text: 'Example 1' },
         { id: 'ex2', text: 'Example 2' },
         { id: 'ex3', text: 'Example 3', disabled: true },
@@ -77,17 +77,18 @@
 
 <script>
   export default {
+    tag: 'minna-select',
     data: () => ({
       __isOpen: false,
       __input: '',
       __selected: 0, // index of the currently selected item
 
       /* required bind prop */
-      // value: '',
+      value: '',
 
       /* required props */
       // id: '',
-      // options: [],
+      opts: [], // `options` is already defined on Svelte instances
 
       /* optional props */
       filterable: true,
@@ -100,10 +101,10 @@
       // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
-      __filteredOptions({ __isOpen, __input, filterable, options }) {
-        if (!__isOpen || !filterable || __input === '') return options;
+      __filteredOptions({ __isOpen, __input, filterable, opts }) {
+        if (!__isOpen || !filterable || __input === '') return opts;
 
-        return options.filter(
+        return opts.filter(
           option => option.text.toLowerCase().indexOf(__input.toLowerCase()) > -1
         );
       },
@@ -130,11 +131,11 @@
       },
 
       __setInput() {
-        const { options, value } = this.get();
+        const { opts, value } = this.get();
 
         this.set({
           __input: value
-            ? options.find(option => option.id === value).text
+            ? opts.find(option => option.id === value).text
             : '',
         });
       },
@@ -282,7 +283,12 @@
   @import "./_variables.css";
   @import "import.css";
 
-  :global(.hide) {
+  /* preserved */
+  /* @import "https://cdn.jsdelivr.net/npm/@minna-ui/css/dist/index.css"; */
+  /* @import "node_modules/@minna-ui/css/dist/index.css"; */
+
+  /* :global(.hide) { */
+  .hide {
     pointer-events: none;
     opacity: 0;
   }

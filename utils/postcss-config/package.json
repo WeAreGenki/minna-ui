@@ -33,7 +33,7 @@
     "postcss-import": "^12.0.0",
     "postcss-load-config": "^2.0.0",
     "postcss-mixins": "^6.2.0",
-    "postcss-nested": "^4.0.0",
+    "postcss-nested": "^4.1.0",
     "postcss-use": "^3.0.0"
   },
   "publishConfig": {

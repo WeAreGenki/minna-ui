@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Tweak `@minna-ui/navbar` size CSS variables.
+- Tweak `@minna-ui/navbar` size CSS variables and set logo line height to 0.
 
 ## [0.13.0] - 2018-09-08
 

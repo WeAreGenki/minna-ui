@@ -74,7 +74,7 @@
       </svg>
     </button>
 
-    <a href="/" class="lh1" title="Home">
+    <a href="/" class="navbar-logo-link" title="Home">
       <slot>
         <svg class="navbar-logo">
           <use xlink:href="#logo"/>
@@ -207,6 +207,10 @@
     height: var(--navbar-icon-size);
     padding: var(--navbar-icon-padding);
     color: var(--navbar-icon-color);
+  }
+
+  .navbar-logo-link {
+    line-height: 0;
   }
 
   .navbar-logo {

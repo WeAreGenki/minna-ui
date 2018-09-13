@@ -4,7 +4,7 @@
   <span class="navbar-nested">
     <span class="dn l-dib">{_item.text}</span>
 
-    <div class="navbar-submenu">
+    <div class="navbar-submenu {_item.class || ''}">
       {#each _item.children as _subitem}
         <svelte:self _item="{_subitem}" current="{current}"/>
       {/each}
@@ -14,7 +14,7 @@
   <!-- menu item -->
   <a
     href="{_item.url}"
-    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''}"
+    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''} {_item.class || ''}"
   >
     {_item.text}
   </a>
@@ -58,9 +58,15 @@
       transform-origin: 0 0;
       will-change: opacity, transform;
 
+      /* open submenu from the right */
+      :global(.navbar-left)& {
+        right: 0;
+        transform-origin: right 0;
+      }
+
       .navbar-nested:hover &,
       .navbar-nested:focus & {
-        pointer-events: initial;
+        pointer-events: unset;
         opacity: 1;
         transform: scale(1);
       }

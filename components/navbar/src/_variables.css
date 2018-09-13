@@ -9,13 +9,13 @@
   --navbar-icon-size: 2em;
   --navbar-icon-padding: 0.4em;
   --navbar-icon-color: var(--link-color);
-  --navbar-logo-size-x: 4.2em;
-  --navbar-logo-size-y: 1.6em;
+  --navbar-logo-size-x: 6em;
+  --navbar-logo-size-y: 1.4em;
   --navbar-link-color: var(--link-color);
   --navbar-border-color: var(--divider-black);
   --navbar-links-padding: var(--nav-link-padding-y) 0;
   --navbar-link-padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
-  --navbar-body-offset: 3em; /* offset body so contents are not covered */
+  --navbar-body-offset: 2.9em; /* offset body so contents are not covered */
   --navbar-hash-link-fix: true; /* see TODO: Add link to docs */
   --navbar-hash-link-offset: calc(var(--navbar-body-offset) + 1em); /* offset in-page links; navbar + shadow */
 }

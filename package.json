@@ -34,7 +34,7 @@
     "codecov": "3.1.0",
     "eslint": "5.5.0",
     "jest": "23.5.0",
-    "lerna": "3.3.0",
+    "lerna": "3.4.0",
     "postcss": "7.0.2",
     "stylelint": "9.5.0",
     "svelte": "2.13.4"

@@ -23,7 +23,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@^7.0.0-rc.1", "@babel/core@^7.0.1":
+"@babel/core@^7.0.0-rc.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.0.1.tgz#406658caed0e9686fa4feb5c2f3cefb6161c0f41"
   dependencies:
@@ -33,6 +33,25 @@
     "@babel/parser" "^7.0.0"
     "@babel/template" "^7.0.0"
     "@babel/traverse" "^7.0.0"
+    "@babel/types" "^7.0.0"
+    convert-source-map "^1.1.0"
+    debug "^3.1.0"
+    json5 "^0.5.0"
+    lodash "^4.17.10"
+    resolve "^1.3.2"
+    semver "^5.4.1"
+    source-map "^0.5.0"
+
+"@babel/core@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.1.0.tgz#08958f1371179f62df6966d8a614003d11faeb04"
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/generator" "^7.0.0"
+    "@babel/helpers" "^7.1.0"
+    "@babel/parser" "^7.1.0"
+    "@babel/template" "^7.1.0"
+    "@babel/traverse" "^7.1.0"
     "@babel/types" "^7.0.0"
     convert-source-map "^1.1.0"
     debug "^3.1.0"
@@ -78,6 +97,14 @@
     "@babel/template" "^7.0.0"
     "@babel/types" "^7.0.0"
 
+"@babel/helper-function-name@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-function-name/-/helper-function-name-7.1.0.tgz#a0ceb01685f73355d4360c1247f582bfafc8ff53"
+  dependencies:
+    "@babel/helper-get-function-arity" "^7.0.0"
+    "@babel/template" "^7.1.0"
+    "@babel/types" "^7.0.0"
+
 "@babel/helper-get-function-arity@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "http://registry.npmjs.org/@babel/helper-get-function-arity/-/helper-get-function-arity-7.0.0-beta.44.tgz#d03ca6dd2b9f7b0b1e6b32c56c72836140db3a15"
@@ -96,14 +123,14 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
-"@babel/helper-module-transforms@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.0.0.tgz#b01ee7d543e81e8c3fc404b19c9f26acb6e4cf4c"
+"@babel/helper-module-transforms@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.1.0.tgz#470d4f9676d9fad50b324cdcce5fbabbc3da5787"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
-    "@babel/helper-simple-access" "^7.0.0"
+    "@babel/helper-simple-access" "^7.1.0"
     "@babel/helper-split-export-declaration" "^7.0.0"
-    "@babel/template" "^7.0.0"
+    "@babel/template" "^7.1.0"
     "@babel/types" "^7.0.0"
     lodash "^4.17.10"
 
@@ -111,11 +138,11 @@
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0.tgz#bbb3fbee98661c569034237cc03967ba99b4f250"
 
-"@babel/helper-simple-access@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/helper-simple-access/-/helper-simple-access-7.0.0.tgz#ff36a27983ae4c27122da2f7f294dced80ecbd08"
+"@babel/helper-simple-access@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-simple-access/-/helper-simple-access-7.1.0.tgz#65eeb954c8c245beaa4e859da6188f39d71e585c"
   dependencies:
-    "@babel/template" "^7.0.0"
+    "@babel/template" "^7.1.0"
     "@babel/types" "^7.0.0"
 
 "@babel/helper-split-export-declaration@7.0.0-beta.44":
@@ -138,6 +165,14 @@
     "@babel/traverse" "^7.0.0"
     "@babel/types" "^7.0.0"
 
+"@babel/helpers@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.1.0.tgz#429bf0f0020be56a4242883432084e3d70a8a141"
+  dependencies:
+    "@babel/template" "^7.1.0"
+    "@babel/traverse" "^7.1.0"
+    "@babel/types" "^7.0.0"
+
 "@babel/highlight@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "http://registry.npmjs.org/@babel/highlight/-/highlight-7.0.0-beta.44.tgz#18c94ce543916a80553edcdcf681890b200747d5"
@@ -158,13 +193,17 @@
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.0.0.tgz#697655183394facffb063437ddf52c0277698775"
 
-"@babel/plugin-transform-modules-commonjs@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.0.0.tgz#20b906e5ab130dd8e456b694a94d9575da0fd41f"
+"@babel/parser@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.1.0.tgz#a7cd42cb3c12aec52e24375189a47b39759b783e"
+
+"@babel/plugin-transform-modules-commonjs@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.1.0.tgz#0a9d86451cbbfb29bd15186306897c67f6f9a05c"
   dependencies:
-    "@babel/helper-module-transforms" "^7.0.0"
+    "@babel/helper-module-transforms" "^7.1.0"
     "@babel/helper-plugin-utils" "^7.0.0"
-    "@babel/helper-simple-access" "^7.0.0"
+    "@babel/helper-simple-access" "^7.1.0"
 
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
@@ -181,6 +220,14 @@
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.0.0"
+    "@babel/types" "^7.0.0"
+
+"@babel/template@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.1.0.tgz#58cc9572e1bfe24fe1537fdf99d839d53e517e22"
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
 
 "@babel/traverse@7.0.0-beta.44":
@@ -207,6 +254,20 @@
     "@babel/helper-function-name" "^7.0.0"
     "@babel/helper-split-export-declaration" "^7.0.0"
     "@babel/parser" "^7.0.0"
+    "@babel/types" "^7.0.0"
+    debug "^3.1.0"
+    globals "^11.1.0"
+    lodash "^4.17.10"
+
+"@babel/traverse@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.1.0.tgz#503ec6669387efd182c3888c4eec07bcc45d91b2"
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/generator" "^7.0.0"
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-split-export-declaration" "^7.0.0"
+    "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
     debug "^3.1.0"
     globals "^11.1.0"
@@ -744,45 +805,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@minna-ui/build-component@file:utils/build-component":
-  version "0.13.0"
-  dependencies:
-    "@ampproject/rollup-plugin-closure-compiler" "0.6.2"
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
-    del "3.0.0"
-    rollup "0.66.0"
-    rollup-plugin-commonjs "9.1.6"
-    rollup-plugin-node-resolve "3.4.0"
-    rollup-plugin-svelte "4.3.0"
-
-"@minna-ui/build-css@file:utils/build-css":
-  version "0.13.0"
-  dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
-    clean-css "4.2.1"
-    del "3.0.0"
-    postcss-load-config "2.0.0"
-
-"@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.13.0"
-  dependencies:
-    eslint-config-airbnb-base "^13.1.0"
-    eslint-plugin-html "^4.0.5"
-    eslint-plugin-import "^2.14.0"
-    eslint-plugin-jest "^21.22.0"
-
-"@minna-ui/jest-config@file:utils/jest-config":
-  version "0.13.0"
-  dependencies:
-    "@babel/core" "^7.0.1"
-    "@babel/plugin-transform-modules-commonjs" "^7.0.0"
-    "@types/jest" "^23.3.1"
-    "@types/node" "^10.9.4"
-    babel-core "^7.0.0-bridge.0"
-    babel-jest "^23.6.0"
-    jest-circus "^23.6.0"
-
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.13.0"
   dependencies:
@@ -803,12 +825,6 @@
     postcss-mixins "^6.2.0"
     postcss-nested "^4.1.0"
     postcss-use "^3.0.0"
-
-"@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.13.0"
-  dependencies:
-    stylelint-config-standard "^18.2.0"
-    stylelint-order "^1.0.0"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
   version "0.13.0"
@@ -840,9 +856,13 @@
   version "23.3.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.2.tgz#07b90f6adf75d42c34230c026a2529e56c249dbb"
 
-"@types/node@*", "@types/node@^10.9.4":
+"@types/node@*":
   version "10.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.4.tgz#0f4cb2dc7c1de6096055357f70179043c33e9897"
+
+"@types/node@^10.10.1":
+  version "10.10.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.10.1.tgz#d5c96ca246a418404914d180b7fdd625ad18eca6"
 
 JSONStream@^1.0.4, JSONStream@^1.3.4:
   version "1.3.4"
@@ -5389,6 +5409,14 @@ postcss-color-mod-function@^2.4.3:
     postcss "^6.0.23"
     postcss-values-parser "^1.5.0"
 
+postcss-color-mod-function@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-color-mod-function/-/postcss-color-mod-function-3.0.0.tgz#e0993ddd68488fa2b060135caad4fee399bf7f7f"
+  dependencies:
+    "@csstools/convert-colors" "^1.4.0"
+    postcss "^7.0.2"
+    postcss-values-parser "^1.5.0"
+
 postcss-colormin@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/postcss-colormin/-/postcss-colormin-4.0.1.tgz#6f1c18a0155bc69613f2ff13843e2e4ae8ff0bbe"
@@ -5426,6 +5454,13 @@ postcss-custom-properties@^7.0.0:
   dependencies:
     balanced-match "^1.0.0"
     postcss "^6.0.18"
+
+postcss-custom-properties@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-8.0.1.tgz#b9ddf742b822cdac2beeb6e10841378fb0469cb8"
+  dependencies:
+    postcss "^7.0.2"
+    postcss-values-parser "^1.5.0"
 
 postcss-discard-comments@^4.0.0:
   version "4.0.0"

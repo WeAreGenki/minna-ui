@@ -20,7 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - `--screen-medium` rename to `--medium`
   - `--screen-large` rename to `--large`
 - Tweak `@minna-ui/navbar` size CSS variables and set logo line height to 0.
-- Replace `rotate()` with `scale()` to flip `.diagonal` section which should result in slightly better CSS performance a saves a few bytes.
+- Replace `rotate(180deg)` with `scale(-1)` to flip elements in CSS. This should result in slightly better CSS performance a saves a few bytes.
+
+### Removed
+
+- BREAKING CHANGE: Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
 
 ## [0.13.0] - 2018-09-08
 

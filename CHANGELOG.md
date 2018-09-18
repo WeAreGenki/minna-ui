@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- New optional menu item property `rel` in `@minna-ui/navbar`. This is mostly intended for use with Sapper apps for `rel=prefetch`.
+
 ### Changed
 
 - BREAKING CHANGE: Remove screen condition and rename custom media CSS variables:

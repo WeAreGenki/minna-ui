@@ -39,6 +39,11 @@
 .ttu { text-transform: uppercase; }
 .ttn { text-transform: none; }
 
+/* Text wrapping */
+
+.wsn { white-space: nowrap; }
+.wsu { white-space: unset; }
+
 /* Font variants and decoration */
 
 .bold { font-weight: var(--text-weight-heavy); }

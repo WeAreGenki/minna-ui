@@ -751,7 +751,7 @@
     "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
     "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
     del "3.0.0"
-    rollup "0.66.0"
+    rollup "0.66.1"
     rollup-plugin-commonjs "9.1.8"
     rollup-plugin-node-resolve "3.4.0"
     rollup-plugin-svelte "4.3.0"
@@ -6359,9 +6359,9 @@ rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.0:
     estree-walker "^0.5.2"
     micromatch "^3.1.10"
 
-rollup@0.66.0:
-  version "0.66.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.0.tgz#697acc008f4b613695b17222c7626affddf4a506"
+rollup@0.66.1:
+  version "0.66.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.66.1.tgz#4374a478a98ff075ee0e5bcafb9ab78ca968a301"
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"

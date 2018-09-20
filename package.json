@@ -37,6 +37,6 @@
     "lerna": "3.4.0",
     "postcss": "7.0.2",
     "stylelint": "9.5.0",
-    "svelte": "2.13.4"
+    "svelte": "2.13.5"
   }
 }

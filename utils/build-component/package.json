@@ -9,7 +9,7 @@
     "svelte": "*"
   },
   "dependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "0.6.2",
+    "@ampproject/rollup-plugin-closure-compiler": "0.7.2",
     "@minna-ui/svelte-preprocess-markup": "file:../svelte-preprocess-markup",
     "@minna-ui/svelte-preprocess-style": "file:../svelte-preprocess-style",
     "del": "3.0.0",

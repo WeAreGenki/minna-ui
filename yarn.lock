@@ -742,27 +742,27 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.6.2"
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.65.2"
     rollup-plugin-commonjs "9.1.6"
     rollup-plugin-node-resolve "3.4.0"
-    rollup-plugin-svelte "4.3.0"
+    rollup-plugin-svelte "4.3.1"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
     eslint-plugin-html "^4.0.5"
@@ -770,7 +770,7 @@
     eslint-plugin-jest "^21.22.0"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-transform-modules-commonjs" "^7.0.0"
@@ -781,7 +781,7 @@
     jest-circus "^23.5.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     autoprefixer "^9.1.5"
     css-mqpacker "^7.0.0"
@@ -801,18 +801,18 @@
     postcss-use "^3.0.0"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     stylelint-config-standard "^18.2.0"
     stylelint-order "^1.0.0"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     html-minifier "3.5.20"
 
 "@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
-  version "0.12.0"
+  version "0.13.0"
   dependencies:
     postcss-load-config "^2.0.0"
     postcss-selector-parser "^5.0.0-rc.3"
@@ -6340,9 +6340,9 @@ rollup-plugin-node-resolve@3.4.0:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
-rollup-plugin-svelte@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-4.3.0.tgz#09b968931a4106ab5bf7cf5c7153cf332a2c5eda"
+rollup-plugin-svelte@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-4.3.1.tgz#9343c7f2be22aa1511ff9ad997b4b9d0bbd43ad6"
   dependencies:
     require-relative "^0.8.7"
     rollup-pluginutils "^2.3.0"

@@ -16,6 +16,6 @@
     "rollup": "0.65.2",
     "rollup-plugin-commonjs": "9.1.6",
     "rollup-plugin-node-resolve": "3.4.0",
-    "rollup-plugin-svelte": "4.3.0"
+    "rollup-plugin-svelte": "4.3.1"
   }
 }

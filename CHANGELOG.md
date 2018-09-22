@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.14.0] - 2018-09-20
+## [0.14.0] - 2018-09-22
 
 ### Added
 
@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - BREAKING CHANGE: Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
+- Custom setting for `customEventAttributes` in `@minna-ui/svelte-preprocess-markup` because it was invalid.
 
 ## [0.13.0] - 2018-09-08
 

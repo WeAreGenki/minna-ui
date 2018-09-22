@@ -30,21 +30,6 @@ module.exports = (options = {}) => ({ content }) => {
       ],
       keepClosingSlash: true,
 
-      // event attributes which contain "javascript: ..." will be minified
-      customEventAttributes: [
-        // regular html
-        /^on[a-z]{3,}$/su,
-
-        // svelte
-        /^bind:\S+$/su,
-        /^in:\S+$/su,
-        /^on:\S+$/su,
-        /^out:\S+$/su,
-        /^ref:\S+$/su,
-        /^transition:\S+$/su,
-        /^use:\S+$/su,
-      ],
-
       // potentially dangerous
       collapseBooleanAttributes: unsafe,
       collapseInlineTagWhitespace: unsafe,

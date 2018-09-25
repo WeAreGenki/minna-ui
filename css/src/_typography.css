@@ -15,7 +15,7 @@ body {
     font-weight: var(--text-weight);
   }
 
-  @media (--screen-large) {
+  @media (--large) {
     font-size: var(--text-size-large);
   }
 }

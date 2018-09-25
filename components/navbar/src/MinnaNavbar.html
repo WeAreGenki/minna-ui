@@ -74,7 +74,7 @@
       </svg>
     </button>
 
-    <a href="/" class="lh1" title="Home">
+    <a href="/" class="navbar-logo-link" title="Home">
       <slot>
         <svg class="navbar-logo">
           <use xlink:href="#logo"/>
@@ -209,6 +209,10 @@
     color: var(--navbar-icon-color);
   }
 
+  .navbar-logo-link {
+    line-height: 0;
+  }
+
   .navbar-logo {
     width: var(--navbar-logo-size-x);
     height: var(--navbar-logo-size-y);
@@ -225,7 +229,7 @@
       border-top: 1px solid var(--navbar-border-color);
     }
 
-    @media (--screen-large) {
+    @media (--large) {
       display: flex;
       flex-basis: auto;
       flex-direction: row;

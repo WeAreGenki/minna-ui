@@ -36,7 +36,8 @@
 
 <div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {_isOpen ? 'select-active' : ''}">
   <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
-  <input
+  <!-- FIXME: Add disabled attribute back once SSR works correctly -->
+  <!-- <input
     id="{id}"
     ref:_target
     bind:value="_inputText"
@@ -45,6 +46,20 @@
     placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
     readonly="{!filterable || readonly || !_isOpen}"
     disabled="{disabled}"
+    aria-haspopup="listbox"
+    on:click="_open()"
+    on:focus="_open()"
+    on:blur="_close()"
+    on:keydown="_onKeyDown(event)"
+  > -->
+  <input
+    id="{id}"
+    ref:_target
+    bind:value="_inputText"
+    class="select"
+    tabindex="{disabled ? -1 : 0}"
+    placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
+    readonly="{!filterable || readonly || !_isOpen}"
     aria-haspopup="listbox"
     on:click="_open()"
     on:focus="_open()"
@@ -96,7 +111,7 @@
 
       /* optional native props */
       readonly: false,
-      disabled: false,
+      // disabled: false, // FIXME: Add back once SSR works correctly
       // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
@@ -282,10 +297,6 @@
   @import "./_variables.css";
   @import "import.css";
 
-  /* preserved */
-  /* @import "https://cdn.jsdelivr.net/npm/@minna-ui/css/dist/index.css"; */
-  /* @import "node_modules/@minna-ui/css/dist/index.css"; */
-
   /* :global(.hide) { */
   .hide {
     pointer-events: none;
@@ -314,7 +325,7 @@
       var(--select-caret-color);
 
     .select-active > & {
-      transform: rotate(180deg);
+      transform: scaleY(-1);
     }
 
     .select-disabled > & {

@@ -59,4 +59,8 @@ describe('MinnaNavbarItem component', () => {
     //   .getAttribute('navbar-active')).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
+
+  it.skip('adds rel attribute when present', () => {});
+
+  it.skip('does not add rel attribute when not present', () => {});
 });

@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.14.0] - 2018-09-22
+
+### Added
+
+- New optional menu item property `rel` in `@minna-ui/navbar`. This is mostly intended for use with Sapper apps for `rel=prefetch`.
+- 2 CSS classes to adjust white-space wrap.
+
+### Changed
+
+- BREAKING CHANGE: In `@minna-ui/css`, remove screen condition and rename custom media variables:
+  - `--screen-not-small` rename to `--not-small`
+  - `--screen-medium` rename to `--medium`
+  - `--screen-large` rename to `--large`
+- Tweak `@minna-ui/navbar` size CSS variables and set logo line height to 0.
+- Replace `rotate(180deg)` with `scale(-1)` to flip elements in CSS. This should result in slightly better CSS performance a saves a few bytes.
+- Updated package dependencies.
+
+### Removed
+
+- BREAKING CHANGE: Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
+- Custom setting for `customEventAttributes` in `@minna-ui/svelte-preprocess-markup` because it was invalid.
+
 ## [0.13.0] - 2018-09-08
 
 ### Added
@@ -398,7 +420,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.13.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.14.0...HEAD
+[0.14.0]: https://github.com/MaxMilton/new-tab/compare/v0.13.0...v0.14.0
 [0.13.0]: https://github.com/MaxMilton/new-tab/compare/v0.12.1...v0.13.0
 [0.12.1]: https://github.com/MaxMilton/new-tab/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/MaxMilton/new-tab/compare/v0.11.1...v0.12.0

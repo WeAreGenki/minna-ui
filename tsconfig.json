@@ -1,5 +1,4 @@
-// config for rich intelliSense in VSCode
-
+// config for rich intelliSense in VS Code
 {
   "compilerOptions": {
     "target": "esnext",
@@ -10,12 +9,15 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": true,
+    "pretty": true,
 
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
 
     "baseUrl": "."
   },

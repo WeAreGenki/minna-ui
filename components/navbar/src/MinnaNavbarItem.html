@@ -1,23 +1,23 @@
-{#if _item.children !== undefined}
-  <!-- submenu -->
-  <!-- <span class="navbar-link navbar-nested"> -->
-  <span class="navbar-nested">
-    <span class="dn l-dib">{_item.text}</span>
-
-    <div class="navbar-submenu">
-      {#each _item.children as _subitem}
-        <svelte:self _item="{_subitem}" current="{current}"/>
-      {/each}
-    </div>
-  </span>
-{:else}
+{#if _item.children === undefined}
   <!-- menu item -->
   <a
     href="{_item.url}"
-    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''}"
+    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''} {_item.class || ''}"
+    rel="{_item.rel}"
   >
     {_item.text}
   </a>
+{:else}
+  <!-- submenu -->
+  <span class="navbar-nested">
+    <span class="dn l-dib">{_item.text}</span>
+
+    <div class="navbar-submenu {_item.class || ''}">
+      {#each _item.children as _subitem}
+      <svelte:self _item="{_subitem}" current="{current}" />
+      {/each}
+    </div>
+  </span>
 {/if}
 
 <script>
@@ -33,7 +33,7 @@
   .navbar-nested {
     position: relative;
 
-    @media (--screen-large) {
+    @media (--large) {
       padding: var(--navbar-link-padding);
       margin: 0;
       color: var(--navbar-link-color);
@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
 
-    @media (--screen-large) {
+    @media (--large) {
       position: absolute;
       top: 100%;
       z-index: var(--navbar-zindex);
@@ -58,9 +58,15 @@
       transform-origin: 0 0;
       will-change: opacity, transform;
 
+      /* open submenu from the right */
+      :global(.navbar-left)& {
+        right: 0;
+        transform-origin: right 0;
+      }
+
       .navbar-nested:hover &,
       .navbar-nested:focus & {
-        pointer-events: initial;
+        pointer-events: unset;
         opacity: 1;
         transform: scale(1);
       }

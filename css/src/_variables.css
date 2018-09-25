@@ -8,14 +8,14 @@
 */
 
 /* Media queries */
-@custom-media --screen-not-small screen and (min-width: 30.01em);
-@custom-media --screen-medium screen and (min-width: 30.01em) and (max-width: 60em);
-@custom-media --screen-large screen and (min-width: 60.01em);
+@custom-media --not-small (width >= 30.01em);
+@custom-media --medium (30.01em <= width <= 60em);
+@custom-media --large (width >= 60.01em);
 
 :root {
   /* Breakpoints */
 
-  --breakpoints-media: --screen-not-small, --screen-medium, --screen-large;
+  --breakpoints-media: --not-small, --medium, --large;
   --breakpoints: ns, m, l;
 
   /* General */
@@ -76,7 +76,8 @@
   --text-weight: 400;
   --text-weight-heavy: 700;
   --line-height: 1.5;
-  /* font size according to modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
+  /* font size modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
+  /*
   --headline-text-size: 5.063em;
   --h1-text-size: 3.375em;
   --h2-text-size: 2.813em;
@@ -84,6 +85,15 @@
   --h4-text-size: 1.875em;
   --h5-text-size: 1.5em;
   --h6-text-size: 1.25em;
+  */
+  /* font size modular scale = base 1em, ratio = 1.2 */
+  --headline-text-size: 4.3em;
+  --h1-text-size: 2.986em;
+  --h2-text-size: 2.488em;
+  --h3-text-size: 2.074em;
+  --h4-text-size: 1.728em;
+  --h5-text-size: 1.44em;
+  --h6-text-size: 1.2em;
   --heading-text-weight: var(--text-weight);
   --paragraph-line-height: 1.7;
   --paragraph-lead-text-size: 1.5em;

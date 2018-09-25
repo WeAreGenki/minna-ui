@@ -17,7 +17,7 @@
     grid-auto-columns: var(--auto-cols);
   }
 
-  @media (--screen-large) {
+  @media (--large) {
     grid-gap: var(--gutter-row-large) var(--gutter-col-large);
   }
 }

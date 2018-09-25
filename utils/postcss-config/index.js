@@ -4,6 +4,7 @@ const path = require('path');
 const postcss = require('postcss');
 const atImport = require('postcss-import');
 const atVariables = require('postcss-at-rules-variables');
+const atMinMax = require('postcss-media-minmax');
 const atUse = require('postcss-use');
 const each = require('postcss-each');
 const mixins = require('postcss-mixins');
@@ -59,6 +60,7 @@ module.exports = postcss.plugin('postcss-config', ({
     .use(atVariables({
       variables,
     }))
+    .use(atMinMax)
     .use(atUse({
       modules: '*',
       resolveFromFile: true,

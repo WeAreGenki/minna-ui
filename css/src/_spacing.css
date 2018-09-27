@@ -45,7 +45,7 @@
 
 */
 
-/* stylelint-disable declaration-block-single-line-max-declarations, declaration-no-important */
+/* stylelint-disable declaration-block-single-line-max-declarations */
 
 @each $step, $val in (var(--spacing-steps)), (var(--spacing-values)) {
   .ma$(step) { margin: $val; }
@@ -94,10 +94,12 @@
 .mb-auto { margin-bottom: auto; }
 .ml-auto { margin-left: auto; }
 
+/* stylelint-disable declaration-no-important */
 .mt-auto-i { margin-top: auto !important; }
 .mr-auto-i { margin-right: auto !important; }
 .mb-auto-i { margin-bottom: auto !important; }
 .ml-auto-i { margin-left: auto !important; }
+/* stylelint-enable declaration-no-important */
 
 /* Link click area offsets */
 
@@ -142,10 +144,12 @@
     .$(ext)-mb-auto { margin-bottom: auto; }
     .$(ext)-ml-auto { margin-left: auto; }
 
+    /* stylelint-disable declaration-no-important */
     .$(ext)-mt-auto-i { margin-top: auto !important; }
     .$(ext)-mr-auto-i { margin-right: auto !important; }
     .$(ext)-mb-auto-i { margin-bottom: auto !important; }
     .$(ext)-ml-auto-i { margin-left: auto !important; }
+    /* stylelint-enable declaration-no-important */
 
     .$(ext)-mt-offset { margin-top: calc(-1 * var(--link-click-area)); }
     .$(ext)-mr-offset { margin-right: calc(-1 * var(--link-click-area)); }

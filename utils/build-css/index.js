@@ -107,7 +107,9 @@ module.exports = async function run(env) {
       min,
     };
   } catch (error) {
-    process.stderr.write(`[PostCSS] ERR: ${error.message}:\n${error.showSourceCode()}`);
-    throw new Error(error);
+    if (error.showSourceCode) {
+      process.stderr.write(`[PostCSS] ERROR: ${error.message}:\n${error.showSourceCode()}`);
+    }
+    throw error;
   }
 };

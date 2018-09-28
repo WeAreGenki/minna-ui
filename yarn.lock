@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@ampproject/rollup-plugin-closure-compiler@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@ampproject/rollup-plugin-closure-compiler/-/rollup-plugin-closure-compiler-0.7.2.tgz#897bd27d4536a9d57b65ca1b111df6b18c696fe4"
+"@ampproject/rollup-plugin-closure-compiler@0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@ampproject/rollup-plugin-closure-compiler/-/rollup-plugin-closure-compiler-0.7.3.tgz#34e4f0e363100bec30d68b7ac30851f5a3d32c78"
   dependencies:
     acorn "5.7.3"
-    google-closure-compiler "20180910.0.0"
+    google-closure-compiler "20180910.1.0"
     magic-string "0.25.1"
     temp-write "3.4.0"
 
@@ -747,7 +747,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.13.0"
   dependencies:
-    "@ampproject/rollup-plugin-closure-compiler" "0.7.2"
+    "@ampproject/rollup-plugin-closure-compiler" "0.7.3"
     "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
     "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
@@ -3077,9 +3077,9 @@ google-closure-compiler-osx@^20180910.0.1:
   version "20180910.0.1"
   resolved "https://registry.yarnpkg.com/google-closure-compiler-osx/-/google-closure-compiler-osx-20180910.0.1.tgz#83e88bf892038655efd281fad61e3f6377a60afb"
 
-google-closure-compiler@20180910.0.0:
-  version "20180910.0.0"
-  resolved "https://registry.yarnpkg.com/google-closure-compiler/-/google-closure-compiler-20180910.0.0.tgz#74f7fdb16931cce2ba6af17a447d264f46e10c47"
+google-closure-compiler@20180910.1.0:
+  version "20180910.1.0"
+  resolved "https://registry.yarnpkg.com/google-closure-compiler/-/google-closure-compiler-20180910.1.0.tgz#e143178bf4fa73d4041338b02ecbba1effd855ec"
   dependencies:
     chalk "^1.0.0"
     minimist "^1.2.0"

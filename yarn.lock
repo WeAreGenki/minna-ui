@@ -824,8 +824,8 @@
   version "0.13.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.7.2"
-    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.66.2"
     rollup-plugin-commonjs "9.1.8"
@@ -835,7 +835,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.13.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
@@ -924,11 +924,6 @@
   version "10.11.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.0.tgz#ddd0d67a3b6c3810dd1a59e36675fa82de5e19ae"
   integrity sha512-R4Dvw6KjSYn/SpvjRchBOwXr14vVVcFXCtnM3f0aLvlJS8a599rrcEoihcP2/+Z/f75E5GNPd4aWM7j1yei9og==
-
-"@types/node@^10.11.2":
-  version "10.11.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.2.tgz#59508b88ce90fe2742f7b8414c6f5db3e359570d"
-  integrity sha512-XubfQDIg88PGJ7netQPf3QOKHF7Xht4WXGtg5W7cGBeQs9ETbYKwfchR9o+tRRA9iLTQ7nAre85M205JbYsjJA==
 
 "@wearegenki/renovate-config@1.0.0":
   version "1.0.0"

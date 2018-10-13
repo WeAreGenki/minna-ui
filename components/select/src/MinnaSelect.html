@@ -34,7 +34,7 @@
 
 <!-- TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen -->
 
-<div class="pos-r dif f-col {disabled ? 'select-disabled' : ''} {_isOpen ? 'select-active' : ''}">
+<div class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{_isOpen ? ' select-active' : ''}">
   <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
   <!-- FIXME: Add disabled attribute back once SSR works correctly -->
   <!-- <input
@@ -69,13 +69,13 @@
   <div class="select-caret"/>
 
   <div
-    class="select-listbox {_isOpen ? '' : 'hide'}"
+    class="select-listbox{_isOpen ? '' : ' hide'}"
     role="listbox"
     on:mousedown="_select(event)"
   >
     {#each _filteredItems as _item, _index}
       <div
-        class="option {_item.disabled ? 'option-disabled' : ''} {_index === _selected ? 'option-active' : ''}"
+        class="option{_item.disabled ? ' option-disabled' : ''}{_index === _selected ? ' option-active' : ''}"
         value="{_item.id}"
         role="option"
       >
@@ -91,7 +91,6 @@
 
 <script>
   export default {
-    tag: 'minna-select',
     data: () => ({
       _isOpen: false,
       _inputText: '',

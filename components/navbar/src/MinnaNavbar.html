@@ -60,7 +60,7 @@
 
 -->
 
-<header class="navbar {_hasScrolled || _isOpen ? 'navbar-active' : ''}">
+<header class="navbar{_hasScrolled || _isOpen ? ' navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
@@ -82,10 +82,11 @@
       </slot>
     </a>
 
-    <div class="navbar-links {_isOpen ? 'df' : 'dn'}">
+    <!-- htmlmin:ignore -->
+    <div class="navbar-links {_isOpen ? 'df' : 'dn'}"><!-- htmlmin:ignore -->
       <a
         href="/"
-        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn{current === undefined ? ' navbar-link-active' : ''}"
       >
         Home
       </a>
@@ -101,7 +102,6 @@
   import MinnaNavbarItem from './MinnaNavbarItem.html';
 
   export default {
-    tag: 'minna-navbar',
     components: {
       MinnaNavbarItem,
     },

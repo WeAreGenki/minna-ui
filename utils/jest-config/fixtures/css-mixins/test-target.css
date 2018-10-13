@@ -1,5 +1,5 @@
 /* Clearfix */
-@define-mixin test-target {
+@mixin test-target {
   &::after {
     display: block;
     clear: both;

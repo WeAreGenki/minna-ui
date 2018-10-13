@@ -42,9 +42,9 @@ function resolve(id, cwd, opts) {
         return;
       }
 
-      fs.readFile(file, (err, contents) => {
-        if (err) {
-          rej(err);
+      fs.readFile(file, (error, contents) => {
+        if (error) {
+          rej(error);
           return;
         }
 

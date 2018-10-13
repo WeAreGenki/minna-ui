@@ -22,13 +22,13 @@
 .tj { text-align: justify; }
 .tu { text-align: unset; }
 
-@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
-  @media ($media) {
-    .$(ext)-tl { text-align: left; }
-    .$(ext)-tr { text-align: right; }
-    .$(ext)-tc { text-align: center; }
-    .$(ext)-tj { text-align: justify; }
-    .$(ext)-tu { text-align: unset; }
+@each $bp in $breakpoints {
+  @include at-media($bp) {
+    .$(bp)-tl { text-align: left; }
+    .$(bp)-tr { text-align: right; }
+    .$(bp)-tc { text-align: center; }
+    .$(bp)-tj { text-align: justify; }
+    .$(bp)-tu { text-align: unset; }
   }
 }
 
@@ -46,12 +46,12 @@
 
 /* Font variants and decoration */
 
-.bold { font-weight: var(--text-weight-heavy); }
+.bold { font-weight: $text-weight-heavy; }
 .italic { font-style: italic; }
 
 .normal {
   font-style: normal;
-  font-weight: var(--text-weight);
+  font-weight: $text-weight;
 }
 
 .underline { text-decoration: underline; }
@@ -63,8 +63,8 @@
 .bb0 { border-bottom: 0; }
 .bl0 { border-left: 0; }
 
-.rounded { border-radius: var(--radius); }
-.rounded-large { border-radius: var(--radius-large); }
+.rounded { border-radius: $radius; }
+.rounded-large { border-radius: $radius-large; }
 .not-rounded { border-radius: 0; }
 
 /* stylelint-disable declaration-no-important */

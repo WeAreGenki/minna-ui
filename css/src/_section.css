@@ -33,34 +33,34 @@
 /* Hero section */
 
 .hero {
-  padding: var(--hero-padding);
-  margin: var(--hero-margin);
-  color: var(--hero-text-color);
-  background: var(--hero-background);
+  padding: $hero-padding;
+  margin: $hero-margin;
+  color: $hero-text-color;
+  background: $hero-background;
 }
 
 .hero-dark {
-  background: var(--hero-dark-background);
+  background: $hero-dark-background;
 }
 
 /* Diagonal section */
 
 .diagonal {
-  background-color: var(--diagonal-background-color);
+  background-color: $diagonal-background-color;
 
   &::before,
   &::after {
     display: block;
     width: 100%;
-    height: var(--diagonal-hight);
+    height: $diagonal-hight;
     content: "";
-    background-image: var(--diagonal-image);
+    background-image: $diagonal-image;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
-    @media (--large) {
-      @if var(--diagonal-hight-l) != var(--diagonal-hight) {
-        height: var(--diagonal-hight-l);
+    @media $(l) {
+      @if $diagonal-hight-l != $diagonal-hight {
+        height: $diagonal-hight-l;
       }
     }
   }
@@ -71,16 +71,16 @@
 }
 
 .diagonal-dark {
-  color: var(--diagonal-dark-text-color);
-  background-color: var(--diagonal-dark-background-color);
+  color: $diagonal-dark-text-color;
+  background-color: $diagonal-dark-background-color;
 
   label,
   strong {
-    color: var(--diagonal-dark-text-color);
+    color: $diagonal-dark-text-color;
   }
 
   a {
-    color: var(--diagonal-dark-link-color);
+    color: $diagonal-dark-link-color;
   }
 
   .form-help {
@@ -88,7 +88,7 @@
   }
 
   .invalid-feedback {
-    color: var(--diagonal-dark-input-invalid-color);
+    color: $diagonal-dark-input-invalid-color;
   }
 }
 

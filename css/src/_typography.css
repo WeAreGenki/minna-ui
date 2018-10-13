@@ -5,18 +5,18 @@
 /* Text base */
 
 body {
-  font-family: var(--font-stack);
-  font-size: var(--text-size);
-  color: var(--text-color);
-  background-color: var(--app-background-color);
+  font-family: $font-stack;
+  font-size: $text-size;
+  color: $text-color;
+  background-color: $app-background-color;
 
   /* only if different from browser default */
-  @if var(--text-weight) != 400 {
-    font-weight: var(--text-weight);
+  @if $text-weight != 400 {
+    font-weight: $text-weight;
   }
 
-  @media (--large) {
-    font-size: var(--text-size-large);
+  @media $(l) {
+    font-size: $text-size-large;
   }
 }
 
@@ -32,41 +32,41 @@ h6 {
   word-break: break-word;
   word-wrap: break-word;
 
-  @if var(--heading-text-weight) != 800 AND var(--heading-text-weight) != bold {
-    font-weight: var(--heading-text-weight);
+  @if $heading-text-weight != 800 AND $heading-text-weight != bold {
+    font-weight: $heading-text-weight;
   }
 
-  @if var(--heading-color) != var(--text-color) {
-    color: var(--heading-color);
+  @if $heading-color != $text-color {
+    color: $heading-color;
   }
 }
 
-h1 { font-size: var(--h1-text-size); }
-h2 { font-size: var(--h2-text-size); }
-h3 { font-size: var(--h3-text-size); }
-h4 { font-size: var(--h4-text-size); }
-h5 { font-size: var(--h5-text-size); }
-h6 { font-size: var(--h6-text-size); }
+h1 { font-size: $h1-text-size; }
+h2 { font-size: $h2-text-size; }
+h3 { font-size: $h3-text-size; }
+h4 { font-size: $h4-text-size; }
+h5 { font-size: $h5-text-size; }
+h6 { font-size: $h6-text-size; }
 
-.headline { font-size: var(--headline-text-size); }
+.headline { font-size: $headline-text-size; }
 
 /* Paragraphs */
 
 p {
-  line-height: var(--paragraph-line-height);
+  line-height: $paragraph-line-height;
 }
 
 .lead {
-  font-size: var(--paragraph-lead-text-size);
-  font-weight: var(--paragraph-lead-text-weight);
+  font-size: $paragraph-lead-text-size;
+  font-weight: $paragraph-lead-text-weight;
 }
 
 /* Links */
 
 a {
-  padding: var(--link-click-area); /* larger link click area size */
-  margin: calc(-1 * var(--link-click-area));
-  color: var(--link-color);
+  padding: $link-click-area; /* larger link click area size */
+  margin: calc(-1 * $link-click-area);
+  color: $link-color;
   text-decoration: none;
   word-wrap: break-word;
 
@@ -79,7 +79,7 @@ a {
 
 /* more space between list items */
 li {
-  margin-bottom: var(--li-margin-between);
+  margin-bottom: $li-margin-between;
 }
 
 /* list style none */
@@ -100,7 +100,7 @@ li {
   }
 
   tbody > tr:nth-child(odd) {
-    background: var(--background-color-muted);
+    background: $background-color-muted;
 
     /* FIXME: These selector chain makes me sad, come up with a better solution */
     /* & > td:first-child {
@@ -114,7 +114,7 @@ li {
         width: 150vw;
         height: 100%;
         content: "";
-        background: var(--background-color-muted);
+        background: $background-color-muted;
       }
     } */
   }
@@ -129,14 +129,14 @@ li {
 
 .mono,
 .code {
-  font-family: var(--font-stack-monospace);
+  font-family: $font-stack-monospace;
 }
 
 .code {
   display: inline-block;
   padding: 0.1em 0.4em;
-  color: var(--code-text-color);
-  background-color: var(--code-background-color);
-  border: 1px solid var(--light-gray1);
-  border-radius: var(--radius);
+  color: $code-text-color;
+  background-color: $code-background-color;
+  border: 1px solid $light-gray1;
+  border-radius: $radius;
 }

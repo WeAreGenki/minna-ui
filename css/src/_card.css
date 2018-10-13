@@ -4,23 +4,23 @@
 
 .card {
   word-wrap: break-word;
-  background-color: var(--card-background-color);
-  border-radius: var(--radius-large);
-  box-shadow: var(--card-shadow);
+  background-color: $card-background-color;
+  border-radius: $radius-large;
+  box-shadow: $card-shadow;
 }
 
 .card-hover {
-  z-index: var(--card-hover-zindex);
+  z-index: $card-hover-zindex;
   padding: 0;
   margin: 0;
-  color: var(--card-hover-text-color);
-  box-shadow: var(--card-hover-shadow);
-  transition: box-shadow var(--card-hover-animate-speed) ease-out;
+  color: $card-hover-text-color;
+  box-shadow: $card-hover-shadow;
+  transition: box-shadow $card-hover-animate-speed ease-out;
 
   &:hover {
-    color: var(--card-hover-text-color);
+    color: $card-hover-text-color;
     text-decoration: unset;
-    box-shadow: var(--card-hover-hover-shadow);
+    box-shadow: $card-hover-hover-shadow;
   }
 }
 
@@ -30,21 +30,21 @@
 }
 
 .card-img {
-  border-top-left-radius: var(--radius-large);
-  border-top-right-radius: var(--radius-large);
+  border-top-left-radius: $radius-large;
+  border-top-right-radius: $radius-large;
 }
 
 .card-body {
   display: inline-block; /* prevents margin collapsing */
-  margin: var(--card-body-margin);
+  margin: $card-body-margin;
 }
 
 .card-button {
-  padding: var(--button-padding-y) var(--button-padding-x);
-  margin-top: auto;
-  color: var(--card-button-text-color);
+  padding: $button-padding-y $button-padding-x;
+  margin: auto 0 0;
+  color: $card-button-text-color;
   text-align: center;
-  border-top: var(--card-button-border);
-  border-bottom-right-radius: var(--radius-large);
-  border-bottom-left-radius: var(--radius-large);
+  border-top: $card-button-border;
+  border-bottom-right-radius: $radius-large;
+  border-bottom-left-radius: $radius-large;
 }

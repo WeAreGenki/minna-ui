@@ -3,11 +3,11 @@
 */
 
 .alert {
-  padding: var(--alert-padding);
-  margin-top: var(--alert-margin-y);
-  margin-bottom: var(--alert-margin-y);
-  background-color: var(--alert-background-color);
-  border-left: var(--alert-border-size) solid;
+  padding: $alert-padding;
+  margin-top: $alert-margin-y;
+  margin-bottom: $alert-margin-y;
+  background-color: $alert-background-color;
+  border-left: $alert-border-size solid;
 
   > a {
     text-decoration: underline;
@@ -15,29 +15,29 @@
 }
 
 .alert-tip {
-  color: var(--alert-tip-text-color);
-  border-color: var(--alert-tip-border-color);
+  color: $alert-tip-text-color;
+  border-color: $alert-tip-border-color;
 }
 
 .alert-info {
-  color: var(--alert-info-text-color);
-  border-color: var(--alert-info-border-color);
+  color: $alert-info-text-color;
+  border-color: $alert-info-border-color;
 }
 
 .alert-warn {
-  color: var(--alert-warning-text-color);
-  border-color: var(--alert-warning-border-color);
+  color: $alert-warning-text-color;
+  border-color: $alert-warning-border-color;
 }
 
 .alert-error {
-  color: var(--alert-error-text-color);
-  border-color: var(--alert-error-border-color);
+  color: $alert-error-text-color;
+  border-color: $alert-error-border-color;
 }
 
 /* Close button */
 
 .button-close {
-  margin: calc(-1 * var(--alert-padding));
+  margin: calc(-1 * $alert-padding);
   color: inherit;
 
   &:hover,

@@ -3,13 +3,13 @@
 */
 
 .form-group {
-  margin-bottom: var(--form-group-margin);
+  margin-bottom: $form-group-margin;
 }
 
 .label {
   display: block; /* forces label to appear above the input */
-  margin-bottom: var(--label-margin);
-  color: var(--label-text-color);
+  margin-bottom: $label-margin;
+  color: $label-text-color;
   text-transform: uppercase;
 
   .radio + &,
@@ -22,35 +22,36 @@
 .input,
 .select,
 .textarea {
-  padding: var(--input-padding-y) var(--input-padding-x);
-  font-size: var(--input-text-size);
-  color: var(--input-text-color);
-  background-color: var(--input-background-color);
-  border: var(--input-border);
-  border-radius: var(--input-radius);
+  padding: $input-padding-y $input-padding-x;
+  font-size: $input-text-size;
+  color: $input-text-color;
+  background-color: $input-background-color;
+  border: $input-border;
+  border-radius: $input-radius;
+  outline-offset: $outline-offset;
 
   &:hover {
-    outline: var(--input-hover-outline);
+    outline: $input-hover-outline;
   }
 
   &:focus,
   &:active {
-    outline: var(--input-focus-outline);
+    outline: $input-focus-outline;
   }
 
   &[disabled] {
-    color: var(--input-disabled-text-color);
-    background-color: var(--input-disabled-background-color);
-    border: var(--input-disabled-border);
+    color: $input-disabled-text-color;
+    background-color: $input-disabled-background-color;
+    border: $input-disabled-border;
     outline: none;
   }
 }
 
 ::placeholder {
-  color: var(--input-placeholder-text-color);
+  color: $input-placeholder-text-color;
 
   [disabled]& {
-    color: var(--input-disabled-placeholder-text-color);
+    color: $input-disabled-placeholder-text-color;
   }
 }
 
@@ -64,14 +65,14 @@
   display: inline-flex;
 
   & > .button {
-    border: var(--input-border);
+    border: $input-border;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     box-shadow: none;
   }
 
   & > .input {
-    margin-right: calc(-1 * var(--radius));
+    margin-right: calc(-1 * $radius);
   }
 }
 
@@ -79,19 +80,19 @@
 
 .form-help {
   display: block;
-  margin-top: var(--form-help-margin);
-  color: var(--form-help-text-color);
+  margin-top: $form-help-margin;
+  color: $form-help-text-color;
 }
 
 .invalid {
-  border: var(--input-invalid-border);
-  outline-color: var(--input-invalid-color);
+  border: $input-invalid-border;
+  outline-color: $input-invalid-color;
 }
 
 .invalid-feedback {
   display: none;
-  margin-top: var(--form-help-margin);
-  color: var(--input-invalid-color);
+  margin-top: $form-help-margin;
+  color: $input-invalid-color;
 
   .invalid + & {
     display: block;

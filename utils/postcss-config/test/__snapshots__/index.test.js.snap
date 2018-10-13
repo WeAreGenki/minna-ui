@@ -38,10 +38,12 @@ exports[`PostCSS config compiles CSS with debug option true 1`] = `
 }
 body {
   margin: 0;
+  margin: var(--margin);
 }
 /* stylelint-disable selector-max-id */
 #target {
   color: rgb(255, 0, 0);
+  color: var(--color);
 }
 #target .focus,
   #target:focus {
@@ -51,10 +53,6 @@ body {
     background: rgb(33, 33, 33);
   }
 /* stylelint-enable selector-max-id */
-:root {
-  --margin: 0;
-  --color: rgb(255, 0, 0);
-}
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -148,7 +146,7 @@ body {
 }
 /* stylelint-disable selector-max-id */
 #target {
-  color: rgb(0, 0, 255);
+  color: rgb(255, 0, 0);
 }
 #target .focus,
   #target:focus {

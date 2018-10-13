@@ -7,25 +7,25 @@
 .grid,
 .grid-c,
 .grid-c0 {
-  grid-gap: var(--gutter-row) var(--gutter-col);
+  grid-gap: $gutter-row $gutter-col;
 
-  @if var(--auto-rows) != auto {
-    grid-auto-rows: var(--auto-rows);
+  @if $auto-rows != auto {
+    grid-auto-rows: $auto-rows;
   }
 
-  @if var(--auto-cols) != auto {
-    grid-auto-columns: var(--auto-cols);
+  @if $auto-cols != auto {
+    grid-auto-columns: $auto-cols;
   }
 
-  @media (--large) {
-    grid-gap: var(--gutter-row-large) var(--gutter-col-large);
+  @media $(l) {
+    grid-gap: $gutter-row-large $gutter-col-large;
   }
 }
 
 /* Compact gaps between rows and columns */
 
 /* stylelint-disable declaration-no-important */
-.grid-c { grid-gap: var(--gutter-compact) !important; }
+.grid-c { grid-gap: $gutter-compact !important; }
 .grid-c0 { grid-gap: 0 0 !important; }
 /* stylelint-enable declaration-no-important */
 
@@ -56,30 +56,30 @@
 
 /* TODO: Research: Will the file gzip better if all the .x1 .x2 .x3 etc. are next to each other? */
 
-@each $step in var(--col-steps) {
-  .x$(step) { grid-template-columns: repeat($step, var(--item-size)); }
+@each $step in $col-steps {
+  .x$(step) { grid-template-columns: repeat($step, $item-size); }
   .c$(step) { grid-column-start: $step; }
   .w$(step) { grid-column-end: span $step; }
 
-  @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
-    @media ($media) {
-      .$(ext)-x$(step) { grid-template-columns: repeat($step, var(--item-size)); }
-      .$(ext)-c$(step) { grid-column-start: $step; }
-      .$(ext)-w$(step) { grid-column-end: span $step; }
+  @each $bp in $breakpoints {
+    @include at-media($bp) {
+      .$(bp)-x$(step) { grid-template-columns: repeat($step, $item-size); }
+      .$(bp)-c$(step) { grid-column-start: $step; }
+      .$(bp)-w$(step) { grid-column-end: span $step; }
     }
   }
 }
 
-@each $step in var(--row-steps) {
+@each $step in $row-steps {
   .y$(step) { grid-template-rows: repeat($step, auto); }
   .r$(step) { grid-row-start: $step; }
   .h$(step) { grid-row-end: span $step; }
 
-  @each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
-    @media ($media) {
-      .$(ext)-y$(step) { grid-template-rows: repeat($step, auto); }
-      .$(ext)-r$(step) { grid-row-start: $step; }
-      .$(ext)-h$(step) { grid-row-end: span $step; }
+  @each $bp in $breakpoints {
+    @include at-media($bp) {
+      .$(bp)-y$(step) { grid-template-rows: repeat($step, auto); }
+      .$(bp)-r$(step) { grid-row-start: $step; }
+      .$(bp)-h$(step) { grid-row-end: span $step; }
     }
   }
 }
@@ -133,53 +133,53 @@
 .flow-col-dense { grid-auto-flow: column dense; }
 .flow-col { grid-auto-flow: column; } /* default */
 
-@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
-  @media ($media) {
-    .$(ext)-middle {
+@each $bp in $breakpoints {
+  @include at-media($bp) {
+    .$(bp)-middle {
       align-items: center;
       justify-content: center;
     }
 
-    .$(ext)-align-row-start { justify-items: start; }
-    .$(ext)-align-row-end { justify-items: end; }
-    .$(ext)-align-row-center { justify-items: center; }
-    .$(ext)-align-row-stretch { justify-items: stretch; }
+    .$(bp)-align-row-start { justify-items: start; }
+    .$(bp)-align-row-end { justify-items: end; }
+    .$(bp)-align-row-center { justify-items: center; }
+    .$(bp)-align-row-stretch { justify-items: stretch; }
 
-    .$(ext)-align-col-start { align-items: start; }
-    .$(ext)-align-col-end { align-items: end; }
-    .$(ext)-align-col-center { align-items: center; }
-    .$(ext)-align-col-stretch { align-items: stretch; }
+    .$(bp)-align-col-start { align-items: start; }
+    .$(bp)-align-col-end { align-items: end; }
+    .$(bp)-align-col-center { align-items: center; }
+    .$(bp)-align-col-stretch { align-items: stretch; }
 
-    .$(ext)-align-item-row-start { justify-self: start; }
-    .$(ext)-align-item-row-end { justify-self: end; }
-    .$(ext)-align-item-row-center { justify-self: center; }
-    .$(ext)-align-item-row-stretch { justify-self: stretch; }
+    .$(bp)-align-item-row-start { justify-self: start; }
+    .$(bp)-align-item-row-end { justify-self: end; }
+    .$(bp)-align-item-row-center { justify-self: center; }
+    .$(bp)-align-item-row-stretch { justify-self: stretch; }
 
-    .$(ext)-align-item-col-start { align-self: start; }
-    .$(ext)-align-item-col-end { align-self: end; }
-    .$(ext)-align-item-col-center { align-self: center; }
-    .$(ext)-align-item-col-stretch { align-self: stretch; }
+    .$(bp)-align-item-col-start { align-self: start; }
+    .$(bp)-align-item-col-end { align-self: end; }
+    .$(bp)-align-item-col-center { align-self: center; }
+    .$(bp)-align-item-col-stretch { align-self: stretch; }
 
-    .$(ext)-justify-row-start { justify-content: start; }
-    .$(ext)-justify-row-end { justify-content: end; }
-    .$(ext)-justify-row-center { justify-content: center; }
-    .$(ext)-justify-row-space-around { justify-content: space-around; }
-    .$(ext)-justify-row-space-between { justify-content: space-between; }
-    .$(ext)-justify-row-space-evenly { justify-content: space-evenly; }
-    .$(ext)-justify-row-stretch { justify-content: stretch; }
+    .$(bp)-justify-row-start { justify-content: start; }
+    .$(bp)-justify-row-end { justify-content: end; }
+    .$(bp)-justify-row-center { justify-content: center; }
+    .$(bp)-justify-row-space-around { justify-content: space-around; }
+    .$(bp)-justify-row-space-between { justify-content: space-between; }
+    .$(bp)-justify-row-space-evenly { justify-content: space-evenly; }
+    .$(bp)-justify-row-stretch { justify-content: stretch; }
 
-    .$(ext)-justify-col-start { align-content: start; }
-    .$(ext)-justify-col-end { align-content: end; }
-    .$(ext)-justify-col-center { align-content: center; }
-    .$(ext)-justify-col-space-around { align-content: space-around; }
-    .$(ext)-justify-col-space-between { align-content: space-between; }
-    .$(ext)-justify-col-space-evenly { align-content: space-evenly; }
-    .$(ext)-justify-col-stretch { align-content: stretch; }
+    .$(bp)-justify-col-start { align-content: start; }
+    .$(bp)-justify-col-end { align-content: end; }
+    .$(bp)-justify-col-center { align-content: center; }
+    .$(bp)-justify-col-space-around { align-content: space-around; }
+    .$(bp)-justify-col-space-between { align-content: space-between; }
+    .$(bp)-justify-col-space-evenly { align-content: space-evenly; }
+    .$(bp)-justify-col-stretch { align-content: stretch; }
 
-    .$(ext)-flow-row-dense { grid-auto-flow: row dense; }
-    .$(ext)-flow-row { grid-auto-flow: row; }
+    .$(bp)-flow-row-dense { grid-auto-flow: row dense; }
+    .$(bp)-flow-row { grid-auto-flow: row; }
 
-    .$(ext)-flow-col-dense { grid-auto-flow: column dense; }
-    .$(ext)-flow-col { grid-auto-flow: column; }
+    .$(bp)-flow-col-dense { grid-auto-flow: column dense; }
+    .$(bp)-flow-col { grid-auto-flow: column; }
   }
 }

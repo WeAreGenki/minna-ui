@@ -12,7 +12,7 @@
     "publish:alpha": "yarn prepack && lerna publish --canary=prerelease --exact --npm-tag=next",
     "publish:beta": "yarn prepack && lerna publish --cd-version=prerelease --preid=beta --npm-tag=beta",
     "publish": "yarn prepack && lerna publish",
-    "prepack": "yarn test && yarn build",
+    "prepack": "yarn lint && yarn test-ci && yarn build",
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
@@ -33,11 +33,11 @@
     "@minna-ui/stylelint-config": "file:utils/stylelint-config",
     "@wearegenki/renovate-config": "1.0.0",
     "codecov": "3.1.0",
-    "eslint": "5.6.0",
+    "eslint": "5.7.0",
     "jest": "23.6.0",
-    "lerna": "3.4.0",
-    "postcss": "7.0.2",
-    "stylelint": "9.5.0",
+    "lerna": "3.4.3",
+    "postcss": "7.0.5",
+    "stylelint": "9.6.0",
     "svelte": "2.13.5"
   }
 }

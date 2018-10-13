@@ -17,7 +17,7 @@
  *  - https://aastudio.fr/box-sizing.html
  *
  */
-@if var(--use-global-border-box) {
+@if $use-global-border-box {
   html {
     box-sizing: border-box;
   }
@@ -71,9 +71,9 @@ svg {
 /* Horizontal rule */
 
 hr {
-  margin: var(--hr-margin);
+  margin: $hr-margin;
   border: 0;
-  border-top: var(--hr-border);
+  border-top: $hr-border;
 }
 
 /* Abbreviations */

@@ -109,14 +109,12 @@ exports[`Svelte style preprocessor processes a component 1`] = `
 </script>
 
 <style>
-  :global(:root) {
-    --body-margin: 0;
-  }
+  $body-margin: 0;
 
   /* stylelint-disable no-descending-specificity */
   @media screen and (min-width: 30em) {
   :global(body) {
-      margin: var(--body-margin)
+      margin: $body-margin
   }
     }
 

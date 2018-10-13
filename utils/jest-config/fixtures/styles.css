@@ -1,10 +1,10 @@
 body {
-  margin: var(--margin);
+  margin: $margin;
 }
 
 /* stylelint-disable selector-max-id */
 #target {
-  color: var(--color);
+  color: $color;
 
   .focus,
   &:focus {

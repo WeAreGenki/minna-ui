@@ -9,5 +9,8 @@
 
 */
 
-@import "@minna-ui/css/src/_variables-color.css";
-@import "@minna-ui/css/src/_variables.css";
+@import "./_variables-color.css";
+@import "./_variables.css";
+@import "./mixins/at-media.css";
+@import "./mixins/font-face.css";
+@import "./mixins/draw-triangle.css";

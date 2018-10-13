@@ -32,15 +32,15 @@
 .dg { display: grid; }
 .dig { display: inline-grid; }
 
-@each $media, $ext in (var(--breakpoints-media)), (var(--breakpoints)) {
-  @media ($media) {
-    .$(ext)-dn { display: none; }
-    .$(ext)-db { display: block; }
-    .$(ext)-di { display: inline; }
-    .$(ext)-dib { display: inline-block; }
-    .$(ext)-df { display: flex; }
-    .$(ext)-dif { display: inline-flex; }
-    .$(ext)-dg { display: grid; }
-    .$(ext)-dig { display: inline-grid; }
+@each $bp in $breakpoints {
+  @include at-media($bp) {
+    .$(bp)-dn { display: none; }
+    .$(bp)-db { display: block; }
+    .$(bp)-di { display: inline; }
+    .$(bp)-dib { display: inline-block; }
+    .$(bp)-df { display: flex; }
+    .$(bp)-dif { display: inline-flex; }
+    .$(bp)-dg { display: grid; }
+    .$(bp)-dig { display: inline-grid; }
   }
 }

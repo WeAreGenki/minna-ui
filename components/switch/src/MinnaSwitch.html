@@ -48,7 +48,7 @@
 <!-- TODO: Ability to drag the switch using mouse/touch in a high performance way. -->
 
 <div
-  class="switch {mini ? 'switch-mini' : ''} {disabled !== undefined ? 'switch-disabled' : ''} {value ? 'switch-checked' : ''}"
+  class="switch{mini ? ' switch-mini' : ''}{disabled !== undefined ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
   role="switch"
   tabindex="{disabled === undefined ? 0 : -1}"
   aria-checked="{value}"
@@ -62,7 +62,6 @@
 
 <script>
   export default {
-    tag: 'minna-switch',
     data: () => ({
       /* required bind prop */
       // value: true,
@@ -73,9 +72,16 @@
       mini: false,
 
       /* optional native props */
-      disabled: undefined,
+      // disabled: false,
       // required: false, // FIXME: Add custom validation
     }),
+    onstate({ changed, current, previous }) {
+      if (!previous) return;
+
+      if (changed.value) {
+        this.fire('change', current.value);
+      }
+    },
     methods: {
       _toggle() {
         if (this.get().disabled === undefined) {
@@ -109,55 +115,56 @@
   .switch {
     position: relative;
     display: inline-flex;
-    width: var(--switch-width);
-    padding: var(--switch-padding);
+    width: $switch-width;
+    padding: $switch-padding;
     line-height: 1;
-    color: var(--switch-off-text-color);
+    color: $switch-off-text-color;
     text-align: center;
     cursor: pointer;
-    background-color: var(--switch-off-background-color);
-    border-radius: var(--button-radius);
+    background-color: $switch-off-background-color;
+    border-radius: $button-radius;
+    outline-offset: $outline-offset;
     box-shadow:
-      var(--switch-inner-shadow),
-      var(--switch-shadow);
-    transition: background-color var(--switch-animate-out-speed) ease-out;
+      $switch-inner-shadow,
+      $switch-shadow;
+    transition: background-color $switch-animate-out-speed ease-out;
     transition-delay: 0s;
     backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
-    @if var(--switch-optimize) {
+    @if $switch-optimize {
       will-change: background-color;
     }
 
     &.switch-mini {
-      width: var(--switch-mini-width);
-      padding: var(--switch-mini-padding);
+      width: $switch-mini-width;
+      padding: $switch-mini-padding;
     }
 
     &:hover {
-      outline: var(--input-hover-outline);
+      outline: $input-hover-outline;
     }
 
     &:focus {
-      outline: var(--input-focus-outline);
+      outline: $input-focus-outline;
     }
   }
 
   .switch-checked {
-    background-color: var(--switch-on-background-color);
-    transition: background-color var(--switch-animate-in-speed) ease-in;
-    transition-delay: var(--switch-animate-out-speed);
+    background-color: $switch-on-background-color;
+    transition: background-color $switch-animate-in-speed ease-in;
+    transition-delay: $switch-animate-out-speed;
   }
 
   .switch-on,
   .switch-off {
-    flex-basis: calc(var(--switch-width) / 2);
+    flex-basis: calc($switch-width / 2);
   }
 
   .switch-on {
-    color: var(--switch-on-text-color);
+    color: $switch-on-text-color;
 
     .switch-disabled > & {
-      color: var(--switch-disabled-text-color);
+      color: $switch-disabled-text-color;
     }
   }
 
@@ -166,27 +173,26 @@
     top: 0;
     bottom: 0;
     width: 50%;
-    background: var(--button-background-color);
-    border-radius: var(--button-radius);
-    box-shadow: var(--switch-slider-inner-shadow);
-    transition: transform var(--switch-animate-in-speed) ease-out;
+    background: $button-background-color;
+    border-radius: $button-radius;
+    box-shadow: $switch-slider-inner-shadow;
+    transition: transform $switch-animate-in-speed ease-out;
 
-    @if var(--switch-optimize) {
+    @if $switch-optimize {
       will-change: transform;
     }
 
     .switch-checked > & {
-      /* FIXME: In chrome/webkit you can see part of .switch-mini outside the slider */
       transform: translateX(100%);
     }
 
     .switch-mini > & {
-      box-shadow: var(--switch-mini-slider-inner-shadow);
+      box-shadow: $switch-mini-slider-inner-shadow;
     }
 
     .switch:hover > &,
     .switch:focus > & {
-      background: var(--switch-hover-slider-background-color);
+      background: $switch-hover-slider-background-color;
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
@@ -194,7 +200,7 @@
       box-shadow: none; /* inner shadow */
       transition: none;
 
-      @if var(--switch-optimize) {
+      @if $switch-optimize {
         will-change: auto;
       }
     }
@@ -203,19 +209,19 @@
     .switch-disabled > &,
     .switch-disabled:hover > &,
     .switch-disabled:focus > & {
-      background: var(--switch-disabled-slider-background-color);
+      background: $switch-disabled-slider-background-color;
     }
   }
 
   .switch-disabled {
-    color: var(--button-disabled-text-color);
+    color: $button-disabled-text-color;
     cursor: not-allowed;
-    background-color: var(--button-background-color);
-    border: var(--switch-disabled-border);
+    background-color: $button-background-color;
+    border: $switch-disabled-border;
     box-shadow: none; /* inner shadow */
     transition: none;
 
-    @if var(--switch-optimize) {
+    @if $switch-optimize {
       will-change: auto;
     }
 

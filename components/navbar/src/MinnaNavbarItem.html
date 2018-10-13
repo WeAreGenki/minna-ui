@@ -1,30 +1,26 @@
 {#if _item.children === undefined}
   <!-- menu item -->
+  <!-- htmlmin:ignore -->
   <a
     href="{_item.url}"
-    class="navbar-link {current === _item.url ? 'navbar-link-active' : ''} {_item.class || ''}"
+    class="navbar-link{current === _item.url ? ' navbar-link-active' : ''} {_item.class || ''}"
     rel="{_item.rel}"
   >
     {_item.text}
-  </a>
+  </a><!-- htmlmin:ignore -->
 {:else}
   <!-- submenu -->
   <span class="navbar-nested">
     <span class="dn l-dib">{_item.text}</span>
 
+    <!-- htmlmin:ignore -->
     <div class="navbar-submenu {_item.class || ''}">
       {#each _item.children as _subitem}
-      <svelte:self _item="{_subitem}" current="{current}" />
+        <svelte:self _item="{_subitem}" current="{current}" />
       {/each}
-    </div>
+    </div><!-- htmlmin:ignore -->
   </span>
 {/if}
-
-<script>
-  export default {
-    tag: 'minna-navbar-item',
-  };
-</script>
 
 <style type="text/postcss">
   @import "./_variables.css";
@@ -33,10 +29,10 @@
   .navbar-nested {
     position: relative;
 
-    @media (--large) {
-      padding: var(--navbar-link-padding);
+    @media $(l) {
+      padding: $navbar-link-padding;
       margin: 0;
-      color: var(--navbar-link-color);
+      color: $navbar-link-color;
     }
   }
 
@@ -44,14 +40,14 @@
     display: flex;
     flex-direction: column;
 
-    @media (--large) {
+    @media $(l) {
       position: absolute;
       top: 100%;
-      z-index: var(--navbar-zindex);
+      z-index: $navbar-zindex;
       white-space: nowrap;
       pointer-events: none;
-      background-color: var(--navbar-background-color);
-      box-shadow: var(--navbar-shadow);
+      background-color: $navbar-background-color;
+      box-shadow: $navbar-shadow;
       opacity: 0;
       transition: all 150ms ease-out;
       transform: scale(0.8);

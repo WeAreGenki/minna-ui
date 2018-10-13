@@ -4,21 +4,21 @@
 
 .button {
   display: inline-block;
-  padding: var(--button-padding-y) var(--button-padding-x);
-  color: var(--button-text-color);
-  background-color: var(--button-background-color);
+  padding: $button-padding-y $button-padding-x;
+  color: $button-text-color;
+  background-color: $button-background-color;
   border: 0;
-  border-radius: var(--button-radius);
-  box-shadow: var(--button-shadow);
+  border-radius: $button-radius;
+  box-shadow: $button-shadow;
 
   &:hover,
   &:focus {
     text-decoration: none;
-    background-color: var(--button-hover-background-color);
+    background-color: $button-hover-background-color;
   }
 
   &:active {
-    background-color: var(--button-active-background-color);
+    background-color: $button-active-background-color;
     box-shadow: none;
   }
 
@@ -30,9 +30,9 @@
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
-    color: var(--button-disabled-text-color);
-    background-color: var(--button-background-color);
-    border: 1px solid var(--button-disabled-border-color);
+    color: $button-disabled-text-color;
+    background-color: $button-background-color;
+    border: 1px solid $button-disabled-border-color;
     box-shadow: none;
   }
 }
@@ -55,7 +55,7 @@
 
 .button-link {
   display: inline-block;
-  padding: var(--button-padding-y) var(--button-padding-x);
+  padding: $button-padding-y $button-padding-x;
   margin: 0;
   line-height: 1;
 }
@@ -63,5 +63,5 @@
 /* Smaller button */
 
 .button-mini {
-  padding: var(--button-mini-padding);
+  padding: $button-mini-padding;
 }

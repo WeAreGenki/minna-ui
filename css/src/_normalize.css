@@ -22,7 +22,7 @@
  */
 
 html { /* autoprefixer: off */
-  line-height: var(--line-height); /* 1 */
+  line-height: $line-height; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -148,9 +148,9 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: var(--font-stack); /* 1 */
+  font-family: $font-stack; /* 1 */
   font-size: 100%; /* 1 */
-  line-height: var(--line-height); /* 1 */
+  line-height: $line-height; /* 1 */
   margin: 0; /* 2 */
 }
 

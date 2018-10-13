@@ -1,0 +1,34 @@
+/*
+  @FONT-FACE RULE MAKER
+
+  Generates a @font-face rule for a font. You need to call this mixin as many
+  times as you have fonts. This uses the `font-display: optional` property which
+  means unless the font is already downloaded and loads instantly, it will not
+  flash from unstyled to styled (no FOUT).
+
+  USAGE:
+    @include make-font-face(<family>, <name>, [style], [weight], [dir]);
+
+*/
+
+/**
+ * PostCSS mixin to generate a font-family declaration.
+ * @param {string} family
+ * @param {string} name
+ * @param {string=} style
+ * @param {string=} weight
+ * @param {string=} dir
+ * @returns {object}
+ */
+@mixin font-face($family, $name, $style: normal, $weight: normal, $dir: "/fonts") {
+  @font-face {
+    font-family: $family;
+    src:
+      local("$(name)"),
+      url("$(dir)/$(name).woff2") format("woff2"),
+      url("$(dir)/$(name).woff") format("woff");
+    font-style: $style;
+    font-weight: $weight;
+    font-display: optional;
+  }
+}

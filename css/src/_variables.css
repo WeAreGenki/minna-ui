@@ -8,206 +8,193 @@
 */
 
 /* Media queries */
-@custom-media --not-small (width >= 30.01em);
-@custom-media --medium (30.01em <= width <= 60em);
-@custom-media --large (width >= 60.01em);
+$ns: (min-width: 30.01em); /* not-small */
+$m: (min-width: 30.01em, max-width: 60em); /* medium */
+$l: (min-width: 60.01em); /* large */
 
-:root {
-  /* Breakpoints */
+/* Breakpoints */
 
-  --breakpoints-media: --not-small, --medium, --large;
-  --breakpoints: ns, m, l;
+$breakpoints: ns, m, l;
 
-  /* General */
+/* General */
 
-  --use-global-border-box: false; /* see `_reboot.css` for overview */
-  --spacing-steps: 0, 1, 2, 3, 4, 5, 6, 7;
-  --spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em;
-  --radius: 0.2rem; /* 3.2px */
-  --radius-large: 0.32rem; /* 5px */
-  --angle1: 151deg;
-  --angle2: 45deg;
-  --angle3: -27deg;
-  --shadow: 0 4px 20px 1px color-mod(var(--shadow-color) alpha(0.2));
-  --shadow-hover:
-    var(--shadow),
-    0 13px 42px 0 color-mod(var(--shadow-color) alpha(0.3));
+$use-global-border-box: false; /* see `_reboot.css` for overview */
+$spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em;
+$radius: 0.2rem; /* 3.2px */
+$radius-large: 0.32rem; /* 5px */
+$angle1: 151deg;
+$angle2: 45deg;
+$angle3: -27deg;
+$shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2));
+$shadow-hover:
+  $shadow,
+  0 13px 42px 0 color-mod($shadow-color alpha(0.3));
+$outline-offset: 3px;
 
-  /* Grid */
+/* Grid */
 
-  --container-width-max: 50em; /* 1050px @ 21px font-size */
-  --container-narrow-width-max: 30em;
-  --item-size: 1fr;
-  --auto-rows: auto;
-  --auto-cols: var(--item-size);
-  --row-steps: 1, 2, 3, 4, 5, 6;
-  --col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
-  --gutter-row: 2em;
-  --gutter-col: 1em;
-  --gutter-row-large: 2em;
-  --gutter-col-large: 2em;
-  --gutter-compact: calc(var(--gutter-row) / 4) 0;
+$container-width-max: 50em; /* 1050px @ 21px font-size */
+$container-narrow-width-max: 30em;
+$item-size: 1fr;
+$auto-rows: auto;
+$auto-cols: $item-size;
+$row-steps: 1, 2, 3, 4, 5, 6;
+$col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+$gutter-row: 2em;
+$gutter-col: 1em;
+$gutter-row-large: 2em;
+$gutter-col-large: 2em;
+$gutter-compact: calc($gutter-row / 4) 0;
 
-  /* Typography */
+/* Typography */
 
-  --font-stack:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Helvetica Neue",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-stack-monospace:
-    Consolas,
-    "Liberation Mono",
-    Menlo,
-    Courier,
-    monospace;
-  --text-size: 1.0625em; /* 17px */
-  --text-size-large: 1.3125em; /* 21px */
-  --text-weight-light: 300;
-  --text-weight: 400;
-  --text-weight-heavy: 700;
-  --line-height: 1.5;
-  /* font size modular scale = 1, 1.25 (double stranded) * ratio = 1.5 */
-  /*
-  --headline-text-size: 5.063em;
-  --h1-text-size: 3.375em;
-  --h2-text-size: 2.813em;
-  --h3-text-size: 2.25em;
-  --h4-text-size: 1.875em;
-  --h5-text-size: 1.5em;
-  --h6-text-size: 1.25em;
+$font-stack:
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Oxygen,
+  Ubuntu,
+  Cantarell,
+  "Helvetica Neue",
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji";
+$font-stack-monospace:
+  Consolas,
+  "Liberation Mono",
+  Menlo,
+  Courier,
+  monospace;
+$text-size: 1.0625em; /* 17px */
+$text-size-large: 1.3125em; /* 21px */
+$text-weight-light: 300;
+$text-weight: 400;
+$text-weight-heavy: 700;
+$line-height: 1.5;
+/* font size modular scale = base 1em, ratio = 1.2 */
+$headline-text-size: 4.3em;
+$h1-text-size: 2.986em;
+$h2-text-size: 2.488em;
+$h3-text-size: 2.074em;
+$h4-text-size: 1.728em;
+$h5-text-size: 1.44em;
+$h6-text-size: 1.2em;
+$heading-text-weight: $text-weight;
+$paragraph-line-height: 1.7;
+$paragraph-lead-text-size: 1.5em;
+$paragraph-lead-text-weight: $text-weight-light;
+$link-click-area: 0.4em; /* reduce if links overlap */
+$li-margin-between: 0.5em;
+$hr-margin: 3em 0;
+$hr-border: 1px solid $divider-black;
+
+/* Navigation */
+
+$nav-link-padding-x: 1.3em;
+$nav-link-padding-y: 0.7em;
+$side-nav-link-margin: 0;
+$side-nav-active-background-color: $background-color-muted;
+$footer-margin-y: 5rem;
+$footer-text-color: $text-color-muted;
+
+/* Buttons */
+
+$button-padding-x: 1.75em;
+$button-padding-y: 0.682em;
+$button-text-color: $dark-gray2;
+$button-background-color: $white;
+$button-radius: $radius;
+$button-shadow: 0 2px 8px 0 color-mod($shadow-color alpha(0.3));
+$button-hover-background-color: $light-gray2;
+$button-active-background-color: $light-gray1;
+$button-disabled-text-color: $text-color-disabled;
+$button-disabled-border-color: $light-gray2;
+$button-mini-padding:
+  calc($button-padding-y / 2)
+  calc($button-padding-x / 2);
+
+/* Forms */
+
+$form-group-margin: 1.5rem;
+$label-margin: 0.5em;
+$label-text-color: $dark-gray2;
+$input-padding-x: 1rem;
+$input-padding-y: 0.5rem;
+$input-text-size: 1.2em;
+$input-text-color: $text-color;
+$input-background-color: $white;
+$input-border: 1px solid $gray5;
+$input-radius: $radius;
+$input-hover-outline: 3px solid $outline-color-hover;
+$input-focus-outline: 3px solid $outline-color;
+$input-invalid-color: $red2;
+$input-invalid-border: 3px solid $intent-danger;
+$input-placeholder-text-color: $gray2;
+$input-disabled-text-color: $text-color-disabled;
+$input-disabled-background-color: initial;
+$input-disabled-border: 1px solid $light-gray2;
+$input-disabled-placeholder-text-color: $gray5;
+$form-help-margin: $label-margin;
+$form-help-text-color: $dark-gray5;
+
+/* Cards */
+
+$card-background-color: $white;
+$card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18));
+$card-hover-zindex: 1;
+$card-hover-text-color: $text-color;
+$card-hover-shadow: $shadow;
+$card-hover-animate-speed: 220ms;
+$card-hover-hover-shadow: $shadow-hover;
+$card-body-margin: 1.2rem 2rem;
+$card-button-text-color: $button-text-color;
+$card-button-border: 1px solid $light-gray4;
+
+/* Alerts */
+
+$alert-padding: 1em;
+$alert-margin-y: 2em;
+$alert-background-color: $light-gray4;
+$alert-border-size: 0.4rem;
+$alert-tip-text-color: $green1;
+$alert-tip-border-color: $green5;
+$alert-info-text-color: $blue1;
+$alert-info-border-color: $blue5;
+$alert-warning-text-color: $orange1;
+$alert-warning-border-color: $orange5;
+$alert-error-text-color: $red1;
+$alert-error-border-color: $red5;
+
+/* Tags */
+
+$tag-padding: 0.04em 0.44em 0.185em;
+$tag-text-size: 0.9em;
+$tag-text-color: $gray1;
+$tag-background-color: $light-gray4;
+$tag-alignment: 0.1em;
+$tag-border-radius: $radius;
+$tag-margin-between: 1em;
+
+/* Sections */
+
+$hero-padding: 1.5rem 0;
+$hero-margin: 2rem 0;
+$hero-text-color: $dark-text-color;
+$hero-background: linear-gradient($angle3, $cobalt1, $cobalt3);
+$hero-dark-background: linear-gradient($angle3, $dark-gray1, $dark-gray3);
+$diagonal-hight: 4rem;
+$diagonal-hight-l: 6rem;
+/**
+  * See `images/diagonal.svg` for the original SVG markup and instructions to
+  * customise the diagonal image.
   */
-  /* font size modular scale = base 1em, ratio = 1.2 */
-  --headline-text-size: 4.3em;
-  --h1-text-size: 2.986em;
-  --h2-text-size: 2.488em;
-  --h3-text-size: 2.074em;
-  --h4-text-size: 1.728em;
-  --h5-text-size: 1.44em;
-  --h6-text-size: 1.2em;
-  --heading-text-weight: var(--text-weight);
-  --paragraph-line-height: 1.7;
-  --paragraph-lead-text-size: 1.5em;
-  --paragraph-lead-text-weight: var(--text-weight-light);
-  --link-click-area: 0.4em; /* reduce if links overlap */
-  --li-margin-between: 0.5em;
-  --hr-margin: 3em 0;
-  --hr-border: 1px solid var(--divider-black);
-
-  /* Navigation */
-
-  --nav-link-padding-x: 1.3em;
-  --nav-link-padding-y: 0.7em;
-  --side-nav-link-margin: 0;
-  --side-nav-active-background-color: var(--background-color-muted);
-  --footer-margin-y: 5rem;
-  --footer-text-color: var(--text-color-muted);
-
-  /* Buttons */
-
-  --button-padding-x: 1.75em;
-  --button-padding-y: 0.682em;
-  --button-text-color: var(--dark-gray2);
-  --button-background-color: var(--white);
-  --button-radius: var(--radius);
-  --button-shadow: 0 2px 8px 0 color-mod(var(--shadow-color) alpha(0.3));
-  --button-hover-background-color: var(--light-gray2);
-  --button-active-background-color: var(--light-gray1);
-  --button-disabled-text-color: var(--text-color-disabled);
-  --button-disabled-border-color: var(--light-gray2);
-  --button-mini-padding:
-    calc(var(--button-padding-y) / 2)
-    calc(var(--button-padding-x) / 2);
-
-  /* Forms */
-
-  --form-group-margin: 1.5rem;
-  --label-margin: 0.5em;
-  --label-text-color: var(--dark-gray2);
-  --input-padding-x: 1rem;
-  --input-padding-y: 0.5rem;
-  --input-text-size: 1.2em;
-  --input-text-color: var(--text-color);
-  --input-background-color: var(--white);
-  --input-border: 1px solid var(--gray5);
-  --input-radius: var(--radius);
-  --input-hover-outline: 3px solid var(--outline-color-hover);
-  --input-focus-outline: 3px solid var(--outline-color);
-  --input-invalid-color: var(--red2);
-  --input-invalid-border: 3px solid var(--intent-danger);
-  --input-placeholder-text-color: var(--gray2);
-  --input-disabled-text-color: var(--text-color-disabled);
-  --input-disabled-background-color: initial;
-  --input-disabled-border: 1px solid var(--light-gray2);
-  --input-disabled-placeholder-text-color: var(--gray5);
-  --form-help-margin: var(--label-margin);
-  --form-help-text-color: var(--dark-gray5);
-
-  /* Cards */
-
-  --card-background-color: var(--white);
-  --card-shadow: 0 2px 8px 1px color-mod(var(--shadow-color) alpha(0.18));
-  --card-hover-zindex: 1;
-  --card-hover-text-color: var(--text-color);
-  --card-hover-shadow: var(--shadow);
-  --card-hover-animate-speed: 220ms;
-  --card-hover-hover-shadow: var(--shadow-hover);
-  --card-body-margin: 1.2rem 2rem;
-  --card-button-text-color: var(--button-text-color);
-  --card-button-border: 1px solid var(--light-gray4);
-
-  /* Alerts */
-
-  --alert-padding: 1em;
-  --alert-margin-y: 2em;
-  --alert-background-color: var(--light-gray4);
-  --alert-border-size: 0.4rem;
-  --alert-tip-text-color: var(--green1);
-  --alert-tip-border-color: var(--green5);
-  --alert-info-text-color: var(--blue1);
-  --alert-info-border-color: var(--blue5);
-  --alert-warning-text-color: var(--orange1);
-  --alert-warning-border-color: var(--orange5);
-  --alert-error-text-color: var(--red1);
-  --alert-error-border-color: var(--red5);
-
-  /* Tags */
-
-  --tag-padding: 0.04em 0.44em 0.185em;
-  --tag-text-size: 0.9em;
-  --tag-text-color: var(--gray1);
-  --tag-background-color: var(--light-gray4);
-  --tag-alignment: 0.1em;
-  --tag-border-radius: var(--radius);
-  --tag-margin-between: 1em;
-
-  /* Sections */
-
-  --hero-padding: 1.5rem 0;
-  --hero-margin: 2rem 0;
-  --hero-text-color: var(--dark-text-color);
-  --hero-background: linear-gradient(var(--angle3), var(--cobalt1), var(--cobalt3));
-  --hero-dark-background: linear-gradient(var(--angle3), var(--dark-gray1), var(--dark-gray3));
-  --diagonal-hight: 4rem;
-  --diagonal-hight-l: 6rem;
-  /**
-   * See `images/diagonal.svg` for the original SVG markup and instructions to
-   * customise the diagonal image.
-   */
-  /* --diagonal-image: url("diagonal.svg"); */
-  --diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E");
-  --diagonal-background-color: var(--light-gray3);
-  --diagonal-dark-text-color: var(--white);
-  --diagonal-dark-background-color: var(--dark-gray1);
-  --diagonal-dark-link-color: var(--dark-link-color);
-  --diagonal-dark-input-invalid-color: var(--red5);
-}
+/* $diagonal-image: url("diagonal.svg"); */
+$diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E");
+$diagonal-background-color: $light-gray3;
+$diagonal-dark-text-color: $white;
+$diagonal-dark-background-color: $dark-gray1;
+$diagonal-dark-link-color: $dark-link-color;
+$diagonal-dark-input-invalid-color: $red5;

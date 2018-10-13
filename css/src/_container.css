@@ -11,15 +11,15 @@
 
 .con {
   box-sizing: border-box;
-  max-width: var(--container-width-max);
-  padding-right: var(--gutter-col);
-  padding-left: var(--gutter-col);
+  max-width: $container-width-max;
+  padding-right: $gutter-col;
+  padding-left: $gutter-col;
   margin-right: auto;
   margin-left: auto;
 
-  @media (--large) {
-    padding-right: calc(var(--gutter-col) * 2);
-    padding-left: calc(var(--gutter-col) * 2);
+  @media $(l) {
+    padding-right: calc($gutter-col * 2);
+    padding-left: calc($gutter-col * 2);
   }
 }
 
@@ -28,5 +28,5 @@
 }
 
 .narrow {
-  max-width: var(--container-narrow-width-max);
+  max-width: $container-narrow-width-max;
 }

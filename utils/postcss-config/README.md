@@ -20,11 +20,11 @@ yarn add -D postcss @minna-ui/postcss-config
 2. Create a `postcss.config.js` file in your project root with this package as a plugin:
 
 ```js
-const minnaUiPostcssConfig = require('@minna-ui/postcss-config');
+const minnaUi = require('@minna-ui/postcss-config');
 
 module.exports = {
   plugins: [
-    minnaUiPostcssConfig({
+    minnaUi({
       verbose: process.env.NODE_ENV === 'development',
     }),
   ],
@@ -50,10 +50,8 @@ module.exports = {
 | mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
 | variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
 | optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform additional optimisations to prepare for production use and minimise output file size. |
-| optimizeSafe | `false` | boolean | Don't apply potentially unsafe transformations. See [cssnano advanced transforms](https://cssnano.co/guides/advanced-transforms/). |
-| standalone | `false` | boolean | Set to `true` when `@minna-ui/css` is not installed. |
-| verbose | `false` | boolean | Show additional warnings. |
-| debug | `false` | boolean | Unlock additional debugging features; preserve and append CSS variables, and show warnings. |
+| safe | `false` | boolean | Don't apply potentially unsafe transformations. See [cssnano advanced transforms](https://cssnano.co/guides/advanced-transforms/). |
+| debug | `false` | boolean | Show additional debugging feedback. |
 
 ## Licence
 

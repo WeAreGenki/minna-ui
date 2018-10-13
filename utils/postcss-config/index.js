@@ -1,103 +1,126 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const postcss = require('postcss');
-const atImport = require('postcss-import');
-const atVariables = require('postcss-at-rules-variables');
-const atMinMax = require('postcss-media-minmax');
 const atUse = require('postcss-use');
-const each = require('postcss-each');
-const mixins = require('postcss-mixins');
+const advancedVars = require('postcss-advanced-variables');
+const nodeResolve = require('resolve');
 const nested = require('postcss-nested');
-const cssVariables = require('postcss-custom-properties');
-const conditionals = require('postcss-conditionals');
-const customMedia = require('postcss-custom-media');
 const calc = require('postcss-calc');
 const colorModFunction = require('postcss-color-mod-function');
 const mediaQueryPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
+const importCache = {};
+
+/**
+ * Custom file resolver for CSS imports.
+ */
+function resolve(id, cwd, opts) {
+  return new Promise((res, rej) => {
+    nodeResolve(id, {
+      basedir: cwd,
+      extensions: ['.css'],
+      paths: opts.importPaths,
+      packageFilter: function processPackage(pkg) {
+        const { style } = pkg;
+        let { main } = pkg;
+
+        if (style) {
+          main = style;
+        } else if (!main || !/\.css$/.test(main)) {
+          main = 'index.css';
+        }
+        return pkg;
+      },
+      preserveSymlinks: false,
+    }, (err, file) => {
+      if (err) {
+        rej(err);
+        return;
+      }
+
+      fs.readFile(file, (err, contents) => {
+        if (err) {
+          rej(err);
+          return;
+        }
+
+        res({ file, contents });
+      });
+    });
+  });
+}
+
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
-module.exports = postcss.plugin('postcss-config', ({
-  importPaths = [process.cwd(), 'css', 'src', 'src/css'],
-  importFilter = () => true,
-  mixinsPath = '',
-  standalone = false,
-  optimize = process.env.NODE_ENV === 'production',
-  optimizeSafe = false,
-  verbose = false,
-  debug = false,
-  variables = {},
-} = {}) => {
-  const mixinsDir = [];
+module.exports = postcss.plugin('minna-ui', (rawopts) => {
+  const { debug, optimize, safe } = rawopts;
 
-  if (mixinsPath !== '') {
-    mixinsDir.push(mixinsPath);
+  let plugins = [
+    advancedVars,
+    atUse,
+    nested,
+    calc,
+    colorModFunction,
+  ];
+
+  if (optimize || process.env.NODE_ENV === 'production') {
+    plugins = plugins.concat([
+      mediaQueryPacker,
+      autoprefixer,
+      cssnano,
+    ]);
   }
 
-  if (!standalone) {
-    const minnaUiCssSrc = path.dirname(require.resolve('@minna-ui/css'));
-    mixinsDir.push(path.join(minnaUiCssSrc, 'mixins'));
-    importPaths.push(minnaUiCssSrc);
-  }
+  const importPaths = [process.cwd(), 'css', 'src', 'src/css'];
 
-  const processor = postcss()
-    .use(atImport({
-      path: importPaths,
-      ...(!debug ? {} : {
-        load: (filename) => {
-          /* eslint-disable-next-line no-console */
-          console.log('[postcss-import]', filename);
-          /* eslint-disable-next-line global-require */
-          return require('postcss-import/lib/load-content.js')(filename);
-        },
-      }),
-      filter: importFilter,
-    }))
-    .use(atVariables({
-      variables,
-    }))
-    .use(atMinMax)
-    .use(atUse({
-      modules: '*',
-      resolveFromFile: true,
-    }))
-    .use(each)
-    .use(mixins({ mixinsDir }))
-    .use(nested)
-    .use(cssVariables({
-      variables,
-      warnings: debug || verbose,
-      preserve: debug && 'computed',
-      appendVariables: debug,
-    }))
-    .use(conditionals)
-    .use(customMedia)
-    .use(calc({
-      warnWhenCannotResolve: verbose,
-    }))
-    .use(colorModFunction);
+  try {
+    const minnaUiCss = require.resolve('@minna-ui/css');
+    importPaths.push(path.dirname(minnaUiCss));
+  } catch (err) { /* noop */ }
 
-  if (optimize) {
-    processor
-      .use(mediaQueryPacker)
-      .use(autoprefixer({
-        remove: false,
-        grid: true, // adds -ms- prefix for IE 11 support
-        flexbox: 'no-2009',
-      }))
-      .use(cssnano({
-        preset: optimizeSafe
-          ? 'default'
-          : ['advanced', {
-            autoprefixer: false,
-            zindex: false,
-          }],
-      }));
-  }
+  // initialise options
+  const opts = Object.assign({
+    // atUse
+    modules: '*',
+    resolveFromFile: true,
 
-  return processor;
+    // advancedVars
+    resolve,
+    importPaths,
+    importCache,
+
+    // calc
+    warnWhenCannotResolve: debug,
+
+    // autoprefixer
+    remove: false,
+    grid: true, // adds -ms- prefix for IE 11 support
+    flexbox: 'no-2009',
+
+    // cssnano
+    preset: safe
+      ? 'default'
+      : ['advanced', {
+        autoprefixer: false,
+        zindex: false,
+      }],
+  }, rawopts);
+
+  // initialise plugins
+  const initializedPlugins = plugins.map(
+    plugin => plugin(opts),
+  );
+
+  // process CSS with plugins
+  return (root, result) => initializedPlugins.reduce(
+    (promise, plugin) => promise.then(
+      () => plugin(result.root, result),
+    ),
+    Promise.resolve(),
+  );
 });

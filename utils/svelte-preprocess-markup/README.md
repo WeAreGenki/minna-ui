@@ -42,7 +42,7 @@ Incorrect:
 ]}/>
 ```
 
-Correct (with `"` around `{...}`):
+Correct (with `"` around `{ }`):
 
 ```html
 <MinnaNavbar segment="{child.segment}" menuItems="{[

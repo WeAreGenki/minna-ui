@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"javascript.implicitProjectConfig.checkJs": true,
+		"stylelint.enable": true,
+		"todohighlight.keywords": [
+			{
+				"text": "XXX:",
+				"color": "#ecf2fa",
+				"backgroundColor": "#3477ca"
+			},
+			"NOTE:",
+			"README:",
+			"REFERENCE:",
+			"TIPS:",
+			"USAGE:"
+		],
+		"todohighlight.defaultStyle": {
+			"color": "unset",
+			"backgroundColor": "unset",
+			"overviewRulerColor": "gray"
+		}
+	}
+}

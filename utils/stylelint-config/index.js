@@ -11,10 +11,12 @@ module.exports = {
   rules: {
     'at-rule-no-unknown': [true, {
       ignoreAtRules: [
-        'define-mixin',
+        'content',
         'each',
         'else',
+        'for',
         'if',
+        'include',
         'mixin',
         'use',
       ],

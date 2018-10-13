@@ -76,6 +76,13 @@
       disabled: undefined,
       // required: false, // FIXME: Add custom validation
     }),
+    onstate({ changed, current, previous }) {
+      if (!previous) return;
+
+      if (changed.value) {
+        this.fire('change', current.value);
+      }
+    },
     methods: {
       _toggle() {
         if (this.get().disabled === undefined) {

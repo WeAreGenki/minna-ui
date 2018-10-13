@@ -825,7 +825,7 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.7.3"
     "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
@@ -837,7 +837,7 @@
     rollup-plugin-svelte "4.3.2"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
     clean-css "4.2.1"
@@ -845,7 +845,7 @@
     postcss-load-config "2.0.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
     eslint-plugin-html "^4.0.6"
@@ -853,7 +853,7 @@
     eslint-plugin-jest "^21.24.1"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/plugin-transform-modules-commonjs" "^7.1.0"
@@ -864,7 +864,7 @@
     jest-circus "^23.6.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     autoprefixer "^9.1.5"
     css-mqpacker "^7.0.0"
@@ -878,18 +878,18 @@
     resolve "^1.8.1"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     stylelint-config-standard "^18.2.0"
     stylelint-order "^1.0.0"
 
 "@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     html-minifier "3.5.20"
 
 "@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
-  version "0.13.0"
+  version "0.15.0"
   dependencies:
     postcss-load-config "^2.0.0"
     postcss-selector-parser "^5.0.0-rc.3"
@@ -2602,9 +2602,9 @@ duplexer@^0.1.1:
   integrity sha1-rOb/gIwc5mtX0ev5eXessCM0z8E=
 
 duplexify@^3.4.2, duplexify@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.0.tgz#592903f5d80b38d037220541264d69a198fb3410"
-  integrity sha512-fO3Di4tBKJpYTFHAxTU00BcfWMY9w24r/x21a6rZRbsD/ToUgGxsMbiGRmB7uVAXeGKXD9MwiLZa5E97EVgIRQ==
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
+  integrity sha512-vM58DwdnKmty+FSPzT14K9JXb90H+j5emaR4KYbr2KTIz00WHGbWOe5ghQTx233ZCLZtrGDALzKwcjEtSt35mA==
   dependencies:
     end-of-stream "^1.0.0"
     inherits "^2.0.1"

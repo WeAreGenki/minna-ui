@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "@minna-ui/code-view": "^0.15.1",
+    "@minna-ui/collapse": "^0.15.2",
     "@minna-ui/css": "^0.15.1",
     "@minna-ui/eslint-config": "^0.15.0",
     "@minna-ui/jest-config": "^0.15.0",

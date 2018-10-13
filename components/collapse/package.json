@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/collapse",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "A friendly UI framework which aims to be straightforward, intuitive, and high performance.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/collapse",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

@@ -22,10 +22,10 @@ const compilerOpts = {
   ],
   language_out: 'ECMASCRIPT5',
   compilation_level: 'ADVANCED',
-  warning_level: 'VERBOSE',
-  jscomp_off: 'duplicate', // FIXME: Deprecated `method` var
 
   // uncomment for debugging
+  // warning_level: 'VERBOSE',
+  // jscomp_off: 'duplicate', // FIXME: Deprecated `method` var
   // formatting: 'PRETTY_PRINT',
   // debug: true,
 };
@@ -82,7 +82,7 @@ module.exports = async function run(env) {
     plugins: [
       svelte({
         preprocess: {
-          markup: preprocessMarkup(),
+          markup: preprocessMarkup({ level: 2 }),
           style: preprocessStyle(),
         },
         css(css) {
@@ -92,7 +92,7 @@ module.exports = async function run(env) {
       }),
       resolve(),
       commonjs(),
-      compiler({ ...compilerOpts }),
+      compiler(compilerOpts),
     ],
   });
 
@@ -101,7 +101,7 @@ module.exports = async function run(env) {
   //   plugins: [
   //     svelte({
   //       preprocess: {
-  //         markup: preprocessMarkup(),
+  //         markup: preprocessMarkup({ level 2 }),
   //         style: preprocessStyle(),
   //       },
   //       css: false,
@@ -118,7 +118,7 @@ module.exports = async function run(env) {
     plugins: [
       svelte({
         preprocess: {
-          markup: preprocessMarkup(),
+          markup: preprocessMarkup({ level: 2 }),
           style: preprocessStyle(),
         },
         css: false,

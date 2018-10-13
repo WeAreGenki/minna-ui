@@ -1,19 +1,19 @@
 @import "import.css";
 
-$navbar-optimize: true;
-$navbar-zindex: 5;
-$navbar-background-color: $app-background-color;
-$navbar-shadow-fade-speed: 300ms;
-$navbar-shadow: 0 2px 6px color-mod($shadow-color alpha(0.39));
-$navbar-icon-size: 2em;
-$navbar-icon-padding: 0.4em;
-$navbar-icon-color: $link-color;
-$navbar-logo-size-x: 6em;
-$navbar-logo-size-y: 1.4em;
-$navbar-link-color: $link-color;
-$navbar-border-color: $divider-black;
-$navbar-links-padding: $nav-link-padding-y 0;
-$navbar-link-padding: $nav-link-padding-y $nav-link-padding-x;
-$navbar-body-offset: 2.88em; /* offset body so contents are not covered */
-$navbar-hash-link-fix: true; /* see TODO: Add link to docs */
-$navbar-hash-link-offset: calc($navbar-body-offset + 1em); /* offset in-page links; navbar + shadow */
+$navbar-optimize: true !default;
+$navbar-zindex: 5 !default;
+$navbar-background-color: $app-background-color !default;
+$navbar-shadow-fade-speed: 300ms !default;
+$navbar-shadow: 0 2px 6px color-mod($shadow-color alpha(0.39)) !default;
+$navbar-icon-size: 2em !default;
+$navbar-icon-padding: 0.4em !default;
+$navbar-icon-color: $link-color !default;
+$navbar-logo-size-x: 6em !default;
+$navbar-logo-size-y: 1.4em !default;
+$navbar-link-color: $link-color !default;
+$navbar-border-color: $divider-black !default;
+$navbar-links-padding: $nav-link-padding-y 0 !default;
+$navbar-link-padding: $nav-link-padding-y $nav-link-padding-x !default;
+$navbar-body-offset: 2.88em !default; /* offset body so contents are not covered */
+$navbar-hash-link-fix: true !default; /* see TODO: Add link to docs */
+$navbar-hash-link-offset: calc($navbar-body-offset + 1em) !default; /* offset in-page links; navbar + shadow */

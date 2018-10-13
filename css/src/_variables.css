@@ -8,43 +8,43 @@
 */
 
 /* Media queries */
-$ns: (min-width: 30.01em); /* not-small */
-$m: (min-width: 30.01em, max-width: 60em); /* medium */
-$l: (min-width: 60.01em); /* large */
+$ns: (min-width: 30.01em) !default; /* not-small */
+$m: (min-width: 30.01em, max-width: 60em) !default; /* medium */
+$l: (min-width: 60.01em) !default; /* large */
 
 /* Breakpoints */
 
-$breakpoints: ns, m, l;
+$breakpoints: ns, m, l !default;
 
 /* General */
 
-$use-global-border-box: false; /* see `_reboot.css` for overview */
-$spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em;
-$radius: 0.2rem; /* 3.2px */
-$radius-large: 0.32rem; /* 5px */
-$angle1: 151deg;
-$angle2: 45deg;
-$angle3: -27deg;
-$shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2));
+$use-global-border-box: false !default; /* see `_reboot.css` for overview */
+$spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em !default;
+$radius: 0.2rem !default; /* 3.2px */
+$radius-large: 0.32rem !default; /* 5px */
+$angle1: 151deg !default;
+$angle2: 45deg !default;
+$angle3: -27deg !default;
+$shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
 $shadow-hover:
   $shadow,
-  0 13px 42px 0 color-mod($shadow-color alpha(0.3));
-$outline-offset: 3px;
+  0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
+$outline-offset: 3px !default;
 
 /* Grid */
 
-$container-width-max: 50em; /* 1050px @ 21px font-size */
-$container-narrow-width-max: 30em;
-$item-size: 1fr;
-$auto-rows: auto;
-$auto-cols: $item-size;
-$row-steps: 1, 2, 3, 4, 5, 6;
-$col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
-$gutter-row: 2em;
-$gutter-col: 1em;
-$gutter-row-large: 2em;
-$gutter-col-large: 2em;
-$gutter-compact: calc($gutter-row / 4) 0;
+$container-width-max: 50em !default; /* 1050px @ 21px font-size */
+$container-narrow-width-max: 30em !default;
+$item-size: 1fr !default;
+$auto-rows: auto !default;
+$auto-cols: $item-size !default;
+$row-steps: 1, 2, 3, 4, 5, 6 !default;
+$col-steps: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 !default;
+$gutter-row: 2em !default;
+$gutter-col: 1em !default;
+$gutter-row-large: 2em !default;
+$gutter-col-large: 2em !default;
+$gutter-compact: calc($gutter-row / 4) 0 !default;
 
 /* Typography */
 
@@ -61,140 +61,140 @@ $font-stack:
   "Apple Color Emoji",
   "Segoe UI Emoji",
   "Segoe UI Symbol",
-  "Noto Color Emoji";
+  "Noto Color Emoji" !default;
 $font-stack-monospace:
   Consolas,
   "Liberation Mono",
   Menlo,
   Courier,
-  monospace;
-$text-size: 1.0625em; /* 17px */
-$text-size-large: 1.3125em; /* 21px */
-$text-weight-light: 300;
-$text-weight: 400;
-$text-weight-heavy: 700;
-$line-height: 1.5;
+  monospace !default;
+$text-size: 1.0625em !default; /* 17px */
+$text-size-large: 1.3125em !default; /* 21px */
+$text-weight-light: 300 !default;
+$text-weight: 400 !default;
+$text-weight-heavy: 700 !default;
+$line-height: 1.5 !default;
 /* font size modular scale = base 1em, ratio = 1.2 */
-$headline-text-size: 4.3em;
-$h1-text-size: 2.986em;
-$h2-text-size: 2.488em;
-$h3-text-size: 2.074em;
-$h4-text-size: 1.728em;
-$h5-text-size: 1.44em;
-$h6-text-size: 1.2em;
-$heading-text-weight: $text-weight;
-$paragraph-line-height: 1.7;
-$paragraph-lead-text-size: 1.5em;
-$paragraph-lead-text-weight: $text-weight-light;
-$link-click-area: 0.4em; /* reduce if links overlap */
-$li-margin-between: 0.5em;
-$hr-margin: 3em 0;
-$hr-border: 1px solid $divider-black;
+$headline-text-size: 4.3em !default;
+$h1-text-size: 2.986em !default;
+$h2-text-size: 2.488em !default;
+$h3-text-size: 2.074em !default;
+$h4-text-size: 1.728em !default;
+$h5-text-size: 1.44em !default;
+$h6-text-size: 1.2em !default;
+$heading-text-weight: $text-weight !default;
+$paragraph-line-height: 1.7 !default;
+$paragraph-lead-text-size: 1.5em !default;
+$paragraph-lead-text-weight: $text-weight-light !default;
+$link-click-area: 0.4em !default; /* reduce if links overlap */
+$li-margin-between: 0.5em !default;
+$hr-margin: 3em 0 !default;
+$hr-border: 1px solid $divider-black !default;
 
 /* Navigation */
 
-$nav-link-padding-x: 1.3em;
-$nav-link-padding-y: 0.7em;
-$side-nav-link-margin: 0;
-$side-nav-active-background-color: $background-color-muted;
-$footer-margin-y: 5rem;
-$footer-text-color: $text-color-muted;
+$nav-link-padding-x: 1.3em !default;
+$nav-link-padding-y: 0.7em !default;
+$side-nav-link-margin: 0 !default;
+$side-nav-active-background-color: $background-color-muted !default;
+$footer-margin-y: 5rem !default;
+$footer-text-color: $text-color-muted !default;
 
 /* Buttons */
 
-$button-padding-x: 1.75em;
-$button-padding-y: 0.682em;
-$button-text-color: $dark-gray2;
-$button-background-color: $white;
-$button-radius: $radius;
-$button-shadow: 0 2px 8px 0 color-mod($shadow-color alpha(0.3));
-$button-hover-background-color: $light-gray2;
-$button-active-background-color: $light-gray1;
-$button-disabled-text-color: $text-color-disabled;
-$button-disabled-border-color: $light-gray2;
+$button-padding-x: 1.75em !default;
+$button-padding-y: 0.682em !default;
+$button-text-color: $dark-gray2 !default;
+$button-background-color: $white !default;
+$button-radius: $radius !default;
+$button-shadow: 0 2px 8px 0 color-mod($shadow-color alpha(0.3)) !default;
+$button-hover-background-color: $light-gray2 !default;
+$button-active-background-color: $light-gray1 !default;
+$button-disabled-text-color: $text-color-disabled !default;
+$button-disabled-border-color: $light-gray2 !default;
 $button-mini-padding:
   calc($button-padding-y / 2)
-  calc($button-padding-x / 2);
+  calc($button-padding-x / 2) !default;
 
 /* Forms */
 
-$form-group-margin: 1.5rem;
-$label-margin: 0.5em;
-$label-text-color: $dark-gray2;
-$input-padding-x: 1rem;
-$input-padding-y: 0.5rem;
-$input-text-size: 1.2em;
-$input-text-color: $text-color;
-$input-background-color: $white;
-$input-border: 1px solid $gray5;
-$input-radius: $radius;
-$input-hover-outline: 3px solid $outline-color-hover;
-$input-focus-outline: 3px solid $outline-color;
-$input-invalid-color: $red2;
-$input-invalid-border: 3px solid $intent-danger;
-$input-placeholder-text-color: $gray2;
-$input-disabled-text-color: $text-color-disabled;
-$input-disabled-background-color: initial;
-$input-disabled-border: 1px solid $light-gray2;
-$input-disabled-placeholder-text-color: $gray5;
-$form-help-margin: $label-margin;
-$form-help-text-color: $dark-gray5;
+$form-group-margin: 1.5rem !default;
+$label-margin: 0.5em !default;
+$label-text-color: $dark-gray2 !default;
+$input-padding-x: 1rem !default;
+$input-padding-y: 0.5rem !default;
+$input-text-size: 1.2em !default;
+$input-text-color: $text-color !default;
+$input-background-color: $white !default;
+$input-border: 1px solid $gray5 !default;
+$input-radius: $radius !default;
+$input-hover-outline: 3px solid $outline-color-hover !default;
+$input-focus-outline: 3px solid $outline-color !default;
+$input-invalid-color: $red2 !default;
+$input-invalid-border: 3px solid $intent-danger !default;
+$input-placeholder-text-color: $gray2 !default;
+$input-disabled-text-color: $text-color-disabled !default;
+$input-disabled-background-color: initial !default;
+$input-disabled-border: 1px solid $light-gray2 !default;
+$input-disabled-placeholder-text-color: $gray5 !default;
+$form-help-margin: $label-margin !default;
+$form-help-text-color: $dark-gray5 !default;
 
 /* Cards */
 
-$card-background-color: $white;
-$card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18));
-$card-hover-zindex: 1;
-$card-hover-text-color: $text-color;
-$card-hover-shadow: $shadow;
-$card-hover-animate-speed: 220ms;
-$card-hover-hover-shadow: $shadow-hover;
-$card-body-margin: 1.2rem 2rem;
-$card-button-text-color: $button-text-color;
-$card-button-border: 1px solid $light-gray4;
+$card-background-color: $white !default;
+$card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18)) !default;
+$card-hover-zindex: 1 !default;
+$card-hover-text-color: $text-color !default;
+$card-hover-shadow: $shadow !default;
+$card-hover-animate-speed: 220ms !default;
+$card-hover-hover-shadow: $shadow-hover !default;
+$card-body-margin: 1.2rem 2rem !default;
+$card-button-text-color: $button-text-color !default;
+$card-button-border: 1px solid $light-gray4 !default;
 
 /* Alerts */
 
-$alert-padding: 1em;
-$alert-margin-y: 2em;
-$alert-background-color: $light-gray4;
-$alert-border-size: 0.4rem;
-$alert-tip-text-color: $green1;
-$alert-tip-border-color: $green5;
-$alert-info-text-color: $blue1;
-$alert-info-border-color: $blue5;
-$alert-warning-text-color: $orange1;
-$alert-warning-border-color: $orange5;
-$alert-error-text-color: $red1;
-$alert-error-border-color: $red5;
+$alert-padding: 1em !default;
+$alert-margin-y: 2em !default;
+$alert-background-color: $light-gray4 !default;
+$alert-border-size: 0.4rem !default;
+$alert-tip-text-color: $green1 !default;
+$alert-tip-border-color: $green5 !default;
+$alert-info-text-color: $blue1 !default;
+$alert-info-border-color: $blue5 !default;
+$alert-warning-text-color: $orange1 !default;
+$alert-warning-border-color: $orange5 !default;
+$alert-error-text-color: $red1 !default;
+$alert-error-border-color: $red5 !default;
 
 /* Tags */
 
-$tag-padding: 0.04em 0.44em 0.185em;
-$tag-text-size: 0.9em;
-$tag-text-color: $gray1;
-$tag-background-color: $light-gray4;
-$tag-alignment: 0.1em;
-$tag-border-radius: $radius;
-$tag-margin-between: 1em;
+$tag-padding: 0.04em 0.44em 0.185em !default;
+$tag-text-size: 0.9em !default;
+$tag-text-color: $gray1 !default;
+$tag-background-color: $light-gray4 !default;
+$tag-alignment: 0.1em !default;
+$tag-border-radius: $radius !default;
+$tag-margin-between: 1em !default;
 
 /* Sections */
 
-$hero-padding: 1.5rem 0;
-$hero-margin: 2rem 0;
-$hero-text-color: $dark-text-color;
-$hero-background: linear-gradient($angle3, $cobalt1, $cobalt3);
-$hero-dark-background: linear-gradient($angle3, $dark-gray1, $dark-gray3);
-$diagonal-hight: 4rem;
-$diagonal-hight-l: 6rem;
+$hero-padding: 1.5rem 0 !default;
+$hero-margin: 2rem 0 !default;
+$hero-text-color: $dark-text-color !default;
+$hero-background: linear-gradient($angle3, $cobalt1, $cobalt3) !default;
+$hero-dark-background: linear-gradient($angle3, $dark-gray1, $dark-gray3) !default;
+$diagonal-hight: 4rem !default;
+$diagonal-hight-l: 6rem !default;
 /**
   * See `images/diagonal.svg` for the original SVG markup and instructions to
   * customise the diagonal image.
   */
-/* $diagonal-image: url("diagonal.svg"); */
-$diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E");
-$diagonal-background-color: $light-gray3;
-$diagonal-dark-text-color: $white;
-$diagonal-dark-background-color: $dark-gray1;
-$diagonal-dark-link-color: $dark-link-color;
-$diagonal-dark-input-invalid-color: $red5;
+/* $diagonal-image: url("diagonal.svg") !default; */
+$diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E") !default;
+$diagonal-background-color: $light-gray3 !default;
+$diagonal-dark-text-color: $white !default;
+$diagonal-dark-background-color: $dark-gray1 !default;
+$diagonal-dark-link-color: $dark-link-color !default;
+$diagonal-dark-input-invalid-color: $red5 !default;

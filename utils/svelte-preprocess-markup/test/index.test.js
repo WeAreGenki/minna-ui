@@ -80,7 +80,7 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('processes a simple component with unsafe', async () => {
+  it.skip('processes a simple component with unsafe', async () => {
     expect.assertions(4);
     const output = preprocess(sourceSimple, optsUnsafe);
     await expect(output).resolves.toBeDefined();
@@ -90,7 +90,7 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('processes a simple component with unsafeWhitespace', async () => {
+  it.skip('processes a simple component with unsafeWhitespace', async () => {
     expect.assertions(4);
     const output = preprocess(sourceSimple, optsUnsafeWhitespace);
     await expect(output).resolves.toBeDefined();
@@ -117,7 +117,7 @@ describe('Svelte markup preprocessor', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it('unsafe option makes output smaller', async () => {
+  it.skip('unsafe option makes output smaller', async () => {
     expect.assertions(2);
     const [unsafe, safe] = await Promise.all([
       preprocess(sourceSimple, optsUnsafe),
@@ -127,7 +127,7 @@ describe('Svelte markup preprocessor', () => {
     expect(unsafe.toString().length).toBeLessThan(safe.toString().length);
   });
 
-  it('unsafe option makes output smaller when gzip\'d', async () => {
+  it.skip('unsafe option makes output smaller when gzip\'d', async () => {
     expect.assertions(1);
     const [unsafe, safe] = await Promise.all([
       preprocess(sourceSimple, optsUnsafe),
@@ -138,7 +138,7 @@ describe('Svelte markup preprocessor', () => {
     expect(unsafeGZip.length).toBeLessThan(safeGZip.length);
   });
 
-  it('unsafeWhitespace option makes output smaller', async () => {
+  it.skip('unsafeWhitespace option makes output smaller', async () => {
     expect.assertions(2);
     const [unsafeWhitespace, safe] = await Promise.all([
       preprocess(sourceSimple, optsUnsafeWhitespace),

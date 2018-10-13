@@ -33,10 +33,10 @@
   .navbar-nested {
     position: relative;
 
-    @media (--large) {
-      padding: var(--navbar-link-padding);
+    @media $(l) {
+      padding: $navbar-link-padding;
       margin: 0;
-      color: var(--navbar-link-color);
+      color: $navbar-link-color;
     }
   }
 
@@ -44,14 +44,14 @@
     display: flex;
     flex-direction: column;
 
-    @media (--large) {
+    @media $(l) {
       position: absolute;
       top: 100%;
-      z-index: var(--navbar-zindex);
+      z-index: $navbar-zindex;
       white-space: nowrap;
       pointer-events: none;
-      background-color: var(--navbar-background-color);
-      box-shadow: var(--navbar-shadow);
+      background-color: $navbar-background-color;
+      box-shadow: $navbar-shadow;
       opacity: 0;
       transition: all 150ms ease-out;
       transform: scale(0.8);

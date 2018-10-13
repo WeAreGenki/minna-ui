@@ -165,13 +165,18 @@
   @import "./_variables.css";
   @import "import.css";
 
+  /* offset page content so it's not covered by the fixed navbar */
+  :global(body) {
+    margin-top: $navbar-body-offset;
+  }
+
   .navbar {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-    z-index: var(--navbar-zindex);
-    background-color: var(--navbar-background-color);
+    z-index: $navbar-zindex;
+    background-color: $navbar-background-color;
     backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
     &::after {
@@ -182,11 +187,11 @@
       left: 0;
       pointer-events: none;
       content: "";
-      box-shadow: var(--navbar-shadow);
+      box-shadow: $navbar-shadow;
       opacity: 0;
-      transition: opacity var(--navbar-shadow-fade-speed) ease;
+      transition: opacity $navbar-shadow-fade-speed ease;
 
-      @if var(--navbar-optimize) {
+      @if $navbar-optimize {
         will-change: opacity;
       }
     }
@@ -203,10 +208,10 @@
   }
 
   .navbar-icon {
-    width: var(--navbar-icon-size);
-    height: var(--navbar-icon-size);
-    padding: var(--navbar-icon-padding);
-    color: var(--navbar-icon-color);
+    width: $navbar-icon-size;
+    height: $navbar-icon-size;
+    padding: $navbar-icon-padding;
+    color: $navbar-icon-color;
   }
 
   .navbar-logo-link {
@@ -214,22 +219,22 @@
   }
 
   .navbar-logo {
-    width: var(--navbar-logo-size-x);
-    height: var(--navbar-logo-size-y);
+    width: $navbar-logo-size-x;
+    height: $navbar-logo-size-y;
   }
 
   .navbar-links {
     flex-basis: 100%;
     flex-direction: column;
     flex-grow: 1;
-    padding: var(--navbar-links-padding);
+    padding: $navbar-links-padding;
     margin: 0 -1rem;
 
     &.df {
-      border-top: 1px solid var(--navbar-border-color);
+      border-top: 1px solid $navbar-border-color;
     }
 
-    @media (--large) {
+    @media $(l) {
       display: flex;
       flex-basis: auto;
       flex-direction: row;
@@ -241,18 +246,13 @@
 
   /* the following 2 selectors also appear in MinnaNavbarItem */
   :global(.navbar-link) {
-    padding: var(--navbar-link-padding);
+    padding: $navbar-link-padding;
     margin: 0;
-    color: var(--navbar-link-color);
+    color: $navbar-link-color;
   }
 
   :global(.navbar-link-active) {
-    font-weight: var(--text-weight-heavy);
-  }
-
-  /* offset page content so it's not covered by the fixed navbar */
-  :global(body) { /* stylelint-disable-line no-descending-specificity */
-    margin-top: var(--navbar-body-offset);
+    font-weight: $text-weight-heavy;
   }
 
   /**
@@ -265,7 +265,7 @@
   * Only add an id property to a heading when truly necessary to avoid the small
   * CSS rendering performance hit.
   */
-  @if var(--navbar-hash-link-fix) {
+  @if $navbar-hash-link-fix {
     :global(h1),
     :global(h2),
     :global(h3),
@@ -274,8 +274,8 @@
     :global(h6) {
       &[id]::before {
         display: block;
-        height: var(--navbar-hash-link-offset);
-        margin-top: calc(-1 * var(--navbar-hash-link-offset));
+        height: $navbar-hash-link-offset;
+        margin-top: calc(-1 * $navbar-hash-link-offset);
         visibility: hidden;
         content: "";
       }

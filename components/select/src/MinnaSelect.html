@@ -297,7 +297,6 @@
   @import "./_variables.css";
   @import "import.css";
 
-  /* :global(.hide) { */
   .hide {
     pointer-events: none;
     opacity: 0;
@@ -311,25 +310,22 @@
 
   .select-caret {
     position: absolute;
-    top: calc(50% - (var(--select-caret-size) / 2));
+    top: calc(50% - ($select-caret-size / 2));
     right: 0.75em;
     pointer-events: none;
 
-    @if var(--select-optimize) {
+    @include draw-triangle($select-caret-size, $select-caret-color);
+
+    @if $select-optimize {
       will-change: transform;
     }
-
-    @mixin draw-triangle
-      bottom,
-      var(--select-caret-size),
-      var(--select-caret-color);
 
     .select-active > & {
       transform: scaleY(-1);
     }
 
     .select-disabled > & {
-      border-top-color: var(--select-disabled-caret-color);
+      border-top-color: $select-disabled-caret-color;
     }
   }
 
@@ -337,20 +333,20 @@
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: var(--select-zindex);
+    z-index: $select-zindex;
     width: 100%;
-    padding: var(--input-padding-y) 0;
-    font-size: var(--input-text-size);
-    color: var(--input-text-color);
+    padding: $input-padding-y 0;
+    font-size: $input-text-size;
+    color: $input-text-color;
     text-align: left;
-    background-color: var(--input-background-color);
-    box-shadow: var(--select-shadow);
+    background-color: $input-background-color;
+    box-shadow: $select-shadow;
     transition:
-      transform var(--select-animate-speed) ease,
-      opacity var(--select-animate-speed) ease;
+      transform $select-animate-speed ease,
+      opacity $select-animate-speed ease;
     backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
-    @if var(--select-optimize) {
+    @if $select-optimize {
       will-change: transform, opacity;
     }
 
@@ -362,25 +358,25 @@
     .select-disabled > & {
       display: none;
 
-      @if var(--select-optimize) {
+      @if $select-optimize {
         will-change: auto;
       }
     }
   }
 
   .option {
-    padding: var(--input-padding-y) var(--input-padding-x);
+    padding: $input-padding-y $input-padding-x;
   }
 
   .option-active,
   .option:hover {
-    color: var(--select-selected-text-color);
-    background-color: var(--select-selected-background-color);
+    color: $select-selected-text-color;
+    background-color: $select-selected-background-color;
   }
 
   .option-disabled,
   .option-disabled:hover {
-    color: var(--select-disabled-text-color);
+    color: $select-disabled-text-color;
     background-color: unset;
   }
 </style>

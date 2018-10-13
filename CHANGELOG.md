@@ -9,6 +9,42 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.15.0] - 2018-10-14
+
+### Added
+
+- Ability to add CSS class and rel attribute to menu items in `@minna-ui/navbar`.
+- Fire `'change'` event in `@minna-ui/switch` component when state changes.
+- New text util CSS classes.
+
+### Removed
+
+- `fluid-text-size` CSS mixin as we generally don't recommend using this technique anymore.
+- Temporarily disable many failing tests until we have the time to do a big test improvement pass.
+
+### Changed
+
+- BREAKING CHANGE: Complete refactor of building CSS and our PostCSS preset. This is not something we took lightly as it significantly changes how we work with styles in the framework.
+  - _Build time_ CSS variables are now "SCSS-like"; they use the `$var_name` style. You no longer need to use `:root{}` to declare variables and should instead set them at a global level or local inside a selector block.
+  - You are still able to use `var()` but now it will not be removed, resulting in a clear distinction between build-time variables and run-time variables.
+  - Now, under the covers, variables and at rules are combined into the same PostCSS plugin resulting in greater efficiency and easier handling of variables between rules. This also fixes long standing bugs with using CSS variables in @ rules.
+  - CSS mixins work differently now.
+- BREAKING CHANGE: `@media` properties are now just simple CSS variables instead of custom media:
+  - `--not-small` renamed to `$ns`
+  - `--medium` renamed to `$m`
+  - `--large` renamed to `$l`
+- BREAKING CHANGE: Renamed CSS variables... too many to list, please see the source code.
+- BREAKING CHANGE: Refactor `@minna-ui/svelte-preprocess-markup` with new options. Now takes a `level` option from `0` to `4`.
+- Tweak default `@minna-ui/navbar` sizes.
+- Change how flipping elements in implemented in CSS for better performance.
+- Add/remove valid @ rules from `@minna-ui/stylelint-config`.
+
+### Fixed
+
+- Temporarily remove "disabled" prop from select to fix <abbr title="server side rendering">SSR</abbr>.
+- Alignment of icons and menu items in `@minna-ui/navbar` not vertically centered.
+- Internal `build-css` package crashes on error. Now prints error correctly for faster debugging.
+
 ## [0.14.0] - 2018-09-22
 
 ### Added
@@ -420,7 +456,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.14.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.15.0...HEAD
+[0.15.0]: https://github.com/MaxMilton/new-tab/compare/v0.14.0...v0.15.0
 [0.14.0]: https://github.com/MaxMilton/new-tab/compare/v0.13.0...v0.14.0
 [0.13.0]: https://github.com/MaxMilton/new-tab/compare/v0.12.1...v0.13.0
 [0.12.1]: https://github.com/MaxMilton/new-tab/compare/v0.12.0...v0.12.1

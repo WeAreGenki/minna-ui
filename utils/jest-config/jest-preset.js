@@ -20,6 +20,7 @@ module.exports = {
     'js',
     'json',
     'mjs',
+    'node',
     'ts',
   ],
   collectCoverageFrom: [
@@ -46,5 +47,6 @@ module.exports = {
   watchPathIgnorePatterns: [
     '/__sapper__/',
     '/dist/',
+    '/node_modules/',
   ],
 };

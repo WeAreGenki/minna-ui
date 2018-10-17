@@ -871,7 +871,7 @@
     cssnano "^4.1.4"
     cssnano-preset-advanced "^4.0.2"
     postcss-advanced-variables "^2.3.3"
-    postcss-calc "^6.0.2"
+    postcss-calc "^7.0.0"
     postcss-color-mod-function "^3.0.3"
     postcss-nested "^4.1.0"
     postcss-use "^3.0.0"
@@ -6105,6 +6105,16 @@ postcss-calc@^6.0.2:
     postcss "^7.0.2"
     postcss-selector-parser "^2.2.2"
     reduce-css-calc "^2.0.0"
+
+postcss-calc@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-calc/-/postcss-calc-7.0.0.tgz#cf0e78e1d7d9f75119b833abc786fa4b61afedda"
+  integrity sha512-o04XICBwDxXVYw1TXkzxs36WRgk9OECGiSUoyYMNoFWHLAQCKKeaqhrNBTUKdStMfwik3gSLLztHebTSV5kJOA==
+  dependencies:
+    css-unit-converter "^1.1.1"
+    postcss "^7.0.2"
+    postcss-selector-parser "^5.0.0-rc.3"
+    postcss-value-parser "^3.3.0"
 
 postcss-color-mod-function@^3.0.3:
   version "3.0.3"

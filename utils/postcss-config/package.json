@@ -19,12 +19,12 @@
     "postcss": "^7.0.0"
   },
   "dependencies": {
-    "autoprefixer": "^9.1.5",
+    "autoprefixer": "^9.2.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.4",
     "cssnano-preset-advanced": "^4.0.2",
     "postcss-advanced-variables": "^2.3.3",
-    "postcss-calc": "^6.0.2",
+    "postcss-calc": "^7.0.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-nested": "^4.1.0",
     "postcss-use": "^3.0.0",

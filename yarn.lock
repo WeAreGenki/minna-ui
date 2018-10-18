@@ -828,8 +828,8 @@
   version "0.15.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.7.3"
-    "@minna-ui/svelte-preprocess-markup" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:../../.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.66.6"
     rollup-plugin-commonjs "9.2.0"
@@ -839,7 +839,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.15.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v2/npm-@minna-ui/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
@@ -868,8 +868,8 @@
   dependencies:
     autoprefixer "^9.2.0"
     css-mqpacker "^7.0.0"
-    cssnano "^4.1.4"
-    cssnano-preset-advanced "^4.0.2"
+    cssnano "^4.1.5"
+    cssnano-preset-advanced "^4.0.3"
     postcss-advanced-variables "^2.3.3"
     postcss-calc "^7.0.0"
     postcss-color-mod-function "^3.0.3"
@@ -2187,10 +2187,10 @@ cssesc@^1.0.1:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-1.0.1.tgz#ef7bd8d0229ed6a3a7051ff7771265fe7330e0a8"
   integrity sha512-S2hzrpWvE6G/rW7i7IxJfWBYn27QWfOIncUW++8Rbo1VB5zsJDSVPcnI+Q8z7rhxT6/yZeLOCja4cZnghJrNGA==
 
-cssnano-preset-advanced@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/cssnano-preset-advanced/-/cssnano-preset-advanced-4.0.2.tgz#890fd72e8daf734aca964748e70fb42457f5fbe5"
-  integrity sha512-V/tNmu0brrFitvu/HwrcNChinU8sK/iliLDju3jeGe/Udfeh5l32jTiHsvJ/ugXlfbKIgAlhiDsujbDQecIsvA==
+cssnano-preset-advanced@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/cssnano-preset-advanced/-/cssnano-preset-advanced-4.0.3.tgz#201452de79fe0588aa49b261bdeff5460f4819ac"
+  integrity sha512-szasP07D29JmKnSUMLgRCd3bIc9wPyCMHIP4gvLvHl8s0tCzyk8ZzCwSevBjY6CP9snp9Ev9kkKs+PW8AWXDcw==
   dependencies:
     autoprefixer "^9.0.0"
     cssnano-preset-default "^4.0.1"
@@ -2257,10 +2257,10 @@ cssnano-util-same-parent@^4.0.0:
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.1.tgz#574082fb2859d2db433855835d9a8456ea18bbf3"
   integrity sha512-WcKx5OY+KoSIAxBW6UBBRay1U6vkYheCdjyVNDm85zt5K9mHoGOfsOsqIszfAqrQQFIIKgjh2+FDgIj/zsl21Q==
 
-cssnano@^4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.1.4.tgz#55b71e3d8f5451dd3edc7955673415c98795788f"
-  integrity sha512-wP0wbOM9oqsek14CiNRYrK9N3w3jgadtGZKHXysgC/OMVpy0KZgWVPdNqODSZbz7txO9Gekr9taOfcCgL0pOOw==
+cssnano@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.1.5.tgz#cfe5ffa722079f339ac2a6d547d88dd8ac8a498d"
+  integrity sha512-+6m3g8zV87VDIMCXpDzlaXyzo9h9VrIn9o/XRU6ufH/AddZw/mHzmmmNv83+MxpX5rnVbYPxuAMYPjuDgjd9Hw==
   dependencies:
     cosmiconfig "^5.0.0"
     cssnano-preset-default "^4.0.2"

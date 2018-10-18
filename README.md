@@ -35,7 +35,7 @@ Under the hood components use the Svelte JavaScript framework so `minna-ui` is a
 
 ## Documentation
 
-To see [live examples](https://ui.wearegenki.com/examples) and the docs, visit [ui.wearegenki.com](https://ui.wearegenki.com) _(coming soon)_.
+To see [live examples](https://wearegenki.github.io/minna-ui/#/examples) and the docs, visit [wearegenki.github.io/minna-ui](https://wearegenki.github.io/minna-ui).
 
 ### Quick start
 

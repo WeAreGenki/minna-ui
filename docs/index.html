@@ -4,20 +4,50 @@
   <meta charset="utf-8">
   <title>minna-ui</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="A friendly UI framework which aims to be straightforward, intuitive, and high performance.">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <!-- TODO: Create a custom theme using @minna-ui/css -->
+  <!-- <link rel="stylesheet" href="assets/styles.css"> -->
   <!-- <link rel="stylesheet" href="//unpkg.com/@minna-ui/css/dist/index.css"> -->
 </head>
 <body>
   <div id="app"></div>
   <script>
+    // REF: https://github.com/Netflix/pollyjs/blob/master/docs/index.html
     window.$docsify = {
+      // name: '<img src="assets/images/logo.png" alt="Polly.JS Logo" class="sidebar-logo">',
       name: 'minna-ui',
-      repo: 'WeAreGenki/minna-ui'
+      // themeColor: '#F7C242',
+      loadSidebar: true,
+      coverpage: true,
+      onlyCover: true,
+      auto2top: true,
+      autoHeader: false,
+      subMaxLevel: 3,
+      maxLevel: 4,
+      repo: 'WeAreGenki/minna-ui',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/css/overview': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/css/README.md',
+        '/components/(.*)': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/components/$1/README.md',
+        '/utils/(.*)': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/utils/$1/README.md',
+        '.*?/CHANGELOG': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/CHANGELOG',
+        '.*?/CONTRIBUTING': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/CONTRIBUTING'
+      },
+      homepage: 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/README.md',
+      search: {
+        paths: 'auto',
+        placeholder: 'Search',
+        noData: 'No Results.'
+      },
+      // ga: 'UA-xxxxxxxxx-x'
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <!-- <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script> -->
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <!-- <script src="//unpkg.com/docsify/lib/plugins/ga.min.js"></script> -->
 </body>
 </html>

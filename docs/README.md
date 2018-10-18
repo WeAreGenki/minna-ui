@@ -6,7 +6,7 @@
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-# minna-ui
+# `minna-ui`
 
 A friendly <abbr title="User Interface">UI</abbr> framework which aims to be straightforward, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte or other JavaScript framework project.
 

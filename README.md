@@ -62,7 +62,7 @@ _NOTE: Old browser compatibility via progressive fallback is possible and we'll 
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/WeAreGenki/minna-ui/blob/master/CHANGELOG.md).
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 

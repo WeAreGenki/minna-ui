@@ -50,7 +50,7 @@ module.exports = async function run(env) {
   const banner = `/*!
  * ${pkgName} v${pkgVersion} (${pkgHomepage})
  * Copyright ${new Date().getFullYear()} We Are Genki
- * Licensed under Apache 2.0 (https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
+ * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */`;
 
   /** @type {Function} */

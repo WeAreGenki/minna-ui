@@ -18,6 +18,7 @@ $breakpoints: ns, m, l !default;
 
 /* General */
 
+$native: false !default; /* style native elements */
 $use-global-border-box: false !default; /* see `_reboot.css` for overview */
 $spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em !default;
 $radius: 0.2rem !default; /* 3.2px */

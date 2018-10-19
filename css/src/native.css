@@ -1,0 +1,10 @@
+/*
+  NATIVE BUILD
+
+  Same as standard `@minna-ui/css` package but styles more native elements.
+
+*/
+
+$native: true;
+
+@import "./index.css";

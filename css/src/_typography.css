@@ -120,10 +120,18 @@ li {
   }
 }
 
+@if $native {
+  table { @extend .table; }
+}
+
 /* Quotes */
 
 /* TODO: New blockquote styles */
 /* .blockquote {} */
+
+/* @if $native {
+  blockquote { @extend .blockquote; }
+} */
 
 /* Code */
 
@@ -139,4 +147,8 @@ li {
   background-color: $code-background-color;
   border: 1px solid $light-gray1;
   border-radius: $radius;
+}
+
+@if $native {
+  code { @extend .code; }
 }

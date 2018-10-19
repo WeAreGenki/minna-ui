@@ -22,11 +22,6 @@
     box-shadow: none;
   }
 
-  a& {
-    /* fix alignment when applied to links */
-    margin: initial;
-  }
-
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
@@ -35,6 +30,15 @@
     border: 1px solid $button-disabled-border-color;
     box-shadow: none;
   }
+}
+
+@if $native {
+  button { @extend .button; }
+}
+
+/* fix alignment when applied to links */
+a.button { /* stylelint-disable-line selector-no-qualifying-type */
+  margin: initial;
 }
 
 /* Remove browser default `<button>` styles */

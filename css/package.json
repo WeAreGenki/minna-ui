@@ -16,7 +16,7 @@
     "wearegenki"
   ],
   "scripts": {
-    "build": "build-css"
+    "build": "build-css src dist"
   },
   "style": "dist/index.css",
   "browser": "dist/index.css",

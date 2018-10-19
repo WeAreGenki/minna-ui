@@ -2,10 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const nodeResolve = require('resolve');
 const postcss = require('postcss');
 const atUse = require('postcss-use');
 const advancedVars = require('postcss-advanced-variables');
-const nodeResolve = require('resolve');
+const postcssExtend = require('postcss-extend-rule');
 const nested = require('postcss-nested');
 const calc = require('postcss-calc');
 const colorModFunction = require('postcss-color-mod-function');
@@ -64,6 +65,7 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
     advancedVars,
     atUse,
     nested,
+    postcssExtend,
     calc,
     colorModFunction,
   ];

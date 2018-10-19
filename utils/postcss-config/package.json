@@ -26,6 +26,7 @@
     "postcss-advanced-variables": "^2.3.3",
     "postcss-calc": "^7.0.0",
     "postcss-color-mod-function": "^3.0.3",
+    "postcss-extend-rule": "^2.0.0",
     "postcss-nested": "^4.1.0",
     "postcss-use": "^3.0.0",
     "resolve": "^1.8.1"

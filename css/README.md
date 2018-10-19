@@ -6,7 +6,7 @@
 
 # `@minna-ui/css`
 
-CSS framework for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects or standalone.
+CSS framework for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects or standalone.
 
 ## Usage
 
@@ -56,7 +56,7 @@ yarn add @minna-ui/css \
 
 ## Licence
 
-`@minna-ui/css` is part of [`minna-ui`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/css` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

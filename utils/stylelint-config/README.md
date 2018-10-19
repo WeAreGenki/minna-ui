@@ -5,7 +5,7 @@
 
 # `@minna-ui/stylelint-config`
 
-Stylelint config preset for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects.
+Stylelint config preset for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects.
 
 ## Usage
 
@@ -13,7 +13,7 @@ TODO: Write me.
 
 ## Licence
 
-`@minna-ui/stylelint-config` is part of [`minna-ui`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/stylelint-config` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

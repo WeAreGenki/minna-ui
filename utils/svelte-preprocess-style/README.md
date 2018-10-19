@@ -5,7 +5,7 @@
 
 # `@minna-ui/svelte-preprocess-style`
 
-Svelte style preprocessor for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects. Processes styles with PostCSS.
+Svelte style preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. Processes styles with PostCSS.
 
 ## Usage
 
@@ -13,7 +13,7 @@ TODO: Write me.
 
 ## Licence
 
-`@minna-ui/svelte-preprocess-style` is part of [`minna-ui`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/svelte-preprocess-style` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

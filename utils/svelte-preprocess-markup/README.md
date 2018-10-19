@@ -5,7 +5,7 @@
 
 # `@minna-ui/svelte-preprocess-markup`
 
-Svelte markup preprocessor for use in [`minna-ui`](https://github.com/WeAreGenki/minna-ui) projects. Optimise HTML before it hits Svelte for smaller output. Primarily this trim excessive whitespace but you can enable the `unsafe` option for advanced optimisations.
+Svelte markup preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. Optimise HTML before it hits Svelte for smaller output. Primarily this trim excessive whitespace but you can enable the `unsafe` option for advanced optimisations.
 
 ## Usage
 
@@ -60,7 +60,7 @@ Correct (with `"` around `{ }`):
 
 ## Licence
 
-`@minna-ui/svelte-preprocess-markup` is part of [`minna-ui`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/svelte-preprocess-markup` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

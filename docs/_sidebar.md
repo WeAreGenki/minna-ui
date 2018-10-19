@@ -8,7 +8,7 @@
 - CSS
   - [Overview](/css/overview.md)
   - [Configuration](css/configuration.md)
-  - [Advanced Use](css/advance-use.md)
+  - [Advanced Use](css/advanced-use.md)
 
 - Components
   - [Code View](components/code-view.md)

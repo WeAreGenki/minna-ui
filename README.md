@@ -12,13 +12,13 @@ A friendly <abbr title="User Interface">UI</abbr> framework which aims to be str
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 
-___NOTE: `Minna UI` is in early development. Before we reach v1.0.0, minor releases may contain breaking changes.___
+___NOTE: Minna UI is in early development. Before we reach v1.0.0, minor releases may contain breaking changes.___
 
 ## Overview
 
-The `Minna UI` framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customizable web components.
+The Minna UI framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customizable web components.
 
-Under the hood components use the Svelte JavaScript framework so `Minna UI` is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
+Under the hood components use the Svelte JavaScript framework so Minna UI is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
 
 **Features:**
 
@@ -66,7 +66,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 
-`Minna UI` is an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+Minna UI is an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

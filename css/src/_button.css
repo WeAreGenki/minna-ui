@@ -32,10 +32,6 @@
   }
 }
 
-@if $native {
-  button { @extend .button; }
-}
-
 /* fix alignment when applied to links */
 a.button { /* stylelint-disable-line selector-no-qualifying-type */
   margin: initial;

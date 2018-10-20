@@ -19,10 +19,6 @@
   }
 }
 
-@if ($native) {
-  label { @extend .label; }
-}
-
 .input,
 .select,
 .textarea {
@@ -52,12 +48,6 @@
   }
 }
 
-@if ($native) {
-  input { @extend .input; }
-  select { @extend .select; }
-  textarea { @extend .textarea; }
-}
-
 ::placeholder {
   color: $input-placeholder-text-color;
 
@@ -66,19 +56,10 @@
   }
 }
 
-/* TODO: Create custom radio input styles */
-/* .radio {}
-
-@if ($native) {
-  input[type="radio"] { @extend .radio; }
-} */
-
-/* TODO: Create custom checkbox styles */
-/* .checkbox {}
-
-@if ($native) {
-  input[type="checkbox"] { @extend .checkbox; }
-} */
+/* TODO: Create more custom input styles */
+/* .radio {} */
+/* .checkbox {} */
+/* .range {} */
 
 /* Grouped form elements */
 

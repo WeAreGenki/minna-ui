@@ -1,5 +1,5 @@
 /**
- * Tool to compile minna-ui web components.
+ * Minna UI component compiler.
  */
 
 'use strict';
@@ -12,22 +12,23 @@ const compiler = require('@ampproject/rollup-plugin-closure-compiler');
 const commonjs = require('rollup-plugin-commonjs');
 const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
-const preprocessMarkup = require('@minna-ui/svelte-preprocess-markup');
-const preprocessStyle = require('@minna-ui/svelte-preprocess-style');
+const preMarkup = require('@minna-ui/pre-markup');
+const preStyle = require('@minna-ui/pre-style');
 
 const compilerOpts = {
   externs: [
-    // require.resolve('google-closure-compiler/contrib/externs/svg.js'),
-    join(__dirname, 'component-externs.js'),
+    require.resolve('google-closure-compiler/contrib/externs/svg.js'),
+    join(__dirname, 'externs.js'),
   ],
   language_out: 'ECMASCRIPT5',
   compilation_level: 'ADVANCED',
 
-  // uncomment for debugging
+  /** Uncomment for debugging: */
   // warning_level: 'VERBOSE',
-  // jscomp_off: 'duplicate', // FIXME: Deprecated `method` var
   // formatting: 'PRETTY_PRINT',
   // debug: true,
+  // jscomp_warning: '*',
+  // jscomp_off: '*',
 };
 
 const isClean = new Map();
@@ -82,8 +83,8 @@ module.exports = async function run(env) {
     plugins: [
       svelte({
         preprocess: {
-          markup: preprocessMarkup({ level: 2 }),
-          style: preprocessStyle(),
+          markup: preMarkup({ level: 2 }),
+          style: preStyle(),
         },
         css(css) {
           resolveCss(css);
@@ -101,8 +102,8 @@ module.exports = async function run(env) {
   //   plugins: [
   //     svelte({
   //       preprocess: {
-  //         markup: preprocessMarkup({ level 2 }),
-  //         style: preprocessStyle(),
+  //         markup: preMarkup({ level 2 }),
+  //         style: preStyle(),
   //       },
   //       css: false,
   //       customElement: true,
@@ -118,8 +119,8 @@ module.exports = async function run(env) {
     plugins: [
       svelte({
         preprocess: {
-          markup: preprocessMarkup({ level: 2 }),
-          style: preprocessStyle(),
+          markup: preMarkup({ level: 2 }),
+          style: preStyle(),
         },
         css: false,
       }),

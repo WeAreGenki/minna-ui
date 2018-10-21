@@ -1,26 +1,28 @@
 {
-  "name": "@minna-ui/svelte-preprocess-markup",
+  "name": "@minna-ui/pre-style",
   "version": "0.16.0",
-  "description": "Svelte markup preprocessor for use in minna-ui projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/svelte-preprocess-markup",
+  "description": "Svelte style preprocessor for use in minna-ui projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/pre-style",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://ui.wearegenki.com",
+  "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
-    "html",
-    "minify-html",
+    "css",
     "minna-ui",
+    "postcss",
     "svelte",
     "wearegenki"
   ],
   "main": "index.js",
   "peerDependencies": {
+    "postcss": "^6.0.0 || ^7.0.0",
     "svelte": "^2.0.0"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
-    "html-minifier": "3.5.20"
+    "postcss-load-config": "^2.0.0",
+    "postcss-selector-parser": "^5.0.0-rc.3"
   },
   "publishConfig": {
     "access": "public"

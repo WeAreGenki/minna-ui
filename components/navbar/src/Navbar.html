@@ -7,7 +7,7 @@
   USAGE:
     The "menuItems" property should be an array of objects which look like this:
 
-      <MinnaNavbar current="{child.segment}" menuItems="{[
+      <Navbar current="{child.segment}" menuItems="{[
         { url: '/page-one', text: 'Page One' },
         { url: '/page-two', text: 'Page Two' },
         { url: '/about', text: 'About Us' },
@@ -48,11 +48,11 @@
     variables below.
 
     Alternatively, you may replace the SVG logo with your own markup by passing
-    the markup via a slot, that is, by adding it in between MinnaNavbar tags:
+    the markup via a slot, that is, by adding it in between Navbar tags:
 
-      <MinnaNavbar menuItems="{[...]}">
+      <Navbar menuItems="{[...]}">
         <span class="navbar-logo">YOUR LOGO</span>
-      </MinnaNavbar>
+      </Navbar>
 
   NOTE:
     In the code, object properties starting with _ are safe to mangle; the name
@@ -92,18 +92,18 @@
       </a>
 
       {#each menuItems as _item}
-        <MinnaNavbarItem _item="{_item}" current="{current}"/>
+        <NavbarItem _item="{_item}" current="{current}"/>
       {/each}
     </div>
   </nav>
 </header>
 
 <script>
-  import MinnaNavbarItem from './MinnaNavbarItem.html';
+  import NavbarItem from './NavbarItem.html';
 
   export default {
     components: {
-      MinnaNavbarItem,
+      NavbarItem,
     },
     data: () => ({
       _isOpen: false,
@@ -244,7 +244,7 @@
     }
   }
 
-  /* the following 2 selectors also appear in MinnaNavbarItem */
+  /* the following 2 selectors also appear in NavbarItem */
   :global(.navbar-link) {
     padding: $navbar-link-padding;
     margin: 0;

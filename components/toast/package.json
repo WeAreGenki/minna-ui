@@ -1,10 +1,10 @@
 {
-  "name": "@minna-ui/toasts",
+  "name": "@minna-ui/toast",
   "version": "0.16.0",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/toasts",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/toast",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://ui.wearegenki.com",
+  "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
@@ -21,7 +21,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/MinnaToasts.html",
+  "svelte": "src/ToastLauncher.html",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

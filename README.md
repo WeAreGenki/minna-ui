@@ -1,5 +1,7 @@
 <!-- markdownlint-disable first-line-h1 -->
 
+<!-- TODO: Document the new recommended way of installing by using the `minna-ui` meta package  -->
+
 <!-- TODO: Move much of this content into the docs and simplify this file as much as possible -->
 
 <!-- TODO: Move all the aplicable component, CSS, and utils README content into the docs too! -->
@@ -43,13 +45,13 @@ Under the hood components use the Svelte JavaScript framework so Minna UI is a g
 
 To see [live examples](https://wearegenki.github.io/minna-ui/#/examples) and the docs, visit [wearegenki.github.io/minna-ui](https://wearegenki.github.io/minna-ui).
 
-### Quick start
+<!-- ### Quick start
 
 The easiest way to get started is to get a copy of our example [project template](https://github.com/WeAreGenki/minna-ui-template):
 
 ```sh
 wget https://github.com/WeAreGenki/minna-ui-template/archive/master.zip -o minna-ui-template.zip
-```
+``` -->
 
 ## Browser compatibility
 
@@ -68,7 +70,7 @@ _NOTE: Old browser compatibility via progressive fallback is possible and we'll 
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md).
+See [CHANGELOG](CHANGELOG.md).
 
 ## Licence
 

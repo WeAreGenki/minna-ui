@@ -1,13 +1,13 @@
 'use strict';
 
-const MinnaSwitch = require('../src/MinnaSwitch.html');
+const Switch = require('../src/Switch.html');
 
-describe('MinnaSwitch component', () => {
+describe('Switch component', () => {
   it('renders correctly with no props', () => {
     expect.assertions(7);
     function wrapper() {
       const target = document.createElement('div');
-      new MinnaSwitch({ target });
+      new Switch({ target });
       const el = target.querySelector('.switch');
       expect(el.getAttribute('tabindex')).toEqual('0');
       expect(el.getAttribute('disabled')).toBeNull();
@@ -22,7 +22,7 @@ describe('MinnaSwitch component', () => {
   it('renders with value true', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -35,7 +35,7 @@ describe('MinnaSwitch component', () => {
   it('renders with value false', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: false,
@@ -48,7 +48,7 @@ describe('MinnaSwitch component', () => {
   it('renders with textOn/textOff props', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         textOn: 'YES',
@@ -64,7 +64,7 @@ describe('MinnaSwitch component', () => {
   it('renders with mini prop', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         mini: true,
@@ -77,7 +77,7 @@ describe('MinnaSwitch component', () => {
   it('renders with disabled prop', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         disabled: true,
@@ -91,7 +91,7 @@ describe('MinnaSwitch component', () => {
   it('toggles class when value changes', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: false,
@@ -108,7 +108,7 @@ describe('MinnaSwitch component', () => {
   it('toggles value on click', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -124,7 +124,7 @@ describe('MinnaSwitch component', () => {
   it('does not toggle value on click when disabled', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -141,7 +141,7 @@ describe('MinnaSwitch component', () => {
   it('toggles on enter key press', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -158,7 +158,7 @@ describe('MinnaSwitch component', () => {
   it('toggles on spacebar key press', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -177,7 +177,7 @@ describe('MinnaSwitch component', () => {
 
   it('does not toggle on key press when disabled', () => {
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,
@@ -192,7 +192,7 @@ describe('MinnaSwitch component', () => {
   it('does not toggle on invalid key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
-    const component = new MinnaSwitch({
+    const component = new Switch({
       target,
       data: {
         value: true,

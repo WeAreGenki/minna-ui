@@ -4,7 +4,7 @@
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip-action",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://ui.wearegenki.com",
+  "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
@@ -17,8 +17,8 @@
     "ui-components",
     "wearegenki"
   ],
-  "main": "index.mjs",
-  "styles": "index.css",
+  "main": "index.js",
+  "style": "index.css",
   "publishConfig": {
     "access": "public"
   }

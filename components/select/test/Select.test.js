@@ -1,6 +1,6 @@
 'use strict';
 
-const MinnaSelect = require('../src/MinnaSelect.html');
+const Select = require('../src/Select.html');
 
 const items = [
   { id: 'au', text: 'Australia' },
@@ -27,12 +27,12 @@ const selectOpts = {
   value: '',
 };
 
-describe('MinnaSelect component', () => {
+describe('Select component', () => {
   it('throws error with no props', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new MinnaSelect({ target });
+      new Select({ target });
     }
     expect(wrapper).toThrow();
   });
@@ -40,7 +40,7 @@ describe('MinnaSelect component', () => {
   it('renders correctly with required props set', () => {
     expect.assertions(10);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -60,7 +60,7 @@ describe('MinnaSelect component', () => {
   it('renders with value set', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -74,7 +74,7 @@ describe('MinnaSelect component', () => {
   it('renders with filterable prop set to false', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -91,7 +91,7 @@ describe('MinnaSelect component', () => {
   it('renders with filterHelp prop', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -108,7 +108,7 @@ describe('MinnaSelect component', () => {
   it('renders with placeholder prop', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -125,7 +125,7 @@ describe('MinnaSelect component', () => {
   it.skip('renders with disabled prop', () => {
     expect.assertions(5);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -143,7 +143,7 @@ describe('MinnaSelect component', () => {
   it('renders with readonly prop', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -162,7 +162,7 @@ describe('MinnaSelect component', () => {
   it('correct selected index is updated on value change', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -178,7 +178,7 @@ describe('MinnaSelect component', () => {
   it('shows on click', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -195,7 +195,7 @@ describe('MinnaSelect component', () => {
   it.skip('does not show on click when disabled', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -214,7 +214,7 @@ describe('MinnaSelect component', () => {
   it('shows on enter key press', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -234,7 +234,7 @@ describe('MinnaSelect component', () => {
   it('shows on spacebar key press', () => {
     expect.assertions(7);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -259,7 +259,7 @@ describe('MinnaSelect component', () => {
   it('shows on down key press', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -279,7 +279,7 @@ describe('MinnaSelect component', () => {
   it('shows on up key press', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -300,7 +300,7 @@ describe('MinnaSelect component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     document.body.appendChild(target);
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -318,7 +318,7 @@ describe('MinnaSelect component', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     document.body.appendChild(target);
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -337,7 +337,7 @@ describe('MinnaSelect component', () => {
   it('hides on ESC key press', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -360,7 +360,7 @@ describe('MinnaSelect component', () => {
   it('does nothing on invalid key press', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });
@@ -380,7 +380,7 @@ describe('MinnaSelect component', () => {
   it('selects next item on down key press', () => {
     expect.assertions(8);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -409,7 +409,7 @@ describe('MinnaSelect component', () => {
   it('selects previous item on up key press', () => {
     expect.assertions(8);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -438,7 +438,7 @@ describe('MinnaSelect component', () => {
   it('skips over disabled items on down key press', () => {
     expect.assertions(6);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -465,7 +465,7 @@ describe('MinnaSelect component', () => {
   it('skips over disabled items on up key press', () => {
     expect.assertions(6);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -492,7 +492,7 @@ describe('MinnaSelect component', () => {
   it('doesn\'t go past end of items on down key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -516,7 +516,7 @@ describe('MinnaSelect component', () => {
   it('doesn\'t go past end of items on up key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -540,7 +540,7 @@ describe('MinnaSelect component', () => {
   it('selects an item on click', () => {
     expect.assertions(7);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -570,7 +570,7 @@ describe('MinnaSelect component', () => {
   it('doesn\'t select an item on click when option disabled', () => {
     expect.assertions(7);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -605,7 +605,7 @@ describe('MinnaSelect component', () => {
   it('selects item on enter key press', () => {
     expect.assertions(8);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -636,7 +636,7 @@ describe('MinnaSelect component', () => {
   it('typing in input filters the shown items', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -652,7 +652,7 @@ describe('MinnaSelect component', () => {
   it('shows feedback message when filter has no match', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -668,7 +668,7 @@ describe('MinnaSelect component', () => {
   it('input is reset on ESC key press', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: {
         ...selectOpts,
@@ -689,7 +689,7 @@ describe('MinnaSelect component', () => {
   it('can dynamically add items', () => {
     expect.assertions(3);
     const target = document.createElement('div');
-    const component = new MinnaSelect({
+    const component = new Select({
       target,
       data: selectOpts,
     });

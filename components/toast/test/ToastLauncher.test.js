@@ -1,11 +1,11 @@
 'use strict';
 
-const MinnaToasts = require('../src/MinnaToasts.html');
+const ToastLauncher = require('../src/ToastLauncher.html');
 
-describe('MinnaToasts component', () => {
+describe('ToastLauncher component', () => {
   it('renders correctly with defaults', () => {
     const target = document.createElement('div');
-    new MinnaToasts({ target });
+    new ToastLauncher({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

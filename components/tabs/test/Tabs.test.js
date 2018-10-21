@@ -1,11 +1,11 @@
 'use strict';
 
-const MinnaCodeView = require('../src/MinnaCodeView.html');
+const Tabs = require('../src/Tabs.html');
 
-describe('MinnaCodeView component', () => {
+describe('Tabs component', () => {
   it('renders correctly with defaults', () => {
     const target = document.createElement('div');
-    new MinnaCodeView({ target });
+    new Tabs({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

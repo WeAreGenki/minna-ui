@@ -1,13 +1,13 @@
 'use strict';
 
-const MinnaCollapse = require('../src/MinnaCollapse.html');
+const Collapse = require('../src/Collapse.html');
 
-describe('MinnaCollapse component', () => {
+describe('Collapse component', () => {
   it('renders correctly with no props', () => {
     expect.assertions(3);
     function wrapper() {
       const target = document.createElement('div');
-      new MinnaCollapse({ target });
+      new Collapse({ target });
       expect(target.querySelector('.collapse-hide')).not.toBeNull();
       expect(target.innerHTML).toMatchSnapshot();
     }
@@ -17,7 +17,7 @@ describe('MinnaCollapse component', () => {
   it('collapsed content shows and hides on click', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaCollapse({ target });
+    const component = new Collapse({ target });
     expect(component.get()._isOpen).toBeFalsy();
     const button = target.querySelector('button');
     button.click();

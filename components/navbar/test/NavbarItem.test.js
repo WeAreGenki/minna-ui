@@ -1,6 +1,6 @@
 'use strict';
 
-const MinnaNavbarItem = require('../src/MinnaNavbarItem.html');
+const NavbarItem = require('../src/NavbarItem.html');
 
 const menuItem = {
   item: { url: 'page-one', name: 'Page One' },
@@ -18,12 +18,12 @@ const subMenu = {
   segment: 'page-one',
 };
 
-describe('MinnaNavbarItem component', () => {
+describe('NavbarItem component', () => {
   it('throws error with no props', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new MinnaNavbarItem({ target });
+      new NavbarItem({ target });
     }
     expect(wrapper).toThrow();
   });
@@ -31,8 +31,8 @@ describe('MinnaNavbarItem component', () => {
   it.skip('renders item correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    // const component = new MinnaNavbarItem({
-    new MinnaNavbarItem({
+    // const component = new NavbarItem({
+    new NavbarItem({
       target,
       data: menuItem,
     });
@@ -47,8 +47,8 @@ describe('MinnaNavbarItem component', () => {
   it.skip('renders submenu correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    // const component = new MinnaNavbarItem({
-    new MinnaNavbarItem({
+    // const component = new NavbarItem({
+    new NavbarItem({
       target,
       data: subMenu,
     });

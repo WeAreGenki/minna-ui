@@ -4,7 +4,7 @@
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tabs",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://ui.wearegenki.com",
+  "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
@@ -21,7 +21,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/MinnaTabs.html",
+  "svelte": "src/Tabs.html",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

@@ -6,7 +6,7 @@
 
 'use strict';
 
-const MinnaNavbar = require('../src/MinnaNavbar.html');
+const Navbar = require('../src/Navbar.html');
 
 const menuItems = [
   { url: 'page-one', text: 'Page One' },
@@ -21,12 +21,12 @@ const menuItems = [
   { url: 'about', text: 'About Us' },
 ];
 
-describe('MinnaNavbar component', () => {
+describe('Navbar component', () => {
   it('throws error with no props', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new MinnaNavbar({ target });
+      new Navbar({ target });
     }
     expect(wrapper).toThrow();
   });
@@ -34,7 +34,7 @@ describe('MinnaNavbar component', () => {
   it('renders correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -54,7 +54,7 @@ describe('MinnaNavbar component', () => {
     const spy = jest.spyOn(window, 'requestAnimationFrame');
     spy.mockImplementation(cb => cb());
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -73,7 +73,7 @@ describe('MinnaNavbar component', () => {
   it('open menu on button click', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -92,7 +92,7 @@ describe('MinnaNavbar component', () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -111,7 +111,7 @@ describe('MinnaNavbar component', () => {
     expect.assertions(3);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -134,7 +134,7 @@ describe('MinnaNavbar component', () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -157,7 +157,7 @@ describe('MinnaNavbar component', () => {
   it('shows correct icon and class when toggled', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    new MinnaNavbar({
+    new Navbar({
       target,
       data: {
         menuItems,
@@ -176,7 +176,7 @@ describe('MinnaNavbar component', () => {
   it('adds class to active menu item', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    new MinnaNavbar({
+    new Navbar({
       target,
       data: {
         menuItems,
@@ -195,7 +195,7 @@ describe('MinnaNavbar component', () => {
   it.skip('adds class to active menu item in nested route', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    new MinnaNavbar({
+    new Navbar({
       target,
       data: {
         menuItems,
@@ -217,7 +217,7 @@ describe('MinnaNavbar component', () => {
   it.skip('can dynamically add menu items', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new MinnaNavbar({
+    const component = new Navbar({
       target,
       data: {
         menuItems,
@@ -234,8 +234,8 @@ describe('MinnaNavbar component', () => {
   it.skip('renders custom markup when slot content is used', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    // const component = new MinnaNavbar({
-    new MinnaNavbar({
+    // const component = new Navbar({
+    new Navbar({
       target,
       data: {
         menuItems,

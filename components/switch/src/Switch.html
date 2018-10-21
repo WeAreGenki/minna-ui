@@ -15,18 +15,18 @@
     Simply import this component into your vue file and use it in your template
     as if it was a normal input; bind it to a vue model. Example:
 
-      <MinnaSwitch bind:value="switch"/>
+      <Switch bind:value="switch"/>
 
     The default switch is the same size as buttons. If this is too big, you can
     add a "mini" property for a compact version. Example:
 
-      <MinnaSwitch bind:value="switch" mini/>
+      <Switch bind:value="switch" mini/>
 
     It's possible to change the text from "ON"/"OFF" by passing the props textOn
     and textOff. If you change this you may need to modify the width too, which
     can be done via the --switch-width CSS variable. Example:
 
-      <MinnaSwitch bind:value="switch" textOn="YES" textOff="NO"/>
+      <Switch bind:value="switch" textOn="YES" textOff="NO"/>
 
   TIPS:
     - It's a good idea to add a title attribute so desktop users can understand

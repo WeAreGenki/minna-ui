@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const merge = require('deepmerge');
 const nodeResolve = require('resolve');
 const postcss = require('postcss');
 const atUse = require('postcss-use');
@@ -86,7 +87,7 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
   } catch (err) { /* noop */ }
 
   // initialise options
-  const opts = Object.assign({
+  const opts = merge({
     // atUse
     modules: '*',
     resolveFromFile: true,

@@ -1,5 +1,6 @@
 'use strict';
 
+const merge = require('deepmerge');
 const postcssLoadConfig = require('postcss-load-config');
 const postcss = require('postcss');
 const parser = require('postcss-selector-parser');
@@ -27,7 +28,7 @@ module.exports = (context = {}) => async ({ attributes, content, filename }) => 
      * Compile PostCSS code into CSS.
      */
     if (attributes.type === 'text/postcss') {
-      const config = await postcssLoadConfig(Object.assign(processorCtx, context));
+      const config = await postcssLoadConfig(merge(processorCtx, context));
       options = config.options; // eslint-disable-line prefer-destructuring
 
       result = await postcss(config.plugins).process(source, options);

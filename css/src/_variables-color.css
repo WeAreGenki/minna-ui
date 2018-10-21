@@ -1,8 +1,15 @@
+/**
+ * COLOUR VARIABLES
+ */
+
 /*
   TODO: Add a note referencing original work these colours are from:
     ↳ Palantir Technologies, Inc.
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_colors.scss
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_color-aliases.scss
+    ↳ https://blueprintjs.com/docs/#core/colors
+
+  TODO: Refactor all these colours into a brighter, more chearful pallete.
 */
 
 /* Gray scale */
@@ -115,13 +122,13 @@ $outline-color: $intent-primary;
 $outline-color-hover: $gray3;
 $text-color: $dark-gray1;
 $text-color-muted: $gray1;
-$text-color-disabled: color-mod($text-color-muted) alpha(0.5);
+$text-color-disabled: color-mod($text-color-muted alpha(0.5));
 $heading-color: $text-color;
 $link-color: $blue2;
 $shadow-color: $cobalt1;
 $dark-text-color: $light-gray5;
 $dark-text-color-muted: $gray5;
-$dark-text-color-disabled: color-mod($dark-text-color-muted) alpha(0.5);
+$dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5));
 $dark-heading-color: $dark-text-color;
 $dark-link-color: $blue5;
 $text-selection-color: rgba(125, 188, 255, 0.6);

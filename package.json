@@ -9,6 +9,7 @@
   "scripts": {
     "setup": "yarn; lerna bootstrap",
     "docs": "docsify serve ./docs",
+    "predocs": "build-css docs/_src docs/_dist --no-clean --no-banner",
     "update": "yarn upgrade-interactive --latest",
     "publish:alpha": "yarn prepack && lerna publish --canary=prerelease --exact --npm-tag=next",
     "publish:beta": "yarn prepack && lerna publish --cd-version=prerelease --preid=beta --npm-tag=beta",

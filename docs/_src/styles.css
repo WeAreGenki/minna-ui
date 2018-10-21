@@ -1,0 +1,27 @@
+@import "import.css";
+@import "./_variables.css";
+@import "./_layout.css";
+@import "./_coverpage.css";
+
+/* Buttons */
+
+/* TODO: Remove .card-button if not used */
+.button,
+.card-button {
+  font-weight: $text-weight-heavy;
+  text-transform: uppercase;
+}
+
+.button-cta {
+  color: $white;
+  background-color: $intent-primary;
+
+  &:hover,
+  &:focus {
+    background-color: $blue2;
+  }
+
+  &:active {
+    background-color: $blue1;
+  }
+}

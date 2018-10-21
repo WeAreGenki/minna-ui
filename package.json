@@ -42,6 +42,6 @@
     "markdownlint-cli": "^0.13.0",
     "postcss": "7.0.5",
     "stylelint": "9.6.0",
-    "svelte": "2.14.0"
+    "svelte": "2.14.1"
   }
 }

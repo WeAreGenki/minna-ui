@@ -114,7 +114,7 @@ module.exports = async function run(env, argv) {
   const pkgStyle = env.npm_package_style;
   const pkgMain = env.npm_package_main;
 
-  const banner = `/*!
+  const cssBanner = `/*!
  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
@@ -123,13 +123,16 @@ module.exports = async function run(env, argv) {
 
   const inputDir = argv[2];
   const outputDir = argv[3];
+  const noClean = argv.includes('--no-clean');
+  const noBanner = argv.includes('--no-banner');
+  const banner = noBanner ? '' : cssBanner;
   /** @type {Array<string>} */
   const inputCss = [];
   /** @type {Array<string>} */
   const outputCss = [];
 
   if (!inputDir) {
-    if (!pkgStyle && !pkgMain) throw new Error('No input files or directory specified!');
+    if (!pkgStyle && !pkgMain) throw new Error('No input file or directory specified!');
 
     inputCss.push(pkgMain);
     outputCss.push(pkgStyle);
@@ -147,7 +150,9 @@ module.exports = async function run(env, argv) {
     });
   }
 
-  cleanDistDir(outputDir || dirname(pkgStyle));
+  if (!noClean) {
+    cleanDistDir(outputDir || dirname(pkgStyle));
+  }
 
   const results = [];
 
@@ -158,8 +163,6 @@ module.exports = async function run(env, argv) {
     const result = processCss({ from, to, banner });
     results.push(result);
   }
-
-  // console.log('@@ RESULT', await Promise.all(results));
 
   return Promise.all(results);
 };

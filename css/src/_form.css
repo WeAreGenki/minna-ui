@@ -1,6 +1,6 @@
-/*
-  FORMS
-*/
+/**
+ * FORMS
+ */
 
 .form-group {
   margin-bottom: $form-group-margin;
@@ -56,8 +56,10 @@
   }
 }
 
-/* FIXME: Create custom checkbox styles */
+/* TODO: Create more custom input styles */
+/* .radio {} */
 /* .checkbox {} */
+/* .range {} */
 
 /* Grouped form elements */
 

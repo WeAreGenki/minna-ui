@@ -44,22 +44,17 @@ module.exports = {
       objects: 'always-multiline',
       imports: 'always-multiline',
       exports: 'always-multiline',
-      functions: 'only-multiline', // awkward comma on multiline function params is OK
+      functions: 'only-multiline', // comma on multiline function params is OK
     }],
-    'id-length': ['error', { min: 2 }], // encourage descriptive variable names
-    'import/extensions': ['error', 'ignorePackages'], // do use file extentions
-    'no-console': /* istanbul ignore next */ isProd ? 'error' : 'off',
-    'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'off',
+    'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive variable names
+    'import/extensions': ['error', 'ignorePackages'], // do use file extensions
+    'no-console': /* istanbul ignore next */ isProd ? 'error' : 'warn',
+    'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
-    'no-underscore-dangle': 'off', // we use _ to indicate properties to mangle
     'object-curly-newline': ['error', { consistent: true }],
-    'object-curly-spacing': ['error', 'always', {
-      arraysInObjects: false,
-      objectsInObjects: false,
-    }],
   },
 
-  // JS config files should be node/CommonJS format
+  // JS config files should be node CommonJS format
   overrides: [{
     files: ['*.config.js', '*rc.js'],
     excludedFiles: ['rollup.config.js'], // uses ES6 modules

@@ -2,12 +2,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const merge = require('deepmerge');
+const nodeResolve = require('resolve');
 const postcss = require('postcss');
 const atUse = require('postcss-use');
 const advancedVars = require('postcss-advanced-variables');
-const nodeResolve = require('resolve');
+const postcssExtend = require('postcss-extend-rule');
 const nested = require('postcss-nested');
-const calc = require('postcss-calc');
 const colorModFunction = require('postcss-color-mod-function');
 const mediaQueryPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
@@ -64,7 +65,7 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
     advancedVars,
     atUse,
     nested,
-    calc,
+    postcssExtend,
     colorModFunction,
   ];
 
@@ -84,7 +85,14 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
   } catch (err) { /* noop */ }
 
   // initialise options
-  const opts = Object.assign({
+  const cssnanoOpts = merge({
+    autoprefixer: false,
+    zindex: false,
+    calc: {
+      warnWhenCannotResolve: debug,
+    },
+  }, rawopts);
+  const opts = merge({
     // atUse
     modules: '*',
     resolveFromFile: true,
@@ -94,9 +102,6 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
     importPaths,
     importCache,
 
-    // calc
-    warnWhenCannotResolve: debug,
-
     // autoprefixer
     remove: false,
     grid: true, // adds -ms- prefix for IE 11 support
@@ -104,11 +109,8 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
 
     // cssnano
     preset: safe
-      ? 'default'
-      : ['advanced', {
-        autoprefixer: false,
-        zindex: false,
-      }],
+      ? ['default', cssnanoOpts]
+      : ['advanced', cssnanoOpts],
   }, rawopts);
 
   // initialise plugins

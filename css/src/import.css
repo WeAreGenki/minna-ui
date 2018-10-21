@@ -1,13 +1,12 @@
-/*
-  IMPORT
-
-    Import this file into components for access to global CSS variables
-
-  NOTE:
-    Components will fall back to this file to source CSS variables if unable to
-    resolve an "import.css" file in your project.
-
-*/
+/**
+ * IMPORT
+ *
+ * Import this file into components for access to global CSS variables.
+ *
+ * NOTE:
+ *   Components will fall back to this file to source CSS variables if unable to
+ *   resolve an "import.css" file in your project.
+ */
 
 @import "./_variables-color.css";
 @import "./_variables.css";

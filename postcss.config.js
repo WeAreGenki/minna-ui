@@ -2,13 +2,12 @@
 
 'use strict';
 
-/* eslint-disable-next-line import/no-extraneous-dependencies */
 const minnaUi = require('@minna-ui/postcss-config');
 
-const dev = process.env.NODE_ENV === 'development';
-
 module.exports = {
+  parser: 'postcss-scss', // FIXME: `//` comments are not being converted to block
+  map: true,
   plugins: [
-    minnaUi({ verbose: dev }),
+    minnaUi({ debug: true }),
   ],
 };

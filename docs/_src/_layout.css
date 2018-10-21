@@ -1,0 +1,604 @@
+/**
+ * DOCS THEME LAYOUT
+ *
+ * Based on the docsify basic styles but stripped down to the bare essentials and
+ * changed to suit our CSS build system, linting rules, and CSS variable names.
+ *
+ * REFERENCE:
+ *   - https://github.com/docsifyjs/docsify/blob/master/src/themes/basic/_layout.styl
+ */
+
+/* stylelint-disable declaration-no-important */
+
+/* * {
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  box-sizing: border-box;
+} */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* -moz-osx-font-smoothing: grayscale; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* margin: 0; */
+  overflow-x: hidden;
+  /* font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; */
+  /* font-size: 15px; */
+  /* color: $text-color; */
+  /* letter-spacing: 0; */
+}
+
+body:not(.ready) {
+  overflow: hidden;
+
+  [data-cloak],
+  .app-nav,
+  & > nav {
+    display: none;
+  }
+}
+
+#app { /* stylelint-disable-line selector-max-id */
+  margin: 40vh auto;
+  font-size: 30px;
+  font-weight: $text-weight-light;
+  text-align: center;
+
+  &:empty::before {
+    content: "Loading...";
+  }
+}
+
+.emoji {
+  height: 1.2rem;
+  vertical-align: middle;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999999;
+  width: 0%;
+  height: 2px;
+  background-color: var(--theme-color, $intent-primary);
+  transition: width 0.2s, opacity 0.4s;
+}
+
+.search a:hover {
+  color: var(--theme-color, $intent-primary);
+}
+
+.search .search-keyword {
+  font-style: normal;
+  font-weight: $text-weight-heavy;
+  color: var(--theme-color, $intent-primary);
+}
+
+img {
+  max-width: 100%;
+}
+
+a[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  margin-bottom: 3px;
+  font-size: 12px !important;
+  line-height: 12px;
+  vertical-align: middle;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+}
+
+.task-list-item {
+  list-style-type: none;
+}
+
+li input[type="checkbox"] {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+/* Navbar */
+
+.app-nav {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  margin: 25px 60px 0 0;
+  text-align: right;
+
+  &.no-badge {
+    margin-right: 25px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  & > a {
+    padding: 5px 0;
+    margin: 0 1rem;
+  }
+
+  ul,
+  li {
+    display: inline-block;
+    margin: 0;
+    list-style: none;
+  }
+
+  a {
+    font-size: 16px;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--theme-color, $intent-primary);
+    }
+
+    &.active {
+      color: var(--theme-color, $intent-primary);
+      border-bottom: 2px solid var(--theme-color, $intent-primary);
+    }
+  }
+
+  /* Navbar dropdown */
+
+  li {
+    position: relative;
+    display: inline-block;
+    padding: 5px 0;
+    margin: 0 1rem;
+
+    ul {
+      position: absolute;
+      top: 100%;
+      right: -15px;
+      box-sizing: border-box;
+      display: none;
+      max-height: calc(100vh - 61px);
+      padding: 10px 0;
+      overflow-y: auto;
+      text-align: left;
+      white-space: nowrap;
+      background-color: $white;
+      border: 1px solid #ddd;
+      border-bottom-color: #ccc;
+      border-radius: 4px;
+
+      li {
+        display: block;
+        margin: 8px 14px;
+        font-size: 14px;
+        line-height: 1rem;
+        white-space: nowrap;
+      }
+
+      a {
+        display: block;
+        padding: 0;
+        margin: 0;
+        font-size: inherit;
+
+        &.active {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &:hover ul {
+      display: block;
+    }
+  }
+}
+
+/* GitHub corner image */
+
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  text-decoration: none;
+  border-bottom: 0;
+
+  &:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+
+  svg {
+    width: 80px;
+    height: 80px;
+    color: $app-background-color;
+    fill: var(--theme-color, $intent-primary);
+  }
+}
+
+/* Main */
+
+main {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100vw;
+  height: 100%;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.anchor {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  span {
+    color: $text-color;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Sidebar */
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  width: $sidebar-width;
+  padding: 40px 0 0;
+  overflow-y: auto;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  transition: transform 250ms ease-out;
+
+  & > h1 {
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: center;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app-nav {
+      position: static;
+      display: block;
+    }
+  }
+
+  .sidebar-nav {
+    padding-bottom: 40px;
+    line-height: 2em;
+  }
+
+  li.collapse {
+    .app-sub-sidebar {
+      display: none;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0 0 0 15px;
+  }
+
+  li > p {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  ul,
+  ul li {
+    list-style: none;
+  }
+
+  ul li a {
+    display: block;
+    border-bottom: none;
+  }
+
+  ul li ul {
+    padding-left: 20px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.4);
+  }
+
+  &:hover::-webkit-scrollbar-track {
+    background: rgba(136, 136, 136, 0.1);
+  }
+}
+
+/* Sidebar toggle */
+
+.sidebar-toggle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: calc($sidebar-width - 16px);
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  background-color: color-mod($app-background-color alpha(0.8));
+  border: 0;
+  outline: none;
+  transition: opacity 0.3s;
+
+  .sidebar-toggle-button:hover {
+    opacity: 0.4;
+  }
+
+  span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    margin-bottom: 4px;
+    background-color: var(--theme-color, $intent-primary);
+  }
+}
+
+body.sticky {
+  .sidebar,
+  .sidebar-toggle {
+    position: fixed;
+  }
+}
+
+/* Main content */
+
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $sidebar-width;
+  padding-top: 60px;
+  transition: left 250ms ease;
+}
+
+/* Markdown content found on pages */
+
+.markdown-section {
+  position: relative;
+  max-width: 800px;
+  padding: 30px 15px 40px 15px;
+  margin: 0 auto;
+
+  /* & > * {
+    box-sizing: border-box;
+    font-size: inherit;
+  } */
+
+  /* & > :first-child {
+    margin-top: 0 !important;
+  } */
+
+  hr {
+    margin: 2em 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  iframe {
+    border: 1px solid #eee;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    overflow: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: 6px 13px;
+    font-weight: $text-weight-heavy;
+    border: 1px solid #ddd;
+  }
+
+  td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+  }
+
+  tr {
+    border-top: 1px solid #ccc;
+
+    &:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+  }
+
+  p.tip {
+    position: relative;
+    padding: 12px 24px 12px 30px;
+    margin: 2em 0;
+    background-color: #f8f8f8;
+    border-left: 4px solid #f66;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    &::before {
+      position: absolute;
+      top: 14px;
+      left: -12px;
+      width: 20px;
+      height: 20px;
+      /* font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; */
+      /* font-size: 14px; */
+      font-weight: $text-weight-heavy;
+      line-height: 20px;
+      color: $app-background-color;
+      text-align: center;
+      content: "!";
+      background-color: #f66;
+      border-radius: 100%;
+    }
+
+    code {
+      background-color: #efefef;
+    }
+
+    em {
+      color: $text-color;
+    }
+  }
+
+  p.warn {
+    padding: 1rem;
+    background: color-mod($intent-primary alpha(0.1));
+    border-radius: 2px;
+  }
+}
+
+.close {
+  .sidebar {
+    transform: translateX(calc(-1 * $sidebar-width));
+  }
+
+  .sidebar-toggle {
+    width: auto;
+  }
+
+  .content {
+    left: 0;
+  }
+}
+
+@media print {
+  .github-corner,
+  .sidebar-toggle,
+  .sidebar,
+  .app-nav {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .github-corner,
+  .sidebar-toggle,
+  .sidebar {
+    position: fixed;
+  }
+
+  .app-nav {
+    margin-top: 16px;
+  }
+
+  .app-nav li ul {
+    top: 30px;
+  }
+
+  main {
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    left: calc(-1 * $sidebar-width);
+    transition: transform 250ms ease-out;
+  }
+
+  .content {
+    position: static;
+    left: 0;
+    max-width: 100vw;
+    padding-top: 20px;
+    transition: transform 250ms ease;
+  }
+
+  .app-nav,
+  .github-corner {
+    transition: transform 250ms ease-out;
+  }
+
+  .sidebar-toggle {
+    width: auto;
+    padding: 30px 30px 10px 10px;
+    background-color: transparent;
+  }
+
+  .close {
+    .sidebar {
+      transform: translateX($sidebar-width);
+    }
+
+    .sidebar-toggle {
+      width: calc($sidebar-width - 16px);
+      padding: 10px;
+      background-color: color-mod($app-background-color alpha(0.8));
+      transition: background-color 1s;
+    }
+
+    .content {
+      transform: translateX($sidebar-width);
+    }
+
+    .app-nav,
+    .github-corner {
+      display: none;
+    }
+  }
+
+  .github-corner {
+    &:hover .octo-arm {
+      animation: none;
+    }
+
+    .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}

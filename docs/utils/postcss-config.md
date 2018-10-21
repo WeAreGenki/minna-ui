@@ -1,3 +1,3 @@
-# PostCSS Config Util
+# PostCSS Config Package
 
 TODO: Write me.

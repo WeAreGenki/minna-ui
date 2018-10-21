@@ -1,49 +1,48 @@
-/*
-  SPACING
-
-    Margin and padding for whitespace control.
-
-    .<RESPONSIVE><BASE><DIRECTION><VALUE><MOD>
-
-  RESPONSIVE:
-       = (no prefix) default small
-    ns- = not small screen breakpoint; anything medium or bigger
-    m- = medium screen breakpoint
-    l- = large screen breakpoint
-
-  BASE:
-    m = margin
-    p = padding
-
-  DIRECTION:
-    a = all
-    h = horizontal
-    v = vertical
-    t = top
-    r = right
-    b = bottom
-    l = left
-
-  VALUE:
-    -auto = auto (margin only + no 'a' direction)
-    -offset = same size as expended click target area (-t/r/b/l margin only)
-    -4 = -2em (margin only + no 'a' direction)
-    -3 = -1em (margin only + no 'a' direction)
-    -2 = -0.5em (margin only + no 'a' direction)
-    -1 = -0.25em (margin only + no 'a' direction)
-    0 = 0
-    1 = 0.25em
-    2 = 0.5em
-    3 = 1em
-    4 = 2em
-    5 = 4em
-    6 = 8em
-    7 = 16em
-
-  MOD:
-    -i = force using !important (only available on margin auto directions)
-
-*/
+/**
+ * SPACING
+ *
+ *   Margin and padding for whitespace control.
+ *
+ *   .<RESPONSIVE><BASE><DIRECTION><VALUE><MOD>
+ *
+ * RESPONSIVE:
+ *      = (no prefix) default small
+ *   ns- = not small screen breakpoint; anything medium or bigger
+ *   m- = medium screen breakpoint
+ *   l- = large screen breakpoint
+ *
+ * BASE:
+ *   m = margin
+ *   p = padding
+ *
+ * DIRECTION:
+ *   a = all
+ *   h = horizontal
+ *   v = vertical
+ *   t = top
+ *   r = right
+ *   b = bottom
+ *   l = left
+ *
+ * VALUE:
+ *   -auto = auto (margin only + no 'a' direction)
+ *   -offset = same size as expended click target area (-t/r/b/l margin only)
+ *   -4 = -2em (margin only + no 'a' direction)
+ *   -3 = -1em (margin only + no 'a' direction)
+ *   -2 = -0.5em (margin only + no 'a' direction)
+ *   -1 = -0.25em (margin only + no 'a' direction)
+ *   0 = 0
+ *   1 = 0.25em
+ *   2 = 0.5em
+ *   3 = 1em
+ *   4 = 2em
+ *   5 = 4em
+ *   6 = 8em
+ *   7 = 16em
+ *
+ * MOD:
+ *   -i = force using !important (only available on margin auto directions)
+ */
 
 /* stylelint-disable declaration-block-single-line-max-declarations */
 
@@ -135,6 +134,16 @@
 .mb-4 { margin-bottom: -2em; }
 .ml-4 { margin-left: -2em; }
 
+/* Resets */
+
+.mau { margin: unset; }
+.mhu { margin-right: unset; margin-left: unset; }
+.mvu { margin-top: unset; margin-bottom: unset; }
+.mtu { margin-top: unset; }
+.mru { margin-right: unset; }
+.mbu { margin-bottom: unset; }
+.mlu { margin-left: unset; }
+
 @each $bp in $breakpoints {
   @include at-media($bp) {
     .$(bp)-mh-auto { margin-right: auto; margin-left: auto; }
@@ -180,5 +189,13 @@
     .$(bp)-mr-4 { margin-right: -2em; }
     .$(bp)-mb-4 { margin-bottom: -2em; }
     .$(bp)-ml-4 { margin-left: -2em; }
+
+    .$(bp)-mau { margin: unset; }
+    .$(bp)-mhu { margin-right: unset; margin-left: unset; }
+    .$(bp)-mvu { margin-top: unset; margin-bottom: unset; }
+    .$(bp)-mtu { margin-top: unset; }
+    .$(bp)-mru { margin-right: unset; }
+    .$(bp)-mbu { margin-bottom: unset; }
+    .$(bp)-mlu { margin-left: unset; }
   }
 }

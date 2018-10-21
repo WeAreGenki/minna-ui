@@ -1,13 +1,12 @@
-/*
-  NORMALISE
-
-    Sets consistent base styles between browsers.
-
-  README:
-    Based on normalize.css but manually maintained to remove unwanted features
-    and duplicated code.
-
-*/
+/**
+ * NORMALISE
+ *
+ * Sets consistent base styles between browsers.
+ *
+ * README:
+ *   Based on normalize.css but manually maintained to remove unwanted features
+ *   and duplicated code.
+ */
 
 /* stylelint-disable */
 

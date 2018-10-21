@@ -5,17 +5,6 @@
 module.exports = {
   root: true,
   extends: [
-    'eslint:recommended',
-    'airbnb-base',
-    'plugin:import/recommended',
+    '@minna-ui/eslint-config',
   ],
-  parserOptions: {
-    ecmaVersion: 9,
-    sourceType: 'script',
-  },
-  env: {
-    commonjs: true,
-    es6: true,
-    node: true,
-  },
 };

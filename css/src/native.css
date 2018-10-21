@@ -1,0 +1,31 @@
+/**
+ * MINNA-UI + NATIVE ELEMENTS CSS BUNDLE
+ *
+ * This combines the `@minna-ui/css` package together with additional CSS to
+ * style more native elements by default. We try to keep opinionated styles like
+ * these out of the standard CSS bundle to give developers more freedom in how
+ * things look. But for times when you want everything to look great
+ * out-of-the-box, then this packge is a good choice.
+ */
+
+@import "./index.css";
+
+/* Typography */
+
+table { @extend .table; }
+blockquote { @extend .blockquote; }
+code { @extend .code; }
+
+/* Form */
+
+label { @extend .label; }
+input { @extend .input; }
+select { @extend .select; }
+textarea { @extend .textarea; }
+input[type="radio"] { @extend .radio; }
+input[type="checkbox"] { @extend .checkbox; }
+input[type="range"] { @extend .range; }
+
+/* Button */
+
+button { @extend .button; }

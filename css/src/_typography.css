@@ -1,6 +1,6 @@
-/*
-  TYPOGRAPHY
-*/
+/**
+ * TYPOGRAPHY
+ */
 
 /* Text base */
 
@@ -135,6 +135,7 @@ li {
 .code {
   display: inline-block;
   padding: 0.1em 0.4em;
+  line-height: $line-height; /* so it doesn't look strange in <p> */
   color: $code-text-color;
   background-color: $code-background-color;
   border: 1px solid $light-gray1;

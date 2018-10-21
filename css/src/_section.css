@@ -1,34 +1,33 @@
-/*
-  SECTION
-
-    A way to break up long pages or add visual interest.
-
-  HTML LAYOUT:
-    Hero:
-
-      <section class="hero">
-        <div class="con">
-          <h1>Your Hero Content</h1>
-        </div>
-      </section>
-
-    Diagonal:
-
-      <section class="diagonal">
-        <div class="con pv4 tc">
-          <h2 class="mt0">Example diagonal section</h2>
-          <p class="lead">Your text.</p>
-        </div>
-      </section>
-
-      <section class="diagonal diagonal-dark">
-        <div class="con pv4 tc">
-          <h2 class="mt0">Another example diagonal section</h2>
-          <p class="lead">Your text.</p>
-        </div>
-      </section>
-
-*/
+/**
+ * SECTION
+ *
+ *   A way to break up long pages or add visual interest.
+ *
+ * HTML LAYOUT:
+ *   Hero:
+ *
+ *     <section class="hero">
+ *       <div class="con">
+ *         <h1>Your Hero Content</h1>
+ *       </div>
+ *     </section>
+ *
+ *   Diagonal:
+ *
+ *     <section class="diagonal">
+ *       <div class="con pv4 tc">
+ *         <h2 class="mt0">Example diagonal section</h2>
+ *         <p class="lead">Your text.</p>
+ *       </div>
+ *     </section>
+ *
+ *     <section class="diagonal diagonal-dark">
+ *       <div class="con pv4 tc">
+ *         <h2 class="mt0">Another example diagonal section</h2>
+ *         <p class="lead">Your text.</p>
+ *       </div>
+ *     </section>
+ */
 
 /* Hero section */
 

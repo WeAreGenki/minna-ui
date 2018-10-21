@@ -1,6 +1,6 @@
-/*
-  BUTTONS
-*/
+/**
+ * BUTTONS
+ */
 
 .button {
   display: inline-block;
@@ -20,11 +20,6 @@
   &:active {
     background-color: $button-active-background-color;
     box-shadow: none;
-  }
-
-  a& {
-    /* fix alignment when applied to links */
-    margin: initial;
   }
 
   &[disabled],

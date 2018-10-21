@@ -2,18 +2,39 @@
  * Stylelint config preset for minna-ui projects.
  */
 
+ /*
+  TODO: Incorporate the suggested additions from:
+  https://github.com/stylelint/stylelint-config-standard
+*/
+
 'use strict';
 
 module.exports = {
   extends: 'stylelint-config-standard',
   reportNeedlessDisables: true,
-  plugins: ['stylelint-order'],
+  plugins: [
+    'stylelint-a11y',
+    'stylelint-high-performance-animation',
+    'stylelint-order',
+  ],
   rules: {
+    'a11y/media-prefers-reduced-motion': true,
+    'a11y/no-outline-none': true,
+    'a11y/selector-pseudo-class-focus': true,
+    'a11y/content-property-no-static-value': [true, { severity: 'warning' }],
+    'a11y/font-size-is-readable': [true, { severity: 'warning' }],
+    'a11y/line-height-is-vertical-rhythmed': [true, { severity: 'warning' }],
+    'a11y/no-display-none': [true, { severity: 'warning' }],
+    'a11y/no-spread-text': [true, { severity: 'warning' }],
+    'a11y/no-obsolete-attribute': [true, { severity: 'warning' }],
+    'a11y/no-obsolete-element': [true, { severity: 'warning' }],
+    'a11y/no-text-align-justify': [true, { severity: 'warning' }],
     'at-rule-no-unknown': [true, {
       ignoreAtRules: [
         'content',
         'each',
         'else',
+        'extend',
         'for',
         'if',
         'include',
@@ -42,6 +63,7 @@ module.exports = {
     'media-feature-range-operator-space-before': 'always',
     'no-descending-specificity': true,
     'no-duplicate-selectors': true,
+    'plugin/no-low-performance-animation-properties': true,
     'property-no-unknown': true,
     'property-no-vendor-prefix': true,
     'selector-attribute-quotes': 'always',

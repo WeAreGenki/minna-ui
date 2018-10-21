@@ -1,0 +1,46 @@
+/**
+ * DOCS THEME COVER PAGE
+ *
+ * Based on the docsify basic styles but stripped down to the bare essentials and
+ * changed to suit our CSS build system, linting rules, and CSS variable names.
+ *
+ * REFERENCE:
+ *  - https://github.com/docsifyjs/docsify/blob/master/src/themes/basic/_coverpage.styl
+ */
+
+.cover {
+  display: none;
+  align-items: center;
+  height: 100vh;
+
+  &.show {
+    display: flex;
+  }
+
+  /* &.has-mask .mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $app-background-color;
+    opacity: 0.8;
+  } */
+}
+
+.cover-main {
+  z-index: 1;
+  flex: 1;
+  margin: -20px 0 0;
+  text-align: center;
+
+  blockquote {
+    font-size: $paragraph-lead-text-size;
+    font-weight: $paragraph-lead-text-weight;
+  }
+
+  ul {
+    padding: 0;
+    line-height: 1.8;
+    list-style-type: none;
+  }
+}

@@ -1,4 +1,8 @@
-<!-- markdownlint-disable first-line-h1 no-inline-html -->
+<!-- markdownlint-disable first-line-h1 -->
+
+<!-- TODO: Move much of this content into the docs and simplify this file as much as possible -->
+
+<!-- TODO: Move all the aplicable component, CSS, and utils README content into the docs too! -->
 
 [![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
 [![Coverage status](https://img.shields.io/codecov/c/github/WeAreGenki/minna-ui.svg)](https://codecov.io/gh/WeAreGenki/minna-ui)
@@ -8,22 +12,24 @@
 
 # Minna UI
 
-A friendly <abbr title="User Interface">UI</abbr> framework which aims to be straightforward, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte or other JavaScript framework project.
+😸 A fast, friendly, and fun web <abbr title="User Interface">UI</abbr> kit for everyone.
+
+A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte project or some other JavaScript framework project.
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 
-___NOTE: `Minna UI` is in early development. Before we reach v1.0.0, minor releases may contain breaking changes.___
+___NOTE: Minna UI is in early development. Before we reach v1.0.0, minor releases may contain breaking changes.___
 
 ## Overview
 
-The `Minna UI` framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customizable web components.
+The Minna UI framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customizable web components.
 
-Under the hood components use the Svelte JavaScript framework so `Minna UI` is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
+Under the hood components use the Svelte JavaScript framework so Minna UI is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
 
 **Features:**
 
-* Universal design as a core concept
-* Semi-flat design aesthetic
+* Mindful attention to universal design principals
+* Simple functional design aesthetic
 * Microinteractions
 * High performance
 
@@ -66,7 +72,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## Licence
 
-`Minna UI` is an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+Minna UI is an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

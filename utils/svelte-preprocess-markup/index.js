@@ -2,6 +2,7 @@
 
 'use strict';
 
+const merge = require('deepmerge');
 const htmlMinifier = require('html-minifier');
 
 /**
@@ -18,7 +19,7 @@ module.exports = (options = {}) => ({ content }) => {
   const ol4 = level >= 4;
 
   try {
-    const code = htmlMinifier.minify(content, Object.assign({
+    const code = htmlMinifier.minify(content, merge({
       // XXX: Bad options:
       // - removeAttributeQuotes
       // - removeOptionalTags

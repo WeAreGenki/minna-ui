@@ -1,6 +1,6 @@
-/*
-  CARDS
-*/
+/**
+ * CARDS
+ */
 
 .card {
   word-wrap: break-word;
@@ -17,10 +17,16 @@
   box-shadow: $card-hover-shadow;
   transition: box-shadow $card-hover-animate-speed ease-out;
 
-  &:hover {
-    color: $card-hover-text-color;
-    text-decoration: unset;
-    box-shadow: $card-hover-hover-shadow;
+  /**
+   * Don't include a hover state on small screens as they typically don't have
+   * mouse input and/or are low powered so animations jank the UI.
+   */
+  @media $(ns) {
+    &:hover {
+      color: $card-hover-text-color;
+      text-decoration: unset;
+      box-shadow: $card-hover-hover-shadow;
+    }
   }
 }
 

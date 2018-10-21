@@ -1,21 +1,20 @@
-/*
-  CSS TRIANGLE MAKER
-
-  Generates a triangle using the border technique. By default it will output
-  styles for use inline inside a rule targeting an existing element.
-
-  Alternatively it can output styles for a pseudo element for easy use without
-  interfering with the document flow.
-
-  USAGE:
-    @include draw-triangle(<size>, <color>, [side], [isPseudo]);
-
-    <side>     = one of: top, right, bottom, left
-    <size>     = any CSS size with unit, e.g. 0.5rem or 8px
-    [color]    = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
-    [isPseudo] = if true will output as a pseudo element (optional)
-
-*/
+/**
+ * CSS TRIANGLE MAKER
+ *
+ * Generates a triangle using the border technique. By default it will output
+ * styles for use inline inside a rule targeting an existing element.
+ *
+ * Alternatively it can output styles for a pseudo element for easy use without
+ * interfering with the document flow.
+ *
+ * USAGE:
+ *   @include draw-triangle(<size>, <color>, [side], [isPseudo]);
+ *
+ *   <side>     = one of: top, right, bottom, left
+ *   <size>     = any CSS size with unit, e.g. 0.5rem or 8px
+ *   [color]    = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
+ *   [isPseudo] = if true will output as a pseudo element (optional)
+ */
 
 /**
  * PostCSS mixin to draw a triangle.

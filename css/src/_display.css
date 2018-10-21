@@ -1,27 +1,27 @@
-/*
-  DISPLAY
-
-  .<RESPONSIVE><BASE><MOD>
-
-  RESPONSIVE:
-       = (no prefix) default small
-    ns- = not small screen breakpoint; anything medium or bigger
-    m- = medium screen breakpoint
-    l- = large screen breakpoint
-
-  BASE:
-    d = display
-
-  MOD:
-    n = none
-    b = block
-    i = inline
-    ib = inline block
-    f = flex
-    if = inline flex
-    g = grid
-    ig = inline grid
-*/
+/**
+ * DISPLAY
+ *
+ * .<RESPONSIVE><BASE><MOD>
+ *
+ * RESPONSIVE:
+ *      = (no prefix) default small
+ *   ns- = not small screen breakpoint; anything medium or bigger
+ *   m- = medium screen breakpoint
+ *   l- = large screen breakpoint
+ *
+ * BASE:
+ *   d = display
+ *
+ * MOD:
+ *   n = none
+ *   b = block
+ *   i = inline
+ *   ib = inline block
+ *   f = flex
+ *   if = inline flex
+ *   g = grid
+ *   ig = inline grid
+ */
 
 .dn { display: none; }
 .db { display: block; }

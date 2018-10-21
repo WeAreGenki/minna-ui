@@ -1,13 +1,12 @@
-/*
-  CONTAINER
-
-    Wrap content to maintain whitespace from screen edges and limit width.
-
-  NOTE:
-    Width is fluid until `max-width` so this only impacts large screens such as
-    desktops or TVs.
-
-*/
+/**
+ * CONTAINER
+ *
+ * Wrap content to maintain whitespace from screen edges and limit width.
+ *
+ * NOTE:
+ *   Width is fluid until `max-width` so this only impacts large screens such as
+ *   desktops or TVs.
+  */
 
 .con {
   box-sizing: border-box;

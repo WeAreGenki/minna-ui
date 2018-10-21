@@ -1,49 +1,48 @@
-/*
-  SPACING
-
-    Margin and padding for whitespace control.
-
-    .<RESPONSIVE><BASE><DIRECTION><VALUE><MOD>
-
-  RESPONSIVE:
-       = (no prefix) default small
-    ns- = not small screen breakpoint; anything medium or bigger
-    m- = medium screen breakpoint
-    l- = large screen breakpoint
-
-  BASE:
-    m = margin
-    p = padding
-
-  DIRECTION:
-    a = all
-    h = horizontal
-    v = vertical
-    t = top
-    r = right
-    b = bottom
-    l = left
-
-  VALUE:
-    -auto = auto (margin only + no 'a' direction)
-    -offset = same size as expended click target area (-t/r/b/l margin only)
-    -4 = -2em (margin only + no 'a' direction)
-    -3 = -1em (margin only + no 'a' direction)
-    -2 = -0.5em (margin only + no 'a' direction)
-    -1 = -0.25em (margin only + no 'a' direction)
-    0 = 0
-    1 = 0.25em
-    2 = 0.5em
-    3 = 1em
-    4 = 2em
-    5 = 4em
-    6 = 8em
-    7 = 16em
-
-  MOD:
-    -i = force using !important (only available on margin auto directions)
-
-*/
+/**
+ * SPACING
+ *
+ *   Margin and padding for whitespace control.
+ *
+ *   .<RESPONSIVE><BASE><DIRECTION><VALUE><MOD>
+ *
+ * RESPONSIVE:
+ *      = (no prefix) default small
+ *   ns- = not small screen breakpoint; anything medium or bigger
+ *   m- = medium screen breakpoint
+ *   l- = large screen breakpoint
+ *
+ * BASE:
+ *   m = margin
+ *   p = padding
+ *
+ * DIRECTION:
+ *   a = all
+ *   h = horizontal
+ *   v = vertical
+ *   t = top
+ *   r = right
+ *   b = bottom
+ *   l = left
+ *
+ * VALUE:
+ *   -auto = auto (margin only + no 'a' direction)
+ *   -offset = same size as expended click target area (-t/r/b/l margin only)
+ *   -4 = -2em (margin only + no 'a' direction)
+ *   -3 = -1em (margin only + no 'a' direction)
+ *   -2 = -0.5em (margin only + no 'a' direction)
+ *   -1 = -0.25em (margin only + no 'a' direction)
+ *   0 = 0
+ *   1 = 0.25em
+ *   2 = 0.5em
+ *   3 = 1em
+ *   4 = 2em
+ *   5 = 4em
+ *   6 = 8em
+ *   7 = 16em
+ *
+ * MOD:
+ *   -i = force using !important (only available on margin auto directions)
+ */
 
 /* stylelint-disable declaration-block-single-line-max-declarations */
 

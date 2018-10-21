@@ -1,11 +1,10 @@
-/*
-  FLEXBOX
-
-  NOTE:
-    Things that are shared between both flexbox and CSS grid are found in
-    "_grid.css" because this framework prioritises CSS grid first.
-
-*/
+/**
+ * FLEXBOX
+ *
+ * NOTE:
+ *   Things that are shared between both flexbox and CSS grid are found in
+ *   "_grid.css" because this framework prioritises CSS grid first.
+ */
 
 /**
  * Much of the time when using flexbox you really just want to vertically align

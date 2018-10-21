@@ -1,13 +1,12 @@
-/*
-  MINNA-UI + NATIVE ELEMENTS CSS BUNDLE
-
-  This combines the `@minna-ui/css` package together with additional CSS to
-  style more native elements by default. We try to keep opinionated styles like
-  these out of the standard CSS bundle to give developers more freedom in how
-  things look. But for times when you want everything to look great
-  out-of-the-box, then this packge is a good choice.
-
-*/
+/**
+ * MINNA-UI + NATIVE ELEMENTS CSS BUNDLE
+ *
+ * This combines the `@minna-ui/css` package together with additional CSS to
+ * style more native elements by default. We try to keep opinionated styles like
+ * these out of the standard CSS bundle to give developers more freedom in how
+ * things look. But for times when you want everything to look great
+ * out-of-the-box, then this packge is a good choice.
+ */
 
 @import "./index.css";
 

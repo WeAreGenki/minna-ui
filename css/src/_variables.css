@@ -1,11 +1,10 @@
-/*
-  GLOBAL VARIABLES
-
-  NOTE:
-    - Colour variables are in _variables-color.css.
-    - Components also contain their own CSS variables.
-
-*/
+/**
+ * GLOBAL VARIABLES
+ *
+ * NOTE:
+ *   - Colour variables are in _variables-color.css.
+ *   - Components also contain their own CSS variables.
+ */
 
 /* Media queries */
 $ns: (min-width: 30.01em) !default; /* not-small */

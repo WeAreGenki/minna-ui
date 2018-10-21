@@ -830,8 +830,8 @@
   version "0.15.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.8.2"
-    "@minna-ui/svelte-preprocess-markup" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/svelte-preprocess-style"
+    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
+    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
     del "3.0.0"
     rollup "0.66.6"
     rollup-plugin-commonjs "9.2.0"
@@ -841,7 +841,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.15.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v2/npm-@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
@@ -877,7 +877,6 @@
     postcss-color-mod-function "^3.0.3"
     postcss-extend-rule "^2.0.0"
     postcss-nested "^4.1.0"
-    postcss-scss "^2.0.0"
     postcss-use "^3.0.0"
     resolve "^1.8.1"
 
@@ -5565,7 +5564,7 @@ markdown-table@^1.1.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
   integrity sha512-NcWuJFHDA8V3wkDgR/j4+gZx+YQwstPgfQDV8ndUeWWzta3dnDTBxpVzqS9lkmJAuV5YX35lmyojl6HO5JXAgw==
 
-markdownlint-cli@^0.13.0:
+markdownlint-cli@0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/markdownlint-cli/-/markdownlint-cli-0.13.0.tgz#af1d29e5d8b434256c451c81b87dff1c218844cb"
   integrity sha512-DCjhAIb4EDny6xdjOcu2Rckp1sOSktQU9PjRN2pK9p0Azby7YYBqZXO8I+vhv5XKd2Pk0IbbOhyZ/+zjfH4oww==
@@ -7061,7 +7060,7 @@ postcss-sass@^0.3.0:
     gonzales-pe "^4.2.3"
     postcss "^7.0.1"
 
-postcss-scss@^2.0.0:
+postcss-scss@2.0.0, postcss-scss@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
   integrity sha512-um9zdGKaDZirMm+kZFKKVsnKPF7zF7qBAtIfTSnZXD1jZ0JNZIxdB6TxQOjCnlSzLRInVl2v3YdBh/M881C4ug==

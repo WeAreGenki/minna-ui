@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/collapse",
-  "version": "0.16.0",
+  "version": "0.15.2",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/collapse",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -30,7 +30,7 @@
     "src"
   ],
   "dependencies": {
-    "@minna-ui/css": "^0.16.0"
+    "@minna-ui/css": "^0.15.1"
   },
   "publishConfig": {
     "access": "public"

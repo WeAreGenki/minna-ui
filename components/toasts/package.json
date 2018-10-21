@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/toasts",
   "version": "0.15.1",
-  "description": "😸 A fast, friendly, and fun web UI kit for everyone."
+  "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/toasts",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://ui.wearegenki.com",

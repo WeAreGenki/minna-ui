@@ -12,7 +12,7 @@
 
 # Minna UI
 
-😸 A fast, friendly, and fun web <abbr title="User Interface">UI</abbr> kit for everyone.
+<p style="font-size: 20px;">😸 A fast, friendly, and fun web <abbr title="User Interface">UI</abbr> kit for everyone.</p>
 
 A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte project or some other JavaScript framework project.
 

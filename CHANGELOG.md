@@ -9,6 +9,36 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- TBA
+
+## [0.16.0] - 2018-10-21
+
+### Added
+
+- New docs. Still very much a WIP but we made good progress towards an actual online documentation.
+- New CSS bundle `@minna-ui/css/dist/native.css`; same as the standard CSS bundle but also styles more native HTML elements without adding a class.
+- Reintroduced the `@extend` at rule for CSS to help build the "native" CSS bundle.
+- New preset for node code in `@minna-ui/eslint-config`.
+
+### Removed
+
+- CSS animations are no longer enabled for `s` (small) breakpoint sizes. We found they were too janky when used on low-end mobile devices.
+
+### Changed
+
+- New project tagline. Now with more 😸!
+- Use `box-sizing: border box` on inputs by default.
+- Various tweaks to `@minna-ui/eslint-config`.
+- Update `@minna-ui/jest-config` to better suit the latest `sapper` changes.
+- Refactor our internal `build-css` package to accomodate building from multiple entrypoints and to make the docs CSS.
+- Rework our internal dev tooling configs to use our config presets and other internal tooling improvements.
+- Updated package dependencies.
+
+### Fixed
+
+- Custom options not being applied properly in `@minna-ui/eslint-config`, `@minna-ui/postcss-config`, and `@minna-ui/svelte-preprocess-markup` when they contain nested options.
+- Some colour variables broken.
+
 ## [0.15.3] - 2018-10-14
 
 ### Fixed
@@ -474,7 +504,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.15.3...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.16.0...HEAD
+[0.16.0]: https://github.com/MaxMilton/new-tab/compare/v0.15.3...v0.16.0
 [0.15.3]: https://github.com/MaxMilton/new-tab/compare/v0.15.2...v0.15.3
 [0.15.2]: https://github.com/MaxMilton/new-tab/compare/v0.15.1...v0.15.2
 [0.15.1]: https://github.com/MaxMilton/new-tab/compare/v0.15.0...v0.15.1

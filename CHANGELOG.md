@@ -9,13 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-- TBA
+### Changed
+
+- BREAKING CHANGE: Renamed package names:
+  - `@minna-ui/toasts` to `@minna-ui/toast`
+  - `@minna-ui/svelte-preprocess-markup` to `@minna-ui/pre-markup`
+  - `@minna-ui/svelte-preprocess-style` to `@minna-ui/pre-style`
+- Installing the `minna-ui` meta package is now the recommended way to use Minna UI.
 
 ## [0.16.0] - 2018-10-21
 
 ### Added
 
-- New docs. Still very much a WIP but we made good progress towards an actual online documentation.
+- New docs. Still a work in progress but we're closer to having something useful.
 - New CSS bundle `@minna-ui/css/dist/native.css`; same as the standard CSS bundle but also styles more native HTML elements without adding a class.
 - Reintroduced the `@extend` at rule for CSS to help build the "native" CSS bundle.
 - New preset for node code in `@minna-ui/eslint-config`.

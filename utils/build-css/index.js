@@ -158,7 +158,7 @@ module.exports = async function run(env, argv) {
       results.push(result);
     }
 
-    // await rather than returning `Promise.all` to capture any errors
+    // await here to capture any errors
     const allResults = await Promise.all(results);
 
     return allResults;

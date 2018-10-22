@@ -158,7 +158,10 @@ module.exports = async function run(env, argv) {
       results.push(result);
     }
 
-    return Promise.all(results);
+    // await rather than returning `Promise.all` to capture any errors
+    const allResults = await Promise.all(results);
+
+    return allResults;
   } catch (error) {
     if (error.showSourceCode) {
       process.stderr.write(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);

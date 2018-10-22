@@ -78,7 +78,8 @@ module.exports = (context = {}) => async ({ attributes, content, filename }) => 
     if (error.name === 'CssSyntaxError') {
       process.stderr.write(error.message + error.showSourceCode());
     } else {
-      throw error;
+      /* eslint-disable-next-line no-console */
+      console.error('[PRE-STYLE] Error', error);
     }
   }
 };

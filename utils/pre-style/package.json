@@ -21,8 +21,7 @@
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
-    "postcss-load-config": "^2.0.0",
-    "postcss-selector-parser": "^5.0.0-rc.3"
+    "postcss-load-config": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"

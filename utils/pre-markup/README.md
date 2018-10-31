@@ -1,24 +1,24 @@
 <!-- markdownlint-disable first-line-h1 ol-prefix -->
 
-[![NPM version](https://img.shields.io/npm/v/@minna-ui/svelte-preprocess-markup.svg)](https://www.npmjs.com/package/@minna-ui/svelte-preprocess-markup)
-[![Licence](https://img.shields.io/npm/l/@minna-ui/svelte-preprocess-markup.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
+[![NPM version](https://img.shields.io/npm/v/@minna-ui/pre-markup.svg)](https://www.npmjs.com/package/@minna-ui/pre-markup)
+[![Licence](https://img.shields.io/npm/l/@minna-ui/pre-markup.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
-# `@minna-ui/svelte-preprocess-markup`
+# `@minna-ui/pre-markup`
 
-Svelte markup preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. Optimise HTML before it hits Svelte for smaller output. Primarily this trim excessive whitespace but you can enable the `unsafe` option for advanced optimisations.
+Svelte markup preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. Optimise HTML before it hits Svelte for smaller output. Primarily this trim excessive white space but you can enable the `unsafe` option for advanced optimisations.
 
 ## Usage
 
 Install:
 
 ```sh
-yarn add -D @minna-ui/svelte-preprocess-markup
+yarn add -D @minna-ui/pre-markup
 ```
 
 Add to your Svelte compile options:
 
 ```js
-const preprocessMarkup = require('@minna-ui/svelte-preprocess-markup');
+const preprocessMarkup = require('@minna-ui/pre-markup');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -60,7 +60,7 @@ Correct (with `"` around `{ }`):
 
 ## Licence
 
-`@minna-ui/svelte-preprocess-markup` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/pre-markup` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 -----
 

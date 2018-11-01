@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@ampproject/rollup-plugin-closure-compiler@0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@ampproject/rollup-plugin-closure-compiler/-/rollup-plugin-closure-compiler-0.8.2.tgz#1e188edc846444ff4c91704f5bdb62b9213950b2"
-  integrity sha512-+CKPR2/8UL7hxAW88KEXRJ2pl2PI2zXnj9IsaP4GvdDClsML2x1YM88Bw6+TDTBAoug3S4MYD+4Ztma4MhTkow==
+"@ampproject/rollup-plugin-closure-compiler@0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@ampproject/rollup-plugin-closure-compiler/-/rollup-plugin-closure-compiler-0.8.3.tgz#2d1fa0f62345a50926c44d9b5ad8775cc12c6297"
+  integrity sha512-8pTsWQ098MJUKY3iMfIMaThhv9SNhqC/8LRDmH7Ldvc5ATgzw6aMhYdt4vlZNN1hqIGQiMpHAB2I6J7ijGDNQg==
   dependencies:
     acorn "6.0.2"
     acorn-dynamic-import "4.0.0"
@@ -827,11 +827,11 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
-    "@ampproject/rollup-plugin-closure-compiler" "0.8.2"
-    "@minna-ui/svelte-preprocess-markup" "file:utils/svelte-preprocess-markup"
-    "@minna-ui/svelte-preprocess-style" "file:utils/svelte-preprocess-style"
+    "@ampproject/rollup-plugin-closure-compiler" "0.8.3"
+    "@minna-ui/pre-markup" "file:utils/pre-markup"
+    "@minna-ui/pre-style" "file:utils/pre-style"
     del "3.0.0"
     rollup "0.66.6"
     rollup-plugin-commonjs "9.2.0"
@@ -839,7 +839,7 @@
     rollup-plugin-svelte "4.3.2"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
     "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
@@ -847,7 +847,7 @@
     postcss-load-config "2.0.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
     eslint-plugin-html "^4.0.6"
@@ -855,7 +855,7 @@
     eslint-plugin-jest "^21.25.1"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/plugin-transform-modules-commonjs" "^7.1.0"
@@ -866,7 +866,7 @@
     jest-circus "^23.6.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
     autoprefixer "^9.2.0"
     css-mqpacker "^7.0.0"
@@ -880,26 +880,26 @@
     postcss-use "^3.0.0"
     resolve "^1.8.1"
 
+"@minna-ui/pre-markup@file:utils/pre-markup":
+  version "0.16.0"
+  dependencies:
+    deepmerge "^2.2.1"
+    html-minifier "3.5.20"
+
+"@minna-ui/pre-style@file:utils/pre-style":
+  version "0.16.0"
+  dependencies:
+    deepmerge "^2.2.1"
+    postcss-load-config "^2.0.0"
+    postcss-selector-parser "^5.0.0-rc.3"
+
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.15.0"
+  version "0.16.0"
   dependencies:
     stylelint-a11y "^1.1.8"
     stylelint-config-standard "^18.2.0"
     stylelint-high-performance-animation "^1.1.1"
     stylelint-order "^1.0.0"
-
-"@minna-ui/svelte-preprocess-markup@file:utils/svelte-preprocess-markup":
-  version "0.15.0"
-  dependencies:
-    deepmerge "^2.2.1"
-    html-minifier "3.5.20"
-
-"@minna-ui/svelte-preprocess-style@file:utils/svelte-preprocess-style":
-  version "0.15.0"
-  dependencies:
-    deepmerge "^2.2.1"
-    postcss-load-config "^2.0.0"
-    postcss-selector-parser "^5.0.0-rc.3"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

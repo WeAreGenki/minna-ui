@@ -87,20 +87,22 @@
         Home
       </a>
 
-      {#each menuItems as _item}
-        <NavbarItem _item="{_item}" current="{current}"/>
+      {#each items as item}
+        <!-- htmlmin:ignore -->
+        <a
+          href="{item.url}"
+          class="navbar-link{current === item.url ? ' navbar-link-active' : ''}"
+          rel="{item.rel || ''}"
+        >
+          {item.text}
+        </a><!-- htmlmin:ignore -->
       {/each}
     </div>
   </nav>
 </header>
 
 <script>
-  import NavbarItem from './NavbarItem.html';
-
   export default {
-    components: {
-      NavbarItem,
-    },
     data: () => ({
       isOpen: false,
       hasScrolled: false,

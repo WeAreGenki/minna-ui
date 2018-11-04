@@ -1,4 +1,11 @@
-{#if _item.children === undefined}
+<!--
+  FIXME: This component is no longer sourced by Navbar.html
+    ↳ Figure out a way to optionally use this component to create dynamic menus
+      ↳ This could also be the start of work on a mega menu concept
+      ↳ Figure out how to do this without bundling the other components if just
+        the simple Navbar is used without any submenus etc.
+-->
+{#if item.children === undefined}
   <!-- menu item -->
 
   <!-- htmlmin:ignore -->
@@ -58,7 +65,7 @@
       transform-origin: 0 0;
 
       @if $navbar-submenu-optimize {
-      will-change: opacity, transform;
+        will-change: opacity, transform;
       }
 
       /* open submenu from the right */

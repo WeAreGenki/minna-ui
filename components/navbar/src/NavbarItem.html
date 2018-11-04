@@ -49,10 +49,15 @@
       background-color: $navbar-background-color;
       box-shadow: $navbar-shadow;
       opacity: 0;
-      transition: all 150ms ease-out;
+      transition:
+        opacity $navbar-submenu-animate-speed-out ease-out,
+        transform $navbar-submenu-animate-speed-out ease-out;
       transform: scale(0.8);
       transform-origin: 0 0;
+
+      @if $navbar-submenu-optimize {
       will-change: opacity, transform;
+      }
 
       /* open submenu from the right */
       :global(.navbar-left)& {
@@ -64,6 +69,7 @@
       .navbar-nested:focus & {
         pointer-events: unset;
         opacity: 1;
+        transition-duration: $navbar-submenu-animate-speed-in;
         transform: scale(1);
       }
     }

@@ -11,18 +11,19 @@ const postcss = require('postcss');
 module.exports = (context = {}) => async ({ attributes, content, filename }) => {
   if (attributes.type !== 'text/postcss') return;
 
-  const defaultContext = {
+  // merge user provided context into defaults
+  const ctx = merge({
     from: filename,
     to: filename,
     map: { inline: false, annotation: false },
-  };
+  }, context);
 
   /**
    * Compile PostCSS code into CSS.
    */
   try {
-    const config = await postcssLoadConfig(merge(defaultContext, context));
-    const result = await postcss(config.plugins).process(content, config.options);
+    const { plugins, options } = await postcssLoadConfig(ctx);
+    const result = await postcss(plugins).process(content, options);
 
     result.warnings().forEach((warn) => {
       /* istanbul ignore next */

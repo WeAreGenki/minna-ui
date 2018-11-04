@@ -15,6 +15,9 @@
 .button-cta {
   color: $white;
   background-color: $intent-primary;
+  box-shadow:
+    0 2px 8px 0 color-mod($blue2 alpha(0.55)),
+    inset 0 -16px 10px 0 color-mod($blue2 alpha(0.1));
 
   &:hover,
   &:focus {

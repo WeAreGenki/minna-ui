@@ -11,6 +11,7 @@
     "css",
     "minna-ui",
     "postcss",
+    "postcss-runner",
     "svelte",
     "wearegenki"
   ],

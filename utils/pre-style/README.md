@@ -9,7 +9,7 @@ Svelte style preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki/
 
 ## Usage
 
-TODO: Write me.
+TODO: Write me :)
 
 ## Licence
 

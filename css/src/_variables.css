@@ -197,3 +197,12 @@ $diagonal-dark-text-color: $white !default;
 $diagonal-dark-background-color: $dark-gray1 !default;
 $diagonal-dark-link-color: $dark-link-color !default;
 $diagonal-dark-input-invalid-color: $red5 !default;
+
+/* Loading */
+
+$spinner-size: 24px;
+$spinner-width: 4px;
+$spinner-color: $intent-primary;
+$spinner-background-color: $light-gray1;
+$spinner-animate-speed: 880ms;
+$spinner-animate-timing: ease;

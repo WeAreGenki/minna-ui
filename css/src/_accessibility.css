@@ -1,0 +1,11 @@
+/**
+ * Accessibility
+ */
+
+/* Animation */
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+}

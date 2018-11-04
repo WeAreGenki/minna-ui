@@ -26,6 +26,8 @@ $angle2: 45deg !default;
 $angle3: -27deg !default;
 $shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
 $shadow-hover: 0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
+$animate-speed-in: 224ms;
+$animate-speed-out: 192ms;
 $outline-offset: 3px !default;
 
 /* Grid */
@@ -146,7 +148,8 @@ $card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18)) !default;
 $card-hover-zindex: 1 !default;
 $card-hover-text-color: $text-color !default;
 $card-hover-shadow: $shadow !default;
-$card-hover-animate-speed: 220ms !default;
+$card-hover-animate-speed-in: $animate-speed-in !default;
+$card-hover-animate-speed-out: $animate-speed-out !default;
 $card-hover-hover-shadow: $shadow-hover !default;
 $card-body-margin: 1.2rem 2rem !default;
 $card-button-text-color: $button-text-color !default;

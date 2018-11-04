@@ -36,22 +36,6 @@
 
 <div class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{_isOpen ? ' select-active' : ''}">
   <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
-  <!-- FIXME: Add disabled attribute back once SSR works correctly -->
-  <!-- <input
-    id="{id}"
-    ref:_target
-    bind:value="_inputText"
-    class="select"
-    tabindex="{disabled ? -1 : 0}"
-    placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
-    readonly="{!filterable || readonly || !_isOpen}"
-    disabled="{disabled}"
-    aria-haspopup="listbox"
-    on:click="_open()"
-    on:focus="_open()"
-    on:blur="_close()"
-    on:keydown="_onKeyDown(event)"
-  > -->
   <input
     id="{id}"
     ref:_target
@@ -60,6 +44,7 @@
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
     readonly="{!filterable || readonly || !_isOpen}"
+    disabled="{disabled}"
     aria-haspopup="listbox"
     on:click="_open()"
     on:focus="_open()"
@@ -110,7 +95,7 @@
 
       /* optional native props */
       readonly: false,
-      // disabled: false, // FIXME: Add back once SSR works correctly
+      disabled: false,
       // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {

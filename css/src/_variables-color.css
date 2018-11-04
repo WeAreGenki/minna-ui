@@ -9,7 +9,7 @@
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_color-aliases.scss
     ↳ https://blueprintjs.com/docs/#core/colors
 
-  TODO: Refactor all these colours into a brighter, more chearful pallete.
+  TODO: Refactor all these colours into a brighter, more cheerful pallette.
 */
 
 /* Gray scale */
@@ -114,17 +114,16 @@ $intent-primary: $blue3;
 $intent-success: $green3;
 $intent-warning: $orange3;
 $intent-danger: $red3;
-/* $app-background-color: $light-gray); */
+/* $app-background-color: $light-gray5; */
 $app-background-color: rgb(250, 250, 250);
 $dark-app-background-color: $dark-gray3;
-/* $outline-color: color-mod($blue3 alpha(0.60)); */
-$outline-color: $intent-primary;
-$outline-color-hover: $gray3;
+$outline-color: color-mod($blue3 alpha(0.6));
+$outline-color-hover: color-mod($gray3 alpha(0.6));
 $text-color: $dark-gray1;
 $text-color-muted: $gray1;
 $text-color-disabled: color-mod($text-color-muted alpha(0.5));
 $heading-color: $text-color;
-$link-color: $blue2;
+$link-color: $intent-primary;
 $shadow-color: $cobalt1;
 $dark-text-color: $light-gray5;
 $dark-text-color-muted: $gray5;

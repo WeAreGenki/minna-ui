@@ -32,6 +32,9 @@
     "stylelint": "^9.0.0",
     "svelte": "^2.0.0"
   },
+  "optionalDependencies": {
+    "rollup": "^0.67.0"
+  },
   "dependencies": {
     "@minna-ui/code-view": "^0.16.0",
     "@minna-ui/collapse": "^0.16.0",
@@ -42,6 +45,7 @@
     "@minna-ui/postcss-config": "^0.16.0",
     "@minna-ui/pre-markup": "^0.16.0",
     "@minna-ui/pre-style": "^0.16.0",
+    "@minna-ui/rollup-plugins": "^0.16.0",
     "@minna-ui/select": "^0.16.0",
     "@minna-ui/stylelint-config": "^0.16.0",
     "@minna-ui/switch": "^0.16.0",

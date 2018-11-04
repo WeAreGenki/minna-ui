@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Removed
+
+- No more auto `:global()` selector injection (was style tag global attribute). This greatly simplifies `@minna-ui/pre-style`.
+
 ### Changed
 
 - BREAKING CHANGE: Renamed package names:
@@ -16,6 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - `@minna-ui/svelte-preprocess-markup` to `@minna-ui/pre-markup`
   - `@minna-ui/svelte-preprocess-style` to `@minna-ui/pre-style`
 - Installing the `minna-ui` meta package is now the recommended way to use Minna UI.
+
+### Fixed
+
+- StyleLint config a11y rules too strict.
 
 ## [0.16.0] - 2018-10-21
 
@@ -36,7 +44,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use `box-sizing: border box` on inputs by default.
 - Various tweaks to `@minna-ui/eslint-config`.
 - Update `@minna-ui/jest-config` to better suit the latest `sapper` changes.
-- Refactor our internal `build-css` package to accomodate building from multiple entrypoints and to make the docs CSS.
+- Refactor our internal `build-css` package to accommodate building from multiple entry points and to make the docs CSS.
 - Rework our internal dev tooling configs to use our config presets and other internal tooling improvements.
 - Updated package dependencies.
 
@@ -96,7 +104,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Temporarily remove "disabled" prop from select to fix <abbr title="server side rendering">SSR</abbr>.
-- Alignment of icons and menu items in `@minna-ui/navbar` not vertically centered.
+- Alignment of icons and menu items in `@minna-ui/navbar` not vertically centred.
 - Internal `build-css` package crashes on error. Now prints error correctly for faster debugging.
 
 ## [0.14.0] - 2018-09-22
@@ -452,7 +460,7 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Refactor font sizes.
 - Use `em` instead of `rem` in places where it makes sense.
-- Change some whitespace to suit new font sizes.
+- Change some white space to suit new font sizes.
 - Better font family system stack, now more inclusive of all common operating systems.
 - Use bold font weight to show active nav items.
 - Better SVG image alignment in `@minna-ui/navbar`.

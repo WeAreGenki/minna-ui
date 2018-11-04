@@ -1,22 +1,24 @@
 {#if _item.children === undefined}
   <!-- menu item -->
+
   <!-- htmlmin:ignore -->
   <a
-    href="{_item.url}"
-    class="navbar-link{current === _item.url ? ' navbar-link-active' : ''} {_item.class || ''}"
-    rel="{_item.rel}"
+    href="{item.url}"
+    class="navbar-link{current === item.url ? ' navbar-link-active' : ''} {item.class || ''}"
+    rel="{item.rel}"
   >
-    {_item.text}
+    {item.text}
   </a><!-- htmlmin:ignore -->
 {:else}
-  <!-- submenu -->
+  <!-- submenu folder -->
+
   <span class="navbar-nested">
-    <span class="dn l-dib">{_item.text}</span>
+    <span class="dn l-dib">{item.text}</span>
 
     <!-- htmlmin:ignore -->
-    <div class="navbar-submenu {_item.class || ''}">
-      {#each _item.children as _subitem}
-        <svelte:self _item="{_subitem}" current="{current}" />
+    <div class="navbar-submenu {item.class || ''}">
+      {#each item.children as submenuItem}
+        <svelte:self item="{submenuItem}" current="{current}" />
       {/each}
     </div><!-- htmlmin:ignore -->
   </span>

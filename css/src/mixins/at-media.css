@@ -4,7 +4,8 @@
  */
 
 /**
- * Workaround for not able to set @media using variables during a @each loop.
+ * Workaround for not able to set @media using variables during a @each loop due
+ * to lack of #{$var} support.
  */
 @mixin at-media($bp) {
   @if $bp == ns {

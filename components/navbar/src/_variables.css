@@ -1,9 +1,10 @@
 @import "import.css";
 
-$navbar-optimize: true !default;
+$navbar-optimize: false !default;
 $navbar-zindex: 5 !default;
 $navbar-background-color: $app-background-color !default;
-$navbar-shadow-fade-speed: 300ms !default;
+$navbar-animate-speed-in: $animate-speed-in !default;
+$navbar-animate-speed-out: $animate-speed-out !default;
 $navbar-shadow: 0 2px 6px color-mod($shadow-color alpha(0.39)) !default;
 $navbar-icon-size: 2em !default;
 $navbar-icon-padding: 0.4em !default;

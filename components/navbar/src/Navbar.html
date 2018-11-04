@@ -177,7 +177,6 @@
     left: 0;
     z-index: $navbar-zindex;
     background-color: $navbar-background-color;
-    backface-visibility: hidden; /* promote into its own layer to avoid repaints */
 
     &::after {
       position: absolute;
@@ -189,7 +188,8 @@
       content: "";
       box-shadow: $navbar-shadow;
       opacity: 0;
-      transition: opacity $navbar-shadow-fade-speed ease;
+      transition: opacity $navbar-animate-speed-out ease-in;
+      backface-visibility: hidden; /* promote to own layer to avoid repaints */
 
       @if $navbar-optimize {
         will-change: opacity;
@@ -199,6 +199,7 @@
 
   .navbar-active::after {
     opacity: 1;
+    transition-duration: $navbar-animate-speed-in;
   }
 
   .navbar-button {

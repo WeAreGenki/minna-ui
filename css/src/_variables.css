@@ -25,9 +25,7 @@ $angle1: 151deg !default;
 $angle2: 45deg !default;
 $angle3: -27deg !default;
 $shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
-$shadow-hover:
-  $shadow,
-  0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
+$shadow-hover: 0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
 $outline-offset: 3px !default;
 
 /* Grid */
@@ -106,7 +104,9 @@ $button-padding-y: 0.682em !default;
 $button-text-color: $dark-gray2 !default;
 $button-background-color: $white !default;
 $button-radius: $radius !default;
-$button-shadow: 0 2px 8px 0 color-mod($shadow-color alpha(0.3)) !default;
+$button-shadow:
+  0 2px 8px 0 color-mod($shadow-color alpha(0.3)),
+  inset 0 -16px 10px 0 color-mod($shadow-color alpha(0.03)) !default;
 $button-hover-background-color: $light-gray2 !default;
 $button-active-background-color: $light-gray1 !default;
 $button-disabled-text-color: $text-color-disabled !default;

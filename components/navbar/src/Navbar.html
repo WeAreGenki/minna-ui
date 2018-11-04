@@ -5,9 +5,9 @@
   will collapse into a hamburger menu when the screen width is small.
 
   USAGE:
-    The "menuItems" property should be an array of objects which look like this:
+    The "items" property should be an array of objects which look like this:
 
-      <Navbar current="{child.segment}" menuItems="{[
+      <Navbar current="{child.segment}" items="{[
         { url: '/page-one', text: 'Page One' },
         { url: '/page-two', text: 'Page Two' },
         { url: '/about', text: 'About Us' },
@@ -50,32 +50,28 @@
     Alternatively, you may replace the SVG logo with your own markup by passing
     the markup via a slot, that is, by adding it in between Navbar tags:
 
-      <Navbar menuItems="{[...]}">
-        <span class="navbar-logo">YOUR LOGO</span>
+      <Navbar items="{[...]}">
+        <span slot="logo" class="navbar-logo">YOUR LOGO</span>
       </Navbar>
-
-  NOTE:
-    In the code, object properties starting with _ are safe to mangle; the name
-    can be shortened at build time for smaller JavaScript bundles.
 
 -->
 
-<header class="navbar{_hasScrolled || _isOpen ? ' navbar-active' : ''}">
+<header class="navbar{(hasScrolled || isOpen) ? ' navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
       class="navbar-button l-dn button-clear"
       aria-label="menu toggle"
-      aria-expanded="{_isOpen}"
-      on:click="_openMenu(_isOpen)"
+      aria-expanded="{isOpen}"
+      on:click="openMenu(isOpen)"
     >
       <svg class="navbar-icon">
-        <use xlink:href="{_isOpen ? '#x' : '#menu'}"/>
+        <use xlink:href="{isOpen ? '#x' : '#menu'}"/>
       </svg>
     </button>
 
     <a href="/" class="navbar-logo-link" title="Home">
-      <slot>
+      <slot name="logo">
         <svg class="navbar-logo">
           <use xlink:href="#logo"/>
         </svg>
@@ -83,7 +79,7 @@
     </a>
 
     <!-- htmlmin:ignore -->
-    <div class="navbar-links {_isOpen ? 'df' : 'dn'}"><!-- htmlmin:ignore -->
+    <div class="navbar-links {isOpen ? 'df' : 'dn'}"><!-- htmlmin:ignore -->
       <a
         href="/"
         class="navbar-link l-dn{current === undefined ? ' navbar-link-active' : ''}"
@@ -106,25 +102,25 @@
       NavbarItem,
     },
     data: () => ({
-      _isOpen: false,
-      _hasScrolled: false,
+      isOpen: false,
+      hasScrolled: false,
 
       /* required props */
-      // menuItems: [],
-      // current: '', // current URL path; in sapper, pass in "props.path"
+      // items: [],
+      // current: '', // current URL path; in sapper, pass in "child.segment"
     }),
     oncreate() {
       let wait = false;
       let lastHasScrolled = false;
 
       const update = () => {
-        const _hasScrolled = window.pageYOffset !== 0;
+        const hasScrolled = window.pageYOffset !== 0;
 
         // don't set component state if nothing has changed
         /* istanbul ignore else */
-        if (_hasScrolled !== lastHasScrolled) {
-          lastHasScrolled = _hasScrolled;
-          this.set({ _hasScrolled });
+        if (hasScrolled !== lastHasScrolled) {
+          lastHasScrolled = hasScrolled;
+          this.set({ hasScrolled });
         }
 
         wait = false;
@@ -141,12 +137,12 @@
       document.addEventListener('scroll', scrollHandler, false);
     },
     methods: {
-      _openMenu(openState) {
+      openMenu(openState) {
         if (!openState) {
-          this.set({ _isOpen: true });
+          this.set({ isOpen: true });
 
           const clickHandler = () => {
-            this.set({ _isOpen: false });
+            this.set({ isOpen: false });
             document.removeEventListener('click', clickHandler);
           };
 

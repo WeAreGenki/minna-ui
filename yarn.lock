@@ -741,6 +741,45 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@minna-ui/build-component@file:utils/build-component":
+  version "0.16.0"
+  dependencies:
+    "@ampproject/rollup-plugin-closure-compiler" "0.8.3"
+    "@minna-ui/pre-markup" "file:../../.cache/yarn/v3/npm-@minna-ui-build-component-0.16.0-910d04f8-6c73-4893-980b-61a424524d86-1541407605117/node_modules/@minna-ui/pre-markup"
+    "@minna-ui/pre-style" "file:../../.cache/yarn/v3/npm-@minna-ui-build-component-0.16.0-910d04f8-6c73-4893-980b-61a424524d86-1541407605117/node_modules/@minna-ui/pre-style"
+    del "3.0.0"
+    rollup "0.67.0"
+    rollup-plugin-commonjs "9.2.0"
+    rollup-plugin-node-resolve "3.4.0"
+    rollup-plugin-svelte "4.3.2"
+
+"@minna-ui/build-css@file:utils/build-css":
+  version "0.16.0"
+  dependencies:
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v3/npm-@minna-ui-build-css-0.16.0-426c9fb5-5fc1-441d-b973-febf5fe3a9ac-1541407605173/node_modules/@minna-ui/postcss-config"
+    clean-css "4.2.1"
+    del "3.0.0"
+    postcss-load-config "2.0.0"
+
+"@minna-ui/eslint-config@file:utils/eslint-config":
+  version "0.16.0"
+  dependencies:
+    eslint-config-airbnb-base "^13.1.0"
+    eslint-plugin-html "^4.0.6"
+    eslint-plugin-import "^2.14.0"
+    eslint-plugin-jest "^21.27.1"
+
+"@minna-ui/jest-config@file:utils/jest-config":
+  version "0.16.0"
+  dependencies:
+    "@babel/core" "^7.1.0"
+    "@babel/plugin-transform-modules-commonjs" "^7.1.0"
+    "@types/jest" "^23.3.9"
+    "@types/node" "^10.12.2"
+    babel-core "^7.0.0-bridge.0"
+    babel-jest "^23.6.0"
+    jest-circus "^23.6.0"
+
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.16.0"
   dependencies:
@@ -767,6 +806,14 @@
   dependencies:
     deepmerge "^2.2.1"
     postcss-load-config "^2.0.0"
+
+"@minna-ui/stylelint-config@file:utils/stylelint-config":
+  version "0.16.0"
+  dependencies:
+    stylelint-a11y "^1.1.8"
+    stylelint-config-standard "^18.2.0"
+    stylelint-high-performance-animation "^1.1.1"
+    stylelint-order "^1.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -8383,10 +8430,10 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.15.1.tgz#827da0505184af9529e325b8356c0ed4cba041cd"
-  integrity sha512-Mq9SJ9MXoNpjWLr+rK/xmDr9DT1unZxmVl4hq47qyU/Ksobp6CLEj0FDwLqa4b8/T8nViT7L1hBaDPfD6YNHbg==
+svelte@2.15.2:
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-2.15.2.tgz#6aaf4a10307409099ec30dd7c73f746fef32c949"
+  integrity sha512-l/YAQQ/ArmUTlEdspyLS7viFtKX0ZRKVmYeizAlvFoJ4vKos+7/aBD8xWxQTUd8EPh1JD95DVy7NK3h8+ITlxw==
 
 svg-tags@^1.0.0:
   version "1.0.0"

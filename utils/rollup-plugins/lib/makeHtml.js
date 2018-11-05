@@ -5,14 +5,7 @@
 const { existsSync, readFileSync, writeFile } = require('fs');
 const path = require('path');
 const { createFilter } = require('rollup-pluginutils');
-
-/**
- * Generic error handler for nodejs callbacks.
- * @param {Error} err
- */
-function catchErr(err) {
-  if (err) throw err;
-}
+const catchErr = require('./catchErr.js');
 
 /**
  * Ultra-minimal template engine.
@@ -27,7 +20,7 @@ function compileTemplate(template) {
 /**
  * Rollup plugin to generate HTML from a template and write it to disk.
  * @param {object} opts
- * @param {string} opts.fileName File path where to save generated HTML document.
+ * @param {string} opts.file Path where to save the generated HTML file.
  * @param {string=} opts.basePath Path prefix for static files.
  * @param {(string|Promise<string>)=} opts.content Page HTML content. `%CSS%` and
  * `%JS%` will be replaced with tags referencing the files.
@@ -45,7 +38,7 @@ function compileTemplate(template) {
  * @param {...any=} opts.data Any other data you want available in the template.
  */
 function makeHtml({
-  fileName,
+  file,
   basePath = '/',
   content = '%CSS%\n%JS%',
   exclude,
@@ -90,22 +83,22 @@ function makeHtml({
         css = await Promise.resolve(onCss(css));
 
         /* eslint-disable-next-line no-console */
-        if (!css) console.warn("[makeHtml] onCss didn't return anything useful");
+        if (!css) this.warn('onCss didn\'t return anything useful');
       }
 
-      const jsFileName = Object.values(bundle)[0].fileName;
-      const cssFileName = jsFileName.replace(/js$/, 'css');
+      const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
+      const cssFile = jsFile.replace(/js$/, 'css');
 
       /* eslint-disable-next-line no-nested-ternary */
       const cssResult = !css.length
         ? ''
         : inlineCss
           ? `<style>${css}</style>`
-          : `<link href=${basePath}${cssFileName} rel=stylesheet>`;
+          : `<link href=${basePath}${cssFile} rel=stylesheet>`;
 
       let body = await Promise.resolve(content);
       body = body.replace('%CSS%', cssResult);
-      body = body.replace('%JS%', `<script src=${basePath}${jsFileName} ${scriptAttr}></script>`);
+      body = body.replace('%JS%', `<script src=${basePath}${jsFile} ${scriptAttr}></script>`);
 
       const html = compileTemplate(htmlTemplate)({
         content: body,
@@ -114,12 +107,20 @@ function makeHtml({
       }).trim();
 
       if (!inlineCss) {
+        const cssOut = outputOpts.dir
+          ? path.join(outputOpts.dir, cssFile)
+          : cssFile;
+
         // write CSS file
-        writeFile(path.join(__dirname, outputOpts.dir, cssFileName), css, catchErr);
+        writeFile(path.join(process.cwd(), cssOut), css, catchErr);
       }
 
+      const fileOut = outputOpts.dir
+        ? path.join(outputOpts.dir, file)
+        : file;
+
       // write HTML file
-      writeFile(path.join(__dirname, outputOpts.dir, fileName), html, catchErr);
+      writeFile(path.join(process.cwd(), fileOut), html, catchErr);
     },
   };
 }

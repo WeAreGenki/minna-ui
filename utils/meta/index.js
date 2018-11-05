@@ -1,6 +1,6 @@
 const preMarkup = require('@minna-ui/pre-markup');
 const preStyle = require('@minna-ui/pre-style');
-const { makeCss, makeHtml } = require('@minna-ui/rollup-plugins');
+const { catchErr, makeCss, makeHtml } = require('@minna-ui/rollup-plugins');
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -11,6 +11,7 @@ const preprocess = {
 };
 
 module.exports = {
+  catchErr,
   makeCss,
   makeHtml,
   preMarkup,

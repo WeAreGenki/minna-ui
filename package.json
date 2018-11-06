@@ -47,6 +47,6 @@
     "postcss": "7.0.5",
     "postcss-scss": "2.0.0",
     "stylelint": "9.6.0",
-    "svelte": "2.14.1"
+    "svelte": "2.15.3"
   }
 }

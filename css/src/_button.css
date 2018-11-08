@@ -65,7 +65,7 @@
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
   margin: 0;
-  line-height: 1;
+  line-height: $line-height;
 }
 
 /* Smaller button */

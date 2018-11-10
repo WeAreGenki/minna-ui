@@ -20,10 +20,6 @@
 
     See more available options/properties in the component data() below.
 
-  NOTE:
-    In the code, object properties starting with _ are safe to mangle; the name
-    can be shortened at build time for smaller JavaScript bundles.
-
   REFERENCE:
     - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/#Listbox
     - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/listbox/listbox-collapsible.html
@@ -34,33 +30,33 @@
 
 <!-- TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen -->
 
-<div class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{_isOpen ? ' select-active' : ''}">
+<div class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}">
   <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
   <input
     id="{id}"
-    ref:_target
-    bind:value="_inputText"
+    ref:input
+    bind:value="inputText"
     class="select"
     tabindex="{disabled ? -1 : 0}"
-    placeholder="{filterable && _isOpen ? filterHelp : placeholder}"
-    readonly="{!filterable || readonly || !_isOpen}"
+    placeholder="{filterable && isOpen ? filterHelp : placeholder}"
+    readonly="{!filterable || readonly || !isOpen}"
     disabled="{disabled}"
     aria-haspopup="listbox"
-    on:click="_open()"
-    on:focus="_open()"
-    on:blur="_close()"
-    on:keydown="_onKeyDown(event)"
+    on:click="open()"
+    on:focus="open()"
+    on:blur="close()"
+    on:keydown="handleKeyDown(event)"
   >
   <div class="select-caret"/>
 
   <div
-    class="select-listbox{_isOpen ? '' : ' hide'}"
+    class="select-listbox{isOpen ? '' : ' hide'}"
     role="listbox"
-    on:mousedown="_select(event)"
+    on:mousedown="select(event)"
   >
-    {#each _filteredItems as _item, _index}
+    {#each filteredItems as _item, _index}
       <div
-        class="option{_item.disabled ? ' option-disabled' : ''}{_index === _selected ? ' option-active' : ''}"
+        class="option{_item.disabled ? ' option-disabled' : ''}{_index === selected ? ' option-active' : ''}"
         value="{_item.id}"
         role="option"
       >
@@ -77,9 +73,9 @@
 <script>
   export default {
     data: () => ({
-      _isOpen: false,
-      _inputText: '',
-      _selected: 0, // index of the currently selected item
+      isOpen: false,
+      inputText: '',
+      selected: 0, // index of the currently selected item
 
       /* required bind prop */
       // value: '',
@@ -99,68 +95,68 @@
       // required: false, // FIXME: Add a way to do custom validation
     }),
     computed: {
-      _filteredItems({ _isOpen, _inputText, filterable, items }) {
-        if (!_isOpen || !filterable || _inputText === '') return items;
+      filteredItems({ isOpen, inputText, filterable, items }) {
+        if (!isOpen || !filterable || inputText === '') return items;
 
         return items.filter(
-          option => option.text.toLowerCase().indexOf(_inputText.toLowerCase()) > -1
+          option => option.text.toLowerCase().indexOf(inputText.toLowerCase()) > -1
         );
       },
     },
     onstate({ changed, current }) {
-      if (changed._filteredItems) {
-        this._setIndex();
+      if (changed.filteredItems) {
+        this.setIndex();
       }
 
       if (changed.value && current.value) {
-        this._setInput();
+        this.setInput();
       }
     },
     methods: {
-      _setIndex() {
-        const { _filteredItems, value } = this.get();
+      setIndex() {
+        const { filteredItems, value } = this.get();
 
         if (value) {
           // save the current item's index for highlighting in the options
           this.set({
-            _selected: _filteredItems.findIndex(option => option.id === value),
+            selected: filteredItems.findIndex(option => option.id === value),
           });
         }
       },
 
-      _setInput() {
+      setInput() {
         const { items, value } = this.get();
 
         this.set({
-          _inputText: value
+          inputText: value
             ? items.find(option => option.id === value).text
             : '',
         });
       },
 
-      _open() {
-        this._setIndex();
+      open() {
+        this.setIndex();
 
         // FIXME: Don't call this.set() twice because svelte doesn't queue changes
         /* istanbul ignore else */
         if (this.get().filterable) {
-          this.set({ _inputText: '' });
+          this.set({ inputText: '' });
         }
-        this.set({ _isOpen: true });
+        this.set({ isOpen: true });
       },
 
-      _close() {
-        this.set({ _isOpen: false });
-        this._setInput();
+      close() {
+        this.set({ isOpen: false });
+        this.setInput();
       },
 
-      _emitInput() {
+      emitInput() {
         // fire a synthetic "input" event (useful to trigger validation)
-        this.refs._target.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
-        this._close();
+        this.refs.input.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
+        this.close();
       },
 
-      _select(event) {
+      select(event) {
         if (event) {
           // option selected via mouse
           event.preventDefault(); // don't trigger <input> blur event
@@ -168,105 +164,105 @@
           if (!event.target.classList.contains('option-disabled')) {
             this.set({
               value: event.target.getAttribute('value'),
-              _inputText: event.target.textContent,
+              inputText: event.target.textContent,
             });
-            this._emitInput();
+            this.emitInput();
           }
         } else {
           // option selected via keyboard
-          const { _filteredItems, _selected } = this.get();
-          const option = _filteredItems[_selected];
+          const { filteredItems, selected } = this.get();
+          const option = filteredItems[selected];
 
           /* istanbul ignore else */
           if (!option.disabled) {
             this.set({
               value: option.id,
-              _inputText: option.text,
+              inputText: option.text,
             });
-            this._emitInput();
+            this.emitInput();
           }
         }
       },
 
-      _up() {
-        const { _selected, _filteredItems } = this.get();
+      up() {
+        const { selected, filteredItems } = this.get();
 
-        if (_selected <= 0) return;
+        if (selected <= 0) return;
 
         let steps = 1;
 
         // skip over disabled items or if there's no items left
-        while (_filteredItems[_selected - steps].disabled) {
+        while (filteredItems[selected - steps].disabled) {
           steps += 1;
-          if (_filteredItems[_selected - steps] === undefined) return;
+          if (filteredItems[selected - steps] === undefined) return;
         }
 
-        this.set({ _selected: _selected - steps });
+        this.set({ selected: selected - steps });
       },
 
-      _down() {
-        const { _selected, _filteredItems } = this.get();
+      down() {
+        const { selected, filteredItems } = this.get();
 
         // jump to last availiable item if index is out of bounds (e,g, after filtering)
-        if (_selected >= _filteredItems.length - 1) {
-          this.set({ _selected: _filteredItems.length - 1 });
+        if (selected >= filteredItems.length - 1) {
+          this.set({ selected: filteredItems.length - 1 });
           return;
         }
 
         let steps = 1;
 
         // skip over disabled items or if there's no items left
-        while (_filteredItems[_selected + steps].disabled) {
+        while (filteredItems[selected + steps].disabled) {
           steps += 1;
-          if (_filteredItems[_selected + steps] === undefined) return;
+          if (filteredItems[selected + steps] === undefined) return;
         }
 
-        this.set({ _selected: _selected + steps });
+        this.set({ selected: selected + steps });
       },
 
-      _onKeyDown(event) {
-        const { _isOpen } = this.get();
+      handleKeyDown(event) {
+        const { isOpen } = this.get();
 
         // choose key with graceful fallback for old browsers
         switch (event.key || event.keyCode) {
           case ' ':
           case 'Spacebar':
           case 32:
-            if (!_isOpen) {
-              this._open();
+            if (!isOpen) {
+              this.open();
             }
             break;
           case 'Enter':
           case 13:
             event.preventDefault(); // don't submit form
-            if (_isOpen) {
-              this._select();
+            if (isOpen) {
+              this.select();
             } else {
-              this._open();
+              this.open();
             }
             break;
           case 'Escape':
           case 27:
-            this._close();
+            this.close();
             break;
           case 'ArrowUp':
           case 'Up':
           case 38:
             event.preventDefault(); // don't scroll page or move cursor
-            if (_isOpen) {
-              this._up();
+            if (isOpen) {
+              this.up();
             } else {
-              this._open();
+              this.open();
             }
             break;
           case 'ArrowDown':
           case 'Down':
           case 40:
             event.preventDefault(); // don't scroll page or move cursor
-            if (_isOpen) {
-              this._down();
+            if (isOpen) {
+              this.down();
             } else {
-              this._open();
+              this.open();
             }
             break;
           default:
@@ -354,13 +350,15 @@
   }
 
   .option-active,
-  .option:hover {
+  .option:hover,
+  .option:focus {
     color: $select-selected-text-color;
     background-color: $select-selected-background-color;
   }
 
   .option-disabled,
-  .option-disabled:hover {
+  .option-disabled:hover,
+  .option-disabled:focus {
     color: $select-disabled-text-color;
     background-color: unset;
   }

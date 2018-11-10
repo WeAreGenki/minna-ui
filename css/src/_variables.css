@@ -203,9 +203,9 @@ $diagonal-dark-input-invalid-color: $red5 !default;
 
 /* Loading */
 
-$spinner-size: 24px;
-$spinner-width: 4px;
-$spinner-color: $intent-primary;
-$spinner-background-color: $light-gray1;
-$spinner-animate-speed: 880ms;
-$spinner-animate-timing: ease;
+$spinner-size: 24px !default;
+$spinner-width: 4px !default;
+$spinner-color: $intent-primary !default;
+$spinner-background-color: $light-gray1 !default;
+$spinner-animate-speed: 880ms !default;
+$spinner-animate-timing: ease !default;

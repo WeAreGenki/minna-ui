@@ -19,8 +19,11 @@ const { createFilter } = require('rollup-pluginutils');
  */
 function makeCss({
   content = [
-    '__sapper__/**/*.html',
-    '__sapper__/**/*.js',
+    '__sapper__/build/*.html',
+    '__sapper__/build/*.js',
+    // FIXME: Using `dist` is the most reliable but requires 2 builds
+    'dist/**/*.html',
+    'dist/**/*.js',
     'src/**/*.html',
     'src/**/*.js',
   ],

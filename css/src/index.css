@@ -21,7 +21,7 @@
 @import "./_variables.css";
 @import "./mixins/at-media.css";
 @import "./mixins/font-face.css";
-@import "./mixins/draw-triangle.css";
+@import "./mixins/triangle.css";
 @import "./_normalize.css";
 @import "./_reboot.css";
 @import "./_loading.css";

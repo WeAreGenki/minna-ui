@@ -9,19 +9,19 @@
  */
 @mixin at-media($bp) {
   @if $bp == ns {
-    @media $(ns) {
+    @media $ns {
       @content;
     }
   }
 
   @if $bp == m {
-    @media $(m) {
+    @media $m {
       @content;
     }
   }
 
   @if $bp == l {
-    @media $(l) {
+    @media $l {
       @content;
     }
   }

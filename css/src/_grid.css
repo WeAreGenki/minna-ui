@@ -17,7 +17,7 @@
     grid-auto-columns: $auto-cols;
   }
 
-  @media $(l) {
+  @media $l {
     grid-gap: $gutter-row-large $gutter-col-large;
   }
 }
@@ -54,7 +54,7 @@
 
 */
 
-/* TODO: Research: Will the file gzip better if all the .x1 .x2 .x3 etc. are next to each other? */
+/* TODO: Optimise loops for best compression */
 
 @each $step in $col-steps {
   .x$(step) { grid-template-columns: repeat($step, $item-size); }

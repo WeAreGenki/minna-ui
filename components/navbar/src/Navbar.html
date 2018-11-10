@@ -233,7 +233,7 @@
       border-top: 1px solid $navbar-border-color;
     }
 
-    @media $(l) {
+    @media $l {
       display: flex;
       flex-basis: auto;
       flex-direction: row;
@@ -243,14 +243,13 @@
     }
   }
 
-  /* the following 2 selectors also appear in NavbarItem */
-  :global(.navbar-link) {
+  .navbar-link {
     padding: $navbar-link-padding;
     margin: 0;
     color: $navbar-link-color;
   }
 
-  :global(.navbar-link-active) {
+  .navbar-link-active {
     font-weight: $text-weight-heavy;
   }
 

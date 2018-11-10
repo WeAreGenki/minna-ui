@@ -29,7 +29,7 @@
    * Don't include a hover state on small screens as they typically don't have
    * mouse input and/or are low powered so animations may jank the UI.
    */
-  @media $(ns) {
+  @media $ns {
     &::after {
       position: absolute;
       z-index: -1;

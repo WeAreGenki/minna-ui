@@ -15,7 +15,7 @@ body {
     font-weight: $text-weight;
   }
 
-  @media $(l) {
+  @media $l {
     font-size: $text-size-large;
   }
 }

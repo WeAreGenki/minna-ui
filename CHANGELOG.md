@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- New package `@minna-ui/rollup-plugins`.
 - CSS class `.spinner` for a loading state spinner. We intend to add more loading state styles in future.
 - Utility styles for dealing with mouse events.
 - CSS mixin to create custom buttons.

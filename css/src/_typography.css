@@ -70,7 +70,8 @@ a {
   text-decoration: none;
   word-wrap: break-word;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 }

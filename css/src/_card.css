@@ -18,8 +18,9 @@
   color: $card-hover-text-color;
   box-shadow: $card-hover-shadow;
 
-  /* override anchor tag hover style since cards already have visual cues */
-  a&:hover {
+  /* override anchor pseudo state style since cards already have visual cues */
+  a&:hover,
+  a&:focus {
     color: $card-hover-text-color;
     text-decoration: unset;
   }
@@ -41,7 +42,8 @@
       transition: opacity $card-hover-animate-speed-out ease-out;
     }
 
-    &:hover::after {
+    &:hover::after,
+    &:focus::after {
       opacity: 1;
       transition-duration: $card-hover-animate-speed-in;
     }

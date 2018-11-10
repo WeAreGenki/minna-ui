@@ -22,8 +22,8 @@ function makeCss({
     '__sapper__/build/*.html',
     '__sapper__/build/*.js',
     // FIXME: Using `dist` is the most reliable but requires 2 builds
-    'dist/**/*.html',
-    'dist/**/*.js',
+    // 'dist/**/*.html',
+    // 'dist/**/*.js',
     'src/**/*.html',
     'src/**/*.js',
   ],

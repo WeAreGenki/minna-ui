@@ -114,7 +114,7 @@ describe('Switch component', () => {
         value: true,
       },
     });
-    const spy = jest.spyOn(component, '_toggle');
+    const spy = jest.spyOn(component, 'toggle');
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(false);
@@ -131,7 +131,7 @@ describe('Switch component', () => {
         disabled: true,
       },
     });
-    const spy = jest.spyOn(component, '_toggle');
+    const spy = jest.spyOn(component, 'toggle');
     target.querySelector('.switch').click();
     expect(spy).toHaveBeenCalled();
     expect(component.get().value).toEqual(true);
@@ -148,10 +148,10 @@ describe('Switch component', () => {
       },
     });
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
-    component._onKeyDown(event1);
+    component.handleKeyDown(event1);
     expect(component.get().value).toEqual(false);
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
-    component._onKeyDown(event2);
+    component.handleKeyDown(event2);
     expect(component.get().value).toEqual(true);
   });
 
@@ -165,13 +165,13 @@ describe('Switch component', () => {
       },
     });
     const event1 = new KeyboardEvent('keydown', { key: ' ' });
-    component._onKeyDown(event1);
+    component.handleKeyDown(event1);
     expect(component.get().value).toEqual(false);
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    component._onKeyDown(event2);
+    component.handleKeyDown(event2);
     expect(component.get().value).toEqual(true);
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
-    component._onKeyDown(event3);
+    component.handleKeyDown(event3);
     expect(component.get().value).toEqual(false);
   });
 
@@ -185,7 +185,7 @@ describe('Switch component', () => {
       },
     });
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component._onKeyDown(event);
+    component.handleKeyDown(event);
     expect(component.get().value).toEqual(true);
   });
 
@@ -198,18 +198,18 @@ describe('Switch component', () => {
         value: true,
       },
     });
-    const spy = jest.spyOn(component, '_toggle');
+    const spy = jest.spyOn(component, 'toggle');
     const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
-    component._onKeyDown(event1);
+    component.handleKeyDown(event1);
     expect(component.get().value).toEqual(true);
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
-    component._onKeyDown(event2);
+    component.handleKeyDown(event2);
     expect(component.get().value).toEqual(true);
     const event3 = new KeyboardEvent('keydown', { key: '' });
-    component._onKeyDown(event3);
+    component.handleKeyDown(event3);
     expect(component.get().value).toEqual(true);
     const event4 = new KeyboardEvent('keydown');
-    component._onKeyDown(event4);
+    component.handleKeyDown(event4);
     expect(component.get().value).toEqual(true);
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();

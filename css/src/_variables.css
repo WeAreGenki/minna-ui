@@ -7,6 +7,10 @@
  */
 
 /* Media queries */
+
+/**
+ * NOTE: If you change these, you'll also need to edit `mixins/at-media.css`.
+ */
 $ns: (min-width: 30.01em) !default; /* not-small */
 $m: (min-width: 30.01em, max-width: 60em) !default; /* medium */
 $l: (min-width: 60.01em) !default; /* large */

@@ -21,7 +21,7 @@
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
-    "lint": "yarn lint:css && yarn lint:js && lint:md",
+    "lint": "yarn lint:css && yarn lint:js && yarn lint:md",
     "lint:css": "stylelint **/*.{css,html} --cache",
     "lint:js": "eslint --ext html,js .",
     "lint:md": "markdownlint --ignore node_modules .",

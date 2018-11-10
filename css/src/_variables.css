@@ -21,9 +21,7 @@ $use-global-border-box: false !default; /* see `_reboot.css` for overview */
 $spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em !default;
 $radius: 0.2rem !default; /* 3.2px */
 $radius-large: 0.32rem !default; /* 5px */
-$angle1: 151deg !default;
-$angle2: 45deg !default;
-$angle3: -27deg !default;
+$angle: -27deg !default;
 $shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
 $shadow-hover: 0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
 $animate-speed-in: 224ms;
@@ -185,15 +183,15 @@ $tag-margin-between: 1em !default;
 $hero-padding: 1.5rem 0 !default;
 $hero-margin: 2rem 0 !default;
 $hero-text-color: $dark-text-color !default;
-$hero-background: linear-gradient($angle3, $cobalt1, $cobalt3) !default;
-$hero-dark-background: linear-gradient($angle3, $dark-gray1, $dark-gray3) !default;
+$hero-background: linear-gradient($angle, $cobalt1, $cobalt3) !default;
+$hero-dark-background: linear-gradient($angle, $dark-gray1, $dark-gray3) !default;
 $diagonal-hight: 4rem !default;
 $diagonal-hight-l: 6rem !default;
 /**
-  * See `images/diagonal.svg` for the original SVG markup and instructions to
-  * customise the diagonal image.
+  * See `images/diagonal.svg` for the original SVG markup and instructions
+  * on how to customise this image.
   */
-/* $diagonal-image: url("diagonal.svg") !default; */
+/* $diagonal-image: url("diagonal.svg"); */
 $diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E") !default;
 $diagonal-background-color: $light-gray3 !default;
 $diagonal-dark-text-color: $white !default;

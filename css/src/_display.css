@@ -23,6 +23,8 @@
  *   ig = inline grid
  */
 
+/* stylelint-disable a11y/no-display-none */
+
 .dn { display: none; }
 .db { display: block; }
 .di { display: inline; }

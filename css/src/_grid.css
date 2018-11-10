@@ -27,7 +27,7 @@
 /* stylelint-disable declaration-no-important */
 .grid-c { grid-gap: $gutter-compact !important; }
 .grid-c0 { grid-gap: 0 0 !important; }
-/* stylelint-enable declaration-no-important */
+/* stylelint-enable */
 
 .col-fluid { grid-template-columns: auto; }
 

@@ -10,6 +10,8 @@
  *   @include make-font-face(<family>, <name>, [style], [weight], [dir]);
  */
 
+/* FIXME: Move documentation into docs + add link here */
+
 /**
  * PostCSS mixin to generate a font-family declaration.
  * @param {string} family

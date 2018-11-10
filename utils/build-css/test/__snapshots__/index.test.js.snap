@@ -20,7 +20,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=index.css.map */"
 `;
@@ -56,7 +56,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=index.css.map */"
 `;

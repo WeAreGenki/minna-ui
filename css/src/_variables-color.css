@@ -110,40 +110,43 @@ $sepia5: rgb(201, 151, 101);
 
 /* Aliases */
 
-$intent-primary: $blue3;
-$intent-success: $green3;
-$intent-warning: $orange3;
-$intent-danger: $red3;
-/* $app-background-color: $light-gray5; */
-$app-background-color: rgb(250, 250, 250);
-$dark-app-background-color: $dark-gray3;
-$outline-color: color-mod($blue3 alpha(0.6));
-$outline-color-hover: color-mod($gray3 alpha(0.6));
-$text-color: $dark-gray1;
-$text-color-muted: $gray1;
-$text-color-disabled: color-mod($text-color-muted alpha(0.5));
-$heading-color: $text-color;
-$link-color: $intent-primary;
-$shadow-color: $cobalt1;
-$dark-text-color: $light-gray5;
-$dark-text-color-muted: $gray5;
-$dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5));
-$dark-heading-color: $dark-text-color;
-$dark-link-color: $blue5;
-$text-selection-color: rgba(125, 188, 255, 0.6);
-$background-color-muted: $light-gray4;
-$icon-color: $text-color-muted;
-$icon-color-hover: $text-color;
-$icon-color-disabled: $text-color-disabled;
-$icon-color-selected: $intent-primary;
-$dark-icon-color: $dark-text-color-muted;
-$dark-icon-color-hover: $dark-text-color;
-$dark-icon-color-disabled: $dark-text-color-disabled;
-$dark-icon-color-selected: $intent-primary;
-$divider-black: color-mod($black alpha(0.15));
-$dark-divider-black: color-mod($black alpha(0.4));
-$dark-divider-white: color-mod($white alpha(0.15));
-$code-text-color: $text-color-muted;
-$dark-code-text-color: $dark-text-color-muted;
-$code-background-color: color-mod($white alpha(0.7));
-$dark-code-background-color: color-mod($black alpha(0.3));
+$intent-primary: $blue3 !default;
+$intent-success: $green3 !default;
+$intent-warning: $orange3 !default;
+$intent-danger: $red3 !default;
+/* $app-background-color: $light-gray5 !default; */
+$app-background-color: rgb(250, 250, 250) !default;
+$dark-app-background-color: $dark-gray3 !default;
+$outline-color: color-mod($blue3 alpha(0.6)) !default;
+$outline-color-hover: color-mod($gray3 alpha(0.6)) !default;
+$text-color: $dark-gray1 !default;
+$text-color-muted: $gray1 !default;
+$text-color-disabled: color-mod($text-color-muted alpha(0.5)) !default;
+$heading-color: $text-color !default;
+$link-color: $intent-primary !default;
+$shadow-color: $cobalt1 !default;
+$dark-text-color: $light-gray5 !default;
+$dark-text-color-muted: $gray5 !default;
+$dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5)) !default;
+$dark-heading-color: $dark-text-color !default;
+$dark-link-color: $blue5 !default;
+$background-color-muted: $light-gray4 !default;
+/*
+$icon-color: $text-color-muted !default;
+$icon-color-hover: $text-color !default;
+$icon-color-disabled: $text-color-disabled !default;
+$icon-color-selected: $intent-primary !default;
+$dark-icon-color: $dark-text-color-muted !default;
+$dark-icon-color-hover: $dark-text-color !default;
+$dark-icon-color-disabled: $dark-text-color-disabled !default;
+$dark-icon-color-selected: $intent-primary !default;
+*/
+$divider-black: color-mod($black alpha(0.15)) !default;
+$dark-divider-black: color-mod($black alpha(0.4)) !default;
+$dark-divider-white: color-mod($white alpha(0.15)) !default;
+/* $code-text-color: $text-color-muted !default; */
+$code-text-color: $sepia1 !default;
+/* $dark-code-text-color: $dark-text-color-muted !default; */
+$dark-code-text-color: $sepia4 !default;
+$code-background-color: color-mod($white alpha(0.7)) !default;
+$dark-code-background-color: color-mod($black alpha(0.3)) !default;

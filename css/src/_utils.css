@@ -19,7 +19,6 @@
 .tl { text-align: left; } /* default */
 .tr { text-align: right; }
 .tc { text-align: center; }
-.tj { text-align: justify; }
 .tu { text-align: unset; }
 
 @each $bp in $breakpoints {
@@ -27,7 +26,6 @@
     .$(bp)-tl { text-align: left; }
     .$(bp)-tr { text-align: right; }
     .$(bp)-tc { text-align: center; }
-    .$(bp)-tj { text-align: justify; }
     .$(bp)-tu { text-align: unset; }
   }
 }

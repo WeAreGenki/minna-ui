@@ -2,7 +2,7 @@
  * Stylelint config preset for minna-ui projects.
  */
 
- /*
+/*
   TODO: Incorporate the suggested additions from:
   https://github.com/stylelint/stylelint-config-standard
 */

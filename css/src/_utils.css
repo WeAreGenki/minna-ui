@@ -72,7 +72,7 @@
 .bl0-i { border-left: 0 !important; }
 
 .not-rounded-i { border-radius: 0 !important; }
-/* stylelint-enable declaration-no-important */
+/* stylelint-enable */
 
 /* Cursors */
 
@@ -81,5 +81,22 @@
 
 /* Line height hacks */
 
+/* stylelint-disable a11y/line-height-is-vertical-rhythmed */
 .lh1 { line-height: 1; }
 .lh0 { line-height: 0; }
+/* stylelint-enable */
+
+/* Mouse */
+
+.hide-on-hover {
+  transition: opacity $animate-speed-in ease-out;
+  backface-visibility: hidden; /* promote into its own layer to avoid repaints */
+
+  &:hover { /* stylelint-disable-line a11y/selector-pseudo-class-focus */
+    opacity: 0;
+    transition-duration: $animate-speed-out;
+  }
+}
+
+.pen { pointer-events: none; }
+.pea { pointer-events: auto; }

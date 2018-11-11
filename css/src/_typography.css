@@ -15,7 +15,7 @@ body {
     font-weight: $text-weight;
   }
 
-  @media $(l) {
+  @media $l {
     font-size: $text-size-large;
   }
 }
@@ -70,7 +70,8 @@ a {
   text-decoration: none;
   word-wrap: break-word;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 }

@@ -10,7 +10,7 @@ const preprocessStyle = require('../index.js');
 
 const readFile = promisify(fs.readFile);
 
-// don't require() components to avoid Jest transform
+// don't require() component to avoid Jest transform
 const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 
 const preprocessOpts = {
@@ -43,36 +43,6 @@ const sourceNoTypeAttr = `
       background: #000;
     }
   }
-</style>
-`;
-const sourceGlobal = `
-<style type="text/postcss" global>
-  body { margin: 0; }
-
-  #target {
-    color: red;
-
-    .focus,
-    &:focus {
-      background: #000;
-    }
-
-    .wrapper + & {
-      background: #222;
-    }
-  }
-</style>
-`;
-const sourceGlobalOnly = `
-<style global>
-  body { margin: 0; }
-  #target > .child { color: red; }
-</style>
-`;
-const sourceGlobalExists = `
-<style global>
-  :global(body) { margin: 0; }
-  :global(#target) > .child { color: red; }
 </style>
 `;
 const sourceBadSyntax = `
@@ -113,33 +83,6 @@ describe('Svelte style preprocessor', () => {
     let result = await preprocess(sourceNoTypeAttr, preprocessOpts);
     result = result.toString();
     expect(result).toMatch('&:focus');
-    expect(result).toMatchSnapshot();
-  });
-
-  it('adds global pseudo when global + type attributes', async () => {
-    expect.assertions(3);
-    let result = await preprocess(sourceGlobal, preprocessOpts);
-    result = result.toString();
-    expect(result).toMatch(':global(#target):focus');
-    expect(result).toMatch(':global(.wrapper)+#target');
-    expect(result).toMatchSnapshot();
-  });
-
-  it('adds global pseudo when global attribute only', async () => {
-    expect.assertions(3);
-    let result = await preprocess(sourceGlobalOnly, preprocessOpts);
-    result = result.toString();
-    expect(result).toMatch(':global(body)');
-    expect(result).toMatch(':global(#target)>.child');
-    expect(result).toMatchSnapshot();
-  });
-
-  it('doesn\'t add global pseudo when already exists', async () => {
-    expect.assertions(3);
-    let result = await preprocess(sourceGlobalExists, preprocessOpts);
-    result = result.toString();
-    expect(result).toMatch(':global(body)');
-    expect(result).toMatch(':global(#target)>.child');
     expect(result).toMatchSnapshot();
   });
 

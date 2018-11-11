@@ -92,7 +92,7 @@
   outline-color: $input-invalid-color;
 }
 
-.invalid-feedback {
+.invalid-feedback { /* stylelint-disable-line a11y/no-display-none */
   display: none;
   margin-top: $form-help-margin;
   color: $input-invalid-color;

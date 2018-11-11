@@ -9,9 +9,10 @@
   background-color: $button-background-color;
   border: 0;
   border-radius: $button-radius;
+  outline-offset: $outline-offset;
   box-shadow: $button-shadow;
 
-  &:hover,
+  /* &:hover,
   &:focus {
     text-decoration: none;
     background-color: $button-hover-background-color;
@@ -19,6 +20,18 @@
 
   &:active {
     background-color: $button-active-background-color;
+    box-shadow: none;
+  } */
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: $input-hover-outline;
+  }
+
+  &:active {
+    outline: $input-focus-outline;
+    /* FIXME: Try using an inverted shadow so it looks like the button is pressed in (see chrome settings page for reference) */
     box-shadow: none;
   }
 
@@ -52,7 +65,7 @@
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
   margin: 0;
-  line-height: 1;
+  line-height: $line-height;
 }
 
 /* Smaller button */

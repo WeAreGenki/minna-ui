@@ -16,7 +16,7 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media $(l) {
+  @media $l {
     padding-right: calc($gutter-col * 2);
     padding-left: calc($gutter-col * 2);
   }

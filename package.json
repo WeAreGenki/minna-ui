@@ -21,7 +21,7 @@
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
-    "lint": "yarn lint:css && yarn lint:js && lint:md",
+    "lint": "yarn lint:css && yarn lint:js && yarn lint:md",
     "lint:css": "stylelint **/*.{css,html} --cache",
     "lint:js": "eslint --ext html,js .",
     "lint:md": "markdownlint --ignore node_modules .",
@@ -39,14 +39,14 @@
     "@minna-ui/stylelint-config": "file:utils/stylelint-config",
     "@wearegenki/renovate-config": "1.0.0",
     "codecov": "3.1.0",
-    "docsify-cli": "4.2.1",
-    "eslint": "5.7.0",
+    "docsify-cli": "4.3.0",
+    "eslint": "5.9.0",
     "jest": "23.6.0",
     "lerna": "3.4.3",
     "markdownlint-cli": "0.13.0",
     "postcss": "7.0.5",
     "postcss-scss": "2.0.0",
-    "stylelint": "9.6.0",
-    "svelte": "2.14.1"
+    "stylelint": "9.8.0",
+    "svelte": "2.15.3"
   }
 }

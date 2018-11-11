@@ -47,7 +47,7 @@ describe('Select component', () => {
     const select = target.querySelector('.select');
     expect(Array.isArray(component.get().items)).toEqual(true);
     expect(component.get().items).not.toHaveLength(0);
-    expect(component.refs._target).toBeDefined();
+    expect(component.refs.input).toBeDefined();
     expect(select.getAttribute('tabindex')).toEqual('0');
     expect(select.getAttribute('disabled')).toBeNull();
     expect(select.getAttribute('required')).toBeNull();
@@ -67,7 +67,7 @@ describe('Select component', () => {
         value: 'jp',
       },
     });
-    expect(component.get()._inputText).toEqual('Japan');
+    expect(component.get().inputText).toEqual('Japan');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -79,7 +79,7 @@ describe('Select component', () => {
       data: {
         ...selectOpts,
         filterable: false,
-        _isOpen: true,
+        isOpen: true,
       },
     });
     expect(component.get().filterable).toEqual(false);
@@ -96,7 +96,7 @@ describe('Select component', () => {
       data: {
         ...selectOpts,
         filterHelp: 'Filter me',
-        _isOpen: true,
+        isOpen: true,
       },
     });
     expect(component.get().filterHelp).toEqual('Filter me');
@@ -169,10 +169,10 @@ describe('Select component', () => {
         value: 'cn',
       },
     });
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     component.set({ value: 'kr' });
-    component._setIndex();
-    expect(component.get()._selected).toEqual(3);
+    component.setIndex();
+    expect(component.get().selected).toEqual(3);
   });
 
   it('shows on click', () => {
@@ -182,12 +182,12 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '_open');
+    const spy = jest.spyOn(component, 'open');
     const select = target.querySelector('.select');
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     select.click();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     spy.mockRestore();
   });
 
@@ -202,12 +202,12 @@ describe('Select component', () => {
         disabled: true,
       },
     });
-    const spy = jest.spyOn(component, '_open');
+    const spy = jest.spyOn(component, 'open');
     const select = target.querySelector('.select');
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     select.click();
     expect(spy).not.toHaveBeenCalled(); // browsers shouldn't send MouseEvents for disabled inputs
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     spy.mockRestore();
   });
 
@@ -218,15 +218,15 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -238,20 +238,20 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event1 = new KeyboardEvent('keydown', { key: ' ' }); // Spacebar
     select.dispatchEvent(event1);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
     select.dispatchEvent(event2);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(1); // shouldn't open again
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -263,15 +263,15 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -283,15 +283,15 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -304,12 +304,12 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     select.focus();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     expect(document.activeElement).toBe(select);
     spy.mockRestore();
   });
@@ -322,14 +322,14 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy = jest.spyOn(component, '_close');
+    const spy = jest.spyOn(component, 'close');
     const select = target.querySelector('.select');
     select.focus();
-    expect(component.get()._isOpen).toEqual(true);
+    expect(component.get().isOpen).toEqual(true);
     expect(document.activeElement).toBe(select);
     select.blur();
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     expect(document.activeElement).toBe(document.body);
     spy.mockRestore();
   });
@@ -341,18 +341,18 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_close');
-    expect(component.get()._isOpen).toEqual(true);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'close');
+    expect(component.get().isOpen).toEqual(true);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -364,15 +364,15 @@ describe('Select component', () => {
       target,
       data: selectOpts,
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_open');
-    expect(component.get()._isOpen).toEqual(false);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'open');
+    expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'xxx' });
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).not.toHaveBeenCalled();
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().isOpen).toEqual(false);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -384,24 +384,24 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
-        _selected: 0,
+        isOpen: true,
+        selected: 0,
       },
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_down');
-    expect(component.get()._isOpen).toEqual(true);
-    expect(component.get()._selected).toEqual(0);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'down');
+    expect(component.get().isOpen).toEqual(true);
+    expect(component.get().selected).toEqual(0);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(2);
-    expect(component.get()._selected).toEqual(2);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().selected).toEqual(2);
+    expect(component.get().isOpen).toEqual(true); // still open
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -413,24 +413,24 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
-        _selected: 2,
+        isOpen: true,
+        selected: 2,
       },
     });
-    const spy1 = jest.spyOn(component, '_onKeyDown');
-    const spy2 = jest.spyOn(component, '_up');
-    expect(component.get()._isOpen).toEqual(true);
-    expect(component.get()._selected).toEqual(2);
+    const spy1 = jest.spyOn(component, 'handleKeyDown');
+    const spy2 = jest.spyOn(component, 'up');
+    expect(component.get().isOpen).toEqual(true);
+    expect(component.get().selected).toEqual(2);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     select.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(2);
     expect(spy2).toHaveBeenCalledTimes(2);
-    expect(component.get()._selected).toEqual(0);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().selected).toEqual(0);
+    expect(component.get().isOpen).toEqual(true); // still open
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -443,22 +443,22 @@ describe('Select component', () => {
       data: {
         ...selectOpts,
         items: itemsDisabled,
-        _isOpen: true,
-        _selected: 1,
+        isOpen: true,
+        selected: 1,
       },
     });
-    const spy = jest.spyOn(component, '_down');
-    expect(component.get()._selected).toEqual(1);
+    const spy = jest.spyOn(component, 'down');
+    expect(component.get().selected).toEqual(1);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(3);
+    expect(component.get().selected).toEqual(3);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(7);
+    expect(component.get().selected).toEqual(7);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(7);
+    expect(component.get().selected).toEqual(7);
     expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
@@ -470,22 +470,22 @@ describe('Select component', () => {
       data: {
         ...selectOpts,
         items: itemsDisabled,
-        _isOpen: true,
-        _selected: 7,
+        isOpen: true,
+        selected: 7,
       },
     });
-    const spy = jest.spyOn(component, '_up');
-    expect(component.get()._selected).toEqual(7);
+    const spy = jest.spyOn(component, 'up');
+    expect(component.get().selected).toEqual(7);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(3);
+    expect(component.get().selected).toEqual(3);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
@@ -496,20 +496,20 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
-        _selected: 3,
+        isOpen: true,
+        selected: 3,
       },
     });
-    const spy = jest.spyOn(component, '_down');
-    expect(component.get()._selected).toEqual(3);
+    const spy = jest.spyOn(component, 'down');
+    expect(component.get().selected).toEqual(3);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(4);
+    expect(component.get().selected).toEqual(4);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(4);
+    expect(component.get().selected).toEqual(4);
     expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
@@ -520,20 +520,20 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
-        _selected: 1,
+        isOpen: true,
+        selected: 1,
       },
     });
-    const spy = jest.spyOn(component, '_up');
-    expect(component.get()._selected).toEqual(1);
+    const spy = jest.spyOn(component, 'up');
+    expect(component.get().selected).toEqual(1);
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(0);
+    expect(component.get().selected).toEqual(0);
     select.dispatchEvent(event);
-    expect(component.get()._selected).toEqual(0);
+    expect(component.get().selected).toEqual(0);
     expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().isOpen).toEqual(true); // still open
     spy.mockRestore();
   });
 
@@ -544,24 +544,24 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '_select');
-    const spy2 = jest.spyOn(component, '_emitInput');
-    expect(component.get()._isOpen).toEqual(true);
-    expect(component.get()._selected).toEqual(0);
+    const spy1 = jest.spyOn(component, 'select');
+    const spy2 = jest.spyOn(component, 'emitInput');
+    expect(component.get().isOpen).toEqual(true);
+    expect(component.get().selected).toEqual(0);
     const option = target.querySelector('.option[value="jp"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
     Object.defineProperty(event, 'target', { value: option, enumerable: true });
-    const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of _select()
+    const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of select()
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalled();
     expect(spy3).toHaveBeenCalled();
-    expect(component.get()._selected).toEqual(2);
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().selected).toEqual(2);
+    expect(component.get().isOpen).toEqual(false);
     spy1.mockRestore();
     spy2.mockRestore();
     spy3.mockRestore();
@@ -579,13 +579,13 @@ describe('Select component', () => {
           { id: 'two', text: 'Opt 2', disabled: true },
           { id: 'three', text: 'Opt 3' },
         ],
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '_select');
-    const spy2 = jest.spyOn(component, '_emitInput');
-    expect(component.get()._isOpen).toEqual(true);
-    expect(component.get()._selected).toEqual(0);
+    const spy1 = jest.spyOn(component, 'select');
+    const spy2 = jest.spyOn(component, 'emitInput');
+    expect(component.get().isOpen).toEqual(true);
+    expect(component.get().selected).toEqual(0);
     const option = target.querySelector('.option[value="two"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
@@ -595,8 +595,8 @@ describe('Select component', () => {
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).not.toHaveBeenCalled();
     expect(spy3).toHaveBeenCalledTimes(1);
-    expect(component.get()._selected).toEqual(0);
-    expect(component.get()._isOpen).toEqual(true); // still open
+    expect(component.get().selected).toEqual(0);
+    expect(component.get().isOpen).toEqual(true); // still open
     spy1.mockRestore();
     spy2.mockRestore();
     spy3.mockRestore();
@@ -609,25 +609,25 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    const spy1 = jest.spyOn(component, '_select');
-    const spy2 = jest.spyOn(component, '_emitInput');
-    expect(component.get()._isOpen).toEqual(true);
-    expect(component.get()._selected).toEqual(0);
+    const spy1 = jest.spyOn(component, 'select');
+    const spy2 = jest.spyOn(component, 'emitInput');
+    expect(component.get().isOpen).toEqual(true);
+    expect(component.get().selected).toEqual(0);
     const select = target.querySelector('.select');
     const event1 = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event1);
-    expect(component.get()._selected).toEqual(1);
+    expect(component.get().selected).toEqual(1);
     const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
     const spy3 = jest.spyOn(event2, 'preventDefault');
     select.dispatchEvent(event2);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalled();
     expect(spy3).toHaveBeenCalledTimes(1);
-    expect(component.get()._selected).toEqual(1);
-    expect(component.get()._isOpen).toEqual(false);
+    expect(component.get().selected).toEqual(1);
+    expect(component.get().isOpen).toEqual(false);
     spy1.mockRestore();
     spy2.mockRestore();
     spy3.mockRestore();
@@ -640,12 +640,12 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    expect(component.get()._filteredItems).toHaveLength(5);
-    component.set({ _inputText: 'o' });
-    expect(component.get()._filteredItems).toHaveLength(2);
+    expect(component.get().filteredItems).toHaveLength(5);
+    component.set({ inputText: 'o' });
+    expect(component.get().filteredItems).toHaveLength(2);
     expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
   });
 
@@ -656,12 +656,12 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        _isOpen: true,
+        isOpen: true,
       },
     });
-    expect(component.get()._filteredItems).toHaveLength(5);
-    component.set({ _inputText: 'no match' });
-    expect(component.get()._filteredItems).toHaveLength(0);
+    expect(component.get().filteredItems).toHaveLength(5);
+    component.set({ inputText: 'no match' });
+    expect(component.get().filteredItems).toHaveLength(0);
     expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
   });
 
@@ -673,30 +673,31 @@ describe('Select component', () => {
       data: {
         ...selectOpts,
         value: 'au',
-        _isOpen: true,
-        _inputText: 'filter text',
+        isOpen: true,
+        inputText: 'filter text',
       },
     });
-    const spy = jest.spyOn(component, '_setInput');
+    const spy = jest.spyOn(component, 'setInput');
     const select = target.querySelector('.select');
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.get()._inputText).toEqual('Australia');
+    expect(component.get().inputText).toEqual('Australia');
     spy.mockRestore();
   });
 
   it('can dynamically add items', () => {
-    expect.assertions(3);
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
       target,
       data: selectOpts,
     });
     expect(component.get().items).toHaveLength(5);
-    component.set({ items: [...items, { id: 'new', text: 'New' }]});
+    component.set({ items: [...items, { id: 'new', text: 'New' }] });
     expect(component.get().items).toHaveLength(6);
-    const listbox = target.querySelector('.select-listbox');
-    expect(listbox.innerHTML).toMatch('value="new" role="option">New</div>');
+    const newListItem = target.querySelector('[value="new"]');
+    expect(newListItem).toBeTruthy();
+    expect(newListItem.outerHTML).toMatchSnapshot();
   });
 });

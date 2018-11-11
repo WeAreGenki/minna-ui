@@ -9,7 +9,7 @@ Stylelint config preset for use in [`Minna UI`](https://github.com/WeAreGenki/mi
 
 ## Usage
 
-TODO: Write me.
+TODO: Write me :)
 
 ## Licence
 

@@ -26,7 +26,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -52,7 +52,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -74,7 +74,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -111,7 +111,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -133,7 +133,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -155,7 +155,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -177,7 +177,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -199,7 +199,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;
@@ -221,7 +221,7 @@ body {
 .wrapper + #target {
     background: rgb(33, 33, 33);
   }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable */
 
 /*# sourceMappingURL=node_modules/@minna-ui/jest-config/fixtures/import.css.map */"
 `;

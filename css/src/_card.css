@@ -10,22 +10,42 @@
 }
 
 .card-hover {
+  position: relative;
   z-index: $card-hover-zindex;
+  display: inline-block;
   padding: 0;
   margin: 0;
   color: $card-hover-text-color;
   box-shadow: $card-hover-shadow;
-  transition: box-shadow $card-hover-animate-speed ease-out;
+
+  /* override anchor pseudo state style since cards already have visual cues */
+  a&:hover,
+  a&:focus {
+    color: $card-hover-text-color;
+    text-decoration: unset;
+  }
 
   /**
    * Don't include a hover state on small screens as they typically don't have
-   * mouse input and/or are low powered so animations jank the UI.
+   * mouse input and/or are low powered so animations may jank the UI.
    */
-  @media $(ns) {
-    &:hover {
-      color: $card-hover-text-color;
-      text-decoration: unset;
+  @media $ns {
+    &::after {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      content: "";
+      border-radius: $radius-large;
       box-shadow: $card-hover-hover-shadow;
+      opacity: 0;
+      transition: opacity $card-hover-animate-speed-out ease-out;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+      transition-duration: $card-hover-animate-speed-in;
     }
   }
 }

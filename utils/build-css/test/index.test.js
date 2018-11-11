@@ -11,22 +11,24 @@ const buildCss = require('../index.js');
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/styles.css');
-const sourcePathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
-const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
+const srcPathSimple = require.resolve('@minna-ui/jest-config/fixtures/simple.css');
+const srcPathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
+const srcPathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
 const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} dirName
+ * @param {string} outDir
+ * @param {string} srcPath
+ * @return {object}
  */
-const pkg = (dirName, source = sourcePath) => ({
+const pkg = (outDir, srcPath = srcPathSimple) => ({
   npm_package_name: 'test-css',
   npm_package_version: '1.2.3',
   npm_package_homepage: 'https://ui.wearegenki.com',
-  npm_package_style: path.join(dist, dirName, 'index.css'),
-  npm_package_browser: path.join(dist, dirName, 'index.css'),
-  npm_package_main: source,
+  npm_package_style: path.join(dist, outDir, 'index.css'),
+  npm_package_browser: path.join(dist, outDir, 'index.css'),
+  npm_package_main: srcPath,
 });
 
 beforeAll(() => mkdir(dist));
@@ -34,11 +36,11 @@ beforeAll(() => mkdir(dist));
 afterAll(() => del([dist]));
 
 describe('build-css tool', () => {
-  it.skip('compiles package CSS bundle', async () => {
+  it('compiles package CSS bundle', async () => {
     expect.assertions(10);
     const build = buildCss(pkg('css'));
     await expect(build).resolves.toBeDefined();
-    const built = await build;
+    const built = (await build)[0];
     expect(built.result.css).not.toEqual('');
     expect(built.result.warnings()).toHaveLength(0);
     expect(built.result.css).toMatchSnapshot();
@@ -50,11 +52,11 @@ describe('build-css tool', () => {
     expect(built.min.styles).toMatchSnapshot();
   });
 
-  it.skip('compiles package CSS bundle with imports', async () => {
+  it('compiles package CSS bundle with imports', async () => {
     expect.assertions(10);
-    const build = buildCss(pkg('imports', sourcePathImport));
+    const build = buildCss(pkg('imports', srcPathImport));
     await expect(build).resolves.toBeDefined();
-    const built = await build;
+    const built = (await build)[0];
     expect(built.result.css).not.toEqual('');
     expect(built.result.warnings()).toHaveLength(0);
     expect(built.result.css).toMatchSnapshot();
@@ -66,17 +68,17 @@ describe('build-css tool', () => {
     expect(built.min.styles).toMatchSnapshot();
   });
 
-  it.skip('contains banner comment', async () => {
+  it('contains banner comment', async () => {
     expect.assertions(2);
     const pkgData = pkg('banner');
     const build = buildCss(pkgData);
     await expect(build).resolves.toBeDefined();
-    const built = await build;
+    const built = (await build)[0];
     const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
     expect(built.min.styles).toMatch(re);
   });
 
-  it.skip('cleans existing dist dir', async () => {
+  it('cleans existing dist dir', async () => {
     expect.assertions(2);
     await mkdir(path.join(dist, 'check'));
     const checkFile = path.join(dist, 'check/exists.txt');
@@ -86,7 +88,7 @@ describe('build-css tool', () => {
     await expect(stat(checkFile)).rejects.toThrow();
   });
 
-  it.skip('writes data to disk', async () => {
+  it('writes data to disk', async () => {
     expect.assertions(4);
     const pkgData = pkg('write-to-disk');
     const build = buildCss(pkgData);
@@ -96,11 +98,11 @@ describe('build-css tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it.skip('throws error when bad CSS syntax', async () => {
+  it('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
-    const spy = jest.spyOn(process.stderr, 'write');
+    const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});
-    const build = buildCss(pkg('bad-syntax', sourcePathBadSyntax));
+    const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrowError();
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();

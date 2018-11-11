@@ -17,25 +17,30 @@ const cssnano = require('cssnano');
 const importCache = {};
 
 /**
+ * Find which CSS file to use from package.json.
+ */
+function packageFilter(pkg) {
+  const { main, style } = pkg;
+  const newPkg = Object.assign({}, pkg);
+
+  if (style) {
+    newPkg.main = style;
+  } else if (!main || !/\.css$/.test(main)) {
+    newPkg.main = 'index.css';
+  }
+  return newPkg;
+}
+
+/**
  * Custom file resolver for CSS imports.
  */
 function resolve(id, cwd, opts) {
   return new Promise((res, rej) => {
     nodeResolve(id, {
+      packageFilter,
       basedir: cwd,
       extensions: ['.css'],
       paths: opts.importPaths,
-      packageFilter: function processPackage(pkg) {
-        const { style } = pkg;
-        let { main } = pkg;
-
-        if (style) {
-          main = style;
-        } else if (!main || !/\.css$/.test(main)) {
-          main = 'index.css';
-        }
-        return pkg;
-      },
       preserveSymlinks: false,
     }, (err, file) => {
       if (err) {

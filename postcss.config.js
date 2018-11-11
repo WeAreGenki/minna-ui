@@ -3,8 +3,7 @@
 'use strict';
 
 module.exports = {
-  parser: 'postcss-scss', // FIXME: `//` comments are not being converted to block
-  map: true,
+  syntax: 'postcss-scss',
   plugins: {
     '@minna-ui/postcss-config': { debug: true },
   },

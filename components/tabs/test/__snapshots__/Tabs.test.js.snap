@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs component renders correctly with defaults 1`] = `
+"<div class=\\"tabs\\"><nav><a href=\\"#1\\" class=\\"tabs-title tabs-title-active\\">1</a>
+    <a href=\\"#2\\" class=\\"tabs-title\\">2</a>
+    <a href=\\"#3\\" class=\\"tabs-title\\">3</a>
+    <a href=\\"#4\\" class=\\"tabs-title\\">4</a>
+    <a href=\\"#5\\" class=\\"tabs-title\\">5</a>
+    <a href=\\"#6\\" class=\\"tabs-title\\">6</a></nav>
+  <div class=\\"tabs-content\\">
+    
+    
+    
+    
+    </div></div>"
+`;

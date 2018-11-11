@@ -9,7 +9,7 @@ Jest config preset for use when testing in [`Minna UI`](https://github.com/WeAre
 
 ## Usage
 
-TODO: Write me.
+TODO: Write me :)
 
 ## Licence
 

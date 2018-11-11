@@ -7,6 +7,10 @@
  */
 
 /* Media queries */
+
+/**
+ * NOTE: If you change these, you'll also need to edit `mixins/at-media.css`.
+ */
 $ns: (min-width: 30.01em) !default; /* not-small */
 $m: (min-width: 30.01em, max-width: 60em) !default; /* medium */
 $l: (min-width: 60.01em) !default; /* large */
@@ -21,13 +25,11 @@ $use-global-border-box: false !default; /* see `_reboot.css` for overview */
 $spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em !default;
 $radius: 0.2rem !default; /* 3.2px */
 $radius-large: 0.32rem !default; /* 5px */
-$angle1: 151deg !default;
-$angle2: 45deg !default;
-$angle3: -27deg !default;
+$angle: -27deg !default;
 $shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
-$shadow-hover:
-  $shadow,
-  0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
+$shadow-hover: 0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
+$animate-speed-in: 224ms;
+$animate-speed-out: 192ms;
 $outline-offset: 3px !default;
 
 /* Grid */
@@ -106,7 +108,9 @@ $button-padding-y: 0.682em !default;
 $button-text-color: $dark-gray2 !default;
 $button-background-color: $white !default;
 $button-radius: $radius !default;
-$button-shadow: 0 2px 8px 0 color-mod($shadow-color alpha(0.3)) !default;
+$button-shadow:
+  0 2px 8px 0 color-mod($shadow-color alpha(0.3)),
+  inset 0 -16px 10px 0 color-mod($shadow-color alpha(0.03)) !default;
 $button-hover-background-color: $light-gray2 !default;
 $button-active-background-color: $light-gray1 !default;
 $button-disabled-text-color: $text-color-disabled !default;
@@ -146,7 +150,8 @@ $card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18)) !default;
 $card-hover-zindex: 1 !default;
 $card-hover-text-color: $text-color !default;
 $card-hover-shadow: $shadow !default;
-$card-hover-animate-speed: 220ms !default;
+$card-hover-animate-speed-in: $animate-speed-in !default;
+$card-hover-animate-speed-out: $animate-speed-out !default;
 $card-hover-hover-shadow: $shadow-hover !default;
 $card-body-margin: 1.2rem 2rem !default;
 $card-button-text-color: $button-text-color !default;
@@ -182,18 +187,27 @@ $tag-margin-between: 1em !default;
 $hero-padding: 1.5rem 0 !default;
 $hero-margin: 2rem 0 !default;
 $hero-text-color: $dark-text-color !default;
-$hero-background: linear-gradient($angle3, $cobalt1, $cobalt3) !default;
-$hero-dark-background: linear-gradient($angle3, $dark-gray1, $dark-gray3) !default;
+$hero-background: linear-gradient($angle, $cobalt1, $cobalt3) !default;
+$hero-dark-background: linear-gradient($angle, $dark-gray1, $dark-gray3) !default;
 $diagonal-hight: 4rem !default;
 $diagonal-hight-l: 6rem !default;
 /**
-  * See `images/diagonal.svg` for the original SVG markup and instructions to
-  * customise the diagonal image.
+  * See `images/diagonal.svg` for the original SVG markup and instructions
+  * on how to customise this image.
   */
-/* $diagonal-image: url("diagonal.svg") !default; */
+/* $diagonal-image: url("diagonal.svg"); */
 $diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E") !default;
 $diagonal-background-color: $light-gray3 !default;
 $diagonal-dark-text-color: $white !default;
 $diagonal-dark-background-color: $dark-gray1 !default;
 $diagonal-dark-link-color: $dark-link-color !default;
 $diagonal-dark-input-invalid-color: $red5 !default;
+
+/* Loading */
+
+$spinner-size: 24px !default;
+$spinner-width: 4px !default;
+$spinner-color: $intent-primary !default;
+$spinner-background-color: $light-gray1 !default;
+$spinner-animate-speed: 880ms !default;
+$spinner-animate-timing: ease !default;

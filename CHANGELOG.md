@@ -9,13 +9,43 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-- TBA
+## [0.17.0] - 2018-11-11
+
+### Added
+
+- New package `@minna-ui/rollup-plugins`.
+- CSS class `.spinner` for a loading state spinner. We intend to add more loading state styles in future.
+- Utility styles for dealing with mouse events.
+- CSS mixin to create custom buttons.
+
+### Removed
+
+- Removed CSS variables `$angle1` and `$angle2`.
+- Remove text-align justify styles as they're bad for accessibility.
+- No more auto `:global()` selector injection (was style tag global attribute). This greatly simplifies `@minna-ui/pre-style`.
+
+### Changed
+
+- Renamed package names:
+  - `@minna-ui/toasts` to `@minna-ui/toast`
+  - `@minna-ui/svelte-preprocess-markup` to `@minna-ui/pre-markup`
+  - `@minna-ui/svelte-preprocess-style` to `@minna-ui/pre-style`
+- Renamed CSS mixin `draw-triangle` to `triangle`.
+- Renamed CSS variable `$angle3` to `$angle`.
+- Installing the `minna-ui` meta package is now the recommended way to use Minna UI.
+- Colour style tweaks.
+- Updated package dependencies.
+
+### Fixed
+
+- StyleLint config a11y rules too strict.
+- Package resolution in `@minna-ui/postcss-config` broken.
 
 ## [0.16.0] - 2018-10-21
 
 ### Added
 
-- New docs. Still very much a WIP but we made good progress towards an actual online documentation.
+- New docs. Still a work in progress but we're closer to having something useful.
 - New CSS bundle `@minna-ui/css/dist/native.css`; same as the standard CSS bundle but also styles more native HTML elements without adding a class.
 - Reintroduced the `@extend` at rule for CSS to help build the "native" CSS bundle.
 - New preset for node code in `@minna-ui/eslint-config`.
@@ -30,7 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use `box-sizing: border box` on inputs by default.
 - Various tweaks to `@minna-ui/eslint-config`.
 - Update `@minna-ui/jest-config` to better suit the latest `sapper` changes.
-- Refactor our internal `build-css` package to accomodate building from multiple entrypoints and to make the docs CSS.
+- Refactor our internal `build-css` package to accommodate building from multiple entry points and to make the docs CSS.
 - Rework our internal dev tooling configs to use our config presets and other internal tooling improvements.
 - Updated package dependencies.
 
@@ -72,17 +102,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: Complete refactor of building CSS and our PostCSS preset. This is not something we took lightly as it significantly changes how we work with styles in the framework.
+- Complete refactor of building CSS and our PostCSS preset. This is not something we took lightly as it significantly changes how we work with styles in the framework.
   - _Build time_ CSS variables are now "SCSS-like"; they use the `$var_name` style. You no longer need to use `:root{}` to declare variables and should instead set them at a global level or local inside a selector block.
   - You are still able to use `var()` but now it will not be removed, resulting in a clear distinction between build-time variables and run-time variables.
   - Now, under the covers, variables and at rules are combined into the same PostCSS plugin resulting in greater efficiency and easier handling of variables between rules. This also fixes long standing bugs with using CSS variables in @ rules.
   - CSS mixins work differently now.
-- BREAKING CHANGE: `@media` properties are now just simple CSS variables instead of custom media:
+- `@media` properties are now just simple CSS variables instead of custom media:
   - `--not-small` renamed to `$ns`
   - `--medium` renamed to `$m`
   - `--large` renamed to `$l`
-- BREAKING CHANGE: Renamed CSS variables... too many to list, please see the source code.
-- BREAKING CHANGE: Refactor `@minna-ui/svelte-preprocess-markup` with new options. Now takes a `level` option from `0` to `4`.
+- Renamed CSS variables... too many to list, please see the source code.
+- Refactor `@minna-ui/svelte-preprocess-markup` with new options. Now takes a `level` option from `0` to `4`.
 - Tweak default `@minna-ui/navbar` sizes.
 - Change how flipping elements in implemented in CSS for better performance.
 - Add/remove valid @ rules from `@minna-ui/stylelint-config`.
@@ -90,7 +120,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Temporarily remove "disabled" prop from select to fix <abbr title="server side rendering">SSR</abbr>.
-- Alignment of icons and menu items in `@minna-ui/navbar` not vertically centered.
+- Alignment of icons and menu items in `@minna-ui/navbar` not vertically centred.
 - Internal `build-css` package crashes on error. Now prints error correctly for faster debugging.
 
 ## [0.14.0] - 2018-09-22
@@ -102,7 +132,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: In `@minna-ui/css`, remove screen condition and rename custom media variables:
+- In `@minna-ui/css`, remove screen condition and rename custom media variables:
   - `--screen-not-small` rename to `--not-small`
   - `--screen-medium` rename to `--medium`
   - `--screen-large` rename to `--large`
@@ -112,7 +142,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- BREAKING CHANGE: Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
+- Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
 - Custom setting for `customEventAttributes` in `@minna-ui/svelte-preprocess-markup` because it was invalid.
 
 ## [0.13.0] - 2018-09-08
@@ -124,7 +154,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: Rename some component props:
+- Rename some component props:
   - `segment` to `current` in `@minna-ui/navbar`
   - `menuItems` signature changed; `name` is now `text` in `@minna-ui/navbar`
   - `options` to `items` in `@minna-ui/select` (conflicted with Svelte internals)
@@ -146,7 +176,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: Rename all CSS classes so the responsive modifier is at the front instead of the end, e.g. before `.mt4-l`, now `.l-mt4`. This is an experiment and may be reverted in the next few releases. The intent is it should make it easier to read when quickly looking at markup.
+- Rename all CSS classes so the responsive modifier is at the front instead of the end, e.g. before `.mt4-l`, now `.l-mt4`. This is an experiment and may be reverted in the next few releases. The intent is it should make it easier to read when quickly looking at markup.
 - Components are now minified using Closure Compiler for smaller, faster bundles.
 - Default setting for `coverageReporters` in `@minna-ui/jest-config`; add `json` and remove `lcov`.
 - Use next-gen jest test runner `jest-circus` in `@minna-ui/jest-config`. Note: it's necessary to set the `JEST_CIRCUS=1` env variable to actually use it.
@@ -196,7 +226,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: Rename `@minna-ui/navbar` props:
+- Rename `@minna-ui/navbar` props:
   - `items` to `menuItems`
   - `page` to `segment`
 - Updated package dependencies.
@@ -223,7 +253,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- BREAKING CHANGE: Refactor shadows to use `box-shadow` instead of `filter: drop-shadow()`. This greatly increases scroll and rendering performance, especially on low-powered mobile devices. There were also a number of CSS variables which have changed because of this.
+- Refactor shadows to use `box-shadow` instead of `filter: drop-shadow()`. This greatly increases scroll and rendering performance, especially on low-powered mobile devices. There were also a number of CSS variables which have changed because of this.
 - Don't move navbar on scroll and `.card-hover` on hover because it can be hard to read at and hurts performance.
 - Refactor navbar scroll logic to avoid excessive processing.
 
@@ -268,8 +298,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- BREAKING CHANGE: `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.
-- BREAKING CHANGE: Remove `.link` class; always just use plain `<a>` tags.
+- `box-sizing: border-box` is now only set by default on styles which require it (styles with width and padding or border, such as `.con`). You now need to manually add `.bb` when required or add your own global box-sizing style.
+- Remove `.link` class; always just use plain `<a>` tags.
 - Overly opinionated text styles and their CSS variables:
   - `--text-rendering`
   - `--text-variant`
@@ -280,14 +310,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: New responsive breakpoints and max container widths.
-- BREAKING CHANGE: Rename CSS variables:
+- New responsive breakpoints and max container widths.
+- Rename CSS variables:
   - `--font-family*` to `--font-stack*`
   - `--text-size-min` to `--text-size`
   - `--text-size-max` to `--text-size-large`
   - `--navbar-link-fragment-*` to `--navbar-hash-link-*`
-- BREAKING CHANGE: Font size defaults.
-- BREAKING CHANGE: Styles are now opt-in for tables, radio and checkbox inputs, and code blocks; a class is now required.
+- Font size defaults.
+- Styles are now opt-in for tables, radio and checkbox inputs, and code blocks; a class is now required.
 - Text size is no longer fluid by default.
 - Link hover no longer changes text colour.
 - Link text colour.
@@ -305,14 +335,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- BREAKING CHANGE: Rename `@minna-ui/toggle` component to `@minna-ui/switch`.
-- BREAKING CHANGE: Rename `--toggle-*` CSS variables to `--switch-*`.
+- Rename `@minna-ui/toggle` component to `@minna-ui/switch`.
+- Rename `--toggle-*` CSS variables to `--switch-*`.
 - Convert more CSS size units to `em`.
 - Simplify SVG image used to create diagonal sections.
 
 ### Fixed
 
-- BREAKING CHANGE: Don't style default form elements; require classes for custom form element styles.
+- Don't style default form elements; require classes for custom form element styles.
 - NPM publish script now correctly lints, tests, and builds packages before publishing.
 
 ## [0.5.0] - 2018-07-08
@@ -364,8 +394,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 ### Removed
 
-- BREAKING CHANGE: Delete `_variables-md-colour.css`.
-- BREAKING CHANGE: Removed CSS variables:
+- Delete `_variables-md-colour.css`.
+- Removed CSS variables:
   - `--gradient-*` - we no longer have predefined gradients by default
   - `--primary`
   - `--secondary`
@@ -388,7 +418,7 @@ This is a large release centred around refactoring colours and simplifying and c
   - `--card-padding-*`
   - `--alert-*-bg-colour`
   - `--navbar-shadow-before`
-- BREAKING CHANGE: Removed CSS classes:
+- Removed CSS classes:
   - `.btn-cta`
   - `.btn-dark`
   - `.btn-main`
@@ -396,11 +426,11 @@ This is a large release centred around refactoring colours and simplifying and c
 
 ### Changed
 
-- BREAKING CHANGE: Switch to American English spelling (not British English) for CSS and component APIs to better match developer expectations.
-- BREAKING CHANGE: Rename files:
+- Switch to American English spelling (not British English) for CSS and component APIs to better match developer expectations.
+- Rename files:
   - `_colour.css` to `_color.css`
   - `_label.css` to `_tag.css`
-- BREAKING CHANGE: Renamed CSS variables:
+- Renamed CSS variables:
   - `*-colour*` to `*-color*`
   - `*-bg-*` to `*-background-*`
   - `*font-*` to `*text-*` (but not `--font-family*`)
@@ -419,15 +449,15 @@ This is a large release centred around refactoring colours and simplifying and c
   - `--link-hover-font-colour` to `XXXXX`
   - `--label-*` to `--tag-*`
   - `--card-touch-*` to `--card-hover-*`
-- BREAKING CHANGE: Renamed CSS classes:
+- Renamed CSS classes:
   - `.*btn*` to `.*button*`
   - `.*grey*` to `.*gray*`
   - `.card-touch` to `.card-hover`
   - `.rad` to `.rounded`
   - `.rad2` to `.rounded-large`
   - `.rad0*` to `.not-rounded*`
-- BREAKING CHANGE: All colour classes in `_color.css` have been changed.
-- BREAKING CHANGE: CSS mixin `fluid-font-size` to `fluid-text-size`.
+- All colour classes in `_color.css` have been changed.
+- CSS mixin `fluid-font-size` to `fluid-text-size`.
 - Colours now must be defined using `rgb()` or `rgba()` only.
 - Some more CSS sizes were converted from `rem` to `em`.
 - Updated package dependencies.
@@ -446,7 +476,7 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Refactor font sizes.
 - Use `em` instead of `rem` in places where it makes sense.
-- Change some whitespace to suit new font sizes.
+- Change some white space to suit new font sizes.
 - Better font family system stack, now more inclusive of all common operating systems.
 - Use bold font weight to show active nav items.
 - Better SVG image alignment in `@minna-ui/navbar`.
@@ -504,7 +534,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.16.0...HEAD
+[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.17.0...HEAD
+[0.17.0]: https://github.com/MaxMilton/new-tab/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/MaxMilton/new-tab/compare/v0.15.3...v0.16.0
 [0.15.3]: https://github.com/MaxMilton/new-tab/compare/v0.15.2...v0.15.3
 [0.15.2]: https://github.com/MaxMilton/new-tab/compare/v0.15.1...v0.15.2

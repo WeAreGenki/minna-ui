@@ -9,7 +9,7 @@ ESLint config presets for use in [`Minna UI`](https://github.com/WeAreGenki/minn
 
 ## Usage
 
-TODO: Write me.
+TODO: Write me :)
 
 ## Licence
 

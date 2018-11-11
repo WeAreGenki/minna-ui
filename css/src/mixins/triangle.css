@@ -8,13 +8,15 @@
  * interfering with the document flow.
  *
  * USAGE:
- *   @include draw-triangle(<size>, <color>, [side], [isPseudo]);
+ *   @include triangle(<size>, <color>, [side], [isPseudo]);
  *
  *   <side>     = one of: top, right, bottom, left
  *   <size>     = any CSS size with unit, e.g. 0.5rem or 8px
  *   [color]    = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
  *   [isPseudo] = if true will output as a pseudo element (optional)
  */
+
+/* FIXME: Move documentation into docs + add link here */
 
 /**
  * PostCSS mixin to draw a triangle.
@@ -24,7 +26,7 @@
  * @param {Boolean=} isPseudo
  * @returns {object}
  */
-@mixin draw-triangle($size, $color, $side: bottom, $isPseudo: false) {
+@mixin triangle($size, $color, $side: bottom, $isPseudo: false) {
   width: 0;
   height: 0;
 

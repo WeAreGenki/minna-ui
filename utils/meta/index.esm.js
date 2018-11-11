@@ -1,3 +1,5 @@
+/* istanbul ignore file */ // FIXME: This isn't working
+
 /** Components */
 export { default as CodeView } from '@minna-ui/code-view/src/CodeView.html';
 export { default as Collapse } from '@minna-ui/collapse/src/Collapse.html';

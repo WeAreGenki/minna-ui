@@ -13,15 +13,5 @@
 }
 
 .button-cta {
-  color: $white;
-  background-color: $intent-primary;
-
-  &:hover,
-  &:focus {
-    background-color: $blue2;
-  }
-
-  &:active {
-    background-color: $blue1;
-  }
+  @include button($cta-color, $blue2, $blue1, $blue2);
 }

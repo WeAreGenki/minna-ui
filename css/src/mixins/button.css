@@ -1,0 +1,29 @@
+/**
+ * CUSTOM BUTTON MAKER.
+ */
+
+/* FIXME: Move documentation into docs + add link here */
+
+/* TODO: Make this better, more flexible and/or dynamic */
+
+/* FIXME: Uncomment once https://github.com/jonathantneal/postcss-advanced-variables/pull/55 is merged */
+/* @mixin button($btn-bg-color, $btn-bg-color-hover, $btn-bg-color-active, $btn-shadow-color: $shadow-color) { */
+@mixin button($btn-bg-color, $btn-bg-color-hover, $btn-bg-color-active, $btn-shadow-color) {
+  color: $white;
+  background-color: $btn-bg-color;
+  box-shadow:
+    0 2px 8px 0 color-mod($btn-shadow-color alpha(0.55)),
+    inset 0 -16px 10px 0 rgba(0, 0, 0, 0.05);
+  /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
+  transition: background-color $animate-speed-in linear;
+
+  &:hover,
+  &:focus {
+    background-color: $btn-bg-color-hover;
+    transition-duration: $animate-speed-out;
+  }
+
+  &:active {
+    background-color: $btn-bg-color-active;
+  }
+}

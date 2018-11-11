@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+.link {
+  background: rgb(150, 150, 150);
+
+  &:hover,
+  &:focus {
+    background: rgb(0, 0, 0);
+  }
+
+  &:active {
+    background: rgb(0, 150, 10);
+  }
+}

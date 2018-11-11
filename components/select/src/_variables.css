@@ -3,11 +3,12 @@
 $select-optimize: false !default;
 $select-zindex: 4 !default;
 $select-background-color: $white !default;
-$select-shadow: $shadow-hover !default;
+$select-shadow: $shadow, $shadow-hover !default;
 $select-selected-text-color: $white !default;
 $select-selected-background-color: $link-color !default;
 $select-caret-color: $input-text-color !default;
 $select-caret-size: 0.3em !default;
-$select-animate-speed: 150ms !default;
+$select-animate-speed-in: $animate-speed-in !default;
+$select-animate-speed-out: $animate-speed-out !default;
 $select-disabled-text-color: $input-disabled-text-color !default;
 $select-disabled-caret-color: $input-disabled-text-color !default;

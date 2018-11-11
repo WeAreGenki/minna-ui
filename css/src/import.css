@@ -11,5 +11,6 @@
 @import "./_variables-color.css";
 @import "./_variables.css";
 @import "./mixins/at-media.css";
+@import "./mixins/button.css";
 @import "./mixins/font-face.css";
-@import "./mixins/draw-triangle.css";
+@import "./mixins/triangle.css";

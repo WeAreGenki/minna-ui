@@ -1,22 +1,31 @@
-{#if _item.children === undefined}
+<!--
+  FIXME: This component is no longer sourced by Navbar.html
+    ↳ Figure out a way to optionally use this component to create dynamic menus
+      ↳ This could also be the start of work on a mega menu concept
+      ↳ Figure out how to do this without bundling the other components if just
+        the simple Navbar is used without any submenus etc.
+-->
+{#if item.children === undefined}
   <!-- menu item -->
+
   <!-- htmlmin:ignore -->
   <a
-    href="{_item.url}"
-    class="navbar-link{current === _item.url ? ' navbar-link-active' : ''} {_item.class || ''}"
-    rel="{_item.rel}"
+    href="{item.url}"
+    class="navbar-link{current === item.url ? ' navbar-link-active' : ''} {item.class || ''}"
+    rel="{item.rel}"
   >
-    {_item.text}
+    {item.text}
   </a><!-- htmlmin:ignore -->
 {:else}
-  <!-- submenu -->
+  <!-- submenu folder -->
+
   <span class="navbar-nested">
-    <span class="dn l-dib">{_item.text}</span>
+    <span class="dn l-dib">{item.text}</span>
 
     <!-- htmlmin:ignore -->
-    <div class="navbar-submenu {_item.class || ''}">
-      {#each _item.children as _subitem}
-        <svelte:self _item="{_subitem}" current="{current}" />
+    <div class="navbar-submenu {item.class || ''}">
+      {#each item.children as submenuItem}
+        <svelte:self item="{submenuItem}" current="{current}" />
       {/each}
     </div><!-- htmlmin:ignore -->
   </span>
@@ -29,7 +38,7 @@
   .navbar-nested {
     position: relative;
 
-    @media $(l) {
+    @media $l {
       padding: $navbar-link-padding;
       margin: 0;
       color: $navbar-link-color;
@@ -40,7 +49,7 @@
     display: flex;
     flex-direction: column;
 
-    @media $(l) {
+    @media $l {
       position: absolute;
       top: 100%;
       z-index: $navbar-zindex;
@@ -49,10 +58,15 @@
       background-color: $navbar-background-color;
       box-shadow: $navbar-shadow;
       opacity: 0;
-      transition: all 150ms ease-out;
+      transition:
+        opacity $navbar-submenu-animate-speed-out ease-out,
+        transform $navbar-submenu-animate-speed-out ease-out;
       transform: scale(0.8);
       transform-origin: 0 0;
-      will-change: opacity, transform;
+
+      @if $navbar-submenu-optimize {
+        will-change: opacity, transform;
+      }
 
       /* open submenu from the right */
       :global(.navbar-left)& {
@@ -64,6 +78,7 @@
       .navbar-nested:focus & {
         pointer-events: unset;
         opacity: 1;
+        transition-duration: $navbar-submenu-animate-speed-in;
         transform: scale(1);
       }
     }

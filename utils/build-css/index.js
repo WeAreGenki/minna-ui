@@ -31,7 +31,8 @@ const compileWarn = (origin, level, warnings) => {
   warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
-      process.stderr.write(`[${origin}] ${level}: ${err.toString()}\n`);
+      /* eslint-disable-next-line no-console */
+      console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
 };
@@ -60,109 +61,118 @@ function cleanDistDir(dir) {
  * @param {string} opts.banner
  */
 async function processCss({ from, to, banner }) {
-  try {
-    const src = await readFile(from, 'utf8');
+  const src = await readFile(from, 'utf8');
 
-    const { plugins, options } = await postcssLoadConfig({
-      from,
-      to,
-      map: { inline: false },
-    });
+  const { plugins, options } = await postcssLoadConfig({
+    from,
+    to,
+    map: { inline: false },
+  });
 
-    const sourceCss = banner + src;
-    const result = await postcss(plugins).process(sourceCss, options);
+  const sourceCss = banner + src;
+  const result = await postcss(plugins).process(sourceCss, options);
 
-    compileWarn('PostCSS', 'WARN', result.warnings());
+  compileWarn('PostCSS', 'WARN', result.warnings());
 
-    // minify resulting CSS
-    const min = await new CleanCSS({
-      returnPromise: true,
-      sourceMap: true,
-      level: {
-        1: { all: true },
-        2: { all: true },
-      },
-    }).minify(result.css, result.map.toString());
+  // minify resulting CSS
+  const min = await new CleanCSS({
+    returnPromise: true,
+    sourceMap: true,
+    level: {
+      1: { all: true },
+      2: { all: true },
+    },
+  }).minify(result.css, result.map.toString());
 
-    compileWarn('CleanCSS', 'ERR', min.errors);
-    compileWarn('CleanCSS', 'WARN', min.warnings);
+  compileWarn('CleanCSS', 'ERR', min.errors);
+  compileWarn('CleanCSS', 'WARN', min.warnings);
 
-    // clean-css removes the source map comment so we need to add it back in
-    min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(options.to)}.map */`;
+  // clean-css removes the source map comment so we need to add it back in
+  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(options.to)}.map */`;
 
-    writeFile(options.to, min.styles);
-    writeFile(`${options.to}.map`, min.sourceMap.toString());
+  writeFile(options.to, min.styles);
+  writeFile(`${options.to}.map`, min.sourceMap.toString());
 
-    return {
-      result,
-      min,
-    };
-  } catch (error) {
-    if (error.showSourceCode) {
-      process.stderr.write(`[PostCSS] ERROR: ${error.message}:\n${error.showSourceCode()}`);
-    }
-    throw error;
-  }
+  return {
+    result,
+    min,
+  };
 }
 
-module.exports = async function run(env, argv) {
-  process.env.NODE_ENV = env.NODE_ENV || 'production';
-  const pkgName = env.npm_package_name;
-  const pkgVersion = env.npm_package_version;
-  const pkgHomepage = env.npm_package_homepage;
-  // const pkgBrowser = env.npm_package_browser; // currently same as env.npm_package_style
-  const pkgStyle = env.npm_package_style;
-  const pkgMain = env.npm_package_main;
+module.exports = async function run(env, argv = []) {
+  try {
+    process.env.NODE_ENV = env.NODE_ENV || 'production';
+    const pkgName = env.npm_package_name;
+    const pkgVersion = env.npm_package_version;
+    const pkgHomepage = env.npm_package_homepage;
+    const pkgStyle = env.npm_package_style;
+    const pkgMain = env.npm_package_main;
 
-  const cssBanner = `/*!
+    const cssBanner = `/*!
  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */
-`;
+ */`;
 
-  const inputDir = argv[2];
-  const outputDir = argv[3];
-  const noClean = argv.includes('--no-clean');
-  const noBanner = argv.includes('--no-banner');
-  const banner = noBanner ? '' : cssBanner;
-  /** @type {Array<string>} */
-  const inputCss = [];
-  /** @type {Array<string>} */
-  const outputCss = [];
+    const inputDir = argv[2];
+    const outputDir = argv[3];
+    const noClean = argv.includes('--no-clean');
+    const noBanner = argv.includes('--no-banner');
+    const banner = noBanner ? '' : cssBanner;
+    /** @type {Array<string>} */
+    const inputCss = [];
+    /** @type {Array<string>} */
+    const outputCss = [];
 
-  if (!inputDir) {
-    if (!pkgStyle && !pkgMain) throw new Error('No input file or directory specified!');
+    if (!inputDir) {
+      if (!pkgStyle && !pkgMain) throw new Error('No input file or directory specified!');
 
-    inputCss.push(pkgMain);
-    outputCss.push(pkgStyle);
-  } else {
-    if (!outputDir) throw new Error('No output directory specified!');
+      inputCss.push(pkgMain);
+      outputCss.push(pkgStyle);
+    } else {
+      if (!outputDir) throw new Error('No output directory specified!');
 
-    const dirFiles = await readdir(inputDir);
-    const cssFiles = dirFiles.filter(
-      fileName => fileName !== 'import.css' && !fileName.startsWith('_') && fileName.endsWith('.css'),
-    );
+      const dirFiles = await readdir(inputDir);
+      const cssFiles = dirFiles.filter(
+        fileName => fileName !== 'import.css'
+        && fileName.endsWith('.css')
+        && !fileName.startsWith('_')
+      );
 
-    cssFiles.forEach((fileName) => {
-      inputCss.push(join(inputDir, fileName));
-      outputCss.push(join(outputDir, fileName));
-    });
+      cssFiles.forEach((fileName) => {
+        inputCss.push(join(inputDir, fileName));
+        outputCss.push(join(outputDir, fileName));
+      });
+    }
+
+    if (!noClean) {
+      cleanDistDir(outputDir || dirname(pkgStyle));
+    }
+
+    const results = [];
+
+    for (let index = 0; index < inputCss.length; index += 1) {
+      const from = inputCss[index];
+      const to = outputCss[index];
+
+      const result = processCss({ from, to, banner });
+      results.push(result);
+    }
+
+    // await here to capture any errors
+    const allResults = await Promise.all(results);
+
+    return allResults;
+  } catch (error) {
+    if (error.showSourceCode) {
+      /* eslint-disable-next-line no-console */
+      console.error(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);
+    } else {
+      /* eslint-disable-next-line no-console */
+      console.error('[BUILD-CSS] Error', error);
+    }
+
+    // we always want internal builds to fail on error
+    throw new Error(error);
   }
-
-  if (!noClean) {
-    cleanDistDir(outputDir || dirname(pkgStyle));
-  }
-
-  const results = [];
-
-  for (let index = 0; index < inputCss.length; index += 1) {
-    const from = inputCss[index];
-    const to = outputCss[index];
-
-    const result = processCss({ from, to, banner });
-    results.push(result);
-  }
-
-  return Promise.all(results);
 };

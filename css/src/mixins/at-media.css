@@ -1,26 +1,21 @@
 /**
- * TODO: Develop a more flexible solution, would be best if we can just set up
- * breakpoints once.
- */
-
-/**
- * Workaround for not able to set @media using variables during a @each loop.
+ * Workaround to use @media with dynamic breakpoints such as in a @each loop.
  */
 @mixin at-media($bp) {
   @if $bp == ns {
-    @media $(ns) {
+    @media $ns {
       @content;
     }
   }
 
   @if $bp == m {
-    @media $(m) {
+    @media $m {
       @content;
     }
   }
 
   @if $bp == l {
-    @media $(l) {
+    @media $l {
       @content;
     }
   }

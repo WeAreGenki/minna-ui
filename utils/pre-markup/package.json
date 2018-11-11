@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
-    "html-minifier": "3.5.20"
+    "html-minifier": "3.5.21"
   },
   "publishConfig": {
     "access": "public"

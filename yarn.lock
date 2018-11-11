@@ -811,11 +811,11 @@
     write-file-atomic "^2.3.0"
 
 "@minna-ui/build-component@file:utils/build-component":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.8.3"
-    "@minna-ui/pre-markup" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.16.0-680a9c3b-a68a-4b92-aeb9-68009828eba5-1541886748803/node_modules/@minna-ui/pre-markup"
-    "@minna-ui/pre-style" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.16.0-680a9c3b-a68a-4b92-aeb9-68009828eba5-1541886748803/node_modules/@minna-ui/pre-style"
+    "@minna-ui/pre-markup" "file:utils/pre-markup"
+    "@minna-ui/pre-style" "file:utils/pre-style"
     del "3.0.0"
     rollup "0.67.0"
     rollup-plugin-commonjs "9.2.0"
@@ -823,23 +823,23 @@
     rollup-plugin-svelte "4.3.2"
 
 "@minna-ui/build-css@file:utils/build-css":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.16.0-b0b3e9f5-dd85-4037-97e9-9a142c90787d-1541886748891/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
 
 "@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.16.0"
+  version "0.17.1"
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
-    eslint-plugin-html "^4.0.6"
+    eslint-plugin-html "^5.0.0"
     eslint-plugin-import "^2.14.0"
     eslint-plugin-jest "^22.0.0"
 
 "@minna-ui/jest-config@file:utils/jest-config":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     "@babel/core" "^7.1.5"
     "@babel/plugin-transform-modules-commonjs" "^7.1.0"
@@ -850,7 +850,7 @@
     jest-circus "^23.6.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     autoprefixer "^9.3.1"
     css-mqpacker "^7.0.0"
@@ -865,19 +865,19 @@
     resolve "^1.8.1"
 
 "@minna-ui/pre-markup@file:utils/pre-markup":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     deepmerge "^2.2.1"
     html-minifier "3.5.21"
 
 "@minna-ui/pre-style@file:utils/pre-style":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     deepmerge "^2.2.1"
     postcss-load-config "^2.0.0"
 
 "@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.16.0"
+  version "0.17.0"
   dependencies:
     stylelint-a11y "^1.1.9"
     stylelint-config-standard "^18.2.0"
@@ -2959,12 +2959,12 @@ eslint-module-utils@^2.2.0:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
 
-eslint-plugin-html@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-html/-/eslint-plugin-html-4.0.6.tgz#724bb9272efb4df007dfee8dfb269ed83577e5b4"
-  integrity sha512-nj6A9oK+7BKnMm0E7dMRH3r75BfpkXtcVIb3pFC4AcDdBTNyg2NGxHXyFNT1emW4VsR7P2SZvRXXQtUR+kY08w==
+eslint-plugin-html@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-html/-/eslint-plugin-html-5.0.0.tgz#396e30a60dedee0122fe08f11d13c5ab22f20d32"
+  integrity sha512-f7p/7YQdgQUFVAX3nB4dnMQbrDeTalcA01PDhuvTLk0ZadCwM4Pb+639SRuqEf1zMkIxckLY+ckCr0hVP5zl6A==
   dependencies:
-    htmlparser2 "^3.8.2"
+    htmlparser2 "^3.10.0"
 
 eslint-plugin-import@^2.14.0:
   version "2.14.0"
@@ -4008,7 +4008,7 @@ html-tags@^2.0.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
   integrity sha1-ELMKOGCF9Dzt41PMj6fLDe7qZos=
 
-htmlparser2@^3.8.2, htmlparser2@^3.9.2:
+htmlparser2@^3.10.0, htmlparser2@^3.9.2:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.10.0.tgz#5f5e422dcf6119c0d983ed36260ce9ded0bee464"
   integrity sha512-J1nEUGv+MkXS0weHNWVKJJ+UrLfePxRWpN3C9bEi9fLxL2+ggW94DQvgYVXsaT30PGwYRIZKNZXuyMhp3Di4bQ==

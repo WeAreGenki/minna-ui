@@ -1,6 +1,6 @@
 {
   "name": "minna-ui",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -42,7 +42,7 @@
     "@minna-ui/code-view": "^0.17.0",
     "@minna-ui/collapse": "^0.17.0",
     "@minna-ui/css": "^0.17.0",
-    "@minna-ui/eslint-config": "^0.17.0",
+    "@minna-ui/eslint-config": "^0.17.1",
     "@minna-ui/jest-config": "^0.17.0",
     "@minna-ui/navbar": "^0.17.0",
     "@minna-ui/postcss-config": "^0.17.0",

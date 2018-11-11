@@ -31,7 +31,8 @@ const compileWarn = (origin, level, warnings) => {
   warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
-      process.stderr.write(`[${origin}] ${level}: ${err.toString()}\n`);
+      /* eslint-disable-next-line no-console */
+      console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
 };
@@ -98,7 +99,7 @@ async function processCss({ from, to, banner }) {
   };
 }
 
-module.exports = async function run(env, argv) {
+module.exports = async function run(env, argv = []) {
   try {
     process.env.NODE_ENV = env.NODE_ENV || 'production';
     const pkgName = env.npm_package_name;
@@ -164,12 +165,14 @@ module.exports = async function run(env, argv) {
     return allResults;
   } catch (error) {
     if (error.showSourceCode) {
-      process.stderr.write(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);
+      /* eslint-disable-next-line no-console */
+      console.error(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);
     } else {
       /* eslint-disable-next-line no-console */
       console.error('[BUILD-CSS] Error', error);
     }
 
-    return null;
+    // we always want internal builds to fail on error
+    throw new Error(error);
   }
 };

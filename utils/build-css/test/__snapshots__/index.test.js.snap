@@ -4,24 +4,8 @@ exports[`build-css tool compiles package CSS bundle 1`] = `
 "/*!
  * test-css v1.2.3 - https://ui.wearegenki.com
  * Copyright 2018 We Are Genki
- * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */
-body {
-  margin: var(--margin);
-}
-/* stylelint-disable selector-max-id */
-#target {
-  color: var(--color);
-}
-#target .focus,
-  #target:focus {
-    background: rgb(0, 0, 0);
-  }
-.wrapper + #target {
-    background: rgb(33, 33, 33);
-  }
-/* stylelint-enable */
-
+ * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */body{margin:0}.link{background:#969696}.link:focus,.link:hover{background:#000}.link:active{background:#00960a}
 /*# sourceMappingURL=index.css.map */"
 `;
 
@@ -29,8 +13,8 @@ exports[`build-css tool compiles package CSS bundle 2`] = `
 "/*!
  * test-css v1.2.3 - https://ui.wearegenki.com
  * Copyright 2018 We Are Genki
- * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */body{margin:var(--margin)}#target{color:var(--color)}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+ * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */body{margin:0}.link{background:#969696}.link:focus,.link:hover{background:#000}.link:active{background:#00960a}
 /*# sourceMappingURL=index.css.map */"
 `;
 
@@ -38,26 +22,8 @@ exports[`build-css tool compiles package CSS bundle with imports 1`] = `
 "/*!
  * test-css v1.2.3 - https://ui.wearegenki.com
  * Copyright 2018 We Are Genki
- * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */
-:root { /* red */
-}
-body {
-  margin: 0;
-}
-/* stylelint-disable selector-max-id */
-#target {
-  color: rgb(255, 0, 0);
-}
-#target .focus,
-  #target:focus {
-    background: rgb(0, 0, 0);
-  }
-.wrapper + #target {
-    background: rgb(33, 33, 33);
-  }
-/* stylelint-enable */
-
+ * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ */body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
 /*# sourceMappingURL=index.css.map */"
 `;
 
@@ -65,7 +31,7 @@ exports[`build-css tool compiles package CSS bundle with imports 2`] = `
 "/*!
  * test-css v1.2.3 - https://ui.wearegenki.com
  * Copyright 2018 We Are Genki
- * Licensed under Apache 2.0 - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
+ * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
 /*# sourceMappingURL=index.css.map */"
 `;

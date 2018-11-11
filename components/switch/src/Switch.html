@@ -127,6 +127,7 @@
     box-shadow:
       $switch-inner-shadow,
       $switch-shadow;
+    /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
     transition: background-color $switch-animate-out-speed ease-out;
     transition-delay: 0s;
     backface-visibility: hidden; /* promote into its own layer to avoid repaints */
@@ -151,8 +152,8 @@
 
   .switch-checked {
     background-color: $switch-on-background-color;
-    transition: background-color $switch-animate-in-speed ease-in;
-    transition-delay: $switch-animate-out-speed;
+    transition-delay: $switch-animate-in-speed;
+    transition-duration: $switch-animate-in-speed;
   }
 
   .switch-on,

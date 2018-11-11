@@ -16,35 +16,6 @@ exports[`Svelte style preprocessor adds a banner comment 1`] = `
 "
 `;
 
-exports[`Svelte style preprocessor adds global pseudo when global + type attributes 1`] = `
-"
-<style>
-  :global(body) { margin: 0; }
-
-  :global(#target) {
-    color: red;
-  }
-
-  :global(#target) .focus,:global(#target):focus {
-      background: #000;
-    }
-
-  :global(.wrapper)+#target {
-      background: #222;
-    }
-</style>
-"
-`;
-
-exports[`Svelte style preprocessor adds global pseudo when global attribute only 1`] = `
-"
-<style>
-  :global(body) { margin: 0; }
-  :global(#target)>.child { color: red; }
-</style>
-"
-`;
-
 exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
 ":root{--body-margin:0}@media screen and (min-width: 30em){body{margin:var(--body-margin)
   }}.text.svelte-1qwrmfn{color:rgb(255, 0, 0)}.text.svelte-1qwrmfn:focus{background:rgb(0, 0, 0)}.wrapper.svelte-1qwrmfn>.text.svelte-1qwrmfn{margin-top:1rem}"
@@ -62,15 +33,6 @@ exports[`Svelte style preprocessor does not process without type attribute 1`] =
       background: #000;
     }
   }
-</style>
-"
-`;
-
-exports[`Svelte style preprocessor doesn't add global pseudo when already exists 1`] = `
-"
-<style>
-  :global(body) { margin: 0; }
-  :global(#target)>.child { color: red; }
 </style>
 "
 `;

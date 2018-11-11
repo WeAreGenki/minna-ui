@@ -8,7 +8,7 @@
 
 const Navbar = require('../src/Navbar.html');
 
-const menuItems = [
+const items = [
   { url: 'page-one', text: 'Page One' },
   { url: 'page-two', text: 'Page Two' },
   {
@@ -37,12 +37,12 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
-    expect(Array.isArray(component.get().menuItems)).toEqual(true);
-    expect(component.get().menuItems).not.toHaveLength(0);
+    expect(Array.isArray(component.get().items)).toEqual(true);
+    expect(component.get().items).not.toHaveLength(0);
     expect(target
       .querySelector('.navbar')
       .getAttribute('navbar-active')).toBeNull();
@@ -57,7 +57,7 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
@@ -65,7 +65,7 @@ describe('Navbar component', () => {
     const event = new UIEvent('scroll');
     document.dispatchEvent(event);
     expect(spy).toHaveBeenCalled();
-    expect(component.get()._hasScrolled).toEqual(true);
+    expect(component.get().hasScrolled).toEqual(true);
     expect(target.querySelector('.navbar-active')).not.toBeNull();
     spy.mockRestore();
   });
@@ -76,14 +76,14 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
-    const spy = jest.spyOn(component, '_openMenu');
+    const spy = jest.spyOn(component, 'openMenu');
     const button = target.querySelector('.navbar-button');
     button.click();
-    expect(component.get()._isOpen).toBeTruthy();
+    expect(component.get().isOpen).toBeTruthy();
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();
   });
@@ -95,16 +95,16 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
-    component._openMenu();
+    component.openMenu();
     jest.runAllTimers(); // for component setTimeout
-    expect(component.get()._isOpen).toBeTruthy();
+    expect(component.get().isOpen).toBeTruthy();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.get()._isOpen).toBeFalsy();
+    expect(component.get().isOpen).toBeFalsy();
   });
 
   it('attaches event listener on menu open but not close', () => {
@@ -114,18 +114,18 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    component._openMenu();
+    component.openMenu();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.get()._isOpen).toBeFalsy();
+    expect(component.get().isOpen).toBeFalsy();
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });
@@ -137,7 +137,7 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
@@ -147,7 +147,7 @@ describe('Navbar component', () => {
     jest.runAllTimers();
     button.click();
     jest.runAllTimers();
-    expect(component.get()._isOpen).toBeTruthy();
+    expect(component.get().isOpen).toBeTruthy();
     button.click();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(1);
@@ -160,7 +160,7 @@ describe('Navbar component', () => {
     new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
@@ -179,7 +179,7 @@ describe('Navbar component', () => {
     new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: 'page-two',
       },
     });
@@ -198,7 +198,7 @@ describe('Navbar component', () => {
     new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         // FIXME: Bring this up to date with how things work in Sapper 0.15.x
         // current: 'page-two/child-two',
         current: 'page-two',
@@ -220,14 +220,14 @@ describe('Navbar component', () => {
     const component = new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
     component.set({
-      menuItems: [...menuItems, { url: 'page-new', name: 'Page New' }],
+      items: [...items, { url: 'page-new', name: 'Page New' }],
     });
-    expect(component.get().menuItems).toHaveLength(6);
+    expect(component.get().items).toHaveLength(6);
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -238,14 +238,14 @@ describe('Navbar component', () => {
     new Navbar({
       target,
       data: {
-        menuItems,
+        items,
         current: undefined,
       },
     });
     // component.set({
-    //   menuItems: [...menuItems, { url: 'page-new', name: 'Page New' }],
+    //   items: [...items, { url: 'page-new', name: 'Page New' }],
     // });
-    // expect(component.get().menuItems).toHaveLength(6);
+    // expect(component.get().items).toHaveLength(6);
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

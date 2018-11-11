@@ -687,7 +687,7 @@ describe('Select component', () => {
   });
 
   it('can dynamically add items', () => {
-    expect.assertions(3);
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
       target,
@@ -696,7 +696,8 @@ describe('Select component', () => {
     expect(component.get().items).toHaveLength(5);
     component.set({ items: [...items, { id: 'new', text: 'New' }] });
     expect(component.get().items).toHaveLength(6);
-    const listbox = target.querySelector('.select-listbox');
-    expect(listbox.innerHTML).toMatch('value="new" role="option">New</div>');
+    const newListItem = target.querySelector('[value="new"]');
+    expect(newListItem).toBeTruthy();
+    expect(newListItem.outerHTML).toMatchSnapshot();
   });
 });

@@ -36,7 +36,7 @@
     "svelte": "^2.0.0"
   },
   "optionalDependencies": {
-    "rollup": "^0.67.0"
+    "rollup": "^0.67.1"
   },
   "dependencies": {
     "@minna-ui/code-view": "^0.17.0",

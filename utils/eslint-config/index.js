@@ -11,6 +11,7 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:import/recommended',
+    'plugin:prettier/recommended',
   ],
   plugins: [
     'html',
@@ -52,6 +53,7 @@ module.exports = {
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
     'object-curly-newline': ['error', { consistent: true }],
+    'prettier/prettier': 'error',
   },
 
   // JS config files should be node CommonJS format

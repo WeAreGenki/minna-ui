@@ -3,16 +3,11 @@
 'use strict';
 
 module.exports = {
-  semi: true,
+  endOfLine: 'lf',
   singleQuote: true,
-  trailingComma: 'es5',
+  trailingComma: 'all',
+
   overrides: [
-    {
-      files: '*.css',
-      options: {
-        singleQuote: false,
-      },
-    },
     {
       files: '*.md',
       options: {

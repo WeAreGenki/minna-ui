@@ -46,6 +46,7 @@
     "markdownlint-cli": "0.13.0",
     "postcss": "7.0.5",
     "postcss-scss": "2.0.0",
+    "prettier": "1.15.2",
     "stylelint": "9.8.0",
     "svelte": "2.15.3"
   }

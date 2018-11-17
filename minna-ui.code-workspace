@@ -5,6 +5,10 @@
     }
   ],
   "settings": {
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true,
+    "tslint.autoFixOnSave": true,
+    "tslint.jsEnable": true,
     "files.associations": {
         // XXX: Optional: Better syntax highlighting for PostCSS. Only `*.css`
         // files; component styles still use the CSS language unfortunately).

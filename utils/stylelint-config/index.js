@@ -10,12 +10,13 @@
 'use strict';
 
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   reportNeedlessDisables: true,
   plugins: [
     'stylelint-a11y',
     'stylelint-high-performance-animation',
     'stylelint-order',
+    'stylelint-prettier',
   ],
   rules: {
     'a11y/content-property-no-static-value': [true, { severity: 'warning' }],
@@ -29,19 +30,22 @@ module.exports = {
     'a11y/no-spread-text': [true, { severity: 'warning' }],
     'a11y/no-text-align-justify': [true, { severity: 'warning' }],
     'a11y/selector-pseudo-class-focus': true,
-    'at-rule-no-unknown': [true, {
-      ignoreAtRules: [
-        'content',
-        'each',
-        'else',
-        'extend',
-        'for',
-        'if',
-        'include',
-        'mixin',
-        'use',
-      ],
-    }],
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'content',
+          'each',
+          'else',
+          'extend',
+          'for',
+          'if',
+          'include',
+          'mixin',
+          'use',
+        ],
+      },
+    ],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',
     'color-named': 'never',
@@ -64,6 +68,7 @@ module.exports = {
     'no-descending-specificity': true,
     'no-duplicate-selectors': true,
     'plugin/no-low-performance-animation-properties': true,
+    'prettier/prettier': true,
     'property-no-unknown': true,
     'property-no-vendor-prefix': true,
     'selector-attribute-quotes': 'always',
@@ -79,10 +84,13 @@ module.exports = {
     'selector-max-universal': 0,
     'selector-no-qualifying-type': [true, { ignore: ['attribute'] }],
     'selector-no-vendor-prefix': true,
-    'selector-pseudo-class-no-unknown': [true, {
-      ignorePseudoClasses: ['global'], // svelte :global() scope
-    }],
-    'string-quotes': 'double',
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['global'], // svelte :global() scope
+      },
+    ],
+    'string-quotes': 'single',
     'value-keyword-case': ['lower', { ignoreProperties: '/font/' }],
     'value-list-comma-newline-after': 'always-multi-line',
     'value-list-comma-newline-before': 'never-multi-line',

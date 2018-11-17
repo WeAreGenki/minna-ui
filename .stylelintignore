@@ -1,4 +1,5 @@
 /docs/_dist/
+/docs/index.html
 /utils/jest-config/fixtures/styles-bad-syntax.css
 /test/coverage/
 dist/

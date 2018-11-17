@@ -1,4 +1,4 @@
-@import "import.css";
+@import 'import.css';
 
 $navbar-optimize: false !default;
 $navbar-zindex: 5 !default;
@@ -20,4 +20,6 @@ $navbar-submenu-animate-speed-in: $animate-speed-in !default;
 $navbar-submenu-animate-speed-out: $animate-speed-out !default;
 $navbar-body-offset: 2.88em !default; /* offset body so contents are not covered */
 $navbar-hash-link-fix: true !default; /* see TODO: Add link to docs */
-$navbar-hash-link-offset: calc($navbar-body-offset + 1em) !default; /* offset in-page links; navbar + shadow */
+$navbar-hash-link-offset: calc(
+  $navbar-body-offset + 1em
+) !default; /* offset in-page links; navbar + shadow */

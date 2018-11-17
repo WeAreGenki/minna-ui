@@ -1,5 +1,7 @@
 /**
  * FORMS
+ *
+ * @prettier
  */
 
 .form-group {
@@ -92,7 +94,8 @@
   outline-color: $input-invalid-color;
 }
 
-.invalid-feedback { /* stylelint-disable-line a11y/no-display-none */
+/* stylelint-disable-next-line a11y/no-display-none */
+.invalid-feedback {
   display: none;
   margin-top: $form-help-margin;
   color: $input-invalid-color;

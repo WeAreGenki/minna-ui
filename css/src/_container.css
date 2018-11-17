@@ -6,7 +6,9 @@
  * NOTE:
  *   Width is fluid until `max-width` so this only impacts large screens such as
  *   desktops or TVs.
-  */
+ *
+ * @prettier
+ */
 
 .con {
   box-sizing: border-box;

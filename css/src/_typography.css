@@ -1,5 +1,7 @@
 /**
  * TYPOGRAPHY
+ *
+ * @prettier
  */
 
 /* Text base */
@@ -41,13 +43,19 @@ h6 {
   }
 }
 
+/* prettier-ignore */
 h1 { font-size: $h1-text-size; }
+/* prettier-ignore */
 h2 { font-size: $h2-text-size; }
+/* prettier-ignore */
 h3 { font-size: $h3-text-size; }
+/* prettier-ignore */
 h4 { font-size: $h4-text-size; }
+/* prettier-ignore */
 h5 { font-size: $h5-text-size; }
+/* prettier-ignore */
 h6 { font-size: $h6-text-size; }
-
+/* prettier-ignore */
 .headline { font-size: $headline-text-size; }
 
 /* Paragraphs */

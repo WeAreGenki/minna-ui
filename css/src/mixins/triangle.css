@@ -14,6 +14,8 @@
  *   <size>     = any CSS size with unit, e.g. 0.5rem or 8px
  *   [color]    = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
  *   [isPseudo] = if true will output as a pseudo element (optional)
+ *
+ * @prettier
  */
 
 /* FIXME: Move documentation into docs + add link here */
@@ -33,14 +35,22 @@
   @if $isPseudo == true {
     position: absolute;
     display: block;
-    content: "";
+    content: '';
     $(side): calc(-1 * $size);
 
     /* stylelint-disable at-rule-empty-line-before */
-    @if $side == left { top: calc(50% - $size); }
-    @if $side == right { top: calc(50% - $size); }
-    @if $side == top { left: calc(50% - $size); }
-    @if $side == bottom { left: calc(50% - $size); }
+    @if $side == left {
+      top: calc(50% - $size);
+    }
+    @if $side == right {
+      top: calc(50% - $size);
+    }
+    @if $side == top {
+      left: calc(50% - $size);
+    }
+    @if $side == bottom {
+      left: calc(50% - $size);
+    }
     /* stylelint-enable */
   }
 

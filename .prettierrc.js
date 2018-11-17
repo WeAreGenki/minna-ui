@@ -14,5 +14,12 @@ module.exports = {
         proseWrap: 'never',
       },
     },
+    {
+      files: '*.css',
+      options: {
+        insertPragma: true,
+        requirePragma: true,
+      },
+    },
   ],
 };

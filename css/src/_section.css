@@ -27,6 +27,8 @@
  *         <p class="lead">Your text.</p>
  *       </div>
  *     </section>
+ *
+ * @prettier
  */
 
 /* Hero section */
@@ -52,7 +54,7 @@
     display: block;
     width: 100%;
     height: $diagonal-hight;
-    content: "";
+    content: '';
     background-image: $diagonal-image;
     background-repeat: no-repeat;
     background-size: 100% 100%;

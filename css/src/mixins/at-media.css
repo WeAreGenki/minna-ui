@@ -1,6 +1,9 @@
+/** @prettier */
+
 /**
  * Workaround to use @media with dynamic breakpoints such as in a @each loop.
  */
+
 @mixin at-media($bp) {
   @if $bp == ns {
     @media $ns {

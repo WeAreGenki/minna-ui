@@ -1,4 +1,4 @@
-@import "import.css";
+@import 'import.css';
 
 $switch-optimize: false !default;
 $switch-width: 6em !default;
@@ -8,8 +8,10 @@ $switch-on-text-color: $white !default;
 $switch-on-background-color: $intent-success !default;
 $switch-off-text-color: $button-text-color !default;
 $switch-off-background-color: $light-gray1 !default;
-$switch-inner-shadow: inset 0 -0.125rem 0.6rem color-mod($shadow-color alpha(0.15)) !default;
-$switch-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod($shadow-color alpha(0.05)) !default;
+$switch-inner-shadow: inset 0 -0.125rem 0.6rem color-mod($shadow-color
+      alpha(0.15)) !default;
+$switch-slider-inner-shadow: inset 0 -1rem 0.4rem color-mod($shadow-color
+      alpha(0.05)) !default;
 $switch-animate-in-speed: 180ms !default;
 $switch-animate-out-speed: 130ms !default;
 $switch-hover-slider-background-color: $light-gray4 !default;
@@ -18,4 +20,5 @@ $switch-disabled-slider-background-color: $light-gray3 !default;
 $switch-disabled-border: 1px solid $button-disabled-border-color !default;
 $switch-mini-width: 4.6em !default;
 $switch-mini-padding: calc($button-padding-y / 2) 0 !default;
-$switch-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod($shadow-color alpha(0.05)) !default;
+$switch-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod($shadow-color
+      alpha(0.05)) !default;

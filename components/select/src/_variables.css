@@ -1,4 +1,4 @@
-@import "import.css";
+@import 'import.css';
 
 $select-optimize: false !default;
 $select-zindex: 4 !default;

@@ -15,7 +15,7 @@ module.exports = {
       },
     },
     {
-      files: '*.css',
+      files: ['*.css', '*.html'],
       options: {
         insertPragma: true,
         requirePragma: true,

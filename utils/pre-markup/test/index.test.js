@@ -11,7 +11,9 @@ const preprocessMarkup = require('../index.js');
 const readFile = promisify(fs.readFile);
 
 // don't require() components to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
+const componentPath = require.resolve(
+  '@minna-ui/jest-config/fixtures/TestComponent.html',
+);
 
 const opts = {
   markup: preprocessMarkup(),
@@ -30,7 +32,10 @@ const svelteOpts = {
   name: 'TestComponent',
   onwarn(warning, onwarn) {
     /* istanbul ignore if */
-    if (process.env.NODE_ENV !== 'development' && !/A11y:/.test(warning.message)) {
+    if (
+      process.env.NODE_ENV !== 'development' &&
+      !/A11y:/.test(warning.message)
+    ) {
       onwarn(warning);
     }
   },
@@ -127,7 +132,7 @@ describe('Svelte markup preprocessor', () => {
     expect(unsafe.toString().length).toBeLessThan(safe.toString().length);
   });
 
-  it.skip('unsafe option makes output smaller when gzip\'d', async () => {
+  it.skip("unsafe option makes output smaller when gzip'd", async () => {
     expect.assertions(1);
     const [unsafe, safe] = await Promise.all([
       preprocess(sourceSimple, optsUnsafe),
@@ -145,7 +150,9 @@ describe('Svelte markup preprocessor', () => {
       preprocess(sourceSimple, opts),
     ]);
     expect(unsafeWhitespace.toString()).not.toEqual(safe.toString());
-    expect(unsafeWhitespace.toString().length).toBeLessThan(safe.toString().length);
+    expect(unsafeWhitespace.toString().length).toBeLessThan(
+      safe.toString().length,
+    );
   });
 
   it('prints error on bad HTML syntax', async () => {

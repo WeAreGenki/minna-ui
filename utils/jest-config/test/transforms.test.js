@@ -61,7 +61,9 @@ describe('Svelte transform', () => {
     expect(component.get()._reversed).toEqual('ksuM nolE');
     component.set({ _name: 'Vladimir Putin' });
     expect(component.refs._target.textContent).toEqual('test Vladimir Putin');
-    expect(component.refs._nameReversed.textContent).toEqual('test nituP rimidalV');
+    expect(component.refs._nameReversed.textContent).toEqual(
+      'test nituP rimidalV',
+    );
   });
 
   // XXX: Uses require() instead of process() + eval() so imports are relative

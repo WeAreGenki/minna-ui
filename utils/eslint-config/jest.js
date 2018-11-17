@@ -6,9 +6,7 @@
 
 module.exports = {
   root: false, // this should extend the developer's project root config OR another preset
-  extends: [
-    'plugin:jest/recommended',
-  ],
+  extends: ['plugin:jest/recommended'],
   env: {
     jest: true,
   },
@@ -16,18 +14,18 @@ module.exports = {
     expectPage: true,
     page: true,
   },
-  plugins: [
-    'jest',
-    'import',
-  ],
+  plugins: ['jest', 'import'],
   parserOptions: {
     sourceType: 'script',
   },
   rules: {
-    'import/no-extraneous-dependencies': ['error', {
-      devDependencies: true,
-      peerDependencies: true,
-    }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+        peerDependencies: true,
+      },
+    ],
     'no-new': 'off', // allow new keyword to create svelte component instances
     'no-underscore-dangle': 'off', // allow access to properties with leading underscores
   },

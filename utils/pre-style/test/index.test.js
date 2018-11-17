@@ -5,13 +5,15 @@
 const fs = require('fs');
 const { promisify } = require('util');
 const { preprocess, compile } = require('svelte');
-const postcssNested = require('postcss-nested'); // eslint-disable-line import/no-extraneous-dependencies
+const postcssNested = require('postcss-nested');
 const preprocessStyle = require('../index.js');
 
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
+const componentPath = require.resolve(
+  '@minna-ui/jest-config/fixtures/TestComponent.html',
+);
 
 const preprocessOpts = {
   style: preprocessStyle({
@@ -96,7 +98,7 @@ describe('Svelte style preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it.skip('compiles a component\'s CSS', async () => {
+  it.skip("compiles a component's CSS", async () => {
     expect.assertions(2);
     const processed = await preprocess(source, preprocessOpts);
     const result = compile(processed.toString());

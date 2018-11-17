@@ -23,15 +23,22 @@
   REFERENCE:
     - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/#Listbox
     - https://www.w3.org/TR/2017/NOTE-wai-aria-practices-1.1-20171214/examples/listbox/listbox-collapsible.html
-
 -->
 
-<!-- TODO: Incorporate WAI-ARIA recommendations (once svelte can handle custom boolean attributes) -->
+<!--
+  TODO: Incorporate WAI-ARIA recommendations (once svelte can handle custom boolean attributes)
+-->
 
-<!-- TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen -->
+<!--
+  TODO: Explore moving the viewport when using keyboard navigation and the option is off-screen
+-->
 
-<div class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}">
-  <!-- TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value? -->
+<div
+  class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}"
+>
+  <!--
+    TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?
+  -->
   <input
     id="{id}"
     ref:input
@@ -46,8 +53,8 @@
     on:focus="open()"
     on:blur="close()"
     on:keydown="handleKeyDown(event)"
-  >
-  <div class="select-caret"/>
+  />
+  <div class="select-caret"></div>
 
   <div
     class="select-listbox{isOpen ? '' : ' hide'}"
@@ -55,17 +62,15 @@
     on:mousedown="select(event)"
   >
     {#each filteredItems as _item, _index}
-      <div
-        class="option{_item.disabled ? ' option-disabled' : ''}{_index === selected ? ' option-active' : ''}"
-        value="{_item.id}"
-        role="option"
-      >
-        {_item.text}
-      </div>
+    <div
+      class="option{_item.disabled ? ' option-disabled' : ''}{_index === selected ? ' option-active' : ''}"
+      value="{_item.id}"
+      role="option"
+    >
+      {_item.text}
+    </div>
     {:else}
-      <div class="pa3 gray">
-        No matches
-      </div>
+    <div class="pa3 gray">No matches</div>
     {/each}
   </div>
 </div>
@@ -99,7 +104,8 @@
         if (!isOpen || !filterable || inputText === '') return items;
 
         return items.filter(
-          option => option.text.toLowerCase().indexOf(inputText.toLowerCase()) > -1
+          option =>
+            option.text.toLowerCase().indexOf(inputText.toLowerCase()) > -1,
         );
       },
     },
@@ -126,12 +132,10 @@
 
       setInput() {
         const { items, value } = this.get();
-
-        this.set({
-          inputText: value
-            ? items.find(option => option.id === value).text
-            : '',
-        });
+        const inputText = value
+          ? items.find(option => option.id === value).text
+          : '';
+        this.set({ inputText });
       },
 
       open() {
@@ -152,7 +156,8 @@
 
       emitInput() {
         // fire a synthetic "input" event (useful to trigger validation)
-        this.refs.input.dispatchEvent(new KeyboardEvent('input', { bubbles: true }));
+        const event = new KeyboardEvent('input', { bubbles: true });
+        this.refs.input.dispatchEvent(event);
         this.close();
       },
 
@@ -266,7 +271,7 @@
             }
             break;
           default:
-            // no matching key
+          // no matching key
         }
       },
     },
@@ -274,8 +279,8 @@
 </script>
 
 <style type="text/postcss">
-  @import "./_variables.css";
-  @import "import.css";
+  @import './_variables.css';
+  @import 'import.css';
 
   .hide {
     pointer-events: none;
@@ -321,8 +326,7 @@
     text-align: left;
     background-color: $input-background-color;
     box-shadow: $select-shadow;
-    transition:
-      transform $select-animate-speed-out ease-out,
+    transition: transform $select-animate-speed-out ease-out,
       opacity $select-animate-speed-out ease-out;
     backface-visibility: hidden; /* promote to own layer to avoid repaints */
 

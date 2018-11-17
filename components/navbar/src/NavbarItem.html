@@ -6,34 +6,28 @@
         the simple Navbar is used without any submenus etc.
 -->
 {#if item.children === undefined}
-  <!-- menu item -->
-
-  <!-- htmlmin:ignore -->
-  <a
-    href="{item.url}"
-    class="navbar-link{current === item.url ? ' navbar-link-active' : ''} {item.class || ''}"
-    rel="{item.rel}"
-  >
-    {item.text}
-  </a><!-- htmlmin:ignore -->
+<!-- menu item -->
+<a
+  href="{item.url}"
+  class="navbar-link {current === item.url ? 'navbar-link-active' : ''} {item.class || ''}"
+  rel="{item.rel}"
+  >{item.text}</a
+>
 {:else}
-  <!-- submenu folder -->
+<!-- submenu folder -->
+<span class="navbar-nested">
+  <span class="dn l-dib">{item.text}</span>
 
-  <span class="navbar-nested">
-    <span class="dn l-dib">{item.text}</span>
-
-    <!-- htmlmin:ignore -->
-    <div class="navbar-submenu {item.class || ''}">
-      {#each item.children as submenuItem}
-        <svelte:self item="{submenuItem}" current="{current}" />
-      {/each}
-    </div><!-- htmlmin:ignore -->
-  </span>
+  <div class="navbar-submenu {item.class || ''}">
+    {#each item.children as submenuItem}
+    <svelte:self item="{submenuItem}" current="{current}" /> {/each}
+  </div>
+</span>
 {/if}
 
 <style type="text/postcss">
-  @import "./_variables.css";
-  @import "import.css";
+  @import './_variables.css';
+  @import 'import.css';
 
   .navbar-nested {
     position: relative;
@@ -58,8 +52,7 @@
       background-color: $navbar-background-color;
       box-shadow: $navbar-shadow;
       opacity: 0;
-      transition:
-        opacity $navbar-submenu-animate-speed-out ease-out,
+      transition: opacity $navbar-submenu-animate-speed-out ease-out,
         transform $navbar-submenu-animate-speed-out ease-out;
       transform: scale(0.8);
       transform-origin: 0 0;

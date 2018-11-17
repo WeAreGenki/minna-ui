@@ -13,10 +13,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: [
-    'html',
-    'import',
-  ],
+  plugins: ['html', 'import'],
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
@@ -28,25 +25,21 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: [
-          '.css',
-          '.html',
-          '.js',
-          '.json',
-          '.mjs',
-          '.ts',
-        ],
+        extensions: ['.css', '.html', '.js', '.json', '.mjs', '.ts'],
       },
     },
   },
   rules: {
-    'comma-dangle': ['error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'only-multiline', // comma on multiline function params is OK
-    }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'only-multiline', // comma on multiline function params is OK
+      },
+    ],
     'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive variable names
     'import/extensions': ['error', 'ignorePackages'], // do use file extensions
     'no-console': /* istanbul ignore next */ isProd ? 'error' : 'warn',
@@ -57,21 +50,26 @@ module.exports = {
   },
 
   // JS config files should be node CommonJS format
-  overrides: [{
-    files: ['*.config.js', '*rc.js'],
-    excludedFiles: ['rollup.config.js'], // uses ES6 modules
-    parserOptions: {
-      sourceType: 'script',
+  overrides: [
+    {
+      files: ['*.config.js', '*rc.js'],
+      excludedFiles: ['rollup.config.js'], // uses ES6 modules
+      parserOptions: {
+        sourceType: 'script',
+      },
+      env: {
+        commonjs: true,
+        node: true,
+      },
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+            peerDependencies: true,
+          },
+        ],
+      },
     },
-    env: {
-      commonjs: true,
-      node: true,
-    },
-    rules: {
-      'import/no-extraneous-dependencies': ['error', {
-        devDependencies: true,
-        peerDependencies: true,
-      }],
-    },
-  }],
+  ],
 };

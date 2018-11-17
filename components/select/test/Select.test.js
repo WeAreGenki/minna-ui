@@ -489,7 +489,7 @@ describe('Select component', () => {
     spy.mockRestore();
   });
 
-  it('doesn\'t go past end of items on down key press', () => {
+  it("doesn't go past end of items on down key press", () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
@@ -513,7 +513,7 @@ describe('Select component', () => {
     spy.mockRestore();
   });
 
-  it('doesn\'t go past end of items on up key press', () => {
+  it("doesn't go past end of items on up key press", () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
@@ -567,7 +567,7 @@ describe('Select component', () => {
     spy3.mockRestore();
   });
 
-  it('doesn\'t select an item on click when option disabled', () => {
+  it("doesn't select an item on click when option disabled", () => {
     expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({

@@ -43,9 +43,9 @@ describe('Navbar component', () => {
     });
     expect(Array.isArray(component.get().items)).toEqual(true);
     expect(component.get().items).not.toHaveLength(0);
-    expect(target
-      .querySelector('.navbar')
-      .getAttribute('navbar-active')).toBeNull();
+    expect(
+      target.querySelector('.navbar').getAttribute('navbar-active'),
+    ).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -130,7 +130,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it('doesn\'t attach extra event listeners on multiple button clicks', () => {
+  it("doesn't attach extra event listeners on multiple button clicks", () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -183,12 +183,16 @@ describe('Navbar component', () => {
         current: 'page-two',
       },
     });
-    expect(target
-      .querySelector('[href="page-two"]')
-      .classList.contains('navbar-link-active')).toBeTruthy();
-    expect(target
-      .querySelector('[href="page-one"]')
-      .classList.contains('navbar-link-active')).not.toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-two"]')
+        .classList.contains('navbar-link-active'),
+    ).toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-one"]')
+        .classList.contains('navbar-link-active'),
+    ).not.toBeTruthy();
   });
 
   // FIXME: Work out how nested menus should work
@@ -206,12 +210,16 @@ describe('Navbar component', () => {
     });
     // console.log('@@ 22 target', target.innerHTML);
     // console.log('@@ 33', target.querySelector('.navbar-links').innerHTML);
-    expect(target
-      .querySelector('[href="page-two"]')
-      .classList.contains('navbar-link-active')).toBeTruthy();
-    expect(target
-      .querySelector('[href="page-one"]')
-      .classList.contains('navbar-link-active')).not.toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-two"]')
+        .classList.contains('navbar-link-active'),
+    ).toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-one"]')
+        .classList.contains('navbar-link-active'),
+    ).not.toBeTruthy();
   });
 
   it.skip('can dynamically add menu items', () => {

@@ -11,8 +11,12 @@ const buildComponent = require('../index.js');
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
-const sourcePathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html');
+const sourcePath = require.resolve(
+  '@minna-ui/jest-config/fixtures/TestComponent.html',
+);
+const sourcePathBadSyntax = require.resolve(
+  '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html',
+);
 const dist = path.join(__dirname, 'dist');
 
 /**
@@ -41,7 +45,7 @@ describe('build-component tool', () => {
     const built = await build;
     expect(built.esm.result.code).toMatch('export default TestComponent');
     expect(built.esm.result.code).not.toMatch('TestComponent=function');
-    expect(built.esm.result.code).toMatch('name: \'Elon Musk\'');
+    expect(built.esm.result.code).toMatch("name: 'Elon Musk'");
     expect(built.esm.result.code).toMatch('component.refs._target ===');
     expect(built.esm.result.map.sources).toHaveLength(2);
   });
@@ -72,10 +76,14 @@ describe('build-component tool', () => {
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    const re1 = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    const re1 = new RegExp(
+      `\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`,
+    );
     expect(built.esm.result.code).toMatch(re1);
     // expect(built.css.code).toMatch(re1);
-    const re2 = new RegExp(`\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    const re2 = new RegExp(
+      `\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`,
+    );
     expect(built.main.result.code).toMatch(re2);
   });
 
@@ -95,11 +103,17 @@ describe('build-component tool', () => {
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_module)).resolves.toBeDefined();
-    await expect(stat(`${pkgData.npm_package_module}.map`)).resolves.toBeDefined();
+    await expect(
+      stat(`${pkgData.npm_package_module}.map`),
+    ).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_main)).resolves.toBeDefined();
-    await expect(stat(`${pkgData.npm_package_main}.map`)).resolves.toBeDefined();
+    await expect(
+      stat(`${pkgData.npm_package_main}.map`),
+    ).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
-    await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
+    await expect(
+      stat(`${pkgData.npm_package_style}.map`),
+    ).resolves.toBeDefined();
   });
 
   it('throws an error when bad HTML syntax', async () => {

@@ -38,14 +38,11 @@
       wish to use it as a form input you'll need to bind the v-model to a
       hidden input.
     - The `disabled` attribute is not valid on <div> so we use a class.
-
-  NOTE:
-    In the code, object properties starting with _ are safe to mangle; the name
-    can be shortened at build time for smaller JavaScript bundles.
-
 -->
 
-<!-- TODO: Ability to drag the switch using mouse/touch in a high performance way. -->
+<!--
+  TODO: Ability to drag the switch using mouse/touch in a high performance way.
+-->
 
 <div
   class="switch{mini ? ' switch-mini' : ''}{disabled !== undefined ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
@@ -55,7 +52,7 @@
   on:click="toggle()"
   on:keydown="handleKeyDown(event)"
 >
-  <div class="switch-slider"/>
+  <div class="switch-slider"></div>
   <div class="switch-on">{textOn}</div>
   <div class="switch-off">{textOff}</div>
 </div>
@@ -108,8 +105,8 @@
 </script>
 
 <style type="text/postcss">
-  @import "./_variables.css";
-  @import "import.css";
+  @import './_variables.css';
+  @import 'import.css';
 
   /* the switch purposely looks like .button and uses many of the button variables */
   .switch {
@@ -124,9 +121,7 @@
     background-color: $switch-off-background-color;
     border-radius: $button-radius;
     outline-offset: $outline-offset;
-    box-shadow:
-      $switch-inner-shadow,
-      $switch-shadow;
+    box-shadow: $switch-inner-shadow, $switch-shadow;
     /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
     transition: background-color $switch-animate-out-speed ease-out;
     transition-delay: 0s;
@@ -226,9 +221,11 @@
       will-change: auto;
     }
 
+    /* stylelint-disable a11y/no-outline-none */
     &:hover,
-    &:focus { /* stylelint-disable-line a11y/no-outline-none */
+    &:focus {
       outline: none;
     }
+    /* stylelint-enable */
   }
 </style>

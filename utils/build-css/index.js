@@ -28,7 +28,7 @@ const compileWarn = (origin, level, warnings) => {
     process.exitCode = 1; // prevents tests running too long
   }
 
-  warnings.forEach((err) => {
+  warnings.forEach(err => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
       /* eslint-disable-next-line no-console */
@@ -44,7 +44,7 @@ const compileWarn = (origin, level, warnings) => {
 function cleanDistDir(dir) {
   /* istanbul ignore else */
   if (dir !== process.cwd()) {
-    fs.stat(dir, (err) => {
+    fs.stat(dir, err => {
       if (!err) {
         del.sync([dir]);
       }
@@ -88,7 +88,9 @@ async function processCss({ from, to, banner }) {
   compileWarn('CleanCSS', 'WARN', min.warnings);
 
   // clean-css removes the source map comment so we need to add it back in
-  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(options.to)}.map */`;
+  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(
+    options.to,
+  )}.map */`;
 
   writeFile(options.to, min.styles);
   writeFile(`${options.to}.map`, min.sourceMap.toString());
@@ -125,7 +127,8 @@ module.exports = async function run(env, argv = []) {
     const outputCss = [];
 
     if (!inputDir) {
-      if (!pkgStyle && !pkgMain) throw new Error('No input file or directory specified!');
+      if (!pkgStyle && !pkgMain)
+        throw new Error('No input file or directory specified!');
 
       inputCss.push(pkgMain);
       outputCss.push(pkgStyle);
@@ -134,12 +137,13 @@ module.exports = async function run(env, argv = []) {
 
       const dirFiles = await readdir(inputDir);
       const cssFiles = dirFiles.filter(
-        fileName => fileName !== 'import.css'
-        && fileName.endsWith('.css')
-        && !fileName.startsWith('_')
+        fileName =>
+          fileName !== 'import.css' &&
+          fileName.endsWith('.css') &&
+          !fileName.startsWith('_'),
       );
 
-      cssFiles.forEach((fileName) => {
+      cssFiles.forEach(fileName => {
         inputCss.push(join(inputDir, fileName));
         outputCss.push(join(outputDir, fileName));
       });
@@ -166,7 +170,11 @@ module.exports = async function run(env, argv = []) {
   } catch (error) {
     if (error.showSourceCode) {
       /* eslint-disable-next-line no-console */
-      console.error(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);
+      console.error(
+        `[BUILD-CSS] PostCSS error: ${
+          error.message
+        }:\n${error.showSourceCode()}`,
+      );
     } else {
       /* eslint-disable-next-line no-console */
       console.error('[BUILD-CSS] Error', error);

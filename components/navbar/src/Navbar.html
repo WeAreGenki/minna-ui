@@ -53,10 +53,9 @@
       <Navbar items="{[...]}">
         <span slot="logo" class="navbar-logo">YOUR LOGO</span>
       </Navbar>
-
 -->
 
-<header class="navbar{(hasScrolled || isOpen) ? ' navbar-active' : ''}">
+<header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
       type="button"
@@ -66,36 +65,32 @@
       on:click="openMenu(isOpen)"
     >
       <svg class="navbar-icon">
-        <use xlink:href="{isOpen ? '#x' : '#menu'}"/>
+        <use xlink:href="{isOpen ? '#x' : '#menu'}" />
       </svg>
     </button>
 
     <a href="/" class="navbar-logo-link" title="Home">
       <slot name="logo">
-        <svg class="navbar-logo">
-          <use xlink:href="#logo"/>
-        </svg>
+        <svg class="navbar-logo"><use xlink:href="#logo" /></svg>
       </slot>
     </a>
 
-    <!-- htmlmin:ignore -->
-    <div class="navbar-links {isOpen ? 'df' : 'dn'}"><!-- htmlmin:ignore -->
+    <div class="navbar-links {isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn{current === undefined ? ' navbar-link-active' : ''}"
+        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
 
       {#each items as item}
-        <!-- htmlmin:ignore -->
-        <a
-          href="{item.url}"
-          class="navbar-link{current === item.url ? ' navbar-link-active' : ''}"
-          rel="{item.rel || ''}"
-        >
-          {item.text}
-        </a><!-- htmlmin:ignore -->
+      <a
+        href="{item.url}"
+        class="navbar-link {current === item.url ? 'navbar-link-active' : ''}"
+        rel="{item.rel || ''}"
+      >
+        {item.text}
+      </a>
       {/each}
     </div>
   </nav>
@@ -160,8 +155,8 @@
 </script>
 
 <style type="text/postcss">
-  @import "./_variables.css";
-  @import "import.css";
+  @import './_variables.css';
+  @import 'import.css';
 
   /* offset page content so it's not covered by the fixed navbar */
   :global(body) {
@@ -183,7 +178,7 @@
       bottom: 0;
       left: 0;
       pointer-events: none;
-      content: "";
+      content: '';
       box-shadow: $navbar-shadow;
       opacity: 0;
       transition: opacity $navbar-animate-speed-out ease-in-out;
@@ -275,7 +270,7 @@
         height: $navbar-hash-link-offset;
         margin-top: calc(-1 * $navbar-hash-link-offset);
         visibility: hidden;
-        content: "";
+        content: '';
       }
     }
   }

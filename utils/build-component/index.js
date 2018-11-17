@@ -56,7 +56,7 @@ module.exports = async function run(env) {
 
   /** @type {Function} */
   let resolveCss;
-  const resultCss = new Promise((res) => {
+  const resultCss = new Promise(res => {
     resolveCss = res;
   });
 
@@ -69,7 +69,7 @@ module.exports = async function run(env) {
 
     /* istanbul ignore else */
     if (distDir !== process.cwd()) {
-      fs.stat(distDir, (err) => {
+      fs.stat(distDir, err => {
         /* istanbul ignore if */
         if (err && err.code !== 'ENOENT') throw err;
 

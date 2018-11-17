@@ -7,7 +7,7 @@
  *   Components will fall back to this file to source CSS variables if unable to
  *   resolve an "import.css" file in your project.
  *
- * @prettier
+ * @format
  */
 
 @import './_variables-color.css';

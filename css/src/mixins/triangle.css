@@ -15,7 +15,7 @@
  *   [color]    = any CSS color, e.g. red, #f00, rgba(255, 0, 0, 0.5)
  *   [isPseudo] = if true will output as a pseudo element (optional)
  *
- * @prettier
+ * @format
  */
 
 /* FIXME: Move documentation into docs + add link here */

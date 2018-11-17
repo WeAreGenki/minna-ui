@@ -9,7 +9,7 @@
  * USAGE:
  *   @include make-font-face(<family>, <name>, [style], [weight], [dir]);
  *
- * @prettier
+ * @format
  */
 
 /* FIXME: Move documentation into docs + add link here */

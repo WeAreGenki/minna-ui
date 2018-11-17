@@ -22,7 +22,7 @@
     "build": "lerna run build",
     "clean": "lerna clean --yes",
     "lint": "yarn lint:css && yarn lint:js && yarn lint:md",
-    "lint:css": "stylelint **/*.{css,html} --cache",
+    "lint:css": "stylelint **/*.{css,html}",
     "lint:js": "eslint --ext html,js .",
     "lint:md": "markdownlint --ignore **/node_modules/** .",
     "test": "yarn lint && JEST_CIRCUS=1 jest --notify --watch",

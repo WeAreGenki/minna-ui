@@ -18,12 +18,12 @@ describe('Collapse component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Collapse({ target });
-    expect(component.get()._isOpen).toBeFalsy();
+    expect(component.get().isOpen).toBeFalsy();
     const button = target.querySelector('button');
     button.click();
-    expect(component.get()._isOpen).toBeTruthy();
+    expect(component.get().isOpen).toBeTruthy();
     button.click();
-    expect(component.get()._isOpen).toBeFalsy();
+    expect(component.get().isOpen).toBeFalsy();
     expect(document.querySelector('collapse-hide')).toBeNull();
   });
 });

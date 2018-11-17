@@ -14,15 +14,14 @@ const linterCliJest = new CLIEngine({
   configFile: path.join(__dirname, '../jest.js'),
 });
 
-const sourceValid = `
-/* eslint-disable-next-line import/no-extraneous-dependencies */
+const sourceValid = `/* eslint-disable-next-line import/no-extraneous-dependencies */
 import { target } from '@minna-ui/jest-config/fixtures/importable.js';
 
 const output = target();
 
 export default output;
 `;
-const sourceInValid = `
+const sourceInvalid = `
 'use strict';
 
 const { target } = require('@minna-ui/jest-config/fixtures/importable.js');
@@ -33,8 +32,7 @@ debugger;
 
 module.exports = output;
 `;
-const sourceJestValid = `
-/* eslint-env es6 */
+const sourceJestValid = `/* eslint-env es6 */
 
 'use strict';
 
@@ -45,7 +43,7 @@ test('target', () => {
   expect(target()).toEqual('');
 });
 `;
-const sourceJestInValid = `
+const sourceJestInvalid = `
 import config from '@minna-ui/jest-config';
 
 console.log(this);
@@ -65,7 +63,7 @@ describe('ESLint config', () => {
 
   it('detects linting errors', () => {
     expect.assertions(1);
-    const output = linterCli.executeOnText(sourceInValid);
+    const output = linterCli.executeOnText(sourceInvalid);
     expect(output.errorCount).not.toEqual(0);
   });
 });
@@ -80,7 +78,7 @@ describe('Jest ESLint config', () => {
 
   it('detects linting errors', () => {
     expect.assertions(1);
-    const output = linterCliJest.executeOnText(sourceJestInValid);
+    const output = linterCliJest.executeOnText(sourceJestInvalid);
     expect(output.errorCount).not.toEqual(0);
   });
 });

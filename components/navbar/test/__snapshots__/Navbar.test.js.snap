@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navbar component renders correctly with required props set 1`] = `
-"<header class=\\"navbar\\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button l-dn button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon\\"><use xlink:href=\\"#menu\\"></use></svg></button>
+"<header class=\\"navbar \\"><nav class=\\"dfc fww con\\" role=\\"navigation\\"><button type=\\"button\\" class=\\"navbar-button l-dn button-clear\\" aria-label=\\"menu toggle\\" aria-expanded=\\"false\\"><svg class=\\"navbar-icon\\"><use xlink:href=\\"#menu\\"></use></svg></button>
 
     <a href=\\"/\\" class=\\"navbar-logo-link\\" title=\\"Home\\"><svg class=\\"navbar-logo\\"><use xlink:href=\\"#logo\\"></use></svg></a>
 
-    
     <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn navbar-link-active\\">Home</a>
 
-      <a href=\\"page-one\\" class=\\"navbar-link\\" rel=\\"\\">Page One
-        </a><a href=\\"page-two\\" class=\\"navbar-link\\" rel=\\"\\">Page Two
-        </a><a href=\\"undefined\\" class=\\"navbar-link navbar-link-active\\" rel=\\"\\">More ▾
-        </a><a href=\\"about\\" class=\\"navbar-link\\" rel=\\"\\">About Us
-        </a></div></nav></header>"
+      <a href=\\"page-one\\" class=\\"navbar-link \\" rel=\\"\\">Page One
+      </a><a href=\\"page-two\\" class=\\"navbar-link \\" rel=\\"\\">Page Two
+      </a><a href=\\"undefined\\" class=\\"navbar-link navbar-link-active\\" rel=\\"\\">More ▾
+      </a><a href=\\"about\\" class=\\"navbar-link \\" rel=\\"\\">About Us
+      </a></div></nav></header>"
 `;

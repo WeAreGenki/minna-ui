@@ -5,19 +5,17 @@
 const stylelint = require('stylelint');
 const config = require('../index.js');
 
-const sourceCssValid = `
-body {
+const sourceCssValid = `body {
   margin: 0;
-  font-family: "Roboto Mono Regular", sans-serif;
+  font-family: 'Roboto Mono Regular', sans-serif;
   color: rgb(37, 32, 64);
   background-color: rgb(250, 250, 250);
 }
 `;
-
 const sourceCssInvalid = `
 body {
   /* comment */
-  font-family: "Roboto Mono Regular", sans-serif;
+  font-family: 'Roboto Mono Regular', sans-serif;
   color: rgb(38, 33, 65);
   background-color: rgb(250, 250, 250);
   margin: 0rem;
@@ -29,24 +27,19 @@ body {
 }
 
 .empty {}`;
-
-const sourceSyntaxInvalid = `
-body {
+const sourceSyntaxInvalid = `body {
   // inline comment
   font-family: Roboto Mono Regular, sans-serif;
   color:
   background-colors: rgb(250, 250, 250);
   margin: 5pigs;
 }`;
-
-const sourceOrderInvalid = `
-body {
+const sourceOrderInvalid = `body {
   margin: 0;
   padding: 1rem;
   display: block;
 }
 `;
-
 const stylelintOpts = {
   config,
   code: sourceCssValid,

@@ -745,10 +745,10 @@
   version "0.17.0"
   dependencies:
     "@ampproject/rollup-plugin-closure-compiler" "0.9.0-beta.7"
-    "@minna-ui/pre-markup" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.17.0-2f0668b2-f0ad-4e51-87cd-dac56c14b119-1542313173375/node_modules/@minna-ui/pre-markup"
-    "@minna-ui/pre-style" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.17.0-2f0668b2-f0ad-4e51-87cd-dac56c14b119-1542313173375/node_modules/@minna-ui/pre-style"
+    "@minna-ui/pre-markup" "file:utils/pre-markup"
+    "@minna-ui/pre-style" "file:utils/pre-style"
     del "3.0.0"
-    rollup "0.67.1"
+    rollup "0.67.3"
     rollup-plugin-commonjs "9.2.0"
     rollup-plugin-node-resolve "3.4.0"
     rollup-plugin-svelte "4.3.2"
@@ -756,7 +756,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.17.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.17.0-b038b5b8-3f61-4072-9341-a2e64385ba9f-1542313177042/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "4.2.1"
     del "3.0.0"
     postcss-load-config "2.0.0"
@@ -7770,7 +7770,15 @@ rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.3.3:
     estree-walker "^0.5.2"
     micromatch "^2.3.11"
 
-rollup@0.67.1, rollup@^0.67.1:
+rollup@0.67.3:
+  version "0.67.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.67.3.tgz#55475b1b62c43220c3b4bd7edc5846233932f50b"
+  integrity sha512-TyNQCz97rKuVVbsKUTXfwIjV7UljWyTVd7cTMuE+aqlQ7WJslkYF5QaYGjMLR2BlQtUOO5CAxSVnpQ55iYp5jg==
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "*"
+
+rollup@^0.67.1:
   version "0.67.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.67.1.tgz#4094110c944d3c9e25b5bf196771b51132ec3adb"
   integrity sha512-BfwL9pw5VyxrAWx/G1tP8epgG+NH4KcR78aoWacV7+dFp1Mj6ynH8QTIC/lDQ3KlwzDakqZmJQ4LQ7TmLg+pBA==

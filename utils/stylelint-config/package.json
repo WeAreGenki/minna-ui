@@ -21,7 +21,7 @@
     "stylelint-a11y": "^1.1.9",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-high-performance-animation": "^1.1.1",
-    "stylelint-order": "^1.0.0"
+    "stylelint-order": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"

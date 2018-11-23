@@ -24,7 +24,7 @@
     "cssnano": "^4.1.7",
     "cssnano-preset-advanced": "^4.0.5",
     "deepmerge": "^2.2.1",
-    "postcss-advanced-variables": "^2.3.3",
+    "postcss-advanced-variables": "^3.0.0",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-extend-rule": "^2.0.0",
     "postcss-nested": "^4.1.0",

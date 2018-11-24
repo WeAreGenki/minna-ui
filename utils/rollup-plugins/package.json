@@ -24,7 +24,7 @@
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
-    "rollup": "^0.66.6"
+    "rollup": "^0.67.2"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",

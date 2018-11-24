@@ -7,11 +7,11 @@
 
 A plugin to add tooltips as a [Svelte](https://svelte.technology/guide) action.
 
------
+---
 
 **NOTE: This package is unfinished.**
 
------
+---
 
 TODO: Write note about `@minna-ui/css` interplay/dependency.
 
@@ -32,9 +32,7 @@ yarn add @minna-ui/tooltip-action
 `MySvelteComponent.html`:
 
 ```html
-<div use:tooltip="Example tooltip message">
-  My example
-</div>
+<div use:tooltip="Example tooltip message">My example</div>
 
 <div use:tooltip="Example tooltip message" class="tooltip-right">
   My right example
@@ -51,7 +49,7 @@ yarn add @minna-ui/tooltip-action
 </script>
 
 <style>
-  @import "@minna-ui/tooltip-action";
+  @import '@minna-ui/tooltip-action';
 </style>
 ```
 
@@ -59,6 +57,6 @@ yarn add @minna-ui/tooltip-action
 
 `@minna-ui/tooltip-action` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

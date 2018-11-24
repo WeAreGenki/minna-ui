@@ -540,7 +540,7 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[Unreleased]: https://github.com/WeAreGenki/ui/compare/v0.17.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.17.1...HEAD
 [0.17.1]: https://github.com/MaxMilton/new-tab/compare/v0.17.0...v0.17.1
 [0.17.0]: https://github.com/MaxMilton/new-tab/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/MaxMilton/new-tab/compare/v0.15.3...v0.16.0

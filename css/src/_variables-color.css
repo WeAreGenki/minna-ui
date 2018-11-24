@@ -1,114 +1,119 @@
 /**
  * COLOUR VARIABLES
  *
+ * README:
+ *   Whenever possible, stick to these predefined colours for consistency and a
+ *   sense of familiarity.
+ *
  * @format
  */
 
 /*
-  TODO: Add a note referencing original work these colours are from:
+  TODO: Add a note referencing the original work/s these colours are from:
     ↳ Palantir Technologies, Inc.
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_colors.scss
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_color-aliases.scss
     ↳ https://blueprintjs.com/docs/#core/colors
-
-  TODO: Refactor all these colours into a brighter, more cheerful pallette.
 */
+/* TODO: Refactor all these colours into a brighter, more cheerful pallette. */
+
+/* stylelint-disable function-blacklist */
 
 /* Gray scale */
 
-$black: rgb(16, 22, 26);
-$dark-gray1: rgb(24, 32, 38);
-$dark-gray2: rgb(32, 43, 51);
-$dark-gray3: rgb(41, 55, 66);
-$dark-gray4: rgb(48, 64, 77);
-$dark-gray5: rgb(57, 75, 89);
-$gray1: rgb(92, 112, 128);
-$gray2: rgb(115, 134, 148);
-$gray3: rgb(138, 155, 168);
-$gray4: rgb(167, 182, 194);
-$gray5: rgb(191, 204, 214);
-$light-gray1: rgb(206, 217, 224);
-$light-gray2: rgb(216, 225, 232);
-$light-gray3: rgb(225, 232, 237);
-$light-gray4: rgb(235, 241, 245);
-$light-gray5: rgb(245, 248, 250);
-$white: rgb(255, 255, 255);
+$black: hsl(204, 24%, 8%) !default;
+$dark-gray1: hsl(206, 23%, 12%) !default;
+$dark-gray2: hsl(205, 23%, 16%) !default;
+$dark-gray3: hsl(206, 23%, 21%) !default;
+$dark-gray4: hsl(207, 23%, 25%) !default;
+$dark-gray5: hsl(206, 22%, 29%) !default;
+$gray1: hsl(207, 16%, 43%) !default;
+$gray2: hsl(205, 13%, 52%) !default;
+$gray3: hsl(206, 15%, 60%) !default;
+$gray4: hsl(207, 18%, 71%) !default;
+$gray5: hsl(206, 22%, 79%) !default;
+$light-gray1: hsl(203, 22%, 84%) !default;
+$light-gray2: hsl(206, 26%, 88%) !default;
+$light-gray3: hsl(205, 25%, 91%) !default;
+$light-gray4: hsl(204, 33%, 94%) !default;
+$light-gray5: hsl(204, 33%, 97%) !default;
+$white: hsl(0, 0%, 100%) !default;
 
-/* Core colors */
+/* Core colours */
 
-$blue1: rgb(14, 90, 138);
-$blue2: rgb(16, 107, 163);
-$blue3: rgb(19, 124, 189);
-$blue4: rgb(43, 149, 214);
-$blue5: rgb(72, 175, 240);
-$green1: rgb(10, 102, 64);
-$green2: rgb(13, 128, 80);
-$green3: rgb(15, 153, 96);
-$green4: rgb(21, 179, 113);
-$green5: rgb(61, 204, 145);
-$orange1: rgb(166, 99, 33);
-$orange2: rgb(191, 115, 38);
-$orange3: rgb(217, 130, 43);
-$orange4: rgb(242, 157, 73);
-$orange5: rgb(255, 179, 102);
-$red1: rgb(168, 42, 42);
-$red2: rgb(194, 48, 48);
-$red3: rgb(219, 55, 55);
-$red4: rgb(245, 86, 86);
-$red5: rgb(255, 115, 115);
+$blue1: hsl(203, 82%, 30%) !default;
+$blue2: hsl(203, 82%, 35%) !default;
+$blue3: hsl(203, 82%, 41%) !default;
+$blue4: hsl(203, 68%, 50%) !default;
+$blue5: hsl(203, 85%, 61%) !default;
+$green1: hsl(155, 82%, 22%) !default;
+$green2: hsl(155, 82%, 28%) !default;
+$green3: hsl(155, 82%, 33%) !default;
+$green4: hsl(155, 79%, 39%) !default;
+$green5: hsl(155, 58%, 52%) !default;
+$orange1: hsl(30, 67%, 39%) !default;
+$orange2: hsl(30, 67%, 45%) !default;
+$orange3: hsl(30, 70%, 51%) !default;
+$orange4: hsl(30, 87%, 62%) !default;
+$orange5: hsl(30, 100%, 70%) !default;
+$red1: hsl(0, 60%, 41%) !default;
+$red2: hsl(0, 60%, 47%) !default;
+$red3: hsl(0, 69%, 54%) !default;
+$red4: hsl(0, 89%, 65%) !default;
+$red5: hsl(0, 100%, 73%) !default;
 
-/* Extended colors */
+/* Extended colours */
 
-$vermilion1: rgb(158, 43, 14);
-$vermilion2: rgb(184, 50, 17);
-$vermilion3: rgb(209, 57, 19);
-$vermilion4: rgb(235, 83, 45);
-$vermilion5: rgb(255, 110, 74);
-$rose1: rgb(168, 34, 85);
-$rose2: rgb(194, 39, 98);
-$rose3: rgb(219, 44, 111);
-$rose4: rgb(245, 73, 139);
-$rose5: rgb(255, 102, 161);
-$violet1: rgb(92, 37, 92);
-$violet2: rgb(117, 47, 117);
-$violet3: rgb(143, 57, 143);
-$violet4: rgb(168, 84, 168);
-$violet5: rgb(194, 116, 194);
-$indigo1: rgb(86, 66, 166);
-$indigo2: rgb(99, 77, 191);
-$indigo3: rgb(113, 87, 217);
-$indigo4: rgb(145, 121, 242);
-$indigo5: rgb(173, 153, 255);
-$cobalt1: rgb(31, 75, 153);
-$cobalt2: rgb(36, 88, 179);
-$cobalt3: rgb(41, 101, 204);
-$cobalt4: rgb(69, 128, 230);
-$cobalt5: rgb(102, 158, 255);
-$turquoise1: rgb(0, 128, 117);
-$turquoise2: rgb(0, 153, 140);
-$turquoise3: rgb(0, 179, 164);
-$turquoise4: rgb(20, 204, 189);
-$turquoise5: rgb(46, 230, 214);
-$forest1: rgb(29, 115, 36);
-$forest2: rgb(35, 140, 44);
-$forest3: rgb(41, 166, 52);
-$forest4: rgb(67, 191, 77);
-$forest5: rgb(98, 217, 107);
-$lime1: rgb(114, 140, 35);
-$lime2: rgb(135, 166, 41);
-$lime3: rgb(155, 191, 48);
-$lime4: rgb(182, 217, 76);
-$lime5: rgb(209, 242, 109);
-$gold1: rgb(166, 121, 8);
-$gold2: rgb(191, 140, 10);
-$gold3: rgb(217, 158, 11);
-$gold4: rgb(242, 184, 36);
-$gold5: rgb(255, 201, 64);
-$sepia1: rgb(99, 65, 30);
-$sepia2: rgb(125, 81, 37);
-$sepia3: rgb(150, 98, 45);
-$sepia4: rgb(176, 123, 70);
-$sepia5: rgb(201, 151, 101);
+$vermilion1: hsl(12, 84%, 34%) !default;
+$vermilion2: hsl(12, 83%, 39%) !default;
+$vermilion3: hsl(12, 83%, 45%) !default;
+$vermilion4: hsl(12, 83%, 55%) !default;
+$vermilion5: hsl(12, 100%, 65%) !default;
+$rose1: hsl(337, 66%, 40%) !default;
+$rose2: hsl(337, 67%, 46%) !default;
+$rose3: hsl(337, 71%, 52%) !default;
+$rose4: hsl(337, 90%, 62%) !default;
+$rose5: hsl(337, 100%, 70%) !default;
+$violet1: hsl(300, 43%, 25%) !default;
+$violet2: hsl(300, 43%, 32%) !default;
+$violet3: hsl(300, 43%, 39%) !default;
+$violet4: hsl(300, 33%, 49%) !default;
+$violet5: hsl(300, 39%, 61%) !default;
+$indigo1: hsl(252, 43%, 45%) !default;
+$indigo2: hsl(252, 47%, 53%) !default;
+$indigo3: hsl(252, 63%, 60%) !default;
+$indigo4: hsl(252, 82%, 71%) !default;
+$indigo5: hsl(252, 100%, 80%) !default;
+$cobalt1: hsl(218, 66%, 36%) !default;
+$cobalt2: hsl(218, 67%, 42%) !default;
+$cobalt3: hsl(218, 67%, 48%) !default;
+$cobalt4: hsl(218, 76%, 59%) !default;
+$cobalt5: hsl(218, 100%, 70%) !default;
+$turquoise1: hsl(175, 100%, 25%) !default;
+$turquoise2: hsl(175, 100%, 30%) !default;
+$turquoise3: hsl(175, 100%, 35%) !default;
+$turquoise4: hsl(175, 82%, 44%) !default;
+$turquoise5: hsl(175, 79%, 54%) !default;
+$forest1: hsl(125, 60%, 28%) !default;
+$forest2: hsl(125, 60%, 34%) !default;
+$forest3: hsl(125, 60%, 41%) !default;
+$forest4: hsl(125, 49%, 51%) !default;
+$forest5: hsl(125, 61%, 62%) !default;
+$lime1: hsl(75, 60%, 34%) !default;
+$lime2: hsl(75, 60%, 41%) !default;
+$lime3: hsl(75, 60%, 47%) !default;
+$lime4: hsl(75, 65%, 57%) !default;
+$lime5: hsl(75, 84%, 69%) !default;
+$gold1: hsl(43, 91%, 34%) !default;
+$gold2: hsl(43, 90%, 39%) !default;
+$gold3: hsl(43, 90%, 45%) !default;
+$gold4: hsl(43, 89%, 55%) !default;
+$gold5: hsl(43, 100%, 63%) !default;
+$sepia1: hsl(30, 53%, 25%) !default;
+$sepia2: hsl(30, 54%, 32%) !default;
+$sepia3: hsl(30, 54%, 38%) !default;
+$sepia4: hsl(30, 43%, 48%) !default;
+$sepia5: hsl(30, 48%, 59%) !default;
 
 /* Aliases */
 
@@ -117,24 +122,27 @@ $intent-success: $green3 !default;
 $intent-warning: $orange3 !default;
 $intent-danger: $red3 !default;
 /* $app-background-color: $light-gray5 !default; */
-$app-background-color: rgb(250, 250, 250) !default;
+$app-background-color: hsl(0, 0%, 98%) !default;
 $dark-app-background-color: $dark-gray3 !default;
 $outline-color: color-mod($blue3 alpha(0.6)) !default;
 $outline-color-hover: color-mod($gray3 alpha(0.6)) !default;
-$text-color: $dark-gray1 !default;
+$text-color: $dark-gray2 !default;
 $text-color-muted: $gray1 !default;
 $text-color-disabled: color-mod($text-color-muted alpha(0.5)) !default;
 $heading-color: $text-color !default;
+/* TODO: This should probably be the minna-ui default link colour */
+/* $brand-blue: hsl(209, 87%, 43%); */
 $link-color: $intent-primary !default;
 $shadow-color: $cobalt1 !default;
 $dark-text-color: $light-gray5 !default;
 $dark-text-color-muted: $gray5 !default;
-$dark-text-color-disabled: color-mod(
-  $dark-text-color-muted alpha(0.5)
-) !default;
+/* prettier-ignore */
+$dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5)) !default;
 $dark-heading-color: $dark-text-color !default;
 $dark-link-color: $blue5 !default;
 $background-color-muted: $light-gray4 !default;
+/* TODO: Should we have default icon styles? */
+/* TODO: Should we provide a default icon set? */
 /*
 $icon-color: $text-color-muted !default;
 $icon-color-hover: $text-color !default;

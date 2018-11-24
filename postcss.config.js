@@ -4,6 +4,7 @@
 
 module.exports = {
   syntax: 'postcss-scss',
+
   plugins: {
     '@minna-ui/postcss-config': { debug: true },
   },

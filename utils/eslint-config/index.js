@@ -2,6 +2,8 @@
  * ESLint config preset for minna-ui projects.
  */
 
+/* tslint:disable object-literal-sort-keys */
+
 'use strict';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -13,7 +15,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['html', 'import'],
+  plugins: ['import', 'html', 'markdown'],
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
@@ -34,10 +36,10 @@ module.exports = {
       'error',
       {
         arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
         exports: 'always-multiline',
         functions: 'only-multiline', // comma on multiline function params is OK
+        imports: 'always-multiline',
+        objects: 'always-multiline',
       },
     ],
     'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive variable names
@@ -49,8 +51,8 @@ module.exports = {
     'prettier/prettier': 'error',
   },
 
-  // JS config files should be node CommonJS format
   overrides: [
+    // JS config files
     {
       files: ['*.config.js', '*rc.js'],
       excludedFiles: ['rollup.config.js'], // uses ES6 modules
@@ -58,10 +60,12 @@ module.exports = {
         sourceType: 'script',
       },
       env: {
+        // should be node CommonJS format
         commonjs: true,
         node: true,
       },
       rules: {
+        // can use any dependency
         'import/no-extraneous-dependencies': [
           'error',
           {
@@ -69,6 +73,16 @@ module.exports = {
             peerDependencies: true,
           },
         ],
+      },
+    },
+    // markdown documentation files
+    {
+      files: ['*.md'],
+      rules: {
+        // turns off rules that don't make sense in code snippets
+        strict: 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-unresolved': 'off',
       },
     },
   ],

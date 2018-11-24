@@ -30,8 +30,11 @@
   - [PostCSS Config](utils/postcss-config.md)
   - [Pre Markup](utils/pre-markup.md)
   - [Pre Style](utils/pre-style.md)
+  - [Prettier Config](utils/prettier-config.md)
   - [Rollup Plugins](utils/rollup-plugins.md)
   - [StyleLint Config](utils/stylelint-config.md)
+  - [TSint Config](utils/tslint-config.md)
+  - [TypeScript Config](utils/ts-config.md)
 
 - [Contributing](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)

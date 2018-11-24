@@ -43,6 +43,7 @@ module.exports = {
 
 ### Options
 
+<!-- prettier-ignore -->
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
 | importPaths | `[process.cwd(), 'css', 'src', 'src/css', '@minna-ui/css/src']` | array | A list of paths to search when resolving `@import` rules in CSS. |
@@ -57,6 +58,6 @@ module.exports = {
 
 `@minna-ui/postcss-config` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

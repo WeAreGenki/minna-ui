@@ -6,12 +6,12 @@ const path = require('path');
 const { CLIEngine } = require('eslint');
 
 const linterCli = new CLIEngine({
-  useEslintrc: false,
   configFile: path.join(__dirname, '../index.js'),
+  useEslintrc: false,
 });
 const linterCliJest = new CLIEngine({
-  useEslintrc: false,
   configFile: path.join(__dirname, '../jest.js'),
+  useEslintrc: false,
 });
 
 const sourceValid = `/* eslint-disable-next-line import/no-extraneous-dependencies */

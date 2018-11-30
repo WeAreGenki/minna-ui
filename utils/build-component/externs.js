@@ -5,6 +5,6 @@
 
 /* eslint-disable strict, no-var, no-unused-vars, id-length */
 
-// Svelte quoted method references
+// svelte quoted method references
 var i;
 var m;

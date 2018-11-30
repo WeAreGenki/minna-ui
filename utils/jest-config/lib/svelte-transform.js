@@ -13,8 +13,8 @@ function process(src, filename) {
 
   const result = svelte.compile(normalised, {
     filename,
-    format: 'cjs',
     css: false,
+    format: 'cjs',
   });
 
   return {

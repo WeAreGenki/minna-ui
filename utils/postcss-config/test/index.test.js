@@ -18,8 +18,8 @@ const mixinsPath = path.join(fixturesPath, 'css-mixins');
 const options = {
   from: sourceCssPath,
   map: {
-    inline: false,
     annotation: true,
+    inline: false,
   },
 };
 
@@ -177,7 +177,7 @@ describe('PostCSS config', () => {
   it.skip('compiles CSS with debug option true', async () => {
     expect.assertions(6);
     const spy = jest.spyOn(global.console, 'log');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(() => {}); // tslint:disable-line no-empty
     const output = postcss(postcssConfig({ debug: true })).process(
       sourceCss,
       options,
@@ -195,7 +195,7 @@ describe('PostCSS config', () => {
   it.skip('compiles CSS with debug option false', async () => {
     expect.assertions(6);
     const spy = jest.spyOn(global.console, 'log');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(() => {}); // tslint:disable-line no-empty
     const output = postcss(postcssConfig({ debug: false })).process(
       sourceCss,
       options,

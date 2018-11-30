@@ -2,6 +2,8 @@
  * ESLint preset for Jest testing in minna-ui projects.
  */
 
+/* tslint:disable object-literal-sort-keys */
+
 'use strict';
 
 module.exports = {

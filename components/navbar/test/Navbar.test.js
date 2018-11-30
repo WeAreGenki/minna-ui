@@ -12,11 +12,11 @@ const items = [
   { url: 'page-one', text: 'Page One' },
   { url: 'page-two', text: 'Page Two' },
   {
-    text: 'More ▾',
     children: [
       { url: 'more/child-one', text: 'Child One - More' },
       { url: 'more/child-two', text: 'Child Two - More' },
     ],
+    text: 'More ▾',
   },
   { url: 'about', text: 'About Us' },
 ];
@@ -26,7 +26,7 @@ describe('Navbar component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new Navbar({ target });
+      new Navbar({ target }); // tslint:disable-line no-unused-expression
     }
     expect(wrapper).toThrow();
   });
@@ -157,6 +157,7 @@ describe('Navbar component', () => {
   it('shows correct icon and class when toggled', () => {
     expect.assertions(4);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -176,6 +177,7 @@ describe('Navbar component', () => {
   it('adds class to active menu item', () => {
     expect.assertions(2);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -199,6 +201,7 @@ describe('Navbar component', () => {
   it.skip('adds class to active menu item in nested route', () => {
     expect.assertions(2);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -243,6 +246,7 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     // const component = new Navbar({
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {

@@ -89,13 +89,14 @@ module.exports = postcss.plugin('minna-ui', userOpts => {
   const cssnanoOpts = merge(
     {
       autoprefixer: false,
-      zindex: false,
       calc: {
         warnWhenCannotResolve: debug,
       },
+      zindex: false,
     },
     userOpts,
   );
+  /* tslint:disable object-literal-sort-keys */
   const opts = merge(
     {
       // atUse
@@ -103,20 +104,21 @@ module.exports = postcss.plugin('minna-ui', userOpts => {
       resolveFromFile: true,
 
       // advancedVars
-      resolve,
-      importPaths,
       importCache,
+      importPaths,
+      resolve,
 
       // autoprefixer
-      remove: false,
-      grid: true, // adds -ms- prefix for IE 11 support
+      grid: true, // IE 11 support
       flexbox: 'no-2009',
+      remove: false,
 
       // cssnano
       preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
     },
     userOpts,
   );
+  /* tslint:enable */
 
   // initialise plugins
   const initializedPlugins = plugins.map(plugin => plugin(opts));

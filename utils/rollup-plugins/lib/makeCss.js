@@ -68,9 +68,9 @@ function makeCss({
 
         const purgecss = new Purgecss({
           content,
+          whitelist,
           css: [{ raw: result.css }],
           keyframes: true,
-          whitelist,
         });
 
         const purged = purgecss.purge()[0];

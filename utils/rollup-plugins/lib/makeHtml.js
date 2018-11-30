@@ -14,6 +14,7 @@ const catchErr = require('./catchErr.js');
  * @returns {Function}
  */
 function compileTemplate(template) {
+  /* tslint:disable-next-line */
   return new Function('d', 'return `' + template + '`'); // eslint-disable-line
 }
 
@@ -75,10 +76,12 @@ function makeHtml({
     async generateBundle(outputOpts, bundle) {
       // combine all style sheets
       let css = '';
+      /* tslint:disable */
       /* eslint-disable-next-line */
       for (const id in styles) {
         css += styles[id] || '';
       }
+      /* tslint:enable */
 
       if (typeof onCss === 'function') {
         css = await Promise.resolve(onCss(css));
@@ -105,8 +108,8 @@ function makeHtml({
       );
 
       const html = compileTemplate(htmlTemplate)({
-        content: body,
         title,
+        content: body,
         ...data,
       }).trim();
 

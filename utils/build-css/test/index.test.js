@@ -29,12 +29,12 @@ const dist = path.join(__dirname, 'dist');
  * @return {object}
  */
 const pkg = (outDir, srcPath = srcPathSimple) => ({
-  npm_package_name: 'test-css',
-  npm_package_version: '1.2.3',
-  npm_package_homepage: 'https://ui.wearegenki.com',
-  npm_package_style: path.join(dist, outDir, 'index.css'),
   npm_package_browser: path.join(dist, outDir, 'index.css'),
+  npm_package_homepage: 'https://ui.wearegenki.com',
   npm_package_main: srcPath,
+  npm_package_name: 'test-css',
+  npm_package_style: path.join(dist, outDir, 'index.css'),
+  npm_package_version: '1.2.3',
 });
 
 beforeAll(() => mkdir(dist));
@@ -111,7 +111,7 @@ describe('build-css tool', () => {
   it('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(console, 'error');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(() => {}); // tslint:disable-line no-empty
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrowError();
     expect(spy).toHaveBeenCalled();

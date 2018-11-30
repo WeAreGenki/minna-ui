@@ -7,6 +7,8 @@
   https://github.com/stylelint/stylelint-config-standard
 */
 
+/* tslint:disable object-literal-sort-keys */
+
 'use strict';
 
 module.exports = {
@@ -49,18 +51,17 @@ module.exports = {
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',
     'color-named': 'never',
-    'color-no-hex': true, // rgb() or rgba() only
+    'color-no-hex': true, // only rgb() or rgba()
     'comment-empty-line-before': null, // not helpful for rapid development
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'declaration-block-semicolon-space-after': 'always-single-line',
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-where-recommended',
     'font-weight-notation': 'numeric',
-    'function-blacklist': ['hsl', 'hsla'], // rgb() or rgba() only
+    'function-blacklist': ['hsl', 'hsla'], // only rgb() or rgba()
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
-    // XXX: 'max-line-length' causes problems in non-CSS files when using CSS code blocks.
-    // 'max-line-length': [120, { ignore: ['comments'] }],
+    'max-line-length': [100, { ignore: ['comments'] }],
     'media-feature-name-no-vendor-prefix': true,
     'media-feature-parentheses-space-inside': 'never',
     'media-feature-range-operator-space-after': 'always',
@@ -117,7 +118,7 @@ module.exports = {
       'flex-grow',
       'flex-order',
       'flex-pack',
-      // css grid layout
+      // CSS grid layout
       'grid',
       'grid-auto-flow',
       'grid-auto-rows',
@@ -296,7 +297,7 @@ module.exports = {
       'box-shadow',
       'opacity',
       '-ms-interpolation-mode',
-      // svg presentation attributes
+      // SVG presentation attributes
       'alignment-baseline',
       'baseline-shift',
       'dominant-baseline',

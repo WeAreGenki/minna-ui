@@ -20,6 +20,7 @@ module.exports = (context = {}) => async ({
     {
       from: filename,
       to: filename,
+      /* tslint:disable-next-line object-literal-sort-keys */
       map: { inline: false, annotation: false },
     },
     context,
@@ -33,6 +34,7 @@ module.exports = (context = {}) => async ({
     const result = await postcss(plugins).process(content, options);
 
     result.warnings().forEach(warn => {
+      /* tslint:disable-next-line no-console */
       console.warn(warn.toString()); // eslint-disable-line no-console
     });
 
@@ -46,6 +48,7 @@ module.exports = (context = {}) => async ({
     if (error.name === 'CssSyntaxError') {
       process.stderr.write(error.message + error.showSourceCode());
     } else {
+      /* tslint:disable-next-line no-console */
       console.error('[PRE-STYLE] Error', error); // eslint-disable-line no-console
     }
   }

@@ -32,7 +32,7 @@ describe('Select component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new Select({ target });
+      new Select({ target }); // tslint:disable-line no-unused-expression
     }
     expect(wrapper).toThrow();
   });
@@ -156,8 +156,9 @@ describe('Select component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  // TODO: Write this test once we have custom validation for this component
-  it.skip('renders with required prop', () => {});
+  it.skip('renders with required prop', () => {
+    // TODO: Write tests once we have custom validation in the component
+  });
 
   it('correct selected index is updated on value change', () => {
     expect.assertions(2);
@@ -242,7 +243,7 @@ describe('Select component', () => {
     const spy2 = jest.spyOn(component, 'open');
     expect(component.get().isOpen).toEqual(false);
     const select = target.querySelector('.select');
-    const event1 = new KeyboardEvent('keydown', { key: ' ' }); // Spacebar
+    const event1 = new KeyboardEvent('keydown', { key: ' ' }); // spacebar
     select.dispatchEvent(event1);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalledTimes(1);
@@ -442,8 +443,8 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        items: itemsDisabled,
         isOpen: true,
+        items: itemsDisabled,
         selected: 1,
       },
     });
@@ -469,8 +470,8 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        items: itemsDisabled,
         isOpen: true,
+        items: itemsDisabled,
         selected: 7,
       },
     });
@@ -574,12 +575,12 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
+        isOpen: true,
         items: [
           { id: 'one', text: 'Opt 1' },
           { id: 'two', text: 'Opt 2', disabled: true },
           { id: 'three', text: 'Opt 3' },
         ],
-        isOpen: true,
       },
     });
     const spy1 = jest.spyOn(component, 'select');
@@ -672,9 +673,9 @@ describe('Select component', () => {
       target,
       data: {
         ...selectOpts,
-        value: 'au',
-        isOpen: true,
         inputText: 'filter text',
+        isOpen: true,
+        value: 'au',
       },
     });
     const spy = jest.spyOn(component, 'setInput');

@@ -7,7 +7,7 @@ describe('Collapse component', () => {
     expect.assertions(3);
     function wrapper() {
       const target = document.createElement('div');
-      new Collapse({ target });
+      new Collapse({ target }); // tslint:disable-line no-unused-expression
       expect(target.querySelector('.collapse-hide')).not.toBeNull();
       expect(target.innerHTML).toMatchSnapshot();
     }

@@ -24,7 +24,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.0.0"
+    "eslint-plugin-jest": "^22.1.0"
   },
   "publishConfig": {
     "access": "public"

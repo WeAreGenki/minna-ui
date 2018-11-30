@@ -13,9 +13,9 @@
     "@minna-ui/pre-markup": "file:../pre-markup",
     "@minna-ui/pre-style": "file:../pre-style",
     "del": "3.0.0",
-    "rollup": "0.67.1",
+    "rollup": "0.67.3",
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-node-resolve": "3.4.0",
-    "rollup-plugin-svelte": "4.3.2"
+    "rollup-plugin-svelte": "4.4.0"
   }
 }

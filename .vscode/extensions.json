@@ -3,8 +3,8 @@
     "ban.spellright",
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
-    "eg2.tslint",
     "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
     "shinnn.stylelint"
   ]
 }

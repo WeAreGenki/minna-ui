@@ -13,8 +13,9 @@
   href="{item.url}"
   class="navbar-link {current === item.url ? 'navbar-link-active' : ''} {item.class || ''}"
   rel="{item.rel}"
-  >{item.text}</a
 >
+  {item.text}
+</a>
 {:else}
 <!-- submenu folder -->
 <span class="navbar-nested">
@@ -22,7 +23,8 @@
 
   <div class="navbar-submenu {item.class || ''}">
     {#each item.children as submenuItem}
-    <svelte:self item="{submenuItem}" current="{current}" /> {/each}
+    <svelte:self item="{submenuItem}" current="{current}" />
+    {/each}
   </div>
 </span>
 {/if}

@@ -6,42 +6,42 @@
 
 'use strict';
 
+const rules = {
+  'comment-format': [
+    true,
+    'check-space',
+    'check-lowercase',
+    { 'ignore-pattern': '[A-Z]{2,}' },
+  ],
+  curly: [true, 'ignore-same-line'],
+  'object-literal-sort-keys': [
+    true,
+    'ignore-case',
+    'match-declaration-order',
+    'shorthand-first',
+  ],
+  'only-arrow-functions': false,
+  'no-null-keyword': false,
+  'no-magic-numbers': false,
+  prettier: true,
+};
+
 module.exports = {
   extends: ['tslint:latest', 'tslint-config-airbnb', 'tslint-config-prettier'],
-  rulesDirectory: ['tslint-plugin-prettier'],
-  rules: {
-    curly: [true, 'ignore-same-line'],
-    'object-literal-sort-keys': [
-      true,
-      'ignore-case',
-      'match-declaration-order',
-      'shorthand-first',
-    ],
-    prettier: true,
-  },
-  // "jsRules": true,
-  // FIXME: Remove this and replace with above once new tslint version is released
-  jsRules: {
-    curly: [true, 'ignore-same-line'],
-    'object-literal-sort-keys': [
-      true,
-      'ignore-case',
-      'match-declaration-order',
-      'shorthand-first',
-    ],
-    quotemark: [true, 'single', 'avoid-escape', 'avoid-template'],
-    prettier: true,
-  },
   linterOptions: {
+    // FIXME: This doesn't currently work and must be specified in each project
     exclude: [
       '**/__sapper__/**',
       '**/dist/**',
       '**/node_modules/**',
       '**/test/coverage/**',
-      '__sapper__/**',
-      'dist/**',
-      'node_modules/**',
-      'test/coverage/**',
     ],
+    typeCheck: true,
+  },
+  rulesDirectory: ['tslint-plugin-prettier'],
+  rules,
+  jsRules: {
+    ...rules,
+    'no-require-imports': false,
   },
 };

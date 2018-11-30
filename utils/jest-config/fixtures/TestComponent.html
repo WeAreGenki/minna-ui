@@ -6,17 +6,12 @@
   NOTE:
     In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
-
 -->
 
 <div class="wrapper">
-  <div class="text" ref:_target>
-    test {_name}
-  </div>
+  <div class="text" ref:_target>test {_name}</div>
 
-  <div class="text" ref:_nameReversed>
-    test <span>{_reversed}</span>
-  </div>
+  <div class="text" ref:_nameReversed>test <span>{_reversed}</span></div>
 </div>
 
 <script>
@@ -25,7 +20,11 @@
       _name: 'Elon Musk',
     }),
     computed: {
-      _reversed: ({ _name }) => _name.split('').reverse().join(''),
+      _reversed: ({ _name }) =>
+        _name
+          .split('')
+          .reverse()
+          .join(''),
     },
   };
 </script>
@@ -44,7 +43,7 @@
     color: rgb(255, 0, 0); /* red */
 
     &:focus {
-      background: rgb(0, 0, 0);  /* black */
+      background: rgb(0, 0, 0); /* black */
     }
 
     .wrapper > & {

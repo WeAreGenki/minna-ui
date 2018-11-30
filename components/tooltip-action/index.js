@@ -1,5 +1,5 @@
-// TODO
-
-const Tooltip = () => {};
+const Tooltip = () => {
+  // TODO
+};
 
 export default Tooltip;

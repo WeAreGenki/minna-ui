@@ -4,6 +4,8 @@
  * NOTE:
  *   - Colour variables are in _variables-color.css.
  *   - Components also contain their own CSS variables.
+ *
+ * @format
  */
 
 /* Media queries */
@@ -11,8 +13,11 @@
 /**
  * NOTE: If you change these, you'll also need to edit `mixins/at-media.css`.
  */
+/* prettier-ignore */
 $ns: (min-width: 30.01em) !default; /* not-small */
+/* prettier-ignore */
 $m: (min-width: 30.01em, max-width: 60em) !default; /* medium */
+/* prettier-ignore */
 $l: (min-width: 60.01em) !default; /* large */
 
 /* Breakpoints */
@@ -49,23 +54,25 @@ $gutter-compact: calc($gutter-row / 4) 0 !default;
 
 /* Typography */
 
+/* prettier-ignore */
 $font-stack:
   -apple-system,
   BlinkMacSystemFont,
-  "Segoe UI",
+  'Segoe UI',
   Roboto,
   Oxygen,
   Ubuntu,
   Cantarell,
-  "Helvetica Neue",
+  'Helvetica Neue',
   sans-serif,
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol",
-  "Noto Color Emoji" !default;
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji' !default;
+/* prettier-ignore */
 $font-stack-monospace:
   Consolas,
-  "Liberation Mono",
+  'Liberation Mono',
   Menlo,
   Courier,
   monospace !default;
@@ -108,6 +115,7 @@ $button-padding-y: 0.682em !default;
 $button-text-color: $dark-gray2 !default;
 $button-background-color: $white !default;
 $button-radius: $radius !default;
+/* prettier-ignore */
 $button-shadow:
   0 2px 8px 0 color-mod($shadow-color alpha(0.3)),
   inset 0 -16px 10px 0 color-mod($shadow-color alpha(0.03)) !default;
@@ -115,9 +123,7 @@ $button-hover-background-color: $light-gray2 !default;
 $button-active-background-color: $light-gray1 !default;
 $button-disabled-text-color: $text-color-disabled !default;
 $button-disabled-border-color: $light-gray2 !default;
-$button-mini-padding:
-  calc($button-padding-y / 2)
-  calc($button-padding-x / 2) !default;
+$button-mini-padding: calc($button-padding-y / 2) calc($button-padding-x / 2) !default;
 
 /* Forms */
 
@@ -188,14 +194,15 @@ $hero-padding: 1.5rem 0 !default;
 $hero-margin: 2rem 0 !default;
 $hero-text-color: $dark-text-color !default;
 $hero-background: linear-gradient($angle, $cobalt1, $cobalt3) !default;
+/* prettier-ignore */
 $hero-dark-background: linear-gradient($angle, $dark-gray1, $dark-gray3) !default;
 $diagonal-hight: 4rem !default;
 $diagonal-hight-l: 6rem !default;
 /**
-  * See `images/diagonal.svg` for the original SVG markup and instructions
-  * on how to customise this image.
-  */
-/* $diagonal-image: url("diagonal.svg"); */
+ * See `images/diagonal.svg` for the original SVG markup and instructions
+ * on how to customise this image.
+ */
+/* $diagonal-image: url('diagonal.svg'); */
 $diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E") !default;
 $diagonal-background-color: $light-gray3 !default;
 $diagonal-dark-text-color: $white !default;

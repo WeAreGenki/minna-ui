@@ -17,12 +17,15 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "postcss": "^6.0.0 || ^7.0.0",
+    "postcss": "^7.0.0",
     "svelte": "^2.0.0"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
     "postcss-load-config": "^2.0.0"
+  },
+  "devDependencies": {
+    "postcss-nested": "4.1.0"
   },
   "publishConfig": {
     "access": "public"

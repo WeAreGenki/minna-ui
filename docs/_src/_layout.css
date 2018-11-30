@@ -50,7 +50,7 @@ body:not(.ready) {
   text-align: center;
 
   &:empty::before { /* stylelint-disable-line selector-max-id */
-    content: "Loading...";
+    content: 'Loading...';
   }
 }
 
@@ -110,7 +110,7 @@ kbd {
   list-style-type: none;
 }
 
-li input[type="checkbox"] {
+li input[type='checkbox'] {
   margin: 0 0.2em 0.25em -1.6em;
   vertical-align: middle;
 }
@@ -471,13 +471,13 @@ body.sticky {
       left: -12px;
       width: 20px;
       height: 20px;
-      /* font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; */
+      /* font-family: Dosis, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; */
       /* font-size: 14px; */
       font-weight: $text-weight-heavy;
       line-height: 20px;
       color: $app-background-color;
       text-align: center;
-      content: "!";
+      content: '!';
       background-color: $rose5;
       border-radius: 100%;
     }

@@ -1,5 +1,7 @@
 /**
  * TAGS
+ *
+ * @format
  */
 
 .tag {
@@ -14,4 +16,6 @@
 
 /* Whitespace between tags */
 
-.tag + .tag { margin-left: $tag-margin-between; }
+.tag + .tag {
+  margin-left: $tag-margin-between;
+}

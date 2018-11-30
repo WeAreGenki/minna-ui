@@ -1,8 +1,8 @@
 <!--
   TABS
 
-  NOTE: This is currently an experimental work in progress and should not be used
-  in production.
+  NOTE: This component is currently an experimental work in progress and may not
+  work correctly. It should not be used in production.
 -->
 
 <div class="tabs">
@@ -15,24 +15,12 @@
     <a href="#6" class="tabs-title{active === 6 ? ' tabs-title-active' : ''}" on:click|preventDefault="handleClick(event, 6)">6</a>
   </nav>
   <div class="tabs-content">
-    {#if active === 1}
-      <slot name="1"></slot>
-    {/if}
-    {#if active === 2}
-      <slot name="2"></slot>
-    {/if}
-    {#if active === 3}
-      <slot name="3"></slot>
-    {/if}
-    {#if active === 4}
-      <slot name="4"></slot>
-    {/if}
-    {#if active === 5}
-      <slot name="5"></slot>
-    {/if}
-    {#if active === 6}
-      <slot name="6"></slot>
-    {/if}
+    {#if active === 1}<slot name="1"></slot>{/if}
+    {#if active === 2}<slot name="2"></slot>{/if}
+    {#if active === 3}<slot name="3"></slot>{/if}
+    {#if active === 4}<slot name="4"></slot>{/if}
+    {#if active === 5}<slot name="5"></slot>{/if}
+    {#if active === 6}<slot name="6"></slot>{/if}
   </div>
 </div>
 
@@ -54,8 +42,8 @@
 </script>
 
 <style type="text/postcss">
-  @import "./_variables.css";
-  @import "import.css";
+  @import './_variables.css';
+  @import 'import.css';
 
   .tabs-title {
     padding: 1em;

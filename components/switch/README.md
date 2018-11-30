@@ -24,6 +24,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch/dist/index.css" rel="stylesheet"/>
 
@@ -32,6 +33,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 Or use a specific version:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch@0.5.0/dist/index.css" rel="stylesheet"/>
 
@@ -45,6 +47,8 @@ Or use a specific version:
 ```
 
 3. Initialise the component:
+
+<!-- eslint-disable no-new -->
 
 ```html
 <script>
@@ -106,6 +110,7 @@ yarn add @minna-ui/switch
 ```js
 import MinnaSwitch from '@minna-ui/switch';
 
+/* eslint-disable-next-line no-new */
 new MinnaSwitch({
   target: document.querySelector('#minna-switch'),
   data: {},
@@ -116,6 +121,6 @@ new MinnaSwitch({
 
 `@minna-ui/switch` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

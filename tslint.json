@@ -1,0 +1,11 @@
+{
+  "extends": ["@minna-ui/tslint-config"],
+  "linterOptions": {
+    "exclude": [
+      "**/cli/index.js",
+      "**/dist/**",
+      "**/node_modules/**",
+      "**/test/coverage/**"
+    ]
+  }
+}

@@ -14,6 +14,7 @@ const catchErr = require('./catchErr.js');
  * @returns {Function}
  */
 function compileTemplate(template) {
+  /* tslint:disable-next-line */
   return new Function('d', 'return `' + template + '`'); // eslint-disable-line
 }
 
@@ -75,15 +76,18 @@ function makeHtml({
     async generateBundle(outputOpts, bundle) {
       // combine all style sheets
       let css = '';
-      for (const id in styles) { // eslint-disable-line
+      /* tslint:disable */
+      /* eslint-disable-next-line */
+      for (const id in styles) {
         css += styles[id] || '';
       }
+      /* tslint:enable */
 
       if (typeof onCss === 'function') {
         css = await Promise.resolve(onCss(css));
 
         /* eslint-disable-next-line no-console */
-        if (!css) this.warn('onCss didn\'t return anything useful');
+        if (!css) this.warn("onCss didn't return anything useful");
       }
 
       const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
@@ -93,16 +97,19 @@ function makeHtml({
       const cssResult = !css.length
         ? ''
         : inlineCss
-          ? `<style>${css}</style>`
-          : `<link href=${basePath}${cssFile} rel=stylesheet>`;
+        ? `<style>${css}</style>`
+        : `<link href=${basePath}${cssFile} rel=stylesheet>`;
 
       let body = await Promise.resolve(content);
       body = body.replace('%CSS%', cssResult);
-      body = body.replace('%JS%', `<script src=${basePath}${jsFile} ${scriptAttr}></script>`);
+      body = body.replace(
+        '%JS%',
+        `<script src=${basePath}${jsFile} ${scriptAttr}></script>`,
+      );
 
       const html = compileTemplate(htmlTemplate)({
-        content: body,
         title,
+        content: body,
         ...data,
       }).trim();
 
@@ -115,9 +122,7 @@ function makeHtml({
         writeFile(path.join(process.cwd(), cssOut), css, catchErr);
       }
 
-      const fileOut = outputOpts.dir
-        ? path.join(outputOpts.dir, file)
-        : file;
+      const fileOut = outputOpts.dir ? path.join(outputOpts.dir, file) : file;
 
       // write HTML file
       writeFile(path.join(process.cwd(), fileOut), html, catchErr);

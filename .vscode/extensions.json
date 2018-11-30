@@ -1,9 +1,10 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "DavidAnson.vscode-markdownlint",
     "ban.spellright",
-    "shinnn.stylelint",
-    "wayou.vscode-todo-highlight",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "shinnn.stylelint"
   ]
 }

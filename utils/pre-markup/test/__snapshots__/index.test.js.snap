@@ -11,13 +11,16 @@ exports[`Svelte markup preprocessor processes a component 1`] = `
   NOTE:
     In the code, object properties starting with _ are safe to mangle; the name
     can be shortened at build time for smaller JavaScript bundles.
-
---> <div class=\\"wrapper\\"> <div class=\\"text\\" ref:_target> test {_name} </div> <div class=\\"text\\" ref:_nameReversed> test <span>{_reversed}</span> </div> </div> <script> export default {
+--> <div class=\\"wrapper\\"> <div class=\\"text\\" ref:_target>test {_name}</div> <div class=\\"text\\" ref:_nameReversed>test <span>{_reversed}</span></div> </div> <script> export default {
     data: () => ({
       _name: 'Elon Musk',
     }),
     computed: {
-      _reversed: ({ _name }) => _name.split('').reverse().join(''),
+      _reversed: ({ _name }) =>
+        _name
+          .split('')
+          .reverse()
+          .join(''),
     },
   }; </script> <style>/*discarded*/</style> "
 `;

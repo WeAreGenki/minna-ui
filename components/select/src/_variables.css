@@ -1,4 +1,10 @@
-@import "import.css";
+/**
+ * SELECT COMPONENT VARIABLES
+ *
+ * @format
+ */
+
+@import 'import.css';
 
 $select-optimize: false !default;
 $select-zindex: 4 !default;

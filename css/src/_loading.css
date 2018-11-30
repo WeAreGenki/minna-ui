@@ -1,5 +1,7 @@
 /**
  * Loading states.
+ *
+ * @format
  */
 
 @keyframes spinner {
@@ -18,7 +20,7 @@
     position: absolute;
     width: $spinner-size;
     height: $spinner-size;
-    content: "";
+    content: '';
     border: $spinner-width solid $spinner-background-color;
     border-top-color: $spinner-color;
     border-radius: 50%;

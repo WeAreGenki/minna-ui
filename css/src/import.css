@@ -6,11 +6,13 @@
  * NOTE:
  *   Components will fall back to this file to source CSS variables if unable to
  *   resolve an "import.css" file in your project.
+ *
+ * @format
  */
 
-@import "./_variables-color.css";
-@import "./_variables.css";
-@import "./mixins/at-media.css";
-@import "./mixins/button.css";
-@import "./mixins/font-face.css";
-@import "./mixins/triangle.css";
+@import './_variables-color.css';
+@import './_variables.css';
+@import './mixins/at-media.css';
+@import './mixins/button.css';
+@import './mixins/font-face.css';
+@import './mixins/triangle.css';

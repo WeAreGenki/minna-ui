@@ -19,19 +19,23 @@ function runBin(path, args = [], env = process.env) {
 
     const child = spawn(path, args, { env });
 
-    child.on('error', /* istanbul ignore next */ (error) => {
-      reject(error);
-    });
+    child.on(
+      'error',
+      /* istanbul ignore next */
+      error => {
+        reject(error);
+      },
+    );
 
-    child.stdout.on('data', (data) => {
+    child.stdout.on('data', data => {
       stdout.push(data.toString());
     });
 
-    child.stderr.on('data', (data) => {
+    child.stderr.on('data', data => {
       stderr.push(data.toString());
     });
 
-    child.on('close', (code) => {
+    child.on('close', code => {
       if (stderr.length || code !== 0) {
         reject(stderr);
       } else {
@@ -46,7 +50,7 @@ function runBin(path, args = [], env = process.env) {
 // /** @jest-environment node */
 // const { runBin } = require('@minna-ui/jest-config/lib/helpers.js');
 // const cliPath = require.resolve('../cli/index.js');
-//
+
 // /**
 //  * Generate mock package.json env variables.
 //  * @param {string} dirName
@@ -59,14 +63,14 @@ function runBin(path, args = [], env = process.env) {
 //   npm_package_browser: path.join(dist, dirName, 'index.css'),
 //   npm_package_main: source,
 // });
-//
+
 // describe('build-css CLI', () => {
 //   it('runs without error', async () => {
 //     expect.assertions(1);
 //     const result = runBin(cliPath, [], pkg('cli'));
 //     await expect(result).resolves.toBeDefined();
 //   });
-//
+
 //   it('errors when bad CSS syntax', async () => {
 //     expect.assertions(2);
 //     const result = runBin(cliPath, [], pkg('cli-bad-syntax', sourcePathBadSyntax));

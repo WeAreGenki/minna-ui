@@ -1,5 +1,7 @@
 // https://facebook.github.io/jest/docs/en/configuration.html
 
+/* tslint:disable object-literal-sort-keys */
+
 'use strict';
 
 module.exports = {

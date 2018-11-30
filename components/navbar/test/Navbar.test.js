@@ -12,11 +12,11 @@ const items = [
   { url: 'page-one', text: 'Page One' },
   { url: 'page-two', text: 'Page Two' },
   {
-    text: 'More ▾',
     children: [
       { url: 'more/child-one', text: 'Child One - More' },
       { url: 'more/child-two', text: 'Child Two - More' },
     ],
+    text: 'More ▾',
   },
   { url: 'about', text: 'About Us' },
 ];
@@ -26,7 +26,7 @@ describe('Navbar component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new Navbar({ target });
+      new Navbar({ target }); // tslint:disable-line no-unused-expression
     }
     expect(wrapper).toThrow();
   });
@@ -43,9 +43,9 @@ describe('Navbar component', () => {
     });
     expect(Array.isArray(component.get().items)).toEqual(true);
     expect(component.get().items).not.toHaveLength(0);
-    expect(target
-      .querySelector('.navbar')
-      .getAttribute('navbar-active')).toBeNull();
+    expect(
+      target.querySelector('.navbar').getAttribute('navbar-active'),
+    ).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -130,7 +130,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it('doesn\'t attach extra event listeners on multiple button clicks', () => {
+  it("doesn't attach extra event listeners on multiple button clicks", () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -157,6 +157,7 @@ describe('Navbar component', () => {
   it('shows correct icon and class when toggled', () => {
     expect.assertions(4);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -176,6 +177,7 @@ describe('Navbar component', () => {
   it('adds class to active menu item', () => {
     expect.assertions(2);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -183,18 +185,23 @@ describe('Navbar component', () => {
         current: 'page-two',
       },
     });
-    expect(target
-      .querySelector('[href="page-two"]')
-      .classList.contains('navbar-link-active')).toBeTruthy();
-    expect(target
-      .querySelector('[href="page-one"]')
-      .classList.contains('navbar-link-active')).not.toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-two"]')
+        .classList.contains('navbar-link-active'),
+    ).toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-one"]')
+        .classList.contains('navbar-link-active'),
+    ).not.toBeTruthy();
   });
 
   // FIXME: Work out how nested menus should work
   it.skip('adds class to active menu item in nested route', () => {
     expect.assertions(2);
     const target = document.createElement('div');
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -206,12 +213,16 @@ describe('Navbar component', () => {
     });
     // console.log('@@ 22 target', target.innerHTML);
     // console.log('@@ 33', target.querySelector('.navbar-links').innerHTML);
-    expect(target
-      .querySelector('[href="page-two"]')
-      .classList.contains('navbar-link-active')).toBeTruthy();
-    expect(target
-      .querySelector('[href="page-one"]')
-      .classList.contains('navbar-link-active')).not.toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-two"]')
+        .classList.contains('navbar-link-active'),
+    ).toBeTruthy();
+    expect(
+      target
+        .querySelector('[href="page-one"]')
+        .classList.contains('navbar-link-active'),
+    ).not.toBeTruthy();
   });
 
   it.skip('can dynamically add menu items', () => {
@@ -235,6 +246,7 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     // const component = new Navbar({
+    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {

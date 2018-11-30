@@ -5,10 +5,9 @@
 // FIXME: Create tests for CSS, mixins, etc.
 // TODO: Create new dir + files for mixin tests
 // TODO: Create new test files for each CSS file
-/* eslint-disable max-len */ // TODO: Remove this line
 
 describe('CSS mixins', () => {
-  it('placeholder', () => {});
+  it('placeholder', () => {}); // tslint:disable-line no-empty
 });
 
 // const postcss = require('postcss');

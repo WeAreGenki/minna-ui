@@ -1,7 +1,7 @@
-@import "import.css";
-@import "./_variables.css";
-@import "./_layout.css";
-@import "./_coverpage.css";
+@import 'import.css';
+@import './_variables.css';
+@import './_layout.css';
+@import './_coverpage.css';
 
 /* Buttons */
 

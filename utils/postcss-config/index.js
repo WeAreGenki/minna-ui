@@ -36,50 +36,44 @@ function packageFilter(pkg) {
  */
 function resolve(id, cwd, opts) {
   return new Promise((res, rej) => {
-    nodeResolve(id, {
-      packageFilter,
-      basedir: cwd,
-      extensions: ['.css'],
-      paths: opts.importPaths,
-      preserveSymlinks: false,
-    }, (err, file) => {
-      if (err) {
-        rej(err);
-        return;
-      }
-
-      fs.readFile(file, (error, contents) => {
-        if (error) {
-          rej(error);
+    nodeResolve(
+      id,
+      {
+        packageFilter,
+        basedir: cwd,
+        extensions: ['.css'],
+        paths: opts.importPaths,
+        preserveSymlinks: false,
+      },
+      (err, file) => {
+        if (err) {
+          rej(err);
           return;
         }
 
-        res({ file, contents });
-      });
-    });
+        fs.readFile(file, (error, contents) => {
+          if (error) {
+            rej(error);
+            return;
+          }
+
+          res({ file, contents });
+        });
+      },
+    );
   });
 }
 
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
-module.exports = postcss.plugin('minna-ui', (rawopts) => {
-  const { debug, optimize, safe } = rawopts;
+module.exports = postcss.plugin('minna-ui', userOpts => {
+  const { debug, optimize, safe } = userOpts;
 
-  let plugins = [
-    advancedVars,
-    atUse,
-    nested,
-    postcssExtend,
-    colorModFunction,
-  ];
+  let plugins = [advancedVars, atUse, nested, postcssExtend, colorModFunction];
 
   if (optimize || process.env.NODE_ENV === 'production') {
-    plugins = plugins.concat([
-      mediaQueryPacker,
-      autoprefixer,
-      cssnano,
-    ]);
+    plugins = plugins.concat([mediaQueryPacker, autoprefixer, cssnano]);
   }
 
   const importPaths = [process.cwd(), 'css', 'src', 'src/css'];
@@ -87,47 +81,52 @@ module.exports = postcss.plugin('minna-ui', (rawopts) => {
   try {
     const minnaUiCss = require.resolve('@minna-ui/css');
     importPaths.push(path.dirname(minnaUiCss));
-  } catch (err) { /* noop */ }
+  } catch (err) {
+    /* noop */
+  }
 
   // initialise options
-  const cssnanoOpts = merge({
-    autoprefixer: false,
-    zindex: false,
-    calc: {
-      warnWhenCannotResolve: debug,
+  const cssnanoOpts = merge(
+    {
+      autoprefixer: false,
+      calc: {
+        warnWhenCannotResolve: debug,
+      },
+      zindex: false,
     },
-  }, rawopts);
-  const opts = merge({
-    // atUse
-    modules: '*',
-    resolveFromFile: true,
+    userOpts,
+  );
+  /* tslint:disable object-literal-sort-keys */
+  const opts = merge(
+    {
+      // atUse
+      modules: '*',
+      resolveFromFile: true,
 
-    // advancedVars
-    resolve,
-    importPaths,
-    importCache,
+      // advancedVars
+      importCache,
+      importPaths,
+      resolve,
 
-    // autoprefixer
-    remove: false,
-    grid: true, // adds -ms- prefix for IE 11 support
-    flexbox: 'no-2009',
+      // autoprefixer
+      grid: true, // IE 11 support
+      flexbox: 'no-2009',
+      remove: false,
 
-    // cssnano
-    preset: safe
-      ? ['default', cssnanoOpts]
-      : ['advanced', cssnanoOpts],
-  }, rawopts);
+      // cssnano
+      preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
+    },
+    userOpts,
+  );
+  /* tslint:enable */
 
   // initialise plugins
-  const initializedPlugins = plugins.map(
-    plugin => plugin(opts),
-  );
+  const initializedPlugins = plugins.map(plugin => plugin(opts));
 
   // process CSS with plugins
-  return (root, result) => initializedPlugins.reduce(
-    (promise, plugin) => promise.then(
-      () => plugin(result.root, result),
-    ),
-    Promise.resolve(),
-  );
+  return (root, result) =>
+    initializedPlugins.reduce(
+      (promise, plugin) => promise.then(() => plugin(result.root, result)),
+      Promise.resolve(),
+    );
 });

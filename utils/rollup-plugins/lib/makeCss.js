@@ -42,11 +42,14 @@ function makeCss({
       if (!filter(id)) return;
 
       try {
-        const ctx = merge({ from: id, to: id, map: { inline: false, annotation: false } }, context);
+        const ctx = merge(
+          { from: id, to: id, map: { inline: false, annotation: false } },
+          context,
+        );
         const { plugins, options } = await postcssrc(ctx);
         const result = await postcss(plugins).process(source, options);
 
-        result.warnings().forEach((warn) => {
+        result.warnings().forEach(warn => {
           this.warn(warn.toString(), { line: warn.line, column: warn.column });
         });
 
@@ -55,7 +58,8 @@ function makeCss({
         const dependencies = result.map ? result.map._sources._array : null;
 
         if (!optimize) {
-          return { // eslint-disable-line consistent-return
+          /* eslint-disable-next-line consistent-return */
+          return {
             dependencies,
             code: result.css,
             map: result.map,
@@ -64,14 +68,15 @@ function makeCss({
 
         const purgecss = new Purgecss({
           content,
+          whitelist,
           css: [{ raw: result.css }],
           keyframes: true,
-          whitelist,
         });
 
         const purged = purgecss.purge()[0];
 
-        return { // eslint-disable-line consistent-return
+        /* eslint-disable-next-line consistent-return */
+        return {
           dependencies,
           code: purged.css,
           map: purged.map,

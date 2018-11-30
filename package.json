@@ -52,7 +52,6 @@
     "postcss": "7.0.5",
     "postcss-scss": "2.0.0",
     "prettier": "1.15.2",
-    "rollup": "0.67.3",
     "stylelint": "9.8.0",
     "svelte": "2.15.3",
     "tslint": "5.11.0",

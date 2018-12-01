@@ -9,6 +9,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.18.0] - 2018-12-01
+
+### Added
+
+- New package `@minna-ui/prettier-config`.
+- New package `@minna-ui/ts-config`.
+- New package `@minna-ui/tslint-config`.
+- Prettier support in linting packages.
+- Run prettier on internal files.
+- TSLint linting internally.
+- Add check to make sure users install with `yarn` and not `npm`.
+
+### Removed
+
+- Node 8 from <abbr title="continuous intergration">CI</abbr>.
+
+### Changed
+
+- Change internal colour values from RGB to HSL.
+- Updated internal tool configs.
+- Updated package dependencies.
+
+### Fixed
+
+- Internal packages not linking together correctly.
+
 ## [0.17.1] - 2018-11-11
 
 ### Fixed
@@ -540,7 +566,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.17.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.0...HEAD
+[0.18.0]: https://github.com/MaxMilton/new-tab/compare/v0.17.1...v0.18.0
 [0.17.1]: https://github.com/MaxMilton/new-tab/compare/v0.17.0...v0.17.1
 [0.17.0]: https://github.com/MaxMilton/new-tab/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/MaxMilton/new-tab/compare/v0.15.3...v0.16.0

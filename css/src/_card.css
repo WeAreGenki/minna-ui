@@ -1,5 +1,7 @@
 /**
  * CARDS
+ *
+ * @format
  */
 
 .card {
@@ -35,7 +37,7 @@
       z-index: -1;
       width: 100%;
       height: 100%;
-      content: "";
+      content: '';
       border-radius: $radius-large;
       box-shadow: $card-hover-hover-shadow;
       opacity: 0;

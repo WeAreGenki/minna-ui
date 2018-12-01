@@ -9,11 +9,11 @@ const menuItem = {
 
 const subMenu = {
   item: {
-    name: 'Page Two',
     children: [
       { url: 'page-two/child-one', name: 'Child One - Page Two' },
       { url: 'page-two/child-two', name: 'Child Two - Page Two' },
     ],
+    name: 'Page Two',
   },
   segment: 'page-one',
 };
@@ -23,7 +23,7 @@ describe('NavbarItem component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new NavbarItem({ target });
+      new NavbarItem({ target }); // tslint:disable-line no-unused-expression
     }
     expect(wrapper).toThrow();
   });
@@ -32,6 +32,7 @@ describe('NavbarItem component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     // const component = new NavbarItem({
+    /* tslint:disable-next-line no-unused-expression */
     new NavbarItem({
       target,
       data: menuItem,
@@ -48,6 +49,7 @@ describe('NavbarItem component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     // const component = new NavbarItem({
+    /* tslint:disable-next-line no-unused-expression */
     new NavbarItem({
       target,
       data: subMenu,
@@ -60,7 +62,11 @@ describe('NavbarItem component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('adds rel attribute when present', () => {});
+  it.skip('adds rel attribute when present', () => {
+    // TODO
+  });
 
-  it.skip('does not add rel attribute when not present', () => {});
+  it.skip('does not add rel attribute when not present', () => {
+    // TODO
+  });
 });

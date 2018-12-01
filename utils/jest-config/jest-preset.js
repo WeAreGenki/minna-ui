@@ -1,3 +1,5 @@
+/* tslint:disable object-literal-sort-keys */
+
 'use strict';
 
 module.exports = {
@@ -7,22 +9,9 @@ module.exports = {
     '^.+\\.(html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.css$': '@minna-ui/jest-config/lib/null-transform.js',
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!svelte/)',
-  ],
-  testPathIgnorePatterns: [
-    '/__sapper__/',
-    '/dist/',
-    '/node_modules/',
-  ],
-  moduleFileExtensions: [
-    'html',
-    'js',
-    'json',
-    'mjs',
-    'node',
-    'ts',
-  ],
+  transformIgnorePatterns: ['node_modules/(?!svelte/)'],
+  testPathIgnorePatterns: ['/__sapper__/', '/dist/', '/node_modules/'],
+  moduleFileExtensions: ['html', 'js', 'json', 'mjs', 'node', 'ts'],
   collectCoverageFrom: [
     '**/*.{html,js,mjs}',
     '!**/bin/**',
@@ -44,9 +33,5 @@ module.exports = {
     '/test/',
   ],
   coverageDirectory: '<rootDir>/test/coverage',
-  watchPathIgnorePatterns: [
-    '/__sapper__/',
-    '/dist/',
-    '/node_modules/',
-  ],
+  watchPathIgnorePatterns: ['/__sapper__/', '/dist/', '/node_modules/'],
 };

@@ -8,6 +8,8 @@
  *
  * USAGE:
  *   @include make-font-face(<family>, <name>, [style], [weight], [dir]);
+ *
+ * @format
  */
 
 /* FIXME: Move documentation into docs + add link here */
@@ -21,13 +23,20 @@
  * @param {string=} dir
  * @returns {object}
  */
-@mixin font-face($family, $name, $style: normal, $weight: normal, $dir: "/fonts") {
+@mixin font-face(
+  $family,
+  $name,
+  $style: normal,
+  $weight: normal,
+  $dir: '/fonts'
+) {
   @font-face {
     font-family: $family;
+    /* prettier-ignore */
     src:
-      local("$(name)"),
-      url("$(dir)/$(name).woff2") format("woff2"),
-      url("$(dir)/$(name).woff") format("woff");
+      local('$(name)'),
+      url('$(dir)/$(name).woff2') format('woff2'),
+      url('$(dir)/$(name).woff') format('woff');
     font-style: $style;
     font-weight: $weight;
     font-display: optional;

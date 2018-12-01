@@ -2,22 +2,13 @@
 
 'use strict';
 
-module.exports = {
-  semi: true,
-  singleQuote: true,
-  trailingComma: 'es5',
+module.exports = require('@minna-ui/prettier-config')({
   overrides: [
     {
       files: '*.css',
       options: {
-        singleQuote: false,
-      },
-    },
-    {
-      files: '*.md',
-      options: {
-        proseWrap: 'never',
+        requirePragma: true,
       },
     },
   ],
-};
+});

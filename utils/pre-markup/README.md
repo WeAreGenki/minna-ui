@@ -9,25 +9,39 @@ Svelte markup preprocessor for use in [`Minna UI`](https://github.com/WeAreGenki
 
 ## Usage
 
-Install:
+### Install
 
 ```sh
 yarn add -D @minna-ui/pre-markup
 ```
 
+### Quick start
+
+Add both `@minna-ui/pre-markup` and `@minna-ui/pre-style` with default settings to your Svelte compile options:
+
+```js
+const svelte = require('svelte');
+const { preprocess } = require('minna-ui');
+
+svelte({ preprocess });
+```
+
+### Custom configuration
+
 Add to your Svelte compile options:
 
 ```js
-const preprocessMarkup = require('@minna-ui/pre-markup');
+const svelte = require('svelte');
+const preMarkup = require('@minna-ui/pre-markup');
 
-const isProd = process.env.NODE_ENV === 'production';
+const dev = process.env.NODE_ENV === 'development';
 
 svelte({
   preprocess: {
-    // only remove whitespace in production for better feedback during development
-    ...(isProd ? { markup: preprocessMarkup() } : {}),
+    // disable for better feedback during development
+    markup: preMarkup({ level: dev ? 0 : 3 }),
   },
-}),
+});
 ```
 
 ### Known issues
@@ -36,6 +50,7 @@ svelte({
 
 Incorrect:
 
+<!-- prettier-ignore -->
 ```html
 <MinnaNavbar segment={child.segment} menuItems={[
   { url: 'example', name: 'Example' },
@@ -45,13 +60,17 @@ Incorrect:
 Correct (with `"` around `{ }`):
 
 ```html
-<MinnaNavbar segment="{child.segment}" menuItems="{[
+<MinnaNavbar
+  segment="{child.segment}"
+  menuItems="{[
   { url: 'example', name: 'Example' },
-]}"/>
+]}"
+/>
 ```
 
 ### Options
 
+<!-- prettier-ignore -->
 | Name | Default | Type | Description |
 | --- | --- | --- | --- |
 | unsafeWhitespace | `false` | Boolean | Collapse _all_ whitespace between tags (instead of leaving a single space). When using this option you may need to manually add spaces, `{' '}`, around inline elements such as links. |
@@ -62,6 +81,6 @@ Correct (with `"` around `{ }`):
 
 `@minna-ui/pre-markup` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

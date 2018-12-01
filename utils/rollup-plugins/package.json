@@ -23,8 +23,8 @@
     "lib"
   ],
   "peerDependencies": {
-    "postcss": "^6.0.0 || ^7.0.0",
-    "rollup": "^0.66.6 || ^0.67.0"
+    "postcss": "^7.0.0",
+    "rollup": "^0.67.2"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",

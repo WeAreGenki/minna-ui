@@ -12,7 +12,7 @@
 <body>
   <div id="app"></div>
   <script>
-    /* eslint-disable comma-dangle, semi */
+    var root = 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/';
     window.$docsify = {
       name: 'Minna UI',
       themeColor: '#026deb', // TODO: Update with new colour palette
@@ -28,10 +28,10 @@
       repo: 'WeAreGenki/minna-ui',
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md',
-        '.*?/CHANGELOG': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/CHANGELOG',
-        '.*?/CONTRIBUTING': 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/CONTRIBUTING'
+        '.*?/CHANGELOG': root + 'CHANGELOG',
+        '.*?/CONTRIBUTING': root + 'CONTRIBUTING'
       },
-      homepage: 'https://raw.githubusercontent.com/WeAreGenki/minna-ui/master/README.md',
+      homepage: root + 'README.md',
       search: {
         paths: 'auto',
         placeholder: 'Search',

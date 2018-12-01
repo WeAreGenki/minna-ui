@@ -24,6 +24,7 @@ beforeAll(async () => {
 
 describe('Null transform', () => {
   it('outputs empty content when importing CSS', () => {
+    // @ts-ignore
     const styles = nullTransform.process(sourceCss, sourceCssPath);
     expect(styles).toEqual('');
   });
@@ -34,22 +35,26 @@ describe('Svelte transform', () => {
     expect.assertions(2);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
     expect(typeof SvelteComponent.code).toEqual('string');
+    /* tslint:disable-next-line no-eval */
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
     const target = document.createElement('div');
-    new SvelteComponent({ target });
+    // @ts-ignore
+    new SvelteComponent({ target }); // tslint:disable-line no-unused-expression
     expect(target.innerHTML).toMatchSnapshot();
   });
 
   it('has access to Svelte prototype when mounted', () => {
     expect.assertions(9);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
+    /* tslint:disable-next-line no-eval */
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
     const target = document.createElement('div');
+    // @ts-ignore
     const component = new SvelteComponent({ target });
 
-    // Svelte public methods
+    // svelte public methods
     const prototype = Object.getPrototypeOf(component);
     expect(prototype).toHaveProperty('destroy');
     expect(prototype).toHaveProperty('get');
@@ -61,7 +66,9 @@ describe('Svelte transform', () => {
     expect(component.get()._reversed).toEqual('ksuM nolE');
     component.set({ _name: 'Vladimir Putin' });
     expect(component.refs._target.textContent).toEqual('test Vladimir Putin');
-    expect(component.refs._nameReversed.textContent).toEqual('test nituP rimidalV');
+    expect(component.refs._nameReversed.textContent).toEqual(
+      'test nituP rimidalV',
+    );
   });
 
   // XXX: Uses require() instead of process() + eval() so imports are relative

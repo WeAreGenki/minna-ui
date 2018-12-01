@@ -7,10 +7,10 @@
 
 Rollup plugins for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects.
 
-*Included plugins:*
+_Included plugins:_
 
-* `makeCss` — Process global styles with PostCSS and remove unused styles with Purgecss.
-* `makeHtml` — Minimal page builder when you don't want to use a whole framework like [sapper](https://sapper.svelte.technology).
+- `makeCss` — Process global styles with PostCSS and remove unused styles with Purgecss.
+- `makeHtml` — Minimal page builder when you don't want to use a whole framework like [sapper](https://sapper.svelte.technology).
 
 ## Usage
 
@@ -20,6 +20,6 @@ TODO: Write me :)
 
 `@minna-ui/rollup-plugins` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

@@ -7,7 +7,7 @@ describe('Switch component', () => {
     expect.assertions(7);
     function wrapper() {
       const target = document.createElement('div');
-      new Switch({ target });
+      new Switch({ target }); // tslint:disable-line no-unused-expression
       const el = target.querySelector('.switch');
       expect(el.getAttribute('tabindex')).toEqual('0');
       expect(el.getAttribute('disabled')).toBeNull();
@@ -51,8 +51,8 @@ describe('Switch component', () => {
     const component = new Switch({
       target,
       data: {
-        textOn: 'YES',
         textOff: 'NO',
+        textOn: 'YES',
       },
     });
     expect(component.get().textOn).toEqual('YES');
@@ -85,7 +85,9 @@ describe('Switch component', () => {
     });
     expect(component.get().disabled).toBeTruthy();
     expect(target.querySelector('.switch-disabled')).not.toBeNull();
-    expect(target.querySelector('.switch').getAttribute('tabindex')).toEqual('-1');
+    expect(target.querySelector('.switch').getAttribute('tabindex')).toEqual(
+      '-1',
+    );
   });
 
   it('toggles class when value changes', () => {
@@ -127,8 +129,8 @@ describe('Switch component', () => {
     const component = new Switch({
       target,
       data: {
-        value: true,
         disabled: true,
+        value: true,
       },
     });
     const spy = jest.spyOn(component, 'toggle');
@@ -180,8 +182,8 @@ describe('Switch component', () => {
     const component = new Switch({
       target,
       data: {
-        value: true,
         disabled: true,
+        value: true,
       },
     });
     const event = new KeyboardEvent('keydown', { key: 'Enter' });

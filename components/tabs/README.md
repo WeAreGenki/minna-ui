@@ -8,11 +8,11 @@
 
 A simple multiple tabs switcher web component. It can be used standalone, in [Svelte](https://svelte.technology/guide) projects, or any JavaScript project.
 
------
+---
 
 **NOTE: This package is unfinished.**
 
------
+---
 
 TODO: Write note about `@minna-ui/css` interplay/dependency.
 
@@ -30,6 +30,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/tabs/dist/index.css" rel="stylesheet"/>
 
@@ -38,6 +39,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 Or use a specific version:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/tabs@0.0.0/dist/index.css" rel="stylesheet"/>
 
@@ -51,6 +53,8 @@ Or use a specific version:
 ```
 
 3. Initialise the component:
+
+<!-- eslint-disable no-new -->
 
 ```html
 <script>
@@ -76,7 +80,7 @@ yarn add @minna-ui/tabs
 `MySvelteComponent.html`:
 
 ```html
-<MinnaTabs/>
+<MinnaTabs />
 
 <script>
   import MinnaTabs from '@minna-ui/tabs';
@@ -112,6 +116,7 @@ yarn add @minna-ui/tabs
 ```js
 import MinnaTabs from '@minna-ui/tabs';
 
+/* eslint-disable-next-line no-new */
 new MinnaTabs({
   target: document.querySelector('#minna-tabs'),
   data: {},
@@ -122,6 +127,6 @@ new MinnaTabs({
 
 `@minna-ui/tabs` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

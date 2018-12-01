@@ -16,12 +16,12 @@ const preMarkup = require('@minna-ui/pre-markup');
 const preStyle = require('@minna-ui/pre-style');
 
 const compilerOpts = {
+  compilation_level: 'ADVANCED',
   externs: [
     require.resolve('google-closure-compiler/contrib/externs/svg.js'),
     join(__dirname, 'externs.js'),
   ],
   language_out: 'ECMASCRIPT5',
-  compilation_level: 'ADVANCED',
 
   /** Uncomment for debugging: */
   // warning_level: 'VERBOSE',
@@ -56,7 +56,7 @@ module.exports = async function run(env) {
 
   /** @type {Function} */
   let resolveCss;
-  const resultCss = new Promise((res) => {
+  const resultCss = new Promise(res => {
     resolveCss = res;
   });
 
@@ -69,7 +69,7 @@ module.exports = async function run(env) {
 
     /* istanbul ignore else */
     if (distDir !== process.cwd()) {
-      fs.stat(distDir, (err) => {
+      fs.stat(distDir, err => {
         /* istanbul ignore if */
         if (err && err.code !== 'ENOENT') throw err;
 
@@ -118,11 +118,11 @@ module.exports = async function run(env) {
     input: pkgSvelte,
     plugins: [
       svelte({
+        css: false,
         preprocess: {
           markup: preMarkup({ level: 2 }),
           style: preStyle(),
         },
-        css: false,
       }),
       resolve(),
       commonjs(),
@@ -130,8 +130,8 @@ module.exports = async function run(env) {
   });
 
   const resultMain = bundleMain.write({
-    name,
     banner,
+    name,
     file: pkgMain,
     format: 'iife',
     sourcemap: true,
@@ -146,8 +146,8 @@ module.exports = async function run(env) {
   // });
 
   const resultEsm = bundleEsm.write({
-    name,
     banner,
+    name,
     file: pkgModule,
     format: 'esm',
     sourcemap: true,
@@ -155,10 +155,6 @@ module.exports = async function run(env) {
 
   return {
     css: await resultCss,
-    main: {
-      bundle: await bundleMain,
-      result: await resultMain,
-    },
     // element: {
     //   bundle: await bundleElement,
     //   result: await resultElement,
@@ -166,6 +162,10 @@ module.exports = async function run(env) {
     esm: {
       bundle: await bundleEsm,
       result: await resultEsm,
+    },
+    main: {
+      bundle: await bundleMain,
+      result: await resultMain,
     },
   };
 };

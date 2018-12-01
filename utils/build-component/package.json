@@ -6,16 +6,16 @@
     "build-component": "cli/index.js"
   },
   "peerDependencies": {
-    "svelte": "*"
+    "svelte": "^2.0.0"
   },
   "dependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "0.9.0-beta.7",
-    "@minna-ui/pre-markup": "file:../pre-markup",
-    "@minna-ui/pre-style": "file:../pre-style",
+    "@ampproject/rollup-plugin-closure-compiler": "beta",
+    "@minna-ui/pre-markup": "0.17.0",
+    "@minna-ui/pre-style": "0.17.0",
     "del": "3.0.0",
     "rollup": "0.67.3",
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-node-resolve": "3.4.0",
-    "rollup-plugin-svelte": "4.3.2"
+    "rollup-plugin-svelte": "4.4.0"
   }
 }

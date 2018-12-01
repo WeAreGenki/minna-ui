@@ -28,10 +28,10 @@ const compileWarn = (origin, level, warnings) => {
     process.exitCode = 1; // prevents tests running too long
   }
 
-  warnings.forEach((err) => {
+  warnings.forEach(err => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
-      /* eslint-disable-next-line no-console */
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
       console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
@@ -44,7 +44,7 @@ const compileWarn = (origin, level, warnings) => {
 function cleanDistDir(dir) {
   /* istanbul ignore else */
   if (dir !== process.cwd()) {
-    fs.stat(dir, (err) => {
+    fs.stat(dir, err => {
       if (!err) {
         del.sync([dir]);
       }
@@ -76,26 +76,28 @@ async function processCss({ from, to, banner }) {
 
   // minify resulting CSS
   const min = await new CleanCSS({
-    returnPromise: true,
-    sourceMap: true,
     level: {
       1: { all: true },
       2: { all: true },
     },
+    returnPromise: true,
+    sourceMap: true,
   }).minify(result.css, result.map.toString());
 
   compileWarn('CleanCSS', 'ERR', min.errors);
   compileWarn('CleanCSS', 'WARN', min.warnings);
 
   // clean-css removes the source map comment so we need to add it back in
-  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(options.to)}.map */`;
+  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(
+    options.to,
+  )}.map */`;
 
   writeFile(options.to, min.styles);
   writeFile(`${options.to}.map`, min.sourceMap.toString());
 
   return {
-    result,
     min,
+    result,
   };
 }
 
@@ -125,7 +127,9 @@ module.exports = async function run(env, argv = []) {
     const outputCss = [];
 
     if (!inputDir) {
-      if (!pkgStyle && !pkgMain) throw new Error('No input file or directory specified!');
+      if (!pkgStyle && !pkgMain) {
+        throw new Error('No input file or directory specified!');
+      }
 
       inputCss.push(pkgMain);
       outputCss.push(pkgStyle);
@@ -134,12 +138,13 @@ module.exports = async function run(env, argv = []) {
 
       const dirFiles = await readdir(inputDir);
       const cssFiles = dirFiles.filter(
-        fileName => fileName !== 'import.css'
-        && fileName.endsWith('.css')
-        && !fileName.startsWith('_')
+        fileName =>
+          fileName !== 'import.css' &&
+          fileName.endsWith('.css') &&
+          !fileName.startsWith('_'),
       );
 
-      cssFiles.forEach((fileName) => {
+      cssFiles.forEach(fileName => {
         inputCss.push(join(inputDir, fileName));
         outputCss.push(join(outputDir, fileName));
       });
@@ -165,10 +170,14 @@ module.exports = async function run(env, argv = []) {
     return allResults;
   } catch (error) {
     if (error.showSourceCode) {
-      /* eslint-disable-next-line no-console */
-      console.error(`[BUILD-CSS] PostCSS error: ${error.message}:\n${error.showSourceCode()}`);
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      console.error(
+        `[BUILD-CSS] PostCSS error: ${
+          error.message
+        }:\n${error.showSourceCode()}`,
+      );
     } else {
-      /* eslint-disable-next-line no-console */
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
       console.error('[BUILD-CSS] Error', error);
     }
 

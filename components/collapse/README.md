@@ -26,6 +26,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse/dist/index.css" rel="stylesheet"/>
 
@@ -34,6 +35,7 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 Or use a specific version:
 
+<!-- prettier-ignore -->
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse@0.4.1/dist/index.css" rel="stylesheet"/>
 
@@ -42,6 +44,7 @@ Or use a specific version:
 
 2. Add element/s where you want the component to show in your document `<body></body>`:
 
+<!-- prettier-ignore -->
 ```html
 <div class="minna-collapse">
   <p>This is my collapsed content.</p>
@@ -58,8 +61,9 @@ Or use a specific version:
 <script>
   var collapseEls = document.querySelectorAll('.minna-collapse');
   collapseEls.forEach(function(el) {
+    /* eslint-disable-next-line no-new */
     new MinnaCollapse({ target: el });
-  })
+  });
 </script>
 ```
 
@@ -77,6 +81,7 @@ yarn add @minna-ui/collapse
 
 `MySvelteComponent.html`:
 
+<!-- prettier-ignore -->
 ```html
 <MinnaCollapse>
   <p>This is my collapsed content.</p>
@@ -107,6 +112,7 @@ yarn add @minna-ui/collapse
 
 `my-example.html`:
 
+<!-- prettier-ignore -->
 ```html
 <div class="minna-collapse">
   <p>This is my collapsed content.</p>
@@ -124,14 +130,15 @@ import MinnaCollapse from '@minna-ui/collapse';
 
 const collapseEls = document.querySelectorAll('.minna-collapse');
 collapseEls.forEach(el => {
+  /* eslint-disable-next-line no-new */
   new MinnaCollapse({ target: el });
-})
+});
 ```
 
 ## Licence
 
 `@minna-ui/collapse` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
------
+---
 
 © 2018 [We Are Genki](https://wearegenki.com)

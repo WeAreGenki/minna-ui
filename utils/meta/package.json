@@ -31,12 +31,12 @@
   "peerDependencies": {
     "eslint": "^5.0.0",
     "jest": "^23.0.0",
-    "postcss": "^6.0.0 || ^7.0.0",
+    "postcss": "^7.0.0",
+    "prettier": "^1.15.0",
     "stylelint": "^9.0.0",
-    "svelte": "^2.0.0"
-  },
-  "optionalDependencies": {
-    "rollup": "^0.67.1"
+    "svelte": "^2.0.0",
+    "tslint": "^5.0.0",
+    "typescript": "^3.1.0"
   },
   "dependencies": {
     "@minna-ui/code-view": "^0.17.0",
@@ -48,13 +48,16 @@
     "@minna-ui/postcss-config": "^0.17.0",
     "@minna-ui/pre-markup": "^0.17.0",
     "@minna-ui/pre-style": "^0.17.0",
+    "@minna-ui/prettier-config": "^0.17.0",
     "@minna-ui/rollup-plugins": "^0.17.0",
     "@minna-ui/select": "^0.17.0",
     "@minna-ui/stylelint-config": "^0.17.0",
     "@minna-ui/switch": "^0.17.0",
     "@minna-ui/tabs": "^0.17.0",
     "@minna-ui/toast": "^0.17.0",
-    "@minna-ui/tooltip-action": "^0.17.0"
+    "@minna-ui/tooltip-action": "^0.17.0",
+    "@minna-ui/ts-config": "^0.17.0",
+    "@minna-ui/tslint-config": "^0.17.0"
   },
   "publishConfig": {
     "access": "public"

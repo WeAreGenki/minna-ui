@@ -80,7 +80,7 @@ yarn add @minna-ui/code-view
 `MySvelteComponent.html`:
 
 ```html
-<MinnaCodeView/>
+<MinnaCodeView />
 
 <script>
   import MinnaCodeView from '@minna-ui/code-view';

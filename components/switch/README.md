@@ -74,7 +74,7 @@ yarn add @minna-ui/switch
 `MySvelteComponent.html`:
 
 ```html
-<MinnaSwitch/>
+<MinnaSwitch />
 
 <script>
   import MinnaSwitch from '@minna-ui/switch';

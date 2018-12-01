@@ -78,7 +78,7 @@ yarn add @minna-ui/toasts
 `MySvelteComponent.html`:
 
 ```html
-<MinnaToasts/>
+<MinnaToasts />
 
 <script>
   import MinnaToasts from '@minna-ui/toasts';

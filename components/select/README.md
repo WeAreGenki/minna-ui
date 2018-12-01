@@ -76,7 +76,7 @@ yarn add @minna-ui/select
 `MySvelteComponent.html`:
 
 ```html
-<MinnaSelect/>
+<MinnaSelect />
 
 <script>
   import MinnaSelect from '@minna-ui/select';

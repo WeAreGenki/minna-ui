@@ -80,7 +80,7 @@ yarn add @minna-ui/tabs
 `MySvelteComponent.html`:
 
 ```html
-<MinnaTabs/>
+<MinnaTabs />
 
 <script>
   import MinnaTabs from '@minna-ui/tabs';

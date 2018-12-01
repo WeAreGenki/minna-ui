@@ -74,7 +74,7 @@ yarn add @minna-ui/navbar
 `MySvelteComponent.html`:
 
 ```html
-<MinnaNavbar/>
+<MinnaNavbar />
 
 <script>
   import MinnaNavbar from '@minna-ui/navbar';

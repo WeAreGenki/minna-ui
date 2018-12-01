@@ -60,9 +60,12 @@ Incorrect:
 Correct (with `"` around `{ }`):
 
 ```html
-<MinnaNavbar segment="{child.segment}" menuItems="{[
+<MinnaNavbar
+  segment="{child.segment}"
+  menuItems="{[
   { url: 'example', name: 'Example' },
-]}"/>
+]}"
+/>
 ```
 
 ### Options

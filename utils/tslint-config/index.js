@@ -21,8 +21,6 @@ const rules = {
     'shorthand-first',
   ],
   'only-arrow-functions': false,
-  'no-null-keyword': false,
-  'no-magic-numbers': false,
   prettier: true,
 };
 

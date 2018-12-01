@@ -8,13 +8,11 @@
 
 /* TODO: Make this better, more flexible and/or dynamic */
 
-/* FIXME: Uncomment once https://github.com/jonathantneal/postcss-advanced-variables/pull/55 is merged */
-/* @mixin button($btn-bg-color, $btn-bg-color-hover, $btn-bg-color-active, $btn-shadow-color: $shadow-color) { */
 @mixin button(
   $btn-bg-color,
   $btn-bg-color-hover,
   $btn-bg-color-active,
-  $btn-shadow-color
+  $btn-shadow-color: $shadow-color
 ) {
   color: $white;
   background-color: $btn-bg-color;

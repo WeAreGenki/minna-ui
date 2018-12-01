@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const merge = require('deepmerge');
-const nodeResolve = require('resolve');
+const resolve = require('resolve');
 const postcss = require('postcss');
 const atUse = require('postcss-use');
 const advancedVars = require('postcss-advanced-variables');
@@ -34,9 +34,9 @@ function packageFilter(pkg) {
 /**
  * Custom file resolver for CSS imports.
  */
-function resolve(id, cwd, opts) {
+function importResolve(id, cwd, opts) {
   return new Promise((res, rej) => {
-    nodeResolve(
+    resolve(
       id,
       {
         packageFilter,
@@ -106,7 +106,7 @@ module.exports = postcss.plugin('minna-ui', userOpts => {
       // advancedVars
       importCache,
       importPaths,
-      resolve,
+      importResolve,
 
       // autoprefixer
       grid: true, // IE 11 support

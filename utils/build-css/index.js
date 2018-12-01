@@ -48,6 +48,7 @@ function cleanDistDir(dir) {
       if (!err) {
         del.sync([dir]);
       }
+
       fs.mkdirSync(dir);
     });
   }

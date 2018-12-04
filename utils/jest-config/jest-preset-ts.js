@@ -6,13 +6,24 @@ module.exports = {
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.m?jsx?$': 'babel-jest',
+    '^.+\\.tsx?$': 'ts-jest', // XXX: `ts-jest` is not included by default!
     '^.+\\.(htmlx?|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.css$': '@minna-ui/jest-config/lib/null-transform.js',
   },
   transformIgnorePatterns: ['node_modules/(?!svelte/)'],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$',
   testPathIgnorePatterns: ['/__sapper__/', '/dist/', '/node_modules/'],
-  moduleFileExtensions: ['html', 'htmlx', 'js', 'jsx', 'json', 'mjs', 'node'],
+  moduleFileExtensions: [
+    'html',
+    'htmlx',
+    'js',
+    'jsx',
+    'json',
+    'mjs',
+    'node',
+    'ts',
+    'tsx',
+  ],
   collectCoverageFrom: [
     '**/*.{html,js,mjs}',
     '!**/bin/**',

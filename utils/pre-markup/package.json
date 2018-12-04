@@ -19,7 +19,7 @@
     "svelte": "^2.0.0"
   },
   "dependencies": {
-    "deepmerge": "^2.2.1",
+    "deepmerge": "^3.0.0",
     "html-minifier": "3.5.21"
   },
   "publishConfig": {

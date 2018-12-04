@@ -19,9 +19,10 @@
   ],
   "main": "jest-preset.js",
   "files": [
+    "babel-preset.js",
     "fixtures",
-    "lib",
-    "babel-preset.js"
+    "jest-preset-ts.js",
+    "lib"
   ],
   "peerDependencies": {
     "jest": "^23.0.1",

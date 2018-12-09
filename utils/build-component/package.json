@@ -15,7 +15,7 @@
     "del": "3.0.0",
     "rollup": "0.67.4",
     "rollup-plugin-commonjs": "9.2.0",
-    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-node-resolve": "4.0.0",
     "rollup-plugin-svelte": "4.4.0"
   }
 }

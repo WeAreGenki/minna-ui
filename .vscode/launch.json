@@ -2,23 +2,30 @@
 {
   "version": "0.2.0",
   "configurations": [
+    // @see https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests
     {
       "type": "node",
       "request": "launch",
       "name": "Jest All",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
       "args": ["--runInBand"],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Jest Current File",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
       "args": ["${relativeFile}"],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
     }
   ]
 }

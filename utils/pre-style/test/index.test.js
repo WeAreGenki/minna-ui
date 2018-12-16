@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+// TODO: Add test for returned `dependencies`
+
 'use strict';
 
 const fs = require('fs');

@@ -53,7 +53,7 @@ function makeCss({
           this.warn(warn.toString(), { line: warn.line, column: warn.column });
         });
 
-        // this allows rollup to monitor files for changes in watch mode
+        // pass through dependent files so rollup can monitor them for changes
         /* eslint-disable-next-line no-underscore-dangle */
         const dependencies = result.map ? result.map._sources._array : null;
 

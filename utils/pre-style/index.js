@@ -38,8 +38,13 @@ module.exports = (context = {}) => async ({
       console.warn(warn.toString()); // eslint-disable-line no-console
     });
 
+    // pass through dependent files so rollup can monitor them for changes
+    /* eslint-disable-next-line no-underscore-dangle */
+    const dependencies = result.map ? result.map._sources._array : null;
+
     /* eslint-disable-next-line consistent-return */
     return {
+      dependencies,
       code: result.css,
       map: result.map,
     };

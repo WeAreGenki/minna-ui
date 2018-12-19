@@ -13,7 +13,7 @@
     "@minna-ui/pre-markup": "^0.18.1",
     "@minna-ui/pre-style": "^0.18.1",
     "del": "3.0.0",
-    "rollup": "0.68.0",
+    "rollup": "0.68.1",
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-node-resolve": "4.0.0",
     "rollup-plugin-svelte": "5.0.0"

@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/build-component",
   "private": true,
-  "version": "0.18.0",
+  "version": "0.18.1",
   "bin": {
     "build-component": "cli/index.js"
   },
@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "beta",
-    "@minna-ui/pre-markup": "^0.18.0",
-    "@minna-ui/pre-style": "^0.18.0",
+    "@minna-ui/pre-markup": "^0.18.1",
+    "@minna-ui/pre-style": "^0.18.1",
     "del": "3.0.0",
     "rollup": "0.68.0",
     "rollup-plugin-commonjs": "9.2.0",

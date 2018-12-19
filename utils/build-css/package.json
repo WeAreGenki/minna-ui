@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/build-css",
   "private": true,
-  "version": "0.18.0",
+  "version": "0.18.1",
   "bin": {
     "build-css": "cli/index.js"
   },
@@ -9,7 +9,7 @@
     "postcss": "*"
   },
   "dependencies": {
-    "@minna-ui/postcss-config": "^0.18.0",
+    "@minna-ui/postcss-config": "^0.18.1",
     "clean-css": "4.2.1",
     "del": "3.0.0",
     "postcss-load-config": "2.0.0"

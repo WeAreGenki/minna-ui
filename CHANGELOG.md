@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.18.1] - 2018-12-19
+
+### Added
+
+- File dependencies are now tracked in `@minna-ui/pre-style` Svelte preprocessor when using `rollup-plugin-svelte`. While rollup is in watch mode if any dependant file changes it will trigger a rebuild.
+
+### Removed
+
+- Unnecessary rules in `@minna-ui/tslint-config`.
+
+### Changed
+
+- Move `@minna-ui/ts-config` Jest preset into a separate file.
+- Updated package dependencies.
+
+### Fixed
+
+- ESLint preset incorrectly assumes `preact.config.js` module style. It's not commonJS (the default), the file actually uses ES modules.
+
 ## [0.18.0] - 2018-12-01
 
 ### Added
@@ -566,7 +585,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.1...HEAD
+[0.18.1]: https://github.com/MaxMilton/new-tab/compare/v0.18.0...v0.18.1
 [0.18.0]: https://github.com/MaxMilton/new-tab/compare/v0.17.1...v0.18.0
 [0.17.1]: https://github.com/MaxMilton/new-tab/compare/v0.17.0...v0.17.1
 [0.17.0]: https://github.com/MaxMilton/new-tab/compare/v0.16.0...v0.17.0

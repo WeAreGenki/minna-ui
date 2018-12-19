@@ -55,7 +55,7 @@ module.exports = {
     // JS config files
     {
       files: ['*.config.js', '*rc.js'],
-      excludedFiles: ['rollup.config.js'], // uses ES6 modules
+      excludedFiles: ['preact.config.js', 'rollup.config.js'], // uses ES6 modules
       parserOptions: {
         sourceType: 'script',
       },

@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.18.2] - 2018-12-21
+
 ### Added
 
 - New `gitDescribe` helper function in `@minna-ui/rollup-plugins`.
+
+### Changed
+
+- Updated package dependencies.
 
 ## [0.18.1] - 2018-12-19
 
@@ -589,7 +595,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.2...HEAD
+[0.18.2]: https://github.com/MaxMilton/new-tab/compare/v0.18.1...v0.18.2
 [0.18.1]: https://github.com/MaxMilton/new-tab/compare/v0.18.0...v0.18.1
 [0.18.0]: https://github.com/MaxMilton/new-tab/compare/v0.17.1...v0.18.0
 [0.17.1]: https://github.com/MaxMilton/new-tab/compare/v0.17.0...v0.17.1

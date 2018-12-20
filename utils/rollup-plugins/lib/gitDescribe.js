@@ -15,6 +15,7 @@ function gitDescribe() {
     ).toString();
     return reference;
   } catch (error) {
+    /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
     console.log(error);
   }
 }

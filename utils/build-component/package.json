@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/build-component",
   "private": true,
-  "version": "0.18.1",
+  "version": "0.18.2",
   "bin": {
     "build-component": "cli/index.js"
   },

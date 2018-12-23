@@ -24,13 +24,17 @@
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
-    "rollup": "^0.67.2 || ^0.68.0"
+    "rollup": "^0.68.0"
   },
   "dependencies": {
+    "colorette": "^1.0.7",
+    "cssnano": "^4.1.8",
+    "cssnano-preset-advanced": "^4.0.6",
     "deepmerge": "^3.0.0",
     "postcss-load-config": "^2.0.0",
     "purgecss": "^1.1.0",
-    "rollup-pluginutils": "^2.3.3"
+    "rollup-pluginutils": "^2.3.3",
+    "sirv": "^0.2.2"
   },
   "publishConfig": {
     "access": "public"

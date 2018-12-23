@@ -37,6 +37,7 @@ function compileTemplate(template) {
  * file or the template as a string.
  * @param {string=} opts.title Page title.
  * @param {...any=} opts.data Any other data you want available in the template.
+ * @returns {object} Rollup plugin
  */
 function makeHtml({
   file,

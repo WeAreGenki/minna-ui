@@ -6,9 +6,11 @@ const preMarkup = require('@minna-ui/pre-markup');
 const preStyle = require('@minna-ui/pre-style');
 const {
   catchErr,
+  devserver,
   gitDescribe,
   makeCss,
   makeHtml,
+  postcss,
 } = require('@minna-ui/rollup-plugins');
 
 const prod = process.env.NODE_ENV === 'production';
@@ -21,9 +23,11 @@ const preprocess = {
 
 module.exports = {
   catchErr,
+  devserver,
   gitDescribe,
   makeCss,
   makeHtml,
+  postcss,
   preMarkup,
   preprocess,
   preStyle,

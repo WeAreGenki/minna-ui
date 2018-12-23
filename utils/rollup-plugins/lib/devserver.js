@@ -3,6 +3,9 @@
 
 // TODO: Inject page reload script into HTML
 
+/* tslint:disable no-console */
+/* eslint-disable no-console */
+
 'use strict';
 
 const colors = require('colorette');
@@ -41,7 +44,7 @@ function devserver({
   dir = './dist',
   port = process.env.PORT || 5000,
   spa = false,
-  wsPort = 13341,
+  // wsPort = 13341,
   ...userOpts
 } = {}) {
   if (!dev) {
@@ -50,8 +53,9 @@ function devserver({
     );
   }
 
-  process.on('exit', code => {
-    console.log(`[DEVSERVER] About to exit with code: ${code}`);
+  // process.on('exit', code => {
+  process.on('exit', () => {
+    // FIXME: This code never executes
     server.close();
   });
 
@@ -59,11 +63,26 @@ function devserver({
     {
       cors: true,
       dev: true,
+      single: spa,
     },
     userOpts,
   );
 
   server = createServer(sirv(resolve(dir), sirvOpts));
+
+  // TODO: Reload script injection
+  // server.on('request', (req, res) => {
+  //   const { method, url } = req;
+
+  //   if (
+  //     url &&
+  //     (url.endsWith('/') || url.endsWith('.html')) &&
+  //     method === 'GET'
+  //   ) {
+  //     // console.log('@@REQ', req);
+  //     console.log('@@HIT HIT');
+  //   }
+  // });
 
   // request logging middleware
   server.on('request', (req, res) => {
@@ -104,13 +123,13 @@ function devserver({
   return {
     name: 'devserver',
 
-    generateBundle(outputOpts, bundle, isWrite) {
-      console.log('@@generateBundle isWrite', isWrite);
-    },
+    // generateBundle(outputOpts, bundle, isWrite) {
+    //   console.log('@@generateBundle isWrite', isWrite);
+    // },
 
-    watchChange(file) {
-      console.log(`[DEVSERVER] Reloading due to file change: ${file}`);
-    },
+    // watchChange(file) {
+    //   console.log(`[DEVSERVER] Reloading due to file change: ${file}`);
+    // },
   };
 }
 

@@ -102,6 +102,7 @@ function makeCss({
 
       /* eslint-disable-next-line */
       for (const id in styles) {
+        // tslint:disable-line
         css += styles[id] || '';
       }
 
@@ -120,6 +121,7 @@ function makeCss({
         );
 
         const result = await postcss(
+          /* eslint-disable-next-line global-require */
           require('cssnano')({
             preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
           }),

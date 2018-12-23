@@ -11,7 +11,7 @@
 /* Media queries */
 
 /**
- * NOTE: If you change these, you'll also need to edit `mixins/at-media.css`.
+ * NOTE: If you add or remove breakpoints you also need to edit `mixins/at-media.css`.
  */
 /* prettier-ignore */
 $ns: (min-width: 30.01em) !default; /* not-small */
@@ -77,7 +77,7 @@ $font-stack-monospace:
   Courier,
   monospace !default;
 $text-size: 1.0625em !default; /* 17px */
-$text-size-large: 1.3125em !default; /* 21px */
+$text-size-large: 1.25em !default; /* 20px */
 $text-weight-light: 300 !default;
 $text-weight: 400 !default;
 $text-weight-heavy: 700 !default;

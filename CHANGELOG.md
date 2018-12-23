@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.0] - 2018-12-24
+
+### Added
+
+- New rollup plugins `makeCss` and `devserver` in `@minna-ui/rollup-plugins`.
+
+### Changed
+
+- Renamed existing `makeCss` rollup plugin from `makeCss` to `postcss` in `@minna-ui/rollup-plugins`. The _new_ `makeCss` plugin better matches `makeHtml` which writes files to disk, while the previous plugin (now called `postcss`) only processed files but did not write them to disk.
+- Reduce `$text-size-large` CSS variable to be equivalent to `20px` instead of `21px`. In narrow text it's actually easier to read. If you want larger text for accessibility reasons you'll need to set `$text-size-large: 1.3125em; /* 21px */` in your CSS variables.
+- Updated package dependencies.
+
+### Fixed
+
+- CSS `button` mixin does not provide a way to set animation speed.
+
 ## [0.18.2] - 2018-12-21
 
 ### Added
@@ -595,7 +611,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.18.2...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.19.0...HEAD
+[0.19.0]: https://github.com/MaxMilton/new-tab/compare/v0.18.2...v0.19.0
 [0.18.2]: https://github.com/MaxMilton/new-tab/compare/v0.18.1...v0.18.2
 [0.18.1]: https://github.com/MaxMilton/new-tab/compare/v0.18.0...v0.18.1
 [0.18.0]: https://github.com/MaxMilton/new-tab/compare/v0.17.1...v0.18.0

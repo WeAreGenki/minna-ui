@@ -15,6 +15,17 @@ const dev = !!process.env.ROLLUP_WATCH;
 
 let server;
 
+/** Byte size units. Let's hope our requests never get above `kB` ;) */
+const units = ['B', 'kB', 'MB', 'GB', 'TB'];
+
+/**
+ * Convert bytes into a human readable form.
+ */
+function humanizeSize(bytes) {
+  const index = Math.floor(Math.log(bytes) / Math.log(1024));
+  return `${+(bytes / 1024 ** index).toFixed(2)} ${units[index]}`;
+}
+
 /**
  * Run a local development web server.
  * @see https://github.com/lukeed/sirv/tree/master/packages/sirv#api
@@ -54,17 +65,34 @@ function devserver({
 
   server = createServer(sirv(resolve(dir), sirvOpts));
 
+  // request logging middleware
   server.on('request', (req, res) => {
-    const { method, url } = req;
+    const start = process.hrtime();
+    const write = res.write.bind(res);
+    let byteLength = 0;
 
-    if (
-      url &&
-      (url.endsWith('/') || url.endsWith('.html')) &&
-      method === 'GET'
-    ) {
-      // console.log('@@REQ', req);
-      console.log('@@HIT HIT');
-    }
+    // monkey patch to calculate response byte size
+    res.write = function writeFn(data) {
+      if (data) byteLength += data.length;
+      // @ts-ignore
+      write(...arguments); // eslint-disable-line prefer-rest-params
+    };
+
+    req.once('end', () => {
+      const duration = process.hrtime(start);
+      const { method, originalUrl, url } = req;
+      const { statusCode } = res;
+      const timing = `${+(duration[1] / 1e6).toFixed(2)}ms`;
+      const color =
+        statusCode >= 400 ? 'red' : statusCode >= 300 ? 'yellow' : 'green'; // eslint-disable-line no-nested-ternary
+      const size = humanizeSize(byteLength);
+      const uri = originalUrl || url;
+      console.log(
+        `» ${timing} ${colors[color](
+          statusCode,
+        )} ${method} ${uri} ${colors.cyan(size)}`,
+      );
+    });
   });
 
   server.listen(port, err => {

@@ -26,6 +26,7 @@ const units = ['B', 'kB', 'MB', 'GB', 'TB'];
  */
 function humanizeSize(bytes) {
   const index = Math.floor(Math.log(bytes) / Math.log(1024));
+  if (index < 0) return '';
   return `${+(bytes / 1024 ** index).toFixed(2)} ${units[index]}`;
 }
 

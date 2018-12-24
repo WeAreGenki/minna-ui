@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.1] - 2018-12-24
+
+### Fixed
+
+- Output broken in the `makeCss` plugin in `@minna-ui/rollup-plugins` when running a production build and `optimize` is `true`.
+- 404 requests are logged as `NaN undefined` size in the `devserver` plugin in `@minna-ui/rollup-plugins`.
+- Tries to start a duplicate server instance causing a crash in the `devserver` plugin in `@minna-ui/rollup-plugins`.
+
 ## [0.19.0] - 2018-12-24
 
 ### Added
@@ -611,7 +619,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.19.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.19.1...HEAD
+[0.19.1]: https://github.com/MaxMilton/new-tab/compare/v0.19.0...v0.19.1
 [0.19.0]: https://github.com/MaxMilton/new-tab/compare/v0.18.2...v0.19.0
 [0.18.2]: https://github.com/MaxMilton/new-tab/compare/v0.18.1...v0.18.2
 [0.18.1]: https://github.com/MaxMilton/new-tab/compare/v0.18.0...v0.18.1

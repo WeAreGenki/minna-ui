@@ -27,7 +27,7 @@ const catchErr = require('./catchErr.js');
  * @param {boolean=} opts.safe Only apply safe optimisations.
  * @param {boolean=} opts.debug Show additional logging for debug purposes.
  * @param {...any=} opts.userOpts Any additional options to pass to `cssnano`.
- * @returns {object} Rollup plugin
+ * @returns {object} Rollup plugin.
  */
 function makeCss({
   file,
@@ -143,7 +143,7 @@ function makeCss({
             keyframes: true,
           });
 
-          css = purgecss.purge()[0]; // eslint-disable-line prefer-destructuring
+          css = purgecss.purge()[0].css; // eslint-disable-line prefer-destructuring
 
           // TODO: Process source map here
         }

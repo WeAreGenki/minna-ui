@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Move `@minna-ui/ts-config` Jest preset into a separate file.
+- Move `@minna-ui/jest-config` TypeScript preset into a separate file.
 - Updated package dependencies.
 
 ### Fixed

@@ -2,7 +2,7 @@
 
 const merge = require('deepmerge');
 const { writeFile } = require('fs');
-const { join } = require('path');
+const { join, resolve } = require('path');
 const postcss = require('postcss');
 const postcssrc = require('postcss-load-config');
 const Purgecss = require('purgecss');
@@ -78,7 +78,7 @@ function makeCss({
         // register sub-dependencies so rollup can monitor them for changes
         if (result.map) {
           // TODO: Don't use PostCSS private API
-        /* eslint-disable-next-line no-underscore-dangle */
+          /* eslint-disable-next-line no-underscore-dangle */
           result.map._sources._array.forEach(dependency => {
             this.addWatchFile(dependency);
           });
@@ -151,14 +151,21 @@ function makeCss({
         }
       }
 
-      // FIXME: @TESTING: Test this works as expected for both `output.file` and `output.dir modes`
-      // const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
-      const jsFile = outputOpts.file || Object.values(bundle)[0].fileName;
-      const cssFile = jsFile.replace(/js$/, 'css');
-      const cssOut = outputOpts.dir ? join(outputOpts.dir, cssFile) : cssFile;
+      let cssWritePath;
+
+      if (file) {
+        cssWritePath = resolve(file);
+      } else {
+        // FIXME: @TESTING: Test this works as expected for both `output.file` and `output.dir modes`
+        // const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
+        const jsFile = outputOpts.file || Object.values(bundle)[0].fileName;
+        const cssFile = jsFile.replace(/js$/, 'css');
+        const cssOut = outputOpts.dir ? join(outputOpts.dir, cssFile) : cssFile;
+        cssWritePath = join(process.cwd(), cssOut);
+      }
 
       // write CSS file
-      writeFile(join(process.cwd(), cssOut), css, catchErr);
+      writeFile(cssWritePath, css, catchErr);
 
       // TODO: Write source map to disk here
     },

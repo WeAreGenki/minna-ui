@@ -75,9 +75,14 @@ function makeCss({
           this.warn(warn.toString(), { line: warn.line, column: warn.column });
         });
 
-        // pass through dependent files so rollup can monitor them for changes
+        // register sub-dependencies so rollup can monitor them for changes
+        if (result.map) {
+          // TODO: Don't use PostCSS private API
         /* eslint-disable-next-line no-underscore-dangle */
-        dependencies = result.map ? result.map._sources._array : null;
+          result.map._sources._array.forEach(dependency => {
+            this.addWatchFile(dependency);
+          });
+        }
 
         styles[id] = result.css;
         maps[id] = result.map;
@@ -90,10 +95,7 @@ function makeCss({
       }
 
       /* eslint-disable-next-line consistent-return */
-      return {
-        dependencies,
-        code: '',
-      };
+      return { code: '' };
     },
 
     async generateBundle(outputOpts, bundle) {

@@ -24,7 +24,7 @@
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
-    "rollup": "^0.68.0"
+    "rollup": "^1.0.0"
   },
   "dependencies": {
     "colorette": "^1.0.7",

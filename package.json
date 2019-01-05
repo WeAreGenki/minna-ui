@@ -38,7 +38,7 @@
     "docsify-cli": "4.3.0",
     "eslint": "5.11.1",
     "jest": "23.6.0",
-    "lerna": "3.8.0",
+    "lerna": "3.8.1",
     "markdownlint-cli": "0.13.0",
     "postcss": "7.0.7",
     "postcss-scss": "2.0.0",

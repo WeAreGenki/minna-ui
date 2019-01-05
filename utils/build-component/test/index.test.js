@@ -11,9 +11,7 @@ const buildComponent = require('../index.js');
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve(
-  '@minna-ui/jest-config/fixtures/TestComponent.html',
-);
+const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 const sourcePathBadSyntax = require.resolve(
   '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html',
 );
@@ -43,11 +41,11 @@ describe('build-component tool', () => {
     const build = buildComponent(pkg('esm'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    expect(built.esm.result.code).toMatch('export default TestComponent');
-    expect(built.esm.result.code).not.toMatch('TestComponent=function');
-    expect(built.esm.result.code).toMatch("name: 'Elon Musk'");
-    expect(built.esm.result.code).toMatch('component.refs._target ===');
-    expect(built.esm.result.map.sources).toHaveLength(2);
+    expect(built.esm.result.output[0].code).toMatch('export default TestComponent');
+    expect(built.esm.result.output[0].code).not.toMatch('TestComponent=function');
+    expect(built.esm.result.output[0].code).toMatch("name: 'Elon Musk'");
+    expect(built.esm.result.output[0].code).toMatch('component.refs._target ===');
+    expect(built.esm.result.output[0].map.sources).toHaveLength(2);
   });
 
   it('compiles package main bundle', async () => {
@@ -55,9 +53,9 @@ describe('build-component tool', () => {
     const build = buildComponent(pkg('main'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    expect(built.main.result.code).toMatch('var TestComponent=function(');
-    expect(built.main.result.code).not.toMatch('export default TestComponent');
-    expect(built.main.result.code).toMatch(':"Elon Musk"');
+    expect(built.main.result.output[0].code).toMatch('var TestComponent=function(');
+    expect(built.main.result.output[0].code).not.toMatch('export default TestComponent');
+    expect(built.main.result.output[0].code).toMatch(':"Elon Musk"');
   });
 
   it('compiles package css bundle', async () => {
@@ -76,15 +74,11 @@ describe('build-component tool', () => {
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    const re1 = new RegExp(
-      `\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`,
-    );
-    expect(built.esm.result.code).toMatch(re1);
+    const re1 = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.esm.result.output[0].code).toMatch(re1);
     // expect(built.css.code).toMatch(re1);
-    const re2 = new RegExp(
-      `\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`,
-    );
-    expect(built.main.result.code).toMatch(re2);
+    const re2 = new RegExp(`\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.main.result.output[0].code).toMatch(re2);
   });
 
   it('cleans existing dist dir', async () => {
@@ -103,17 +97,11 @@ describe('build-component tool', () => {
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_module)).resolves.toBeDefined();
-    await expect(
-      stat(`${pkgData.npm_package_module}.map`),
-    ).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_module}.map`)).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_main)).resolves.toBeDefined();
-    await expect(
-      stat(`${pkgData.npm_package_main}.map`),
-    ).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_main}.map`)).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
-    await expect(
-      stat(`${pkgData.npm_package_style}.map`),
-    ).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
   it('throws an error when bad HTML syntax', async () => {

@@ -107,6 +107,7 @@ module.exports = postcss.plugin('minna-ui', userOpts => {
       importCache,
       importPaths,
       importResolve,
+      unresolved: debug ? 'warn' : 'ignore',
 
       // autoprefixer
       grid: true, // IE 11 support

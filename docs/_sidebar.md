@@ -4,6 +4,7 @@
 
   - [Overview](README.md)
   - [Quick Start](quick-start.md)
+  - [Design Philosophy](design-philosophy.md)
   - [Examples](examples.md)
 
 - CSS

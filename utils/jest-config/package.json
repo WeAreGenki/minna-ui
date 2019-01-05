@@ -19,21 +19,19 @@
   ],
   "main": "jest-preset.js",
   "files": [
-    "babel-preset.js",
+    "*.js",
     "fixtures",
-    "jest-preset-ts.js",
     "lib"
   ],
   "peerDependencies": {
-    "jest": "^23.0.1",
-    "svelte": "^2.0.0"
+    "jest": "^23.0.1"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.18",
-    "babel-core": "^7.0.0-bridge.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest-circus": "^23.6.0"
   },

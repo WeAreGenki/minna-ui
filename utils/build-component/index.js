@@ -38,6 +38,14 @@ const isClean = new Map();
  * @param {NodeJS.ProcessEnv} env
  */
 module.exports = async function run(env) {
+  const name = basename(pkgSvelte, '.html');
+
+  if (!name) {
+    throw new Error(
+      'Package `svelte` field not found, it this a svelte component?',
+    );
+  }
+
   process.env.NODE_ENV = env.NODE_ENV || 'production';
   const pkgName = env.npm_package_name;
   const pkgVersion = env.npm_package_version;
@@ -46,7 +54,6 @@ module.exports = async function run(env) {
   const pkgModule = env.npm_package_module;
   const pkgMain = env.npm_package_main;
   const pkgStyle = env.npm_package_style;
-  const name = basename(pkgSvelte, '.html');
 
   const banner = `/*!
  * ${pkgName} v${pkgVersion} (${pkgHomepage})

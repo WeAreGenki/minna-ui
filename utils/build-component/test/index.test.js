@@ -124,6 +124,6 @@ describe('build-component tool', () => {
     });
     // FIXME: Error is different if jest is run in --ci mode and between node versions
     // await expect(build).rejects.toThrowErrorMatchingSnapshot();
-    await expect(build).rejects.toThrowError();
+    await expect(build).rejects.toThrow();
   });
 });

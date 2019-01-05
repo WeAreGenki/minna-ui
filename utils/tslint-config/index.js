@@ -14,12 +14,7 @@ const rules = {
     { 'ignore-pattern': '[A-Z]{2,}' },
   ],
   curly: [true, 'ignore-same-line'],
-  'object-literal-sort-keys': [
-    true,
-    'ignore-case',
-    'match-declaration-order',
-    'shorthand-first',
-  ],
+  'object-literal-sort-keys': [true, 'ignore-case', 'shorthand-first'],
   'only-arrow-functions': false,
   prettier: true,
 };

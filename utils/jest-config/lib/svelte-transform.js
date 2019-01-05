@@ -4,6 +4,9 @@
 
 'use strict';
 
+// NOTE: `svelte` is not listed as a dependency in case developers want to use
+// this package for non-svelte projects.
+/* eslint-disable-next-line import/no-extraneous-dependencies */
 const svelte = require('svelte');
 
 function process(src, filename) {

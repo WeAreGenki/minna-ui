@@ -1,3 +1,7 @@
+/**
+ * Helper functions for use in tests.
+ */
+
 'use strict';
 
 const { spawn } = require('child_process');

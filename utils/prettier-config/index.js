@@ -23,6 +23,12 @@ module.exports = (opts = {}) =>
             requirePragma: true,
           },
         },
+        {
+          files: ['*.test.js', '*.test.jsx', '*.test.ts', '*.test.tsx'],
+          options: {
+            printWidth: 100,
+          },
+        },
       ],
     },
     opts,

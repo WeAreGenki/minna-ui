@@ -13,9 +13,7 @@ const preprocessStyle = require('../index.js');
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform
-const componentPath = require.resolve(
-  '@minna-ui/jest-config/fixtures/TestComponent.html',
-);
+const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
 
 const preprocessOpts = {
   style: preprocessStyle({

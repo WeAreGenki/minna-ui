@@ -1,3 +1,5 @@
+// TODO: Make the import extension configurable instead of hard coding `.css`
+
 'use strict';
 
 const fs = require('fs');
@@ -47,6 +49,8 @@ function importResolve(id, cwd, opts) {
       },
       (err, file) => {
         if (err) {
+          /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */ /* prettier-ignore */
+          console.error(`Error resolving "${id}" when processing "${opts.result.opts.from}"`);
           rej(err);
           return;
         }
@@ -107,6 +111,7 @@ module.exports = postcss.plugin('minna-ui', userOpts => {
       importCache,
       importPaths,
       importResolve,
+      unresolved: debug ? 'warn' : 'ignore',
 
       // autoprefixer
       grid: true, // IE 11 support

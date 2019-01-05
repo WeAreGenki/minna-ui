@@ -13,9 +13,11 @@ const merge = require('deepmerge');
 const { createServer } = require('http');
 const { resolve } = require('path');
 const sirv = require('sirv');
+const catchErr = require('./catchErr.js');
 
 const dev = !!process.env.ROLLUP_WATCH;
 
+/** One server instance across all plugin invocations. */
 let server;
 
 /** Byte size units. Let's hope our requests never get above `kB` ;) */
@@ -34,15 +36,19 @@ function humanizeSize(bytes) {
  * Run a local development web server.
  * @see https://github.com/lukeed/sirv/tree/master/packages/sirv#api
  * @param {object} opts
- * @param {string=} opts.dir
- * @param {number=} opts.port
- * @param {boolean=} opts.spa
- * @param {number=} opts.wsPort Web socket port for page reload script.
+ * @param {string=} opts.dir The directory to serve.
+ * @param {boolean=} opts.liveReload Enable automatic page reload when a
+ * dependent file changes.
+ * @param {number=} opts.port Port to listen on.
+ * @param {boolean=} opts.spa Run in single page app mode where `index.html` is
+ * served for any unknown paths instead of returning a 404.
+ * @param {number=} opts.wsPort Web socket port for the page live reload script.
  * @param {...any=} opts.userOpts Any additional options to pass to `sirv`.
  * @returns {object} Rollup plugin.
  */
 function devserver({
   dir = './dist',
+  // liveReload = true,
   port = process.env.PORT || 5000,
   spa = false,
   // wsPort = 13341,
@@ -57,7 +63,8 @@ function devserver({
   // only start a new server if one isn't already initialised
   if (!server) {
     process.on('exit', () => {
-      server.close();
+      server.close(catchErr);
+      console.log(`[DEVSERVER] Terminated server`);
     });
 
     const sirvOpts = merge(
@@ -71,7 +78,7 @@ function devserver({
 
     server = createServer(sirv(resolve(dir), sirvOpts));
 
-    // TODO: Reload script injection
+    // TODO: Live reload script injection
     // server.on('request', (req, res) => {
     //   const { method, url } = req;
 

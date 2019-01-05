@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Rename component variables CSS file from `_variables.css` to `_component-name.css` making it more explicit which file is being imported.
+
 ## [0.19.1] - 2018-12-24
 
 ### Fixed

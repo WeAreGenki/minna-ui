@@ -35,14 +35,21 @@ const isClean = new Map();
 
 /**
  * Run component build process.
- * @param {NodeJS.ProcessEnv} env
+ * @param {!NodeJS.ProcessEnv} env
  */
 module.exports = async function run(env) {
+  const pkgSvelte = env.npm_package_svelte;
+
+  if (!pkgSvelte) {
+    throw new Error(
+      'Package.json `svelte` field not found, it this a svelte component?',
+    );
+  }
+
   process.env.NODE_ENV = env.NODE_ENV || 'production';
   const pkgName = env.npm_package_name;
   const pkgVersion = env.npm_package_version;
   const pkgHomepage = env.npm_package_homepage;
-  const pkgSvelte = env.npm_package_svelte;
   const pkgModule = env.npm_package_module;
   const pkgMain = env.npm_package_main;
   const pkgStyle = env.npm_package_style;

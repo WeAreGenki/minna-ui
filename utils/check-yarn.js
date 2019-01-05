@@ -1,6 +1,11 @@
 /**
- * Prevent installing using `npm`; force using `yarn`.
+ * Check for yarn.
+ * @overview Prevents installing using `npm`; forces using `yarn`.
  */
+
+// NOTE: If you want to reuse this functionality in other projects, you'll need
+// to copy this file. It's not possible to use this from a package because it
+// needs to be run before packages are installed.
 
 /* eslint-disable no-console */
 /* tslint:disable no-console */
@@ -8,18 +13,39 @@
 'use strict';
 
 const reset = '\x1B[0m';
-const red = '\x1B[1;91m';
+const redBold = '\x1B[1;91m';
 const yellow = '\x1B[0;33m';
 
+// TODO: Get more path samples
 /**
- * Sample paths on Linux:
- *  - yarn: `/usr/lib/node_modules/yarn/bin/yarn.js`
- *  - local npm: `/home/max/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
+ * Sample paths:
+ *  Linux:
+ *  - yarn bin: `/usr/lib/node_modules/yarn/bin/yarn.js`
+ *  - yarn package: ``
+ *  - npm bin: ``
+ *  - npm package: `/home/username/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
+ *  Windows:
+ *  - yarn bin: ``
+ *  - yarn package: ``
+ *  - npm bin: ``
+ *  - npm package: ``
+ *  macOS:
+ *  - yarn bin: ``
+ *  - yarn package: ``
+ *  - npm bin: ``
+ *  - npm package: ``
  */
 
-if (process.env.npm_execpath.indexOf('yarn.js') === -1) {
-  console.log(`${red}ERROR:${reset} This project uses yarn for package management. Install
-       it from https://yarnpkg.com and then run \`${yellow}yarn setup${reset}\`.\n`);
+if (
+  process.env.npm_execpath &&
+  process.env.npm_execpath.indexOf('yarn.js') === -1
+) {
+  console.log(`
+---------------------------------------------------------------------------
+ ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!
+ Please install yarn from https://yarnpkg.com and then run \`${yellow}yarn install${reset}\`.
+---------------------------------------------------------------------------
+\n`);
 
   process.exit(1);
 }

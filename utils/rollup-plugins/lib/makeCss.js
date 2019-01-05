@@ -61,8 +61,6 @@ function makeCss({
     async transform(source, id) {
       if (!filter(id)) return;
 
-      let dependencies;
-
       try {
         const ctx = merge(
           { from: id, to: id, map: { inline: false, annotation: false } },

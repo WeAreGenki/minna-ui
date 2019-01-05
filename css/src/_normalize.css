@@ -22,9 +22,9 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-/* autoprefixer: off */
 html {
   line-height: $line-height; /* 1 */
+  /* autoprefixer: ignore next */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
@@ -182,7 +182,7 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 button,
 [type='reset'],
 [type='submit'] {
@@ -193,7 +193,7 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
@@ -206,7 +206,7 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
@@ -257,7 +257,7 @@ textarea {
  * Correct the cursor style of [+] and [-] buttons in Chrome.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
   height: auto;
@@ -268,7 +268,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 [type='search'] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
@@ -278,7 +278,7 @@ textarea {
  * Remove the inner padding in Chrome and Safari on macOS.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 [type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -288,7 +288,7 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 
-/* autoprefixer: off */
+/* autoprefixer: ignore next */
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */

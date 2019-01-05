@@ -86,7 +86,6 @@ module.exports = async function run(env) {
   }
 
   const bundleMain = await rollup({
-    /* tslint:disable-next-line object-literal-sort-keys */ /* FIXME: Shouldn't need this line */
     input: pkgSvelte,
     plugins: [
       svelte({
@@ -123,7 +122,6 @@ module.exports = async function run(env) {
   // });
 
   const bundleEsm = await rollup({
-    /* tslint:disable-next-line object-literal-sort-keys */ /* FIXME: Shouldn't need this line */
     input: pkgSvelte,
     plugins: [
       svelte({

@@ -8,6 +8,8 @@ module.exports = {
     '^.+\\.m?jsx?$': 'babel-jest',
     '^.+\\.(htmlx?|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.css$': '@minna-ui/jest-config/lib/null-transform.js',
+    '^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '@minna-ui/jest-config/lib/stubMock.js',
   },
   transformIgnorePatterns: ['node_modules/(?!svelte/)'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$',
@@ -25,6 +27,7 @@ module.exports = {
     '!**/*externs.js',
   ],
   coveragePathIgnorePatterns: [
+    '/__fixtures__/',
     '/__mocks__/',
     '/__sapper__/',
     '/__tests__/',

@@ -11,15 +11,9 @@ const buildCss = require('../index.js');
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const srcPathSimple = require.resolve(
-  '@minna-ui/jest-config/fixtures/simple.css',
-);
-const srcPathImport = require.resolve(
-  '@minna-ui/jest-config/fixtures/import.css',
-);
-const srcPathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/fixtures/styles-bad-syntax.css',
-);
+const srcPathSimple = require.resolve('@minna-ui/jest-config/fixtures/simple.css');
+const srcPathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
+const srcPathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
 const dist = path.join(__dirname, 'dist');
 
 /**
@@ -80,9 +74,7 @@ describe('build-css tool', () => {
     const build = buildCss(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = (await build)[0];
-    const re = new RegExp(
-      `\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`,
-    );
+    const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
     expect(built.min.styles).toMatch(re);
   });
 
@@ -103,9 +95,7 @@ describe('build-css tool', () => {
     await expect(build).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_browser)).resolves.toBeDefined();
     await expect(stat(pkgData.npm_package_style)).resolves.toBeDefined();
-    await expect(
-      stat(`${pkgData.npm_package_style}.map`),
-    ).resolves.toBeDefined();
+    await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
   it('throws error when bad CSS syntax', async () => {

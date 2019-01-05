@@ -86,12 +86,8 @@ describe('Stylelint config', () => {
       code: sourceOrderInvalid,
     });
     expect(result.results[0].errored).toBeTruthy();
-    expect(result.results[0].warnings[0].rule).toEqual(
-      'order/properties-order',
-    );
-    expect(result.results[0].warnings[1].rule).toEqual(
-      'order/properties-order',
-    );
+    expect(result.results[0].warnings[0].rule).toEqual('order/properties-order');
+    expect(result.results[0].warnings[1].rule).toEqual('order/properties-order');
   });
 
   it('has no config parse errors', async () => {

@@ -85,9 +85,7 @@ describe('Switch component', () => {
     });
     expect(component.get().disabled).toBeTruthy();
     expect(target.querySelector('.switch-disabled')).not.toBeNull();
-    expect(target.querySelector('.switch').getAttribute('tabindex')).toEqual(
-      '-1',
-    );
+    expect(target.querySelector('.switch').getAttribute('tabindex')).toEqual('-1');
   });
 
   it('toggles class when value changes', () => {

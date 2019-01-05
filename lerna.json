@@ -1,11 +1,9 @@
 {
   "version": "0.19.1",
-  "packages": [
-    "components/*",
-    "css",
-    "utils/*"
-  ],
+  "packages": ["components/*", "css", "utils/*"],
   "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
     "**/dist/**",
     "**/test/**",
     "**/.*rc",

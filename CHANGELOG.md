@@ -9,7 +9,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.20.0] - 2019-01-07
+
+### Removed
+
+- Broken TS config preset in `@minna-ui/jest-config`. Turns out jest only allows a single preset per package.
+
+### Changed
+
 - Rename component variables CSS file from `_variables.css` to `_component-name.css` making it more explicit which file is being imported.
+- Update build configs for rollup v1.x compatibility.
+- Refactored `@minna-ui/postcss-config` to be more simple, reliable, and fast.
+- Improvements to `@minna-ui/jest-config`. Shouldn't impact existing projects.
+- Updated package dependencies, including rollup to v1.x.
+- Small internal improvements to increase stability and error handlng.
+
+### Fixed
+
+- Junk warnings printed to console when importing CSS with `@minna-ui/postcss-config`.
+- TSLint throws conflicting lint errors for object key order in `@minna-ui/tslint-config`.
+- Prettier should make unit tests more compact with `@minna-ui/prettier-config`.
 
 ## [0.19.1] - 2018-12-24
 
@@ -621,7 +640,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.19.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.20.0...HEAD
+[0.20.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.1...v0.20.0
 [0.19.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.0...v0.19.1
 [0.19.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.18.2...v0.19.0
 [0.18.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.18.1...v0.18.2

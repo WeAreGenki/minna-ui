@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- Broken TS config preset in `@minna-ui/jest-config`. Turns out jest only allows a single preset per package.
+- Broken Jest TypeScript config preset in `@minna-ui/jest-config`. Turns out jest only allows a single preset per package.
 
 ### Changed
 

@@ -1,6 +1,11 @@
 {
   "version": "0.19.1",
   "packages": ["components/*", "css", "utils/*"],
+  "command": {
+    "publish": {
+      "allowBranch": "master"
+    }
+  },
   "ignoreChanges": [
     "**/__fixtures__/**",
     "**/__tests__/**",
@@ -11,11 +16,6 @@
     "**/*.config.js",
     "**/*.md"
   ],
-  "command": {
-    "publish": {
-      "allowBranch": "master"
-    }
-  },
   "npmClient": "yarn",
   "useWorkspaces": true,
   "registry": "https://registry.npmjs.org/"

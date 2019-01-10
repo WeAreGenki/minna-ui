@@ -40,7 +40,7 @@
     "jest": "23.6.0",
     "lerna": "3.10.2",
     "markdownlint-cli": "0.13.0",
-    "postcss": "7.0.7",
+    "postcss": "7.0.8",
     "postcss-scss": "2.0.0",
     "prettier": "1.15.3",
     "stylelint": "9.9.0",

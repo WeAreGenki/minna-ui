@@ -1,4 +1,4 @@
-<!-- markdownlint-disable no-duplicate-header no-inline-html -->
+<!-- lint disable no-duplicate-headings list-item-spacing -->
 
 # Changelog
 
@@ -7,9 +7,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased][]
 
-## [0.20.0] - 2019-01-07
+## [0.20.0][] - 2019-01-07
 
 ### Removed
 
@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - TSLint throws conflicting lint errors for object key order in `@minna-ui/tslint-config`.
 - Prettier should make unit tests more compact with `@minna-ui/prettier-config`.
 
-## [0.19.1] - 2018-12-24
+## [0.19.1][] - 2018-12-24
 
 ### Fixed
 
@@ -38,7 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - 404 requests are logged as `NaN undefined` size in the `devserver` plugin in `@minna-ui/rollup-plugins`.
 - Tries to start a duplicate server instance causing a crash in the `devserver` plugin in `@minna-ui/rollup-plugins`.
 
-## [0.19.0] - 2018-12-24
+## [0.19.0][] - 2018-12-24
 
 ### Added
 
@@ -54,7 +54,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - CSS `button` mixin does not provide a way to set animation speed.
 
-## [0.18.2] - 2018-12-21
+## [0.18.2][] - 2018-12-21
 
 ### Added
 
@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Updated package dependencies.
 
-## [0.18.1] - 2018-12-19
+## [0.18.1][] - 2018-12-19
 
 ### Added
 
@@ -83,7 +83,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - ESLint preset incorrectly assumes `preact.config.js` module style. It's not commonJS (the default), the file actually uses ES modules.
 
-## [0.18.0] - 2018-12-01
+## [0.18.0][] - 2018-12-01
 
 ### Added
 
@@ -109,13 +109,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Internal packages not linking together correctly.
 
-## [0.17.1] - 2018-11-11
+## [0.17.1][] - 2018-11-11
 
 ### Fixed
 
 - Missing files in some packages.
 
-## [0.17.0] - 2018-11-11
+## [0.17.0][] - 2018-11-11
 
 ### Added
 
@@ -147,7 +147,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - StyleLint config a11y rules too strict.
 - Package resolution in `@minna-ui/postcss-config` broken.
 
-## [0.16.0] - 2018-10-21
+## [0.16.0][] - 2018-10-21
 
 ### Added
 
@@ -175,25 +175,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Custom options not being applied properly in `@minna-ui/eslint-config`, `@minna-ui/postcss-config`, and `@minna-ui/svelte-preprocess-markup` when they contain nested options.
 - Some colour variables broken.
 
-## [0.15.3] - 2018-10-14
+## [0.15.3][] - 2018-10-14
 
 ### Fixed
 
 - `@minna-ui/collapse` missing from `minna-ui` meta package.
 
-## [0.15.2] - 2018-10-14
+## [0.15.2][] - 2018-10-14
 
 ### Fixed
 
 - `@minna-ui/collapse` component stopped working.
 
-## [0.15.1] - 2018-10-14
+## [0.15.1][] - 2018-10-14
 
 ### Added
 
 - Add `!default` to CSS variables to allow easy override
 
-## [0.15.0] - 2018-10-14
+## [0.15.0][] - 2018-10-14
 
 ### Added
 
@@ -229,7 +229,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Alignment of icons and menu items in `@minna-ui/navbar` not vertically centred.
 - Internal `build-css` package crashes on error. Now prints error correctly for faster debugging.
 
-## [0.14.0] - 2018-09-22
+## [0.14.0][] - 2018-09-22
 
 ### Added
 
@@ -251,7 +251,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Temporarily removed `disabled` prop on `@minna-ui/select` because it's currently broken in <abbr title="server side rendering">SSR</abbr>.
 - Custom setting for `customEventAttributes` in `@minna-ui/svelte-preprocess-markup` because it was invalid.
 
-## [0.13.0] - 2018-09-08
+## [0.13.0][] - 2018-09-08
 
 ### Added
 
@@ -272,13 +272,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Preset value for `coverageReporters` in `@minna-ui/jest-config`. Now uses Jest defaults again.
 
-## [0.12.1] - 2018-09-01
+## [0.12.1][] - 2018-09-01
 
 ### Fixed
 
 - Update CSS classes in `@minna-ui/navbar` component.
 
-## [0.12.0] - 2018-09-01
+## [0.12.0][] - 2018-09-01
 
 ### Changed
 
@@ -288,7 +288,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use next-gen jest test runner `jest-circus` in `@minna-ui/jest-config`. Note: it's necessary to set the `JEST_CIRCUS=1` env variable to actually use it.
 - Updated package dependencies.
 
-## [0.11.1] - 2018-08-26
+## [0.11.1][] - 2018-08-26
 
 ### Added
 
@@ -300,7 +300,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Switch from Travis to Circle CI for faster and better continuous integration.
 - Updated package dependencies.
 
-## [0.11.0] - 2018-08-23
+## [0.11.0][] - 2018-08-23
 
 ### Added
 
@@ -328,7 +328,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - CSS variables not injected for at rules in `@minna-ui/postcss-config`.
 - Not able to utilise `@use` at rule in `@minna-ui/postcss-config`.
 
-## [0.10.0] - 2018-08-01
+## [0.10.0][] - 2018-08-01
 
 ### Changed
 
@@ -345,13 +345,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `@minna-ui/navbar` to work with Sapper `0.15.x`.
 - Security error in `@minna-ui/jest-config` due to updated jsdom package (see <https://git.io/fNwN0>).
 
-## [0.9.1] - 2018-07-16
+## [0.9.1][] - 2018-07-16
 
 ### Fixed
 
 - Fix Jest es6 modules transform when testing Svelte store.
 
-## [0.9.0] - 2018-07-16
+## [0.9.0][] - 2018-07-16
 
 ### Changed
 
@@ -363,7 +363,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Don't move navbar on scroll and `.card-hover` on hover because it can be hard to read at and hurts performance.
 - Refactor navbar scroll logic to avoid excessive processing.
 
-## [0.8.0] - 2018-07-14
+## [0.8.0][] - 2018-07-14
 
 ### Added
 
@@ -384,7 +384,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `<svg>` tag `fill` will inherit text `color` when no fill colour is set.
 - Use a more universal shebang for CLI binary scripts and remove workaround from Travis config.
 
-## [0.7.1] - 2018-07-10
+## [0.7.1][] - 2018-07-10
 
 ### Added
 
@@ -395,7 +395,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `@extend` to list of allowed at-rules in `@minna-ui/stylelint-config`.
 - `@minna-ui/navbar` SVG icon colour.
 
-## [0.7.0] - 2018-07-10
+## [0.7.0][] - 2018-07-10
 
 ### Added
 
@@ -437,7 +437,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `@minna-ui/switch` component width.
 - `undefined [undefined]` warning when compiling CSS with `@minna-ui/postcss-config`.
 
-## [0.6.0] - 2018-07-08
+## [0.6.0][] - 2018-07-08
 
 ### Changed
 
@@ -451,7 +451,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Don't style default form elements; require classes for custom form element styles.
 - NPM publish script now correctly lints, tests, and builds packages before publishing.
 
-## [0.5.0] - 2018-07-08
+## [0.5.0][] - 2018-07-08
 
 ### Added
 
@@ -469,7 +469,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `@minna-ui/navbar` hamburger menu does not close if user clicks when open.
 
-## [0.4.1] - 2018-07-02
+## [0.4.1][] - 2018-07-02
 
 ### Fixed
 
@@ -477,7 +477,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `@minna-ui/navbar` link fragment fix is now optional.
 - `@minna-ui/navbar` menu border shown at the wrong time.
 
-## [0.4.0] - 2018-07-02
+## [0.4.0][] - 2018-07-02
 
 This is a large release centred around refactoring colours and simplifying and cleaning up the styles. There were many breaking changes especially in CSS variables so please be mindful when upgrading.
 
@@ -572,7 +572,7 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Bracket parsing doesn't match in `@minna-ui/svelte-preprocess-markup`. This is only a partial fix and so you need to quote any `{}` tags that contain `{` or `}` characters.
 
-## [0.3.0] - 2018-06-27
+## [0.3.0][] - 2018-06-27
 
 ### Added
 
@@ -594,7 +594,7 @@ This is a large release centred around refactoring colours and simplifying and c
 - Headers causing the page to overflow (but be mindful about where words may be split when overflowing).
 - `.mono` class should not look like `.code`.
 
-## [0.2.0] - 2018-06-14
+## [0.2.0][] - 2018-06-14
 
 ### Added
 
@@ -615,7 +615,7 @@ This is a large release centred around refactoring colours and simplifying and c
 - Update jest to v23.0.0 and rewrite preset to use the newly supported `jest-preset.js` (instead of `jest-preset.json`).
 - Updated package dependencies.
 
-## [0.1.0] - 2018-05-23
+## [0.1.0][] - 2018-05-23
 
 ### Added
 

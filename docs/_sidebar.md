@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 -->
-
 - Getting started
 
   - [Overview](README.md)
@@ -38,4 +36,5 @@
   - [TypeScript Config](utils/ts-config.md)
 
 - [Contributing](CONTRIBUTING.md)
+
 - [Changelog](CHANGELOG.md)

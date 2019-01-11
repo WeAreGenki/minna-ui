@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/select.svg)](https://www.npmjs.com/package/@minna-ui/select)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/select.svg)](https://bundlephobia.com/result?p=@minna-ui/select)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/select.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -24,42 +22,42 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/select/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/select/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/select"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/select"></script>
+    ```
 
-Or use a specific version:
+   Or use a specific version:
 
-```html
-<link
-  href="https://cdn.jsdelivr.net/npm/@minna-ui/select@0.5.0/dist/index.css"
-  rel="stylesheet"
-/>
+   ```html
+   <link
+     href="https://cdn.jsdelivr.net/npm/@minna-ui/select@0.5.0/dist/index.css"
+     rel="stylesheet"
+   />
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/select@0.5.0"></script>
-```
+   <script src="https://cdn.jsdelivr.net/npm/@minna-ui/select@0.5.0"></script>
+   ```
 
-2. Add an element where you want the component to show in your document `<body></body>`:
+1. Add an element where you want the component to show in your document `<body></body>`:
 
-```html
-<div id="minna-select"></div>
-```
+   ```html
+   <div id="minna-select"></div>
+   ```
 
-3. Initialise the component:
+1. Initialise the component:
 
-<!-- eslint-disable no-new -->
+   <!-- eslint-disable no-new -->
 
-```html
-<script>
-  new MinnaSelect({
-    target: document.querySelector('#minna-select'),
-    data: {},
-  });
-</script>
-```
+   ```html
+   <script>
+     new MinnaSelect({
+       target: document.querySelector('#minna-select'),
+       data: {},
+     });
+   </script>
+   ```
 
 ### Svelte projects
 
@@ -67,27 +65,27 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/select
-```
+   ```sh
+   yarn add @minna-ui/select
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-```html
-<MinnaSelect />
+   ```html
+   <MinnaSelect />
 
-<script>
-  import MinnaSelect from '@minna-ui/select';
+   <script>
+     import MinnaSelect from '@minna-ui/select';
 
-  export default {
-    components: {
-      MinnaSelect,
-    },
-  };
-</script>
-```
+     export default {
+       components: {
+         MinnaSelect,
+       },
+     };
+   </script>
+   ```
 
 ### Other JavaScript projects
 
@@ -95,29 +93,30 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/select
-```
+   ```sh
+   yarn add @minna-ui/select
+   ```
 
-2. Add to your files:
+1. Add to your files:
 
-`my-example.html`:
+   `my-example.html`:
 
-```html
-<div id="minna-select"></div>
-```
+   ```html
+   <div id="minna-select"></div>
+   ```
 
-`my-example.js`:
+   `my-example.js`:
 
-```js
-import MinnaSelect from '@minna-ui/select';
+   <!-- eslint-disable no-new -->
 
-/* eslint-disable-next-line no-new */
-new MinnaSelect({
-  target: document.querySelector('#minna-select'),
-  data: {},
-});
-```
+   ```js
+   import MinnaSelect from '@minna-ui/select';
+
+   new MinnaSelect({
+     target: document.querySelector('#minna-select'),
+     data: {},
+   });
+   ```
 
 ## Licence
 

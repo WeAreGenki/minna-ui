@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/collapse.svg)](https://www.npmjs.com/package/@minna-ui/collapse)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/collapse.svg)](https://bundlephobia.com/result?p=@minna-ui/collapse)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/collapse.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -26,46 +24,46 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/collapse"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/collapse"></script>
+    ```
 
-Or use a specific version:
+   Or use a specific version:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse@0.4.1/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/collapse@0.4.1/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/collapse@0.4.1"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/collapse@0.4.1"></script>
+    ```
 
-2. Add element/s where you want the component to show in your document `<body></body>`:
+1. Add element/s where you want the component to show in your document `<body></body>`:
 
-<!-- prettier-ignore -->
-```html
-<div class="minna-collapse">
-  <p>This is my collapsed content.</p>
-</div>
+   <!-- prettier-ignore -->
+   ```html
+    <div class="minna-collapse">
+      <p>This is my collapsed content.</p>
+    </div>
 
-<div class="minna-collapse">
-  <p>This is more collapsed content.</p>
-</div>
-```
+    <div class="minna-collapse">
+      <p>This is more collapsed content.</p>
+    </div>
+    ```
 
-3. Initialise the component/s (this script must come after the HTML code in step 2):
+1. Initialise the component/s (this script must come after the HTML code in step 2):
 
-```html
-<script>
-  var collapseEls = document.querySelectorAll('.minna-collapse');
-  collapseEls.forEach(function(el) {
-    /* eslint-disable-next-line no-new */
-    new MinnaCollapse({ target: el });
-  });
-</script>
-```
+   ```html
+   <script>
+     var collapseEls = document.querySelectorAll('.minna-collapse');
+     collapseEls.forEach(function(el) {
+       /* eslint-disable-next-line no-new */
+       new MinnaCollapse({ target: el });
+     });
+   </script>
+   ```
 
 ### Svelte projects
 
@@ -73,30 +71,30 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/collapse
-```
+   ```sh
+   yarn add @minna-ui/collapse
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-<!-- prettier-ignore -->
-```html
-<MinnaCollapse>
-  <p>This is my collapsed content.</p>
-</MinnaCollapse>
+   <!-- prettier-ignore -->
+   ```html
+    <MinnaCollapse>
+      <p>This is my collapsed content.</p>
+    </MinnaCollapse>
 
-<script>
-  import MinnaCollapse from '@minna-ui/collapse';
+    <script>
+      import MinnaCollapse from '@minna-ui/collapse';
 
-  export default {
-    components: {
-      MinnaCollapse,
-    },
-  };
-</script>
-```
+      export default {
+        components: {
+          MinnaCollapse,
+        },
+      };
+    </script>
+    ```
 
 ### Other JavaScript projects
 
@@ -104,36 +102,37 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/collapse
-```
+   ```sh
+   yarn add @minna-ui/collapse
+   ```
 
-2. Add to your files:
+1. Add to your files:
 
-`my-example.html`:
+   `my-example.html`:
 
-<!-- prettier-ignore -->
-```html
-<div class="minna-collapse">
-  <p>This is my collapsed content.</p>
-</div>
+   <!-- prettier-ignore -->
+   ```html
+    <div class="minna-collapse">
+      <p>This is my collapsed content.</p>
+    </div>
 
-<div class="minna-collapse">
-  <p>This is more collapsed content.</p>
-</div>
-```
+    <div class="minna-collapse">
+      <p>This is more collapsed content.</p>
+    </div>
+    ```
 
-`my-example.js`:
+   `my-example.js`:
 
-```js
-import MinnaCollapse from '@minna-ui/collapse';
+   <!-- eslint-disable no-new -->
 
-const collapseEls = document.querySelectorAll('.minna-collapse');
-collapseEls.forEach(el => {
-  /* eslint-disable-next-line no-new */
-  new MinnaCollapse({ target: el });
-});
-```
+   ```js
+   import MinnaCollapse from '@minna-ui/collapse';
+
+   const collapseEls = document.querySelectorAll('.minna-collapse');
+   collapseEls.forEach(el => {
+     new MinnaCollapse({ target: el });
+   });
+   ```
 
 ## Licence
 

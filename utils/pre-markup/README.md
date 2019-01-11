@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/pre-markup.svg)](https://www.npmjs.com/package/@minna-ui/pre-markup)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/pre-markup.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
@@ -70,12 +68,15 @@ Correct (with `"` around `{ }`):
 
 ### Options
 
+<!-- lint disable table-pipe-alignment -->
 <!-- prettier-ignore -->
 | Name | Default | Type | Description |
 | --- | --- | --- | --- |
 | unsafeWhitespace | `false` | Boolean | Collapse _all_ whitespace between tags (instead of leaving a single space). When using this option you may need to manually add spaces, `{' '}`, around inline elements such as links. |
 | unsafe | `false` | Boolean | Enable aggressive and potentially dangerous optimisations. |
 | `*` | `undefined` | Any | Any other options you pass in will override the default `html-minifier` options. See the [html-minifier docs](https://github.com/kangax/html-minifier) for more info. |
+
+<!-- lint enable -->
 
 ## Licence
 

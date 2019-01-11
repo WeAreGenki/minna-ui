@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/jest-config.svg)](https://www.npmjs.com/package/@minna-ui/jest-config)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/jest-config.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 

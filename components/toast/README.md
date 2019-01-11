@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/toasts.svg)](https://www.npmjs.com/package/@minna-ui/toasts)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/toasts.svg)](https://bundlephobia.com/result?p=@minna-ui/toasts)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/toasts.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -30,38 +28,38 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/toasts/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/toasts/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/toasts"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/toasts"></script>
+    ```
 
-Or use a specific version:
+   Or use a specific version:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/toasts@0.0.0/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/toasts@0.0.0/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui@0.0.0/toasts"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui@0.0.0/toasts"></script>
+    ```
 
-2. Add an element where you want the component to show in your document `<body></body>`:
+1. Add an element where you want the component to show in your document `<body></body>`:
 
-```html
-<div id="minna-toasts"></div>
-```
+   ```html
+   <div id="minna-toasts"></div>
+   ```
 
-3. Initialise the component:
+1. Initialise the component:
 
-```html
-<script>
-  new MinnaToasts({
-    target: document.querySelector('#minna-toasts'),
-    data: {},
-  });
-</script>
-```
+   ```html
+   <script>
+     new MinnaToasts({
+       target: document.querySelector('#minna-toasts'),
+       data: {},
+     });
+   </script>
+   ```
 
 ### Svelte projects
 
@@ -69,27 +67,27 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/toasts
-```
+   ```sh
+   yarn add @minna-ui/toasts
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-```html
-<MinnaToasts />
+   ```html
+   <MinnaToasts />
 
-<script>
-  import MinnaToasts from '@minna-ui/toasts';
+   <script>
+     import MinnaToasts from '@minna-ui/toasts';
 
-  export default {
-    components: {
-      MinnaToasts,
-    },
-  };
-</script>
-```
+     export default {
+       components: {
+         MinnaToasts,
+       },
+     };
+   </script>
+   ```
 
 ### Other JavaScript projects
 
@@ -97,29 +95,30 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/toasts
-```
+   ```sh
+   yarn add @minna-ui/toasts
+   ```
 
-2. Add to your files:
+1. Add to your files:
 
-`my-example.html`:
+   `my-example.html`:
 
-```html
-<div id="minna-toasts"></div>
-```
+   ```html
+   <div id="minna-toasts"></div>
+   ```
 
-`my-example.js`:
+   `my-example.js`:
 
-```js
-import MinnaToasts from '@minna-ui/toasts';
+   <!-- eslint-disable no-new -->
 
-/* eslint-disable-next-line no-new */
-new MinnaToasts({
-  target: document.querySelector('#minna-toasts'),
-  data: {},
-});
-```
+   ```js
+   import MinnaToasts from '@minna-ui/toasts';
+
+   new MinnaToasts({
+     target: document.querySelector('#minna-toasts'),
+     data: {},
+   });
+   ```
 
 ## Licence
 

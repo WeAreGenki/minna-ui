@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/tooltip-action.svg)](https://www.npmjs.com/package/@minna-ui/tooltip-action)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/tooltip-action.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
@@ -23,35 +21,35 @@ TODO: Add link to demo and documentation page.
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/tooltip-action
-```
+   ```sh
+   yarn add @minna-ui/tooltip-action
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-```html
-<div use:tooltip="Example tooltip message">My example</div>
+   ```html
+   <div use:tooltip="Example tooltip message">My example</div>
 
-<div use:tooltip="Example tooltip message" class="tooltip-right">
-  My right example
-</div>
+   <div use:tooltip="Example tooltip message" class="tooltip-right">
+     My right example
+   </div>
 
-<script>
-  import tooltip from '@minna-ui/tooltip-action';
+   <script>
+     import tooltip from '@minna-ui/tooltip-action';
 
-  export default {
-    actions: {
-      tooltip,
-    },
-  };
-</script>
+     export default {
+       actions: {
+         tooltip,
+       },
+     };
+   </script>
 
-<style>
-  @import '@minna-ui/tooltip-action';
-</style>
-```
+   <style>
+     @import '@minna-ui/tooltip-action';
+   </style>
+   ```
 
 ## Licence
 

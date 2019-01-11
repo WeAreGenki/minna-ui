@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/postcss-config.svg)](https://www.npmjs.com/package/@minna-ui/postcss-config)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/postcss-config.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
@@ -13,36 +11,37 @@ TODO: List included plugins, what they do, and documentation links.
 
 1. Install this package and its `postcss` dependency:
 
-```sh
-yarn add -D postcss @minna-ui/postcss-config
-```
+   ```sh
+   yarn add -D postcss @minna-ui/postcss-config
+   ```
 
-2. Create a `postcss.config.js` file in your project root with this package as a plugin:
+1. Create a `postcss.config.js` file in your project root with this package as a plugin:
 
-```js
-const minnaUi = require('@minna-ui/postcss-config');
+   ```js
+   const minnaUi = require('@minna-ui/postcss-config');
 
-module.exports = {
-  plugins: [
-    minnaUi({
-      verbose: process.env.NODE_ENV === 'development',
-    }),
-  ],
-};
-```
+   module.exports = {
+     plugins: [
+       minnaUi({
+         verbose: process.env.NODE_ENV === 'development',
+       }),
+     ],
+   };
+   ```
 
-3. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can optionally specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
+1. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can optionally specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
 
-```css
-@use postcss-extend-rule();
+   ```css
+   @use postcss-extend-rule();
 
-.navbar-icon {
-  @extend .icon; /* stylelint-disable-line at-rule-no-unknown */
-}
-```
+   .navbar-icon {
+     @extend .icon; /* stylelint-disable-line at-rule-no-unknown */
+   }
+   ```
 
 ### Options
 
+<!-- lint disable table-pipe-alignment -->
 <!-- prettier-ignore -->
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
@@ -53,6 +52,8 @@ module.exports = {
 | optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform additional optimisations to prepare for production use and minimise output file size. |
 | safe | `false` | boolean | Don't apply potentially unsafe transformations. See [cssnano advanced transforms](https://cssnano.co/guides/advanced-transforms/). |
 | debug | `false` | boolean | Show additional debugging feedback. |
+
+<!-- lint enable -->
 
 ## Licence
 

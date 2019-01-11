@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/navbar.svg)](https://www.npmjs.com/package/@minna-ui/navbar)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/navbar.svg)](https://bundlephobia.com/result?p=@minna-ui/navbar)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/navbar.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -24,40 +22,40 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/navbar/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/navbar/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/navbar"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/navbar"></script>
+    ```
 
-Or use a specific version:
+   Or use a specific version:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/navbar@0.5.0/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/navbar@0.5.0/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/navbar@0.5.0"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/navbar@0.5.0"></script>
+    ```
 
-2. Add an element where you want the component to show in your document `<body></body>`:
+1. Add an element where you want the component to show in your document `<body></body>`:
 
-```html
-<div id="minna-navbar"></div>
-```
+   ```html
+   <div id="minna-navbar"></div>
+   ```
 
-3. Initialise the component:
+1. Initialise the component:
 
-<!-- eslint-disable no-new -->
+   <!-- eslint-disable no-new -->
 
-```html
-<script>
-  new MinnaNavbar({
-    target: document.querySelector('#minna-navbar'),
-    data: {},
-  });
-</script>
-```
+   ```html
+   <script>
+     new MinnaNavbar({
+       target: document.querySelector('#minna-navbar'),
+       data: {},
+     });
+   </script>
+   ```
 
 ### Svelte projects
 
@@ -65,27 +63,27 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/navbar
-```
+   ```sh
+   yarn add @minna-ui/navbar
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-```html
-<MinnaNavbar />
+   ```html
+   <MinnaNavbar />
 
-<script>
-  import MinnaNavbar from '@minna-ui/navbar';
+   <script>
+     import MinnaNavbar from '@minna-ui/navbar';
 
-  export default {
-    components: {
-      MinnaNavbar,
-    },
-  };
-</script>
-```
+     export default {
+       components: {
+         MinnaNavbar,
+       },
+     };
+   </script>
+   ```
 
 ### Other JavaScript projects
 
@@ -93,29 +91,30 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/navbar
-```
+   ```sh
+   yarn add @minna-ui/navbar
+   ```
 
-2. Add to your files:
+1. Add to your files:
 
-`my-example.html`:
+   `my-example.html`:
 
-```html
-<div id="minna-navbar"></div>
-```
+   ```html
+   <div id="minna-navbar"></div>
+   ```
 
-`my-example.js`:
+   `my-example.js`:
 
-```js
-import MinnaNavbar from '@minna-ui/navbar';
+   <!-- eslint-disable no-new -->
 
-/* eslint-disable-next-line no-new */
-new MinnaNavbar({
-  target: document.querySelector('#minna-navbar'),
-  data: {},
-});
-```
+   ```js
+   import MinnaNavbar from '@minna-ui/navbar';
+
+   new MinnaNavbar({
+     target: document.querySelector('#minna-navbar'),
+     data: {},
+   });
+   ```
 
 ## Licence
 

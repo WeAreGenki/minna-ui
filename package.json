@@ -7,7 +7,7 @@
     "utils/*"
   ],
   "scripts": {
-    "setup": "yarn; lerna bootstrap",
+    "prepare": "lerna bootstrap",
     "docs": "docsify serve ./docs",
     "predocs": "build-css docs/_src docs/_dist --no-banner",
     "update": "yarn upgrade-interactive --latest",

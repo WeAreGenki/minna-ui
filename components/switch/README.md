@@ -123,4 +123,4 @@ new MinnaSwitch({
 
 ---
 
-© 2018 [We Are Genki](https://wearegenki.com)
+© 2019 [We Are Genki](https://wearegenki.com)

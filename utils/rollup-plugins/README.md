@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/rollup-plugins.svg)](https://www.npmjs.com/package/@minna-ui/rollup-plugins)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/rollup-plugins.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
@@ -29,4 +27,4 @@ TODO: Write me :)
 
 ---
 
-© 2018 [We Are Genki](https://wearegenki.com)
+© 2019 [We Are Genki](https://wearegenki.com)

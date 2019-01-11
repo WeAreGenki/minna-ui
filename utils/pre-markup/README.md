@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/pre-markup.svg)](https://www.npmjs.com/package/@minna-ui/pre-markup)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/pre-markup.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
@@ -70,6 +68,7 @@ Correct (with `"` around `{ }`):
 
 ### Options
 
+<!-- lint disable table-pipe-alignment -->
 <!-- prettier-ignore -->
 | Name | Default | Type | Description |
 | --- | --- | --- | --- |
@@ -77,10 +76,12 @@ Correct (with `"` around `{ }`):
 | unsafe | `false` | Boolean | Enable aggressive and potentially dangerous optimisations. |
 | `*` | `undefined` | Any | Any other options you pass in will override the default `html-minifier` options. See the [html-minifier docs](https://github.com/kangax/html-minifier) for more info. |
 
+<!-- lint enable -->
+
 ## Licence
 
 `@minna-ui/pre-markup` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 ---
 
-© 2018 [We Are Genki](https://wearegenki.com)
+© 2019 [We Are Genki](https://wearegenki.com)

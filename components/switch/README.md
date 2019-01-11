@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/switch.svg)](https://www.npmjs.com/package/@minna-ui/switch)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/switch.svg)](https://bundlephobia.com/result?p=@minna-ui/switch)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/switch.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -24,40 +22,40 @@ The easiest way to use the component is to add the CDN hosted version directly i
 
 1. Add the CSS and JS to your document, inside the `<head></head>`:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/switch"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/switch"></script>
+    ```
 
-Or use a specific version:
+   Or use a specific version:
 
-<!-- prettier-ignore -->
-```html
-<link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch@0.5.0/dist/index.css" rel="stylesheet"/>
+   <!-- prettier-ignore -->
+   ```html
+    <link href="https://cdn.jsdelivr.net/npm/@minna-ui/switch@0.5.0/dist/index.css" rel="stylesheet"/>
 
-<script src="https://cdn.jsdelivr.net/npm/@minna-ui/switch@0.5.0"></script>
-```
+    <script src="https://cdn.jsdelivr.net/npm/@minna-ui/switch@0.5.0"></script>
+    ```
 
-2. Add an element where you want the component to show in your document `<body></body>`:
+1. Add an element where you want the component to show in your document `<body></body>`:
 
-```html
-<div id="minna-switch"></div>
-```
+   ```html
+   <div id="minna-switch"></div>
+   ```
 
-3. Initialise the component:
+1. Initialise the component:
 
-<!-- eslint-disable no-new -->
+   <!-- eslint-disable no-new -->
 
-```html
-<script>
-  new MinnaSwitch({
-    target: document.querySelector('#minna-switch'),
-    data: {},
-  });
-</script>
-```
+   ```html
+   <script>
+     new MinnaSwitch({
+       target: document.querySelector('#minna-switch'),
+       data: {},
+     });
+   </script>
+   ```
 
 ### Svelte projects
 
@@ -65,27 +63,27 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/switch
-```
+   ```sh
+   yarn add @minna-ui/switch
+   ```
 
-2. Add to your Svelte component:
+1. Add to your Svelte component:
 
-`MySvelteComponent.html`:
+   `MySvelteComponent.html`:
 
-```html
-<MinnaSwitch />
+   ```html
+   <MinnaSwitch />
 
-<script>
-  import MinnaSwitch from '@minna-ui/switch';
+   <script>
+     import MinnaSwitch from '@minna-ui/switch';
 
-  export default {
-    components: {
-      MinnaSwitch,
-    },
-  };
-</script>
-```
+     export default {
+       components: {
+         MinnaSwitch,
+       },
+     };
+   </script>
+   ```
 
 ### Other JavaScript projects
 
@@ -93,29 +91,30 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 1. Install the package:
 
-```sh
-yarn add @minna-ui/switch
-```
+   ```sh
+   yarn add @minna-ui/switch
+   ```
 
-2. Add to your files:
+1. Add to your files:
 
-`my-example.html`:
+   `my-example.html`:
 
-```html
-<div id="minna-switch"></div>
-```
+   ```html
+   <div id="minna-switch"></div>
+   ```
 
-`my-example.js`:
+   `my-example.js`:
 
-```js
-import MinnaSwitch from '@minna-ui/switch';
+   <!-- eslint-disable no-new -->
 
-/* eslint-disable-next-line no-new */
-new MinnaSwitch({
-  target: document.querySelector('#minna-switch'),
-  data: {},
-});
-```
+   ```js
+   import MinnaSwitch from '@minna-ui/switch';
+
+   new MinnaSwitch({
+     target: document.querySelector('#minna-switch'),
+     data: {},
+   });
+   ```
 
 ## Licence
 
@@ -123,4 +122,4 @@ new MinnaSwitch({
 
 ---
 
-© 2018 [We Are Genki](https://wearegenki.com)
+© 2019 [We Are Genki](https://wearegenki.com)

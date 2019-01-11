@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 ol-prefix -->
-
 [![NPM version](https://img.shields.io/npm/v/@minna-ui/css.svg)](https://www.npmjs.com/package/@minna-ui/css)
 [![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@minna-ui/css.svg)](https://bundlephobia.com/result?p=@minna-ui/css)
 [![Licence](https://img.shields.io/npm/l/@minna-ui/css.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
@@ -29,31 +27,31 @@ Or use a specific version:
 
 1. Install this package and dependencies:
 
-```sh
-yarn add @minna-ui/css \
-  && yarn add -D @minna-ui/postcss-config
-```
+   ```sh
+   yarn add @minna-ui/css \
+     && yarn add -D @minna-ui/postcss-config
+   ```
 
-2. Set up `@minna-ui/postcss-config` according it [its usage instructions](https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config).
+1. Set up `@minna-ui/postcss-config` according it [its usage instructions](https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config).
 
-3. If you want to override the default variables, create an `import.css` and a `_variables.css` file alongside your other CSS:
+1. If you want to override the default variables, create an `import.css` and a `_variables.css` file alongside your other CSS:
 
-`import.css`:
+   `import.css`:
 
-```css
-/* README: Import this file into components for access to CSS variables */
+   ```css
+   /* README: Import this file into components for access to CSS variables */
 
-@import '@minna-ui/css/src/import.css';
-@import '_variables.css';
-```
+   @import '@minna-ui/css/src/import.css';
+   @import '_variables.css';
+   ```
 
-4. Import the framework into your main CSS:
+1. Import the framework into your main CSS:
 
-```css
-@import '@minna-ui/css/src';
-```
+   ```css
+   @import '@minna-ui/css/src';
+   ```
 
-5. Although optional, we highly recommend setting up [purgecss](https://github.com/FullHuman/purgecss) in your project to remove any unused styles. This will drastically reduce your CSS file size making it faster to send over the network and faster for browsers to parse when loading pages.
+1. Although optional, we highly recommend setting up [purgecss](https://github.com/FullHuman/purgecss) in your project to remove any unused styles. This will drastically reduce your CSS file size making it faster to send over the network and faster for browsers to parse when loading pages.
 
 ## Licence
 
@@ -61,4 +59,4 @@ yarn add @minna-ui/css \
 
 ---
 
-© 2018 [We Are Genki](https://wearegenki.com)
+© 2019 [We Are Genki](https://wearegenki.com)

@@ -9,11 +9,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Added
+
+- New package `@minna-ui/remarklint-config`. In the past we used `markdownlint` but `remark` with `remark-lint` is more powerful and supports shared configs.
+- Missing README files for some utils packages.
+
+### Changed
+
+- Internally it was required to run `yarn run setup` when working on this monorepo but this step is now automated.
+- Updated package dependencies.
+
 ## [0.20.0][] - 2019-01-07
 
 ### Removed
 
-- Broken Jest TypeScript config preset in `@minna-ui/jest-config`. Turns out jest only allows a single preset per package.
+- Broken Jest TypeScript config preset file `@minna-ui/jest-config/ts-jest-config.js`. Turns out jest only allows a single preset per package.
 
 ### Changed
 

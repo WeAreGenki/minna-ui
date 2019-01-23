@@ -41,8 +41,8 @@ if (execpath && execpath.indexOf('yarn.js') === -1) {
   if (execpath.indexOf('lerna/cli.js') === -1) {
     console.log(`
 ---------------------------------------------------------------------------
-  ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!
-  Please install yarn from https://yarnpkg.com and then run \`${yellow}yarn install${reset}\`.
+ ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!
+ Please install yarn from https://yarnpkg.com and then run \`${yellow}yarn install${reset}\`.
 ---------------------------------------------------------------------------
 \n`);
 

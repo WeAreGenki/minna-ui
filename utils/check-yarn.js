@@ -15,6 +15,7 @@
 const reset = '\x1B[0m';
 const redBold = '\x1B[1;91m';
 const yellow = '\x1B[0;33m';
+const execpath = process.env.npm_execpath;
 
 // TODO: Get more path samples
 /**
@@ -36,16 +37,15 @@ const yellow = '\x1B[0;33m';
  *  - npm package: ``
  */
 
-if (
-  process.env.npm_execpath &&
-  process.env.npm_execpath.indexOf('yarn.js') === -1
-) {
-  console.log(`
+if (execpath && execpath.indexOf('yarn.js') === -1) {
+  if (execpath.indexOf('lerna/cli.js') === -1) {
+    console.log(`
 ---------------------------------------------------------------------------
- ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!
- Please install yarn from https://yarnpkg.com and then run \`${yellow}yarn install${reset}\`.
+  ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!
+  Please install yarn from https://yarnpkg.com and then run \`${yellow}yarn install${reset}\`.
 ---------------------------------------------------------------------------
 \n`);
 
-  process.exit(1);
+    process.exit(1);
+  }
 }

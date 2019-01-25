@@ -13,9 +13,9 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:import/recommended',
-    'plugin:prettier/recommended',
+    'plugin:security/recommended',
   ],
-  plugins: ['import', 'html', 'markdown'],
+  plugins: ['security', 'import', 'html', 'markdown', 'jsdoc'],
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
@@ -25,9 +25,13 @@ module.exports = {
     es6: true,
   },
   settings: {
+    'import/ignore': ['.html', '.svg', '.pcss', '.css'],
+    'import/parsers': {
+      'typescript-eslint-parser': ['.ts', '.tsx'], // enable parsing TS exports
+    },
     'import/resolver': {
       node: {
-        extensions: ['.css', '.html', '.js', '.json', '.mjs', '.ts'],
+        extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
       },
     },
   },
@@ -37,25 +41,50 @@ module.exports = {
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
-        functions: 'only-multiline', // comma on multiline function params is OK
+        functions: 'only-multiline', // comma on multiline function params is OK 👌
         imports: 'always-multiline',
         objects: 'always-multiline',
       },
     ],
-    'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive variable names
+    'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive names
     'import/extensions': ['error', 'ignorePackages'], // do use file extensions
+    'jsdoc/check-examples': 'warn',
+    'jsdoc/check-param-names': 'warn',
+    'jsdoc/check-tag-names': 'warn',
+    'jsdoc/check-types': 'warn',
+    'jsdoc/newline-after-description': ['warn', 'never'],
+    'jsdoc/require-param': 'warn',
+    'jsdoc/require-param-description': 'warn',
+    'jsdoc/require-param-name': 'warn',
+    'jsdoc/require-param-type': 'warn',
+    'jsdoc/require-returns': 'warn',
+    'jsdoc/require-returns-type': 'warn',
+    'jsdoc/valid-types': 'warn',
+    'max-len': [
+      'error',
+      {
+        code: 80, // consistency with prettier + tslint (since it doesn't have autofix for max-len)
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
     'no-console': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
     'object-curly-newline': ['error', { consistent: true }],
-    'prettier/prettier': 'error',
+
+    // rules incompatible with prettier :'(
+    'operator-linebreak': 'off',
   },
 
   overrides: [
     // JS config files
     {
       files: ['*.config.js', '*rc.js'],
-      excludedFiles: ['preact.config.js', 'rollup.config.js'], // uses ES6 modules
+      excludedFiles: ['preact.config.js', 'rollup.config.js'], // use ES modules
       parserOptions: {
         sourceType: 'script',
       },
@@ -65,12 +94,40 @@ module.exports = {
         node: true,
       },
       rules: {
-        // can use any dependency
+        // can use any installed dependency
         'import/no-extraneous-dependencies': [
           'error',
           {
             devDependencies: true,
             peerDependencies: true,
+          },
+        ],
+      },
+    },
+    // unit tests
+    {
+      files: ['*.test.js', '*.spec.js'],
+      env: {
+        jest: true,
+      },
+      plugins: ['jest', 'import'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+            peerDependencies: true,
+          },
+        ],
+        'max-len': [
+          'error',
+          {
+            code: 100, // consistency with prettier override settings
+            ignoreTrailingComments: true,
+            ignoreUrls: true,
+            ignoreStrings: true,
+            ignoreTemplateLiterals: true,
+            ignoreRegExpLiterals: true,
           },
         ],
       },

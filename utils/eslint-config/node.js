@@ -1,5 +1,5 @@
 /**
- * ESLint config preset for minna-ui projects.
+ * ESLint config preset for node code in minna-ui projects.
  */
 
 /* tslint:disable object-literal-sort-keys */

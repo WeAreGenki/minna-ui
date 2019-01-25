@@ -19,7 +19,7 @@
     "stylelint": "^9.2.0"
   },
   "dependencies": {
-    "stylelint-a11y": "^1.1.9",
+    "stylelint-a11y": "^1.1.10",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-high-performance-animation": "^1.1.1",

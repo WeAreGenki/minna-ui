@@ -7,12 +7,12 @@
 const { spawn } = require('child_process');
 
 /**
- * Run a binary file in a separate process and get the stdout and stderr messages.
+ * Run a binary file in a separate process and get stdout/stderr.
  * @param {string} path The full path to the binary file.
- * @param {Array} [args] Any arguments you want passed in when calling the script.
- * @param {object} [env] Override process.env with custom env parameters.
- * @returns {Promise.<string[]>} Returns a promise with an array of the stdout or
- * stderr messages.
+ * @param {(string[])=} args Arguments to pass to the called script.
+ * @param {NodeJS.ProcessEnv} env Override `process.env` with custom parameters.
+ * @returns {Promise.<string[]>} Returns a promise with an array of the stdout
+ * or stderr messages.
  */
 function runBin(path, args = [], env = process.env) {
   return new Promise((resolve, reject) => {
@@ -23,23 +23,19 @@ function runBin(path, args = [], env = process.env) {
 
     const child = spawn(path, args, { env });
 
-    child.on(
-      'error',
-      /* istanbul ignore next */
-      error => {
-        reject(error);
-      },
-    );
+    child.on('error', (error) => {
+      reject(error);
+    });
 
-    child.stdout.on('data', data => {
+    child.stdout.on('data', (data) => {
       stdout.push(data.toString());
     });
 
-    child.stderr.on('data', data => {
+    child.stderr.on('data', (data) => {
       stderr.push(data.toString());
     });
 
-    child.on('close', code => {
+    child.on('close', (code) => {
       if (stderr.length || code !== 0) {
         reject(stderr);
       } else {
@@ -49,6 +45,8 @@ function runBin(path, args = [], env = process.env) {
   });
 }
 
+/* eslint-disable max-len */
+// TODO: Add this to the docs or make a live example rather then keeping here
 // XXX: Full example of CLI Bin test:
 
 // /** @jest-environment node */

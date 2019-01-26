@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp */
+
 'use strict';
 
 const fs = require('fs');
@@ -19,7 +21,7 @@ const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} dirName
+ * @param {string} dirName Directory name.
  */
 const pkg = dirName => ({
   npm_package_homepage: 'https://ui.wearegenki.com/',

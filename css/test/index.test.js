@@ -1,5 +1,8 @@
 /** @jest-environment node */
 
+// FIXME: Remove next line if we enable these tests again
+/* eslint-disable max-len */
+
 'use strict';
 
 // FIXME: Create tests for CSS, mixins, etc.

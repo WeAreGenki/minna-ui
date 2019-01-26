@@ -1,10 +1,11 @@
-// TODO: Add note to readme that this plugin can only handle one bundle at the time at the moment.
+// TODO: Add note to readme that this plugin can only handle one bundle at
+// the time at the moment.
 // FIXME: Allow running in multiple bundles
 
 // TODO: Inject page reload script into HTML
 
 /* tslint:disable no-console */
-/* eslint-disable no-console */
+/* eslint-disable no-console, security/detect-object-injection */
 
 'use strict';
 
@@ -25,17 +26,19 @@ const units = ['B', 'kB', 'MB', 'GB', 'TB'];
 
 /**
  * Convert bytes into a human readable form.
+ * @param {number} bytes Number of bytes to convert.
+ * @returns {string}
  */
 function humanizeSize(bytes) {
   const index = Math.floor(Math.log(bytes) / Math.log(1024));
   if (index < 0) return '';
-  return `${+(bytes / 1024 ** index).toFixed(2)} ${units[index]}`;
+  return `${+((bytes / 1024) ** index).toFixed(2)} ${units[index]}`;
 }
 
 /**
  * Run a local development web server.
  * @see https://github.com/lukeed/sirv/tree/master/packages/sirv#api
- * @param {object} opts
+ * @param {Object} opts User defined options.
  * @param {string=} opts.dir The directory to serve.
  * @param {boolean=} opts.liveReload Enable automatic page reload when a
  * dependent file changes.
@@ -44,7 +47,7 @@ function humanizeSize(bytes) {
  * served for any unknown paths instead of returning a 404.
  * @param {number=} opts.wsPort Web socket port for the page live reload script.
  * @param {...any=} opts.userOpts Any additional options to pass to `sirv`.
- * @returns {object} Rollup plugin.
+ * @returns {Object} Rollup plugin.
  */
 function devserver({
   dir = './dist',
@@ -64,7 +67,7 @@ function devserver({
   if (!server) {
     process.on('exit', () => {
       server.close(catchErr);
-      console.log(`[DEVSERVER] Terminated server`);
+      console.log('[DEVSERVER] Terminated server');
     });
 
     const sirvOpts = merge(
@@ -122,7 +125,7 @@ function devserver({
       });
     });
 
-    server.listen(port, err => {
+    server.listen(port, (err) => {
       if (err) throw err;
 
       console.log(`[DEVSERVER] Started server at http://localhost:${port}/`);

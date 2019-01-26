@@ -7,7 +7,6 @@ const postcss = require('postcss');
 /**
  * Svelte style preprocessor.
  */
-/* istanbul ignore next */
 module.exports = (context = {}) => async ({
   attributes,
   content,
@@ -33,9 +32,9 @@ module.exports = (context = {}) => async ({
     const { plugins, options } = await postcssLoadConfig(ctx);
     const result = await postcss(plugins).process(content, options);
 
-    result.warnings().forEach(warn => {
-      /* tslint:disable-next-line no-console */
-      console.warn(warn.toString()); // eslint-disable-line no-console
+    result.warnings().forEach((warn) => {
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      console.warn(warn.toString());
     });
 
     // pass through dependent files so rollup can monitor them for changes
@@ -53,8 +52,8 @@ module.exports = (context = {}) => async ({
     if (error.name === 'CssSyntaxError') {
       process.stderr.write(error.message + error.showSourceCode());
     } else {
-      /* tslint:disable-next-line no-console */
-      console.error('[PRE-STYLE] Error', error); // eslint-disable-line no-console
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      console.error('[PRE-STYLE] Error', error);
     }
   }
 };

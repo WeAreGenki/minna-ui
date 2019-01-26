@@ -22,8 +22,9 @@
   box-shadow:
     0 2px 8px 0 color-mod($btn-shadow-color alpha(0.55)),
     inset 0 -16px 10px 0 rgba(0, 0, 0, 0.05);
-  /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
+  /* stylelint-disable plugin/no-low-performance-animation-properties */
   transition: background-color $btn-animate-speed-in linear;
+  /* stylelint-enable */
 
   &:hover,
   &:focus {

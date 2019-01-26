@@ -10,7 +10,10 @@
 
 /* Direction */
 
-/* TODO: If we never use anything other than .t0, .r0, .b0, l0 then remove the other steps here */
+/**
+ * TODO: If we never use anything other than .t0, .r0, .b0, l0 then remove
+ * the other steps here.
+ */
 
 @each $value $i in $spacing-values {
   .t$(i) { top: $value; }

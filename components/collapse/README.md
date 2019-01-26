@@ -129,7 +129,7 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaCollapse from '@minna-ui/collapse';
 
    const collapseEls = document.querySelectorAll('.minna-collapse');
-   collapseEls.forEach(el => {
+   collapseEls.forEach((el) => {
      new MinnaCollapse({ target: el });
    });
    ```

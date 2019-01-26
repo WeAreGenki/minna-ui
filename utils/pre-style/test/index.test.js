@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+/* tslint:disable no-implicit-dependencies */
+
 // TODO: Add test for returned `dependencies`
 
 'use strict';
@@ -10,6 +12,7 @@ const { preprocess, compile } = require('svelte');
 const postcssNested = require('postcss-nested');
 const preprocessStyle = require('../index.js');
 
+/* eslint-disable-next-line security/detect-non-literal-fs-filename */
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform

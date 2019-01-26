@@ -33,7 +33,10 @@
 
   &:active {
     outline: $input-focus-outline;
-    /* FIXME: Try using an inverted shadow so it looks like the button is pressed in (see chrome settings page for reference) */
+    /**
+     * FIXME: Try using an inverted shadow so it looks like the button is
+     * pressed in (see chrome settings page for reference).
+     */
     box-shadow: none;
   }
 

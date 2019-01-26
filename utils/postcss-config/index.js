@@ -87,10 +87,9 @@ module.exports = postcss.plugin(
     const initializedPlugins = plugins.map(plugin => plugin(pluginOpts));
 
     // process CSS with plugins
-    return (root, result) =>
-      initializedPlugins.reduce(
-        (promise, plugin) => promise.then(() => plugin(result.root, result)),
-        Promise.resolve(),
-      );
+    return (root, result) => initializedPlugins.reduce(
+      (promise, plugin) => promise.then(() => plugin(result.root, result)),
+      Promise.resolve(),
+    );
   },
 );

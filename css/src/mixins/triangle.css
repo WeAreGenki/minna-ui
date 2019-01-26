@@ -33,10 +33,11 @@
   height: 0;
 
   @if $isPseudo == true {
+    $(side): calc(-1 * $size);
+
     position: absolute;
     display: block;
     content: '';
-    $(side): calc(-1 * $size);
 
     /* stylelint-disable at-rule-empty-line-before */
     @if $side == left {

@@ -2,7 +2,7 @@
 
 /**
  * Generic error handler for nodejs callbacks.
- * @param {Error} err
+ * @param {Error} err Node error from callback.
  */
 function catchErr(err) {
   if (err) throw err;

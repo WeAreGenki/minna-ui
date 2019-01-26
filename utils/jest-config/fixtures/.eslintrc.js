@@ -4,7 +4,5 @@
 
 module.exports = {
   root: true,
-  extends: [
-    '@minna-ui/eslint-config',
-  ],
+  extends: ['@minna-ui/eslint-config'],
 };

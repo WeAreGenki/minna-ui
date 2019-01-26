@@ -24,7 +24,7 @@ $navbar-link-padding: $nav-link-padding-y $nav-link-padding-x !default;
 $navbar-submenu-optimize: false !default;
 $navbar-submenu-animate-speed-in: $animate-speed-in !default;
 $navbar-submenu-animate-speed-out: $animate-speed-out !default;
-$navbar-body-offset: 2.88em !default; /* offset body so contents are not covered */
+$navbar-body-offset: 2.88em !default; /* offset to not cover page content */
 $navbar-hash-link-fix: true !default; /* see TODO: Add link to docs */
 $navbar-hash-link-offset: calc(
   $navbar-body-offset + 1em

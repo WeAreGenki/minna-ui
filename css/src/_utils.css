@@ -8,7 +8,8 @@
 
 /* Width */
 
-.w100 { width: 100%; /* When using `.w100` it's also a good idea to add `.bb` too */ }
+/* NOTE: When using `.w100` it's also a good idea to add `.bb` too. */
+.w100 { width: 100%; }
 .wfit { width: fit-content; }
 .wi { width: initial; }
 
@@ -90,9 +91,10 @@
 
 .hide-on-hover {
   transition: opacity $animate-speed-in ease-out;
-  backface-visibility: hidden; /* promote into its own layer to avoid repaints */
+  backface-visibility: hidden; /* promote into own layer to avoid repaints */
 
-  &:hover { /* stylelint-disable-line a11y/selector-pseudo-class-focus */
+  &:hover,
+  &:focus {
     opacity: 0;
     transition-duration: $animate-speed-out;
   }

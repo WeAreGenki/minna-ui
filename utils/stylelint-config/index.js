@@ -60,7 +60,12 @@ module.exports = {
     'function-blacklist': ['hsl', 'hsla'], // only rgb() or rgba()
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
-    'max-line-length': [80],
+    'max-line-length': [
+      80,
+      {
+        ignorePattern: ['/https?:\\/\\/[0-9,a-z]*.*/i', '/stylelint-disable/'],
+      },
+    ],
     'media-feature-name-no-vendor-prefix': true,
     'media-feature-parentheses-space-inside': 'never',
     'media-feature-range-operator-space-after': 'always',
@@ -99,10 +104,11 @@ module.exports = {
     'order/order': [
       'dollar-variables',
       'custom-properties',
-      { type: 'at-rule', name: 'extend' },
+      { type: 'at-rule', hasBlock: false },
       'declarations',
+      { type: 'at-rule', name: 'if' },
       'rules',
-      'at-rules',
+      { type: 'at-rule', hasBlock: true },
     ],
     'order/properties-order': [
       {

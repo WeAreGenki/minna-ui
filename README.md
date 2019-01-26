@@ -1,5 +1,3 @@
-<!-- markdownlint-disable first-line-h1 -->
-
 <!-- TODO: Document the new recommended way of installing by using the `minna-ui` meta package  -->
 
 <!-- TODO: Move much of this content into the docs and simplify this file as much as possible -->

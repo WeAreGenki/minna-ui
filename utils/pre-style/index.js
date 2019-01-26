@@ -1,6 +1,7 @@
 'use strict';
 
 const merge = require('deepmerge');
+const { dirname, join } = require('path');
 const postcssLoadConfig = require('postcss-load-config');
 const postcss = require('postcss');
 
@@ -38,8 +39,10 @@ module.exports = (context = {}) => async ({
     });
 
     // pass through dependent files so rollup can monitor them for changes
-    /* eslint-disable-next-line no-underscore-dangle */
-    const dependencies = result.map ? result.map._sources._array : null;
+    const basePath = dirname(filename);
+    const dependencies = result.map
+      ? result.map._sources._array.map(dep => join(basePath, dep)) // eslint-disable-line no-underscore-dangle
+      : null;
 
     /* eslint-disable-next-line consistent-return */
     return {

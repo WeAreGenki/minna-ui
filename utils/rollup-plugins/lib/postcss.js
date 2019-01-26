@@ -1,6 +1,7 @@
 'use strict';
 
 const merge = require('deepmerge');
+const { dirname, join } = require('path');
 const postcss = require('postcss');
 const postcssrc = require('postcss-load-config');
 const Purgecss = require('purgecss');
@@ -57,10 +58,11 @@ function postcssRollup({
 
         // register sub-dependencies so rollup can monitor them for changes
         if (result.map) {
+          const basePath = dirname(id);
           // TODO: Don't use PostCSS private API
           /* eslint-disable-next-line no-underscore-dangle */
-          result.map._sources._array.forEach((dependency) => {
-            this.addWatchFile(dependency);
+          result.map._sources._array.forEach((dep) => {
+            this.addWatchFile(join(basePath, dep));
           });
         }
 

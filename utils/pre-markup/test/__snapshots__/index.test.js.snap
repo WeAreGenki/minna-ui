@@ -16,11 +16,7 @@ exports[`Svelte markup preprocessor processes a component 1`] = `
       _name: 'Elon Musk',
     }),
     computed: {
-      _reversed: ({ _name }) =>
-        _name
-          .split('')
-          .reverse()
-          .join(''),
+      _reversed: ({ _name }) => _name.split('').reverse().join(''),
     },
   }; </script> <style>/*discarded*/</style> "
 `;

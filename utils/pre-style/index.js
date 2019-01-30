@@ -6,14 +6,17 @@ const postcssLoadConfig = require('postcss-load-config');
 const postcss = require('postcss');
 
 /**
- * Svelte style preprocessor.
+ * Minna UI svelte style preprocessor.
+ * @param {Object} context
+ * @returns {Object}
  */
 module.exports = (context = {}) => async ({
   attributes,
   content,
   filename,
+  /* eslint-disable-next-line consistent-return */
 }) => {
-  if (attributes.type !== 'text/postcss') return;
+  if (attributes.type !== 'text/postcss') return undefined;
 
   // merge user provided context into defaults
   const ctx = merge(
@@ -38,13 +41,18 @@ module.exports = (context = {}) => async ({
       console.warn(warn.toString());
     });
 
+    if (!result.map) {
+      return {
+        code: result.css,
+        map: result.map,
+      };
+    }
+
     // pass through dependent files so rollup can monitor them for changes
     const basePath = dirname(filename);
-    const dependencies = result.map
-      ? result.map._sources._array.map(dep => join(basePath, dep)) // eslint-disable-line no-underscore-dangle
-      : null;
+    // eslint-disable-next-line no-underscore-dangle,max-len
+    const dependencies = result.map._sources._array.map(dep => join(basePath, dep));
 
-    /* eslint-disable-next-line consistent-return */
     return {
       dependencies,
       code: result.css,

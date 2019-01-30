@@ -4,6 +4,17 @@
 
 /* tslint:disable object-literal-sort-keys */
 
+/**
+ * TODO: Add a README and add a note explaining why we have both TSLint AND
+ * ESLint at the same time -- ESLint can do way more at the moment including
+ * parsing non-JS files like HTML or markdown and lint JS contained within.
+ *
+ * NOTE: There is a promising project which is trying to bring TS linting into
+ * ESLint. If the project becomes popular and covers most of our TSLint rules
+ * then we should consider switching to a pure ESLint setup.
+ * @see {@link https://github.com/typescript-eslint/typescript-eslint}
+ */
+
 'use strict';
 
 const isProd = process.env.NODE_ENV === 'production';

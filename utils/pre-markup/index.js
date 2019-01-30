@@ -6,7 +6,8 @@ const merge = require('deepmerge');
 const htmlMinifier = require('html-minifier');
 
 /**
- * Svelte markup preprocessor to remove excessive whitespace from Svelte output.
+ * Minna UI svelte markup preprocessor.
+ * Removes excessive whitespace from Svelte output.
  * @param {Object} options User defined options.
  * @returns {Object}
  */

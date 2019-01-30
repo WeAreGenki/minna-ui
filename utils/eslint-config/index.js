@@ -38,7 +38,7 @@ module.exports = {
   settings: {
     'import/ignore': ['.html', '.svg', '.pcss', '.css'],
     'import/parsers': {
-      'typescript-eslint-parser': ['.ts', '.tsx'], // enable parsing TS exports
+      '@typescript-eslint/parser': ['.ts', '.tsx'], // enable parsing TS exports
     },
     'import/resolver': {
       node: {

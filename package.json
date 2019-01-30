@@ -41,7 +41,7 @@
     "lerna": "3.10.7",
     "postcss": "7.0.14",
     "postcss-scss": "2.0.0",
-    "prettier": "1.16.1",
+    "prettier": "1.16.2",
     "remark-cli": "6.0.1",
     "stylelint": "9.10.1",
     "svelte": "2.16.0",

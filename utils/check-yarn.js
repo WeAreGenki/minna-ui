@@ -12,10 +12,12 @@
 
 'use strict';
 
+const path = require('path');
+
 const reset = '\x1B[0m';
 const redBold = '\x1B[1;91m';
 const yellow = '\x1B[0;33m';
-const execpath = process.env.npm_execpath;
+const execpath = path.posix.normalize(process.env.npm_execpath);
 
 // TODO: Get more path samples
 /**

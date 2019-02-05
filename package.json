@@ -45,6 +45,7 @@
     "remark-cli": "6.0.1",
     "stylelint": "9.10.1",
     "svelte": "2.16.0",
+    "tslib": "1.9.3",
     "tslint": "5.12.1",
     "typescript": "3.2.4"
   },

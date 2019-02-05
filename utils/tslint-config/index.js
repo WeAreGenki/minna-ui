@@ -28,7 +28,7 @@ const commonRules = {
   // FIXME: Remove next line once it has an auto fix available
   // https://github.com/buzinas/tslint-eslint-rules/issues/342
   'ter-arrow-parens': false, // conflicts with prettier and doesn't have fix
-  // Workaround for component var names in PascalCase
+  // workaround for component var names in PascalCase
   // @see https://github.com/palantir/tslint-react/issues/120
   'variable-name': [true, 'ban-keywords', 'check-format', 'allow-pascal-case'],
 

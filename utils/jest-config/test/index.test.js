@@ -2,8 +2,6 @@
 
 'use strict';
 
-const path = require('path');
-
 describe('Jest test runner', () => {
   it('runs basic test', () => {
     expect(2 + 3).toEqual(5);

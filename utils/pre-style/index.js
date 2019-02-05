@@ -41,17 +41,14 @@ module.exports = (context = {}) => async ({
       console.warn(warn.toString());
     });
 
-    if (!result.map) {
-      return {
-        code: result.css,
-        map: result.map,
-      };
-    }
+    let dependencies;
 
-    // pass through dependent files so rollup can monitor them for changes
-    const basePath = dirname(filename);
-    // eslint-disable-next-line no-underscore-dangle,max-len
-    const dependencies = result.map._sources._array.map(dep => join(basePath, dep));
+    if (result.map) {
+      // pass through dependent files so rollup can monitor them for changes
+      const basePath = dirname(filename);
+      // eslint-disable-next-line no-underscore-dangle
+      dependencies = result.map._sources._array.map(dep => join(basePath, dep));
+    }
 
     return {
       dependencies,

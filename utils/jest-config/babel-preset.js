@@ -10,6 +10,7 @@ module.exports = (api) => {
   const isTest = api.env('test');
 
   return {
+    presets: [isTest && '@babel/preset-typescript'].filter(Boolean),
     plugins: [isTest && '@babel/plugin-transform-modules-commonjs'].filter(
       Boolean,
     ),

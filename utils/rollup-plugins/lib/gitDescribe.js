@@ -13,7 +13,7 @@ function gitDescribe() {
   try {
     const reference = execSync(
       'git describe --always --dirty="-dev"',
-    ).toString();
+    ).toString().trim();
     return reference;
   } catch (error) {
     /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */

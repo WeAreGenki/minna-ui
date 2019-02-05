@@ -20,11 +20,11 @@
     "eslint": "^5.0.0"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^1.1.1",
+    "@typescript-eslint/parser": "^1.2.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.2.1",
+    "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-jsdoc": "^4.1.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0"

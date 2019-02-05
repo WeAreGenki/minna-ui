@@ -43,7 +43,7 @@ module.exports = (context = {}) => async ({
 
     let dependencies;
 
-    if (result.map) {
+    if (result.map && filename) {
       // pass through dependent files so rollup can monitor them for changes
       const basePath = dirname(filename);
       // eslint-disable-next-line no-underscore-dangle

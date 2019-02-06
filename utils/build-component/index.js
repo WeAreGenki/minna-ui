@@ -35,7 +35,8 @@ const isClean = new Map();
 
 /**
  * Run component build process.
- * @param {!NodeJS.ProcessEnv} env
+ * @param {!NodeJS.ProcessEnv} env Node `process.env`.
+ * @returns {Promise<Object>} A promise containing the build results.
  */
 module.exports = async function run(env) {
   const pkgSvelte = env.npm_package_svelte;
@@ -63,7 +64,7 @@ module.exports = async function run(env) {
 
   /** @type {Function} */
   let resolveCss;
-  const resultCss = new Promise(res => {
+  const resultCss = new Promise((res) => {
     resolveCss = res;
   });
 
@@ -76,7 +77,7 @@ module.exports = async function run(env) {
 
     /* istanbul ignore else */
     if (distDir !== process.cwd()) {
-      fs.stat(distDir, err => {
+      fs.stat(distDir, (err) => {
         /* istanbul ignore if */
         if (err && err.code !== 'ENOENT') throw err;
 

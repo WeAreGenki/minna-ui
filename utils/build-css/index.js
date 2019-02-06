@@ -2,6 +2,9 @@
  * Tool to compile minna-ui CSS packages.
  */
 
+/* eslint-disable-next-line max-len */
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
+
 'use strict';
 
 const fs = require('fs');
@@ -28,7 +31,7 @@ const compileWarn = (origin, level, warnings) => {
     process.exitCode = 1; // prevents tests running too long
   }
 
-  warnings.forEach(err => {
+  warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
       /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
@@ -44,7 +47,7 @@ const compileWarn = (origin, level, warnings) => {
 function cleanDistDir(dir) {
   /* istanbul ignore else */
   if (dir !== process.cwd()) {
-    fs.stat(dir, err => {
+    fs.stat(dir, (err) => {
       if (!err) {
         del.sync([dir]);
       }
@@ -55,11 +58,12 @@ function cleanDistDir(dir) {
 }
 
 /**
- *
- * @param {object} opts
- * @param {string} opts.from
- * @param {string} opts.to
- * @param {string} opts.banner
+ * Process CSS.
+ * @param {Object} opts User defined options.
+ * @param {string} opts.from File from.
+ * @param {string} opts.to File to.
+ * @param {string} opts.banner Banner to prepend to resulting code.
+ * @returns {Promise<{min: Object, result: Object}>}
  */
 async function processCss({ from, to, banner }) {
   const src = await readFile(from, 'utf8');
@@ -102,6 +106,11 @@ async function processCss({ from, to, banner }) {
   };
 }
 
+/**
+ * @param {NodeJS.ProcessEnv} env Node process.env.
+ * @param {string[]} argv Node process.argv.
+ * @returns {Promise<Object>}
+ */
 module.exports = async function run(env, argv = []) {
   try {
     process.env.NODE_ENV = env.NODE_ENV || 'production';
@@ -139,13 +148,12 @@ module.exports = async function run(env, argv = []) {
 
       const dirFiles = await readdir(inputDir);
       const cssFiles = dirFiles.filter(
-        fileName =>
-          fileName !== 'import.css' &&
+        fileName => fileName !== 'import.css' &&
           fileName.endsWith('.css') &&
           !fileName.startsWith('_'),
       );
 
-      cssFiles.forEach(fileName => {
+      cssFiles.forEach((fileName) => {
         inputCss.push(join(inputDir, fileName));
         outputCss.push(join(outputDir, fileName));
       });

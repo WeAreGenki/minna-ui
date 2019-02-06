@@ -26,7 +26,7 @@ const execpath = path.posix.normalize(process.env.npm_execpath);
  *  - yarn bin: `/usr/lib/node_modules/yarn/bin/yarn.js`
  *  - yarn package: ``
  *  - npm bin: ``
- *  - npm package: `/home/username/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
+ *  - npm package: `~/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
  *  Windows:
  *  - yarn bin: ``
  *  - yarn package: ``
@@ -37,6 +37,8 @@ const execpath = path.posix.normalize(process.env.npm_execpath);
  *  - yarn package: ``
  *  - npm bin: ``
  *  - npm package: ``
+ *  Lerna:
+ *  - `node_modules/lerna/cli.js`
  */
 
 if (execpath && execpath.indexOf('yarn.js') === -1) {

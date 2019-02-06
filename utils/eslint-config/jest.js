@@ -9,16 +9,16 @@
 module.exports = {
   root: false, // this should extend the developer's project root config OR another preset
   extends: ['plugin:jest/recommended'],
+  plugins: ['jest', 'import'],
+  parserOptions: {
+    sourceType: 'script',
+  },
   env: {
     jest: true,
   },
   globals: {
     expectPage: true,
     page: true,
-  },
-  plugins: ['jest', 'import'],
-  parserOptions: {
-    sourceType: 'script',
   },
   rules: {
     'import/no-extraneous-dependencies': [

@@ -106,8 +106,9 @@
         if (!isOpen || !filterable || inputText === '') return items;
 
         return items.filter(
-          option =>
-            option.text.toLowerCase().indexOf(inputText.toLowerCase()) > -1,
+          option => option.text
+            .toLowerCase()
+            .indexOf(inputText.toLowerCase()) > -1,
         );
       },
     },
@@ -178,9 +179,8 @@
         } else {
           // option selected via keyboard
           const { filteredItems, selected } = this.get();
-          const option = filteredItems[selected];
+          const option = filteredItems[selected]; // eslint-disable-line security/detect-object-injection
 
-          /* istanbul ignore else */
           if (!option.disabled) {
             this.set({
               value: option.id,
@@ -210,7 +210,8 @@
       down() {
         const { selected, filteredItems } = this.get();
 
-        // jump to last availiable item if index is out of bounds (e,g, after filtering)
+        // jump to last availiable item if index is out of bounds (e,g, after
+        // filtering)
         if (selected >= filteredItems.length - 1) {
           this.set({ selected: filteredItems.length - 1 });
           return;
@@ -296,12 +297,12 @@
   }
 
   .select-caret {
+    @include triangle($select-caret-size, $select-caret-color);
+
     position: absolute;
     top: calc(50% - ($select-caret-size / 2));
     right: 0.75em;
     pointer-events: none;
-
-    @include triangle($select-caret-size, $select-caret-color);
 
     @if $select-optimize {
       will-change: transform;
@@ -328,7 +329,9 @@
     text-align: left;
     background-color: $input-background-color;
     box-shadow: $select-shadow;
-    transition: transform $select-animate-speed-out ease-out,
+    /* prettier-ignore */
+    transition:
+      transform $select-animate-speed-out ease-out,
       opacity $select-animate-speed-out ease-out;
     backface-visibility: hidden; /* promote to own layer to avoid repaints */
 
@@ -342,6 +345,7 @@
     }
 
     /* don't render when disabled for better performance */
+    /* stylelint-disable-next-line a11y/no-display-none */
     .select-disabled > & {
       display: none;
 

@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp */
+
 'use strict';
 
 const fs = require('fs');
@@ -19,7 +21,7 @@ const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} dirName
+ * @param {string} dirName Directory name.
  */
 const pkg = dirName => ({
   npm_package_homepage: 'https://ui.wearegenki.com/',
@@ -46,7 +48,7 @@ describe('build-component tool', () => {
     expect(built.esm.result.output[0].code).toMatch("name: 'Elon Musk'");
     expect(built.esm.result.output[0].code).toMatch('component.refs._target ===');
     expect(built.esm.result.output[0].map.sources).toHaveLength(2);
-  });
+  }, 10000);
 
   it('compiles package main bundle', async () => {
     expect.assertions(4);

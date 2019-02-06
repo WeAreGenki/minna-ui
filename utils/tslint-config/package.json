@@ -14,17 +14,16 @@
   ],
   "main": "index.js",
   "files": [
-    "jest.js",
-    "node.js"
+    "*.js"
   ],
   "peerDependencies": {
-    "prettier": "^1.15.0",
+    "tslib": "^1.9.3",
     "tslint": "^5.11.0"
   },
   "dependencies": {
-    "tslint-config-airbnb": "5.11.1",
-    "tslint-config-prettier": "1.17.0",
-    "tslint-plugin-prettier": "2.0.1"
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-security": "^1.15.0",
+    "tslint-microsoft-contrib": "^6.0.0"
   },
   "publishConfig": {
     "access": "public"

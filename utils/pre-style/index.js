@@ -1,19 +1,22 @@
 'use strict';
 
 const merge = require('deepmerge');
+const { dirname, join } = require('path');
 const postcssLoadConfig = require('postcss-load-config');
 const postcss = require('postcss');
 
 /**
- * Svelte style preprocessor.
+ * Minna UI svelte style preprocessor.
+ * @param {Object} context
+ * @returns {Object}
  */
-/* istanbul ignore next */
 module.exports = (context = {}) => async ({
   attributes,
   content,
   filename,
+  /* eslint-disable-next-line consistent-return */
 }) => {
-  if (attributes.type !== 'text/postcss') return;
+  if (attributes.type !== 'text/postcss') return undefined;
 
   // merge user provided context into defaults
   const ctx = merge(
@@ -33,16 +36,20 @@ module.exports = (context = {}) => async ({
     const { plugins, options } = await postcssLoadConfig(ctx);
     const result = await postcss(plugins).process(content, options);
 
-    result.warnings().forEach(warn => {
-      /* tslint:disable-next-line no-console */
-      console.warn(warn.toString()); // eslint-disable-line no-console
+    result.warnings().forEach((warn) => {
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      console.warn(warn.toString());
     });
 
-    // pass through dependent files so rollup can monitor them for changes
-    /* eslint-disable-next-line no-underscore-dangle */
-    const dependencies = result.map ? result.map._sources._array : null;
+    let dependencies;
 
-    /* eslint-disable-next-line consistent-return */
+    if (result.map && filename) {
+      // pass through dependent files so rollup can monitor them for changes
+      const basePath = dirname(filename);
+      // eslint-disable-next-line no-underscore-dangle
+      dependencies = result.map._sources._array.map(dep => join(basePath, dep));
+    }
+
     return {
       dependencies,
       code: result.css,
@@ -53,8 +60,8 @@ module.exports = (context = {}) => async ({
     if (error.name === 'CssSyntaxError') {
       process.stderr.write(error.message + error.showSourceCode());
     } else {
-      /* tslint:disable-next-line no-console */
-      console.error('[PRE-STYLE] Error', error); // eslint-disable-line no-console
+      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      console.error('[PRE-STYLE] Error', error);
     }
   }
 };

@@ -1,26 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "checkJs": true,
-    "alwaysStrict": true,
-
-    "strict": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "es2018"
   },
-  "exclude": ["**/__sapper__/*", "**/dist/*", "**/node_modules/*"],
+  "exclude": [
+    "**/.*rc.js",
+    "**/*.config.js",
+    "__sapper__",
+    "dist",
+    "node_modules",
+    "test/coverage"
+  ],
   "typeAcquisition": {
     "enable": true
   }

@@ -9,10 +9,11 @@
 /* Box model */
 
 /**
- * In general it's not necessary to use `border-box` as the box model everywhere,
- * so this is disabled by default. You will need to add it manually or via the
- * `.bb` class when necessary. When prototyping or if you don't want to worry
- * about the box model you can set `--use-global-border-box: true;`.
+ * In general it's not necessary to use `border-box` as the box model
+ * everywhere, so this is disabled by default. You will need to add it
+ * manually or via the `.bb` class when necessary. When prototyping or
+ * if you don't want to worry about the box model you can set
+ * `--use-global-border-box: true;`.
  *
  * REFERENCE:
  *  - https://aastudio.fr/box-sizing.html

@@ -111,7 +111,7 @@ li {
   tbody > tr:nth-child(odd) {
     background: $background-color-muted;
 
-    /* FIXME: These selector chain makes me sad, come up with a better solution */
+    /* FIXME: 💩💩 selector chains, come up with a better solution */
     /* & > td:first-child {
       position: relative;
 

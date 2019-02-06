@@ -2,7 +2,24 @@
 {
   "version": "0.2.0",
   "configurations": [
-    // @see https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "protocol": "inspector",
+      "smartStep": true
+    },
+    // @see https://github.com/sveltejs/sapper/pull/436
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "sapper: dev",
+      "program": "${workspaceFolder}/node_modules/sapper/dist/cli.js",
+      "args": ["dev"],
+      "autoAttachChildProcesses": true
+    },
+    // https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests
     {
       "type": "node",
       "request": "launch",
@@ -11,6 +28,7 @@
       "args": ["--runInBand"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }
@@ -23,6 +41,7 @@
       "args": ["${relativeFile}"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }

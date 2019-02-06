@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-object-injection */
+
 'use strict';
 
 const merge = require('deepmerge');
@@ -13,21 +15,21 @@ const catchErr = require('./catchErr.js');
  * Rollup plugin to generate CSS with PostCSS from imported styles, combine into
  * a single bundle, and write it to disk. Optionally minifies and removes unused
  * styles for significantly smaller CSS bundles.
- * @param {object} opts
+ * @param {Object} opts User defined options.
  * @param {string=} opts.file Output file path to write to. Defaults to the same
  * as the JS bundle but with a `.css` file extension.
- * @param {(Array<string>|function)=} opts.content Page markup content. Used to
+ * @param {(Array<string>|Function)=} opts.content Page markup content. Used to
  * determine which CSS selectors are used when removing unused styles.
- * @param {object=} opts.context Base PostCSS options.
+ * @param {Object=} opts.context Base PostCSS options.
  * @param {Array<string>=} opts.exclude Files to exclude from CSS processing.
  * @param {Array<string>=} opts.include Files to include in CSS processing.
  * @param {Array<string>=} opts.content Files to parse for CSS classes.
- * @param {boolean=} opts.optimize Should the output CSS be minified and cleaned?
+ * @param {boolean=} opts.optimize Should output CSS be minified and cleaned?
  * @param {Array<string>=} opts.whitelist CSS classes to always keep.
  * @param {boolean=} opts.safe Only apply safe optimisations.
  * @param {boolean=} opts.debug Show additional logging for debug purposes.
  * @param {...any=} opts.userOpts Any additional options to pass to `cssnano`.
- * @returns {object} Rollup plugin.
+ * @returns {Object} Rollup plugin.
  */
 function makeCss({
   file,
@@ -69,7 +71,7 @@ function makeCss({
         const { plugins, options } = await postcssrc(ctx);
         const result = await postcss(plugins).process(source, options);
 
-        result.warnings().forEach(warn => {
+        result.warnings().forEach((warn) => {
           this.warn(warn.toString(), { line: warn.line, column: warn.column });
         });
 
@@ -77,7 +79,7 @@ function makeCss({
         if (result.map) {
           // TODO: Don't use PostCSS private API
           /* eslint-disable-next-line no-underscore-dangle */
-          result.map._sources._array.forEach(dependency => {
+          result.map._sources._array.forEach((dependency) => {
             this.addWatchFile(dependency);
           });
         }
@@ -127,7 +129,7 @@ function makeCss({
           }),
         ).process(css, {});
 
-        result.warnings().forEach(warn => {
+        result.warnings().forEach((warn) => {
           this.warn(warn.toString(), { line: warn.line, column: warn.column });
         });
 
@@ -154,7 +156,7 @@ function makeCss({
       if (file) {
         cssWritePath = resolve(file);
       } else {
-        // FIXME: @TESTING: Test this works as expected for both `output.file` and `output.dir modes`
+        // FIXME: Test this works for both `output.file` and `output.dir modes`
         // const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
         const jsFile = outputOpts.file || Object.values(bundle)[0].fileName;
         const cssFile = jsFile.replace(/js$/, 'css');

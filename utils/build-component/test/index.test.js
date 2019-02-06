@@ -48,7 +48,7 @@ describe('build-component tool', () => {
     expect(built.esm.result.output[0].code).toMatch("name: 'Elon Musk'");
     expect(built.esm.result.output[0].code).toMatch('component.refs._target ===');
     expect(built.esm.result.output[0].map.sources).toHaveLength(2);
-  });
+  }, 10000);
 
   it('compiles package main bundle', async () => {
     expect.assertions(4);

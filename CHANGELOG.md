@@ -9,15 +9,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.21.0][] - 2019-02-06
+
 ### Added
 
 - New package `@minna-ui/remarklint-config`. In the past we used `markdownlint` but `remark` with `remark-lint` is more powerful and supports shared configs.
+- TypeScript support in unit tests when using `@minna-ui/jest-config`.
 - Missing README files for some utils packages.
 
 ### Changed
 
+- New configuration format for `@minna-ui/jest-config/babel-preset`. It no longer requires use of `env.test`; should be put in into the top level `presets`.
+- Improve `@minna-ui/eslint-config`; remove prettier intergration + add new rules.
+- Improve `@minna-ui/tslint-config`; remove prettier intergration + add new rules.
+- Improve `@minna-ui/stylelint-config`; remove prettier intergration + add new rules.
+- `@minna-ui/ts-config` improvements; more predfined options.
 - Internally it was required to run `yarn run setup` when working on this monorepo but this step is now automated.
 - Updated package dependencies.
+
+### Fixed
+
+- Tailing whitespace in output from `@minna-ui/rollup-plugins/lib/gitDescribe`.
+- Missing `tslib` dependency in some packages.
 
 ## [0.20.0][] - 2019-01-07
 
@@ -650,7 +663,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.20.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.21.0...HEAD
+[0.21.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.20.0...v0.21.0
 [0.20.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.1...v0.20.0
 [0.19.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.0...v0.19.1
 [0.19.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.18.2...v0.19.0

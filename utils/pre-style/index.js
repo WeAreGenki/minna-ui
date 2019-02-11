@@ -14,9 +14,8 @@ module.exports = (context = {}) => async ({
   attributes,
   content,
   filename,
-  /* eslint-disable-next-line consistent-return */
 }) => {
-  if (attributes.type !== 'text/postcss') return undefined;
+  if (attributes.type !== 'text/postcss') return;
 
   // merge user provided context into defaults
   const ctx = merge(
@@ -37,7 +36,7 @@ module.exports = (context = {}) => async ({
     const result = await postcss(plugins).process(content, options);
 
     result.warnings().forEach((warn) => {
-      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      // eslint-disable-next-line no-console
       console.warn(warn.toString());
     });
 
@@ -47,9 +46,12 @@ module.exports = (context = {}) => async ({
       // pass through dependent files so rollup can monitor them for changes
       const basePath = dirname(filename);
       // eslint-disable-next-line no-underscore-dangle
-      dependencies = result.map._sources._array.map(dep => join(basePath, dep));
+      dependencies = result.map._sources._array.map((dep) =>
+        join(basePath, dep),
+      );
     }
 
+    // eslint-disable-next-line consistent-return
     return {
       dependencies,
       code: result.css,
@@ -58,9 +60,10 @@ module.exports = (context = {}) => async ({
   } catch (error) {
     /* istanbul ignore else */
     if (error.name === 'CssSyntaxError') {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       process.stderr.write(error.message + error.showSourceCode());
     } else {
-      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      // eslint-disable-next-line no-console
       console.error('[PRE-STYLE] Error', error);
     }
   }

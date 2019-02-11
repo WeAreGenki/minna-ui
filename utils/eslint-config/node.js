@@ -15,4 +15,7 @@ module.exports = {
     browser: false,
     node: true,
   },
+  rules: {
+    '@typescript-eslint/no-var-requires': 'off',
+  },
 };

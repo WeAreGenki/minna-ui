@@ -2,24 +2,25 @@
  * TSLint config preset for minna-ui projects.
  */
 
-/* tslint:disable object-literal-sort-keys */
+// TODO: Convert all rules to ESLint and use a pure ESLint setup instead
 
 'use strict';
 
 // lint rules shared between both TypeScript and JavaScript
 const commonRules = {
+  'ban-comma-operator': true, // security
   'comment-format': {
-    severity: 'warning',
     options: [
       true,
       'check-space',
       'check-lowercase',
       { 'ignore-pattern': '[A-Z]{2,}' },
     ],
+    severity: 'warning',
   },
   'completed-docs': {
-    severity: 'warning',
     options: true, // FIXME: This is experimental and might be better removed
+    severity: 'warning',
   },
   curly: [true, 'ignore-same-line'],
   'no-implicit-dependencies': [true, ['##']], // webpack/rollup alias
@@ -31,9 +32,6 @@ const commonRules = {
   // workaround for component var names in PascalCase
   // @see https://github.com/palantir/tslint-react/issues/120
   'variable-name': [true, 'ban-keywords', 'check-format', 'allow-pascal-case'],
-
-  // security
-  'ban-comma-operator': true,
 };
 
 module.exports = {
@@ -60,6 +58,7 @@ module.exports = {
     typeCheck: true,
   },
   rulesDirectory: ['tslint-microsoft-contrib'],
+  // eslint-disable-next-line sort-keys
   rules: {
     ...commonRules,
     'import-name': [
@@ -70,6 +69,7 @@ module.exports = {
       },
     ],
   },
+  // eslint-disable-next-line sort-keys
   jsRules: {
     ...commonRules,
     'no-require-imports': false,
@@ -82,9 +82,9 @@ module.exports = {
     'trailing-comma': [
       true,
       {
+        esSpecCompliant: true,
         multiline: 'always',
         singleline: 'never',
-        esSpecCompliant: true,
       },
     ],
   },

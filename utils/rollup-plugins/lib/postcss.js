@@ -60,14 +60,14 @@ function postcssRollup({
         if (result.map) {
           const basePath = dirname(id);
           // TODO: Don't use PostCSS private API
-          /* eslint-disable-next-line no-underscore-dangle */
+          // eslint-disable-next-line no-underscore-dangle
           result.map._sources._array.forEach((dep) => {
             this.addWatchFile(join(basePath, dep));
           });
         }
 
         if (!optimize) {
-          /* eslint-disable-next-line consistent-return */
+          // eslint-disable-next-line consistent-return
           return {
             code: result.css,
             map: result.map,
@@ -83,13 +83,14 @@ function postcssRollup({
 
         const purged = purgecss.purge()[0];
 
-        /* eslint-disable-next-line consistent-return */
+        // eslint-disable-next-line consistent-return
         return {
           code: purged.css,
           map: purged.map,
         };
       } catch (err) {
         if (err.name === 'CssSyntaxError') {
+          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           process.stderr.write(err.message + err.showSourceCode());
         } else {
           this.error(err);

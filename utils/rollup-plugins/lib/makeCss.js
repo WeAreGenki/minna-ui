@@ -78,7 +78,7 @@ function makeCss({
         // register sub-dependencies so rollup can monitor them for changes
         if (result.map) {
           // TODO: Don't use PostCSS private API
-          /* eslint-disable-next-line no-underscore-dangle */
+          // eslint-disable-next-line no-underscore-dangle
           result.map._sources._array.forEach((dependency) => {
             this.addWatchFile(dependency);
           });
@@ -88,13 +88,14 @@ function makeCss({
         maps[id] = result.map;
       } catch (err) {
         if (err.name === 'CssSyntaxError') {
+          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           process.stderr.write(err.message + err.showSourceCode());
         } else {
           this.error(err);
         }
       }
 
-      /* eslint-disable-next-line consistent-return */
+      // eslint-disable-next-line consistent-return
       return { code: '' };
     },
 
@@ -102,9 +103,8 @@ function makeCss({
       // combine all style sheets
       let css = '';
 
-      /* eslint-disable-next-line */
+      // eslint-disable-next-line
       for (const id in styles) {
-        // tslint:disable-line
         css += styles[id] || '';
       }
 
@@ -123,7 +123,7 @@ function makeCss({
         );
 
         const result = await postcss(
-          /* eslint-disable-next-line global-require */
+          // eslint-disable-next-line global-require
           require('cssnano')({
             preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
           }),

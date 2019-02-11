@@ -2,18 +2,7 @@
  * ESLint config preset for minna-ui projects.
  */
 
-/* tslint:disable object-literal-sort-keys */
-
-/**
- * TODO: Add a README and add a note explaining why we have both TSLint AND
- * ESLint at the same time -- ESLint can do way more at the moment including
- * parsing non-JS files like HTML or markdown and lint JS contained within.
- *
- * NOTE: There is a promising project which is trying to bring TS linting into
- * ESLint. If the project becomes popular and covers most of our TSLint rules
- * then we should consider switching to a pure ESLint setup.
- * @see {@link https://github.com/typescript-eslint/typescript-eslint}
- */
+/* eslint-disable sort-keys */
 
 'use strict';
 
@@ -22,22 +11,38 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   extends: [
     'eslint:recommended',
-    'airbnb-base',
     'plugin:import/recommended',
+    'airbnb-base',
+    'plugin:@typescript-eslint/recommended',
     'plugin:security/recommended',
   ],
-  plugins: ['security', 'import', 'html', 'markdown', 'jsdoc'],
+  plugins: [
+    'security',
+    'import',
+    'html',
+    'markdown',
+    'jsdoc',
+    '@typescript-eslint',
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 9,
+    project: 'tsconfig.json',
     sourceType: 'module',
+    tsconfigRootDir: process.cwd(),
+    warnOnUnsupportedTypeScriptVersion: false,
   },
   env: {
     browser: true,
     es6: true,
   },
   settings: {
-    'import/ignore': ['.html', '.svg', '.pcss', '.css'],
+    'html/html-extensions': ['.html', '.svelte'],
+    'html/indent': '+2',
+    'html/report-bad-indent': 'error',
+    'import/ignore': ['.html', '.svelte', '.svg', '.css', '.pcss'],
     'import/parsers': {
+      // TODO: Check this is still necessary since the parser is the default
       '@typescript-eslint/parser': ['.ts', '.tsx'], // enable parsing TS exports
     },
     'import/resolver': {
@@ -47,6 +52,29 @@ module.exports = {
     },
   },
   rules: {
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        types: {
+          Array: null,
+          // Object: 'Use {} instead',
+          String: {
+            fixWith: 'string',
+            message: 'Use string instead',
+          },
+        },
+      },
+    ],
+    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/member-ordering': 'error',
+    '@typescript-eslint/no-extraneous-class': 'error',
+    '@typescript-eslint/no-for-in-array': 'error',
+    '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-type-alias': 'error',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+    '@typescript-eslint/no-useless-constructor': 'error',
+    '@typescript-eslint/prefer-function-type': 'warn',
+    '@typescript-eslint/restrict-plus-operands': 'error',
     'comma-dangle': [
       'error',
       {
@@ -59,6 +87,8 @@ module.exports = {
     ],
     'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive names
     'import/extensions': ['error', 'ignorePackages'], // do use file extensions
+    'import/prefer-default-export': 'off',
+    indent: 'off', // use `@typescript-eslint/indent` instead
     'jsdoc/check-examples': 'warn',
     'jsdoc/check-param-names': 'warn',
     'jsdoc/check-tag-names': 'warn',
@@ -75,20 +105,22 @@ module.exports = {
       'error',
       {
         code: 80, // consistency with prettier + tslint (since it doesn't have autofix for max-len)
-        ignoreTrailingComments: true,
-        ignoreUrls: true,
+        ignorePattern: 'eslint-disable',
+        ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
-        ignoreRegExpLiterals: true,
-        ignorePattern: 'eslint-disable',
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
       },
     ],
     'no-console': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
     'object-curly-newline': ['error', { consistent: true }],
+    'sort-keys': 'error',
 
     // rules incompatible with prettier :'(
+    'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
   },
 
@@ -135,12 +167,12 @@ module.exports = {
           'error',
           {
             code: 100, // consistency with prettier override settings
-            ignoreTrailingComments: true,
-            ignoreUrls: true,
+            ignorePattern: 'eslint-disable',
+            ignoreRegExpLiterals: true,
             ignoreStrings: true,
             ignoreTemplateLiterals: true,
-            ignoreRegExpLiterals: true,
-            ignorePattern: 'eslint-disable',
+            ignoreTrailingComments: true,
+            ignoreUrls: true,
           },
         ],
       },
@@ -150,9 +182,9 @@ module.exports = {
       files: ['*.md'],
       rules: {
         // turns off rules that don't make sense in code snippets
-        strict: 'off',
         'import/no-extraneous-dependencies': 'off',
         'import/no-unresolved': 'off',
+        strict: 'off',
       },
     },
   ],

@@ -21,7 +21,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/ToastLauncher.html",
+  "svelte": "src/ToastLauncher.svelte",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

@@ -21,7 +21,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/Tabs.html",
+  "svelte": "src/Tabs.svelte",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

@@ -13,23 +13,23 @@
   @format
 -->
 
-<button class="button button-collapse" on:click="set({ isOpen: !isOpen })">
+<script>
+  export let isOpen = false;
+  export let textOpen = 'Expand ▾';
+  export let textClose = 'Collapse ▴';
+
+  function handleClick() {
+    isOpen = !isOpen;
+  }
+</script>
+
+<button class="button button-collapse" on:click="{handleClick}">
   {isOpen ? textClose : textOpen}
 </button>
 
-<div class="collapse {isOpen ? '' : 'collapse-hide'}"><slot></slot></div>
-
-<script>
-  export default {
-    data: () => ({
-      isOpen: false,
-
-      /* optional props */
-      textOpen: 'Expand ▾',
-      textClose: 'Collapse ▴',
-    }),
-  };
-</script>
+<div class="collapse {isOpen ? '' : 'collapse-hide'}">
+  <slot></slot>
+</div>
 
 <style>
   .collapse-hide {

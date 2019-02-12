@@ -57,6 +57,63 @@
   @format
 -->
 
+<script>
+  import { onMount } from 'svelte';
+
+  // props
+  export let items = [];
+  export let current = ''; // current URL path; in sapper, pass in "child.segment"
+
+  // reactive data
+  let isOpen = false;
+  let hasScrolled = false;
+
+  let wait = false;
+  let lastHasScrolled = false;
+
+  function update() {
+    const scrolled = window.pageYOffset !== 0;
+
+    // don't set component state if nothing has changed
+    /* istanbul ignore else */
+    if (scrolled !== lastHasScrolled) {
+      lastHasScrolled = scrolled;
+      hasScrolled = scrolled;
+    }
+
+    wait = false;
+  }
+
+  // debounce scroll event using rAF
+  function scrollHandler() {
+    /* istanbul ignore if */
+    if (wait) return;
+    wait = true;
+    requestAnimationFrame(update);
+  }
+
+  function clickHandler() {
+    isOpen = false;
+    document.removeEventListener('click', clickHandler);
+  }
+
+  function openMenu() {
+    if (!isOpen) {
+      isOpen = true;
+
+      // re-queue at end of execution queue to avoid race condition
+      setTimeout(() => {
+        // close when user clicks anywhere
+        document.addEventListener('click', clickHandler);
+      }, 0);
+    }
+  }
+
+  onMount(() => {
+    document.addEventListener('scroll', scrollHandler, false);
+  })
+</script>
+
 <header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button
@@ -64,7 +121,7 @@
       class="navbar-button l-dn button-clear"
       aria-label="menu toggle"
       aria-expanded="{isOpen}"
-      on:click="openMenu(isOpen)"
+      on:click="{openMenu}"
     >
       <svg class="navbar-icon">
         <use xlink:href="{isOpen ? '#x' : '#menu'}" />
@@ -97,64 +154,6 @@
     </div>
   </nav>
 </header>
-
-<script>
-  export default {
-    data: () => ({
-      isOpen: false,
-      hasScrolled: false,
-
-      /* required props */
-      // items: [],
-      // current: '', // current URL path; in sapper, pass in "child.segment"
-    }),
-    oncreate() {
-      let wait = false;
-      let lastHasScrolled = false;
-
-      const update = () => {
-        const hasScrolled = window.pageYOffset !== 0;
-
-        // don't set component state if nothing has changed
-        /* istanbul ignore else */
-        if (hasScrolled !== lastHasScrolled) {
-          lastHasScrolled = hasScrolled;
-          this.set({ hasScrolled });
-        }
-
-        wait = false;
-      };
-
-      // debounce scroll event using rAF
-      const scrollHandler = () => {
-        /* istanbul ignore if */
-        if (wait) return;
-        wait = true;
-        requestAnimationFrame(update);
-      };
-
-      document.addEventListener('scroll', scrollHandler, false);
-    },
-    methods: {
-      openMenu(openState) {
-        if (!openState) {
-          this.set({ isOpen: true });
-
-          const clickHandler = () => {
-            this.set({ isOpen: false });
-            document.removeEventListener('click', clickHandler);
-          };
-
-          // re-queue to the end of the execution queue to avoid race condition
-          setTimeout(() => {
-            // close when user clicks anywhere
-            document.addEventListener('click', clickHandler);
-          }, 0);
-        }
-      },
-    },
-  };
-</script>
 
 <style type="text/postcss">
   @import './_navbar.css';

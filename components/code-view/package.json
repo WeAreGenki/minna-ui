@@ -22,7 +22,7 @@
   "scripts": {
     "build": "build-component"
   },
-  "svelte": "src/CodeView.html",
+  "svelte": "src/CodeView.svelte",
   "module": "dist/index.es.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

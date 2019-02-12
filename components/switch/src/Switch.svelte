@@ -46,65 +46,64 @@
   TODO: Ability to drag the switch using mouse/touch in a high performance way.
 -->
 
+<script>
+  import { createEventDispatcher, afterUpdate } from 'svelte';
+
+  // props
+  export let value = true;
+  export let textOn = 'ON';
+  export let textOff = 'OFF';
+  export let mini = false;
+  export let disabled = false;
+  export let required = false; // FIXME: Add custom validation
+
+  const dispatch = createEventDispatcher();
+
+  let previousValue = value;
+
+  afterUpdate(() => {
+    if (value !== previousValue) {
+      previousValue = value;
+      dispatch('change', value);
+    }
+  });
+
+  function toggle() {
+    if (disabled === undefined) {
+      value = !value;
+    }
+  }
+
+  function handleKeyDown(event) {
+    // choose key with graceful fallback for old browsers
+    switch (event.key || event.keyCode) {
+      case 'Enter':
+      case 13: // enter
+      case ' ':
+      case 'Spacebar':
+      case 32:
+        event.preventDefault(); // don't submit form (enter) or scroll page (space)
+        toggle();
+        break;
+      default:
+      // no matching key
+    }
+  }
+</script>
+
+<!-- on:keydown="{event => handleKeyDown(event)}" -->
 <div
   class="switch{mini ? ' switch-mini' : ''}{disabled !== undefined ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
   role="switch"
   tabindex="{disabled === undefined ? 0 : -1}"
   aria-checked="{value}"
-  on:click="toggle()"
-  on:keydown="handleKeyDown(event)"
+  on:click="{toggle}"
+  on:keydown="{handleKeyDown}"
 >
   <div class="switch-slider"></div>
   <div class="switch-on">{textOn}</div>
   <div class="switch-off">{textOff}</div>
 </div>
-
-<script>
-  export default {
-    data: () => ({
-      /* required bind prop */
-      // value: true,
-
-      /* optional props */
-      textOn: 'ON',
-      textOff: 'OFF',
-      mini: false,
-
-      /* optional native props */
-      // disabled: false,
-      // required: false, // FIXME: Add custom validation
-    }),
-    onstate({ changed, current, previous }) {
-      if (!previous) return;
-
-      if (changed.value) {
-        this.fire('change', current.value);
-      }
-    },
-    methods: {
-      toggle() {
-        if (this.get().disabled === undefined) {
-          this.set({ value: !this.get().value });
-        }
-      },
-      handleKeyDown(event) {
-        // choose key with graceful fallback for old browsers
-        switch (event.key || event.keyCode) {
-          case 'Enter':
-          case 13: // enter
-          case ' ':
-          case 'Spacebar':
-          case 32:
-            event.preventDefault(); // don't submit form (enter) or scroll page (space)
-            this.toggle();
-            break;
-          default:
-          // no matching key
-        }
-      },
-    },
-  };
-</script>
 
 <style type="text/postcss">
   @import './_switch.css';

@@ -125,6 +125,19 @@ module.exports = {
   },
 
   overrides: [
+    // Svelte components
+    {
+      files: ['*html', '*.svelte', '*.svg'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+          },
+        ],
+        'no-labels': 'off',
+      },
+    },
     // JS config files
     {
       files: ['*.config.js', '*rc.js'],

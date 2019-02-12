@@ -7,4 +7,8 @@
 module.exports = {
   root: true,
   extends: ['@minna-ui/eslint-config'],
+  plugins: ['eslint-plugin-svelte3'],
+  settings: {
+    'svelte3/extensions': ['.html', '.svelte', '.svg'],
+  },
 };

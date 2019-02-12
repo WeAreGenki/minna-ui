@@ -28,7 +28,8 @@
     "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-jsdoc": "^4.1.0",
     "eslint-plugin-markdown": "^1.0.0",
-    "eslint-plugin-security": "^1.4.0"
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-svelte3": "github:sveltejs/eslint-plugin-svelte3"
   },
   "publishConfig": {
     "access": "public"

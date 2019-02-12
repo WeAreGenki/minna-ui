@@ -22,6 +22,7 @@ module.exports = {
     'html',
     'markdown',
     'jsdoc',
+    'svelte3',
     '@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
@@ -50,6 +51,7 @@ module.exports = {
         extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
       },
     },
+    'svelte3/extensions': ['.html', '.svelte', '.svg'],
   },
   rules: {
     '@typescript-eslint/ban-types': [

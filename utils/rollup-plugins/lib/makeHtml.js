@@ -17,8 +17,8 @@ const catchErr = require('./catchErr.js');
  * @returns {Function}
  */
 function compileTemplate(template) {
-  /* tslint:disable-next-line */
-  return new Function('d', 'return `' + template + '`'); // eslint-disable-line
+  // eslint-disable-next-line
+  return new Function('d', 'return `' + template + '`');
 }
 
 /**
@@ -49,6 +49,7 @@ function makeHtml({
   exclude,
   include = ['**/*.css'],
   inlineCss = false,
+  // prettier-ignore
   onCss = css => css,
   scriptAttr = 'defer',
   template = path.join(__dirname, 'template.html'),
@@ -77,30 +78,30 @@ function makeHtml({
       return ''; // eslint-disable-line consistent-return
     },
 
+    // eslint-disable-next-line sort-keys
     async generateBundle(outputOpts, bundle) {
       // combine all style sheets
       let css = '';
-      /* tslint:disable */
-      /* eslint-disable-next-line */
+      // eslint-disable-next-line
       for (const id in styles) {
         css += styles[id] || '';
       }
-      /* tslint:enable */
 
       if (typeof onCss === 'function') {
         css = await Promise.resolve(onCss(css));
 
-        /* eslint-disable-next-line no-console */
+        // eslint-disable-next-line no-console
         if (!css) this.warn("onCss didn't return anything useful");
       }
 
       const jsFile = Object.values(bundle)[0].fileName || outputOpts.file;
       const cssFile = jsFile.replace(/js$/, 'css');
 
-      /* eslint-disable-next-line no-nested-ternary */
+      // eslint-disable-next-line no-nested-ternary
       const cssResult = !css.length
         ? ''
-        : inlineCss
+        : // prettier-ignore
+        inlineCss
           ? `<style>${css}</style>`
           : `<link href=${basePath}${cssFile} rel=stylesheet>`;
 

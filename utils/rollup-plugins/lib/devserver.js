@@ -4,36 +4,24 @@
 
 // TODO: Inject page reload script into HTML
 
-/* tslint:disable no-console */
 /* eslint-disable no-console, security/detect-object-injection */
 
 'use strict';
 
-const colors = require('colorette');
+const { log } = require('@wearegenki/node-utils');
 const merge = require('deepmerge');
-const { createServer } = require('http');
+const http = require('http');
 const { resolve } = require('path');
 const sirv = require('sirv');
 const catchErr = require('./catchErr.js');
 
 const dev = !!process.env.ROLLUP_WATCH;
 
-/** One server instance across all plugin invocations. */
-let server;
-
-/** Byte size units. Let's hope our requests never get above `kB` ;) */
-const units = ['B', 'kB', 'MB', 'GB', 'TB'];
-
 /**
- * Convert bytes into a human readable form.
- * @param {number} bytes Number of bytes to convert.
- * @returns {string}
+ * Shared server instance (even across multiple plugin invocations).
+ * @type {http.Server}
  */
-function humanizeSize(bytes) {
-  const index = Math.floor(Math.log(bytes) / Math.log(1024));
-  if (index < 0) return '';
-  return `${+((bytes / 1024) ** index).toFixed(2)} ${units[index]}`;
-}
+let server;
 
 /**
  * Run a local development web server.
@@ -42,7 +30,7 @@ function humanizeSize(bytes) {
  * @param {string=} opts.dir The directory to serve.
  * @param {boolean=} opts.liveReload Enable automatic page reload when a
  * dependent file changes.
- * @param {number=} opts.port Port to listen on.
+ * @param {(string|number)=} opts.port Port to listen on.
  * @param {boolean=} opts.spa Run in single page app mode where `index.html` is
  * served for any unknown paths instead of returning a 404.
  * @param {number=} opts.wsPort Web socket port for the page live reload script.
@@ -59,7 +47,7 @@ function devserver({
 } = {}) {
   if (!dev) {
     console.warn(
-      "[DEVSERVER] Running but not in watch mode, this probably isn't what you want.",
+      "[DEVSERVER] Not in watch mode, this probably isn't what you want.",
     );
   }
 
@@ -79,7 +67,7 @@ function devserver({
       userOpts,
     );
 
-    server = createServer(sirv(resolve(dir), sirvOpts));
+    server = http.createServer(sirv(resolve(dir), sirvOpts));
 
     // TODO: Live reload script injection
     // server.on('request', (req, res) => {
@@ -96,34 +84,7 @@ function devserver({
     // });
 
     // request logging middleware
-    server.on('request', (req, res) => {
-      const start = process.hrtime();
-      const write = res.write.bind(res);
-      let byteLength = 0;
-
-      // monkey patch to calculate response byte size
-      res.write = function writeFn(data) {
-        if (data) byteLength += data.length;
-        // @ts-ignore
-        write(...arguments); // eslint-disable-line prefer-rest-params
-      };
-
-      req.once('end', () => {
-        const duration = process.hrtime(start);
-        const { method, originalUrl, url } = req;
-        const { statusCode } = res;
-        const timing = `${+(duration[1] / 1e6).toFixed(2)}ms`;
-        const color =
-          statusCode >= 400 ? 'red' : statusCode >= 300 ? 'yellow' : 'green'; // eslint-disable-line no-nested-ternary
-        const size = humanizeSize(byteLength);
-        const uri = originalUrl || url;
-        console.log(
-          `» ${timing} ${colors[color](
-            statusCode,
-          )} ${method} ${uri} ${colors.cyan(size)}`,
-        );
-      });
-    });
+    server.on('request', log);
 
     server.listen(port, (err) => {
       if (err) throw err;

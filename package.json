@@ -27,7 +27,7 @@
     "lint:css": "stylelint '**/*.{css,html,md,svelte}'",
     "lint:js": "eslint --ext html,js,jsx,md,svelte,ts,tsx .",
     "lint:ts": "tslint --project tsconfig.json || true",
-    "lint:types": "tsc --noEmit",
+    "lint:types": "tsc --noEmit || true",
     "test": "yarn lint && JEST_CIRCUS=1 jest --notify --watch",
     "test-ci": "JEST_CIRCUS=1 jest --coverage --runInBand --ci",
     "report:browsers": "yarn browserslist",

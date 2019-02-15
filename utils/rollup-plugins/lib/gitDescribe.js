@@ -10,15 +10,18 @@ const { execSync } = require('child_process');
  */
 /* eslint-disable-next-line consistent-return */
 function gitDescribe() {
+  let reference = '';
+
   try {
-    const reference = execSync('git describe --always --dirty="-dev"')
+    reference = execSync('git describe --always --dirty="-dev"')
       .toString()
       .trim();
-    return reference;
   } catch (error) {
     /* eslint-disable-next-line no-console */
     console.log(error);
   }
+
+  return reference;
 }
 
 module.exports = gitDescribe;

@@ -19,7 +19,6 @@
   "files.eol": "\n",
   "javascript.implicitProjectConfig.checkJs": true,
   "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
   "scss.validate": false,
   // recommended dictionary: https://github.com/WeAreGenki/dictionary

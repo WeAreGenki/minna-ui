@@ -42,13 +42,23 @@ module.exports = {
     'html/indent': '+2',
     'html/report-bad-indent': 'error',
     'import/ignore': ['.html', '.svelte', '.svg', '.css', '.pcss'],
-    'import/parsers': {
-      // TODO: Check this is still necessary since the parser is the default
-      '@typescript-eslint/parser': ['.ts', '.tsx'], // enable parsing TS exports
-    },
     'import/resolver': {
       node: {
-        extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
+        extensions: [
+          '.mjs',
+          '.js',
+          '.ts',
+          '.html',
+          '.svelte',
+          '.jsx',
+          '.tsx',
+          '.json',
+          '.svg',
+          '.css',
+          '.pcss',
+          '.node',
+          '.d.ts',
+        ],
       },
     },
     'svelte3/extensions': ['.html', '.svelte', '.svg'],
@@ -68,11 +78,11 @@ module.exports = {
       },
     ],
     '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/interface-name-prefix': ['error', 'always'],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-this-alias': 'error',
-    '@typescript-eslint/no-type-alias': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
@@ -138,6 +148,15 @@ module.exports = {
           },
         ],
         'no-labels': 'off',
+      },
+    },
+    // TypeScript
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'jsdoc/require-param': 'off',
+        'jsdoc/require-returns': 'off',
+        'jsdoc/valid-types': 'off',
       },
     },
     // JS config files

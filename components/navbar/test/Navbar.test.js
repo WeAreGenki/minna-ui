@@ -9,16 +9,16 @@
 const Navbar = require('../src/Navbar.html');
 
 const items = [
-  { url: 'page-one', text: 'Page One' },
-  { url: 'page-two', text: 'Page Two' },
+  { text: 'Page One', url: 'page-one' },
+  { text: 'Page Two', url: 'page-two' },
   {
     children: [
-      { url: 'more/child-one', text: 'Child One - More' },
-      { url: 'more/child-two', text: 'Child Two - More' },
+      { text: 'Child One - More', url: 'more/child-one' },
+      { text: 'Child Two - More', url: 'more/child-two' },
     ],
     text: 'More ▾',
   },
-  { url: 'about', text: 'About Us' },
+  { text: 'About Us', url: 'about' },
 ];
 
 describe('Navbar component', () => {
@@ -26,7 +26,7 @@ describe('Navbar component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new Navbar({ target }); // tslint:disable-line no-unused-expression
+      new Navbar({ target });
     }
     expect(wrapper).toThrow();
   });
@@ -35,11 +35,11 @@ describe('Navbar component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     expect(Array.isArray(component.get().items)).toEqual(true);
     expect(component.get().items).not.toHaveLength(0);
@@ -50,7 +50,7 @@ describe('Navbar component', () => {
   it('adds class if page is scrolled', () => {
     expect.assertions(3);
     const spy = jest.spyOn(window, 'requestAnimationFrame');
-    spy.mockImplementation(cb => cb());
+    spy.mockImplementation((cb) => cb());
     const target = document.createElement('div');
     const component = new Navbar({
       target,
@@ -155,7 +155,6 @@ describe('Navbar component', () => {
   it('shows correct icon and class when toggled', () => {
     expect.assertions(4);
     const target = document.createElement('div');
-    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -175,7 +174,6 @@ describe('Navbar component', () => {
   it('adds class to active menu item', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -195,7 +193,6 @@ describe('Navbar component', () => {
   it.skip('adds class to active menu item in nested route', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {
@@ -236,7 +233,6 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     // const component = new Navbar({
-    /* tslint:disable-next-line no-unused-expression */
     new Navbar({
       target,
       data: {

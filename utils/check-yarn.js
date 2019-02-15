@@ -8,7 +8,6 @@
 // needs to be run before packages are installed.
 
 /* eslint-disable no-console */
-/* tslint:disable no-console */
 
 'use strict';
 

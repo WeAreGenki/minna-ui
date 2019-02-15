@@ -12,8 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Support for `.svelte` file extension in various packages.
-- TypeScript support in `@minna-ui/eslint-config`.
-- Deprecation notice to `@minna-ui/tslint-config`. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
+- TypeScript support and new rules in `@minna-ui/eslint-config`.
+- Deprecation notice in `@minna-ui/tslint-config`. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
+
+### Removed
+
+- Package `@minna-ui/tslint-config` is no longer automatically installed as a dependency of `minna-ui`. You'll need to add it to your `"devDependencies"` if you want to continue using TSLint.
 
 ### Changed
 

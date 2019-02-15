@@ -35,19 +35,17 @@ describe('Svelte transform', () => {
     expect.assertions(2);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
     expect(typeof SvelteComponent.code).toEqual('string');
-    /* tslint:disable-next-line no-eval */
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
     const target = document.createElement('div');
     // @ts-ignore
-    new SvelteComponent({ target }); // tslint:disable-line no-unused-expression
+    new SvelteComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 
   it('has access to Svelte prototype when mounted', () => {
     expect.assertions(9);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
-    /* tslint:disable-next-line no-eval */
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
     const target = document.createElement('div');

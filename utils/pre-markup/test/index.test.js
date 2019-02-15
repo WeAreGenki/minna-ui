@@ -113,7 +113,7 @@ describe('Svelte markup preprocessor', () => {
     const processed = await preprocess(source, opts);
     const TestComponent = create(processed.toString(), svelteOpts);
     const target = document.createElement('div');
-    new TestComponent({ target }); // tslint:disable-line no-unused-expression
+    new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -151,7 +151,7 @@ describe('Svelte markup preprocessor', () => {
   it('prints error on bad HTML syntax', async () => {
     expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write');
-    spy.mockImplementation(() => {}); // tslint:disable-line no-empty
+    spy.mockImplementation(() => {});
     await preprocess(sourceBadSyntax, opts);
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();

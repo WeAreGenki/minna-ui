@@ -101,7 +101,7 @@ describe('build-css tool', () => {
   it('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(console, 'error');
-    spy.mockImplementation(() => {}); // tslint:disable-line no-empty
+    spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrow();
     expect(spy).toHaveBeenCalled();

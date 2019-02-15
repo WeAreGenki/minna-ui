@@ -23,7 +23,7 @@ describe('NavbarItem component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new NavbarItem({ target }); // tslint:disable-line no-unused-expression
+      new NavbarItem({ target });
     }
     expect(wrapper).toThrow();
   });
@@ -32,7 +32,6 @@ describe('NavbarItem component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     // const component = new NavbarItem({
-    /* tslint:disable-next-line no-unused-expression */
     new NavbarItem({
       target,
       data: menuItem,
@@ -49,7 +48,6 @@ describe('NavbarItem component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     // const component = new NavbarItem({
-    /* tslint:disable-next-line no-unused-expression */
     new NavbarItem({
       target,
       data: subMenu,

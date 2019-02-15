@@ -116,7 +116,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80, // consistency with prettier + tslint (since it doesn't have autofix for max-len)
+        code: 80, // consistency with prettier  (since it doesn't have autofix for max-len)
         ignorePattern: 'eslint-disable',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
@@ -129,9 +129,10 @@ module.exports = {
     'no-debugger': /* istanbul ignore next */ isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
     'object-curly-newline': ['error', { consistent: true }],
-    'sort-keys': 'error',
+    'sort-keys': ['error', 'asc', { caseSensitive: false, natural: true }],
 
     // rules incompatible with prettier :'(
+    'arrow-parens': 'off',
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
   },

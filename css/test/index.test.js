@@ -10,7 +10,7 @@
 // TODO: Create new test files for each CSS file
 
 describe('CSS mixins', () => {
-  it('placeholder', () => {}); // tslint:disable-line no-empty
+  it('placeholder', () => {});
 });
 
 // const postcss = require('postcss');

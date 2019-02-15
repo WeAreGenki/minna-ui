@@ -34,7 +34,7 @@ const compileWarn = (origin, level, warnings) => {
   warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
-      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      /* eslint-disable-next-line no-console */
       console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
@@ -148,7 +148,8 @@ module.exports = async function run(env, argv = []) {
 
       const dirFiles = await readdir(inputDir);
       const cssFiles = dirFiles.filter(
-        fileName => fileName !== 'import.css' &&
+        (fileName) =>
+          fileName !== 'import.css' &&
           fileName.endsWith('.css') &&
           !fileName.startsWith('_'),
       );
@@ -179,14 +180,14 @@ module.exports = async function run(env, argv = []) {
     return allResults;
   } catch (error) {
     if (error.showSourceCode) {
-      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      /* eslint-disable-next-line no-console */
       console.error(
         `[BUILD-CSS] PostCSS error: ${
           error.message
         }:\n${error.showSourceCode()}`,
       );
     } else {
-      /* eslint-disable-next-line no-console */ /* tslint:disable-next-line no-console */
+      /* eslint-disable-next-line no-console */
       console.error('[BUILD-CSS] Error', error);
     }
 

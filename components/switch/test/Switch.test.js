@@ -7,7 +7,7 @@ describe('Switch component', () => {
     expect.assertions(7);
     function wrapper() {
       const target = document.createElement('div');
-      new Switch({ target }); // tslint:disable-line no-unused-expression
+      new Switch({ target });
       const el = target.querySelector('.switch');
       expect(el.getAttribute('tabindex')).toEqual('0');
       expect(el.getAttribute('disabled')).toBeNull();

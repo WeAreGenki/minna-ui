@@ -32,7 +32,7 @@ describe('Select component', () => {
     expect.assertions(1);
     function wrapper() {
       const target = document.createElement('div');
-      new Select({ target }); // tslint:disable-line no-unused-expression
+      new Select({ target });
     }
     expect(wrapper).toThrow();
   });

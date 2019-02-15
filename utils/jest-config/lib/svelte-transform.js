@@ -6,7 +6,6 @@
 
 // NOTE: `svelte` is not listed as a dependency in case developers want to use
 // this package for non-svelte projects.
-/* tslint:disable-next-line no-implicit-dependencies */
 const svelte = require('svelte'); // eslint-disable-line import/no-extraneous-dependencies
 
 function process(src, filename) {

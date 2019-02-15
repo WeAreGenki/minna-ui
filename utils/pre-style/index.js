@@ -22,7 +22,6 @@ module.exports = (context = {}) => async ({
     {
       from: filename,
       to: filename,
-      /* tslint:disable-next-line object-literal-sort-keys */
       map: { inline: false, annotation: false },
     },
     context,

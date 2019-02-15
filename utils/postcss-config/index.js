@@ -58,7 +58,6 @@ module.exports = postcss.plugin(
       },
       opts,
     );
-    /* tslint:disable object-literal-sort-keys */
     const pluginOpts = merge(
       {
         // atImport
@@ -82,14 +81,14 @@ module.exports = postcss.plugin(
       },
       opts,
     );
-    /* tslint:enable */
 
-    const initializedPlugins = plugins.map(plugin => plugin(pluginOpts));
+    const initializedPlugins = plugins.map((plugin) => plugin(pluginOpts));
 
     // process CSS with plugins
-    return (root, result) => initializedPlugins.reduce(
-      (promise, plugin) => promise.then(() => plugin(result.root, result)),
-      Promise.resolve(),
-    );
+    return (root, result) =>
+      initializedPlugins.reduce(
+        (promise, plugin) => promise.then(() => plugin(result.root, result)),
+        Promise.resolve(),
+      );
   },
 );

@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Added
+
+- Support for `.svelte` file extension in various packages.
+- TypeScript support in `@minna-ui/eslint-config`.
+- Deprecation notice to `@minna-ui/tslint-config`. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
+
+### Changed
+
+- Rename all components from `*.html` to `*.svelte`
+- Convert all components to Svelte v3 syntax.
+- Refactor internal lint tasks and VS Code settings.
+- Use shared package for some node utils.
+- Updated package dependencies.
+
+### Fixed
+
+- Lint issues.
+
 ## [0.21.0][] - 2019-02-06
 
 ### Added

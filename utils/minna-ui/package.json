@@ -20,7 +20,7 @@
     "web-components"
   ],
   "main": "index.js",
-  "module": "index.esm.js",
+  "module": "index.mjs",
   "style": "index.css",
   "files": [
     "import.css",

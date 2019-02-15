@@ -23,10 +23,8 @@
   "module": "index.mjs",
   "style": "index.css",
   "files": [
-    "import.css",
-    "index.css",
-    "index.esm.js",
-    "native.css"
+    "*.css",
+    "index.mjs"
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",

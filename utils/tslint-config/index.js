@@ -1,5 +1,8 @@
 /**
  * TSLint config preset for minna-ui projects.
+ *
+ * @deprecated Use `@minna-ui/eslint-config` instead which now supports
+ * TypeScript and is far more capable than TSLint.
  */
 
 // TODO: Convert all rules to ESLint and use a pure ESLint setup instead

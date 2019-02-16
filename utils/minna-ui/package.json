@@ -28,11 +28,11 @@
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",
-    "jest": "^23.0.0 || ^24.0.0",
+    "jest": "^24.0.0",
     "postcss": "^7.0.0",
     "prettier": "^1.15.0",
     "stylelint": "^9.0.0",
-    "svelte": "^2.0.0",
+    "svelte": "^3.0.0",
     "typescript": "^3.1.0"
   },
   "dependencies": {

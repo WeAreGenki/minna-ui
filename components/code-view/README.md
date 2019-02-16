@@ -117,8 +117,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaCodeView from '@minna-ui/code-view';
 
    new MinnaCodeView({
-     target: document.querySelector('#minna-code-view'),
      data: {},
+     target: document.querySelector('#minna-code-view'),
    });
    ```
 

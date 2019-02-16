@@ -1,6 +1,6 @@
 'use strict';
 
-const CodeView = require('../src/CodeView.html');
+const CodeView = require('../src/CodeView.svelte');
 
 describe('CodeView component', () => {
   it('renders correctly with defaults', () => {

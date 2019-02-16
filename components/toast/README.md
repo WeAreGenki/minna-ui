@@ -55,8 +55,8 @@ The easiest way to use the component is to add the CDN hosted version directly i
    ```html
    <script>
      new MinnaToasts({
-       target: document.querySelector('#minna-toasts'),
        data: {},
+       target: document.querySelector('#minna-toasts'),
      });
    </script>
    ```
@@ -115,8 +115,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaToasts from '@minna-ui/toasts';
 
    new MinnaToasts({
-     target: document.querySelector('#minna-toasts'),
      data: {},
+     target: document.querySelector('#minna-toasts'),
    });
    ```
 

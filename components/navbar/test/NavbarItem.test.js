@@ -1,17 +1,17 @@
 'use strict';
 
-const NavbarItem = require('../src/NavbarItem.html');
+const NavbarItem = require('../src/NavbarItem.svelte');
 
 const menuItem = {
-  item: { url: 'page-one', name: 'Page One' },
+  item: { name: 'Page One', url: 'page-one' },
   segment: 'page-one',
 };
 
 const subMenu = {
   item: {
     children: [
-      { url: 'page-two/child-one', name: 'Child One - Page Two' },
-      { url: 'page-two/child-two', name: 'Child Two - Page Two' },
+      { name: 'Child One - Page Two', url: 'page-two/child-one' },
+      { name: 'Child Two - Page Two', url: 'page-two/child-two' },
     ],
     name: 'Page Two',
   },
@@ -33,8 +33,8 @@ describe('NavbarItem component', () => {
     const target = document.createElement('div');
     // const component = new NavbarItem({
     new NavbarItem({
-      target,
       data: menuItem,
+      target,
     });
     // expect(Array.isArray(component.get().menuItems)).toEqual(true);
     // expect(component.get().menuItems).not.toHaveLength(0);
@@ -49,8 +49,8 @@ describe('NavbarItem component', () => {
     const target = document.createElement('div');
     // const component = new NavbarItem({
     new NavbarItem({
-      target,
       data: subMenu,
+      target,
     });
     // expect(Array.isArray(component.get().menuItems)).toEqual(true);
     // expect(component.get().menuItems).not.toHaveLength(0);
@@ -60,11 +60,7 @@ describe('NavbarItem component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('adds rel attribute when present', () => {
-    // TODO
-  });
+  it.todo('adds rel attribute when present');
 
-  it.skip('does not add rel attribute when not present', () => {
-    // TODO
-  });
+  it.todo('does not add rel attribute when not present');
 });

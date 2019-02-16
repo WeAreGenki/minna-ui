@@ -2,6 +2,8 @@
  * Minna UI component compiler.
  */
 
+/* eslint-disable security/detect-non-literal-fs-filename */
+
 'use strict';
 
 const fs = require('fs');
@@ -15,6 +17,7 @@ const svelte = require('rollup-plugin-svelte');
 const preMarkup = require('@minna-ui/pre-markup');
 const preStyle = require('@minna-ui/pre-style');
 
+/* eslint-disable @typescript-eslint/camelcase */
 const compilerOpts = {
   compilation_level: 'ADVANCED',
   externs: [
@@ -30,6 +33,7 @@ const compilerOpts = {
   // jscomp_warning: '*',
   // jscomp_off: '*',
 };
+/* eslint-enable @typescript-eslint/camelcase */
 
 const isClean = new Map();
 
@@ -94,6 +98,7 @@ module.exports = async function run(env) {
           markup: preMarkup({ level: 2 }),
           style: preStyle(),
         },
+        // eslint-disable-next-line sort-keys
         css(css) {
           resolveCss(css);
           css.write(pkgStyle);
@@ -139,9 +144,9 @@ module.exports = async function run(env) {
 
   const resultMain = bundleMain.write({
     banner,
-    name,
     file: pkgMain,
     format: 'iife',
+    name,
     sourcemap: true,
   });
 
@@ -155,9 +160,9 @@ module.exports = async function run(env) {
 
   const resultEsm = bundleEsm.write({
     banner,
-    name,
     file: pkgModule,
     format: 'esm',
+    name,
     sourcemap: true,
   });
 

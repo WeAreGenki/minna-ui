@@ -1,6 +1,6 @@
 'use strict';
 
-const ToastLauncher = require('../src/ToastLauncher.html');
+const ToastLauncher = require('../src/ToastLauncher.svelte');
 
 describe('ToastLauncher component', () => {
   it('renders correctly with defaults', () => {

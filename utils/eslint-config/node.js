@@ -2,6 +2,8 @@
  * ESLint config preset for node code in minna-ui projects.
  */
 
+/* eslint-disable sort-keys */
+
 'use strict';
 
 module.exports = {

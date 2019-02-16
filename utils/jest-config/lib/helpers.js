@@ -4,6 +4,7 @@
 
 'use strict';
 
+// eslint-disable-next-line security/detect-child-process
 const { spawn } = require('child_process');
 
 /**

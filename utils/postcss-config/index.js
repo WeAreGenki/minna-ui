@@ -5,7 +5,7 @@
 const path = require('path');
 const merge = require('deepmerge');
 const postcss = require('postcss');
-const atImport = require('postcss-import');
+// const atImport = require('postcss-import');
 const atUse = require('postcss-use');
 const advancedVars = require('postcss-advanced-variables');
 const postcssExtend = require('postcss-extend-rule');
@@ -28,7 +28,7 @@ module.exports = postcss.plugin(
     ...opts
   }) => {
     let plugins = [
-      atImport,
+      // atImport,
       advancedVars,
       atUse,
       nested,
@@ -58,13 +58,15 @@ module.exports = postcss.plugin(
       },
       opts,
     );
+    /* eslint-disable sort-keys */
     const pluginOpts = merge(
       {
         // atImport
         // although advancedVars can also import, this plugin is more flexible
-        path: importPaths,
+        // path: importPaths,
 
         // advancedVars
+        importPaths,
         unresolved: debug ? 'warn' : 'ignore',
 
         // atUse
@@ -81,6 +83,7 @@ module.exports = postcss.plugin(
       },
       opts,
     );
+    /* eslint-enable */
 
     const initializedPlugins = plugins.map((plugin) => plugin(pluginOpts));
 

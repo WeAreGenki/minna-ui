@@ -65,14 +65,14 @@ function makeCss({
 
       try {
         const ctx = merge(
-          { from: id, to: id, map: { inline: false, annotation: false } },
+          { from: id, map: { annotation: false, inline: false }, to: id },
           context,
         );
         const { plugins, options } = await postcssrc(ctx);
         const result = await postcss(plugins).process(source, options);
 
         result.warnings().forEach((warn) => {
-          this.warn(warn.toString(), { line: warn.line, column: warn.column });
+          this.warn(warn.toString(), { column: warn.column, line: warn.line });
         });
 
         // register sub-dependencies so rollup can monitor them for changes
@@ -99,6 +99,7 @@ function makeCss({
       return { code: '' };
     },
 
+    // eslint-disable-next-line sort-keys
     async generateBundle(outputOpts, bundle) {
       // combine all style sheets
       let css = '';
@@ -130,7 +131,7 @@ function makeCss({
         ).process(css, {});
 
         result.warnings().forEach((warn) => {
-          this.warn(warn.toString(), { line: warn.line, column: warn.column });
+          this.warn(warn.toString(), { column: warn.column, line: warn.line });
         });
 
         if (safe) {
@@ -140,9 +141,9 @@ function makeCss({
         } else {
           const purgecss = new Purgecss({
             content,
-            whitelist,
             css: [{ raw: result.css }],
             keyframes: true,
+            whitelist,
           });
 
           css = purgecss.purge()[0].css; // eslint-disable-line prefer-destructuring

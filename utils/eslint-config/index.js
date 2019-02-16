@@ -133,6 +133,7 @@ module.exports = {
 
     // rules incompatible with prettier :'(
     'arrow-parens': 'off',
+    'function-paren-newline': 'off',
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
   },

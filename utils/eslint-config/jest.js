@@ -2,6 +2,8 @@
  * ESLint preset for Jest testing in minna-ui projects.
  */
 
+/* eslint-disable sort-keys */
+
 'use strict';
 
 module.exports = {
@@ -19,6 +21,7 @@ module.exports = {
     page: true,
   },
   rules: {
+    '@typescript-eslint/no-var-requires': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {

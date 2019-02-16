@@ -41,8 +41,8 @@ const sourceOrderInvalid = `body {
 }
 `;
 const stylelintOpts = {
-  config,
   code: sourceCssValid,
+  config,
 };
 
 describe('Stylelint config', () => {
@@ -58,8 +58,8 @@ describe('Stylelint config', () => {
   it('detects invalid CSS by lint rules', async () => {
     expect.assertions(3);
     const output = stylelint.lint({
-      config,
       code: sourceCssInvalid,
+      config,
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
@@ -70,8 +70,8 @@ describe('Stylelint config', () => {
   it('detects invalid CSS by bad syntax', async () => {
     expect.assertions(3);
     const output = stylelint.lint({
-      config,
       code: sourceSyntaxInvalid,
+      config,
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
@@ -82,8 +82,8 @@ describe('Stylelint config', () => {
   it('detects invalid CSS property order', async () => {
     expect.assertions(3);
     const result = await stylelint.lint({
-      config,
       code: sourceOrderInvalid,
+      config,
     });
     expect(result.results[0].errored).toBeTruthy();
     expect(result.results[0].warnings[0].rule).toEqual('order/properties-order');

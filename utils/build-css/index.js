@@ -70,8 +70,8 @@ async function processCss({ from, to, banner }) {
 
   const { plugins, options } = await postcssLoadConfig({
     from,
-    to,
     map: { inline: false },
+    to,
   });
 
   const sourceCss = banner + src;
@@ -170,7 +170,7 @@ module.exports = async function run(env, argv = []) {
       const from = inputCss[index];
       const to = outputCss[index];
 
-      const result = processCss({ from, to, banner });
+      const result = processCss({ banner, from, to });
       results.push(result);
     }
 

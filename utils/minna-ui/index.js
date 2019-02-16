@@ -1,5 +1,7 @@
 /* istanbul ignore file */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 'use strict'; // eslint-disable-line
 
 const preMarkup = require('@minna-ui/pre-markup');

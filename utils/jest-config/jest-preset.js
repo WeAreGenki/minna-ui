@@ -1,10 +1,12 @@
+/* eslint-disable sort-keys */
+
 'use strict';
 
 module.exports = {
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.([jt]sx?|mjs)$': 'babel-jest',
-    '^.+\\.(html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
+    '^.+\\.(svelte|html|svg)$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/lib/null-transform.js',
   },
   transformIgnorePatterns: ['node_modules/.+\\.(?!mjs|esm?\\.js)$'],
@@ -17,17 +19,19 @@ module.exports = {
     '/node_modules/',
   ],
   moduleFileExtensions: [
-    'js',
     'mjs',
-    'json',
-    'jsx',
+    'js',
     'ts',
+    'jsx',
     'tsx',
-    'node',
     'html',
+    'svelte',
     'svg',
+    'json',
     'css',
     'pcss',
+    'node',
+    'd.ts',
   ],
   moduleNameMapper: {
     '^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff2?|mp4|webm|wav|mp3|m4a|aac|oga)$':

@@ -6,7 +6,7 @@
 
 'use strict';
 
-const Navbar = require('../src/Navbar.html');
+const Navbar = require('../src/Navbar.svelte');
 
 const items = [
   { text: 'Page One', url: 'page-one' },
@@ -53,11 +53,11 @@ describe('Navbar component', () => {
     spy.mockImplementation((cb) => cb());
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     window.pageYOffset = 50;
     const event = new UIEvent('scroll');
@@ -72,11 +72,11 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'openMenu');
     const button = target.querySelector('.navbar-button');
@@ -91,11 +91,11 @@ describe('Navbar component', () => {
     jest.useFakeTimers();
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     component.openMenu();
     jest.runAllTimers(); // for component setTimeout
@@ -110,11 +110,11 @@ describe('Navbar component', () => {
     jest.useFakeTimers();
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
     component.openMenu();
@@ -133,11 +133,11 @@ describe('Navbar component', () => {
     jest.useFakeTimers();
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
     const button = target.querySelector('.navbar-button');
@@ -156,11 +156,11 @@ describe('Navbar component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     const icon = target.querySelector('.navbar-button > svg > use');
     const navbarLinks = target.querySelector('.navbar-links');
@@ -175,11 +175,11 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     new Navbar({
-      target,
       data: {
-        items,
         current: 'page-two',
+        items,
       },
+      target,
     });
     expect(
       target.querySelector('[href="page-two"]').classList.contains('navbar-link-active'),
@@ -194,13 +194,13 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     new Navbar({
-      target,
       data: {
-        items,
         // FIXME: Bring this up to date with how things work in Sapper 0.15.x
         // current: 'page-two/child-two',
         current: 'page-two',
+        items,
       },
+      target,
     });
     // console.log('@@ 22 target', target.innerHTML);
     // console.log('@@ 33', target.querySelector('.navbar-links').innerHTML);
@@ -216,14 +216,14 @@ describe('Navbar component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     component.set({
-      items: [...items, { url: 'page-new', name: 'Page New' }],
+      items: [...items, { name: 'Page New', url: 'page-new' }],
     });
     expect(component.get().items).toHaveLength(6);
     expect(target.innerHTML).toMatchSnapshot();
@@ -234,14 +234,14 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     // const component = new Navbar({
     new Navbar({
-      target,
       data: {
-        items,
         current: undefined,
+        items,
       },
+      target,
     });
     // component.set({
-    //   items: [...items, { url: 'page-new', name: 'Page New' }],
+    //   items: [...items, { name: 'Page New', url: 'page-new' }],
     // });
     // expect(component.get().items).toHaveLength(6);
     expect(target.innerHTML).toMatchSnapshot();

@@ -1,6 +1,6 @@
 'use strict';
 
-const Switch = require('../src/Switch.html');
+const Switch = require('../src/Switch.svelte');
 
 describe('Switch component', () => {
   it('renders correctly with no props', () => {
@@ -23,10 +23,10 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: true,
       },
+      target,
     });
     expect(component.get().value).toEqual(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
@@ -36,10 +36,10 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: false,
       },
+      target,
     });
     expect(component.get().value).toEqual(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
@@ -49,11 +49,11 @@ describe('Switch component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         textOff: 'NO',
         textOn: 'YES',
       },
+      target,
     });
     expect(component.get().textOn).toEqual('YES');
     expect(component.get().textOff).toEqual('NO');
@@ -65,10 +65,10 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         mini: true,
       },
+      target,
     });
     expect(component.get().mini).toBeTruthy();
     expect(target.querySelector('.switch-mini')).not.toBeNull();
@@ -78,10 +78,10 @@ describe('Switch component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         disabled: true,
       },
+      target,
     });
     expect(component.get().disabled).toBeTruthy();
     expect(target.querySelector('.switch-disabled')).not.toBeNull();
@@ -92,10 +92,10 @@ describe('Switch component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: false,
       },
+      target,
     });
     expect(component.get().value).toEqual(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
@@ -109,10 +109,10 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: true,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'toggle');
     target.querySelector('.switch').click();
@@ -125,11 +125,11 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         disabled: true,
         value: true,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'toggle');
     target.querySelector('.switch').click();
@@ -142,10 +142,10 @@ describe('Switch component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: true,
       },
+      target,
     });
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
     component.handleKeyDown(event1);
@@ -159,10 +159,10 @@ describe('Switch component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: true,
       },
+      target,
     });
     const event1 = new KeyboardEvent('keydown', { key: ' ' });
     component.handleKeyDown(event1);
@@ -178,11 +178,11 @@ describe('Switch component', () => {
   it('does not toggle on key press when disabled', () => {
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         disabled: true,
         value: true,
       },
+      target,
     });
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     component.handleKeyDown(event);
@@ -193,10 +193,10 @@ describe('Switch component', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Switch({
-      target,
       data: {
         value: true,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'toggle');
     const event1 = new KeyboardEvent('keydown', { key: 'Escape' });

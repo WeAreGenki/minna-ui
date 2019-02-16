@@ -2,6 +2,8 @@
  * Babel preset for use with Jest tests.
  */
 
+/* eslint-disable sort-keys */
+
 'use strict';
 
 module.exports = (api) => {

@@ -111,8 +111,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaNavbar from '@minna-ui/navbar';
 
    new MinnaNavbar({
-     target: document.querySelector('#minna-navbar'),
      data: {},
+     target: document.querySelector('#minna-navbar'),
    });
    ```
 

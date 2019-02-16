@@ -1,6 +1,6 @@
 'use strict';
 
-const Collapse = require('../src/Collapse.html');
+const Collapse = require('../src/Collapse.svelte');
 
 describe('Collapse component', () => {
   it('renders correctly with no props', () => {

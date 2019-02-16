@@ -111,8 +111,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaSwitch from '@minna-ui/switch';
 
    new MinnaSwitch({
-     target: document.querySelector('#minna-switch'),
      data: {},
+     target: document.querySelector('#minna-switch'),
    });
    ```
 

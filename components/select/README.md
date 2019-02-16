@@ -113,8 +113,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaSelect from '@minna-ui/select';
 
    new MinnaSelect({
-     target: document.querySelector('#minna-select'),
      data: {},
+     target: document.querySelector('#minna-select'),
    });
    ```
 

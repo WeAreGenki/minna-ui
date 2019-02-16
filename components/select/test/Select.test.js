@@ -1,6 +1,6 @@
 'use strict';
 
-const Select = require('../src/Select.html');
+const Select = require('../src/Select.svelte');
 
 const items = [
   { id: 'au', text: 'Australia' },
@@ -9,6 +9,7 @@ const items = [
   { id: 'kr', text: 'Korea' },
   { id: 'other', text: 'Other / Unknown' },
 ];
+/* eslint-disable sort-keys */
 const itemsDisabled = [
   { id: '0', text: 'Zero', disabled: true },
   { id: '1', text: 'One' },
@@ -21,9 +22,10 @@ const itemsDisabled = [
   { id: '8', text: 'Eight', disabled: true },
   { id: '9', text: 'Nine', disabled: true },
 ];
+/* eslint-enable sort-keys */
 const selectOpts = {
-  items,
   id: 'test-select',
+  items,
   value: '',
 };
 
@@ -41,8 +43,8 @@ describe('Select component', () => {
     expect.assertions(10);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const select = target.querySelector('.select');
     expect(Array.isArray(component.get().items)).toEqual(true);
@@ -61,11 +63,11 @@ describe('Select component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         value: 'jp',
       },
+      target,
     });
     expect(component.get().inputText).toEqual('Japan');
     expect(target.innerHTML).toMatchSnapshot();
@@ -75,12 +77,12 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         filterable: false,
         isOpen: true,
       },
+      target,
     });
     expect(component.get().filterable).toEqual(false);
     const select = target.querySelector('.select');
@@ -92,12 +94,12 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         filterHelp: 'Filter me',
         isOpen: true,
       },
+      target,
     });
     expect(component.get().filterHelp).toEqual('Filter me');
     const select = target.querySelector('.select');
@@ -109,11 +111,11 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         placeholder: 'Hold your places',
       },
+      target,
     });
     expect(component.get().placeholder).toEqual('Hold your places');
     const select = target.querySelector('.select');
@@ -126,11 +128,11 @@ describe('Select component', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         disabled: true,
       },
+      target,
     });
     expect(component.get().disabled).toEqual(true);
     const select = target.querySelector('.select');
@@ -144,11 +146,11 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         readonly: true,
       },
+      target,
     });
     expect(component.get().readonly).toEqual(true);
     const select = target.querySelector('.select');
@@ -164,11 +166,11 @@ describe('Select component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         value: 'cn',
       },
+      target,
     });
     expect(component.get().selected).toEqual(1);
     component.set({ value: 'kr' });
@@ -180,8 +182,8 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy = jest.spyOn(component, 'open');
     const select = target.querySelector('.select');
@@ -197,11 +199,11 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         disabled: true,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'open');
     const select = target.querySelector('.select');
@@ -216,8 +218,8 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'open');
@@ -236,8 +238,8 @@ describe('Select component', () => {
     expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'open');
@@ -261,8 +263,8 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'open');
@@ -281,8 +283,8 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'open');
@@ -302,8 +304,8 @@ describe('Select component', () => {
     const target = document.createElement('div');
     document.body.appendChild(target);
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy = jest.spyOn(component, 'open');
     expect(component.get().isOpen).toEqual(false);
@@ -320,8 +322,8 @@ describe('Select component', () => {
     const target = document.createElement('div');
     document.body.appendChild(target);
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy = jest.spyOn(component, 'close');
     const select = target.querySelector('.select');
@@ -339,11 +341,11 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'close');
@@ -362,8 +364,8 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'open');
@@ -382,12 +384,12 @@ describe('Select component', () => {
     expect.assertions(8);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         selected: 0,
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'down');
@@ -411,12 +413,12 @@ describe('Select component', () => {
     expect.assertions(8);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         selected: 2,
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'handleKeyDown');
     const spy2 = jest.spyOn(component, 'up');
@@ -440,13 +442,13 @@ describe('Select component', () => {
     expect.assertions(6);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         items: itemsDisabled,
         selected: 1,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'down');
     expect(component.get().selected).toEqual(1);
@@ -467,13 +469,13 @@ describe('Select component', () => {
     expect.assertions(6);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         items: itemsDisabled,
         selected: 7,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'up');
     expect(component.get().selected).toEqual(7);
@@ -494,12 +496,12 @@ describe('Select component', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         selected: 3,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'down');
     expect(component.get().selected).toEqual(3);
@@ -518,12 +520,12 @@ describe('Select component', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         selected: 1,
       },
+      target,
     });
     const spy = jest.spyOn(component, 'up');
     expect(component.get().selected).toEqual(1);
@@ -542,11 +544,11 @@ describe('Select component', () => {
     expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'select');
     const spy2 = jest.spyOn(component, 'emitInput');
@@ -555,7 +557,7 @@ describe('Select component', () => {
     const option = target.querySelector('.option[value="jp"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
-    Object.defineProperty(event, 'target', { value: option, enumerable: true });
+    Object.defineProperty(event, 'target', { enumerable: true, value: option });
     const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of select()
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
@@ -572,16 +574,17 @@ describe('Select component', () => {
     expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
         items: [
           { id: 'one', text: 'Opt 1' },
+          // eslint-disable-next-line sort-keys
           { id: 'two', text: 'Opt 2', disabled: true },
           { id: 'three', text: 'Opt 3' },
         ],
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'select');
     const spy2 = jest.spyOn(component, 'emitInput');
@@ -590,7 +593,7 @@ describe('Select component', () => {
     const option = target.querySelector('.option[value="two"]');
     const listbox = target.querySelector('.select-listbox');
     const event = new MouseEvent('mousedown');
-    Object.defineProperty(event, 'target', { value: option, enumerable: true });
+    Object.defineProperty(event, 'target', { enumerable: true, value: option });
     const spy3 = jest.spyOn(event, 'preventDefault');
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
@@ -607,11 +610,11 @@ describe('Select component', () => {
     expect.assertions(8);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
       },
+      target,
     });
     const spy1 = jest.spyOn(component, 'select');
     const spy2 = jest.spyOn(component, 'emitInput');
@@ -638,11 +641,11 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
       },
+      target,
     });
     expect(component.get().filteredItems).toHaveLength(5);
     component.set({ inputText: 'o' });
@@ -654,11 +657,11 @@ describe('Select component', () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         isOpen: true,
       },
+      target,
     });
     expect(component.get().filteredItems).toHaveLength(5);
     component.set({ inputText: 'no match' });
@@ -670,13 +673,13 @@ describe('Select component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: {
         ...selectOpts,
         inputText: 'filter text',
         isOpen: true,
         value: 'au',
       },
+      target,
     });
     const spy = jest.spyOn(component, 'setInput');
     const select = target.querySelector('.select');
@@ -691,8 +694,8 @@ describe('Select component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
-      target,
       data: selectOpts,
+      target,
     });
     expect(component.get().items).toHaveLength(5);
     component.set({ items: [...items, { id: 'new', text: 'New' }] });

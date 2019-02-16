@@ -1,4 +1,5 @@
 /* eslint-env browser */
+/* eslint-disable security/detect-eval-with-expression */
 
 'use strict';
 

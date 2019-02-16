@@ -14,8 +14,8 @@ function process(src, filename) {
   const normalised = src.replace(re, '');
 
   const result = svelte.compile(normalised, {
-    filename,
     css: false,
+    filename,
     format: 'cjs',
   });
 

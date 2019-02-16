@@ -22,8 +22,10 @@ const dist = path.join(__dirname, 'dist');
 /**
  * Generate mock package.json env variables.
  * @param {string} dirName Directory name.
+ * @returns {Object}
  */
-const pkg = dirName => ({
+const pkg = (dirName) => ({
+  /* eslint-disable @typescript-eslint/camelcase */
   npm_package_homepage: 'https://ui.wearegenki.com/',
   npm_package_main: path.join(dist, dirName, 'index.js'),
   npm_package_module: path.join(dist, dirName, 'index.es.mjs'),
@@ -31,6 +33,7 @@ const pkg = dirName => ({
   npm_package_style: path.join(dist, dirName, 'index.css'),
   npm_package_svelte: sourcePath,
   npm_package_version: '1.2.3',
+  /* eslint-enable @typescript-eslint/camelcase */
 });
 
 beforeAll(() => mkdir(dist));
@@ -110,6 +113,7 @@ describe('build-component tool', () => {
     expect.assertions(1);
     const build = buildComponent({
       ...pkg('bad-syntax'),
+      // eslint-disable-next-line @typescript-eslint/camelcase
       npm_package_svelte: sourcePathBadSyntax,
     });
     // FIXME: Error is different if jest is run in --ci mode and between node versions

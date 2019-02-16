@@ -99,14 +99,15 @@ module.exports = {
     'value-list-comma-newline-before': 'never-multi-line',
     'value-no-vendor-prefix': true,
 
+    // eslint-disable-next-line sort-keys
     'order/order': [
       'dollar-variables',
       'custom-properties',
-      { type: 'at-rule', hasBlock: false },
+      { hasBlock: false, type: 'at-rule' },
       'declarations',
-      { type: 'at-rule', name: 'if' },
+      { name: 'if', type: 'at-rule' },
       'rules',
-      { type: 'at-rule', hasBlock: true },
+      { hasBlock: true, type: 'at-rule' },
     ],
     'order/properties-order': [
       {

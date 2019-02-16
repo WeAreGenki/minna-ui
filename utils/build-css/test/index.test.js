@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+/* eslint-disable security/detect-non-literal-fs-filename */
+
 'use strict';
 
 const fs = require('fs');
@@ -18,17 +20,19 @@ const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} outDir
- * @param {string} srcPath
- * @return {object}
+ * @param {string} outDir Where to write the files to.
+ * @param {string} srcPath Where to read the files from.
+ * @returns {Object}
  */
 const pkg = (outDir, srcPath = srcPathSimple) => ({
+  /* eslint-disable @typescript-eslint/camelcase */
   npm_package_browser: path.join(dist, outDir, 'index.css'),
   npm_package_homepage: 'https://ui.wearegenki.com',
   npm_package_main: srcPath,
   npm_package_name: 'test-css',
   npm_package_style: path.join(dist, outDir, 'index.css'),
   npm_package_version: '1.2.3',
+  /* eslint-enable */
 });
 
 beforeAll(() => mkdir(dist));
@@ -74,6 +78,7 @@ describe('build-css tool', () => {
     const build = buildCss(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = (await build)[0];
+    // eslint-disable-next-line security/detect-non-literal-regexp
     const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
     expect(built.min.styles).toMatch(re);
   });

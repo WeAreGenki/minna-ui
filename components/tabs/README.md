@@ -57,8 +57,8 @@ The easiest way to use the component is to add the CDN hosted version directly i
    ```html
    <script>
      new MinnaTabs({
-       target: document.querySelector('#minna-tabs'),
        data: {},
+       target: document.querySelector('#minna-tabs'),
      });
    </script>
    ```

@@ -1,6 +1,6 @@
 'use strict';
 
-const Toast = require('../src/Toast.html');
+const Toast = require('../src/Toast.svelte');
 
 describe('Toast component', () => {
   it('renders correctly with defaults', () => {

@@ -32,6 +32,7 @@
 </div>
 
 <style>
+  /* stylelint-disable a11y/no-display-none */
   .collapse-hide {
     display: none;
   }

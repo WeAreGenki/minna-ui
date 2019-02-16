@@ -48,6 +48,7 @@ module.exports = (options = {}) => ({ content }) => {
         quoteCharacter: '"',
 
         // potentially dangerous
+        // eslint-disable-next-line sort-keys
         collapseBooleanAttributes: ol3,
         collapseInlineTagWhitespace: ol3,
         decodeEntities: ol3,

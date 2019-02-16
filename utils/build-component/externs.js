@@ -3,7 +3,7 @@
  * @externs
  */
 
-/* eslint-disable strict, no-var, no-unused-vars, id-length */
+/* eslint-disable strict, no-var, id-length, @typescript-eslint/no-unused-vars */
 
 // svelte quoted method references
 var i;

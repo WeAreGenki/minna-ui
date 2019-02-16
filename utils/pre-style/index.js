@@ -1,3 +1,5 @@
+/* eslint-disable jsdoc/valid-types */
+
 'use strict';
 
 const merge = require('deepmerge');
@@ -7,31 +9,27 @@ const postcss = require('postcss');
 
 /**
  * Minna UI svelte style preprocessor.
- * @param {Object} context
+ * @param {import('postcss').ProcessOptions} opts PostCSS options.
  * @returns {Object}
  */
-module.exports = (context = {}) => async ({
-  attributes,
-  content,
-  filename,
-}) => {
+module.exports = (opts = {}) => async ({ attributes, content, filename }) => {
   if (attributes.type !== 'text/postcss') return;
 
-  // merge user provided context into defaults
-  const ctx = merge(
+  // merge user provided options into default context
+  const context = merge(
     {
       from: filename,
+      map: { annotation: false, inline: false },
       to: filename,
-      map: { inline: false, annotation: false },
     },
-    context,
+    opts,
   );
 
   /**
    * Compile PostCSS code into CSS.
    */
   try {
-    const { plugins, options } = await postcssLoadConfig(ctx);
+    const { plugins, options } = await postcssLoadConfig(context);
     const result = await postcss(plugins).process(content, options);
 
     result.warnings().forEach((warn) => {
@@ -52,8 +50,8 @@ module.exports = (context = {}) => async ({
 
     // eslint-disable-next-line consistent-return
     return {
-      dependencies,
       code: result.css,
+      dependencies,
       map: result.map,
     };
   } catch (error) {

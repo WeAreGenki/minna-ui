@@ -8712,10 +8712,10 @@ rollup-plugin-node-resolve@4.0.0:
     is-module "^1.0.0"
     resolve "^1.8.1"
 
-rollup-plugin-svelte@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-5.0.1.tgz#d6f9345f3bb652f512407395dd178197ca28ac67"
-  integrity sha512-iwm4ANbdoEQqoCL8m70R3F2Oe/auSr0zIOBVVJWx7IMSkzFZjhd0PeqzKe3BWCllLAnBXIbqTSOHmU2mnvy0SA==
+rollup-plugin-svelte@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-svelte/-/rollup-plugin-svelte-5.0.3.tgz#1e4cce33a94b0b4b4831abc7d76eabdf333ab63d"
+  integrity sha512-3W/jbtBcsxohKQMI1Po2ZsUHRGUy3vEtgXLHvBin1+ms3wl2eomSyYBV7pwrkh6tWok9BVzdxGQgd7IqibG+Ew==
   dependencies:
     require-relative "^0.8.7"
     rollup-pluginutils "^2.3.3"

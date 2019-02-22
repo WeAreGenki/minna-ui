@@ -117,8 +117,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaTabs from '@minna-ui/tabs';
 
    new MinnaTabs({
-     target: document.querySelector('#minna-tabs'),
      data: {},
+     target: document.querySelector('#minna-tabs'),
    });
    ```
 

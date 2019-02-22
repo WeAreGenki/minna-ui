@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const { promisify } = require('util');
-const { preprocess, compile } = require('svelte');
+const { compile, preprocess } = require('svelte');
 const postcssNested = require('postcss-nested');
 const preprocessStyle = require('../index.js');
 

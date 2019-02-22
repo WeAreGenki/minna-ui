@@ -113,8 +113,8 @@ function makeHtml({
       );
 
       const html = compileTemplate(htmlTemplate)({
-        title,
         content: body,
+        title,
         ...data,
       }).trim();
 

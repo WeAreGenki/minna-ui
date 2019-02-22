@@ -8,6 +8,7 @@ const { promisify } = require('util');
 const postcss = require('postcss');
 const postcssConfig = require('../index.js');
 
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 const jestConfigPath = require.resolve('@minna-ui/jest-config');
 const fixturesPath = path.join(path.dirname(jestConfigPath), 'fixtures');

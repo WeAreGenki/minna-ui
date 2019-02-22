@@ -9,6 +9,7 @@ const { promisify } = require('util');
 const svelteTransform = require('../lib/svelte-transform.js');
 const nullTransform = require('../lib/null-transform.js');
 
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 const sourcePath = path.join(__dirname, '../fixtures/TestComponent.html');
 const sourceCssPath = path.join(__dirname, '../fixtures/styles.css');

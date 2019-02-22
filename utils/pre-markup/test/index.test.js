@@ -8,6 +8,7 @@ const { promisify } = require('util');
 const { preprocess, create } = require('svelte');
 const preprocessMarkup = require('../index.js');
 
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 
 // don't require() components to avoid Jest transform

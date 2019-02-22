@@ -23,7 +23,7 @@
   "dependencies": {
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-security": "^1.15.0",
-    "tslint-microsoft-contrib": "^6.0.0"
+    "tslint-microsoft-contrib": "^6.1.0-beta"
   },
   "publishConfig": {
     "access": "public"

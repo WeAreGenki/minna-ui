@@ -19,7 +19,7 @@
     "postcss": "^7.0.0"
   },
   "dependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^9.4.8",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
     "cssnano-preset-advanced": "^4.0.6",

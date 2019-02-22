@@ -37,7 +37,8 @@ module.exports = (opts = {}) => async ({ attributes, content, filename }) => {
       console.warn(warn.toString());
     });
 
-    let dependencies;
+    /** @type {string[]} */
+    let dependencies = [];
 
     if (result.map && filename) {
       // pass through dependent files so rollup can monitor them for changes
@@ -60,8 +61,9 @@ module.exports = (opts = {}) => async ({ attributes, content, filename }) => {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       process.stderr.write(error.message + error.showSourceCode());
     } else {
+      // TODO: Throw an error to stop turther processing (?)
       // eslint-disable-next-line no-console
-      console.error('[PRE-STYLE] Error', error);
+      console.error(error);
     }
   }
 };

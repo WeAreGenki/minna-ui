@@ -32,4 +32,28 @@ module.exports = {
     'no-new': 'off', // allow new keyword to create svelte component instances
     'no-underscore-dangle': 'off', // allow access to properties with leading underscores
   },
+
+  overrides: [
+    // Svelte components
+    {
+      files: ['*.svelte'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+          },
+        ],
+        'no-labels': 'off',
+      },
+    },
+
+    // TypeScript
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
+  ],
 };

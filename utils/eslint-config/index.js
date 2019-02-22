@@ -38,22 +38,19 @@ module.exports = {
     es6: true,
   },
   settings: {
-    'html/html-extensions': ['.html', '.svelte'],
     'html/indent': '+2',
     'html/report-bad-indent': 'error',
-    'import/ignore': ['.html', '.svelte', '.svg', '.css', '.pcss'],
+    'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
       node: {
         extensions: [
           '.mjs',
           '.js',
           '.ts',
-          '.html',
           '.svelte',
           '.jsx',
           '.tsx',
           '.json',
-          '.svg',
           '.css',
           '.pcss',
           '.node',
@@ -61,7 +58,7 @@ module.exports = {
         ],
       },
     },
-    'svelte3/extensions': ['.html', '.svelte', '.svg'],
+    'svelte3/ignore-styles': attr => attr.type === 'text/postcss',
   },
   rules: {
     '@typescript-eslint/ban-types': [
@@ -111,6 +108,7 @@ module.exports = {
     'jsdoc/require-param-name': 'warn',
     'jsdoc/require-param-type': 'warn',
     'jsdoc/require-returns': 'warn',
+    'jsdoc/require-returns-check': 'warn',
     'jsdoc/require-returns-type': 'warn',
     'jsdoc/valid-types': 'warn',
     'max-len': [
@@ -141,7 +139,7 @@ module.exports = {
   overrides: [
     // Svelte components
     {
-      files: ['*html', '*.svelte', '*.svg'],
+      files: ['*.svelte'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
@@ -149,9 +147,33 @@ module.exports = {
             devDependencies: true,
           },
         ],
+        'import/no-mutable-exports': 'off',
         'no-labels': 'off',
+
+        // NOTE: Removed `LabeledStatement`
+        // TODO: This should be kept up to date with the upstream source:
+        // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L332
+        'no-restricted-syntax': [
+          'error',
+          {
+            selector: 'ForInStatement',
+            message:
+              'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+          },
+          {
+            selector: 'ForOfStatement',
+            message:
+              'iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.',
+          },
+          {
+            selector: 'WithStatement',
+            message:
+              '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+          },
+        ],
       },
     },
+
     // TypeScript
     {
       files: ['*.ts', '*.tsx'],
@@ -161,7 +183,17 @@ module.exports = {
         'jsdoc/valid-types': 'off',
       },
     },
-    // JS config files
+
+    // TypeScript declaration files
+    {
+      files: ['*.d.ts'],
+      rules: {
+        '@typescript-eslint/no-extraneous-class': 'off',
+        'no-useless-constructor': 'off', // crashes node process
+      },
+    },
+
+    // config files
     {
       files: ['*.config.js', '*rc.js'],
       excludedFiles: ['preact.config.js', 'rollup.config.js'], // use ES modules
@@ -184,6 +216,7 @@ module.exports = {
         ],
       },
     },
+
     // unit tests
     {
       files: ['*.test.js', '*.spec.js'],
@@ -213,6 +246,7 @@ module.exports = {
         ],
       },
     },
+
     // markdown documentation files
     {
       files: ['*.md'],

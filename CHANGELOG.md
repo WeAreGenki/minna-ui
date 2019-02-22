@@ -11,24 +11,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Support for `.svelte` file extension in various packages.
-- TypeScript support and new rules in `@minna-ui/eslint-config`.
-- Deprecation notice in `@minna-ui/tslint-config`. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
+- `@minna-ui/prettier-config` - Support `.svelte` file extension.
+- `@minna-ui/jest-config` - Support `.svelte` file extension and other improvements.
+- `@minna-ui/eslint-config` - TypeScript support, new rules, and support `.svelte` file extension.
+- `@minna-ui/tslint-config` - Deprecation notice. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
 
 ### Removed
 
-- Package `@minna-ui/tslint-config` is no longer automatically installed as a dependency of `minna-ui`. You'll need to add it to your `"devDependencies"` if you want to continue using TSLint.
+- `@minna-ui/tslint-config` - Package is no longer automatically installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
 
 ### Changed
 
-- Rename all components from `*.html` to `*.svelte`
 - Convert all components to Svelte v3 syntax.
+- Rename all components from `*.html` to `*.svelte`
+- `@minna-ui/rollup-plugins` - `makeCss` - By default don't write empty CSS files to disk. This can be controlled with the new `writeEmpty` option.
+- `@minna-ui/rollup-plugins` - `makeCss` - Rename option `safe` to `unsafe`.
 - Refactor internal lint tasks and VS Code settings.
 - Use shared package for some node utils.
 - Updated package dependencies.
 
 ### Fixed
 
+- `@minna-ui/rollup-plugins` - `makeCss` - Dependency tracking paths are wrong and cause builds to fail.
+- `@minna-ui/rollup-plugins` - `makeCss` - Write path is wrong in some use cases.
 - Lint issues.
 
 ## [0.21.0][] - 2019-02-06

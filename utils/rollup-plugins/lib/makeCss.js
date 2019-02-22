@@ -1,10 +1,10 @@
-/* eslint-disable security/detect-object-injection */
+/* eslint-disable security/detect-object-injection, jsdoc/valid-types */
 
 'use strict';
 
 const merge = require('deepmerge');
 const { writeFile } = require('fs');
-const { join, resolve } = require('path');
+const { dirname, isAbsolute, join, resolve } = require('path');
 const postcss = require('postcss');
 const postcssrc = require('postcss-load-config');
 const Purgecss = require('purgecss');
@@ -16,23 +16,23 @@ const catchErr = require('./catchErr.js');
  * a single bundle, and write it to disk. Optionally minifies and removes unused
  * styles for significantly smaller CSS bundles.
  * @param {Object} opts User defined options.
+ * @param {(string[]|import('purgecss').RawContent[])=} opts.content Files to
+ * parse for CSS classes. Find which CSS selectors are used when removing
+ * unused styles.
+ * @param {boolean=} opts.debug Show additional logging for debug purposes.
+ * @param {(string[])=} opts.exclude Files to exclude from CSS processing.
  * @param {string=} opts.file Output file path to write to. Defaults to the same
  * as the JS bundle but with a `.css` file extension.
- * @param {(Array<string>|Function)=} opts.content Page markup content. Used to
- * determine which CSS selectors are used when removing unused styles.
  * @param {Object=} opts.context Base PostCSS options.
- * @param {Array<string>=} opts.exclude Files to exclude from CSS processing.
- * @param {Array<string>=} opts.include Files to include in CSS processing.
- * @param {Array<string>=} opts.content Files to parse for CSS classes.
+ * @param {(string[])=} opts.include Files to include in CSS processing.
  * @param {boolean=} opts.optimize Should output CSS be minified and cleaned?
- * @param {Array<string>=} opts.whitelist CSS classes to always keep.
- * @param {boolean=} opts.safe Only apply safe optimisations.
- * @param {boolean=} opts.debug Show additional logging for debug purposes.
+ * @param {(string[])=} opts.whitelist CSS classes to never remove.
+ * @param {boolean=} opts.writeEmpty Write CSS files to disk even when empty.
+ * @param {boolean=} opts.unsafe Apply potencially unsafe optimisations.
  * @param {...any=} opts.userOpts Any additional options to pass to `cssnano`.
- * @returns {Object} Rollup plugin.
+ * @returns {import('rollup').Plugin} Rollup plugin.
  */
 function makeCss({
-  file,
   content = [
     'src/**/*.html',
     'src/**/*.js',
@@ -41,12 +41,14 @@ function makeCss({
     'src/**/*.tsx',
   ],
   context = {},
+  debug = false,
   exclude = [],
+  file,
   include = ['**/*.css'],
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
-  safe = true,
-  debug = false,
+  writeEmpty = false,
+  unsafe = false,
   ...userOpts
 } = {}) {
   const filter = createFilter(include, exclude);
@@ -68,6 +70,7 @@ function makeCss({
           { from: id, map: { annotation: false, inline: false }, to: id },
           context,
         );
+
         const { plugins, options } = await postcssrc(ctx);
         const result = await postcss(plugins).process(source, options);
 
@@ -77,10 +80,12 @@ function makeCss({
 
         // register sub-dependencies so rollup can monitor them for changes
         if (result.map) {
+          const basePath = dirname(id);
+
           // TODO: Don't use PostCSS private API
           // eslint-disable-next-line no-underscore-dangle
           result.map._sources._array.forEach((dependency) => {
-            this.addWatchFile(dependency);
+            this.addWatchFile(join(basePath, dependency));
           });
         }
 
@@ -126,7 +131,7 @@ function makeCss({
         const result = await postcss(
           // eslint-disable-next-line global-require
           require('cssnano')({
-            preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
+            preset: [unsafe ? 'advanced' : 'default', cssnanoOpts],
           }),
         ).process(css, {});
 
@@ -134,21 +139,28 @@ function makeCss({
           this.warn(warn.toString(), { column: warn.column, line: warn.line });
         });
 
-        if (safe) {
-          css = result.css; // eslint-disable-line prefer-destructuring
-
-          // TODO: Process source map here
-        } else {
+        if (unsafe) {
           const purgecss = new Purgecss({
             content,
-            css: [{ raw: result.css }],
+            css: [{ extension: 'css', raw: result.css }],
             keyframes: true,
             whitelist,
           });
 
-          css = purgecss.purge()[0].css; // eslint-disable-line prefer-destructuring
+          ({ css } = purgecss.purge()[0]); // eslint-disable-line prefer-destructuring
+        } else {
+          ({ css } = result);
+        }
 
-          // TODO: Process source map here
+        // TODO: Process source map here
+      }
+
+      // don't save to disk if the CSS is empty
+      if (!css || !/\S/.test(css)) {
+        if (!writeEmpty) {
+          // eslint-disable-next-line no-console
+          if (debug) console.warn('Skipping writing to disk, CSS is empty');
+          return;
         }
       }
 
@@ -162,7 +174,9 @@ function makeCss({
         const jsFile = outputOpts.file || Object.values(bundle)[0].fileName;
         const cssFile = jsFile.replace(/js$/, 'css');
         const cssOut = outputOpts.dir ? join(outputOpts.dir, cssFile) : cssFile;
-        cssWritePath = join(process.cwd(), cssOut);
+        cssWritePath = isAbsolute(cssOut)
+          ? cssOut
+          : join(process.cwd(), cssOut);
       }
 
       // write CSS file

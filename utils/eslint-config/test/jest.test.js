@@ -14,7 +14,7 @@ const sourceJestValid = `/* eslint-env es6 */
 
 'use strict';
 
-/* eslint-disable-next-line import/no-extraneous-dependencies */
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { target } = require('@minna-ui/jest-config/fixtures/importable.js');
 
 test('target', () => {

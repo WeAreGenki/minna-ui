@@ -2,7 +2,6 @@
  * Tool to compile minna-ui CSS packages.
  */
 
-/* eslint-disable-next-line max-len */
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
 
 'use strict';
@@ -34,7 +33,7 @@ const compileWarn = (origin, level, warnings) => {
   warnings.forEach((err) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
-      /* eslint-disable-next-line no-console */
+      // eslint-disable-next-line no-console
       console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
@@ -180,14 +179,14 @@ module.exports = async function run(env, argv = []) {
     return allResults;
   } catch (error) {
     if (error.showSourceCode) {
-      /* eslint-disable-next-line no-console */
+      // eslint-disable-next-line no-console
       console.error(
         `[BUILD-CSS] PostCSS error: ${
           error.message
         }:\n${error.showSourceCode()}`,
       );
     } else {
-      /* eslint-disable-next-line no-console */
+      // eslint-disable-next-line no-console
       console.error('[BUILD-CSS] Error', error);
     }
 

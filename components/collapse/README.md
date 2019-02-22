@@ -59,7 +59,6 @@ The easiest way to use the component is to add the CDN hosted version directly i
    <script>
      var collapseEls = document.querySelectorAll('.minna-collapse');
      collapseEls.forEach(function(el) {
-       /* eslint-disable-next-line no-new */
        new MinnaCollapse({ target: el });
      });
    </script>

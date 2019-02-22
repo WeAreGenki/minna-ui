@@ -10,7 +10,7 @@ const { compile, preprocess } = require('svelte');
 const postcssNested = require('postcss-nested');
 const preprocessStyle = require('../index.js');
 
-/* eslint-disable-next-line security/detect-non-literal-fs-filename */
+// eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform

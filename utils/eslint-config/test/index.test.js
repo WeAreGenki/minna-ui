@@ -11,7 +11,7 @@ const linterCli = new CLIEngine({
   useEslintrc: false,
 });
 
-const sourceValid = `/* eslint-disable-next-line import/no-extraneous-dependencies */
+const sourceValid = `// eslint-disable-next-line import/no-extraneous-dependencies
 import { shout } from '@minna-ui/jest-config/fixtures/importable.js';
 
 const output = shout('test');

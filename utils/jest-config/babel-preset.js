@@ -13,8 +13,13 @@ module.exports = (api) => {
 
   return {
     presets: [isTest && '@babel/preset-typescript'].filter(Boolean),
-    plugins: [isTest && '@babel/plugin-transform-modules-commonjs'].filter(
-      Boolean,
-    ),
+    plugins: [
+      isTest && [
+        '@babel/plugin-transform-modules-commonjs',
+        {
+          lazy: true,
+        },
+      ],
+    ].filter(Boolean),
   };
 };

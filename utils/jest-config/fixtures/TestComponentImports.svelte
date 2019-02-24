@@ -3,8 +3,7 @@
 <script>
   import { shout, whisper } from './importable.js';
 
-  // reactive data
-  let name = 'Elon Musk';
+  const name = 'Elon Musk';
 
   // computed
   let loud;

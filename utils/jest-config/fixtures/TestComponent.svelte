@@ -19,8 +19,7 @@
 </div>
 
 <script>
-  // reactive data
-  let name = 'Elon Musk';
+  const name = 'Elon Musk';
 
   // computed
   let reversed;

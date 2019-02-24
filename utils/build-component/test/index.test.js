@@ -13,9 +13,9 @@ const buildComponent = require('../index.js');
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
+const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 const sourcePathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.html',
+  '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.svelte',
 );
 const dist = path.join(__dirname, 'dist');
 

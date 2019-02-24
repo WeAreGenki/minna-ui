@@ -1,5 +1,6 @@
 /docs/index.html
 /test/coverage/
 /utils/*/cli/index.js
+/utils/jest-config/fixtures/TestComponentBadSyntax.svelte
 dist/
 node_modules/

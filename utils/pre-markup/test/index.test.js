@@ -12,7 +12,7 @@ const preprocessMarkup = require('../index.js');
 const readFile = promisify(fs.readFile);
 
 // don't require() components to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.html');
+const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 
 const opts = {
   markup: preprocessMarkup(),
@@ -27,7 +27,7 @@ const optsUnsafeWhitespace = {
   style: () => ({ code: '/*discarded*/' }),
 };
 const svelteOpts = {
-  filename: 'TestComponent.html',
+  filename: 'TestComponent.svelte',
   name: 'TestComponent',
   onwarn(warning, onwarn) {
     /* istanbul ignore if */

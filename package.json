@@ -12,7 +12,7 @@
     "predocs": "build-css docs/_src docs/_dist --no-banner",
     "update": "yarn upgrade-interactive --latest",
     "preinstall": "node utils/check-yarn.js",
-    "release:next": "yarn prepack && lerna publish --canary=prerelease --exact --npm-tag=next",
+    "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --npm-tag=next",
     "release:beta": "yarn prepack && lerna publish --cd-version=prerelease --preid=beta --npm-tag=beta",
     "release": "yarn prepack && lerna publish",
     "prerelease:next": "yarn prerelease",

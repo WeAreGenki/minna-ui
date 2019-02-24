@@ -5,7 +5,9 @@
 module.exports = {
   map: true,
   plugins: {
-    '@minna-ui/postcss-config': { debug: true },
+    // the `unsafe` option is fine when compiling components separately, it
+    // only becomes potentially dangerous when compiling a whole app
+    '@minna-ui/postcss-config': { unsafe: true },
   },
   syntax: 'postcss-scss',
 };

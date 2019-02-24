@@ -3,7 +3,14 @@
 {
   "extends": "@minna-ui/ts-config",
   "compilerOptions": {
-    "baseUrl": ".",
-    "noEmit": true
-  }
+    "baseUrl": "."
+  },
+  // FIXME: `exclude` doesn't get inherited when using `extends`
+  "exclude": [
+    "**/.*rc.js",
+    "**/*.config.js",
+    "**/dist/*",
+    "**/node_modules/*",
+    "test/coverage"
+  ]
 }

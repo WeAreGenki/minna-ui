@@ -19,11 +19,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - `@minna-ui/tslint-config` - Package is no longer automatically installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
+- `@minna-ui/postcss-config` - Preset no longer includes the `postcss-extends` plugin. If you want `@extends` functionality we recommend installing the plugin seperately and using the `@use` rule.
 
 ### Changed
 
 - Convert all components to Svelte v3 syntax.
 - Rename all components from `*.html` to `*.svelte`
+- `@minna-ui/postcss-config` - Complete refactor to be faster and more simple. Now only does safe transforms by default.
 - `@minna-ui/rollup-plugins` - `makeCss` - By default don't write empty CSS files to disk. This can be controlled with the new `writeEmpty` option.
 - `@minna-ui/rollup-plugins` - `makeCss` - Rename option `safe` to `unsafe`.
 - Refactor internal lint tasks and VS Code settings.

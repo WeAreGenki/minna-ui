@@ -37,6 +37,8 @@ function makeCss({
     'src/**/*.html',
     'src/**/*.js',
     'src/**/*.jsx',
+    'src/**/*.svelte',
+    'src/**/*.svg',
     'src/**/*.ts',
     'src/**/*.tsx',
   ],

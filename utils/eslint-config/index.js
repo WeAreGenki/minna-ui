@@ -11,7 +11,6 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   extends: [
     'eslint:recommended',
-    'plugin:import/recommended',
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
     'plugin:security/recommended',
@@ -27,11 +26,8 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 9,
     project: 'tsconfig.json',
-    sourceType: 'module',
     tsconfigRootDir: process.cwd(),
-    warnOnUnsupportedTypeScriptVersion: false,
   },
   env: {
     browser: true,
@@ -40,6 +36,16 @@ module.exports = {
   settings: {
     'html/indent': '+2',
     'html/report-bad-indent': 'error',
+    'html/xml-extensions': ['.svg', '.xhtml', 'xml'],
+    'import/extensions': [
+      '.mjs',
+      '.js',
+      '.ts',
+      '.svelte',
+      '.jsx',
+      '.tsx',
+      '.d.ts',
+    ],
     'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
       node: {
@@ -58,7 +64,7 @@ module.exports = {
         ],
       },
     },
-    'svelte3/ignore-styles': attr => attr.type === 'text/postcss',
+    'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
   },
   rules: {
     '@typescript-eslint/ban-types': [
@@ -74,15 +80,28 @@ module.exports = {
         },
       },
     ],
-    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/indent': [
+      'error',
+      2,
+      {
+        ignoredNodes: ['ConditionalExpression *'], // incompatible with prettier :'(
+        SwitchCase: 1,
+      },
+    ],
     '@typescript-eslint/interface-name-prefix': ['error', 'always'],
     '@typescript-eslint/member-ordering': 'error',
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      { allowSingleExtends: true },
+    ],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
+    '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'error',
     'comma-dangle': [
       'error',
@@ -95,7 +114,15 @@ module.exports = {
       },
     ],
     'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive names
-    'import/extensions': ['error', 'ignorePackages'], // do use file extensions
+    'import/extensions': [
+      'error',
+      'ignorePackages', // do use file extensions
+      {
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'import/no-deprecated': 'warn',
     'import/prefer-default-export': 'off',
     indent: 'off', // use `@typescript-eslint/indent` instead
     'jsdoc/check-examples': 'warn',
@@ -114,7 +141,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 80, // consistency with prettier  (since it doesn't have autofix for max-len)
+        code: 80, // consistency with prettier
         ignorePattern: 'eslint-disable',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
@@ -150,8 +177,8 @@ module.exports = {
         'import/no-mutable-exports': 'off',
         'no-labels': 'off',
 
-        // NOTE: Removed `LabeledStatement`
-        // TODO: This should be kept up to date with the upstream source:
+        // NOTE: Based on airbnb-base rule but with `LabeledStatement` removed
+        // Keep up to date with changes to the upstream source:
         // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L332
         'no-restricted-syntax': [
           'error',
@@ -235,7 +262,7 @@ module.exports = {
         'max-len': [
           'error',
           {
-            code: 100, // consistency with prettier override settings
+            code: 100, // consistency with prettier override
             ignorePattern: 'eslint-disable',
             ignoreRegExpLiterals: true,
             ignoreStrings: true,

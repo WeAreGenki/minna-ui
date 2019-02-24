@@ -4,18 +4,19 @@
 
 'use strict';
 
+const { basename } = require('path');
 // NOTE: `svelte` is not listed as a dependency in case developers want to use
 // this package for non-svelte projects.
-const svelte = require('svelte'); // eslint-disable-line import/no-extraneous-dependencies
+const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
 
 function process(src, filename) {
   // strip out <style> tags to prevent failure when unable to parse PostCSS etc.
   const re = /<style[^>]*>([\S\s]*?)<\/style>/g;
   const normalised = src.replace(re, '');
 
-  const result = svelte.compile(normalised, {
+  const result = compile(normalised, {
     css: false,
-    filename,
+    filename: basename(filename),
     format: 'cjs',
   });
 
@@ -25,6 +26,4 @@ function process(src, filename) {
   };
 }
 
-module.exports = {
-  process,
-};
+exports.process = process;

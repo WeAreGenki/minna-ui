@@ -63,7 +63,7 @@ Included plugins (in execution order):
 | optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform optimisations to reduce output file size and minimise runtime style computation. |
 | unsafe | `false` | boolean | Apply potentially unsafe transformations (e.g. combining same `@media`). |
 | debug | `true` | boolean | Show useful debugging feedback (e.g. unresolved variables). |
-| ...options | `undefined` | any | All other options will be passed to both the PostCSS plugins and to the nanocss preset. |
+| ...options | `undefined` | any | Any other options will be passed to all PostCSS plugins and to the `nanocss` preset options.</br></br>This can be particuarly powerful if you need to pass options when using the `@use` rule — use the plugin name as a key, as shown in the [postcss-use docs](https://github.com/postcss/postcss-use#options-1). |
 
 <!-- lint enable -->
 

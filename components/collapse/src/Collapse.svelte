@@ -14,9 +14,9 @@
 -->
 
 <script>
-  export let isOpen = false;
   export let textOpen = 'Expand ▾';
   export let textClose = 'Collapse ▴';
+  export let isOpen;
 
   function handleClick() {
     isOpen = !isOpen;

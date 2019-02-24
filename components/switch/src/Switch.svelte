@@ -50,12 +50,12 @@
   import { createEventDispatcher, afterUpdate } from 'svelte';
 
   // props
-  export let value = true;
   export let textOn = 'ON';
   export let textOff = 'OFF';
-  export let mini = false;
-  export let disabled = false;
-  export let required = false; // FIXME: Add custom validation
+  export let value;
+  export let mini;
+  export let disabled;
+  export let required; // FIXME: Add custom validation
 
   const dispatch = createEventDispatcher();
 
@@ -69,7 +69,7 @@
   });
 
   function toggle() {
-    if (disabled === undefined) {
+    if (!disabled) {
       value = !value;
     }
   }
@@ -93,10 +93,10 @@
 
 <!-- on:keydown="{event => handleKeyDown(event)}" -->
 <div
-  class="switch{mini ? ' switch-mini' : ''}{disabled !== undefined ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
+  class="switch{mini ? ' switch-mini' : ''}{disabled ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
   role="switch"
-  tabindex="{disabled === undefined ? 0 : -1}"
-  aria-checked="{value}"
+  tabindex="{disabled ? -1 : 0}"
+  aria-checked="{!!value}"
   on:click="{toggle}"
   on:keydown="{handleKeyDown}"
 >

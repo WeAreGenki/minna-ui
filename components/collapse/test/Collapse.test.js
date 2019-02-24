@@ -1,6 +1,4 @@
-'use strict';
-
-const Collapse = require('../src/Collapse.svelte');
+const Collapse = require('../src/Collapse.svelte').default;
 
 describe('Collapse component', () => {
   it('renders correctly with no props', () => {
@@ -18,12 +16,12 @@ describe('Collapse component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Collapse({ target });
-    expect(component.get().isOpen).toBeFalsy();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     const button = target.querySelector('button');
     button.click();
-    expect(component.get().isOpen).toBeTruthy();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     button.click();
-    expect(component.get().isOpen).toBeFalsy();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     expect(document.querySelector('collapse-hide')).toBeNull();
   });
 });

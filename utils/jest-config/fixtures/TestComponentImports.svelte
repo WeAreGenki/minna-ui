@@ -3,7 +3,7 @@
 <script>
   import { shout, whisper } from './importable.js';
 
-  const name = 'Elon Musk';
+  export let name = 'Elon Musk';
 
   // computed
   let loud;

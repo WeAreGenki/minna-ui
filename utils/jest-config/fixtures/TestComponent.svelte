@@ -19,7 +19,7 @@
 </div>
 
 <script>
-  const name = 'Elon Musk';
+  export let name = 'Elon Musk';
 
   // computed
   let reversed;

@@ -36,7 +36,7 @@
 -->
 
 <script>
-  import { beforeUpdate } from 'svelte';
+  import { beforeUpdate, onMount } from 'svelte';
 
   // props
   export let id = '';
@@ -44,16 +44,16 @@
   export let filterable = true;
   export let filterHelp = 'Filter...';
   export let placeholder = 'Choose...';
-  export let readonly = false;
-  export let disabled = false;
-  export let required = false; // FIXME: Add a way to do custom validation
+  export let readonly;
+  export let disabled;
+  export let required; // FIXME: Add a way to do custom validation
   export let value;
+  export let isOpen;
 
   // refs
   let input;
 
   // reactive data
-  let isOpen = false;
   let inputText = '';
   let selected = 0; // index of the currently selected item
 
@@ -212,17 +212,22 @@
     }
   }
 
-  beforeUpdate(() => {
-    if (filteredItems !== previousFilteredItems) {
-      previousFilteredItems = filteredItems;
-      setIndex();
-    }
+  // FIXME: Remove if wrapper once svelte is fixed
+  if (typeof document !== 'undefined') {
+    beforeUpdate(() => {
+      if (filteredItems !== previousFilteredItems) {
+        previousFilteredItems = filteredItems;
+        setIndex();
+      }
 
-    if (value && (value !== previousValue)) {
-      previousValue = value;
-      setInput();
-    }
-  });
+      if (value && (value !== previousValue)) {
+        previousValue = value;
+        setInput();
+      }
+    });
+
+    onMount(setInput);
+  }
 </script>
 
 <div
@@ -253,13 +258,13 @@
     role="listbox"
     on:mousedown="{select}"
   >
-    {#each filteredItems as _item, _index}
+    {#each filteredItems as item, index}
     <div
-      class="option{_item.disabled ? ' option-disabled' : ''}{_index === selected ? ' option-active' : ''}"
-      value="{_item.id}"
+      class="option{item.disabled ? ' option-disabled' : ''}{index === selected ? ' option-active' : ''}"
+      value="{item.id}"
       role="option"
     >
-      {_item.text}
+      {item.text}
     </div>
     {:else}
     <div class="pa3 gray">No matches</div>

@@ -58,18 +58,18 @@
 -->
 
 <script>
-  // import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
   // props
   export let items = [];
-  export let segment = ''; // current URL path; in sapper, pass in "segment"
+  export let segment; // current URL path; in sapper, pass in "segment"
 
   // reactive data
-  let isOpen = false;
-  let hasScrolled = false;
+  let isOpen;
+  let hasScrolled;
 
-  let wait = false;
-  let lastHasScrolled = false;
+  let wait;
+  let lastHasScrolled;
 
   function update() {
     const scrolled = window.pageYOffset !== 0;
@@ -109,12 +109,11 @@
     }
   }
 
-  // FIXME: Causes crash
-  // onMount(() => {
-  //   document.addEventListener('scroll', scrollHandler, false);
-  // })
+  // FIXME: Remove if wrapper once svelte is fixed
   if (typeof document !== 'undefined') {
-    document.addEventListener('scroll', scrollHandler, false);
+    onMount(() => {
+      document.addEventListener('scroll', scrollHandler, false);
+    });
   }
 </script>
 
@@ -124,7 +123,7 @@
       type="button"
       class="navbar-button l-dn button-clear"
       aria-label="menu toggle"
-      aria-expanded="{isOpen}"
+      aria-expanded="{!!isOpen}"
       on:click="{openMenu}"
     >
       <svg class="navbar-icon">

@@ -1,8 +1,7 @@
 <!--
   TABS
 
-  NOTE: This component is currently an experimental work in progress and may not
-  work correctly. It should not be used in production.
+  @experimental Work in progress. Does not work. DO NOT USE IN PRODUCTION.
 -->
 
 <!--
@@ -25,17 +24,11 @@
     <a href="#1" class="tabs-title{active === 1 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 1)}">1</a>
     <a href="#2" class="tabs-title{active === 2 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 2)}">2</a>
     <a href="#3" class="tabs-title{active === 3 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 3)}">3</a>
-    <a href="#4" class="tabs-title{active === 4 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 4)}">4</a>
-    <a href="#5" class="tabs-title{active === 5 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 5)}">5</a>
-    <a href="#6" class="tabs-title{active === 6 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 6)}">6</a>
   </nav>
   <div class="tabs-content">
     {#if active === 1}<slot name="1"></slot>{/if}
     {#if active === 2}<slot name="2"></slot>{/if}
     {#if active === 3}<slot name="3"></slot>{/if}
-    {#if active === 4}<slot name="4"></slot>{/if}
-    {#if active === 5}<slot name="5"></slot>{/if}
-    {#if active === 6}<slot name="6"></slot>{/if}
   </div>
 </div>
 

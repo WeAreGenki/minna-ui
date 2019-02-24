@@ -1,6 +1,4 @@
-'use strict';
-
-const Tabs = require('../src/Tabs.svelte');
+const { Tabs } = require('../src/Tabs.svelte').default;
 
 describe('Tabs component', () => {
   it('renders correctly with defaults', () => {

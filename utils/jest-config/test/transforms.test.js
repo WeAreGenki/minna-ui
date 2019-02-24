@@ -45,28 +45,34 @@ describe('Svelte transform', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it('has access to Svelte prototype when mounted', () => {
-    expect.assertions(9);
+  it.only('has access to Svelte component internals when mounted', () => {
+    expect.assertions(13);
     let SvelteComponent = svelteTransform.process(source, sourcePath);
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
-
     const target = document.createElement('div');
+
     // @ts-ignore
     const component = new SvelteComponent({ target });
 
-    // svelte public methods
-    const prototype = Object.getPrototypeOf(component);
-    expect(prototype).toHaveProperty('destroy');
-    expect(prototype).toHaveProperty('get');
-    expect(prototype).toHaveProperty('fire');
-    expect(prototype).toHaveProperty('on');
-    expect(prototype).toHaveProperty('set');
+    // svelte component internals
+    expect(component.$$).toHaveProperty('fragment');
+    expect(component.$$).toHaveProperty('ctx');
+    expect(component.$$).toHaveProperty('update');
+    expect(component.$$).toHaveProperty('on_mount');
+    expect(component.$$).toHaveProperty('on_destroy');
+    expect(component.$$).toHaveProperty('before_render');
+    expect(component.$$).toHaveProperty('after_render');
+    expect(component.$$).toHaveProperty('context');
+    expect(component.$$).toHaveProperty('callbacks');
 
-    expect(component.get()._name).toEqual('Elon Musk');
-    expect(component.get()._reversed).toEqual('ksuM nolE');
-    component.set({ _name: 'Vladimir Putin' });
-    expect(component.refs._target.textContent).toEqual('test Vladimir Putin');
-    expect(component.refs._nameReversed.textContent).toEqual('test nituP rimidalV');
+    expect(component.$$.ctx.name).toEqual('Elon Musk');
+    expect(component.$$.ctx.reversed).toEqual('ksuM nolE');
+
+    component.name = 'Vladimir Putin';
+
+    // refs
+    expect(component.$$.ctx.target.textContent).toEqual('test Vladimir Putin');
+    expect(component.$$.ctx.nameReversed.textContent).toEqual('test nituP rimidalV');
   });
 
   // XXX: Uses require() instead of process() + eval() so imports are relative
@@ -74,12 +80,12 @@ describe('Svelte transform', () => {
     expect.assertions(5);
     function wrapper() {
       // eslint-disable-next-line global-require
-      const ComponentImports = require('../fixtures/TestComponentImports.svelte');
+      const ComponentImports = require('../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
       const component = new ComponentImports({ target });
       expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');
-      expect(component.get()._loud).toEqual('ELON MUSK');
-      expect(component.get()._quiet).toEqual('elon musk');
+      expect(component.$$.ctx.loud).toEqual('ELON MUSK');
+      expect(component.$$.ctx.quiet).toEqual('elon musk');
       expect(target.innerHTML).toMatchSnapshot();
     }
     expect(wrapper).not.toThrow();

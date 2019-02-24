@@ -17,13 +17,14 @@
     "strict": true,
     "target": "es2018"
   },
+  // FIXME: `exclude` doesn't get inherited when using `extends`
   "exclude": [
     "**/.*rc.js",
     "**/*.config.js",
-    "__sapper__",
-    "dist",
-    "node_modules",
-    "test/coverage"
+    "**/__sapper__/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "**/test/coverage/*"
   ],
   "typeAcquisition": {
     "enable": true

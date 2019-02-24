@@ -7,7 +7,7 @@
   USAGE:
     The "items" property should be an array of objects which look like this:
 
-      <Navbar current="{child.segment}" items="{[
+      <Navbar {segment} items="{[
         { url: '/page-one', text: 'Page One' },
         { url: '/page-two', text: 'Page Two' },
         { url: '/about', text: 'About Us' },
@@ -58,11 +58,11 @@
 -->
 
 <script>
-  import { onMount } from 'svelte';
+  // import { onMount } from 'svelte';
 
   // props
   export let items = [];
-  export let current = ''; // current URL path; in sapper, pass in "child.segment"
+  export let segment = ''; // current URL path; in sapper, pass in "segment"
 
   // reactive data
   let isOpen = false;
@@ -109,9 +109,13 @@
     }
   }
 
-  onMount(() => {
+  // FIXME: Causes crash
+  // onMount(() => {
+  //   document.addEventListener('scroll', scrollHandler, false);
+  // })
+  if (typeof document !== 'undefined') {
     document.addEventListener('scroll', scrollHandler, false);
-  })
+  }
 </script>
 
 <header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
@@ -137,7 +141,7 @@
     <div class="navbar-links {isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
@@ -145,7 +149,7 @@
       {#each items as item}
       <a
         href="{item.url}"
-        class="navbar-link {current === item.url ? 'navbar-link-active' : ''}"
+        class="navbar-link {segment === item.url ? 'navbar-link-active' : ''}"
         rel="{item.rel || ''}"
       >
         {item.text}

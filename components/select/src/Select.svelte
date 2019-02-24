@@ -36,7 +36,7 @@
 -->
 
 <script>
-  import { beforeUpdate, createEventDispatcher } from 'svelte';
+  import { beforeUpdate } from 'svelte';
 
   // props
   export let id = '';
@@ -109,6 +109,7 @@
     if (event) {
       // option selected via mouse
       event.preventDefault(); // don't trigger <input> blur event
+
       const { target } = event;
 
       if (!target.classList.contains('option-disabled')) {
@@ -218,6 +219,7 @@
     }
 
     if (value && (value !== previousValue)) {
+      previousValue = value;
       setInput();
     }
   });
@@ -267,7 +269,7 @@
 
 <style type="text/postcss">
   @import './_select.css';
-  @import 'import.css';
+  @import '@minna-ui/css/src/import.css';
 
   .hide {
     pointer-events: none;

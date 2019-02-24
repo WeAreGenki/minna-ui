@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - `@minna-ui/tslint-config` - Package is no longer automatically installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
+- `@minna-ui/eslint-config` - Jest preset has been merged into the main config and `jest.js` no longer availiable. You should delete any `.eslintrc` files you used only for loading the preset in unit test directories.
 - `@minna-ui/postcss-config` - Preset no longer includes the `postcss-extends` plugin. If you want `@extends` functionality we recommend installing the plugin seperately and using the `@use` rule.
 
 ### Changed

@@ -6,6 +6,8 @@
 
 'use strict';
 
+const eslintPluginJest = require('eslint-plugin-jest');
+
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -246,11 +248,22 @@ module.exports = {
 
     // unit tests
     {
-      files: ['*.test.js', '*.spec.js'],
+      files: [
+        '*.spec.js',
+        '*.spec.mjs',
+        '*.spec.ts',
+        '*.test.js',
+        '*.test.jsx',
+        '*.test.mjs',
+        '*.test.ts',
+        '*.test.tsx',
+      ],
+      // eslint doesn't allow `extends` in overrides but we're ninjas
+      ...eslintPluginJest.configs.recommended,
+      plugins: ['jest', 'import'],
       env: {
         jest: true,
       },
-      plugins: ['jest', 'import'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
@@ -271,6 +284,7 @@ module.exports = {
             ignoreUrls: true,
           },
         ],
+        'no-new': 'off', // allow new keyword to create svelte component instances
       },
     },
 

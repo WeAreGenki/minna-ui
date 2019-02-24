@@ -27,7 +27,7 @@ const commonRules = {
   },
   curly: [true, 'ignore-same-line'],
   'no-implicit-dependencies': [true, ['##']], // webpack/rollup alias
-  'object-literal-sort-keys': [true, 'ignore-case', 'shorthand-first'],
+  'object-literal-sort-keys': [true, 'ignore-case'],
   'only-arrow-functions': false,
   // FIXME: Remove next line once it has an auto fix available
   // https://github.com/buzinas/tslint-eslint-rules/issues/342

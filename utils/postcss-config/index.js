@@ -1,75 +1,60 @@
-// TODO: Make the import extension configurable instead of hard coding `.css`
-
 'use strict';
 
-const path = require('path');
-const merge = require('deepmerge');
-const postcss = require('postcss');
-// const atImport = require('postcss-import');
-const atUse = require('postcss-use');
-const advancedVars = require('postcss-advanced-variables');
-const postcssExtend = require('postcss-extend-rule');
-const nested = require('postcss-nested');
-const colorModFunction = require('postcss-color-mod-function');
-const mediaQueryPacker = require('css-mqpacker');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const mediaQueryPacker = require('css-mqpacker');
+const merge = require('deepmerge');
+const postcss = require('postcss');
+const advancedVars = require('postcss-advanced-variables');
+const colorModFunction = require('postcss-color-mod-function');
+const nested = require('postcss-nested');
+const atUse = require('postcss-use');
+const importResolve = require('./css-import-resolve.js');
+
+// TODO: Could/should this be cached on disk for faster rebulds?
+const importCache = {};
 
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
 module.exports = postcss.plugin(
   'minna-ui',
+  // @ts-ignore
   ({
-    debug,
-    safe,
-    importPaths = [process.cwd(), 'css', 'src', 'src/css'],
+    debug = true,
+    importPaths = [process.cwd(), 'src', 'src/css'],
     optimize = process.env.NODE_ENV === 'production',
+    unsafe = false,
     ...opts
-  }) => {
-    let plugins = [
-      // atImport,
-      advancedVars,
-      atUse,
-      nested,
-      postcssExtend,
-      colorModFunction,
-    ];
+  } = {}) => {
+    let plugins = [advancedVars, atUse, nested, colorModFunction];
 
     if (optimize) {
-      plugins = plugins.concat([mediaQueryPacker, autoprefixer, cssnano]);
-    }
-
-    // add path to @minna-ui/css if it's installed
-    try {
-      const minnaUiCss = require.resolve('@minna-ui/css');
-      importPaths.push(path.dirname(minnaUiCss));
-    } catch (err) {
-      /* noop */
+      plugins = plugins.concat([
+        unsafe && mediaQueryPacker,
+        autoprefixer,
+        cssnano,
+      ]);
     }
 
     const cssnanoOpts = merge(
       {
-        autoprefixer: false,
         calc: {
           warnWhenCannotResolve: debug,
         },
-        zindex: false,
       },
       opts,
     );
     /* eslint-disable sort-keys */
     const pluginOpts = merge(
       {
-        // atImport
-        // although advancedVars can also import, this plugin is more flexible
-        // path: importPaths,
-
-        // advancedVars
+        // postcss-advanced-variables
+        importCache,
         importPaths,
+        importResolve,
         unresolved: debug ? 'warn' : 'ignore',
 
-        // atUse
+        // postcss-use
         modules: '*',
         resolveFromFile: true,
 
@@ -79,7 +64,7 @@ module.exports = postcss.plugin(
         remove: false,
 
         // cssnano
-        preset: safe ? ['default', cssnanoOpts] : ['advanced', cssnanoOpts],
+        preset: ['default', cssnanoOpts],
       },
       opts,
     );
@@ -88,7 +73,7 @@ module.exports = postcss.plugin(
     const initializedPlugins = plugins.map((plugin) => plugin(pluginOpts));
 
     // process CSS with plugins
-    return (root, result) =>
+    return (_, result) =>
       initializedPlugins.reduce(
         (promise, plugin) => promise.then(() => plugin(result.root, result)),
         Promise.resolve(),

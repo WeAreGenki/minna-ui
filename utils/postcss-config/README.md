@@ -5,37 +5,51 @@
 
 PostCSS config preset for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects or standalone.
 
-TODO: List included plugins, what they do, and documentation links.
+Included plugins (in execution order):
+
+<!-- lint disable table-pipe-alignment -->
+<!-- prettier-ignore -->
+| Plugin | Docs | Notes |
+| --- | --- | --- |
+| `postcss-advanced-variables` | [link](https://github.com/jonathantneal/postcss-advanced-variables) | |
+| `postcss-use` | [link](https://github.com/postcss/postcss-use) | |
+| `postcss-nested` | [link](https://github.com/postcss/postcss-nested) | |
+| `postcss-color-mod-function` | [link](https://github.com/jonathantneal/postcss-color-mod-function) | |
+| `css-mqpacker` | [link](https://github.com/hail2u/node-css-mqpacker) | (`optimize` only) |
+| `autoprefixer` | [link](https://github.com/postcss/autoprefixer) | (`optimize` only) |
+| `cssnano` | [link](https://github.com/cssnano/cssnano) | (`optimize` only) |
+
+<!-- lint enable -->
 
 ## Usage
 
-1. Install this package and its `postcss` dependency:
+1. Install this package and its dependencies:
 
    ```sh
-   yarn add -D postcss @minna-ui/postcss-config
+   yarn add -D @minna-ui/postcss-config postcss postcss-scss
    ```
 
 1. Create a `postcss.config.js` file in your project root with this package as a plugin:
 
    ```js
-   const minnaUi = require('@minna-ui/postcss-config');
-
    module.exports = {
-     plugins: [
-       minnaUi({
-         verbose: process.env.NODE_ENV === 'development',
-       }),
-     ],
+     map: true,
+     plugins: {
+       // the `unsafe` option is fine when compiling components separately, it
+       // only becomes potentially dangerous when compiling a whole app
+       '@minna-ui/postcss-config': { unsafe: true },
+     },
+     syntax: 'postcss-scss',
    };
    ```
 
-1. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can optionally specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
+1. CSS is automatically transformed with our preset PostCSS plugins, but if you need extra functionality, you can specify PostCSS plugins directly in your CSS using [`@use`](https://github.com/postcss/postcss-use) (after first installing the plugin):
 
    ```css
    @use postcss-extend-rule();
 
    .navbar-icon {
-     @extend .icon; /* stylelint-disable-line at-rule-no-unknown */
+     @extend .icon;
    }
    ```
 
@@ -45,13 +59,11 @@ TODO: List included plugins, what they do, and documentation links.
 <!-- prettier-ignore -->
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
-| importPaths | `[process.cwd(), 'css', 'src', 'src/css', '@minna-ui/css/src']` | array | A list of paths to search when resolving `@import` rules in CSS. |
-| importFilter | `() => true` | function | A function which takes the import path and returns true for imports to inline or false for imports to keep. |
-| mixinsPath | `undefined` | string | Path to a directory with additional [CSS mixins](https://github.com/postcss/postcss-mixins/blob/master/README.md). |
-| variables | `{}` | object | Allows overriding component style variables (CSS custom properties). More info in [plugin docs](https://github.com/postcss/postcss-custom-properties). |
-| optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform additional optimisations to prepare for production use and minimise output file size. |
-| safe | `false` | boolean | Don't apply potentially unsafe transformations. See [cssnano advanced transforms](https://cssnano.co/guides/advanced-transforms/). |
-| debug | `false` | boolean | Show additional debugging feedback. |
+| importPaths | `[process.cwd(), 'src', 'src/css']` | array | A list of extra paths to search when resolving `@import` rules in CSS. First imports will try to resolve according to the [CSS Import Resolve spec](https://jonathantneal.github.io/css-import-resolve/) and then try again with each of the `importPaths`. |
+| optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform optimisations to reduce output file size and minimise runtime style computation. |
+| unsafe | `false` | boolean | Apply potentially unsafe transformations (e.g. combining same `@media`). |
+| debug | `true` | boolean | Show useful debugging feedback (e.g. unresolved variables). |
+| ...options | `undefined` | any | All other options will be passed to both the PostCSS plugins and to the nanocss preset. |
 
 <!-- lint enable -->
 

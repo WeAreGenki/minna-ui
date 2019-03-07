@@ -8,13 +8,14 @@
   },
   "ignoreChanges": [
     "**/__fixtures__/**",
+    "**/__mocks__/**",
     "**/__tests__/**",
-    "**/dist/**",
-    "**/test/**",
-    "**/.*rc",
     "**/.*rc.js",
+    "**/.*rc",
     "**/*.config.js",
-    "**/*.md"
+    "**/*.md",
+    "**/dist/**",
+    "**/test/**"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

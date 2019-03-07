@@ -258,7 +258,7 @@ module.exports = {
         '*.test.ts',
         '*.test.tsx',
       ],
-      // eslint doesn't allow `extends` in overrides but we're ninjas
+      // eslint doesn't allow `extends` in overrides but we're being sneaky
       ...eslintPluginJest.configs.recommended,
       plugins: ['jest', 'import'],
       env: {
@@ -285,6 +285,29 @@ module.exports = {
           },
         ],
         'no-new': 'off', // allow new keyword to create svelte component instances
+      },
+    },
+
+    // raw html files (without transpiling)
+    {
+      files: ['*.html'],
+      parserOptions: {
+        // https://github.com/BenoitZugmeyer/eslint-plugin-html#multiple-scripts-tags-in-a-html-file
+        sourceType: 'module',
+      },
+      env: {
+        browser: true,
+        commonjs: false,
+        es6: false,
+        node: false,
+      },
+      rules: {
+        'comma-dangle': ['error', 'never'],
+        'func-names': 'off',
+        'object-shorthand': ['error', 'never'],
+        'prefer-arrow-callback': 'off',
+        'prefer-destructuring': 'off',
+        'no-var': 'off',
       },
     },
 

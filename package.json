@@ -48,6 +48,97 @@
     "tslib": "1.9.3",
     "typescript": "3.3.3333"
   },
+  "browserslist": {
+    "production": [
+      "extends @minna-ui/browserslist-config"
+    ],
+    "development": [
+      "extends @minna-ui/browserslist-config/dev"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@minna-ui/jest-config/babel-preset.js"
+    ]
+  },
+  "postcss": {
+    "map": true,
+    "syntax": "postcss-scss",
+    "plugins": {
+      "@minna-ui/postcss-config": {
+        "unsafe": true
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@minna-ui/eslint-config"
+    ]
+  },
+  "eslintIgnore": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "/docs/index.html",
+    "/test/coverage/**",
+    "/utils/*/cli/index.js",
+    "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
+  ],
+  "stylelint": {
+    "extends": "@minna-ui/stylelint-config",
+    "ignoreFiles": [
+      "**/dist/**",
+      "components/tooltip-action/README.md",
+      "docs/_dist/**",
+      "docs/index.html",
+      "test/coverage/**",
+      "utils/jest-config/fixtures/styles-bad-syntax.css",
+      "utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
+    ],
+    "rules": {
+      "rule-empty-line-before": [
+        "always-multi-line",
+        {
+          "except": [
+            "after-single-line-comment",
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ]
+    }
+  },
+  "remarkConfig": {
+    "plugins": [
+      "@minna-ui/remarklint-config",
+      [
+        "lint-no-file-name-irregular-characters",
+        "\\.a-zA-Z0-9-_"
+      ]
+    ]
+  },
+  "prettierIgnore": [
+    "**/cli/*",
+    "/docs/index.html"
+  ],
+  "jest": {
+    "preset": "@minna-ui/jest-config",
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  },
+  "renovate": {
+    "extends": [
+      "@wearegenki"
+    ]
+  },
   "engines": {
     "node": ">10.0.0",
     "yarn": ">1.10.0"

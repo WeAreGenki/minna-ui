@@ -262,6 +262,7 @@
   * Only add an id property to a heading when truly necessary to avoid the small
   * CSS rendering performance hit.
   */
+  /* stylelint-disable-next-line order/order */
   @if $navbar-hash-link-fix {
     :global(h1),
     :global(h2),

@@ -1,32 +1,60 @@
-'use strict';
-
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const mediaQueryPacker = require('css-mqpacker');
-const merge = require('deepmerge');
-const postcss = require('postcss');
-const advancedVars = require('postcss-advanced-variables');
-const colorModFunction = require('postcss-color-mod-function');
-const nested = require('postcss-nested');
-const atUse = require('postcss-use');
-const importResolve = require('./css-import-resolve.js');
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import mediaQueryPacker from 'css-mqpacker';
+import merge from 'deepmerge';
+import postcss from 'postcss';
+import advancedVars from 'postcss-advanced-variables';
+// @ts-ignore FIXME: TS can't deal with mjs correctly yet
+import colorModFunction from 'postcss-color-mod-function';
+import nested from 'postcss-nested';
+import atUse from 'postcss-use';
+import { resolve as importResolve } from './css-import-resolve';
 
 // TODO: Could/should this be cached on disk for faster rebulds?
 const importCache = {};
 
+interface IPluginOptions {
+  /** Show useful debugging feedback (e.g. unresolved variables). */
+  debug?: boolean;
+  /**
+   * A list of extra paths to search when resolving `@import` rules in CSS.
+   * First, imports will try to resolve according to the
+   * [CSS Import Resolve spec](https://jonathantneal.github.io/css-import-resolve/)
+   * and then try again with each of the `importPaths`.
+   */
+  importPaths?: string[];
+  /**
+   * Perform optimisations to reduce output file size and minimise runtime
+   * style computation.
+   */
+  optimize?: boolean;
+  /**
+   * Apply potentially unsafe transformations (e.g. combining same `@media`).
+   */
+  unsafe?: boolean;
+  /**
+   * Any other options will be passed to all PostCSS plugins and to the
+   * `nanocss` preset options.</br></br>This can be particuarly powerful if
+   * you need to pass options when using the `@use` rule — use the plugin
+   * name as a key, as shown in the
+   * [postcss-use docs](https://github.com/postcss/postcss-use#options-1).
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  options?: any[];
+}
+
 /**
  * PostCSS configuration preset for minna-ui projects.
  */
-module.exports = postcss.plugin(
+export default postcss.plugin(
   'minna-ui',
-  // @ts-ignore
   ({
     debug = true,
     importPaths = [process.cwd(), 'src', 'src/css'],
     optimize = process.env.NODE_ENV === 'production',
     unsafe = false,
-    ...opts
-  } = {}) => {
+    ...options
+  }: IPluginOptions = {}) => {
     let plugins = [advancedVars, atUse, nested, colorModFunction];
 
     if (optimize) {
@@ -43,7 +71,7 @@ module.exports = postcss.plugin(
           warnWhenCannotResolve: debug,
         },
       },
-      opts,
+      options,
     );
     /* eslint-disable sort-keys */
     const pluginOpts = merge(
@@ -66,7 +94,7 @@ module.exports = postcss.plugin(
         // cssnano
         preset: ['default', cssnanoOpts],
       },
-      opts,
+      options,
     );
     /* eslint-enable */
 

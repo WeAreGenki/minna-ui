@@ -5,12 +5,22 @@
 
 /* eslint-disable security/detect-object-injection, no-param-reassign, no-confusing-arrow */
 
-'use strict';
+import { readFile } from 'fs';
+import { isAbsolute, join, sep } from 'path';
 
-const { readFile } = require('fs');
-const { isAbsolute, join, sep } = require('path');
+interface IPathCacheEntry {
+  contents: string;
+  file: string;
+}
 
-function fileContents(file, cache) {
+interface IPathCache {
+  [x: string]: Promise<IPathCacheEntry>;
+}
+
+function fileContents(
+  file: string,
+  cache: IPathCache,
+): Promise<IPathCacheEntry> {
   cache[file] =
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
@@ -27,17 +37,23 @@ function fileContents(file, cache) {
   return cache[file];
 }
 
-function jsonContents(dir, cache) {
+function jsonContents(
+  dir: string,
+  cache: IPathCache,
+): Promise<{ style?: string }> {
   const file = join(dir, 'package.json');
 
   return fileContents(file, cache).then(({ contents }) => JSON.parse(contents));
 }
 
-function isRelative(id) {
+function isRelative(id: string): boolean {
   return /^\.{0,2}\//.test(id);
 }
 
-function resolveAsFile(file, cache) {
+function resolveAsFile(
+  file: string,
+  cache: IPathCache,
+): Promise<IPathCacheEntry> {
   // resolve `file` as the file
   return (
     fileContents(file, cache)
@@ -46,31 +62,30 @@ function resolveAsFile(file, cache) {
   );
 }
 
-function resolveAsDirectory(dir, cache) {
+function resolveAsDirectory(
+  dir: string,
+  cache: IPathCache,
+): Promise<IPathCacheEntry> {
   // resolve the JSON contents of `dir/package.json` as `pkg`
   return jsonContents(dir, cache).then((pkg) =>
     // if `pkg` has a `style` field
-    'media' in pkg
+    'style' in pkg
       ? // resolve `dir/pkg.style` as the file
-        fileContents(join(dir, pkg.media), cache)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        fileContents(join(dir, pkg.style!), cache)
       : // otherwise, resolve `dir/index.css` as the file
         fileContents(join(dir, 'index.css'), cache),
   );
 }
 
-function nodeModulesDirs(cwd) {
-  // segments is `cwd` split by `/`
+function nodeModulesDirs(cwd: string): string[] {
   const segments = cwd.split(sep);
 
-  // `count` is the length of segments
   let count = segments.length;
 
-  // `dirs` is an empty list
   const dirs = [];
 
-  // while `count` is greater than `0`
   while (count > 0) {
-    // if `segments[count]` is not `node_modules`
     if (segments[count] !== 'node_modules') {
       // add `/`-joined `segments[0 - count]` and `node_modules` to `dirs`
       dirs.push(
@@ -81,14 +96,18 @@ function nodeModulesDirs(cwd) {
     count -= 1;
   }
 
-  // return `dirs`
   return dirs;
 }
 
-function resolveAsModule(cwd, id, cache) {
+function resolveAsModule(
+  cwd: string,
+  id: string,
+  cache: IPathCache,
+): Promise<IPathCacheEntry> {
   // for each `dir` in the node modules directory using `cwd`
   return nodeModulesDirs(cwd).reduce(
     (promise, dir) =>
+      // @ts-ignore FIXME: Can this be solved to make TS happy?
       promise.catch(
         // resolve as a file using `dir/id` as `file`
         () =>
@@ -102,11 +121,15 @@ function resolveAsModule(cwd, id, cache) {
 
 /**
  * Resolve the location of a file within `url(id)` from `cwd`.
- * @param {string} id File location identifier.
- * @param {string} cwd Working directory to resolve from.
- * @param {(Object<string,string>)=} cache Path resolution memoization cache.
+ * @param id File location identifier.
+ * @param cwd Working directory to resolve from.
+ * @param cache Path resolution memoization cache.
  */
-module.exports = function resolve(id, cwd, cache = {}) {
+export function resolve(
+  id: string,
+  cwd: string,
+  cache: IPathCache = {},
+): Promise<IPathCacheEntry> {
   if (isAbsolute(id)) {
     // no need to prefix with `cwd`
     cwd = '';
@@ -124,4 +147,4 @@ module.exports = function resolve(id, cwd, cache = {}) {
       // otherwise, throw `"CSS Module not found"`
       .catch(() => Promise.reject(new Error('CSS Module not found')))
   );
-};
+}

@@ -14,7 +14,15 @@
     "postcss-plugin",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "postcss": "^7.0.0"
   },

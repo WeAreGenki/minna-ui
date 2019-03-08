@@ -2,9 +2,7 @@
 
 // TODO: Add tests for node.js config
 
-'use strict';
-
-const { CLIEngine } = require('eslint');
+import { CLIEngine } from 'eslint';
 
 const linterCli = new CLIEngine({
   configFile: require.resolve('../index.js'),

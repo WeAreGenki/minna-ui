@@ -1,6 +1,11 @@
+.eslintcache
+.npmrc
+.stylelintcache
 *.lerna_backup
 *.log
+/components/*/dist/
+/css/dist/
 /test/coverage/
-dist/
+/utils/*/lib/
 node_modules/
 package-lock.json*

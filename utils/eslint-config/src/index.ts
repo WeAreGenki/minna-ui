@@ -4,13 +4,12 @@
 
 /* eslint-disable sort-keys */
 
-'use strict';
-
-const eslintPluginJest = require('eslint-plugin-jest');
+import jestPlugin from 'eslint-plugin-jest';
+import { IBlockAttributes } from '../../svelte';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = {
+export = {
   extends: [
     'eslint:recommended',
     'airbnb-base',
@@ -23,14 +22,9 @@ module.exports = {
     'html',
     'markdown',
     'jsdoc',
-    'svelte3',
     '@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: 'tsconfig.json',
-    tsconfigRootDir: process.cwd(),
-  },
   env: {
     browser: true,
     es6: true,
@@ -48,7 +42,8 @@ module.exports = {
       '.tsx',
       '.d.ts',
     ],
-    'import/ignore': ['.css', '.pcss', '.svelte'],
+    // 'import/ignore': ['.css', '.svelte'],
+    'import/ignore': ['.css'],
     'import/resolver': {
       node: {
         extensions: [
@@ -60,21 +55,22 @@ module.exports = {
           '.tsx',
           '.json',
           '.css',
-          '.pcss',
           '.node',
           '.d.ts',
         ],
       },
     },
-    'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
+    'svelte3/ignore-styles': (attr: IBlockAttributes) =>
+      attr.type === 'text/postcss',
   },
   rules: {
+    /* eslint-enable sort-keys */
     '@typescript-eslint/ban-types': [
       'error',
       {
         types: {
-          Array: null,
-          // Object: 'Use {} instead',
+          Array: 'Use [] instead',
+          Object: 'Use object or {} instead',
           String: {
             fixWith: 'string',
             message: 'Use string instead',
@@ -97,14 +93,9 @@ module.exports = {
       { allowSingleExtends: true },
     ],
     '@typescript-eslint/no-extraneous-class': 'error',
-    '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-this-alias': 'error',
-    '@typescript-eslint/no-unnecessary-qualifier': 'error',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
-    '@typescript-eslint/require-array-sort-compare': 'warn',
-    '@typescript-eslint/restrict-plus-operands': 'error',
     'comma-dangle': [
       'error',
       {
@@ -115,7 +106,7 @@ module.exports = {
         objects: 'always-multiline',
       },
     ],
-    'id-length': ['error', { min: 2, exceptions: ['_'] }], // encourage descriptive names
+    'id-length': ['error', { exceptions: ['_'], min: 2 }], // encourage descriptive names
     'import/extensions': [
       'error',
       'ignorePackages', // do use file extensions
@@ -137,7 +128,6 @@ module.exports = {
     'jsdoc/require-param-name': 'warn',
     'jsdoc/require-param-type': 'warn',
     'jsdoc/require-returns': 'warn',
-    'jsdoc/require-returns-check': 'warn',
     'jsdoc/require-returns-type': 'warn',
     'jsdoc/valid-types': 'warn',
     'max-len': [
@@ -157,6 +147,7 @@ module.exports = {
     'no-return-assign': ['error', 'except-parens'],
     'object-curly-newline': ['error', { consistent: true }],
     'sort-keys': ['error', 'asc', { caseSensitive: false, natural: true }],
+    /* eslint-disable sort-keys */
 
     // rules incompatible with prettier :'(
     'arrow-parens': 'off',
@@ -166,50 +157,12 @@ module.exports = {
   },
 
   overrides: [
-    // Svelte components
-    {
-      files: ['*.svelte'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            devDependencies: true,
-          },
-        ],
-        'import/no-mutable-exports': 'off',
-        'no-labels': 'off',
-
-        // NOTE: Based on airbnb-base rule but with `LabeledStatement` removed
-        // Keep up to date with changes to the upstream source:
-        // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L332
-        'no-restricted-syntax': [
-          'error',
-          {
-            selector: 'ForInStatement',
-            message:
-              'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
-          },
-          {
-            selector: 'ForOfStatement',
-            message:
-              'iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.',
-          },
-          {
-            selector: 'WithStatement',
-            message:
-              '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
-          },
-        ],
-      },
-    },
-
     // TypeScript
     {
       files: ['*.ts', '*.tsx'],
       rules: {
         'jsdoc/require-param': 'off',
         'jsdoc/require-returns': 'off',
-        'jsdoc/valid-types': 'off',
       },
     },
 
@@ -219,6 +172,8 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-extraneous-class': 'off',
         'no-useless-constructor': 'off', // crashes node process
+        'no-var': 'off',
+        'vars-on-top': 'off',
       },
     },
 
@@ -259,7 +214,7 @@ module.exports = {
         '*.test.tsx',
       ],
       // eslint doesn't allow `extends` in overrides but we're being sneaky
-      ...eslintPluginJest.configs.recommended,
+      ...jestPlugin.configs.recommended,
       plugins: ['jest', 'import'],
       env: {
         jest: true,
@@ -284,7 +239,7 @@ module.exports = {
             ignoreUrls: true,
           },
         ],
-        'no-new': 'off', // allow new keyword to create svelte component instances
+        'no-new': 'off', // allow testing constructors
       },
     },
 
@@ -308,6 +263,14 @@ module.exports = {
         'prefer-arrow-callback': 'off',
         'prefer-destructuring': 'off',
         'no-var': 'off',
+      },
+    },
+
+    // autogenerated declaration files
+    {
+      files: ['*.css.d.ts'],
+      rules: {
+        '@typescript-eslint/member-delimiter-style': 'off',
       },
     },
 

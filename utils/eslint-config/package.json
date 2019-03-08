@@ -37,6 +37,9 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "github:sveltejs/eslint-plugin-svelte3#v0.4.3"
   },
+  "devDependencies": {
+    "@types/eslint": "4.16.6"
+  },
   "publishConfig": {
     "access": "public"
   }

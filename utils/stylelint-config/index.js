@@ -100,6 +100,7 @@ module.exports = {
 
     // eslint-disable-next-line sort-keys
     'order/order': [
+      { name: 'import', type: 'at-rule' },
       'dollar-variables',
       'custom-properties',
       { hasBlock: false, type: 'at-rule' },

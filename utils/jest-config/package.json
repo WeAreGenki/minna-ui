@@ -34,9 +34,9 @@
     "@types/jest": "^24.0.9",
     "@types/node": "^11.10.5",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.1.0",
+    "babel-jest": "^24.3.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest-circus": "^24.1.0"
+    "jest-circus": "^24.3.1"
   },
   "publishConfig": {
     "access": "public"

@@ -14,7 +14,15 @@
     "svelte",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "svelte": "^3.0.0"
   },

@@ -18,10 +18,8 @@ export function runBin(
   env = process.env,
 ): Promise<string[]> {
   return new Promise((resolve, reject) => {
-    /** @type {string[]} */
-    const stdout = [];
-    /** @type {string[]} */
-    const stderr = [];
+    const stdout: string[] = [];
+    const stderr: string[] = [];
 
     const child = spawn(path, args, { env });
 

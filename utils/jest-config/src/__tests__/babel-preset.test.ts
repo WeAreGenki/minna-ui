@@ -16,7 +16,7 @@ describe('Babel preset', () => {
       import Target from '../../__fixtures__/importable.js';
       new Target();
     `;
-    const result = babel.transform(sourceJS, babelTransformOpts);
+    const result = babel.transform(sourceJS, babelTransformOpts)!;
     expect(result.code).not.toMatch('import Target');
     expect(result.code).toMatch('use strict');
     expect(result.code).toMatch('__esModule');
@@ -34,7 +34,7 @@ describe('Babel preset', () => {
       const text: string = 'test';
       const target: ITarget = new Target(text);
     `;
-    const result = babel.transform(sourceTS, { ...babelTransformOpts, filename: 'test.ts' });
+    const result = babel.transform(sourceTS, { ...babelTransformOpts, filename: 'test.ts' })!;
     expect(result.code).toMatch('const text =');
     expect(result.code).toMatch('target = new');
     expect(result.code).not.toMatch('ITarget');

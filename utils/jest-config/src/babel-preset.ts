@@ -4,7 +4,9 @@
 
 /* eslint-disable sort-keys */
 
-export default (api) => {
+import babel from '@babel/core';
+
+export default (api: babel.ConfigAPI) => {
   api.cache.using(() => process.env.NODE_ENV);
 
   const isTest = api.env('test');

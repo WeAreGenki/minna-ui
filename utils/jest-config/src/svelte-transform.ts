@@ -2,9 +2,11 @@
  * Jest transform for compiling Svelte components into JavaScript.
  */
 
-import { basename } from 'path';
 // NOTE: `svelte` is not listed as a dependency in case developers want to use
 // this package for non-svelte projects.
+
+import { basename } from 'path';
+// @ts-ignore
 import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extraneous-dependencies
 
 export function process(src: string, filename: string) {

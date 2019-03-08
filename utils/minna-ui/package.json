@@ -24,7 +24,8 @@
   "style": "index.css",
   "files": [
     "*.css",
-    "index.mjs"
+    "*.js",
+    "*.mjs"
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",

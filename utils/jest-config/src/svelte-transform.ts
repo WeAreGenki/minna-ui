@@ -2,14 +2,12 @@
  * Jest transform for compiling Svelte components into JavaScript.
  */
 
-'use strict';
-
-const { basename } = require('path');
+import { basename } from 'path';
 // NOTE: `svelte` is not listed as a dependency in case developers want to use
 // this package for non-svelte projects.
-const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
+import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extraneous-dependencies
 
-function process(src, filename) {
+export function process(src: string, filename: string) {
   // strip out <style> tags to prevent failure when unable to parse PostCSS etc.
   const re = /<style[^>]*>([\S\s]*?)<\/style>/g;
   const normalised = src.replace(re, '');
@@ -25,5 +23,3 @@ function process(src, filename) {
     map: result.js.map,
   };
 }
-
-exports.process = process;

@@ -1,18 +1,16 @@
 /* eslint-env browser */
 /* eslint-disable security/detect-eval-with-expression */
 
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const { promisify } = require('util');
-const svelteTransform = require('../lib/svelte-transform.js');
-const nullTransform = require('../lib/null-transform.js');
+import fs from 'fs';
+import path from 'path';
+import { promisify } from 'util';
+import { process } from '../svelte-transform';
+import nullTransform from '../null-transform';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-const sourcePath = path.join(__dirname, '../fixtures/TestComponent.svelte');
-const sourceCssPath = path.join(__dirname, '../fixtures/styles.css');
+const sourcePath = path.join(__dirname, '../../__fixtures__/TestComponent.svelte');
+const sourceCssPath = path.join(__dirname, '../../__fixtures__/styles.css');
 
 let source = '';
 let sourceCss = '';
@@ -35,7 +33,7 @@ describe('Null transform', () => {
 describe('Svelte transform', () => {
   it('compiles and mounts a component', () => {
     expect.assertions(2);
-    let SvelteComponent = svelteTransform.process(source, sourcePath);
+    let SvelteComponent = process(source, sourcePath);
     expect(typeof SvelteComponent.code).toEqual('string');
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
@@ -47,7 +45,7 @@ describe('Svelte transform', () => {
 
   it.only('has access to Svelte component internals when mounted', () => {
     expect.assertions(13);
-    let SvelteComponent = svelteTransform.process(source, sourcePath);
+    let SvelteComponent = process(source, sourcePath);
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
     const target = document.createElement('div');
 
@@ -80,7 +78,7 @@ describe('Svelte transform', () => {
     expect.assertions(5);
     function wrapper() {
       // eslint-disable-next-line global-require
-      const ComponentImports = require('../fixtures/TestComponentImports.svelte').default;
+      const ComponentImports = require('../../__fixtures__/TestComponentImports.svelte').default;
       const target = document.createElement('div');
       const component = new ComponentImports({ target });
       expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');

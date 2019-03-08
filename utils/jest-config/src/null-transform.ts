@@ -2,9 +2,7 @@
  * Jest transform for importing files we don't need to test.
  */
 
-'use strict';
-
-module.exports = {
+export default {
   process() {
     return '';
   },

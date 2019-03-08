@@ -1,10 +1,8 @@
 /** @jest-environment node */
 
-'use strict';
+import babel from '@babel/core';
 
-const babel = require('@babel/core');
-
-const babelPreset = require.resolve('../babel-preset.js');
+const babelPreset = require.resolve('../babel-preset');
 const babelTransformOpts = {
   babelrc: false,
   filename: 'test.js', // required by `@babel/preset-typescript`
@@ -15,7 +13,7 @@ describe('Babel preset', () => {
   it('converts ES6 modules import into CJS', () => {
     expect.assertions(3);
     const sourceJS = `
-      import Target from '../fixtures/importable.js';
+      import Target from '../../__fixtures__/importable.js';
       new Target();
     `;
     const result = babel.transform(sourceJS, babelTransformOpts);
@@ -27,7 +25,7 @@ describe('Babel preset', () => {
   it('converts TS into JS', () => {
     expect.assertions(3);
     const sourceTS = `
-      import Target from '../fixtures/importable.js';
+      import Target from '../../__fixtures__/importable.js';
 
       declare interface ITarget {
         text?: string;

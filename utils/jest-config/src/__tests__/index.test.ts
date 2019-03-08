@@ -11,7 +11,7 @@ describe('Jest test runner', () => {
     expect.assertions(3);
     function wrapper() {
       // eslint-disable-next-line global-require
-      const { shout, whisper } = require('../fixtures/importable.js');
+      const { shout, whisper } = require('../../__fixtures__/importable.js');
       expect(shout('Hello')).toEqual('HELLO');
       expect(whisper('Hello')).toEqual('hello');
     }

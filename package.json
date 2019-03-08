@@ -73,13 +73,15 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@minna-ui/eslint-config"
+      "@minna-ui/eslint-config",
+      "@minna-ui/eslint-config/lib/svelte"
     ]
   },
   "eslintIgnore": [
-    "**/dist/**",
     "**/node_modules/**",
     "/docs/index.html",
+    "packages/*/dist/**",
+    "packages/*/lib/**",
     "/test/coverage/**",
     "/utils/*/cli/index.js",
     "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
@@ -87,10 +89,13 @@
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
     "ignoreFiles": [
-      "**/dist/**",
+      "**/*.d.ts",
+      "**/node_modules/**",
       "components/tooltip-action/README.md",
       "docs/_dist/**",
       "docs/index.html",
+      "packages/*/dist/**",
+      "packages/*/lib/**",
       "test/coverage/**",
       "utils/jest-config/fixtures/styles-bad-syntax.css",
       "utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
@@ -121,7 +126,12 @@
   },
   "prettierIgnore": [
     "**/cli/*",
-    "/docs/index.html"
+    "docs/index.html",
+    "node_modules",
+    "packages/*/dist",
+    "packages/*/lib",
+    "test/coverage",
+    "yarn.lock"
   ],
   "jest": {
     "preset": "@minna-ui/jest-config",
@@ -141,7 +151,7 @@
   },
   "engines": {
     "node": ">10.0.0",
-    "yarn": ">1.10.0"
+    "yarn": ">1.12.0"
   },
   "os": [
     "!win32",

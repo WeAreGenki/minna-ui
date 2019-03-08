@@ -5,9 +5,15 @@
  * @see https://eslint.org/docs/user-guide/configuring
  */
 
+/* eslint-disable sort-keys */
+
 export = {
+  plugins: ['jsdoc'],
   env: {
     browser: false,
     node: true,
+  },
+  rules: {
+    'jsdoc/require-param-type': 'off',
   },
 };

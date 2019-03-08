@@ -9,6 +9,8 @@
  * @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
  */
 
+/* eslint-disable sort-keys */
+
 /**
  * There are known performance issues with `typescript-eslint` when using type
  * info. Performance is roughly 10x slower when using the
@@ -23,7 +25,7 @@
  */
 
 export = {
-  plugins: ['@typescript-eslint'],
+  plugins: ['jsdoc', '@typescript-eslint'],
   parserOptions: {
     project: 'tsconfig.json',
     // FIXME: This doesn't work with Prettier + `prettier-eslint` integration
@@ -36,5 +38,6 @@ export = {
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
+    'jsdoc/require-param-type': 'off',
   },
 };

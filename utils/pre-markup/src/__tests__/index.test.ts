@@ -3,7 +3,7 @@
 import fs from 'fs';
 import zlib from 'zlib';
 import { promisify } from 'util';
-import { preprocess, create } from 'svelte';
+import { preprocess, create } from 'svelte/compiler';
 import preprocessMarkup from '../index';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename

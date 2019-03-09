@@ -6,10 +6,10 @@
 // this package for non-svelte projects.
 
 import { basename } from 'path';
-// @ts-ignore
+// @ts-ignore TODO: Once svelte has types remove this exception
 import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extraneous-dependencies
 
-export function process(src: string, filename: string) {
+export function process(src: string, filename: string): jest.TransformedSource {
   // strip out <style> tags to prevent failure when unable to parse PostCSS etc.
   const re = /<style[^>]*>([\S\s]*?)<\/style>/g;
   const normalised = src.replace(re, '');

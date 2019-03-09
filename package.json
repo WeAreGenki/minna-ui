@@ -119,7 +119,7 @@
   },
   "remarkConfig": {
     "plugins": [
-      "@minna-ui/remarklint-config",
+      "@minna-ui/remark-config",
       [
         "lint-no-file-name-irregular-characters",
         "\\.a-zA-Z0-9-_"

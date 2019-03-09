@@ -58,7 +58,7 @@
   },
   "babel": {
     "presets": [
-      "@minna-ui/jest-config/babel-preset.js"
+      "@minna-ui/jest-config/lib/babel-preset.js"
     ]
   },
   "postcss": {

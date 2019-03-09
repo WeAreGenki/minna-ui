@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 declare module 'rollup-pluginutils' {
   namespace rollupPluginUtils {
     function createFilter(include: any, exclude: any): Function;

@@ -1,5 +1,7 @@
 /** @jest-environment node */
 
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import babel from '@babel/core';
 
 const babelPreset = require.resolve('../babel-preset');

@@ -76,7 +76,7 @@ describe('Svelte transform', () => {
   // XXX: Uses require() instead of process() + eval() so imports are relative
   it('mounts components which import ES6 modules', () => {
     expect.assertions(5);
-    function wrapper() {
+    function wrapper(): void {
       // eslint-disable-next-line global-require
       const ComponentImports = require('../../__fixtures__/TestComponentImports.svelte').default;
       const target = document.createElement('div');

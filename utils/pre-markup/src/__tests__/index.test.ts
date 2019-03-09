@@ -61,7 +61,7 @@ describe('Svelte markup preprocessor', () => {
   it('processes without any error', () => {
     expect.assertions(2);
     const spy = jest.spyOn(process.stderr, 'write');
-    function wrapper() {
+    function wrapper(): void {
       preprocess(sourceSimple, opts);
     }
     expect(wrapper).not.toThrow();

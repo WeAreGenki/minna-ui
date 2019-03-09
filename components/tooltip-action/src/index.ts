@@ -1,4 +1,4 @@
-const Tooltip = () => {
+const Tooltip = (): void => {
   // TODO
 };
 

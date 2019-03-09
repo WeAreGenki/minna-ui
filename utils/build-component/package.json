@@ -26,5 +26,11 @@
     "rollup-plugin-commonjs": "9.2.1",
     "rollup-plugin-node-resolve": "4.0.1",
     "rollup-plugin-svelte": "5.0.3"
+  },
+  "devDependencies": {
+    "@types/glob": "7.1.1",
+    "@types/google-closure-compiler": "0.0.18",
+    "@types/rollup-plugin-commonjs": "9.2.0",
+    "@types/rollup-plugin-node-resolve": "4.0.0"
   }
 }

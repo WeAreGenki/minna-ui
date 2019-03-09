@@ -7,7 +7,7 @@
 import fs from 'fs';
 // import { basename, dirname, join } from 'path';
 import { basename, dirname } from 'path';
-import del from 'del';
+import * as del from 'del';
 import { rollup } from 'rollup';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
 import commonjs from 'rollup-plugin-commonjs';
@@ -65,13 +65,13 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */`;
 
-  /** @type {Function} */
-  let resolveCss;
+  let resolveCss: Function;
   const resultCss = new Promise((res) => {
     resolveCss = res;
   });
 
-  const distDir = dirname(pkgMain);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const distDir = dirname(pkgMain!);
 
   // TODO: Better safety checks to make sure we don't delete something important
   /* istanbul ignore else */
@@ -94,11 +94,12 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
     plugins: [
       svelte({
         preprocess: {
-          markup: preMarkup({ level: 2 }),
+          markup: preMarkup(),
           style: preStyle(),
         },
-        // eslint-disable-next-line sort-keys
-        css(css) {
+        // FIXME: Don't use `any` type once svelte has types available
+        // eslint-disable-next-line sort-keys, @typescript-eslint/no-explicit-any
+        css(css: any) {
           resolveCss(css);
           css.write(pkgStyle);
         },
@@ -132,7 +133,7 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
       svelte({
         css: false,
         preprocess: {
-          markup: preMarkup({ level: 2 }),
+          markup: preMarkup(),
           style: preStyle(),
         },
       }),

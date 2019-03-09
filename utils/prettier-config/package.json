@@ -12,7 +12,15 @@
     "prettier",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "prettier": "^1.15.0"
   },

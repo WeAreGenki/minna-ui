@@ -2,9 +2,18 @@
   "name": "@minna-ui/build-component",
   "private": true,
   "version": "0.21.0",
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
   "bin": {
     "build-component": "cli/index.js"
   },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "svelte": "^3.0.0"
   },

@@ -12,9 +12,14 @@
     "tslint",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "files": [
-    "*.js"
+    "lib"
   ],
   "peerDependencies": {
     "tslib": "^1.9.3",

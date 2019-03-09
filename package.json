@@ -125,7 +125,7 @@
     ]
   },
   "prettierIgnore": [
-    "**/cli/*",
+    "cli",
     "docs/index.html",
     "node_modules",
     "packages/*/dist",

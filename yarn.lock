@@ -9785,10 +9785,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.0.0-beta.11:
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.11.tgz#2bdeb73ba6b39175eebe8a4b909d89a4fbbd8488"
-  integrity sha512-NTk89Q1azXoG08qRDd9R9aM8+fylCSon1bPThsS2IWSqw7YEPPu2wv9p3VaZ5Eo4NubUDfnX/HXtwdGozSnjCg==
+svelte@3.0.0-beta.12:
+  version "3.0.0-beta.12"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.12.tgz#cf708da8c38409145ad7f6bf9a18f3e7f245179e"
+  integrity sha512-wRYy/jJjI95iGg0ECBW7gLXjdvBu04tIthZ3sCkyH3tMmomEOUKcYt7UBfdJDrlugeIO8OydkkSOOrGmc8oqhw==
 
 svg-tags@^1.0.0:
   version "1.0.0"

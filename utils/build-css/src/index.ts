@@ -7,7 +7,7 @@
 import fs from 'fs';
 import { basename, dirname, join } from 'path';
 import { promisify } from 'util';
-import del from 'del';
+import * as del from 'del';
 import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
 import CleanCSS from 'clean-css';
@@ -55,15 +55,24 @@ function cleanDistDir(dir: string): void {
   }
 }
 
+interface IProcessCssOptions {
+  from: string;
+  to: string;
+  banner: string;
+}
+
 /**
  * Process CSS.
- * @param {Object} opts User defined options.
- * @param {string} opts.from File from.
- * @param {string} opts.to File to.
- * @param {string} opts.banner Banner to prepend to resulting code.
- * @returns {Promise<{min: Object, result: Object}>}
+ * @param opts User defined options.
+ * @param opts.from File from.
+ * @param opts.to File to.
+ * @param opts.banner Banner to prepend to resulting code.
  */
-async function processCss({ from, to, banner }) {
+async function processCss({
+  from,
+  to,
+  banner,
+}: IProcessCssOptions): Promise<{}> {
   const src = await readFile(from, 'utf8');
 
   const { plugins, options } = await postcssLoadConfig({
@@ -139,8 +148,10 @@ export = async function run(
         throw new Error('No input file or directory specified!');
       }
 
-      inputCss.push(pkgMain);
-      outputCss.push(pkgStyle);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      inputCss.push(pkgMain!);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      outputCss.push(pkgStyle!);
     } else {
       if (!outputDir) throw new Error('No output directory specified!');
 
@@ -159,7 +170,8 @@ export = async function run(
     }
 
     if (!noClean) {
-      cleanDistDir(outputDir || dirname(pkgStyle));
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      cleanDistDir(outputDir || dirname(pkgStyle!));
     }
 
     const results = [];

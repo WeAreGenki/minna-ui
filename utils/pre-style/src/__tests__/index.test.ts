@@ -2,19 +2,17 @@
 
 // TODO: Add test for returned `dependencies`
 
-'use strict';
-
-const fs = require('fs');
-const { promisify } = require('util');
-const { compile, preprocess } = require('svelte');
-const postcssNested = require('postcss-nested');
-const preprocessStyle = require('../index.js');
+import fs from 'fs';
+import { promisify } from 'util';
+import { compile, preprocess } from 'svelte';
+import postcssNested from 'postcss-nested';
+import preprocessStyle from '../index';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
+const componentPath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
 
 const preprocessOpts = {
   style: preprocessStyle({

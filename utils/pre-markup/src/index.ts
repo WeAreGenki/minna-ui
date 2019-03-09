@@ -1,21 +1,34 @@
 /* eslint-disable security/detect-object-injection */
 
-'use strict';
+interface ISveltePreprocessOpts {
+  attributes: {
+    type: string;
+    [x: string]: string;
+  };
+  content: string;
+  filename: string;
+}
+
+interface IBlocks {
+  [x: string]: string;
+}
 
 /**
  * Minna UI svelte markup preprocessor.
  * Reduces the whitespace in svelte components to a minimum.
- * @param {Object} opts User defined options.
- * @param {boolean=} opts.enabled Should the preprocessor be run?
+ * @param opts User defined options.
+ * @param opts.enabled Should the preprocessor be run?
  */
-module.exports = ({ enabled = true } = {}) => async ({ content }) => {
+export = ({ enabled = true } = {}) => async ({
+  content,
+}: ISveltePreprocessOpts) => {
   if (!enabled) return;
 
   let html = `${content}`;
   let count = 0;
 
   const tags = [['<script', '</script>'], ['<style', '</style>']];
-  const blocks = {};
+  const blocks: IBlocks = {};
 
   // replace tag blocks with markers
   tags.forEach((tag) => {

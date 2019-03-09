@@ -4,7 +4,7 @@
 
 import fs from 'fs';
 import { promisify } from 'util';
-import { compile, preprocess } from 'svelte';
+import { compile, preprocess } from 'svelte/compiler';
 import postcssNested from 'postcss-nested';
 import preprocessStyle from '../index';
 

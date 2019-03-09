@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@minna-ui/eslint-config"]
+  "extends": ["@minna-ui/eslint-config", "@minna-ui/eslint-config/lib/svelte"]
 }

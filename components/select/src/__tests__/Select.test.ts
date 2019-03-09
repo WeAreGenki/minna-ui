@@ -1,4 +1,4 @@
-const Select = require('../src/Select.svelte').default;
+import Select from '../src/Select.svelte';
 
 const items = [
   { id: 'au', text: 'Australia' },
@@ -30,7 +30,7 @@ const selectOpts = {
 describe('Select component', () => {
   it.skip('throws error with no props', () => {
     expect.assertions(1);
-    function wrapper() {
+    function wrapper(): void {
       const target = document.createElement('div');
       new Select({ target });
     }

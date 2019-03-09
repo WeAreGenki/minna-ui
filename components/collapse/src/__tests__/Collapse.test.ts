@@ -1,9 +1,9 @@
-const Collapse = require('../src/Collapse.svelte').default;
+import Collapse from '../Collapse.svelte';
 
 describe('Collapse component', () => {
   it('renders correctly with no props', () => {
     expect.assertions(3);
-    function wrapper() {
+    function wrapper(): void {
       const target = document.createElement('div');
       new Collapse({ target });
       expect(target.querySelector('.collapse-hide')).not.toBeNull();

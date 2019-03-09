@@ -4,7 +4,7 @@
 
 // TODO: Test CSS output when using CSS variables (custom properties)
 
-const Navbar = require('../src/Navbar.svelte').default;
+import Navbar from '../src/Navbar.svelte';
 
 const items = [
   { text: 'Page One', url: 'page-one' },
@@ -22,7 +22,7 @@ const items = [
 describe('Navbar component', () => {
   it.skip('throws error with no props', () => {
     expect.assertions(1);
-    function wrapper() {
+    function wrapper(): void {
       const target = document.createElement('div');
       new Navbar({ target });
     }

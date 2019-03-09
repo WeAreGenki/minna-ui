@@ -1,9 +1,9 @@
-const Switch = require('../src/Switch.svelte').default;
+import Switch from '../src/Switch.svelte';
 
 describe('Switch component', () => {
   it('renders correctly with no props', () => {
     expect.assertions(7);
-    function wrapper() {
+    function wrapper(): void {
       const target = document.createElement('div');
       new Switch({ target });
       const el = target.querySelector('.switch');

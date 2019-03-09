@@ -1,6 +1,4 @@
-'use strict';
-
-const ToastLauncher = require('../src/ToastLauncher.svelte');
+import ToastLauncher from '../src/ToastLauncher.svelte';
 
 describe('ToastLauncher component', () => {
   it('renders correctly with defaults', () => {

@@ -1,12 +1,11 @@
 /** @jest-environment node */
 
-'use strict';
-
-// const tooltip = require('../index.mjs');
+import tooltip from '../index';
 
 describe('Tooltip action', () => {
-  it.skip('should do something', () => {
+  it('should do something', () => {
     expect.hasAssertions();
+    expect(tooltip).toBeDefined();
     // TODO
   });
 });

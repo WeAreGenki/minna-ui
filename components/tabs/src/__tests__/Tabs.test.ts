@@ -1,4 +1,4 @@
-const { Tabs } = require('../src/Tabs.svelte').default;
+import Tabs from '../src/Tabs.svelte';
 
 describe('Tabs component', () => {
   it('renders correctly with defaults', () => {

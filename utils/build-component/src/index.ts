@@ -4,25 +4,24 @@
 
 /* eslint-disable security/detect-non-literal-fs-filename */
 
-'use strict';
-
-const fs = require('fs');
-const { basename, dirname, join } = require('path');
-const del = require('del');
-const { rollup } = require('rollup');
-const compiler = require('@ampproject/rollup-plugin-closure-compiler');
-const commonjs = require('rollup-plugin-commonjs');
-const resolve = require('rollup-plugin-node-resolve');
-const svelte = require('rollup-plugin-svelte');
-const preMarkup = require('@minna-ui/pre-markup');
-const preStyle = require('@minna-ui/pre-style');
+import fs from 'fs';
+// import { basename, dirname, join } from 'path';
+import { basename, dirname } from 'path';
+import del from 'del';
+import { rollup } from 'rollup';
+import compiler from '@ampproject/rollup-plugin-closure-compiler';
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
+import svelte from 'rollup-plugin-svelte';
+import preMarkup from '@minna-ui/pre-markup';
+import preStyle from '@minna-ui/pre-style';
 
 /* eslint-disable @typescript-eslint/camelcase */
 const compilerOpts = {
   compilation_level: 'ADVANCED',
   externs: [
     require.resolve('google-closure-compiler/contrib/externs/svg.js'),
-    join(__dirname, 'externs.js'),
+    // join(__dirname, 'externs.js'),
   ],
   language_out: 'ECMASCRIPT5',
 
@@ -39,10 +38,10 @@ const isClean = new Map();
 
 /**
  * Run component build process.
- * @param {!NodeJS.ProcessEnv} env Node `process.env`.
- * @returns {Promise<Object>} A promise containing the build results.
+ * @param env Node `process.env`.
+ * @returns A promise containing the build results.
  */
-module.exports = async function run(env) {
+export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
   const pkgSvelte = env.npm_package_svelte;
 
   if (!pkgSvelte) {

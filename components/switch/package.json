@@ -22,7 +22,7 @@
     "build": "build-component"
   },
   "svelte": "src/Switch.svelte",
-  "module": "dist/index.es.mjs",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",
   "files": [

@@ -23,7 +23,7 @@
     "build": "build-component"
   },
   "svelte": "src/CodeView.svelte",
-  "module": "dist/index.es.mjs",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",
   "files": [

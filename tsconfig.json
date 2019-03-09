@@ -7,11 +7,11 @@
     "declaration": true,
     "sourceMap": true
   },
-  // FIXME: `exclude` doesn't get inherited when using `extends`
   "exclude": [
+    "**/__tests__/*",
     "**/.*rc.js",
     "**/*.config.js",
-    "**/__tests__/*",
+    "**/cli/index.js",
     "**/dist/*",
     "**/node_modules/*",
     "test/coverage"

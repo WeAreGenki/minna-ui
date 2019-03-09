@@ -3,8 +3,6 @@
 // FIXME: Remove next line if we enable these tests again
 /* eslint-disable max-len */
 
-'use strict';
-
 // FIXME: Create tests for CSS, mixins, etc.
 // TODO: Create new dir + files for mixin tests
 // TODO: Create new test files for each CSS file

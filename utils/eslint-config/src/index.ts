@@ -43,7 +43,6 @@ export = {
       '.tsx',
       '.d.ts',
     ],
-    // 'import/ignore': ['.css', '.svelte'],
     'import/ignore': ['.css'],
     'import/resolver': {
       node: {

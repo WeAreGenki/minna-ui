@@ -4,7 +4,7 @@
 
 // TODO: Test CSS output when using CSS variables (custom properties)
 
-import Navbar from '../src/Navbar.svelte';
+import Navbar from '../Navbar.svelte';
 
 const items = [
   { text: 'Page One', url: 'page-one' },

@@ -1,4 +1,4 @@
-import ToastLauncher from '../src/ToastLauncher.svelte';
+import ToastLauncher from '../ToastLauncher.svelte';
 
 describe('ToastLauncher component', () => {
   it('renders correctly with defaults', () => {

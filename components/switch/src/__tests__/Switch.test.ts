@@ -1,4 +1,4 @@
-import Switch from '../src/Switch.svelte';
+import Switch from '../Switch.svelte';
 
 describe('Switch component', () => {
   it('renders correctly with no props', () => {

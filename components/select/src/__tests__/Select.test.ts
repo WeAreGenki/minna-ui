@@ -1,4 +1,4 @@
-import Select from '../src/Select.svelte';
+import Select from '../Select.svelte';
 
 const items = [
   { id: 'au', text: 'Australia' },

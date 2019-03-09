@@ -1,4 +1,4 @@
-import Tabs from '../src/Tabs.svelte';
+import Tabs from '../Tabs.svelte';
 
 describe('Tabs component', () => {
   it('renders correctly with defaults', () => {

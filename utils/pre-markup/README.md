@@ -18,8 +18,8 @@ yarn add -D @minna-ui/pre-markup
 Add both `@minna-ui/pre-markup` and `@minna-ui/pre-style` with default settings to your Svelte compile options:
 
 ```js
-const svelte = require('svelte');
-const { preprocess } = require('minna-ui');
+import svelte from 'svelte';
+import { preprocess } from 'minna-ui';
 
 svelte({ preprocess });
 ```
@@ -29,8 +29,8 @@ svelte({ preprocess });
 Add to your Svelte compile options:
 
 ```js
-const svelte = require('svelte');
-const preMarkup = require('@minna-ui/pre-markup');
+import svelte from 'svelte';
+import preMarkup from '@minna-ui/pre-markup';
 
 const dev = process.env.NODE_ENV === 'development';
 

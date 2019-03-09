@@ -4,6 +4,7 @@
 
 /* eslint-disable sort-keys */
 
+// @ts-ignore Package does not need types
 import jestPlugin from 'eslint-plugin-jest';
 import { IBlockAttributes } from '../../svelte';
 

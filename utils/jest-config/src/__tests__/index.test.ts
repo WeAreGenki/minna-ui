@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-'use strict';
+/* eslint-disable @typescript-eslint/no-var-requires, global-require */
 
 describe('Jest test runner', () => {
   it('runs basic test', () => {
@@ -9,8 +9,7 @@ describe('Jest test runner', () => {
 
   it('handles ES6 modules correctly', () => {
     expect.assertions(3);
-    function wrapper() {
-      // eslint-disable-next-line global-require
+    function wrapper(): void {
       const { shout, whisper } = require('../../__fixtures__/importable.js');
       expect(shout('Hello')).toEqual('HELLO');
       expect(whisper('Hello')).toEqual('hello');

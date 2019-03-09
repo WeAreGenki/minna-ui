@@ -1,8 +1,6 @@
 // https://github.com/remarkjs/remark-lint/blob/master/doc/rules.md
 
-'use strict';
-
-module.exports = {
+export = {
   plugins: [
     'remark-preset-lint-consistent',
     'remark-preset-lint-recommended',

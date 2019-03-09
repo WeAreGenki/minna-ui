@@ -7,8 +7,6 @@
 
 // TODO: Convert all rules to ESLint and use a pure ESLint setup instead
 
-'use strict';
-
 // lint rules shared between both TypeScript and JavaScript
 const commonRules = {
   'ban-comma-operator': true, // security
@@ -37,7 +35,7 @@ const commonRules = {
   'variable-name': [true, 'ban-keywords', 'check-format', 'allow-pascal-case'],
 };
 
-module.exports = {
+export = {
   extends: [
     'tslint:latest',
     'tslint-microsoft-contrib',

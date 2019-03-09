@@ -33,11 +33,13 @@ export = {
     tsconfigRootDir: process.cwd(),
   },
   rules: {
+    /* eslint-enable sort-keys */
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
     'jsdoc/require-param-type': 'off',
+    'jsdoc/require-returns-type': 'off',
   },
 };

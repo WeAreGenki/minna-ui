@@ -1,38 +1,60 @@
+// TODO: Merge source maps
+
 /* eslint-disable security/detect-object-injection, jsdoc/valid-types */
 
-'use strict';
+import merge from 'deepmerge';
+import { writeFile } from 'fs';
+import { dirname, isAbsolute, join, resolve } from 'path';
+import postcss from 'postcss';
+import postcssrc from 'postcss-load-config';
+import Purgecss from 'purgecss';
+import rollup from 'rollup';
+import { createFilter } from 'rollup-pluginutils';
+import { catchErr } from './catchErr';
 
-const merge = require('deepmerge');
-const { writeFile } = require('fs');
-const { dirname, isAbsolute, join, resolve } = require('path');
-const postcss = require('postcss');
-const postcssrc = require('postcss-load-config');
-const Purgecss = require('purgecss');
-const { createFilter } = require('rollup-pluginutils');
-const catchErr = require('./catchErr.js');
+interface IMakeCssOptions {
+  content?: string[] | Purgecss.RawContent[];
+  context?: {};
+  debug?: boolean;
+  exclude?: string[];
+  file?: string;
+  include?: string[];
+  optimize?: boolean;
+  whitelist?: string[];
+  writeEmpty?: boolean;
+  unsafe?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  userOpts?: any[];
+}
+
+interface IStyles {
+  [x: string]: string;
+}
+
+interface IMaps {
+  [x: string]: postcss.ResultMap;
+}
 
 /**
- * Rollup plugin to generate CSS with PostCSS from imported styles, combine into
- * a single bundle, and write it to disk. Optionally minifies and removes unused
- * styles for significantly smaller CSS bundles.
- * @param {Object} opts User defined options.
- * @param {(string[]|import('purgecss').RawContent[])=} opts.content Files to
- * parse for CSS classes. Find which CSS selectors are used when removing
- * unused styles.
- * @param {boolean=} opts.debug Show additional logging for debug purposes.
- * @param {(string[])=} opts.exclude Files to exclude from CSS processing.
- * @param {string=} opts.file Output file path to write to. Defaults to the same
- * as the JS bundle but with a `.css` file extension.
- * @param {Object=} opts.context Base PostCSS options.
- * @param {(string[])=} opts.include Files to include in CSS processing.
- * @param {boolean=} opts.optimize Should output CSS be minified and cleaned?
- * @param {(string[])=} opts.whitelist CSS classes to never remove.
- * @param {boolean=} opts.writeEmpty Write CSS files to disk even when empty.
- * @param {boolean=} opts.unsafe Apply potencially unsafe optimisations.
- * @param {...any=} opts.userOpts Any additional options to pass to `cssnano`.
- * @returns {import('rollup').Plugin} Rollup plugin.
+ * Rollup plugin to generate CSS with PostCSS from imported styles, combine
+ * into a single bundle, and write it to disk. Optionally minifies and removes
+ * unused styles for significantly smaller CSS bundles.
+ * @param opts User defined options.
+ * @param opts.content Files to parse for CSS classes. Find which CSS
+ * selectors are used when removing unused styles.
+ * @param opts.debug Show additional logging for debug purposes.
+ * @param opts.exclude Files to exclude from CSS processing.
+ * @param opts.file Output file path to write to. Defaults to the same as the
+ * JS bundle but with a `.css` file extension.
+ * @param opts.context Base PostCSS options.
+ * @param opts.include Files to include in CSS processing.
+ * @param opts.optimize Should output CSS be minified and cleaned?
+ * @param opts.whitelist CSS classes to never remove.
+ * @param opts.writeEmpty Write CSS files to disk even when empty.
+ * @param opts.unsafe Apply potencially unsafe optimisations.
+ * @param opts.userOpts Any additional options to pass to `cssnano`.
  */
-function makeCss({
+export function makeCss({
   content = [
     'src/**/*.html',
     'src/**/*.js',
@@ -52,14 +74,10 @@ function makeCss({
   writeEmpty = false,
   unsafe = false,
   ...userOpts
-} = {}) {
+}: IMakeCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
-
-  /** @type {Object<string, string>} */
-  const styles = {};
-
-  // TODO: Merge source maps
-  const maps = {};
+  const styles: IStyles = {};
+  const maps: IMaps = {};
 
   return {
     name: 'makeCss',
@@ -84,9 +102,9 @@ function makeCss({
         if (result.map) {
           const basePath = dirname(id);
 
-          // TODO: Don't use PostCSS private API
+          // @ts-ignore
           // eslint-disable-next-line no-underscore-dangle
-          result.map._sources._array.forEach((dependency) => {
+          result.map._sources._array.forEach((dependency: string) => {
             this.addWatchFile(join(basePath, dependency));
           });
         }
@@ -188,5 +206,3 @@ function makeCss({
     },
   };
 }
-
-module.exports = makeCss;

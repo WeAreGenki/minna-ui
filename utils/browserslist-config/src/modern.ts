@@ -1,11 +1,9 @@
 // https://github.com/browserslist/browserslist
 
-'use strict';
-
 /**
  * Supports popular modern, evergreen browsers.
  */
-module.exports = [
+export = [
   '> 2%',
   'last 2 Chrome versions',
   'last 2 ChromeAndroid versions',

@@ -4,15 +4,13 @@
 
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
 
-'use strict';
-
-const fs = require('fs');
-const { basename, dirname, join } = require('path');
-const { promisify } = require('util');
-const del = require('del');
-const postcssLoadConfig = require('postcss-load-config');
-const postcss = require('postcss');
-const CleanCSS = require('clean-css');
+import fs from 'fs';
+import { basename, dirname, join } from 'path';
+import { promisify } from 'util';
+import del from 'del';
+import postcssLoadConfig from 'postcss-load-config';
+import postcss from 'postcss';
+import CleanCSS from 'clean-css';
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -20,11 +18,12 @@ const readdir = promisify(fs.readdir);
 
 /**
  * Print a list of warnings or errors to the process stderr.
- * @param {string} origin Which lib the warning came from.
- * @param {string} level The severity of either WARN or ERR.
- * @param {Array} warnings List of warnings to iterate over.
+ * @param origin Which lib the warning came from.
+ * @param level The severity of either WARN or ERR.
+ * @param warnings List of warnings to iterate over.
  */
-const compileWarn = (origin, level, warnings) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const compileWarn = (origin: string, level: string, warnings: any[]): void => {
   /* istanbul ignore if */
   if (warnings.length && level === 'ERR') {
     process.exitCode = 1; // prevents tests running too long
@@ -41,9 +40,9 @@ const compileWarn = (origin, level, warnings) => {
 
 /**
  * Remove old dist directory and make a new dist directory.
- * @param {string} dir The dist directory.
+ * @param dir The dist directory.
  */
-function cleanDistDir(dir) {
+function cleanDistDir(dir: string): void {
   /* istanbul ignore else */
   if (dir !== process.cwd()) {
     fs.stat(dir, (err) => {
@@ -106,11 +105,13 @@ async function processCss({ from, to, banner }) {
 }
 
 /**
- * @param {NodeJS.ProcessEnv} env Node process.env.
- * @param {string[]} argv Node process.argv.
- * @returns {Promise<Object>}
+ * @param env Node `process.env`.
+ * @param argv Node `process.argv`.
  */
-module.exports = async function run(env, argv = []) {
+export = async function run(
+  env: NodeJS.ProcessEnv,
+  argv: string[] = [],
+): Promise<object> {
   try {
     process.env.NODE_ENV = env.NODE_ENV || 'production';
     const pkgName = env.npm_package_name;
@@ -130,10 +131,8 @@ module.exports = async function run(env, argv = []) {
     const noClean = argv.includes('--no-clean');
     const noBanner = argv.includes('--no-banner');
     const banner = noBanner ? '' : cssBanner;
-    /** @type {Array<string>} */
-    const inputCss = [];
-    /** @type {Array<string>} */
-    const outputCss = [];
+    const inputCss: string[] = [];
+    const outputCss: string[] = [];
 
     if (!inputDir) {
       if (!pkgStyle && !pkgMain) {

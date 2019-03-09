@@ -1,24 +1,29 @@
-'use strict';
+import merge from 'deepmerge';
+import { dirname, join } from 'path';
+import postcss from 'postcss';
+import postcssrc from 'postcss-load-config';
+import Purgecss from 'purgecss';
+import rollup from 'rollup';
+import { createFilter } from 'rollup-pluginutils';
 
-const merge = require('deepmerge');
-const { dirname, join } = require('path');
-const postcss = require('postcss');
-const postcssrc = require('postcss-load-config');
-const Purgecss = require('purgecss');
-const { createFilter } = require('rollup-pluginutils');
-
+interface IPostcssRollupOptions {
+  content?: string[] | Purgecss.RawContent[];
+  context?: postcss.ProcessOptions;
+  exclude?: string[];
+  include?: string[];
+  optimize?: boolean;
+  whitelist?: string[];
+}
 /**
  * Rollup plugin to process any imported CSS via PostCSS and optionally remove
  * unused styles for significantly smaller CSS bundles.
- * @param {Object} opts User defined options.
- * @param {(Array<string>|Function)=} opts.content Page content.
- * @param {Object=} opts.context Base PostCSS options.
- * @param {Array<string>=} opts.exclude Files to exclude from CSS processing.
- * @param {Array<string>=} opts.include Files to include in CSS processing.
- * @param {Array<string>=} opts.content Files to parse for CSS classes.
- * @param {boolean=} opts.optimize Should output CSS be minified and cleaned?
- * @param {Array<string>=} opts.whitelist CSS classes to always keep.
- * @returns {Object} Rollup plugin
+ * @param opts User defined options.
+ * @param opts.content Files to parse for CSS classes.
+ * @param opts.context Base PostCSS options.
+ * @param opts.exclude Files to exclude from CSS processing.
+ * @param opts.include Files to include in CSS processing.
+ * @param opts.optimize Should output CSS be minified and cleaned?
+ * @param opts.whitelist CSS classes to always keep.
  */
 function postcssRollup({
   content = [
@@ -35,7 +40,7 @@ function postcssRollup({
   include = ['**/*.css'],
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
-} = {}) {
+}: IPostcssRollupOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {
@@ -59,9 +64,10 @@ function postcssRollup({
         // register sub-dependencies so rollup can monitor them for changes
         if (result.map) {
           const basePath = dirname(id);
-          // TODO: Don't use PostCSS private API
+
+          // @ts-ignore
           // eslint-disable-next-line no-underscore-dangle
-          result.map._sources._array.forEach((dep) => {
+          result.map._sources._array.forEach((dep: string) => {
             this.addWatchFile(join(basePath, dep));
           });
         }
@@ -76,7 +82,7 @@ function postcssRollup({
 
         const purgecss = new Purgecss({
           content,
-          css: [{ raw: result.css }],
+          css: [{ extension: 'css', raw: result.css }],
           keyframes: true,
           whitelist,
         });
@@ -86,6 +92,7 @@ function postcssRollup({
         // eslint-disable-next-line consistent-return
         return {
           code: purged.css,
+          // @ts-ignore FIXME: PurgeCSS does not support source maps
           map: purged.map,
         };
       } catch (err) {
@@ -100,4 +107,4 @@ function postcssRollup({
   };
 }
 
-module.exports = postcssRollup;
+export { postcssRollup as postcss };

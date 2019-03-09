@@ -1,5 +1,3 @@
-/* eslint-disable jsdoc/valid-types */
-
 import merge from 'deepmerge';
 import { dirname, join } from 'path';
 import postcssLoadConfig from 'postcss-load-config';

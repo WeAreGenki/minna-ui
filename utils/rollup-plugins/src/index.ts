@@ -1,20 +1,28 @@
-'use strict';
+// // helpers
+// import catchErr from './catchErr';
+// import gitDescribe from './gitDescribe';
+
+// // rollup plugins
+// import devserver from './devserver';
+// import makeCss from './makeCss';
+// import makeHtml from './makeHtml';
+// import postcss from './postcss';
+
+// export = {
+//   catchErr,
+//   devserver,
+//   gitDescribe,
+//   makeCss,
+//   makeHtml,
+//   postcss,
+// };
 
 // helpers
-const catchErr = require('./lib/catchErr.js');
-const gitDescribe = require('./lib/gitDescribe.js');
+export * from './catchErr';
+export * from './gitDescribe';
 
 // rollup plugins
-const devserver = require('./lib/devserver.js');
-const makeCss = require('./lib/makeCss.js');
-const makeHtml = require('./lib/makeHtml.js');
-const postcss = require('./lib/postcss.js');
-
-module.exports = {
-  catchErr,
-  devserver,
-  gitDescribe,
-  makeCss,
-  makeHtml,
-  postcss,
-};
+export * from './devserver';
+export * from './makeCss';
+export * from './makeHtml';
+export * from './postcss';

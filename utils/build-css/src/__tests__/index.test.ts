@@ -2,29 +2,29 @@
 
 /* eslint-disable security/detect-non-literal-fs-filename */
 
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const { promisify } = require('util');
-const del = require('del');
-const buildCss = require('../index.js');
+import fs from 'fs';
+import path from 'path';
+import { promisify } from 'util';
+import del from 'del';
+import buildCss from '../index';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const srcPathSimple = require.resolve('@minna-ui/jest-config/fixtures/simple.css');
-const srcPathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
-const srcPathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
+const srcPathSimple = require.resolve('@minna-ui/jest-config/__fixtures__/simple.css');
+const srcPathImport = require.resolve('@minna-ui/jest-config/__fixtures__/import.css');
+const srcPathBadSyntax = require.resolve(
+  '@minna-ui/jest-config/__fixtures__/styles-bad-syntax.css',
+);
 const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} outDir Where to write the files to.
- * @param {string} srcPath Where to read the files from.
- * @returns {Object}
+ * @param outDir Where to write the files to.
+ * @param srcPath Where to read the files from.
  */
-const pkg = (outDir, srcPath = srcPathSimple) => ({
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
   /* eslint-disable @typescript-eslint/camelcase */
   npm_package_browser: path.join(dist, outDir, 'index.css'),
   npm_package_homepage: 'https://ui.wearegenki.com',

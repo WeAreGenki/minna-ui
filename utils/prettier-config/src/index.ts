@@ -1,18 +1,13 @@
 // https://prettier.io/docs/en/options.html
 
-/* eslint-disable jsdoc/valid-types */
-
-'use strict';
-
-const merge = require('deepmerge');
+import merge from 'deepmerge';
+import prettier from 'prettier';
 
 /**
  * Minna UI prettier config preset.
- * @param {import('prettier').Options=} opts Custom user defined prettier
- * options to merge with the preset defaults.
- * @returns {import('prettier').Options} Prettier options.
+ * @param opts User defined prettier options to merge with the preset defaults.
  */
-module.exports = (opts = {}) =>
+export = (opts: prettier.Options = {}): prettier.Options =>
   merge(
     {
       arrowParens: 'always',

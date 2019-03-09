@@ -6,45 +6,39 @@
 
 /* eslint-disable no-console, security/detect-object-injection */
 
-'use strict';
-
-const { log } = require('@wearegenki/node-utils');
-const merge = require('deepmerge');
-const http = require('http');
-const { resolve } = require('path');
-const sirv = require('sirv');
-const catchErr = require('./catchErr.js');
+import { log } from '@wearegenki/node-utils';
+import merge from 'deepmerge';
+import http from 'http';
+import { resolve } from 'path';
+import sirv from 'sirv';
+import rollup from 'rollup';
+import { catchErr } from './catchErr';
 
 const dev = !!process.env.ROLLUP_WATCH;
 
-/**
- * Shared server instance (even across multiple plugin invocations).
- * @type {http.Server}
- */
-let server;
+/** Shared server instance (even across multiple plugin invocations). */
+let server: http.Server;
 
 /**
  * Run a local development web server.
  * @see https://github.com/lukeed/sirv/tree/master/packages/sirv#api
- * @param {Object} opts User defined options.
- * @param {string=} opts.dir The directory to serve.
- * @param {boolean=} opts.liveReload Enable automatic page reload when a
- * dependent file changes.
- * @param {(string|number)=} opts.port Port to listen on.
- * @param {boolean=} opts.spa Run in single page app mode where `index.html` is
- * served for any unknown paths instead of returning a 404.
- * @param {number=} opts.wsPort Web socket port for the page live reload script.
- * @param {...any=} opts.userOpts Any additional options to pass to `sirv`.
- * @returns {Object} Rollup plugin.
+ * @param opts User defined options.
+ * @param opts.dir The directory to serve.
+ * @param opts.liveReload Automatic page reload when a dependent file changes.
+ * @param opts.port Port to listen on.
+ * @param opts.spa Run in single page app mode where `index.html` is served
+ * for any unknown paths instead of returning a 404.
+ * @param opts.wsPort Web socket port for the page live reload script.
+ * @param opts.userOpts Any additional options to pass to `sirv`.
  */
-function devserver({
+export function devserver({
   dir = './dist',
   // liveReload = true,
   port = process.env.PORT || 5000,
   spa = false,
   // wsPort = 13341,
   ...userOpts
-} = {}) {
+} = {}): rollup.Plugin {
   if (!dev) {
     console.warn(
       "[DEVSERVER] Not in watch mode, this probably isn't what you want.",
@@ -86,7 +80,7 @@ function devserver({
     // request logging middleware
     server.on('request', log);
 
-    server.listen(port, (err) => {
+    server.listen(port, (err: Error) => {
       if (err) throw err;
 
       console.log(`[DEVSERVER] Started server at http://localhost:${port}/`);
@@ -105,5 +99,3 @@ function devserver({
     // },
   };
 }
-
-module.exports = devserver;

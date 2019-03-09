@@ -2,29 +2,27 @@
 
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp */
 
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const { promisify } = require('util');
-const del = require('del');
-const buildComponent = require('../index.js');
+import fs from 'fs';
+import path from 'path';
+import { promisify } from 'util';
+import del from 'del';
+import buildComponent from '../index';
 
 const mkdir = promisify(fs.mkdir);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
+const sourcePath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
 const sourcePathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.svelte',
+  '@minna-ui/jest-config/__fixtures__/TestComponentBadSyntax.svelte',
 );
 const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param {string} dirName Directory name.
- * @returns {Object}
+ * @param dirName Directory name.
  */
-const pkg = (dirName) => ({
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const pkg = (dirName: string) => ({
   /* eslint-disable @typescript-eslint/camelcase */
   npm_package_homepage: 'https://ui.wearegenki.com/',
   npm_package_main: path.join(dist, dirName, 'index.js'),

@@ -1,11 +1,7 @@
-'use strict';
-
 /**
  * Generic error handler for nodejs callbacks.
- * @param {Error} err Node error from callback.
+ * @param err Error from node method callback.
  */
-function catchErr(err) {
+export function catchErr(err: Error): void {
   if (err) throw err;
 }
-
-module.exports = catchErr;

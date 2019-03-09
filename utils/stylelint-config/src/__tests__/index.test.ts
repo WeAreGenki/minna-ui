@@ -1,9 +1,7 @@
 /** @jest-environment node */
 
-'use strict';
-
-const stylelint = require('stylelint');
-const config = require('../index.js');
+import stylelint from 'stylelint';
+import config from '../index';
 
 const sourceCssValid = `body {
   margin: 0;

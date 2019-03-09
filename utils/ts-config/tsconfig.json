@@ -20,7 +20,7 @@
     "strict": true,
     "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
+    // "noImplicitReturns": true, // prefer to handle with ESLint
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 

@@ -25,7 +25,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Convert all components to Svelte v3 syntax.
-- Rename all components from `*.html` to `*.svelte`
+- Rename all components from `*.html` to `*.svelte`.
+- Rename component `@minna-ui/remarklint-config` to `@minna-ui/remark-config`.
+- Convert all packages to use TypeScript and to generate type declarations. Many file paths have changed because of this, most util files are now under a `@minna-ui/<package_name>/lib/*` directory.
 - `@minna-ui/postcss-config` - Complete refactor to be faster and more simple. Now only does safe transforms by default.
 - `@minna-ui/rollup-plugins` - `makeCss` - By default don't write empty CSS files to disk. This can be controlled with the new `writeEmpty` option.
 - `@minna-ui/rollup-plugins` - `makeCss` - Rename option `safe` to `unsafe`.

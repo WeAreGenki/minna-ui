@@ -21,7 +21,7 @@
     "prebuild": "yarn clean",
     "build": "lerna run build",
     "clean": "lerna clean --yes",
-    "preinstall": "node utils/check-yarn.js",
+    "preinstall": "node scripts/check-yarn.js",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",
     "lint:css": "stylelint '**/*.{css,html,js,md,mjs,svelte,svg,ts}'",

@@ -127,6 +127,8 @@ describe('PostCSS config', () => {
     spy.mockRestore();
   });
 
+  it.todo('writes correct import path');
+  it.todo('writes correct import path with importAlias option');
   it.todo('compiles with importPaths option');
   it.todo('compiles with custom options');
   it.todo('supports $var compile-time variables');

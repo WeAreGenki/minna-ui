@@ -2,6 +2,8 @@
  * Minna UI component compiler.
  */
 
+/* eslint-disable @typescript-eslint/camelcase */
+
 import { basename } from 'path';
 import * as rollup from 'rollup';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
@@ -11,19 +13,12 @@ import svelte from 'rollup-plugin-svelte';
 import preMarkup from '@minna-ui/pre-markup';
 import preStyle from '@minna-ui/pre-style';
 
-/* eslint-disable @typescript-eslint/camelcase */
 const compilerOpts = {
   compilation_level: 'SIMPLE',
   language_out: 'ECMASCRIPT5',
-
-  /**
-   * Uncomment for debugging:
-   */
   // debug: true,
-  // formatting: 'PRETTY_PRINT',
   // warning_level: 'VERBOSE',
 };
-/* eslint-enable @typescript-eslint/camelcase */
 
 interface IBuildComponentResult {
   // FIXME: Don't use `any` type once svelte has types available
@@ -46,7 +41,6 @@ interface IBuildComponentResult {
 /**
  * Run component build process.
  * @param env Node `process.env`.
- * @returns A promise containing the build results.
  */
 export = async function run(
   env: NodeJS.ProcessEnv,
@@ -74,101 +68,113 @@ export = async function run(
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */`;
 
-  let resolveCss: Function;
-  const resultCss = new Promise((res) => {
-    resolveCss = res;
-  });
+  try {
+    let resolveCss: Function;
+    const resultCss = new Promise((res) => {
+      resolveCss = res;
+    });
 
-  const bundleMain = await rollup.rollup({
-    input: pkgSvelte,
-    plugins: [
-      svelte({
-        preprocess: {
-          markup: preMarkup(),
-          style: preStyle(),
-        },
-        // FIXME: Don't use `any` type once svelte has types available
-        // eslint-disable-next-line sort-keys, @typescript-eslint/no-explicit-any
-        css(css: any) {
-          resolveCss(css);
-          css.write(pkgStyle);
-        },
-      }),
-      resolve(),
-      commonjs(),
-      compiler(compilerOpts),
-    ],
-  });
+    const bundleMain = await rollup.rollup({
+      input: pkgSvelte,
+      plugins: [
+        svelte({
+          preprocess: {
+            markup: preMarkup(),
+            style: preStyle(),
+          },
+          // FIXME: Don't use `any` type once svelte has types available
+          // eslint-disable-next-line sort-keys, @typescript-eslint/no-explicit-any
+          css(css: any) {
+            resolveCss(css);
+            css.write(pkgStyle);
+          },
+        }),
+        resolve(),
+        commonjs(),
+        compiler(compilerOpts),
+      ],
+    });
 
-  // const bundleElement = await rollup.rollup({
-  //   input: pkgSvelte,
-  //   plugins: [
-  //     svelte({
-  //       preprocess: {
-  //         markup: preMarkup({ level 2 }),
-  //         style: preStyle(),
-  //       },
-  //       css: false,
-  //       customElement: true,
-  //     }),
-  //     resolve(),
-  //     commonjs(),
-  //     compiler({ ...compilerOpts, language_out: 'ECMASCRIPT_2015' }),
-  //   ],
-  // });
+    // const bundleElement = await rollup.rollup({
+    //   input: pkgSvelte,
+    //   plugins: [
+    //     svelte({
+    //       preprocess: {
+    //         markup: preMarkup({ level 2 }),
+    //         style: preStyle(),
+    //       },
+    //       css: false,
+    //       customElement: true,
+    //     }),
+    //     resolve(),
+    //     commonjs(),
+    //     compiler({ ...compilerOpts, language_out: 'ECMASCRIPT_2015' }),
+    //   ],
+    // });
 
-  const bundleEsm = await rollup.rollup({
-    input: pkgSvelte,
-    plugins: [
-      svelte({
-        css: false,
-        preprocess: {
-          markup: preMarkup(),
-          style: preStyle(),
-        },
-      }),
-      resolve(),
-      commonjs(),
-    ],
-  });
+    const bundleEsm = await rollup.rollup({
+      input: pkgSvelte,
+      plugins: [
+        svelte({
+          css: false,
+          preprocess: {
+            markup: preMarkup(),
+            style: preStyle(),
+          },
+        }),
+        resolve(),
+        commonjs(),
+      ],
+    });
 
-  const resultMain = bundleMain.write({
-    banner,
-    file: pkgMain,
-    format: 'iife',
-    name,
-    sourcemap: true,
-  });
+    const resultMain = bundleMain.write({
+      banner,
+      file: pkgMain,
+      format: 'iife',
+      name,
+      sourcemap: true,
+    });
 
-  // const resultElement = bundleElement.write({
-  //   name,
-  //   banner,
-  //   file: pkgMain.replace(/\.js/, '.element.js'),
-  //   format: 'iife',
-  //   sourcemap: true,
-  // });
+    // const resultElement = bundleElement.write({
+    //   name,
+    //   banner,
+    //   file: pkgMain.replace(/\.js/, '.element.js'),
+    //   format: 'iife',
+    //   sourcemap: true,
+    // });
 
-  const resultEsm = bundleEsm.write({
-    banner,
-    file: pkgModule,
-    format: 'esm',
-    name,
-    sourcemap: true,
-  });
+    const resultEsm = bundleEsm.write({
+      banner,
+      file: pkgModule,
+      format: 'esm',
+      name,
+      sourcemap: true,
+    });
 
-  return {
-    css: await resultCss,
-    // element: {
-    //   bundle: await bundleElement,
-    //   result: await resultElement,
-    // },
-    esm: {
-      bundle: await bundleEsm,
-      result: await resultEsm,
-    },
-    main: {
-      bundle: await bundleMain,
-      result: await resultMain,
-    },
-  };
+    // await here to capture any errors
+    const results = {
+      css: await resultCss,
+      // element: {
+      //   bundle: await bundleElement,
+      //   result: await resultElement,
+      // },
+      esm: {
+        bundle: await bundleEsm,
+        result: await resultEsm,
+      },
+      main: {
+        bundle: await bundleMain,
+        result: await resultMain,
+      },
+    };
+
+    return results;
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[build-component]', err);
+
+    // we always want internal builds to fail on error
+    process.exit(2);
+    throw err;
+  }
 };

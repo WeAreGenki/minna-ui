@@ -100,6 +100,7 @@ async function processCss({
 }
 
 /**
+ * Run CSS build process.
  * @param env Node `process.env`.
  * @param argv Node `process.argv`.
  */
@@ -168,20 +169,19 @@ export = async function run(
     const allResults = await Promise.all(results);
 
     return allResults;
-  } catch (error) {
-    if (error.showSourceCode) {
+  } catch (err) {
+    if (err.showSourceCode) {
       // eslint-disable-next-line no-console
       console.error(
-        `[BUILD-CSS] PostCSS error: ${
-          error.message
-        }:\n${error.showSourceCode()}`,
+        `[build-css] PostCSS error: ${err.message}:\n${err.showSourceCode()}`,
       );
     } else {
       // eslint-disable-next-line no-console
-      console.error('[BUILD-CSS] Error', error);
+      console.error('[build-css]', err);
     }
 
     // we always want internal builds to fail on error
-    throw new Error(error);
+    process.exit(2);
+    throw err;
   }
 };

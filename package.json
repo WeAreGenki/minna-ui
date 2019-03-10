@@ -66,6 +66,9 @@
     "syntax": "postcss-scss",
     "plugins": {
       "@minna-ui/postcss-config": {
+        "importAlias": {
+          "^import\\.css$": "@minna-ui/css/src/import.css"
+        },
         "unsafe": true
       }
     }

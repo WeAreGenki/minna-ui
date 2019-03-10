@@ -59,6 +59,7 @@ Included plugins (in execution order):
 <!-- prettier-ignore -->
 | Option | Default value | Type | Description |
 | --- | --- | :---: | --- |
+| importAlias | `{ '^##\\/(.*)$': 'src/$1' }` | object | A map of import aliases. Given a matching regex key, will replace the import path with the value. |
 | importPaths | `[process.cwd(), 'src', 'src/css']` | array | A list of extra paths to search when resolving `@import` rules in CSS. First, imports will try to resolve according to the [CSS Import Resolve spec](https://jonathantneal.github.io/css-import-resolve/) and then try again with each of the `importPaths`. |
 | optimize | `process.env.NODE_ENV === 'production'` | boolean | Perform optimisations to reduce output file size and minimise runtime style computation. |
 | unsafe | `false` | boolean | Apply potentially unsafe transformations (e.g. combining same `@media`). |

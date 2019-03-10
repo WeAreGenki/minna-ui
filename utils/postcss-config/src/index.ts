@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-non-literal-regexp, security/detect-object-injection */
+
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import mediaQueryPacker from 'css-mqpacker';
@@ -8,7 +10,7 @@ import advancedVars from 'postcss-advanced-variables';
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
 import atUse from 'postcss-use';
-import { resolve as importResolve } from './css-import-resolve';
+import { IImportCacheEntry, resolve } from './css-import-resolve';
 
 // TODO: Could/should this be cached on disk for faster rebulds?
 const importCache = {};
@@ -16,6 +18,13 @@ const importCache = {};
 interface IPluginOptions {
   /** Show useful debugging feedback (e.g. unresolved variables). */
   debug?: boolean;
+  /**
+   * A map of import aliases. Given a matching regex key, will replace the
+   * import path with the value.
+   */
+  importAlias?: {
+    [alias: string]: string;
+  };
   /**
    * A list of extra paths to search when resolving `@import` rules in CSS.
    * First, imports will try to resolve according to the
@@ -50,6 +59,7 @@ export = postcss.plugin(
   'minna-ui',
   ({
     debug = true,
+    importAlias = { '^##\\/(.*)$': 'src/$1' },
     importPaths = [process.cwd(), 'src', 'src/css'],
     optimize = process.env.NODE_ENV === 'production',
     unsafe = false,
@@ -64,6 +74,26 @@ export = postcss.plugin(
         cssnano,
       ]);
     }
+
+    const importResolve = (
+      id: string,
+      cwd: string,
+      // FIXME:
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      opts: any,
+    ): Promise<IImportCacheEntry> => {
+      // replace import aliases before trying to resolve
+      Object.entries(importAlias).forEach(([alias, value]) => {
+        const aliasRe = new RegExp(alias);
+
+        if (aliasRe.test(id)) {
+          // eslint-disable-next-line no-param-reassign
+          id = id.replace(aliasRe, value);
+        }
+      });
+
+      return resolve(id, cwd, opts.importCache);
+    };
 
     const cssnanoOpts = merge(
       {

@@ -9,6 +9,7 @@
   https://github.com/sveltejs/rfcs/blob/better-composition/text/0000-better-composition.md
 -->
 
+<!--
 <script>
   // reactive data
   let active = 1;
@@ -51,3 +52,4 @@
     border-color: $intent-primary;
   }
 </style>
+-->

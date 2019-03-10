@@ -23,9 +23,7 @@
   "module": "index.mjs",
   "style": "index.css",
   "files": [
-    "*.css",
-    "*.js",
-    "*.mjs"
+    "*.css"
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",
@@ -34,7 +32,8 @@
     "prettier": "^1.15.0",
     "stylelint": "^9.0.0",
     "svelte": "^3.0.0",
-    "typescript": "^3.1.0"
+    "tslib": "^1.9.0",
+    "typescript": "^3.3.0"
   },
   "dependencies": {
     "@minna-ui/browserslist-config": "^0.21.0",

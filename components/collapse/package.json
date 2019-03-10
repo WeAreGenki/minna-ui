@@ -19,7 +19,8 @@
     "web-components"
   ],
   "scripts": {
-    "build": "build-component"
+    "build": "build-component",
+    "prebuild": "rm -rf dist"
   },
   "svelte": "src/Collapse.svelte",
   "module": "dist/index.mjs",
@@ -34,6 +35,9 @@
   },
   "dependencies": {
     "@minna-ui/css": "^0.21.0"
+  },
+  "devDependencies": {
+    "@minna-ui/build-component": "*"
   },
   "publishConfig": {
     "access": "public"

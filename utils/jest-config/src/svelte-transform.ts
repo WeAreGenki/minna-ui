@@ -1,9 +1,9 @@
 /**
  * Jest transform for compiling Svelte components into JavaScript.
+ *
+ * NOTE: `svelte` is not listed as a dependency so developers can use this
+ * jest preset for non-svelte projects.
  */
-
-// NOTE: `svelte` is not listed as a dependency in case developers want to use
-// this package for non-svelte projects.
 
 import { basename } from 'path';
 // @ts-ignore TODO: Once svelte has types remove this exception
@@ -20,8 +20,12 @@ export function process(src: string, filename: string): jest.TransformedSource {
     format: 'cjs',
   });
 
+  // FIXME: Remove this once upstream issue is fixed:
+  // TODO: Add link to Github issue and PR once I submit them
+  const esInterop = '\nObject.defineProperty(exports, "__esModule", {\n\tvalue: true\n});';
+
   return {
-    code: result.js.code,
+    code: result.js.code + esInterop,
     map: result.js.map,
   };
 }

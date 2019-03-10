@@ -14,12 +14,7 @@ export = (api: babel.ConfigAPI) => {
   return {
     presets: [isTest && '@babel/preset-typescript'].filter(Boolean),
     plugins: [
-      isTest && [
-        '@babel/plugin-transform-modules-commonjs',
-        {
-          lazy: true,
-        },
-      ],
+      isTest && ['@babel/plugin-transform-modules-commonjs', { lazy: true }],
     ].filter(Boolean),
   };
 };

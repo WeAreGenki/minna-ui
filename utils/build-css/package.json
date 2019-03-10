@@ -1,6 +1,12 @@
 {
   "name": "@minna-ui/build-css",
   "version": "0.21.0",
+  "description": "Internal minna-ui CSS builder.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-css",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",

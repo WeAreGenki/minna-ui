@@ -1,6 +1,12 @@
 {
   "name": "@minna-ui/build-component",
   "version": "0.21.0",
+  "description": "Internal minna-ui component builder.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-component",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",

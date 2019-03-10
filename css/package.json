@@ -16,7 +16,8 @@
     "wearegenki"
   ],
   "scripts": {
-    "build": "build-css src dist"
+    "build": "build-css src dist",
+    "prebuild": "rm -rf dist"
   },
   "style": "dist/index.css",
   "browser": "dist/index.css",

@@ -1,6 +1,5 @@
 {
   "name": "@minna-ui/build-component",
-  "private": true,
   "version": "0.21.0",
   "scripts": {
     "dev": "tsc -w",
@@ -33,5 +32,8 @@
     "@types/rollup-plugin-commonjs": "9.2.0",
     "@types/rollup-plugin-node-resolve": "4.0.0",
     "del": "4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

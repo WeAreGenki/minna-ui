@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `@minna-ui/postcss-config` - Complete refactor to be faster and more simple. Now only does safe transforms by default.
 - `@minna-ui/rollup-plugins` - `makeCss` - By default don't write empty CSS files to disk. This can be controlled with the new `writeEmpty` option.
 - `@minna-ui/rollup-plugins` - `makeCss` - Rename option `safe` to `unsafe`.
+- Totally overhaul internal build tooling for stablity and reliablity.
 - Refactor internal lint tasks and VS Code settings.
 - Use shared package for some node utils.
 - Updated package dependencies.

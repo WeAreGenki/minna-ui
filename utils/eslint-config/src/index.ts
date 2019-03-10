@@ -6,7 +6,6 @@
 
 // @ts-ignore Package does not need types
 import jestPlugin from 'eslint-plugin-jest';
-import { IBlockAttributes } from '../../svelte';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -43,7 +42,7 @@ export = {
       '.tsx',
       '.d.ts',
     ],
-    'import/ignore': ['.css'],
+    'import/ignore': ['.css', '.svelte'],
     'import/resolver': {
       node: {
         extensions: [
@@ -60,8 +59,6 @@ export = {
         ],
       },
     },
-    'svelte3/ignore-styles': (attr: IBlockAttributes) =>
-      attr.type === 'text/postcss',
   },
   rules: {
     /* eslint-enable sort-keys */

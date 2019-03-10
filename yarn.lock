@@ -1056,24 +1056,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@minna-ui/build-component@file:utils/build-component":
-  version "0.21.0"
-  dependencies:
-    "@ampproject/rollup-plugin-closure-compiler" "0.8.5"
-    "@minna-ui/pre-markup" "*"
-    "@minna-ui/pre-style" "*"
-    rollup "1.6.0"
-    rollup-plugin-commonjs "9.2.1"
-    rollup-plugin-node-resolve "4.0.1"
-    rollup-plugin-svelte "5.0.3"
-
-"@minna-ui/build-css@file:utils/build-css":
-  version "0.21.0"
-  dependencies:
-    "@minna-ui/postcss-config" "*"
-    clean-css "4.2.1"
-    postcss-load-config "2.0.0"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

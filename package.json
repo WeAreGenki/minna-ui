@@ -53,12 +53,12 @@
       "extends @minna-ui/browserslist-config"
     ],
     "development": [
-      "extends @minna-ui/browserslist-config/dev"
+      "extends @minna-ui/browserslist-config/lib/dev"
     ]
   },
   "babel": {
     "presets": [
-      "@minna-ui/jest-config/lib/babel-preset.js"
+      "@minna-ui/jest-config/lib/babel-preset"
     ]
   },
   "postcss": {

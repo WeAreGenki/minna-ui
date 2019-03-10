@@ -59,6 +59,7 @@ export function makeCss({
     'src/**/*.html',
     'src/**/*.js',
     'src/**/*.jsx',
+    'src/**/*.mjs',
     'src/**/*.svelte',
     'src/**/*.svg',
     'src/**/*.ts',

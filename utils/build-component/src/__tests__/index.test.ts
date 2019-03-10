@@ -84,16 +84,6 @@ describe('build-component tool', () => {
     expect(built.main.result.output[0].code).toMatch(re2);
   });
 
-  it('cleans existing dist dir', async () => {
-    expect.assertions(2);
-    await mkdir(path.join(dist, 'check'));
-    const checkFile = path.join(dist, 'check/exists.txt');
-    await writeFile(checkFile, 'yes', 'utf8');
-    await expect(stat(checkFile)).resolves.toBeDefined();
-    await buildComponent(pkg('check'));
-    await expect(stat(checkFile)).rejects.toThrow();
-  });
-
   it('writes data to disk', async () => {
     expect.assertions(7);
     const pkgData = pkg('write-to-disk');

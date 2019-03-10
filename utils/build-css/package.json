@@ -20,10 +20,10 @@
   "dependencies": {
     "@minna-ui/postcss-config": "*",
     "clean-css": "4.2.1",
-    "del": "4.0.0",
     "postcss-load-config": "2.0.0"
   },
   "devDependencies": {
-    "@types/clean-css": "4.2.0"
+    "@types/clean-css": "4.2.0",
+    "del": "4.0.0"
   }
 }

@@ -5,9 +5,8 @@
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
 
 import fs from 'fs';
-import { basename, dirname, join } from 'path';
+import { basename, join } from 'path';
 import { promisify } from 'util';
-import * as del from 'del';
 import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
 import CleanCSS from 'clean-css';
@@ -22,37 +21,24 @@ const readdir = promisify(fs.readdir);
  * @param level The severity of either WARN or ERR.
  * @param warnings List of warnings to iterate over.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const compileWarn = (origin: string, level: string, warnings: any[]): void => {
+function compileWarn(
+  origin: string,
+  level: string,
+  warnings: string[] | postcss.ResultMessage[],
+): void {
   /* istanbul ignore if */
   if (warnings.length && level === 'ERR') {
     process.exitCode = 1; // prevents tests running too long
   }
 
-  warnings.forEach((err) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  warnings.forEach((err: any) => {
     /* istanbul ignore if */
     if (!/^Ignoring local source map at/.test(err)) {
       // eslint-disable-next-line no-console
       console.warn(`[${origin}] ${level}: ${err.toString()}`);
     }
   });
-};
-
-/**
- * Remove old dist directory and make a new dist directory.
- * @param dir The dist directory.
- */
-function cleanDistDir(dir: string): void {
-  /* istanbul ignore else */
-  if (dir !== process.cwd()) {
-    fs.stat(dir, (err) => {
-      if (!err) {
-        del.sync([dir]);
-      }
-
-      fs.mkdirSync(dir);
-    });
-  }
 }
 
 interface IProcessCssOptions {
@@ -137,7 +123,6 @@ export = async function run(
 
     const inputDir = argv[2];
     const outputDir = argv[3];
-    const noClean = argv.includes('--no-clean');
     const noBanner = argv.includes('--no-banner');
     const banner = noBanner ? '' : cssBanner;
     const inputCss: string[] = [];
@@ -167,11 +152,6 @@ export = async function run(
         inputCss.push(join(inputDir, fileName));
         outputCss.push(join(outputDir, fileName));
       });
-    }
-
-    if (!noClean) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      cleanDistDir(outputDir || dirname(pkgStyle!));
     }
 
     const results = [];

@@ -2,13 +2,8 @@
  * Minna UI component compiler.
  */
 
-/* eslint-disable security/detect-non-literal-fs-filename */
-
-import fs from 'fs';
-// import { basename, dirname, join } from 'path';
-import { basename, dirname } from 'path';
-import * as del from 'del';
-import { rollup } from 'rollup';
+import { basename } from 'path';
+import * as rollup from 'rollup';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
@@ -18,30 +13,44 @@ import preStyle from '@minna-ui/pre-style';
 
 /* eslint-disable @typescript-eslint/camelcase */
 const compilerOpts = {
-  compilation_level: 'ADVANCED',
-  externs: [
-    require.resolve('google-closure-compiler/contrib/externs/svg.js'),
-    // join(__dirname, 'externs.js'),
-  ],
+  compilation_level: 'SIMPLE',
   language_out: 'ECMASCRIPT5',
 
-  /** Uncomment for debugging: */
-  // warning_level: 'VERBOSE',
-  // formatting: 'PRETTY_PRINT',
+  /**
+   * Uncomment for debugging:
+   */
   // debug: true,
-  // jscomp_warning: '*',
-  // jscomp_off: '*',
+  // formatting: 'PRETTY_PRINT',
+  // warning_level: 'VERBOSE',
 };
 /* eslint-enable @typescript-eslint/camelcase */
 
-const isClean = new Map();
+interface IBuildComponentResult {
+  // FIXME: Don't use `any` type once svelte has types available
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  css: any;
+  // element: {
+  //   bundle: rollup.RollupBuild;
+  //   result: rollup.RollupOutput;
+  // };
+  esm: {
+    bundle: rollup.RollupBuild;
+    result: rollup.RollupOutput;
+  };
+  main: {
+    bundle: rollup.RollupBuild;
+    result: rollup.RollupOutput;
+  };
+}
 
 /**
  * Run component build process.
  * @param env Node `process.env`.
  * @returns A promise containing the build results.
  */
-export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
+export = async function run(
+  env: NodeJS.ProcessEnv,
+): Promise<IBuildComponentResult> {
   const pkgSvelte = env.npm_package_svelte;
 
   if (!pkgSvelte) {
@@ -70,26 +79,7 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
     resolveCss = res;
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const distDir = dirname(pkgMain!);
-
-  // TODO: Better safety checks to make sure we don't delete something important
-  /* istanbul ignore else */
-  if (!isClean.has(distDir)) {
-    isClean.set(distDir, null);
-
-    /* istanbul ignore else */
-    if (distDir !== process.cwd()) {
-      fs.stat(distDir, (err) => {
-        /* istanbul ignore if */
-        if (err && err.code !== 'ENOENT') throw err;
-
-        del.sync([distDir]);
-      });
-    }
-  }
-
-  const bundleMain = await rollup({
+  const bundleMain = await rollup.rollup({
     input: pkgSvelte,
     plugins: [
       svelte({
@@ -110,7 +100,7 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
     ],
   });
 
-  // const bundleElement = await rollup({
+  // const bundleElement = await rollup.rollup({
   //   input: pkgSvelte,
   //   plugins: [
   //     svelte({
@@ -127,7 +117,7 @@ export = async function run(env: NodeJS.ProcessEnv): Promise<object> {
   //   ],
   // });
 
-  const bundleEsm = await rollup({
+  const bundleEsm = await rollup.rollup({
     input: pkgSvelte,
     plugins: [
       svelte({

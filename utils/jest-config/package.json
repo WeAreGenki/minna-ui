@@ -42,7 +42,9 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.3.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest-circus": "^24.3.1"
+    "jest-circus": "^24.3.1",
+    "jest-haste-map": "^24.3.1",
+    "jest-resolve": "^24.3.1"
   },
   "devDependencies": {
     "@types/babel__core": "7.1.0"

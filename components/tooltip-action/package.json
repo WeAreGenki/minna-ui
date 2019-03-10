@@ -17,10 +17,25 @@
     "ui-components",
     "wearegenki"
   ],
-  "main": "index.js",
-  "style": "index.css",
+  "scripts": {
+    "build": "yarn build:css && yarn build:module && yarn build:main",
+    "build:css": "build-css src dist",
+    "build:module": "tsc --module es2015 && mv dist/index.js dist/index.mjs && mv dist/index.js.map dist/index.mjs.map",
+    "build:main": "tsc",
+    "prebuild": "rm -rf dist"
+  },
+  "style": "dist/index.css",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "svelte": "^3.0.0"
+  },
+  "devDependencies": {
+    "@minna-ui/build-css": "*"
   },
   "publishConfig": {
     "access": "public"

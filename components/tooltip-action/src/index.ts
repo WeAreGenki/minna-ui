@@ -1,5 +1,3 @@
-const Tooltip = (): void => {
+export function Tooltip(): void {
   // TODO
-};
-
-export default Tooltip;
+}

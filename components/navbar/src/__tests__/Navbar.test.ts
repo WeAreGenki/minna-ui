@@ -4,8 +4,6 @@
 
 // TODO: Test CSS output when using CSS variables (custom properties)
 
-// FIXME:
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import Navbar from '../Navbar.svelte';
 
 const items = [
@@ -59,6 +57,7 @@ describe('Navbar component', () => {
       },
       target,
     });
+    // @ts-ignore Fine for a unit test since we're actualy using JSDOM
     window.pageYOffset = 50;
     const event = new UIEvent('scroll');
     document.dispatchEvent(event);
@@ -79,7 +78,7 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(component.$$.ctx, 'openMenu', 'get');
-    const button = target.querySelector('.navbar-button');
+    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
     button.click();
     expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(spy).toHaveBeenCalled();
@@ -140,7 +139,7 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    const button = target.querySelector('.navbar-button');
+    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
     button.click();
     jest.runAllTimers();
     button.click();
@@ -162,11 +161,12 @@ describe('Navbar component', () => {
       },
       target,
     });
-    const icon = target.querySelector('.navbar-button > svg > use');
+    const icon = target.querySelector('button.navbar-button > svg > use');
     const navbarLinks = target.querySelector('.navbar-links');
     expect(icon.getAttribute('xlink:href')).toEqual('#menu');
     expect(navbarLinks.classList.contains('df')).toBeFalsy();
-    target.querySelector('.navbar-button').click();
+    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
+    button.click();
     expect(icon.getAttribute('xlink:href')).toEqual('#x');
     expect(navbarLinks.classList.contains('df')).toBeTruthy();
   });

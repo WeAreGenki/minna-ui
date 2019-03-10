@@ -1,5 +1,3 @@
-// FIXME:
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import Select from '../Select.svelte';
 
 const items = [

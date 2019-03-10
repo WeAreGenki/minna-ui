@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.21.0",
   "scripts": {
+    "dev": "tsc -w",
     "build": "tsc",
     "prebuild": "rm -rf lib"
   },

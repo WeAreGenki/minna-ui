@@ -16,6 +16,7 @@
     "wearegenki"
   ],
   "scripts": {
+    "dev": "tsc -w",
     "build": "tsc",
     "prebuild": "rm -rf lib"
   },

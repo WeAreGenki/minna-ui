@@ -63,14 +63,14 @@ export = (opts: postcss.ProcessOptions = {}) => async ({
       dependencies,
       map: result.map,
     };
-  } catch (error) {
-    if (error.name === 'CssSyntaxError') {
+  } catch (err) {
+    if (err.name === 'CssSyntaxError') {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-      process.stderr.write(error.message + error.showSourceCode());
+      process.stderr.write(err.message + err.showSourceCode());
     } else {
-      // TODO: Throw an error to stop turther processing (?)
       // eslint-disable-next-line no-console
-      console.error(error);
+      console.error(err);
+      throw err;
     }
   }
 };

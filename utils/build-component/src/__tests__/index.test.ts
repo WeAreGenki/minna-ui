@@ -9,7 +9,6 @@ import del from 'del';
 import buildComponent from '../index';
 
 const mkdir = promisify(fs.mkdir);
-const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const sourcePath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
 const sourcePathBadSyntax = require.resolve(
@@ -108,4 +107,6 @@ describe('build-component tool', () => {
     // await expect(build).rejects.toThrowErrorMatchingSnapshot();
     await expect(build).rejects.toThrow();
   });
+
+  it.todo('end process with non-zero exit code on build error');
 });

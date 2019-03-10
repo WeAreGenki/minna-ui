@@ -9,7 +9,6 @@ import del from 'del';
 import buildCss from '../index';
 
 const mkdir = promisify(fs.mkdir);
-const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
 const srcPathSimple = require.resolve('@minna-ui/jest-config/__fixtures__/simple.css');
 const srcPathImport = require.resolve('@minna-ui/jest-config/__fixtures__/import.css');
@@ -102,4 +101,6 @@ describe('build-css tool', () => {
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();
   });
+
+  it.todo('end process with non-zero exit code on build error');
 });

@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 
-export default {
+export = {
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.([jt]sx?|mjs)$': 'babel-jest',

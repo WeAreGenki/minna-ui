@@ -25,5 +25,8 @@
   "devDependencies": {
     "@types/clean-css": "4.2.0",
     "del": "4.0.0"
+  },
+  "engines": {
+    "node": ">=10.12.0"
   }
 }

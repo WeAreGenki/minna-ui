@@ -5,7 +5,7 @@
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
 
 import fs from 'fs';
-import { basename, join } from 'path';
+import { basename, dirname, join } from 'path';
 import { promisify } from 'util';
 import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
@@ -13,6 +13,7 @@ import CleanCSS from 'clean-css';
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
+const mkdir = promisify(fs.mkdir);
 const readdir = promisify(fs.readdir);
 
 /**
@@ -89,6 +90,9 @@ async function processCss({
   min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(
     options.to,
   )}.map */`;
+
+  // create the output directory
+  await mkdir(dirname(options.to), { recursive: true });
 
   writeFile(options.to, min.styles);
   writeFile(`${options.to}.map`, min.sourceMap.toString());

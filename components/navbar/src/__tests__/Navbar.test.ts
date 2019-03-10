@@ -4,6 +4,8 @@
 
 // TODO: Test CSS output when using CSS variables (custom properties)
 
+// FIXME:
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import Navbar from '../Navbar.svelte';
 
 const items = [

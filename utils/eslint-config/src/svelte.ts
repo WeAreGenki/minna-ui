@@ -7,7 +7,10 @@
 
 /* eslint-disable sort-keys */
 
-import { IBlockAttributes } from '../../svelte';
+interface IBlockAttributes {
+  type: string;
+  [x: string]: string;
+}
 
 export = {
   plugins: ['svelte3'],

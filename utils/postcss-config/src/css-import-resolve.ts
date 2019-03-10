@@ -8,19 +8,19 @@
 import { readFile } from 'fs';
 import { isAbsolute, join, sep } from 'path';
 
-interface IPathCacheEntry {
+export interface IImportCacheEntry {
   contents: string;
   file: string;
 }
 
-interface IPathCache {
-  [x: string]: Promise<IPathCacheEntry>;
+export interface IImportCache {
+  [x: string]: Promise<IImportCacheEntry>;
 }
 
 function fileContents(
   file: string,
-  cache: IPathCache,
-): Promise<IPathCacheEntry> {
+  cache: IImportCache,
+): Promise<IImportCacheEntry> {
   cache[file] =
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
@@ -39,7 +39,7 @@ function fileContents(
 
 function jsonContents(
   dir: string,
-  cache: IPathCache,
+  cache: IImportCache,
 ): Promise<{ style?: string }> {
   const file = join(dir, 'package.json');
 
@@ -52,8 +52,8 @@ function isRelative(id: string): boolean {
 
 function resolveAsFile(
   file: string,
-  cache: IPathCache,
-): Promise<IPathCacheEntry> {
+  cache: IImportCache,
+): Promise<IImportCacheEntry> {
   // resolve `file` as the file
   return (
     fileContents(file, cache)
@@ -64,8 +64,8 @@ function resolveAsFile(
 
 function resolveAsDirectory(
   dir: string,
-  cache: IPathCache,
-): Promise<IPathCacheEntry> {
+  cache: IImportCache,
+): Promise<IImportCacheEntry> {
   // resolve the JSON contents of `dir/package.json` as `pkg`
   return jsonContents(dir, cache).then((pkg) =>
     // if `pkg` has a `style` field
@@ -102,8 +102,8 @@ function nodeModulesDirs(cwd: string): string[] {
 function resolveAsModule(
   cwd: string,
   id: string,
-  cache: IPathCache,
-): Promise<IPathCacheEntry> {
+  cache: IImportCache,
+): Promise<IImportCacheEntry> {
   // for each `dir` in the node modules directory using `cwd`
   return nodeModulesDirs(cwd).reduce(
     (promise, dir) =>
@@ -128,8 +128,8 @@ function resolveAsModule(
 export function resolve(
   id: string,
   cwd: string,
-  cache: IPathCache = {},
-): Promise<IPathCacheEntry> {
+  cache: IImportCache = {},
+): Promise<IImportCacheEntry> {
   if (isAbsolute(id)) {
     // no need to prefix with `cwd`
     cwd = '';

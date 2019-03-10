@@ -15,11 +15,9 @@ const {
   postcss,
 } = require('@minna-ui/rollup-plugins');
 
-const prod = process.env.NODE_ENV === 'production';
-
 /** Svelte preprocessor preset. */
 const preprocess = {
-  markup: preMarkup({ level: prod ? 2 : 0 }),
+  markup: preMarkup(),
   style: preStyle(),
 };
 

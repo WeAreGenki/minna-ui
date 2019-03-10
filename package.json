@@ -56,7 +56,7 @@
       "extends @minna-ui/browserslist-config/lib/dev"
     ]
   },
-  "babel": {
+  "FIXME__babel": {
     "presets": [
       "@minna-ui/jest-config/lib/babel-preset"
     ]

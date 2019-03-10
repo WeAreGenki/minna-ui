@@ -14,13 +14,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `@minna-ui/prettier-config` - Support `.svelte` file extension.
 - `@minna-ui/jest-config` - Support `.svelte` file extension and other improvements.
 - `@minna-ui/eslint-config` - TypeScript support, new rules, and support `.svelte` file extension.
-- `@minna-ui/tslint-config` - Deprecation notice. We still need to convert many rules to ESLint but this is the first step in removing TSLint.
+- `@minna-ui/tslint-config` - Deprecation notice. We'll convert TSLint rules to ESLint on an ongoing basis as they become availiable.
 
 ### Removed
 
 - `@minna-ui/tslint-config` - Package is no longer automatically installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
-- `@minna-ui/eslint-config` - Jest preset has been merged into the main config and `jest.js` no longer availiable. You should delete any `.eslintrc` files you used only for loading the preset in unit test directories.
+- `@minna-ui/eslint-config` - Jest preset has been merged into the main config and `jest.js` no longer availiable. You should delete any `.eslintrc` files for loading the old preset.
 - `@minna-ui/postcss-config` - Preset no longer includes the `postcss-extends` plugin. If you want `@extends` functionality we recommend installing the plugin seperately and using the `@use` rule.
+- `@minna-ui/build-css` + `@minna-ui/build-component` - no longer remove directories as part of the build process. This should be handled seperately via a `pacakge.json#scripts` task.
 
 ### Changed
 
@@ -37,8 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- `@minna-ui/rollup-plugins` - `makeCss` - Dependency tracking paths are wrong and cause builds to fail.
-- `@minna-ui/rollup-plugins` - `makeCss` - Write path is wrong in some use cases.
+- `@minna-ui/rollup-plugins`>`makeCss` - Dependency tracking paths are wrong and cause builds to fail.
+- `@minna-ui/rollup-plugins`>`makeCss` - Write path is wrong in some use cases.
 - Lint issues.
 
 ## [0.21.0][] - 2019-02-06

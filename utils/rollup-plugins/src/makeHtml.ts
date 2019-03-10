@@ -149,5 +149,3 @@ export function makeHtml({
     },
   };
 }
-
-module.exports = makeHtml;

@@ -130,7 +130,7 @@ $text-color: $dark-gray2 !default;
 $text-color-muted: $gray1 !default;
 $text-color-disabled: color-mod($text-color-muted alpha(0.5)) !default;
 $heading-color: $text-color !default;
-/* TODO: This should probably be the minna-ui default link colour */
+/* TODO: This should probably be the Minna UI default link colour */
 /* $brand-blue: hsl(209, 87%, 43%); */
 $link-color: $intent-primary !default;
 $shadow-color: $cobalt1 !default;

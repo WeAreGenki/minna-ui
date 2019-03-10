@@ -1,5 +1,5 @@
 /**
- * Stylelint config preset for minna-ui projects.
+ * Stylelint config preset for Minna UI projects.
  */
 
 // TODO: Write tests for any particularly custom rules or rules with regexes

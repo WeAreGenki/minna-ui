@@ -1,5 +1,5 @@
 /**
- * TSLint config preset for minna-ui projects.
+ * TSLint config preset for Minna UI projects.
  *
  * @deprecated Use `@minna-ui/eslint-config` instead which now supports
  * TypeScript and is far more capable than TSLint.

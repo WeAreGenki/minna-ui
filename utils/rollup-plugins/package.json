@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/rollup-plugins",
   "version": "0.21.0",
-  "description": "Rollup plugins for use in minna-ui projects.",
+  "description": "Rollup plugins for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugins",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",

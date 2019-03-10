@@ -1,5 +1,5 @@
 /**
- * ESLint config preset for minna-ui projects.
+ * ESLint config preset for Minna UI projects.
  */
 
 /* eslint-disable sort-keys */

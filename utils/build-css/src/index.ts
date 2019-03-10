@@ -1,5 +1,5 @@
 /**
- * Tool to compile minna-ui CSS packages.
+ * Tool to compile Minna UI CSS packages.
  */
 
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */

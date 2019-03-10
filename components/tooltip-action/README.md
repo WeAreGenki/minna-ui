@@ -27,7 +27,7 @@ TODO: Add link to demo and documentation page.
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <div use:tooltip="Example tooltip message">My example</div>

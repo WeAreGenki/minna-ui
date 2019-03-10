@@ -71,7 +71,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaSelect />

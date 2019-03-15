@@ -117,46 +117,6 @@
   }
 </script>
 
-<header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
-  <nav class="dfc fww con" role="navigation">
-    <button
-      type="button"
-      class="navbar-button l-dn button-clear"
-      aria-label="menu toggle"
-      aria-expanded="{!!isOpen}"
-      on:click="{openMenu}"
-    >
-      <svg class="navbar-icon">
-        <use xlink:href="{isOpen ? '#x' : '#menu'}" />
-      </svg>
-    </button>
-
-    <a href="/" class="navbar-logo-link" title="Home">
-      <slot name="logo">
-        <svg class="navbar-logo"><use xlink:href="#logo" /></svg>
-      </slot>
-    </a>
-
-    <div class="navbar-links {isOpen ? 'df' : 'dn'}">
-      <a
-        href="/"
-        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
-      >
-        Home
-      </a>
-
-      {#each items as item}
-      <a
-        href="{item.url}"
-        class="navbar-link {segment === item.url ? 'navbar-link-active' : ''}"
-        rel="{item.rel || ''}"
-      >
-        {item.text}
-      </a>
-      {/each}
-    </div>
-  </nav>
-</header>
 
 <style type="text/postcss">
   @import './_navbar.css';
@@ -280,3 +240,44 @@
     }
   }
 </style>
+
+<header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
+  <nav class="dfc fww con" role="navigation">
+    <button
+      type="button"
+      class="navbar-button l-dn button-clear"
+      aria-label="menu toggle"
+      aria-expanded="{!!isOpen}"
+      on:click="{openMenu}"
+    >
+      <svg class="navbar-icon">
+        <use xlink:href="{isOpen ? '#x' : '#menu'}" />
+      </svg>
+    </button>
+
+    <a href="/" class="navbar-logo-link" title="Home">
+      <slot name="logo">
+        <svg class="navbar-logo"><use xlink:href="#logo" /></svg>
+      </slot>
+    </a>
+
+    <div class="navbar-links {isOpen ? 'df' : 'dn'}">
+      <a
+        href="/"
+        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
+      >
+        Home
+      </a>
+
+      {#each items as item}
+      <a
+        href="{item.url}"
+        class="navbar-link {segment === item.url ? 'navbar-link-active' : ''}"
+        rel="{item.rel || ''}"
+      >
+        {item.text}
+      </a>
+      {/each}
+    </div>
+  </nav>
+</header>

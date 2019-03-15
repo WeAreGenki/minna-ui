@@ -91,20 +91,6 @@
   }
 </script>
 
-<!-- on:keydown="{event => handleKeyDown(event)}" -->
-<div
-  class="switch{mini ? ' switch-mini' : ''}{disabled ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
-  role="switch"
-  tabindex="{disabled ? -1 : 0}"
-  aria-checked="{!!value}"
-  on:click="{toggle}"
-  on:keydown="{handleKeyDown}"
->
-  <div class="switch-slider"></div>
-  <div class="switch-on">{textOn}</div>
-  <div class="switch-off">{textOff}</div>
-</div>
-
 <style type="text/postcss">
   @import './_switch.css';
   @import 'import.css';
@@ -231,3 +217,16 @@
     /* stylelint-enable */
   }
 </style>
+
+<div
+  class="switch{mini ? ' switch-mini' : ''}{disabled ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
+  role="switch"
+  tabindex="{disabled ? -1 : 0}"
+  aria-checked="{!!value}"
+  on:click="{toggle}"
+  on:keydown="{handleKeyDown}"
+>
+  <div class="switch-slider"></div>
+  <div class="switch-on">{textOn}</div>
+  <div class="switch-off">{textOff}</div>
+</div>

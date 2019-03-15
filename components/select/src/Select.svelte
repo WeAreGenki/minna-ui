@@ -58,7 +58,6 @@
   let selected = 0; // index of the currently selected item
 
   // computed
-  let filteredItems;
   $: filteredItems = (!isOpen || !filterable || inputText === '')
     ? items
     : items.filter(
@@ -230,48 +229,6 @@
   }
 </script>
 
-<div
-  class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}"
->
-  <!--
-    TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?
-  -->
-  <input
-    id="{id}"
-    bind:this="{input}"
-    bind:value="{inputText}"
-    class="select"
-    tabindex="{disabled ? -1 : 0}"
-    placeholder="{filterable && isOpen ? filterHelp : placeholder}"
-    readonly="{!filterable || readonly || !isOpen}"
-    disabled="{disabled}"
-    aria-haspopup="listbox"
-    on:click="{open}"
-    on:focus="{open}"
-    on:blur="{close}"
-    on:keydown="{handleKeyDown}"
-  />
-  <div class="select-caret"></div>
-
-  <div
-    class="select-listbox{isOpen ? '' : ' hide'}"
-    role="listbox"
-    on:mousedown="{select}"
-  >
-    {#each filteredItems as item, index}
-    <div
-      class="option{item.disabled ? ' option-disabled' : ''}{index === selected ? ' option-active' : ''}"
-      value="{item.id}"
-      role="option"
-    >
-      {item.text}
-    </div>
-    {:else}
-    <div class="pa3 gray">No matches</div>
-    {/each}
-  </div>
-</div>
-
 <style type="text/postcss">
   @import './_select.css';
   @import '@minna-ui/css/src/import.css';
@@ -364,3 +321,45 @@
     background-color: unset;
   }
 </style>
+
+<div
+  class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}"
+>
+  <!--
+    TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?
+  -->
+  <input
+    id="{id}"
+    bind:this="{input}"
+    bind:value="{inputText}"
+    class="select"
+    tabindex="{disabled ? -1 : 0}"
+    placeholder="{filterable && isOpen ? filterHelp : placeholder}"
+    readonly="{!filterable || readonly || !isOpen}"
+    disabled="{disabled}"
+    aria-haspopup="listbox"
+    on:click="{open}"
+    on:focus="{open}"
+    on:blur="{close}"
+    on:keydown="{handleKeyDown}"
+  />
+  <div class="select-caret"></div>
+
+  <div
+    class="select-listbox{isOpen ? '' : ' hide'}"
+    role="listbox"
+    on:mousedown="{select}"
+  >
+    {#each filteredItems as item, index}
+    <div
+      class="option{item.disabled ? ' option-disabled' : ''}{index === selected ? ' option-active' : ''}"
+      value="{item.id}"
+      role="option"
+    >
+      {item.text}
+    </div>
+    {:else}
+    <div class="pa3 gray">No matches</div>
+    {/each}
+  </div>
+</div>

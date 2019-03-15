@@ -23,6 +23,13 @@
   }
 </script>
 
+<style>
+  /* stylelint-disable a11y/no-display-none */
+  .collapse-hide {
+    display: none;
+  }
+</style>
+
 <button class="button button-collapse" on:click="{handleClick}">
   {isOpen ? textClose : textOpen}
 </button>
@@ -30,10 +37,3 @@
 <div class="collapse {isOpen ? '' : 'collapse-hide'}">
   <slot></slot>
 </div>
-
-<style>
-  /* stylelint-disable a11y/no-display-none */
-  .collapse-hide {
-    display: none;
-  }
-</style>

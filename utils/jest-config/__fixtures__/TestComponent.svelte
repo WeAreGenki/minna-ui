@@ -8,21 +8,10 @@
     can be shortened at build time for smaller JavaScript bundles.
 -->
 
-<div class="wrapper">
-  <div class="text" bind:this="{target}">
-    test {name}
-  </div>
-
-  <div class="text" bind:this="{nameReversed}">
-    test <span>{reversed}</span>
-  </div>
-</div>
-
 <script>
   export let name = 'Elon Musk';
 
   // computed
-  let reversed;
   $: reversed = name.split('').reverse().join('');
 
   // refs
@@ -52,3 +41,13 @@
     }
   }
 </style>
+
+<div class="wrapper">
+  <div class="text" bind:this="{target}">
+    test {name}
+  </div>
+
+  <div class="text" bind:this="{nameReversed}">
+    test <span>{reversed}</span>
+  </div>
+</div>

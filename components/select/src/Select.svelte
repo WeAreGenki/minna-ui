@@ -67,7 +67,7 @@
     );
 
   // non-reactive data
-  let previousFilteredItems = filteredItems;
+  let previousFilteredItems;
   let previousValue = value;
 
   function setIndex() {

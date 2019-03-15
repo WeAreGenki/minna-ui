@@ -77,6 +77,19 @@ export = {
         ignore: ['after-comment'],
       },
     ],
+    // enforce the use of variables or functions for common values
+    'scale-unlimited/declaration-strict-value': [
+      ['/color/', 'fill', 'font-size', 'stroke', 'z-index'],
+      {
+        ignoreKeywords: {
+          '/color/': ['currentColor', 'inherit', 'transparent', 'unset'],
+          fill: ['currentColor', 'inherit', 'transparent', 'unset'],
+          'font-size': ['inherit', 'unset'],
+          stroke: ['currentColor', 'inherit', 'transparent', 'unset'],
+          'z-index': [-1, 0, 1],
+        },
+      },
+    ],
     'selector-attribute-quotes': 'always',
     'selector-list-comma-newline-before': 'never-multi-line',
     'selector-list-comma-space-after': 'always-single-line',

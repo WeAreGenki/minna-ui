@@ -2,6 +2,8 @@
  * Z-INDEX
  */
 
+/* stylelint-disable scale-unlimited/declaration-strict-value */
+
 .z0 { z-index: 0; }
 .z1 { z-index: 1; }
 .z2 { z-index: 2; }

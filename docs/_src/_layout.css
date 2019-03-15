@@ -11,8 +11,14 @@
  * @format
  */
 
-/* FIXME: Continue to refine this file and remove next line */
-/* stylelint-disable property-no-vendor-prefix, plugin/no-low-performance-animation-properties, no-descending-specificity, selector-no-qualifying-type, selector-max-type, a11y/selector-pseudo-class-focus */
+/* FIXME: Continue to refine this file and remove following global exceptions */
+/* stylelint-disable property-no-vendor-prefix */
+/* stylelint-disable plugin/no-low-performance-animation-properties */
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable selector-no-qualifying-type */
+/* stylelint-disable selector-max-type */
+/* stylelint-disable a11y/selector-pseudo-class-focus */
+/* stylelint-disable scale-unlimited/declaration-strict-value */
 
 /* stylelint-disable declaration-no-important */
 

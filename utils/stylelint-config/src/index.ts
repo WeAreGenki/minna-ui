@@ -10,6 +10,7 @@ export = {
   extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
   plugins: [
     'stylelint-a11y',
+    'stylelint-declaration-strict-value',
     'stylelint-high-performance-animation',
     'stylelint-order',
   ],

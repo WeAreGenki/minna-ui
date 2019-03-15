@@ -282,5 +282,16 @@ export = {
         strict: 'off',
       },
     },
+
+    // ES module files
+    {
+      files: ['*.mjs'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+      env: {
+        commonjs: false,
+      },
+    },
   ],
 };

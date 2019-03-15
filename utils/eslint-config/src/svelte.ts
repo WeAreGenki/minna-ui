@@ -23,6 +23,7 @@ export = {
     {
       files: ['*.svelte'],
       rules: {
+        'import/first': 'off', // not fixable
         'import/no-extraneous-dependencies': [
           'error',
           {

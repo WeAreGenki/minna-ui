@@ -4,16 +4,17 @@
 /* eslint-disable security/detect-object-injection */
 
 import { existsSync, readFileSync, writeFile } from 'fs';
-import path from 'path';
+import { isAbsolute, join } from 'path';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 import { catchErr } from './catchErr';
 
 interface IMakeHtmlOptions {
-  file: string;
   basePath?: string;
   content?: string | Promise<string>;
   exclude?: string[];
+  file: string;
+  fileCss: string;
   include?: string[];
   inlineCss?: boolean;
   scriptAttr?: string;
@@ -41,11 +42,12 @@ function compileTemplate(template: string): Function {
 /**
  * Rollup plugin to generate HTML from a template and write it to disk.
  * @param opts User defined options.
- * @param opts.file Path where to save the generated HTML file.
  * @param opts.basePath Path prefix for static files.
  * @param opts.content Page HTML content. `%CSS%` and `%JS%` will be replaced
  * with tags referencing the files.
  * @param opts.exclude Files to exclude from CSS processing.
+ * @param opts.file Path where to save the generated HTML file.
+ * @param opts.fileCss Optional path where to save the generated CSS file.
  * @param opts.include Files to include in CSS processing.
  * @param opts.inlineCss Should CSS be injected into the page instead of
  * saving an external file?
@@ -59,16 +61,17 @@ function compileTemplate(template: string): Function {
  * @param opts.data Any other data you want available in the template.
  */
 export function makeHtml({
-  file,
   basePath = '/',
   content = '%CSS%\n%JS%',
   exclude,
+  file,
+  fileCss,
   include = ['**/*.css'],
   inlineCss = false,
   // prettier-ignore
   onCss = css => css,
   scriptAttr = 'defer',
-  template = path.join(__dirname, 'template.html'),
+  template = join(__dirname, 'template.html'),
   title,
   ...data
 }: IMakeHtmlOptions): rollup.Plugin {
@@ -134,18 +137,25 @@ export function makeHtml({
       }).trim();
 
       if (!inlineCss) {
-        const cssOut = outputOpts.dir
-          ? path.join(outputOpts.dir, cssFile)
-          : cssFile;
+        const cssOut =
+          fileCss || outputOpts.dir ? join(outputOpts.dir, cssFile) : cssFile;
 
         // write CSS file
-        writeFile(path.join(process.cwd(), cssOut), css, catchErr);
+        writeFile(
+          isAbsolute(cssOut) ? cssOut : join(process.cwd(), cssOut),
+          css,
+          catchErr,
+        );
       }
 
-      const fileOut = outputOpts.dir ? path.join(outputOpts.dir, file) : file;
+      const fileOut = outputOpts.dir ? join(outputOpts.dir, file) : file;
 
       // write HTML file
-      writeFile(path.join(process.cwd(), fileOut), html, catchErr);
+      writeFile(
+        isAbsolute(fileOut) ? fileOut : join(process.cwd(), fileOut),
+        html,
+        catchErr,
+      );
     },
   };
 }

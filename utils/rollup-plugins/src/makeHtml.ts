@@ -138,7 +138,8 @@ export function makeHtml({
 
       if (!inlineCss) {
         const cssOut =
-          fileCss || outputOpts.dir ? join(outputOpts.dir, cssFile) : cssFile;
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          fileCss || outputOpts.dir ? join(outputOpts.dir!, cssFile) : cssFile;
 
         // write CSS file
         writeFile(

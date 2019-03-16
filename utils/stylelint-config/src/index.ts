@@ -85,9 +85,9 @@ export = {
         ignoreKeywords: {
           '/color/': ['currentColor', 'inherit', 'transparent', 'unset'],
           fill: ['currentColor', 'inherit', 'transparent', 'unset'],
-          'font-size': ['inherit', 'unset'],
+          'font-size': ['inherit', 'initial', 'unset'],
           stroke: ['currentColor', 'inherit', 'transparent', 'unset'],
-          'z-index': [-1, 0, 1],
+          'z-index': [-1, 0, 1, 'initial'],
         },
       },
     ],

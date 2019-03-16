@@ -55,8 +55,15 @@ h4 { font-size: $h4-text-size; }
 h5 { font-size: $h5-text-size; }
 /* prettier-ignore */
 h6 { font-size: $h6-text-size; }
-/* prettier-ignore */
-.headline { font-size: $headline-text-size; }
+
+/* headlines overflow on small screens and  look better with 2 text sizes */
+.headline {
+  font-size: $headline-text-size;
+
+  @media $ns {
+    font-size: $headline-text-size-ns;
+  }
+}
 
 /* Paragraphs */
 

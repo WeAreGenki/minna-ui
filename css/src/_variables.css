@@ -84,7 +84,8 @@ $text-weight: 400 !default;
 $text-weight-heavy: 700 !default;
 $line-height: 1.5 !default;
 /* font size modular scale = base 1em, ratio = 1.2 */
-$headline-text-size: 4.3em !default;
+$headline-text-size: 15.05vw !default; /* fluid on s screens */
+$headline-text-size-ns: 4.3em !default;
 $h1-text-size: 2.986em !default;
 $h2-text-size: 2.488em !default;
 $h3-text-size: 2.074em !default;

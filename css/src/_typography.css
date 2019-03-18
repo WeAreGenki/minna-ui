@@ -56,7 +56,7 @@ h5 { font-size: $h5-text-size; }
 /* prettier-ignore */
 h6 { font-size: $h6-text-size; }
 
-/* headlines overflow on small screens and  look better with 2 text sizes */
+/* use 2 sizes for headlines to try prevent overflow on small screens */
 .headline {
   font-size: $headline-text-size;
 

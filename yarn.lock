@@ -9716,10 +9716,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.0.0-beta.19:
-  version "3.0.0-beta.19"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.19.tgz#42cc5f88e3a952f3a8ee32eb955e2827a7a2d9b0"
-  integrity sha512-0MoHTQATrTwm257v+mnrG4TEXCzugHzs5gluPoyCSi8Tz69s1xhSqbek+Vx0kGFXeo1v3GCEZwd9i2VRyn1kWg==
+svelte@3.0.0-beta.20:
+  version "3.0.0-beta.20"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.20.tgz#dd99eb500bd9b2c259a6fde1ddcff32115767624"
+  integrity sha512-IEZrUseN2Hzpo1KFdyZf3Neqw7abbXLU7oRRkyBVm0iT1PQKHj8G75hR0wISvz7pOegYisiVFdi3C5Asz4ps9Q==
 
 svg-tags@^1.0.0:
   version "1.0.0"

@@ -36,7 +36,7 @@
     "@wearegenki/renovate-config": "1.0.0",
     "codecov": "3.2.0",
     "docsify-cli": "4.3.0",
-    "eslint": "5.15.2",
+    "eslint": "5.15.3",
     "jest": "24.5.0",
     "lerna": "3.13.1",
     "postcss": "7.0.14",
@@ -44,7 +44,7 @@
     "prettier": "1.16.4",
     "remark-cli": "6.0.1",
     "stylelint": "9.10.1",
-    "svelte": "3.0.0-beta.15",
+    "svelte": "3.0.0-beta.19",
     "tslib": "1.9.3",
     "typescript": "3.3.3333"
   },

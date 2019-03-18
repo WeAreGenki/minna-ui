@@ -27,13 +27,17 @@ export function runBin(
       reject(error);
     });
 
-    child.stdout.on('data', (data) => {
-      stdout.push(data.toString());
-    });
+    if (child.stdout) {
+      child.stdout.on('data', (data) => {
+        stdout.push(data.toString());
+      });
+    }
 
-    child.stderr.on('data', (data) => {
-      stderr.push(data.toString());
-    });
+    if (child.stderr) {
+      child.stderr.on('data', (data) => {
+        stderr.push(data.toString());
+      });
+    }
 
     child.on('close', (code) => {
       if (stderr.length || code !== 0) {

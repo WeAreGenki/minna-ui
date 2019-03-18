@@ -109,12 +109,9 @@
     }
   }
 
-  // FIXME: Remove if wrapper once svelte is fixed
-  if (typeof document !== 'undefined') {
-    onMount(() => {
-      document.addEventListener('scroll', scrollHandler, false);
-    });
-  }
+  onMount(() => {
+    document.addEventListener('scroll', scrollHandler, false);
+  });
 </script>
 
 

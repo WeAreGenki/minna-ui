@@ -211,22 +211,19 @@
     }
   }
 
-  // FIXME: Remove if wrapper once svelte is fixed
-  if (typeof document !== 'undefined') {
-    beforeUpdate(() => {
-      if (filteredItems !== previousFilteredItems) {
-        previousFilteredItems = filteredItems;
-        setIndex();
-      }
+  beforeUpdate(() => {
+    if (filteredItems !== previousFilteredItems) {
+      previousFilteredItems = filteredItems;
+      setIndex();
+    }
 
-      if (value && (value !== previousValue)) {
-        previousValue = value;
-        setInput();
-      }
-    });
+    if (value && (value !== previousValue)) {
+      previousValue = value;
+      setInput();
+    }
+  });
 
-    onMount(setInput);
-  }
+  onMount(setInput);
 </script>
 
 <style type="text/postcss">

@@ -26,6 +26,7 @@ let server: http.Server;
  * @param opts.dir The directory to serve.
  * @param opts.liveReload Automatic page reload when a dependent file changes.
  * @param opts.port Port to listen on.
+ * @param opts.host Host to listen on.
  * @param opts.spa Run in single page app mode where `index.html` is served
  * for any unknown paths instead of returning a 404.
  * @param opts.wsPort Web socket port for the page live reload script.
@@ -35,6 +36,7 @@ export function devserver({
   dir = './dist',
   // liveReload = true,
   port = process.env.PORT || 5000,
+  host = '0.0.0.0',
   spa = false,
   // wsPort = 13341,
   ...userOpts
@@ -80,10 +82,24 @@ export function devserver({
     // request logging middleware
     server.on('request', log);
 
-    server.listen(port, (err: Error) => {
-      if (err) throw err;
+    server.on('error', (err) => {
+      // @ts-ignore FIXME: Is it possible to extend a build-in lib interface?
+      if (err.code === 'EADDRINUSE') {
+        console.log('Address in use, retrying...');
 
-      console.log(`[DEVSERVER] Started server at http://localhost:${port}/`);
+        setTimeout(() => {
+          server.close();
+          server.listen({ host, port: +port + 1 }, () => {
+            console.log(`[DEVSERVER] Started - http://${host}:${port}/`);
+          });
+        }, 1000);
+      } else {
+        throw err;
+      }
+    });
+
+    server.listen({ host, port }, () => {
+      console.log(`[DEVSERVER] Started - http://${host}:${port}/`);
     });
   }
 

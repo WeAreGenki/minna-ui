@@ -36,7 +36,7 @@
     "stylelint-order": "^2.1.0"
   },
   "devDependencies": {
-    "@types/stylelint": "9.4.2"
+    "@types/stylelint": "9.10.0"
   },
   "publishConfig": {
     "access": "public"

@@ -34,11 +34,11 @@
     "jest": "^24.0.0"
   },
   "dependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/jest": "^24.0.11",
-    "@types/node": "^11.11.3",
+    "@types/node": "^11.11.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.5.0",
     "identity-obj-proxy": "^3.0.0",

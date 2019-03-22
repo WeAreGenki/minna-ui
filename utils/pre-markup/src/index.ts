@@ -27,7 +27,11 @@ export = ({ enabled = true } = {}) => async ({
   let html = `${content}`;
   let count = 0;
 
-  const tags = [['<script', '</script>'], ['<style', '</style>']];
+  const tags = [
+    ['<script', '</script>'],
+    ['<style', '</style>'],
+    ['<pre', '</pre>'],
+  ];
   const blocks: IBlocks = {};
 
   // replace tag blocks with markers

@@ -56,6 +56,9 @@ export = ({ enabled = true } = {}) => async ({
   // reduce multiple whitespace down to a single space
   html = html.replace(/\s{2,}/gm, ' ');
 
+  // remove HTML comments
+  html = html.replace(/<!--.*?-->/gsu, '');
+
   // restore script and style blocks
   Object.keys(blocks).forEach((marker) => {
     html = html.replace(marker, blocks[marker]);

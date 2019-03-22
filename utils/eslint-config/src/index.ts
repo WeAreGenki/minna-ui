@@ -93,6 +93,7 @@ export = {
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
+    '@typescript-eslint/unified-signatures': 'error',
     'comma-dangle': [
       'error',
       {

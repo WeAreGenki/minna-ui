@@ -81,13 +81,16 @@ p {
 a {
   padding: $link-click-area; /* larger link click area size */
   margin: calc(-1 * $link-click-area);
+  font-weight: $link-text-weight;
   color: $link-color;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: $link-line-color;
   word-wrap: break-word;
 
   &:hover,
   &:focus {
-    text-decoration: underline;
+    color: $link-color;
+    text-decoration-color: $link-color;
   }
 }
 

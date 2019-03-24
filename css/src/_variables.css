@@ -97,6 +97,8 @@ $paragraph-line-height: 1.7 !default;
 $paragraph-lead-text-size: 1.5em !default;
 $paragraph-lead-text-weight: $text-weight-light !default;
 $link-click-area: 0.4em !default; /* reduce if links overlap */
+$link-text-weight: 600 !default;
+$link-line-color: color-mod($link-color lightness(80%));
 $li-margin-between: 0.5em !default;
 $hr-margin: 3em 0 !default;
 $hr-border: 1px solid $divider-black !default;

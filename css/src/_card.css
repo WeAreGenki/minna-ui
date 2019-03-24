@@ -20,11 +20,15 @@
   color: $card-hover-text-color;
   box-shadow: $card-hover-shadow;
 
-  /* override anchor pseudo state style since cards already have visual cues */
-  a&:hover,
-  a&:focus {
-    color: $card-hover-text-color;
-    text-decoration: unset;
+  a& {
+    font-weight: $text-weight;
+
+    /* override anchor pseudo state style as cards already have visual cues */
+    &:hover,
+    &:focus {
+      color: $card-hover-text-color;
+      text-decoration: unset;
+    }
   }
 
   /**

@@ -13,8 +13,8 @@ interface IMakeHtmlOptions {
   basePath?: string;
   content?: string | Promise<string>;
   exclude?: string[];
-  file: string;
-  fileCss: string;
+  file?: string;
+  fileCss?: string;
   include?: string[];
   inlineCss?: boolean;
   scriptAttr?: string;
@@ -64,17 +64,17 @@ export function makeHtml({
   basePath = '/',
   content = '%CSS%\n%JS%',
   exclude,
-  file,
+  file = 'index.html',
   fileCss,
   include = ['**/*.css'],
   inlineCss = false,
   // prettier-ignore
-  onCss = css => css,
+  onCss,
   scriptAttr = 'defer',
   template = join(__dirname, '../src/template.html'),
   title,
   ...data
-}: IMakeHtmlOptions): rollup.Plugin {
+}: IMakeHtmlOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   // if `template` is a path and the file exists use its content otherwise

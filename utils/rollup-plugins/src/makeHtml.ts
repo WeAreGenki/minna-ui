@@ -71,7 +71,7 @@ export function makeHtml({
   // prettier-ignore
   onCss = css => css,
   scriptAttr = 'defer',
-  template = join(__dirname, 'template.html'),
+  template = join(__dirname, '../src/template.html'),
   title,
   ...data
 }: IMakeHtmlOptions): rollup.Plugin {

@@ -126,7 +126,7 @@ export = {
     'jsdoc/require-param-name': 'warn',
     'jsdoc/require-param-type': 'warn',
     'jsdoc/require-returns': 'warn',
-    // 'jsdoc/require-returns-check': 'warn', // TODO: Uncommend once bug is fixed https://github.com/gajus/eslint-plugin-jsdoc/issues/156
+    'jsdoc/require-returns-check': 'warn',
     'jsdoc/require-returns-type': 'warn',
     'jsdoc/valid-types': 'warn',
     'max-len': [

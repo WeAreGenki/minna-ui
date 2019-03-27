@@ -26,14 +26,14 @@ interface IMakeCssOptions {
   /** Write CSS files to disk even when empty. */
   emitEmpty?: boolean;
   /** Files to exclude from CSS processing. */
-  exclude?: string[];
+  exclude?: string[] | RegExp[];
   /**
    * CSS file name to emit. Only required when not using `rollup#output.file`.
    * Defaults to same name as your JS bundle but with a `.css` file extension.
    */
   fileName?: string;
   /** Files to include in CSS processing. */
-  include?: string[];
+  include?: string[] | RegExp[];
   /** Should output CSS be minified and cleaned? */
   optimize?: boolean;
   /** CSS classes to never remove. */
@@ -74,7 +74,7 @@ export function makeCss({
   emitEmpty = true,
   exclude = [],
   fileName,
-  include = ['**/*.css'],
+  include = [/\.css$'/],
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
   unsafe = false,

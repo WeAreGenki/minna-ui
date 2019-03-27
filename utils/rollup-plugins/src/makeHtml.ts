@@ -12,10 +12,10 @@ import { catchErr } from './catchErr';
 interface IMakeHtmlOptions {
   basePath?: string;
   content?: string | Promise<string>;
-  exclude?: string[];
+  exclude?: string[] | RegExp[];
   file?: string;
   fileCss?: string;
-  include?: string[];
+  include?: string[] | RegExp[];
   inlineCss?: boolean;
   scriptAttr?: string;
   template?: string;
@@ -66,7 +66,7 @@ export function makeHtml({
   exclude,
   file = 'index.html',
   fileCss,
-  include = ['**/*.css'],
+  include = [/\.css$'/],
   inlineCss = false,
   // prettier-ignore
   onCss,

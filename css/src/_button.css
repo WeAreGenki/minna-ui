@@ -8,6 +8,7 @@
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
   color: $button-text-color;
+  text-decoration: none;
   background-color: $button-background-color;
   border: 0;
   border-radius: $button-radius;

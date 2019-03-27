@@ -22,6 +22,7 @@
 
   a& {
     font-weight: $text-weight;
+    text-decoration: none;
 
     /* override anchor pseudo state style as cards already have visual cues */
     &:hover,

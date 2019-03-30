@@ -21,13 +21,13 @@
     "lib"
   ],
   "peerDependencies": {
-    "svelte": "^3.0.0-beta.21"
+    "svelte": "^3.0.0-beta.22"
   },
   "dependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "0.8.5",
     "@minna-ui/pre-markup": "*",
     "@minna-ui/pre-style": "*",
-    "rollup": "1.7.3",
+    "rollup": "1.7.4",
     "rollup-plugin-commonjs": "9.2.2",
     "rollup-plugin-node-resolve": "4.0.1",
     "rollup-plugin-svelte": "5.0.3"

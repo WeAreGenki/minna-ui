@@ -83,7 +83,6 @@ export = {
         SwitchCase: 1,
       },
     ],
-    '@typescript-eslint/interface-name-prefix': ['error', 'always'],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/no-empty-interface': [
       'error',

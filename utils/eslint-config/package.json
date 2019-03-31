@@ -36,7 +36,7 @@
     "eslint-plugin-jsdoc": "^4.6.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "github:sveltejs/eslint-plugin-svelte3#v0.4.3"
+    "eslint-plugin-svelte3": "^0.4.5"
   },
   "devDependencies": {
     "@types/eslint": "4.16.6"

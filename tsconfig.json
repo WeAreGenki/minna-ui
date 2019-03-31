@@ -5,6 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "paths": { "*": ["types/*"] },
     "sourceMap": true
   },
   "exclude": [

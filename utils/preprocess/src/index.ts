@@ -4,7 +4,7 @@ import { PreprocessorGroup } from './types';
 
 export const preprocess: PreprocessorGroup = {
   markup: markup({
-    enabled: process.env.NODE_ENV !== 'production',
+    enabled: process.env.NODE_ENV === 'production',
   }),
   style: style(),
 };

@@ -12,7 +12,7 @@ import http from 'http';
 import { resolve } from 'path';
 import sirv from 'sirv';
 import rollup from 'rollup';
-import { catchErr } from './catchErr';
+import { handleErr } from '@minna-ui/utils';
 
 const dev = !!process.env.ROLLUP_WATCH;
 
@@ -32,7 +32,7 @@ let server: http.Server;
  * @param opts.wsPort Web socket port for the page live reload script.
  * @param opts.userOpts Any additional options to pass to `sirv`.
  */
-export function devserver({
+export function devServer({
   dir = './dist',
   // liveReload = true,
   port = process.env.PORT || 5000,
@@ -50,7 +50,7 @@ export function devserver({
   // only start a new server if one isn't already initialised
   if (!server) {
     process.on('exit', () => {
-      server.close(catchErr);
+      server.close(handleErr);
       console.log('[DEVSERVER] Terminated server');
     });
 

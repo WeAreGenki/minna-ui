@@ -1,39 +1,40 @@
-// TODO: Merge source maps
+// TODO: Create and merge source maps
 
 /* eslint-disable security/detect-object-injection, jsdoc/valid-types */
 
 import merge from 'deepmerge';
-// import { writeFile } from 'fs';
-// import { dirname, isAbsolute, join, resolve } from 'path';
 import { basename, dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
+import syntax from 'postcss-scss';
 import Purgecss from 'purgecss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
-// import { catchErr } from './catchErr';
 
-interface MakeCssOptions {
+interface EmitCssOptions {
   /**
    * Files to parse for CSS classes. Find which CSS selectors are used when
    * removing unused styles.
    */
   content?: string[] | Purgecss.RawContent[];
-  /** Base PostCSS options. */
-  context?: {};
   /** Show additional logging for debug purposes. */
   debug?: boolean;
   /** Write CSS files to disk even when empty. */
   emitEmpty?: boolean;
   /** Files to exclude from CSS processing. */
-  exclude?: string[] | RegExp[];
+  exclude?: RegExp[] | string[];
   /**
    * CSS file name to emit. Only required when not using `rollup#output.file`.
    * Defaults to same name as your JS bundle but with a `.css` file extension.
    */
   fileName?: string;
   /** Files to include in CSS processing. */
-  include?: string[] | RegExp[];
+  include?: RegExp[] | string[];
+  /**
+   * Base PostCSS options. Please note that these can be overriden by your
+   * PostCSS configuration file.
+   */
+  options?: postcss.ProcessOptions;
   /** Should output CSS be minified and cleaned? */
   optimize?: boolean;
   /** CSS classes to never remove. */
@@ -50,7 +51,7 @@ interface MakeCssOptions {
  * into a single bundle, and write it to disk. Optionally minifies and removes
  * unused styles for significantly smaller CSS bundles.
  */
-export function makeCss({
+export function emitCss({
   content = [
     'src/**/*.html',
     'src/**/*.js',
@@ -61,17 +62,17 @@ export function makeCss({
     'src/**/*.ts',
     'src/**/*.tsx',
   ],
-  context = {},
   debug = false,
   emitEmpty = true,
   exclude = [],
   fileName,
-  include = [/\.css$'/],
+  include = [/\.css$/],
+  options = {},
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
   unsafe = false,
   ...userOpts
-}: MakeCssOptions = {}): rollup.Plugin {
+}: EmitCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
   const styles: { [id: string]: string } = {};
   const maps: { [id: string]: postcss.ResultMap } = {};
@@ -84,12 +85,20 @@ export function makeCss({
 
       try {
         const ctx = merge(
-          { from: id, map: { annotation: false, inline: false }, to: id },
-          context,
+          {
+            from: id,
+            map: {
+              annotation: false,
+              inline: false,
+            },
+            syntax,
+            to: id,
+          },
+          options,
         );
 
-        const { plugins, options } = await postcssrc(ctx);
-        const result = await postcss(plugins).process(source, options);
+        const { plugins, options: opts } = await postcssrc(ctx);
+        const result = await postcss(plugins).process(source, opts);
 
         result.warnings().forEach((warn) => {
           this.warn(warn.toString(), { column: warn.column, line: warn.line });
@@ -151,7 +160,7 @@ export function makeCss({
           const result = await postcss(
             // eslint-disable-next-line global-require
             require('cssnano')({
-              preset: [unsafe ? 'advanced' : 'default', cssnanoOpts],
+              preset: ['default', cssnanoOpts],
             }),
           ).process(css, {});
 

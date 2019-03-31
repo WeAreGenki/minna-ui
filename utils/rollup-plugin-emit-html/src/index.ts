@@ -7,15 +7,15 @@ import { existsSync, readFileSync, writeFile } from 'fs';
 import { isAbsolute, join } from 'path';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
-import { catchErr } from './catchErr';
+import { handleErr } from '@minna-ui/utils';
 
-interface MakeHtmlOptions {
+interface EmitHtmlOptions {
   basePath?: string;
   content?: string | Promise<string>;
-  exclude?: string[] | RegExp[];
+  exclude?: RegExp[] | string[];
   file?: string;
   fileCss?: string;
-  include?: string[] | RegExp[];
+  include?: RegExp[] | string[];
   inlineCss?: boolean;
   scriptAttr?: string;
   template?: string;
@@ -30,7 +30,7 @@ interface MakeHtmlOptions {
  * @see https://github.com/Drulac/template-literal
  * @param template A HTML template to compile.
  */
-function compileTemplate(template: string): Function {
+export function compileTemplate(template: string): Function {
   // eslint-disable-next-line
   return new Function('d', 'return `' + template + '`');
 }
@@ -56,13 +56,13 @@ function compileTemplate(template: string): Function {
  * @param opts.title Page title.
  * @param opts.data Any other data you want available in the template.
  */
-export function makeHtml({
+export function emitHtml({
   basePath = '/',
   content = '%CSS%\n%JS%',
   exclude,
   file = 'index.html',
   fileCss,
-  include = [/\.css$'/],
+  include = [/\.css$/],
   inlineCss = false,
   // prettier-ignore
   onCss,
@@ -70,7 +70,7 @@ export function makeHtml({
   template = join(__dirname, '../src/template.html'),
   title,
   ...data
-}: MakeHtmlOptions = {}): rollup.Plugin {
+}: EmitHtmlOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   // if `template` is a path and the file exists use its content otherwise
@@ -141,7 +141,7 @@ export function makeHtml({
         writeFile(
           isAbsolute(cssOut) ? cssOut : join(process.cwd(), cssOut),
           css,
-          catchErr,
+          handleErr,
         );
       }
 
@@ -151,7 +151,7 @@ export function makeHtml({
       writeFile(
         isAbsolute(fileOut) ? fileOut : join(process.cwd(), fileOut),
         html,
-        catchErr,
+        handleErr,
       );
     },
   };

@@ -2,6 +2,7 @@ import merge from 'deepmerge';
 import { dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
+import syntax from 'postcss-scss';
 import Purgecss from 'purgecss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
@@ -9,8 +10,8 @@ import { createFilter } from 'rollup-pluginutils';
 interface PostcssRollupOptions {
   content?: string[] | Purgecss.RawContent[];
   context?: postcss.ProcessOptions;
-  exclude?: string[];
-  include?: string[];
+  exclude?: RegExp[] | string[];
+  include?: RegExp[] | string[];
   optimize?: boolean;
   whitelist?: string[];
 }
@@ -25,7 +26,7 @@ interface PostcssRollupOptions {
  * @param opts.optimize Should output CSS be minified and cleaned?
  * @param opts.whitelist CSS classes to always keep.
  */
-function postcssRollup({
+export default function postcssRollup({
   content = [
     '__sapper__/build/*.html',
     '__sapper__/build/*.js',
@@ -34,10 +35,14 @@ function postcssRollup({
     // 'dist/**/*.js',
     'src/**/*.html',
     'src/**/*.js',
+    'src/**/*.jsx',
+    'src/**/*.svelte',
+    'src/**/*.ts',
+    'src/**/*.tsx',
   ],
   context = {},
   exclude = [],
-  include = ['**/*.css'],
+  include = [/\.css$/],
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
 }: PostcssRollupOptions = {}): rollup.Plugin {
@@ -51,7 +56,15 @@ function postcssRollup({
 
       try {
         const ctx = merge(
-          { from: id, map: { annotation: false, inline: false }, to: id },
+          {
+            from: id,
+            map: {
+              annotation: false,
+              inline: false,
+            },
+            syntax,
+            to: id,
+          },
           context,
         );
         const { plugins, options } = await postcssrc(ctx);

@@ -1,8 +1,8 @@
 {
-  "name": "@minna-ui/rollup-plugins",
+  "name": "@minna-ui/rollup-plugin-emit-css",
   "version": "0.21.0",
-  "description": "Rollup plugins for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugins",
+  "description": "Compile and emit CSS in rollup for use in Minna UI projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-emit-css",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
@@ -15,7 +15,6 @@
     "purgecss",
     "rollup",
     "rollup-plugin",
-    "svelte",
     "wearegenki"
   ],
   "scripts": {
@@ -26,22 +25,19 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
-    "lib",
-    "src/template.html"
+    "lib"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
     "rollup": "^1.0.0"
   },
   "dependencies": {
-    "@wearegenki/node-utils": "0.1.2",
     "cssnano": "^4.1.8",
-    "cssnano-preset-advanced": "^4.0.6",
     "deepmerge": "^3.1.0",
     "postcss-load-config": "^2.0.0",
+    "postcss-scss": "^2.0.0",
     "purgecss": "^1.1.0",
-    "rollup-pluginutils": "^2.5.0",
-    "sirv": "^0.2.2"
+    "rollup-pluginutils": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"

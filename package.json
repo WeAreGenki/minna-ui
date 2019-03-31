@@ -36,7 +36,7 @@
     "@wearegenki/renovate-config": "1.0.0",
     "codecov": "3.2.0",
     "docsify-cli": "4.3.0",
-    "eslint": "5.15.3",
+    "eslint": "5.16.0",
     "jest": "24.5.0",
     "lerna": "3.13.1",
     "postcss": "7.0.14",
@@ -46,7 +46,7 @@
     "stylelint": "9.10.1",
     "svelte": "3.0.0-beta.22",
     "tslib": "1.9.3",
-    "typescript": "3.3.4000"
+    "typescript": "3.4.1"
   },
   "browserslist": {
     "production": [

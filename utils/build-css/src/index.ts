@@ -9,7 +9,6 @@ import fs from 'fs';
 import { basename, dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
-import syntax from 'postcss-scss';
 import { promisify } from 'util';
 
 const readFile = promisify(fs.readFile);
@@ -57,21 +56,22 @@ interface ProcessCssResult {
 /**
  * Process CSS.
  * @param opts User defined options.
+ * @param opts.banner Banner to prepend to resulting code.
  * @param opts.from File from.
  * @param opts.to File to.
- * @param opts.banner Banner to prepend to resulting code.
  */
 async function processCss({
+  banner = '',
   from,
-  to,
-  banner,
+  to = from,
 }: ProcessCssOpts): Promise<ProcessCssResult> {
   const src = await readFile(from, 'utf8');
 
-  const { plugins, options } = await postcssLoadConfig({
+  const { options, plugins } = await postcssLoadConfig({
     from,
-    map: { inline: false },
-    syntax,
+    map: {
+      inline: false,
+    },
     to,
   });
 
@@ -87,8 +87,8 @@ async function processCss({
       2: { all: true },
     },
     returnPromise: true,
-    sourceMap: true,
-  }).minify(result.css, result.map.toString());
+    sourceMap: !!result.map,
+  }).minify(result.css, result.map ? result.map.toString() : '');
 
   compileWarn('CleanCSS', 'ERR', min.errors);
   compileWarn('CleanCSS', 'WARN', min.warnings);

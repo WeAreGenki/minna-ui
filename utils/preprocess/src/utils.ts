@@ -1,6 +1,6 @@
-import minifier from './index';
+import { markup } from './markup';
 
-const minify = minifier();
+const minify = markup();
 
 /**
  * Minify whitespace in HTML contained in a tagged template literal.

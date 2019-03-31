@@ -1,25 +1,16 @@
 /* eslint-disable security/detect-object-injection */
 
-interface PreprocessOpts {
-  attributes?: {
-    type: string;
-    [x: string]: string;
-  };
-  content: string;
-  filename?: string;
-}
-
-interface Blocks {
-  [x: string]: string;
-}
+import { MarkupPreprocessor } from './types';
 
 /**
  * Minna UI svelte markup preprocessor.
  * Reduces the whitespace in svelte components to a minimum.
  * @param opts User defined options.
- * @param opts.enabled Should the preprocessor be run?
+ * @param opts.enabled Enable preprocessor to tranform HTML code.
  */
-export = ({ enabled = true } = {}) => ({ content }: PreprocessOpts) => {
+export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
+  content,
+}) => {
   if (!enabled) return;
 
   let code = `${content}`;
@@ -30,7 +21,7 @@ export = ({ enabled = true } = {}) => ({ content }: PreprocessOpts) => {
     ['<style', '</style>'],
     ['<pre', '</pre>'],
   ];
-  const blocks: Blocks = {};
+  const blocks: { [marker: string]: string } = {};
 
   // replace tag blocks with markers
   tags.forEach((tag) => {
@@ -67,5 +58,7 @@ export = ({ enabled = true } = {}) => ({ content }: PreprocessOpts) => {
   });
 
   // eslint-disable-next-line consistent-return
-  return { code };
+  return {
+    code,
+  };
 };

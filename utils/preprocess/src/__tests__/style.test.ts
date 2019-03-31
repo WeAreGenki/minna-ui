@@ -5,8 +5,8 @@
 import fs from 'fs';
 import { promisify } from 'util';
 import { compile, preprocess } from 'svelte/compiler';
-import postcssNested from 'postcss-nested';
-import preprocessStyle from '../index';
+import nested from 'postcss-nested';
+import { style } from '../style';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
@@ -15,8 +15,9 @@ const readFile = promisify(fs.readFile);
 const componentPath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
 
 const preprocessOpts = {
-  style: preprocessStyle({
-    plugins: [postcssNested],
+  style: style({
+    /* stylelint-disable-next-line */
+    plugins: [nested],
   }),
 };
 

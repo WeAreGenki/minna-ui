@@ -1,17 +1,21 @@
 {
-  "name": "@minna-ui/pre-markup",
+  "name": "@minna-ui/preprocess",
   "version": "0.21.0",
-  "description": "Svelte markup preprocessor for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/pre-markup",
+  "description": "Code transformers and svelte preprocessor for use in Minna UI projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/preprocess",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
+    "css",
     "html",
     "minify-html",
     "minna-ui",
+    "postcss-runner",
+    "postcss",
     "svelte",
+    "svelte-preprocessor",
     "wearegenki"
   ],
   "scripts": {
@@ -25,9 +29,17 @@
     "lib"
   ],
   "peerDependencies": {
+    "postcss": "^7.0.0",
     "svelte": "^3.0.0-beta.22"
   },
-  "dependencies": {},
+  "dependencies": {
+    "deepmerge": "^3.1.0",
+    "postcss-load-config": "^2.0.0",
+    "postcss-scss": "^2.0.0"
+  },
+  "devDependencies": {
+    "postcss-nested": "4.1.2"
+  },
   "publishConfig": {
     "access": "public"
   }

@@ -1,26 +1,17 @@
 import merge from 'deepmerge';
 import { dirname, join } from 'path';
-import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
-
-interface SveltePreprocessOpts {
-  attributes: {
-    type: string;
-    [x: string]: string;
-  };
-  content: string;
-  filename: string;
-}
+import postcssLoadConfig from 'postcss-load-config';
+import syntax from 'postcss-scss';
+import { Preprocessor } from './types';
 
 /**
  * Minna UI svelte style preprocessor.
  * @param opts PostCSS options.
  */
-export = (opts: postcss.ProcessOptions = {}) => async ({
-  attributes,
-  content,
-  filename,
-}: SveltePreprocessOpts) => {
+export const style = (
+  opts: postcss.ProcessOptions = {},
+): Preprocessor => async ({ attributes, content, filename }) => {
   if (attributes.type !== 'text/postcss') return;
 
   // merge user provided options into default context
@@ -28,6 +19,7 @@ export = (opts: postcss.ProcessOptions = {}) => async ({
     {
       from: filename,
       map: { annotation: false, inline: false },
+      syntax,
       to: filename,
     },
     opts,
@@ -65,7 +57,6 @@ export = (opts: postcss.ProcessOptions = {}) => async ({
     };
   } catch (err) {
     if (err.name === 'CssSyntaxError') {
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       process.stderr.write(err.message + err.showSourceCode());
     } else {
       // eslint-disable-next-line no-console

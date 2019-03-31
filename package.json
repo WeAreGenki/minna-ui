@@ -62,7 +62,6 @@
     ]
   },
   "postcss": {
-    "map": true,
     "syntax": "postcss-scss",
     "plugins": {
       "@minna-ui/postcss-config": {

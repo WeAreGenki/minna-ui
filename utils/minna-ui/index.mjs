@@ -1,5 +1,3 @@
-// FIXME: Uncomment broken packages
-
 // Components
 export { default as CodeView } from '@minna-ui/code-view';
 export { default as Collapse } from '@minna-ui/collapse';

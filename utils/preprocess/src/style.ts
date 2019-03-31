@@ -18,7 +18,10 @@ export const style = (
   const context = merge(
     {
       from: filename,
-      map: { annotation: false, inline: false },
+      map: {
+        annotation: false,
+        inline: false,
+      },
       syntax,
       to: filename,
     },

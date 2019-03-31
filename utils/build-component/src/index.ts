@@ -10,8 +10,7 @@ import compiler from '@ampproject/rollup-plugin-closure-compiler';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
-import preMarkup from '@minna-ui/pre-markup';
-import preStyle from '@minna-ui/pre-style';
+import { preprocess } from '@minna-ui/preprocess';
 
 const compilerOpts = {
   compilation_level: 'SIMPLE',
@@ -78,10 +77,7 @@ export = async function run(
       input: pkgSvelte,
       plugins: [
         svelte({
-          preprocess: {
-            markup: preMarkup(),
-            style: preStyle(),
-          },
+          preprocess,
           // FIXME: Don't use `any` type once svelte has types available
           // eslint-disable-next-line sort-keys, @typescript-eslint/no-explicit-any
           css(css: any) {
@@ -99,10 +95,7 @@ export = async function run(
     //   input: pkgSvelte,
     //   plugins: [
     //     svelte({
-    //       preprocess: {
-    //         markup: preMarkup({ level 2 }),
-    //         style: preStyle(),
-    //       },
+    //       preprocess,
     //       css: false,
     //       customElement: true,
     //     }),
@@ -117,10 +110,7 @@ export = async function run(
       plugins: [
         svelte({
           css: false,
-          preprocess: {
-            markup: preMarkup(),
-            style: preStyle(),
-          },
+          preprocess,
         }),
         resolve(),
         commonjs(),

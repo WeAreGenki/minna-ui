@@ -26,9 +26,11 @@
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",
+  "typings": "types.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "types.d.ts"
   ],
   "peerDependencies": {
     "svelte": "^3.0.0-beta.22"

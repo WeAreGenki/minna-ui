@@ -19,7 +19,7 @@ interface PostcssRollupOptions {
  * Rollup plugin to process any imported CSS via PostCSS and optionally remove
  * unused styles for significantly smaller CSS bundles.
  * @param opts User defined options.
- * @param opts.content Files to parse for CSS classes.
+ * @param opts.content Files to parse for used CSS classes.
  * @param opts.context Base PostCSS options.
  * @param opts.exclude Files to exclude from CSS processing.
  * @param opts.include Files to include in CSS processing.
@@ -30,7 +30,10 @@ export default function postcssRollup({
   content = [
     '__sapper__/build/*.html',
     '__sapper__/build/*.js',
-    // FIXME: Using `dist` is the most reliable but requires 2 builds
+    /**
+     * TODO: Add to documentation that `dist` is the most reliable but
+     * requires 2 full builds.
+     */
     // 'dist/**/*.html',
     // 'dist/**/*.js',
     'src/**/*.html',

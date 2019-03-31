@@ -3,7 +3,7 @@ import { dirname, join } from 'path';
 import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
 
-interface ISveltePreprocessOpts {
+interface SveltePreprocessOpts {
   attributes: {
     type: string;
     [x: string]: string;
@@ -20,7 +20,7 @@ export = (opts: postcss.ProcessOptions = {}) => async ({
   attributes,
   content,
   filename,
-}: ISveltePreprocessOpts) => {
+}: SveltePreprocessOpts) => {
   if (attributes.type !== 'text/postcss') return;
 
   // merge user provided options into default context

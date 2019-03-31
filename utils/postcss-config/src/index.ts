@@ -10,12 +10,12 @@ import advancedVars from 'postcss-advanced-variables';
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
 import atUse from 'postcss-use';
-import { IImportCacheEntry, resolve } from './css-import-resolve';
+import { ImportCacheEntry, resolve } from './css-import-resolve';
 
 // TODO: Could/should this be cached on disk for faster rebulds?
 const importCache = {};
 
-interface IPluginOptions {
+interface PluginOptions {
   /** Show useful debugging feedback (e.g. unresolved variables). */
   debug?: boolean;
   /**
@@ -64,7 +64,7 @@ export = postcss.plugin(
     optimize = process.env.NODE_ENV === 'production',
     unsafe = false,
     ...options
-  }: IPluginOptions = {}) => {
+  }: PluginOptions = {}) => {
     let plugins = [advancedVars, atUse, nested, colorModFunction];
 
     if (optimize) {
@@ -81,7 +81,7 @@ export = postcss.plugin(
       // FIXME:
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       opts: any,
-    ): Promise<IImportCacheEntry> => {
+    ): ImportCacheEntry => {
       // replace import aliases before trying to resolve
       Object.entries(importAlias).forEach(([alias, value]) => {
         const aliasRe = new RegExp(alias);

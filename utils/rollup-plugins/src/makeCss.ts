@@ -13,7 +13,7 @@ import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 // import { catchErr } from './catchErr';
 
-interface IMakeCssOptions {
+interface MakeCssOptions {
   /**
    * Files to parse for CSS classes. Find which CSS selectors are used when
    * removing unused styles.
@@ -45,14 +45,6 @@ interface IMakeCssOptions {
   userOpts?: any[];
 }
 
-interface IStyles {
-  [x: string]: string;
-}
-
-interface IMaps {
-  [x: string]: postcss.ResultMap;
-}
-
 /**
  * Rollup plugin to generate CSS with PostCSS from imported styles, combine
  * into a single bundle, and write it to disk. Optionally minifies and removes
@@ -79,10 +71,10 @@ export function makeCss({
   whitelist = [],
   unsafe = false,
   ...userOpts
-}: IMakeCssOptions = {}): rollup.Plugin {
+}: MakeCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
-  const styles: IStyles = {};
-  const maps: IMaps = {};
+  const styles: { [id: string]: string } = {};
+  const maps: { [id: string]: postcss.ResultMap } = {};
 
   return {
     name: 'makeCss',

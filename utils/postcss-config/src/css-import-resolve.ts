@@ -8,19 +8,14 @@
 import { readFile } from 'fs';
 import { isAbsolute, join, sep } from 'path';
 
-export interface IImportCacheEntry {
+export type ImportCacheEntry = Promise<{
   contents: string;
   file: string;
-}
+}>;
 
-export interface IImportCache {
-  [x: string]: Promise<IImportCacheEntry>;
-}
+export type ImportCache = Record<string, ImportCacheEntry>;
 
-function fileContents(
-  file: string,
-  cache: IImportCache,
-): Promise<IImportCacheEntry> {
+function fileContents(file: string, cache: ImportCache): ImportCacheEntry {
   cache[file] =
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
@@ -39,7 +34,7 @@ function fileContents(
 
 function jsonContents(
   dir: string,
-  cache: IImportCache,
+  cache: ImportCache,
 ): Promise<{ style?: string }> {
   const file = join(dir, 'package.json');
 
@@ -50,10 +45,7 @@ function isRelative(id: string): boolean {
   return /^\.{0,2}\//.test(id);
 }
 
-function resolveAsFile(
-  file: string,
-  cache: IImportCache,
-): Promise<IImportCacheEntry> {
+function resolveAsFile(file: string, cache: ImportCache): ImportCacheEntry {
   // resolve `file` as the file
   return (
     fileContents(file, cache)
@@ -62,10 +54,7 @@ function resolveAsFile(
   );
 }
 
-function resolveAsDirectory(
-  dir: string,
-  cache: IImportCache,
-): Promise<IImportCacheEntry> {
+function resolveAsDirectory(dir: string, cache: ImportCache): ImportCacheEntry {
   // resolve the JSON contents of `dir/package.json` as `pkg`
   return jsonContents(dir, cache).then((pkg) =>
     // if `pkg` has a `style` field
@@ -102,8 +91,8 @@ function nodeModulesDirs(cwd: string): string[] {
 function resolveAsModule(
   cwd: string,
   id: string,
-  cache: IImportCache,
-): Promise<IImportCacheEntry> {
+  cache: ImportCache,
+): ImportCacheEntry {
   // for each `dir` in the node modules directory using `cwd`
   return nodeModulesDirs(cwd).reduce(
     (promise, dir) =>
@@ -128,8 +117,8 @@ function resolveAsModule(
 export function resolve(
   id: string,
   cwd: string,
-  cache: IImportCache = {},
-): Promise<IImportCacheEntry> {
+  cache: ImportCache = {},
+): ImportCacheEntry {
   if (isAbsolute(id)) {
     // no need to prefix with `cwd`
     cwd = '';

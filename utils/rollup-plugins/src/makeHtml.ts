@@ -9,7 +9,7 @@ import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 import { catchErr } from './catchErr';
 
-interface IMakeHtmlOptions {
+interface MakeHtmlOptions {
   basePath?: string;
   content?: string | Promise<string>;
   exclude?: string[] | RegExp[];
@@ -23,10 +23,6 @@ interface IMakeHtmlOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any[];
   onCss?(css: string): string | Promise<string>;
-}
-
-interface IStyles {
-  [x: string]: string;
 }
 
 /**
@@ -74,7 +70,7 @@ export function makeHtml({
   template = join(__dirname, '../src/template.html'),
   title,
   ...data
-}: IMakeHtmlOptions = {}): rollup.Plugin {
+}: MakeHtmlOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   // if `template` is a path and the file exists use its content otherwise
@@ -83,7 +79,7 @@ export function makeHtml({
     ? readFileSync(template, 'utf8')
     : template;
 
-  const styles: IStyles = {};
+  const styles: { [id: string]: string } = {};
 
   return {
     name: 'makeHtml',

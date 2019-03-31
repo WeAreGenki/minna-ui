@@ -6,7 +6,7 @@ import Purgecss from 'purgecss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
-interface IPostcssRollupOptions {
+interface PostcssRollupOptions {
   content?: string[] | Purgecss.RawContent[];
   context?: postcss.ProcessOptions;
   exclude?: string[];
@@ -40,7 +40,7 @@ function postcssRollup({
   include = ['**/*.css'],
   optimize = process.env.NODE_ENV !== 'development',
   whitelist = [],
-}: IPostcssRollupOptions = {}): rollup.Plugin {
+}: PostcssRollupOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {

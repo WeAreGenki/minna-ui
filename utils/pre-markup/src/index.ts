@@ -1,6 +1,6 @@
 /* eslint-disable security/detect-object-injection */
 
-interface IPreprocessOpts {
+interface PreprocessOpts {
   attributes?: {
     type: string;
     [x: string]: string;
@@ -9,7 +9,7 @@ interface IPreprocessOpts {
   filename?: string;
 }
 
-interface IBlocks {
+interface Blocks {
   [x: string]: string;
 }
 
@@ -19,7 +19,7 @@ interface IBlocks {
  * @param opts User defined options.
  * @param opts.enabled Should the preprocessor be run?
  */
-export = ({ enabled = true } = {}) => ({ content }: IPreprocessOpts) => {
+export = ({ enabled = true } = {}) => ({ content }: PreprocessOpts) => {
   if (!enabled) return;
 
   let code = `${content}`;
@@ -30,7 +30,7 @@ export = ({ enabled = true } = {}) => ({ content }: IPreprocessOpts) => {
     ['<style', '</style>'],
     ['<pre', '</pre>'],
   ];
-  const blocks: IBlocks = {};
+  const blocks: Blocks = {};
 
   // replace tag blocks with markers
   tags.forEach((tag) => {

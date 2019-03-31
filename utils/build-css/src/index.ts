@@ -42,10 +42,15 @@ function compileWarn(
   });
 }
 
-interface IProcessCssOptions {
+interface ProcessCssOpts {
   from: string;
   to: string;
   banner: string;
+}
+
+interface ProcessCssResult {
+  min: CleanCSS.Output;
+  result: postcss.Result;
 }
 
 /**
@@ -59,7 +64,7 @@ async function processCss({
   from,
   to,
   banner,
-}: IProcessCssOptions): Promise<{}> {
+}: ProcessCssOpts): Promise<ProcessCssResult> {
   const src = await readFile(from, 'utf8');
 
   const { plugins, options } = await postcssLoadConfig({
@@ -111,7 +116,7 @@ async function processCss({
 export = async function run(
   env: NodeJS.ProcessEnv,
   argv: string[] = [],
-): Promise<object> {
+): Promise<ProcessCssResult[]> {
   try {
     process.env.NODE_ENV = env.NODE_ENV || 'production';
     const pkgName = env.npm_package_name;

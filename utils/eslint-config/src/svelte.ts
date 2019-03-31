@@ -7,15 +7,14 @@
 
 /* eslint-disable sort-keys */
 
-interface IBlockAttributes {
+interface BlockAttributes {
   type: string;
-  [x: string]: string;
 }
 
 export = {
   plugins: ['import', 'svelte3'],
   settings: {
-    'svelte3/ignore-styles': (attr: IBlockAttributes) =>
+    'svelte3/ignore-styles': (attr: BlockAttributes) =>
       attr.type === 'text/postcss',
   },
   overrides: [

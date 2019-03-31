@@ -20,7 +20,7 @@ const compilerOpts = {
   // warning_level: 'VERBOSE',
 };
 
-interface IBuildComponentResult {
+interface BuildComponentResult {
   // FIXME: Don't use `any` type once svelte has types available
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   css: any;
@@ -44,7 +44,7 @@ interface IBuildComponentResult {
  */
 export = async function run(
   env: NodeJS.ProcessEnv,
-): Promise<IBuildComponentResult> {
+): Promise<BuildComponentResult> {
   const pkgSvelte = env.npm_package_svelte;
 
   if (!pkgSvelte) {

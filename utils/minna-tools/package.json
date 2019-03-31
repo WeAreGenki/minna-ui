@@ -8,19 +8,22 @@
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "keywords": [
-    "css",
-    "css-framework",
-    "design-system",
-    "javascript",
+    "dev-tools",
     "minna-ui",
-    "postcss",
-    "svelte",
-    "ui-kit",
-    "wearegenki",
-    "web-components"
+    "wearegenki"
   ],
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "prebuild": "yarn clean",
+    "clean": "rm -f ./*.js ./*.d.ts"
+  },
   "main": "index.js",
-  "module": "index.mjs",
+  "typings": "index.d.ts",
+  "files": [
+    "*.js",
+    "*.d.ts"
+  ],
   "peerDependencies": {
     "eslint": "^5.0.0",
     "jest": "^24.0.0",
@@ -33,12 +36,15 @@
     "@minna-ui/browserslist-config": "^0.21.0",
     "@minna-ui/eslint-config": "^0.21.0",
     "@minna-ui/jest-config": "^0.21.0",
-    "@minna-ui/postcss-config": "^0.21.0",
+    "@minna-ui/rollup-plugin-dev-server": "^0.21.0",
+    "@minna-ui/rollup-plugin-emit-css": "^0.21.0",
+    "@minna-ui/rollup-plugin-emit-html": "^0.21.0",
+    "@minna-ui/rollup-plugin-postcss": "^0.21.0",
     "@minna-ui/prettier-config": "^0.21.0",
     "@minna-ui/remark-config": "^0.21.0",
-    "@minna-ui/rollup-plugins": "^0.21.0",
     "@minna-ui/stylelint-config": "^0.21.0",
-    "@minna-ui/ts-config": "^0.21.0"
+    "@minna-ui/ts-config": "^0.21.0",
+    "@minna-ui/utils": "^0.21.0"
   },
   "publishConfig": {
     "access": "public"

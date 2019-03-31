@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import mediaQueryPacker from 'css-mqpacker';
 import merge from 'deepmerge';
+import flexbugFixes from 'postcss-flexbugs-fixes';
 import postcss from 'postcss';
 import advancedVars from 'postcss-advanced-variables';
 // @ts-ignore FIXME: TS can't deal with mjs correctly yet
@@ -70,6 +71,7 @@ export = postcss.plugin(
     if (optimize) {
       plugins = plugins.concat([
         unsafe && mediaQueryPacker,
+        flexbugFixes,
         autoprefixer,
         cssnano,
       ]);

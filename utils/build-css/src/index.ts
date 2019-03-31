@@ -4,12 +4,13 @@
 
 /* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
 
+import CleanCSS from 'clean-css';
 import fs from 'fs';
 import { basename, dirname, join } from 'path';
-import { promisify } from 'util';
-import postcssLoadConfig from 'postcss-load-config';
 import postcss from 'postcss';
-import CleanCSS from 'clean-css';
+import postcssLoadConfig from 'postcss-load-config';
+import syntax from 'postcss-scss';
+import { promisify } from 'util';
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -70,6 +71,7 @@ async function processCss({
   const { plugins, options } = await postcssLoadConfig({
     from,
     map: { inline: false },
+    syntax,
     to,
   });
 
@@ -91,16 +93,19 @@ async function processCss({
   compileWarn('CleanCSS', 'ERR', min.errors);
   compileWarn('CleanCSS', 'WARN', min.warnings);
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const filePath = options.to!;
+  const fileName = basename(filePath);
+  const dirPath = dirname(filePath);
+
   // clean-css removes the source map comment so we need to add it back in
-  min.styles = `${min.styles}\n/*# sourceMappingURL=${basename(
-    options.to,
-  )}.map */`;
+  min.styles = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
 
   // create the output directory
-  await mkdir(dirname(options.to), { recursive: true });
+  await mkdir(dirPath, { recursive: true });
 
-  writeFile(options.to, min.styles);
-  writeFile(`${options.to}.map`, min.sourceMap.toString());
+  writeFile(filePath, min.styles);
+  writeFile(`${filePath}.map`, min.sourceMap.toString());
 
   return {
     min,

@@ -104,7 +104,8 @@
       "test/coverage/**",
       "utils/*/lib/**",
       "utils/jest-config/__fixtures__/styles-bad-syntax.css",
-      "utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte"
+      "utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte",
+      "utils/minna-css/*.css"
     ],
     "rules": {
       "rule-empty-line-before": [

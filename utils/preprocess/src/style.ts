@@ -2,6 +2,7 @@ import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
 import syntax from 'postcss-scss';
+// eslint-disable-next-line import/named
 import { Preprocessor } from './types';
 
 /**

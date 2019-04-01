@@ -1,5 +1,6 @@
 /* eslint-disable security/detect-object-injection */
 
+// eslint-disable-next-line import/named
 import { MarkupPreprocessor } from './types';
 
 /**

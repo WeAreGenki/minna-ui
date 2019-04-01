@@ -1,5 +1,4 @@
 import merge from 'deepmerge';
-import { dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
 import syntax from 'postcss-scss';
@@ -40,16 +39,14 @@ export const style = (
       console.warn(warn.toString());
     });
 
-    let dependencies: string[] = [];
+    const dependencies: string[] = [];
 
-    if (result.map && filename) {
-      // pass through dependent files so rollup can monitor them for changes
-      const basePath = dirname(filename);
-      // @ts-ignore
-      // eslint-disable-next-line no-underscore-dangle
-      dependencies = result.map._sources._array.map((dep) =>
-        join(basePath, dep),
-      );
+    // register dependencies so rollup can monitor them for changes
+    // eslint-disable-next-line no-restricted-syntax
+    for (const msg of result.messages) {
+      if (msg.type === 'dependency') {
+        dependencies.push(msg.file);
+      }
     }
 
     // eslint-disable-next-line consistent-return

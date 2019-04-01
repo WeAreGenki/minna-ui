@@ -1,5 +1,4 @@
 import merge from 'deepmerge';
-import { dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
@@ -77,15 +76,12 @@ export default function postcssRollup({
           this.warn(warn.toString(), { column: warn.column, line: warn.line });
         });
 
-        // register sub-dependencies so rollup can monitor them for changes
-        if (result.map) {
-          const basePath = dirname(id);
-
-          // @ts-ignore
-          // eslint-disable-next-line no-underscore-dangle
-          result.map._sources._array.forEach((dep: string) => {
-            this.addWatchFile(join(basePath, dep));
-          });
+        // register file dependencies so rollup can monitor them for changes
+        // eslint-disable-next-line no-restricted-syntax
+        for (const msg of result.messages) {
+          if (msg.type === 'dependency') {
+            this.addWatchFile(msg.file);
+          }
         }
 
         if (!optimize) {

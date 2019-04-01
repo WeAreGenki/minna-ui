@@ -3,7 +3,7 @@
 /* eslint-disable security/detect-object-injection, jsdoc/valid-types */
 
 import merge from 'deepmerge';
-import { basename, dirname, join } from 'path';
+import { basename } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
@@ -104,22 +104,18 @@ export function emitCss({
           this.warn(warn.toString(), { column: warn.column, line: warn.line });
         });
 
-        // register sub-dependencies so rollup can monitor them for changes
-        if (result.map) {
-          const basePath = dirname(id);
-
-          // @ts-ignore
-          // eslint-disable-next-line no-underscore-dangle
-          result.map._sources._array.forEach((dependency: string) => {
-            this.addWatchFile(join(basePath, dependency));
-          });
+        // register dependencies so rollup can monitor them for changes
+        // eslint-disable-next-line no-restricted-syntax
+        for (const msg of result.messages) {
+          if (msg.type === 'dependency') {
+            this.addWatchFile(msg.file);
+          }
         }
 
         styles[id] = result.css;
         maps[id] = result.map;
       } catch (err) {
         if (err.name === 'CssSyntaxError') {
-          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           process.stderr.write(err.message + err.showSourceCode());
         } else {
           this.error(err);

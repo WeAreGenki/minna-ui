@@ -17,6 +17,30 @@ body {
     font-weight: $text-weight;
   }
 
+  @if $use-enhanced-type {
+    /**
+      * OpenType features:
+      *   calt = contextual alternates
+      *   case = case alternates
+      */
+    font-feature-settings: 'calt', 'case';
+    text-rendering: geometricPrecision;
+
+    /**
+      * Enable font subpixel anti-aliasing but only on hi-pixel density screens,
+      * using a technique from Twitter.
+      * REF: https://www.zachleat.com/web/font-smooth/
+      */
+    /* autoprefixer: ignore next */
+    /* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+    @media screen and (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 2dppx) {
+      /* autoprefixer: off */
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
   @media $l {
     font-size: $text-size-large;
   }
@@ -69,6 +93,18 @@ h6 { font-size: $h6-text-size; }
 
 p {
   line-height: $paragraph-line-height;
+
+  @if $use-enhanced-type {
+    /**
+     * Better hyphenation.
+     * @see http://clagnut.com/blog/2395
+     */
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;
+    hyphenate-limit-zone: 8%;
+  }
 }
 
 .lead {

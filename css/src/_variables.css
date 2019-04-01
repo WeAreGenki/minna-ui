@@ -55,6 +55,11 @@ $gutter-compact: calc($gutter-row / 4) 0 !default;
 
 /* Typography */
 
+/**
+ * Enables better text readability and visual style but also degrades font
+ * rendering performance.
+ */
+$use-enhanced-type: false !default;
 /* prettier-ignore */
 $font-stack:
   -apple-system,

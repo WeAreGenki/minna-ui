@@ -69,12 +69,14 @@ export = postcss.plugin(
     let plugins = [advancedVars, atUse, nested, colorModFunction];
 
     if (optimize) {
-      plugins = plugins.concat([
-        unsafe && mediaQueryPacker,
-        flexbugFixes,
-        autoprefixer,
-        cssnano,
-      ]);
+      plugins = plugins.concat(
+        [
+          unsafe && mediaQueryPacker,
+          flexbugFixes,
+          autoprefixer,
+          cssnano,
+        ].filter(Boolean),
+      );
     }
 
     const importResolve = (

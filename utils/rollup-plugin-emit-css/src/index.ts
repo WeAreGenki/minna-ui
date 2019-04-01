@@ -1,6 +1,6 @@
 // TODO: Create and merge source maps
 
-/* eslint-disable security/detect-object-injection, jsdoc/valid-types */
+/* eslint-disable security/detect-object-injection */
 
 import merge from 'deepmerge';
 import { basename } from 'path';
@@ -81,7 +81,7 @@ export function emitCss({
     name: 'makeCss',
 
     async transform(source, id) {
-      if (!filter(id)) return;
+      if (!filter(id)) return undefined;
 
       try {
         const ctx = merge(
@@ -122,7 +122,6 @@ export function emitCss({
         }
       }
 
-      // eslint-disable-next-line consistent-return
       return {
         code: '',
       };
@@ -136,7 +135,7 @@ export function emitCss({
         // combine all style sheets
         let css = '';
 
-        // eslint-disable-next-line
+        // eslint-disable-next-line no-restricted-syntax, guard-for-in
         for (const id in styles) {
           css += styles[id] || '';
         }

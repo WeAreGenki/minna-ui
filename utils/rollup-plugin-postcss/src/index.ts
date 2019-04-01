@@ -53,8 +53,9 @@ export default function postcssRollup({
   return {
     name: 'postcss',
 
+    // eslint-disable-next-line consistent-return
     async transform(source, id) {
-      if (!filter(id)) return;
+      if (!filter(id)) return undefined;
 
       try {
         const ctx = merge(
@@ -85,7 +86,6 @@ export default function postcssRollup({
         }
 
         if (!optimize) {
-          // eslint-disable-next-line consistent-return
           return {
             code: result.css,
             map: result.map,
@@ -94,14 +94,18 @@ export default function postcssRollup({
 
         const purgecss = new Purgecss({
           content,
-          css: [{ extension: 'css', raw: result.css }],
+          css: [
+            {
+              extension: 'css',
+              raw: result.css,
+            },
+          ],
           keyframes: true,
           whitelist,
         });
 
         const purged = purgecss.purge()[0];
 
-        // eslint-disable-next-line consistent-return
         return {
           code: purged.css,
           // @ts-ignore FIXME: PurgeCSS does not support source maps
@@ -109,7 +113,6 @@ export default function postcssRollup({
         };
       } catch (err) {
         if (err.name === 'CssSyntaxError') {
-          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           process.stderr.write(err.message + err.showSourceCode());
         } else {
           this.error(err);

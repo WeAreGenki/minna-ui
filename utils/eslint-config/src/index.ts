@@ -132,7 +132,7 @@ export = {
       'error',
       {
         code: 80, // consistency with prettier
-        ignorePattern: 'eslint-disable',
+        ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
@@ -229,7 +229,7 @@ export = {
           'error',
           {
             code: 100, // consistency with prettier override
-            ignorePattern: 'eslint-disable',
+            ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable',
             ignoreRegExpLiterals: true,
             ignoreStrings: true,
             ignoreTemplateLiterals: true,

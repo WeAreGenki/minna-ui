@@ -18,6 +18,14 @@
         { id: 'ex3', text: 'Example 3', disabled: true },
       ]"/>
 
+    You can also use a simple list of items (works best with short item names):
+
+      <Select id="select-example" bind:value="example" items="[
+        'Example 1',
+        'Example 2',
+        'Example 3',
+      ]"/>
+
     See more available options/properties in the component data() below.
 
   REFERENCE:
@@ -58,9 +66,12 @@
   let selected = 0; // index of the currently selected item
 
   // computed
+  $: normalizedItems = items.map((item) =>
+    (item.id ? item : { id: item, text: item })
+  );
   $: filteredItems = (!isOpen || !filterable || inputText === '')
-    ? items
-    : items.filter(
+    ? normalizedItems
+    : normalizedItems.filter(
       option => option.text
         .toLowerCase()
         .indexOf(inputText.toLowerCase()) > -1,
@@ -79,7 +90,7 @@
 
   function setInput() {
     inputText = value
-      ? items.find(option => option.id === value).text
+      ? normalizedItems.find(option => option.id === value).text
       : '';
   }
 

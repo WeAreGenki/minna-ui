@@ -52,6 +52,7 @@
   export let filterable = true;
   export let filterHelp = 'Filter...';
   export let placeholder = 'Choose...';
+  export let autocomplete = 'off';
   export let readonly;
   export let disabled;
   export let required; // FIXME: Add a way to do custom validation
@@ -343,6 +344,7 @@
     class="select"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
+    autocomplete="{autocomplete}"
     readonly="{!filterable || readonly || !isOpen}"
     disabled="{disabled}"
     aria-haspopup="listbox"

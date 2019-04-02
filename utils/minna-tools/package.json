@@ -13,7 +13,7 @@
     "wearegenki"
   ],
   "scripts": {
-    "dev": "tsc -w --preserveWatchOutput",
+    "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "yarn clean",
     "clean": "rm -f ./*.js ./*.d.ts"

@@ -8,7 +8,7 @@
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "tsc -w --preserveWatchOutput",
+    "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "rm -rf lib"
   },

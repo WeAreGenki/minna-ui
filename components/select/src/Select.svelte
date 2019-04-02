@@ -332,7 +332,7 @@
 </style>
 
 <div
-  class="pos-r dif f-col{disabled ? ' select-disabled' : ''}{isOpen ? ' select-active' : ''}"
+  class="pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}"
 >
   <!--
     TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?
@@ -356,20 +356,20 @@
   <div class="select-caret"></div>
 
   <div
-    class="select-listbox{isOpen ? '' : ' hide'}"
+    class="select-listbox {isOpen ? '' : 'hide'}"
     role="listbox"
     on:mousedown="{select}"
   >
     {#each filteredItems as item, index}
-    <div
-      class="option{item.disabled ? ' option-disabled' : ''}{index === selected ? ' option-active' : ''}"
-      value="{item.id}"
-      role="option"
-    >
-      {item.text}
-    </div>
+      <div
+        class="option {item.disabled ? 'option-disabled' : ''} {index === selected ? 'option-active' : ''}"
+        value="{item.id}"
+        role="option"
+      >
+        {item.text}
+      </div>
     {:else}
-    <div class="pa3 gray">No matches</div>
+      <div class="pa3 gray">No matches</div>
     {/each}
   </div>
 </div>

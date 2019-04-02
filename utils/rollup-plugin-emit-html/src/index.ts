@@ -22,8 +22,12 @@ interface EmitHtmlOptions {
   include?: RegExp[] | string[];
   /** Inline CSS code instead of emiting to seperate file. */
   inlineCss?: boolean;
-  /** Perform output code optimisations (e.g. CSS minification). */
-  optimize?: boolean;
+  /**
+   * Perform output code optimisations (e.g. CSS minification). You can
+   * optionally use an object to pass through options to the optimizer/s.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  optimize?: boolean | { [x: string]: any };
   /** Attribute/s to add to script tag. */
   scriptAttr?: string;
   /** Path to a HTML document template file or the template as a string. */
@@ -54,16 +58,13 @@ export function compileTemplate(template: string): Function {
 export async function minifyCss(
   css: string,
   options: EmitHtmlOptions,
-): Promise<string> {
+): Promise<string | { code: string; map: string }> {
   if (!options.optimize) return css;
 
   const cleancss = new CleanCSS({
-    level: {
-      2: {
-        restructureRules: true,
-      },
-    },
     returnPromise: true,
+    sourceMap: false, // TODO: Add source map support
+    ...(typeof options.optimize === 'object' ? options.optimize : {}),
   });
 
   const result = await cleancss.minify(css);
@@ -71,7 +72,10 @@ export async function minifyCss(
   result.errors.forEach((err) => console.error(err)); // eslint-disable-line no-console
   result.warnings.forEach((err) => console.warn(err)); // eslint-disable-line no-console
 
-  return result.styles;
+  return {
+    code: result.styles,
+    map: result.sourceMap,
+  };
 }
 
 /**
@@ -129,7 +133,9 @@ export function emitHtml(options: EmitHtmlOptions = {}): rollup.Plugin {
       }
 
       if (typeof renderCss === 'function') {
-        css = await Promise.resolve(renderCss(css, options));
+        const result = await Promise.resolve(renderCss(css, options));
+
+        css = typeof result === 'string' ? result : result.code;
 
         // eslint-disable-next-line no-console
         if (!css) this.warn("renderCss didn't return anything useful");

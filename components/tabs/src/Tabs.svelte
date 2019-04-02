@@ -42,9 +42,9 @@
 
 <div class="tabs">
   <nav>
-    <a href="#1" class="tabs-title{active === 1 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 1)}">1</a>
-    <a href="#2" class="tabs-title{active === 2 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 2)}">2</a>
-    <a href="#3" class="tabs-title{active === 3 ? ' tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 3)}">3</a>
+    <a href="#1" class="tabs-title {active === 1 ? 'tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 1)}">1</a>
+    <a href="#2" class="tabs-title {active === 2 ? 'tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 2)}">2</a>
+    <a href="#3" class="tabs-title {active === 3 ? 'tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 3)}">3</a>
   </nav>
   <div class="tabs-content">
     {#if active === 1}<slot name="1"></slot>{/if}

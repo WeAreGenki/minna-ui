@@ -219,7 +219,7 @@
 </style>
 
 <div
-  class="switch{mini ? ' switch-mini' : ''}{disabled ? ' switch-disabled' : ''}{value ? ' switch-checked' : ''}"
+  class="switch {mini ? 'switch-mini' : ''} {disabled ? 'switch-disabled' : ''} {value ? 'switch-checked' : ''}"
   role="switch"
   tabindex="{disabled ? -1 : 0}"
   aria-checked="{!!value}"

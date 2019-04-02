@@ -4,7 +4,10 @@
   "extends": "@minna-ui/ts-config",
   "compilerOptions": {
     "baseUrl": ".",
+    // "composite": true,
     "declaration": true,
+    "incremental": true,
+    // "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo",
     "paths": { "*": ["types/*"] },
     "sourceMap": true
   },
@@ -17,4 +20,24 @@
     "**/node_modules/*",
     "test/coverage"
   ]
+  // "references": [
+  //   { "path": "./components/tooltip-action" },
+  //   { "path": "./utils/browserslist-config" },
+  //   { "path": "./utils/build-component" },
+  //   { "path": "./utils/build-css" },
+  //   { "path": "./utils/eslint-config" },
+  //   { "path": "./utils/jest-config" },
+  //   { "path": "./utils/minna-tools" },
+  //   { "path": "./utils/minna-ui" },
+  //   { "path": "./utils/postcss-config" },
+  //   { "path": "./utils/preprocess" },
+  //   { "path": "./utils/prettier-config" },
+  //   { "path": "./utils/remark-config" },
+  //   { "path": "./utils/rollup-plugin-dev-server" },
+  //   { "path": "./utils/rollup-plugin-emit-css" },
+  //   { "path": "./utils/rollup-plugin-emit-html" },
+  //   { "path": "./utils/rollup-plugin-postcss" },
+  //   { "path": "./utils/stylelint-config" },
+  //   { "path": "./utils/tslint-config" }
+  // ]
 }

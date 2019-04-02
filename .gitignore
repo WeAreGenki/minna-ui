@@ -3,6 +3,7 @@
 .stylelintcache
 *.lerna_backup
 *.log
+*.tsbuildinfo
 /components/*/dist/
 /css/dist/
 /test/coverage/

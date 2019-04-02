@@ -36,7 +36,7 @@
     "@types/google-closure-compiler": "0.0.18",
     "@types/rollup-plugin-commonjs": "9.2.0",
     "@types/rollup-plugin-node-resolve": "4.0.0",
-    "del": "4.0.0"
+    "del": "4.1.0"
   },
   "publishConfig": {
     "access": "public"

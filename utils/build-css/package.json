@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/clean-css": "4.2.1",
-    "del": "4.0.0"
+    "del": "4.1.0"
   },
   "engines": {
     "node": ">=10.12.0"

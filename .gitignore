@@ -1,9 +1,9 @@
 .eslintcache
 .npmrc
 .stylelintcache
+.tsbuildinfo
 *.lerna_backup
 *.log
-*.tsbuildinfo
 /components/*/dist/
 /css/dist/
 /test/coverage/

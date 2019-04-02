@@ -247,6 +247,10 @@
     opacity: 0;
   }
 
+  .select-wrapper {
+    max-width: 100%;
+  }
+
   .select {
     .select-active > & {
       cursor: auto;
@@ -332,7 +336,7 @@
 </style>
 
 <div
-  class="pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}"
+  class="select-wrapper pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}"
 >
   <!--
     TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?

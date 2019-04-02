@@ -25,6 +25,7 @@
 .select,
 .textarea {
   box-sizing: border-box;
+  max-width: 100%;
   padding: $input-padding-y $input-padding-x;
   font-size: $input-text-size;
   color: $input-text-color;

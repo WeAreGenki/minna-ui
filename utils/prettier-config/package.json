@@ -13,7 +13,7 @@
     "wearegenki"
   ],
   "scripts": {
-    "dev": "tsc -w",
+    "dev": "tsc -w --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "rm -rf lib"
   },

@@ -20,7 +20,7 @@
     "web-components"
   ],
   "scripts": {
-    "dev": "tsc -w",
+    "dev": "tsc -w --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "yarn clean",
     "clean": "rm -f ./*.js ./*.d.ts"

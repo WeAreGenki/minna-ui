@@ -20,7 +20,7 @@
     "prepack": "yarn build && yarn predocs",
     "build": "lerna run build --stream",
     "prebuild": "yarn clean",
-    "clean": "lerna clean --yes",
+    "clean": "lerna run clean && lerna clean --yes",
     "preinstall": "node scripts/check-yarn.js",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",

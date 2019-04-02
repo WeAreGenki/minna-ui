@@ -75,8 +75,10 @@
 .card-button {
   padding: $button-padding-y $button-padding-x;
   margin: auto 0 0;
+  font-weight: $text-weight-heavy;
   color: $card-button-text-color;
   text-align: center;
+  text-transform: uppercase;
   border-top: $card-button-border;
   border-bottom-right-radius: $radius-large;
   border-bottom-left-radius: $radius-large;

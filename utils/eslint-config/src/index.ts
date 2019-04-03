@@ -75,6 +75,10 @@ export = {
         },
       },
     ],
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      { allowExpressions: true, allowTypedFunctionExpressions: true },
+    ],
     '@typescript-eslint/indent': [
       'error',
       2,

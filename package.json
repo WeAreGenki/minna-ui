@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@wearegenki/renovate-config": "1.0.0",
-    "codecov": "3.2.0",
+    "codecov": "3.3.0",
     "docsify-cli": "4.3.0",
     "eslint": "5.16.0",
-    "jest": "24.6.0",
+    "jest": "24.7.0",
     "lerna": "3.13.1",
     "postcss": "7.0.14",
     "postcss-scss": "2.0.0",

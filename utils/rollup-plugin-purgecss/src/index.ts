@@ -34,7 +34,7 @@ export function purgecss({
         const defaults = {
           content: [
             '__sapper__/build/*.html',
-            '__sapper__/build/*.js',
+            '__sapper__/build/**/*.js',
             /**
              * TODO: Add to documentation that `dist` is the most reliable but
              * requires 2 full builds.
@@ -44,13 +44,15 @@ export function purgecss({
             'src/**/*.html',
             'src/**/*.js',
             'src/**/*.jsx',
+            'src/**/*.mjs',
             'src/**/*.svelte',
+            'src/**/*.svg',
             'src/**/*.ts',
             'src/**/*.tsx',
           ],
           keyframes: true,
           rejected: debug,
-          whitelistPatternsChildren: [/^svelte-/],
+          whitelistPatternsChildren: [/svelte-/],
         };
         const opts = Object.assign(
           defaults,
@@ -67,9 +69,9 @@ export function purgecss({
 
         const result = new Purgecss(opts).purge()[0];
 
-        if (result.rejected) {
+        if (result.rejected && result.rejected.length) {
           // eslint-disable-next-line no-console
-          console.log('[purgecss] Rejected selectors:', result.rejected);
+          console.log('[purgecss] Rejected selectors', id, result.rejected);
         }
 
         // eslint-disable-next-line consistent-return

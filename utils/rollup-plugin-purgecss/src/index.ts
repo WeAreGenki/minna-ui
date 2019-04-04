@@ -39,8 +39,8 @@ export function purgecss({
              * TODO: Add to documentation that `dist` is the most reliable but
              * requires 2 full builds.
              */
-            'dist/**/*.html',
-            'dist/**/*.js',
+            // 'dist/**/*.html',
+            // 'dist/**/*.js',
             'src/**/*.html',
             'src/**/*.js',
             'src/**/*.jsx',

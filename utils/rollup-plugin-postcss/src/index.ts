@@ -41,7 +41,7 @@ function postcssRollup({
             syntax,
             to: id,
           },
-          { ...options },
+          options,
         );
         const { plugins, options: opts } = await postcssrc(context);
         const result = await postcss(plugins).process(code, opts);

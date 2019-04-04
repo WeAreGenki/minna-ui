@@ -30,7 +30,7 @@ let server: http.Server;
  * @param opts.spa Run in single page app mode where `index.html` is served
  * for any unknown paths instead of returning a 404.
  * @param opts.wsPort Web socket port for the page live reload script.
- * @param opts.userOpts Any additional options to pass to `sirv`.
+ * @param opts.options Any additional options to pass to `sirv`.
  */
 export function devServer({
   dir = './dist',
@@ -39,11 +39,11 @@ export function devServer({
   host = '0.0.0.0',
   spa = false,
   // wsPort = 13341,
-  ...userOpts
+  ...options
 } = {}): rollup.Plugin {
   if (!dev) {
     console.warn(
-      "[DEVSERVER] Not in watch mode, this probably isn't what you want.",
+      "[devserver] Not in watch mode, this probably isn't what you want.",
     );
   }
 
@@ -51,7 +51,7 @@ export function devServer({
   if (!server) {
     process.on('exit', () => {
       server.close(handleErr);
-      console.log('[DEVSERVER] Terminated server');
+      console.log('[devserver] Terminated server');
     });
 
     const sirvOpts = merge(
@@ -60,7 +60,7 @@ export function devServer({
         dev: true,
         single: spa,
       },
-      userOpts,
+      options,
     );
 
     server = http.createServer(sirv(resolve(dir), sirvOpts));

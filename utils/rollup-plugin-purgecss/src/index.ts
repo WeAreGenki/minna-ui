@@ -11,7 +11,7 @@ interface PurgecssOptions {
   exclude?: RegExp[] | string[];
   /** Files to include in processing. */
   include?: RegExp[] | string[];
-  /** Any other options will be passed to Purgecss. */
+  /** All other options will be passed to Purgecss. */
   options?: Purgecss.Options;
 }
 
@@ -54,18 +54,14 @@ export function purgecss({
           rejected: debug,
           whitelistPatternsChildren: [/svelte-/],
         };
-        const opts = Object.assign(
-          defaults,
-          { ...options },
-          {
-            css: [
-              {
-                extension: 'css',
-                raw: code,
-              },
-            ],
-          },
-        );
+        const opts = Object.assign(defaults, options, {
+          css: [
+            {
+              extension: 'css',
+              raw: code,
+            },
+          ],
+        });
 
         const result = new Purgecss(opts).purge()[0];
 

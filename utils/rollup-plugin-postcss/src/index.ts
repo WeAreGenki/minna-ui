@@ -1,5 +1,4 @@
 import merge from 'deepmerge';
-import { extname } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
@@ -27,14 +26,6 @@ function postcssRollup({
 
   return {
     name: 'postcss',
-
-    // @ts-ignore Wrong type in Rollup (void != null)
-    resolveId(id) {
-      if (!filter(id)) return null;
-
-      // convert file extension to .css
-      return id.replace(extname(id), '.css');
-    },
 
     async transform(code, id) {
       if (!filter(id)) return;

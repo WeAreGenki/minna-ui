@@ -2,10 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "commonjs",
+    "module": "es6",
     "outDir": ".",
     "sourceMap": false
   },
-  "include": ["."],
-  "exclude": ["./index.esm.ts"]
+  "include": ["./index.esm.ts"]
 }

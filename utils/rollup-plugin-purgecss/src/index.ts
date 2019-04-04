@@ -4,11 +4,23 @@ import Purgecss from 'purgecss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
-export function purgecss(
+interface PurgecssOptions {
+  /** Enable debugging feedback. */
+  debug?: boolean;
+  /** Files to exclude from processing. */
+  exclude?: RegExp[] | string[];
+  /** Files to include in processing. */
+  include?: RegExp[] | string[];
+  /** Any other options will be passed to Purgecss. */
+  options?: Purgecss.Options;
+}
+
+export function purgecss({
+  debug,
   exclude = [/node_modules\/@minna-ui/],
   include = [/\.css$/],
-  ...options: Purgecss.Options[]
-): rollup.Plugin {
+  ...options
+}: PurgecssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {
@@ -37,6 +49,7 @@ export function purgecss(
             'src/**/*.tsx',
           ],
           keyframes: true,
+          rejected: debug,
           whitelistPatternsChildren: [/^svelte-/],
         };
         const opts = Object.assign(
@@ -55,9 +68,8 @@ export function purgecss(
         const result = new Purgecss(opts).purge()[0];
 
         if (result.rejected) {
-          result.rejected.forEach((err) => {
-            this.warn(err);
-          });
+          // eslint-disable-next-line no-console
+          console.log('[purgecss] Rejected selectors:', result.rejected);
         }
 
         // eslint-disable-next-line consistent-return

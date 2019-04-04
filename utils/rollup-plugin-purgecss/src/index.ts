@@ -37,7 +37,7 @@ export function purgecss(
             'src/**/*.tsx',
           ],
           keyframes: true,
-          whitelistPatternsChildren: [/^+{2,}\.svelte-/],
+          whitelistPatternsChildren: [/^svelte-/],
         };
         const opts = Object.assign(
           defaults,

@@ -18,7 +18,7 @@ interface PurgecssOptions {
 export function purgecss({
   debug,
   exclude = [/node_modules\/@minna-ui/],
-  include = [/\.css$/],
+  include = [/\.(p|post)?css$/],
   ...options
 }: PurgecssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);

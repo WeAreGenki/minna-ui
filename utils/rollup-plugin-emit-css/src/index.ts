@@ -8,7 +8,7 @@ import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
 interface EmitCssOptions {
-  /** Concatinate all css files together and emit a single CSS file. */
+  /** Concatenate all css files together and emit a single CSS file. */
   combine?: boolean;
   /** Show additional logging for debug purposes. */
   debug?: boolean;
@@ -18,7 +18,7 @@ interface EmitCssOptions {
   exclude?: RegExp[] | string[];
   /**
    * CSS file name to emit. Only used in `combine` mode. Without this option
-   * the file name will be infered from `rollup#output.name` or from
+   * the file name will be inferred from `rollup#output.name` or from
    * `rollup#output.file` replacing `.js` with `.css`.
    */
   fileName?: string;
@@ -78,7 +78,9 @@ export function emitCss({
           css = result.styles;
         }
 
-        this.emitAsset(id.replace(extname(id), '.css'), css);
+        const name = id.replace(extname(id), '');
+
+        this.emitAsset(`${name}.css`, css);
       };
 
       try {
@@ -93,18 +95,18 @@ export function emitCss({
 
           if (!fileName && !outputOpts.name && !outputOpts.file) {
             this.error(
-              "Couldn't infer file name from one of fileName, rollup#output.name, or rollup#output.file",
+              "Couldn't get name from one of fileName, rollup#output.name, or rollup#output.file",
             );
             return;
           }
 
-          const cssFileName =
+          const inferredName =
             fileName ||
             outputOpts.name ||
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            basename(outputOpts.file!).replace(/js$/, 'css');
+            basename(outputOpts.file!);
 
-          processCss(css, cssFileName);
+          processCss(css, inferredName);
         } else {
           Object.entries(styles).forEach(([id, css]) => {
             processCss(css, id);

@@ -27,7 +27,7 @@ interface EmitHtmlOptions {
    * optionally use an object to pass through options to the optimizer/s.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  optimize?: boolean | { [x: string]: any };
+  optimize?: boolean | CleanCSS.OptionsOutput;
   /** Attribute/s to add to script tag. */
   scriptAttr?: string;
   /** Path to a HTML document template file or the template as a string. */
@@ -37,8 +37,6 @@ interface EmitHtmlOptions {
   /** Any other data you want available in the template. */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any[];
-  /** Custom hook to post-processes CSS (e.g. for minification). */
-  renderCss?(css: string, options: EmitHtmlOptions): string | Promise<string>;
 }
 
 /**
@@ -52,33 +50,6 @@ export function compileTemplate(template: string): Function {
 }
 
 /**
- * Build CSS output postprocessing handler; CSS minifier.
- * @param css CSS code to minify.
- */
-export async function minifyCss(
-  css: string,
-  options: EmitHtmlOptions,
-): Promise<string | { code: string; map: string }> {
-  if (!options.optimize) return css;
-
-  const cleancss = new CleanCSS({
-    returnPromise: true,
-    sourceMap: false, // TODO: Add source map support
-    ...(typeof options.optimize === 'object' ? options.optimize : {}),
-  });
-
-  const result = await cleancss.minify(css);
-
-  result.errors.forEach((err) => console.error(err)); // eslint-disable-line no-console
-  result.warnings.forEach((err) => console.warn(err)); // eslint-disable-line no-console
-
-  return {
-    code: result.styles,
-    map: result.sourceMap,
-  };
-}
-
-/**
  * Emit HTML Rollup plugin.
  * Generates HTML from a template, injects entry scripts, and combines CSS,
  * optionally inlining it. Emits all assets back to Rollup for futher
@@ -86,22 +57,18 @@ export async function minifyCss(
  * `rollup#output.name` if defined otherwise they'll be the same base name as
  * the first `.js` bundle file.
  */
-export function emitHtml(options: EmitHtmlOptions = {}): rollup.Plugin {
-  const {
-    basePath = '',
-    content = '%CSS%\n%JS%',
-    exclude,
-    include = [/\.css$/],
-    inlineCss = false,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    optimize = process.env.NODE_ENV === 'production',
-    renderCss = minifyCss,
-    scriptAttr = 'defer',
-    template = join(__dirname, '../src/template.html'),
-    title,
-    ...data
-  } = options;
-
+export function emitHtml({
+  basePath = '',
+  content = '%CSS%\n%JS%',
+  exclude,
+  include = [/\.(p|post)?css$/],
+  inlineCss = false,
+  optimize = process.env.NODE_ENV === 'production',
+  scriptAttr = 'defer',
+  template = join(__dirname, '../src/template.html'),
+  title,
+  ...data
+}: EmitHtmlOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   // if `template` is a path and the file exists use its content otherwise
@@ -113,73 +80,89 @@ export function emitHtml(options: EmitHtmlOptions = {}): rollup.Plugin {
   const styles: { [id: string]: string } = {};
 
   return {
-    name: 'makeHtml',
+    name: 'emit-html',
 
-    transform(source, id) {
+    transform(code, id) {
       if (!filter(id)) return;
 
-      styles[id] = source;
+      styles[id] = code;
 
       return ''; // eslint-disable-line consistent-return
     },
 
     // eslint-disable-next-line sort-keys
-    async generateBundle(outputOpts, bundles) {
-      // combine all style sheets
-      let css = '';
-      // eslint-disable-next-line
-      for (const id in styles) {
-        css += styles[id] || '';
-      }
+    async generateBundle(outputOpts, bundle) {
+      const minifyCss = (css: string): string => {
+        const cleancss = new CleanCSS({
+          sourceMap: false, // TODO: Add source map support
+          ...(typeof optimize === 'object' ? optimize : {}),
+        });
 
-      if (typeof renderCss === 'function') {
-        const result = await Promise.resolve(renderCss(css, options));
+        const result = cleancss.minify(css);
 
-        css = typeof result === 'string' ? result : result.code;
+        result.warnings.forEach((err) => this.warn(err));
+        result.errors.forEach((err) => this.error(err));
 
-        // eslint-disable-next-line no-console
-        if (!css) this.warn("renderCss didn't return anything useful");
-      }
+        return result.styles;
+      };
 
-      const jsFiles = Object.values(bundles).filter(
-        // @ts-ignore FIXME: Work how to best work with discriminating unions, ideally without type casting
-        (bundle) => bundle.fileName.endsWith('.js') && bundle.isEntry,
-      );
+      try {
+        // combine all style sheets
+        let css = '';
+        // eslint-disable-next-line
+        for (const id in styles) {
+          css += styles[id] || '';
+        }
 
-      const scripts: string[] = [];
+        if (optimize) {
+          css = minifyCss(css);
+        }
 
-      jsFiles.forEach(({ fileName }) => {
-        scripts.push(
-          `<script src=${basePath}${fileName} ${scriptAttr}></script>`,
+        const jsFiles = Object.values(bundle).filter(
+          // @ts-ignore FIXME: Work how to best work with discriminating unions, ideally without type casting
+          (chunk) => chunk.isEntry && chunk.fileName.endsWith('.js'),
         );
-      });
 
-      const name = outputOpts.name || jsFiles[0].fileName.replace(/\.js$/, '');
-      const cssFile = `${name}.css`;
-      const htmlFile = `${name}.html`;
+        const scripts: string[] = [];
 
-      // eslint-disable-next-line no-nested-ternary
-      const cssResult = !css.length
-        ? ''
-        : inlineCss
-        ? `<style>${css}</style>`
-        : `<link href=${basePath}${cssFile} rel=stylesheet>`;
+        jsFiles.forEach(({ fileName }) => {
+          scripts.push(
+            `<script src=${basePath}${fileName} ${scriptAttr}></script>`,
+          );
+        });
 
-      let body = await Promise.resolve(content);
-      body = body.replace('%CSS%', cssResult);
-      body = body.replace('%JS%', scripts.join('\n'));
+        const name =
+          outputOpts.name || jsFiles[0].fileName.replace(/\.js$/, '');
+        const cssFile = `${name}.css`;
+        const htmlFile = `${name}.html`;
 
-      const html = compileTemplate(htmlTemplate)({
-        content: body,
-        title,
-        ...data,
-      }).trim();
+        // eslint-disable-next-line no-nested-ternary
+        const cssResult = !css.length
+          ? ''
+          : inlineCss
+          ? `<style>${css}</style>`
+          : `<link href=${basePath}${cssFile} rel=stylesheet>`;
 
-      if (!inlineCss) {
-        this.emitAsset(cssFile, css);
+        let body = await Promise.resolve(content);
+        body = body.replace('%CSS%', cssResult);
+        body = body.replace('%JS%', scripts.join('\n'));
+
+        const html = compileTemplate(htmlTemplate)({
+          content: body,
+          title,
+          ...data,
+        }).trim();
+
+        if (!inlineCss) {
+          this.emitAsset(cssFile, css);
+        }
+
+        this.emitAsset(htmlFile, html);
+      } catch (err) {
+        this.error(err);
       }
-
-      this.emitAsset(htmlFile, html);
     },
   };
 }
+
+export default emitHtml;

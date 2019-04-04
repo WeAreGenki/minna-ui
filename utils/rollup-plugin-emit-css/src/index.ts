@@ -1,22 +1,15 @@
-// TODO: Create and merge source maps
+// TODO: Add source map support
 
 /* eslint-disable security/detect-object-injection */
 
-import merge from 'deepmerge';
+import CleanCSS from 'clean-css';
 import { basename } from 'path';
-import postcss from 'postcss';
-import postcssrc from 'postcss-load-config';
-import syntax from 'postcss-scss';
-import Purgecss from 'purgecss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
 interface EmitCssOptions {
-  /**
-   * Files to parse for CSS classes. Find which CSS selectors are used when
-   * removing unused styles.
-   */
-  content?: string[] | Purgecss.RawContent[];
+  /** Concatinate all css files together and emit a single CSS file. */
+  combine?: boolean;
   /** Show additional logging for debug purposes. */
   debug?: boolean;
   /** Write CSS files to disk even when empty. */
@@ -24,103 +17,36 @@ interface EmitCssOptions {
   /** Files to exclude from CSS processing. */
   exclude?: RegExp[] | string[];
   /**
-   * CSS file name to emit. Only required when not using `rollup#output.file`.
-   * Defaults to same name as your JS bundle but with a `.css` file extension.
+   * CSS file name to emit. Only used in `combine` mode. Without this option
+   * the file name will be infered from `rollup#output.name` or from
+   * `rollup#output.file` replacing `.js` with `.css`.
    */
   fileName?: string;
   /** Files to include in CSS processing. */
   include?: RegExp[] | string[];
-  /**
-   * Base PostCSS options. Please note that these can be overriden by your
-   * PostCSS configuration file.
-   */
-  options?: postcss.ProcessOptions;
   /** Should output CSS be minified and cleaned? */
-  optimize?: boolean;
-  /** CSS classes to never remove. */
-  whitelist?: string[];
-  /** Apply potentially unsafe optimisations. */
-  unsafe?: boolean;
-  /** Any additional options to pass to `cssnano`. */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  userOpts?: any[];
+  optimize?: boolean | CleanCSS.OptionsOutput;
 }
 
-/**
- * Rollup plugin to generate CSS with PostCSS from imported styles, combine
- * into a single bundle, and write it to disk. Optionally minifies and removes
- * unused styles for significantly smaller CSS bundles.
- */
 export function emitCss({
-  content = [
-    'src/**/*.html',
-    'src/**/*.js',
-    'src/**/*.jsx',
-    'src/**/*.mjs',
-    'src/**/*.svelte',
-    'src/**/*.svg',
-    'src/**/*.ts',
-    'src/**/*.tsx',
-  ],
+  combine = true,
   debug = false,
   emitEmpty = true,
   exclude = [],
   fileName,
   include = [/\.css$/],
-  options = {},
-  optimize = process.env.NODE_ENV !== 'development',
-  whitelist = [],
-  unsafe = false,
-  ...userOpts
+  optimize = process.env.NODE_ENV === 'production',
 }: EmitCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
   const styles: { [id: string]: string } = {};
-  const maps: { [id: string]: postcss.ResultMap } = {};
 
   return {
-    name: 'makeCss',
+    name: 'emit-css',
 
-    async transform(source, id) {
+    transform(code, id) {
       if (!filter(id)) return undefined;
 
-      try {
-        const ctx = merge(
-          {
-            from: id,
-            map: {
-              annotation: false,
-              inline: false,
-            },
-            syntax,
-            to: id,
-          },
-          options,
-        );
-
-        const { plugins, options: opts } = await postcssrc(ctx);
-        const result = await postcss(plugins).process(source, opts);
-
-        result.warnings().forEach((warn) => {
-          this.warn(warn.toString(), { column: warn.column, line: warn.line });
-        });
-
-        // register dependencies so rollup can monitor them for changes
-        // eslint-disable-next-line no-restricted-syntax
-        for (const msg of result.messages) {
-          if (msg.type === 'dependency') {
-            this.addWatchFile(msg.file);
-          }
-        }
-
-        styles[id] = result.css;
-        maps[id] = result.map;
-      } catch (err) {
-        if (err.name === 'CssSyntaxError') {
-          process.stderr.write(err.message + err.showSourceCode());
-        } else {
-          this.error(err);
-        }
-      }
+      styles[id] = code;
 
       return {
         code: '',
@@ -128,78 +54,67 @@ export function emitCss({
     },
 
     // eslint-disable-next-line sort-keys
-    async generateBundle(outputOpts) {
+    generateBundle(outputOpts) {
       if (!Object.keys(styles).length) return;
 
-      try {
-        // combine all style sheets
-        let css = '';
-
-        // eslint-disable-next-line no-restricted-syntax, guard-for-in
-        for (const id in styles) {
-          css += styles[id] || '';
-        }
-
-        if (optimize) {
-          const cssnanoOpts = merge(
-            {
-              autoprefixer: false,
-              calc: {
-                warnWhenCannotResolve: debug,
-              },
-              zindex: false,
-            },
-            userOpts,
-          );
-
-          const result = await postcss(
-            // eslint-disable-next-line global-require
-            require('cssnano')({
-              preset: ['default', cssnanoOpts],
-            }),
-          ).process(css, {});
-
-          result.warnings().forEach((warn) => {
-            this.warn(warn.toString(), {
-              column: warn.column,
-              line: warn.line,
-            });
-          });
-
-          if (unsafe) {
-            const purgecss = new Purgecss({
-              content,
-              css: [{ extension: 'css', raw: result.css }],
-              keyframes: true,
-              whitelist,
-            });
-
-            css = purgecss.purge()[0].css; // eslint-disable-line prefer-destructuring
-          } else {
-            css = result.css; // eslint-disable-line prefer-destructuring
-          }
-        }
-
+      const processCss = (css: string, id: string): void => {
         if ((!css || !/\S/.test(css)) && !emitEmpty) {
           if (debug) this.warn('CSS empty, not emitting file');
           return;
         }
 
-        if (!outputOpts.file && !fileName) {
-          this.error(
-            'No rollup#output.file value so you must use the fileName option',
-          );
-          return;
+        if (optimize) {
+          const cleancss = new CleanCSS({
+            sourceMap: false, // TODO: Add source map support
+            ...(typeof optimize === 'object' ? optimize : {}),
+          });
+
+          const result = cleancss.minify(css);
+
+          result.warnings.forEach((err) => this.warn(err));
+          result.errors.forEach((err) => this.error(err));
+
+          // eslint-disable-next-line no-param-reassign
+          css = result.styles;
         }
 
-        const cssFileName =
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          fileName || basename(outputOpts.file!).replace(/js$/, 'css');
+        this.emitAsset(id, css);
+      };
 
-        this.emitAsset(cssFileName, css);
+      try {
+        if (combine) {
+          // combine all style sheets
+          let css = '';
+
+          // eslint-disable-next-line no-restricted-syntax, guard-for-in
+          for (const id in styles) {
+            css += styles[id] || '';
+          }
+
+          if (!fileName && !outputOpts.name && !outputOpts.file) {
+            this.error(
+              "Couldn't infer file name from one of fileName, rollup#output.name, or rollup#output.file",
+            );
+            return;
+          }
+
+          const cssFileName =
+            fileName ||
+            outputOpts.name ||
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            basename(outputOpts.file!).replace(/js$/, 'css');
+
+          processCss(css, cssFileName);
+        } else {
+          Object.entries(styles).forEach(([id, css]) => {
+            processCss(css, id);
+          });
+        }
       } catch (err) {
         this.error(err);
       }
     },
   };
 }
+
+export default emitCss;

@@ -40,6 +40,7 @@
     "@minna-ui/rollup-plugin-emit-css": "^0.21.0",
     "@minna-ui/rollup-plugin-emit-html": "^0.21.0",
     "@minna-ui/rollup-plugin-postcss": "^0.21.0",
+    "@minna-ui/rollup-plugin-purgecss": "^0.21.0",
     "@minna-ui/prettier-config": "^0.21.0",
     "@minna-ui/remark-config": "^0.21.0",
     "@minna-ui/stylelint-config": "^0.21.0",

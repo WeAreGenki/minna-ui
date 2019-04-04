@@ -3,7 +3,7 @@
 /* eslint-disable security/detect-object-injection */
 
 import CleanCSS from 'clean-css';
-import { basename } from 'path';
+import { basename, extname } from 'path';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
@@ -34,7 +34,7 @@ export function emitCss({
   emitEmpty = true,
   exclude = [],
   fileName,
-  include = [/\.css$/],
+  include = [/\.(p|post)?css$/],
   optimize = process.env.NODE_ENV === 'production',
 }: EmitCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
@@ -78,7 +78,7 @@ export function emitCss({
           css = result.styles;
         }
 
-        this.emitAsset(id, css);
+        this.emitAsset(id.replace(extname(id), '.css'), css);
       };
 
       try {

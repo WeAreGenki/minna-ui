@@ -42,7 +42,7 @@ export const style = (
 
     const dependencies: string[] = [];
 
-    // register dependencies so rollup can monitor them for changes
+    // register dependencies so rollup can watch them for changes
     // eslint-disable-next-line no-restricted-syntax
     for (const msg of result.messages) {
       if (msg.type === 'dependency') {

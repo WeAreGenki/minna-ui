@@ -5,7 +5,7 @@
 
 Rollup plugins for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects.
 
-Process imported styles with PostCSS and optionally remove unused CSS with Purgecss and write it to disk.
+Optimise and emit CSS files in Rollup.
 
 ## Usage
 

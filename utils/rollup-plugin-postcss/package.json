@@ -12,10 +12,8 @@
     "minna-ui",
     "postcss",
     "postcss-runner",
-    "purgecss",
     "rollup",
     "rollup-plugin",
-    "svelte",
     "wearegenki"
   ],
   "scripts": {
@@ -36,7 +34,6 @@
     "deepmerge": "^3.1.0",
     "postcss-load-config": "^2.0.0",
     "postcss-scss": "^2.0.0",
-    "purgecss": "^1.1.0",
     "rollup-pluginutils": "^2.5.0"
   },
   "publishConfig": {

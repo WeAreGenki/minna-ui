@@ -47,7 +47,7 @@
     "@minna-ui/switch": "^0.21.0",
     "@minna-ui/tabs": "^0.21.0",
     "@minna-ui/toast": "^0.21.0",
-    "@minna-ui/tooltip-action": "^0.21.0"
+    "@minna-ui/tooltip": "^0.21.0"
   },
   "publishConfig": {
     "access": "public"

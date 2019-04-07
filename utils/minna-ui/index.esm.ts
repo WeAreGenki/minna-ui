@@ -8,4 +8,4 @@ export { default as Tabs } from '@minna-ui/tabs';
 export { default as Toast } from '@minna-ui/toast';
 
 // Actions
-export * from '@minna-ui/tooltip-action';
+export * from '@minna-ui/tooltip';

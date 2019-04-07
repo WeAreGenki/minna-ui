@@ -22,7 +22,7 @@
     "test/coverage"
   ]
   // "references": [
-  //   { "path": "./components/tooltip-action" },
+  //   { "path": "./components/tooltip" },
   //   { "path": "./utils/browserslist-config" },
   //   { "path": "./utils/build-component" },
   //   { "path": "./utils/build-css" },

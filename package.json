@@ -99,7 +99,7 @@
       "**/*.d.ts",
       "**/node_modules/**",
       "components/*/dist/**",
-      "components/tooltip-action/README.md",
+      "components/tooltip/README.md",
       "css/dist/**",
       "docs/_dist/**",
       "docs/index.html",

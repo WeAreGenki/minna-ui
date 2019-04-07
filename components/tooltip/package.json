@@ -1,8 +1,8 @@
 {
-  "name": "@minna-ui/tooltip-action",
+  "name": "@minna-ui/tooltip",
   "version": "0.21.0",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip-action",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",

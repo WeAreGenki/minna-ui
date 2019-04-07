@@ -1,7 +1,7 @@
-[![NPM version](https://img.shields.io/npm/v/@minna-ui/tooltip-action.svg)](https://www.npmjs.com/package/@minna-ui/tooltip-action)
-[![Licence](https://img.shields.io/npm/l/@minna-ui/tooltip-action.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
+[![NPM version](https://img.shields.io/npm/v/@minna-ui/tooltip.svg)](https://www.npmjs.com/package/@minna-ui/tooltip)
+[![Licence](https://img.shields.io/npm/l/@minna-ui/tooltip.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 
-# `@minna-ui/tooltip-action`
+# `@minna-ui/tooltip`
 
 A plugin to add tooltips as a [Svelte](https://svelte.technology/guide) action.
 
@@ -22,7 +22,7 @@ TODO: Add link to demo and documentation page.
 1. Install the package:
 
    ```sh
-   yarn add @minna-ui/tooltip-action
+   yarn add @minna-ui/tooltip
    ```
 
 1. Add to your Svelte component:
@@ -37,7 +37,7 @@ TODO: Add link to demo and documentation page.
    </div>
 
    <script>
-     import tooltip from '@minna-ui/tooltip-action';
+     import tooltip from '@minna-ui/tooltip';
 
      export default {
        actions: {
@@ -47,13 +47,13 @@ TODO: Add link to demo and documentation page.
    </script>
 
    <style>
-     @import '@minna-ui/tooltip-action';
+     @import '@minna-ui/tooltip';
    </style>
    ```
 
 ## Licence
 
-`@minna-ui/tooltip-action` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
+`@minna-ui/tooltip` is part of [`Minna UI`](https://github.com/WeAreGenki/minna-ui), an Apache-2.0 licensed open source project. See [LICENCE](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE).
 
 ---
 

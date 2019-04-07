@@ -3,7 +3,9 @@ import { execSync } from 'child_process';
 
 /**
  * Get the most recent git reference.
+ *
  * @see https://git-scm.com/docs/git-describe
+ *
  * @returns A human readable git reference.
  */
 export function gitDescribe(): string {

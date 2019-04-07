@@ -39,7 +39,8 @@ interface BuildComponentResult {
 
 /**
  * Run component build process.
- * @param env Node `process.env`.
+ *
+ * @param env - Node `process.env`.
  */
 export = async function run(
   env: NodeJS.ProcessEnv,

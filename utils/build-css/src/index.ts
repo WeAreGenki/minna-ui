@@ -18,9 +18,10 @@ const readdir = promisify(fs.readdir);
 
 /**
  * Print a list of warnings or errors to the process stderr.
- * @param origin Which lib the warning came from.
- * @param level The severity of either WARN or ERR.
- * @param warnings List of warnings to iterate over.
+ *
+ * @param origin - Which lib the warning came from.
+ * @param level - The severity of either WARN or ERR.
+ * @param warnings - List of warnings to iterate over.
  */
 function compileWarn(
   origin: string,
@@ -55,10 +56,11 @@ interface ProcessCssResult {
 
 /**
  * Process CSS.
- * @param opts User defined options.
- * @param opts.banner Banner to prepend to resulting code.
- * @param opts.from File from.
- * @param opts.to File to.
+ *
+ * @param opts - User defined options.
+ * @param opts.banner - Banner to prepend to resulting code.
+ * @param opts.from - File from.
+ * @param opts.to - File to.
  */
 async function processCss({
   banner = '',
@@ -115,8 +117,9 @@ async function processCss({
 
 /**
  * Run CSS build process.
- * @param env Node `process.env`.
- * @param argv Node `process.argv`.
+ *
+ * @param env - Node `process.env`.
+ * @param argv - Node `process.argv`.
  */
 export = async function run(
   env: NodeJS.ProcessEnv,

@@ -7,7 +7,8 @@ import { Preprocessor } from './types';
 
 /**
  * Minna UI svelte style preprocessor.
- * @param opts PostCSS options.
+ *
+ * @param opts - PostCSS options.
  */
 export const style = (
   opts: postcss.ProcessOptions = {},

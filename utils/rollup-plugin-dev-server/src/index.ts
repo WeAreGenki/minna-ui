@@ -21,16 +21,19 @@ let server: http.Server;
 
 /**
  * Run a local development web server.
+ *
  * @see https://github.com/lukeed/sirv/tree/master/packages/sirv#api
- * @param opts User defined options.
- * @param opts.dir The directory to serve.
- * @param opts.liveReload Automatic page reload when a dependent file changes.
- * @param opts.port Port to listen on.
- * @param opts.host Host to listen on.
- * @param opts.spa Run in single page app mode where `index.html` is served
+ *
+ * @param opts - User defined options.
+ * @param opts.dir - The directory to serve.
+ * @param opts.liveReload - Automaticaly reload the page when a change is
+ * detected.
+ * @param opts.port - Port to listen on.
+ * @param opts.host - Host to listen on.
+ * @param opts.spa - Run in single page app mode where `index.html` is served
  * for any unknown paths instead of returning a 404.
- * @param opts.wsPort Web socket port for the page live reload script.
- * @param opts.options Any additional options to pass to `sirv`.
+ * @param opts.wsPort - Web socket port for the page live reload script.
+ * @param opts.options - Any additional options to pass to `sirv`.
  */
 export function devServer({
   dir = './dist',

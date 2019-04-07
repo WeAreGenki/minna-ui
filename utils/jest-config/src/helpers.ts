@@ -7,9 +7,10 @@ import { spawn } from 'child_process';
 
 /**
  * Run a binary file in a separate process and get stdout/stderr.
- * @param path The full path to the binary file.
- * @param args Arguments to pass to the called script.
- * @param env Override `process.env` with custom parameters.
+ *
+ * @param path - The full path to the binary file.
+ * @param args - Arguments to pass to the called script.
+ * @param env - Override `process.env` with custom parameters.
  * @returns Returns a promise with an array of the stdout or stderr messages.
  */
 export function runBin(
@@ -59,6 +60,7 @@ export function runBin(
 
 // /**
 //  * Generate mock package.json env variables.
+//  *
 //  * @param {string} dirName
 //  */
 // const pkg = (dirName, source = sourcePath) => ({

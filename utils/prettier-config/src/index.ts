@@ -5,7 +5,8 @@ import prettier from 'prettier';
 
 /**
  * Minna UI prettier config preset.
- * @param opts User defined prettier options to merge with the preset defaults.
+ *
+ * @param opts - User defined prettier options to merge with the preset.
  */
 export = (opts: prettier.Options = {}): prettier.Options =>
   merge(

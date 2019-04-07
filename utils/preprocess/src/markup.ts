@@ -6,8 +6,9 @@ import { MarkupPreprocessor } from './types';
 /**
  * Minna UI svelte markup preprocessor.
  * Reduces the whitespace in svelte components to a minimum.
- * @param opts User defined options.
- * @param opts.enabled Enable preprocessor to tranform HTML code.
+ *
+ * @param opts - User defined options.
+ * @param opts.enabled - Enable preprocessor to tranform HTML code.
  */
 export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
   content,

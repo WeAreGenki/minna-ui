@@ -41,8 +41,10 @@ interface EmitHtmlOptions {
 
 /**
  * Ultra-minimal template engine.
+ *
  * @see https://github.com/Drulac/template-literal
- * @param template A HTML template to compile.
+ *
+ * @param template - A HTML template to compile.
  */
 export function compileTemplate(template: string): Function {
   // eslint-disable-next-line

@@ -110,9 +110,10 @@ function resolveAsModule(
 
 /**
  * Resolve the location of a file within `url(id)` from `cwd`.
- * @param id File location identifier.
- * @param cwd Working directory to resolve from.
- * @param cache Path resolution memoization cache.
+ *
+ * @param id - File location identifier.
+ * @param cwd - Working directory to resolve from.
+ * @param cache - Path resolution memoization cache.
  */
 export function resolve(
   id: string,

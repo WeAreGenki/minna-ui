@@ -30,7 +30,6 @@
     "@minna-ui/utils": "^0.21.0",
     "@wearegenki/node-utils": "^0.1.2",
     "deepmerge": "^3.1.0",
-    "rollup-pluginutils": "^2.5.0",
     "sirv": "^0.2.2"
   },
   "publishConfig": {

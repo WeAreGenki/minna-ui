@@ -6,8 +6,9 @@
     "baseUrl": ".",
     // "composite": true,
     "declaration": true,
-    "incremental": true,
-    "tsBuildInfoFile": "./.tsbuildinfo",
+    // FIXME: So far `incremental` brings more headaches than performance gains
+    // "incremental": true,
+    // "tsBuildInfoFile": "./.tsbuildinfo",
     "paths": { "*": ["types/*"] },
     "sourceMap": true
   },

@@ -1,5 +1,24 @@
 /**
+ * Tooltip
  * @format
  */
 
-/* TODO */
+@import '@minna-ui/css/src/import.css';
+
+$tooltip-padding-x: 1em !default;
+$tooltip-padding-y: 0.5em !default;
+$tooltip-color: $white !default;
+$tooltip-background-color: $black !default;
+$tooltip-animate-speed-in: $animate-speed-in !default;
+$tooltip-placement: translate(5px, -50%) !default;
+
+.tooltip {
+  position: absolute;
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  color: $tooltip-color;
+  pointer-events: none;
+  background: $tooltip-background-color;
+  border-radius: $radius;
+  transition: opacity $tooltip-animate-speed-in;
+  transform: $tooltip-placement;
+}

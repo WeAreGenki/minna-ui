@@ -18,10 +18,10 @@
     "wearegenki"
   ],
   "scripts": {
-    "build": "yarn build:css && yarn build:module && yarn build:main",
+    "build": "yarn build:css && yarn build:esm && yarn build:cjs",
     "build:css": "build-css src dist",
-    "build:module": "tsc --project ./tsconfig.esm.json && mv dist/index.js dist/index.mjs && mv dist/index.js.map dist/index.mjs.map",
-    "build:main": "tsc",
+    "build:esm": "tsc --project ./tsconfig.esm.json && mv dist/index.js dist/index.mjs && mv dist/index.js.map dist/index.mjs.map",
+    "build:cjs": "tsc",
     "prebuild": "rm -rf dist"
   },
   "style": "dist/index.css",

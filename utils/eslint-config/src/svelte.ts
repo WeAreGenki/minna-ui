@@ -12,7 +12,7 @@ interface BlockAttributes {
 }
 
 export = {
-  plugins: ['import', 'svelte3'],
+  plugins: ['svelte3'],
   settings: {
     'svelte3/ignore-styles': (attr: BlockAttributes) =>
       attr.type === 'text/postcss',

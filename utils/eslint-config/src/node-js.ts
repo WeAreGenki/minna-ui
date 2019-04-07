@@ -9,7 +9,6 @@
 /* eslint-disable sort-keys */
 
 export = {
-  plugins: ['@typescript-eslint'],
   parser: 'espree', // default eslint parser
   parserOptions: {
     ecmaFeatures: {

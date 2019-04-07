@@ -25,7 +25,6 @@
  */
 
 export = {
-  plugins: ['jsdoc', '@typescript-eslint'],
   parserOptions: {
     project: 'tsconfig.json',
     // FIXME: This doesn't work with Prettier + `prettier-eslint` integration

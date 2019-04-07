@@ -8,7 +8,6 @@
 /* eslint-disable sort-keys */
 
 export = {
-  plugins: ['jsdoc'],
   env: {
     browser: false,
     node: true,

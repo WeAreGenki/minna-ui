@@ -30,7 +30,7 @@
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
-    "svelte": "^3.0.0-beta.22"
+    "svelte": "^3.0.0-beta.23"
   },
   "dependencies": {
     "deepmerge": "^3.1.0",

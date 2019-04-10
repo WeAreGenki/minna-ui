@@ -32,13 +32,11 @@
     "dist"
   ],
   "peerDependencies": {
-    "svelte": "^3.0.0-beta.23"
-  },
-  "dependencies": {
-    "@minna-ui/css": "^0.21.0"
+    "svelte": ">2.0.0"
   },
   "devDependencies": {
-    "@minna-ui/build-css": "*"
+    "@minna-ui/build-css": "*",
+    "@minna-ui/css": "^0.21.0"
   },
   "publishConfig": {
     "access": "public"

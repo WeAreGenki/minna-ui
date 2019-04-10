@@ -8,7 +8,7 @@ import { MarkupPreprocessor } from './types';
  * Reduces the whitespace in svelte components to a minimum.
  *
  * @param opts - User defined options.
- * @param opts.enabled - Enable preprocessor to tranform HTML code.
+ * @param opts.enabled - Enable preprocessor to transform HTML code.
  */
 export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
   content,
@@ -42,8 +42,8 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
     }
   });
 
-  // remove surounding whitespace
-  code = code.trim();
+  // remove HTML comments
+  code = code.replace(/<!--.*?-->/gsu, '');
 
   // remove whitespace between tags
   code = code.replace(/>\s*?</gm, '><');
@@ -51,10 +51,13 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
   // reduce multiple whitespace down to a single space
   code = code.replace(/\s{2,}/gm, ' ');
 
-  // remove HTML comments
-  code = code.replace(/<!--.*?-->/gsu, '');
+  // convert all whitespace characters into a space
+  code = code.replace(/\s/gm, ' ');
 
-  // restore script and style blocks
+  // remove surrounding whitespace
+  code = code.trim();
+
+  // restore tag blocks
   Object.keys(blocks).forEach((marker) => {
     code = code.replace(marker, blocks[marker]);
   });

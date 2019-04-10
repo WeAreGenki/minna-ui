@@ -5,9 +5,7 @@
 interface PreprocessorReturn {
   code: string;
   dependencies?: string[];
-  map?: string | {
-    toString: () => string;
-  };
+  map?: string | { toString: () => string };
 }
 
 /**

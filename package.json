@@ -46,7 +46,7 @@
     "stylelint": "9.10.1",
     "svelte": "3.0.0-beta.23",
     "tslib": "1.9.3",
-    "typescript": "3.4.2"
+    "typescript": "3.4.3"
   },
   "browserslist": {
     "production": [

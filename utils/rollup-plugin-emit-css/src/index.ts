@@ -1,6 +1,6 @@
 // TODO: Add source map support
 
-/* eslint-disable security/detect-object-injection */
+/* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
 import CleanCSS from 'clean-css';
 import { basename, extname } from 'path';
@@ -38,7 +38,7 @@ export function emitCss({
   optimize = process.env.NODE_ENV === 'production',
 }: EmitCssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
-  const styles: { [id: string]: string } = {};
+  const styles = new Map();
 
   return {
     name: 'emit-css',
@@ -46,7 +46,7 @@ export function emitCss({
     transform(code, id) {
       if (!filter(id)) return undefined;
 
-      styles[id] = code;
+      styles.set(id, code);
 
       return {
         code: '',
@@ -55,7 +55,7 @@ export function emitCss({
 
     // eslint-disable-next-line sort-keys
     generateBundle(outputOpts) {
-      if (!Object.keys(styles).length) return;
+      if (!styles.size) return;
 
       const processCss = (css: string, id: string): void => {
         if ((!css || !/\S/.test(css)) && !emitEmpty) {
@@ -71,8 +71,8 @@ export function emitCss({
 
           const result = cleancss.minify(css);
 
-          result.warnings.forEach((err) => this.warn(err));
-          result.errors.forEach((err) => this.error(err));
+          for (const err of result.warnings) this.warn(err);
+          for (const err of result.errors) this.error(err);
 
           // eslint-disable-next-line no-param-reassign
           css = result.styles;
@@ -85,12 +85,10 @@ export function emitCss({
 
       try {
         if (combine) {
-          // combine all style sheets
           let css = '';
 
-          // eslint-disable-next-line no-restricted-syntax, guard-for-in
-          for (const id in styles) {
-            css += styles[id] || '';
+          for (const id of styles.keys()) {
+            css += styles.get(id) || '';
           }
 
           if (!fileName && !outputOpts.name && !outputOpts.file) {
@@ -108,9 +106,9 @@ export function emitCss({
 
           processCss(css, inferredName);
         } else {
-          Object.entries(styles).forEach(([id, css]) => {
-            processCss(css, id);
-          });
+          for (const id of styles.keys()) {
+            processCss(styles.get(id), id);
+          }
         }
       } catch (err) {
         this.error(err);

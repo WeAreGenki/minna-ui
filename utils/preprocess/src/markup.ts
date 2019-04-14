@@ -1,6 +1,5 @@
-/* eslint-disable security/detect-object-injection */
+/* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
-// eslint-disable-next-line import/named
 import { MarkupPreprocessor } from './types';
 
 /**
@@ -23,10 +22,10 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
     ['<style', '</style>'],
     ['<pre', '</pre>'],
   ];
-  const blocks: { [marker: string]: string } = {};
+  const blocks = new Map();
 
   // replace tag blocks with markers
-  tags.forEach((tag) => {
+  for (const tag of tags) {
     let start;
 
     // eslint-disable-next-line no-cond-assign
@@ -34,13 +33,13 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
       const end = code.indexOf(tag[1], start) + tag[1].length;
       const inner = code.slice(start, end);
       const marker = `<___marker_${count}>`;
-      blocks[marker] = inner;
+      blocks.set(marker, inner);
 
       code = code.substring(0, start) + marker + code.substring(end);
 
       count += 1;
     }
-  });
+  }
 
   // remove HTML comments
   code = code.replace(/<!--.*?-->/gsu, '');
@@ -51,18 +50,17 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
   // reduce multiple whitespace down to a single space
   code = code.replace(/\s{2,}/gm, ' ');
 
-  // convert all whitespace characters into a space
+  // convert remaining whitespace characters into a space
   code = code.replace(/\s/gm, ' ');
 
   // remove surrounding whitespace
   code = code.trim();
 
   // restore tag blocks
-  Object.keys(blocks).forEach((marker) => {
-    code = code.replace(marker, blocks[marker]);
-  });
+  for (const marker of blocks.keys()) {
+    code = code.replace(marker, blocks.get(marker));
+  }
 
-  // eslint-disable-next-line consistent-return
   return {
     code,
   };

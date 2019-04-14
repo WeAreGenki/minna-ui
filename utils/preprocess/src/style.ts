@@ -1,8 +1,9 @@
+/* eslint-disable no-restricted-syntax */
+
 import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
 import syntax from 'postcss-scss';
-// eslint-disable-next-line import/named
 import { Preprocessor } from './types';
 
 /**
@@ -36,15 +37,14 @@ export const style = (
     const { plugins, options } = await postcssLoadConfig(context);
     const result = await postcss(plugins).process(content, options);
 
-    result.warnings().forEach((warn) => {
+    for (const err of result.warnings()) {
       // eslint-disable-next-line no-console
-      console.warn(warn.toString());
-    });
+      console.warn(err.toString());
+    }
 
     const dependencies: string[] = [];
 
     // register dependencies so rollup can watch them for changes
-    // eslint-disable-next-line no-restricted-syntax
     for (const msg of result.messages) {
       if (msg.type === 'dependency') {
         dependencies.push(msg.file);

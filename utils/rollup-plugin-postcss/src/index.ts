@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+
 import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
@@ -5,13 +7,11 @@ import syntax from 'postcss-scss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
-interface PostcssRollupOptions {
+interface RollupPostcssOptions {
   /** Files to exclude from processing. */
   exclude?: RegExp[] | string[];
   /** Files to include in processing. */
   include?: RegExp[] | string[];
-  /** Any other options will be passed to PostCSS. */
-  options?: postcss.ProcessOptions;
 }
 
 /**
@@ -21,7 +21,7 @@ function postcssRollup({
   exclude = [/node_modules\/@minna-ui/],
   include = [/\.(p|post)?css$/],
   ...options
-}: PostcssRollupOptions = {}): rollup.Plugin {
+}: RollupPostcssOptions & postcss.ProcessOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {
@@ -46,12 +46,11 @@ function postcssRollup({
         const { plugins, options: opts } = await postcssrc(context);
         const result = await postcss(plugins).process(code, opts);
 
-        result.warnings().forEach((warn) => {
+        for (const warn of result.warnings()) {
           this.warn(warn.toString(), { column: warn.column, line: warn.line });
-        });
+        }
 
         // register file dependencies so rollup can watch them for changes
-        // eslint-disable-next-line no-restricted-syntax
         for (const msg of result.messages) {
           if (msg.type === 'dependency') {
             this.addWatchFile(msg.file);

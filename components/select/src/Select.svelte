@@ -240,7 +240,7 @@
 
 <style type="text/postcss">
   @import './_select.css';
-  @import '@minna-ui/css/src/import.css';
+  @import 'import.css';
 
   .hide {
     pointer-events: none;

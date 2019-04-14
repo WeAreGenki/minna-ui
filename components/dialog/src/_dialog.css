@@ -1,0 +1,14 @@
+/**
+ * DIALOG COMPONENT VARIABLES
+ *
+ * @format
+ */
+
+@import 'import.css';
+
+$dialog-optimize: false !default;
+$dialog-zindex: 7 !default;
+$dialog-background-color: $white !default;
+$dialog-shadow: $shadow, $shadow-hover !default;
+$dialog-animate-speed-in: $animate-speed-in !default;
+$dialog-animate-speed-out: $animate-speed-out !default;

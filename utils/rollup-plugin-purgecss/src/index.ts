@@ -11,18 +11,31 @@ interface PurgecssOptions {
   exclude?: RegExp[] | string[];
   /** Files to include in processing. */
   include?: RegExp[] | string[];
-  /** All other options will be passed to Purgecss. */
-  options?: Purgecss.Options;
 }
 
 export function purgecss({
+  content = [
+    // TODO: Document that using `__sapper__/*` requires 2 builds
+    '__sapper__/build/*.html',
+    '__sapper__/build/**/*.js',
+    '__sapper__/export/**/*.html',
+    '__sapper__/export/**/*.js',
+    'src/**/*.html',
+    'src/**/*.js',
+    'src/**/*.jsx',
+    'src/**/*.mjs',
+    'src/**/*.svelte',
+    'src/**/*.svg',
+    'src/**/*.ts',
+    'src/**/*.tsx',
+  ],
   debug,
   // TODO: Add documentation about how to work with minna-ui components
   // exclude = [/node_modules\/@minna-ui/],
   exclude,
   include = [/\.(p|post)?css$/],
   ...options
-}: PurgecssOptions = {}): rollup.Plugin {
+}: PurgecssOptions & Partial<Purgecss.Options> = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {
@@ -34,24 +47,7 @@ export function purgecss({
 
       try {
         const defaults = {
-          content: [
-            '__sapper__/build/*.html',
-            '__sapper__/build/**/*.js',
-            /**
-             * TODO: Add to documentation that `dist` is the most reliable but
-             * requires 2 full builds.
-             */
-            // 'dist/**/*.html',
-            // 'dist/**/*.js',
-            'src/**/*.html',
-            'src/**/*.js',
-            'src/**/*.jsx',
-            'src/**/*.mjs',
-            'src/**/*.svelte',
-            'src/**/*.svg',
-            'src/**/*.ts',
-            'src/**/*.tsx',
-          ],
+          content,
           keyframes: true,
           rejected: debug,
           whitelistPatternsChildren: [/svelte-/],

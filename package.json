@@ -56,11 +56,6 @@
       "extends @minna-ui/browserslist-config/lib/dev"
     ]
   },
-  "FIXME__babel": {
-    "presets": [
-      "@minna-ui/jest-config/lib/babel-preset"
-    ]
-  },
   "postcss": {
     "syntax": "postcss-scss",
     "plugins": {

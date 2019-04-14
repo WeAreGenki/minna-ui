@@ -22,7 +22,7 @@
     "build": "build-component",
     "prebuild": "rm -rf dist"
   },
-  "svelte": "src/ToastLauncher.svelte",
+  "svelte": "src/Toast.svelte",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",

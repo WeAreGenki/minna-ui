@@ -1,8 +1,0 @@
-/components/tooltip-action/README.md
-/docs/_dist/
-/docs/index.html
-/utils/jest-config/fixtures/styles-bad-syntax.css
-/utils/jest-config/fixtures/TestComponentBadSyntax.html
-/test/coverage/
-dist/
-node_modules/

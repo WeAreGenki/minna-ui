@@ -55,8 +55,8 @@ The easiest way to use the component is to add the CDN hosted version directly i
    ```html
    <script>
      new MinnaToasts({
-       target: document.querySelector('#minna-toasts'),
        data: {},
+       target: document.querySelector('#minna-toasts'),
      });
    </script>
    ```
@@ -73,7 +73,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaToasts />
@@ -115,8 +115,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaToasts from '@minna-ui/toasts';
 
    new MinnaToasts({
-     target: document.querySelector('#minna-toasts'),
      data: {},
+     target: document.querySelector('#minna-toasts'),
    });
    ```
 

@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/eslint-config",
   "version": "0.21.0",
-  "description": "ESLint config presets for use in minna-ui projects.",
+  "description": "ESLint config presets for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
@@ -12,23 +12,34 @@
     "minna-ui",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "files": [
-    "*.js"
+    "lib"
   ],
   "peerDependencies": {
-    "eslint": "^5.0.0"
+    "eslint": "^5.0.0",
+    "svelte": "^3.0.0-beta.23"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.3.0",
-    "@typescript-eslint/parser": "^1.3.0",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.2.2",
-    "eslint-plugin-jsdoc": "^4.1.0",
+    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jsdoc": "^4.8.3",
     "eslint-plugin-markdown": "^1.0.0",
-    "eslint-plugin-security": "^1.4.0"
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-svelte3": "^0.4.5"
+  },
+  "devDependencies": {
+    "@types/eslint": "4.16.6"
   },
   "publishConfig": {
     "access": "public"

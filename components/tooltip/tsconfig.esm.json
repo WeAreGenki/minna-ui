@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "es2015",
+    "paths": { "*": ["../../types/*"] },
+    "outDir": "./dist"
+  },
+  "include": ["./src"]
+}

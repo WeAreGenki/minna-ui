@@ -1,7 +1,7 @@
-// https://babeljs.io/docs/usage/api/#options
+// https://babeljs.io/docs/en/configuration
 
 'use strict';
 
 module.exports = {
-  presets: ['@minna-ui/jest-config/babel-preset.js'],
+  presets: ['@minna-ui/jest-config/lib/babel-preset'],
 };

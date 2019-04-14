@@ -1,21 +1,43 @@
 {
   "name": "@minna-ui/build-component",
-  "private": true,
   "version": "0.21.0",
+  "description": "Internal Minna UI component builder.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-component",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
   "bin": {
     "build-component": "cli/index.js"
   },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
-    "svelte": "^2.0.0"
+    "svelte": "^3.0.0-beta.23"
   },
   "dependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "0.9.0-beta.7",
-    "@minna-ui/pre-markup": "^0.21.0",
-    "@minna-ui/pre-style": "^0.21.0",
-    "del": "3.0.0",
-    "rollup": "1.1.2",
-    "rollup-plugin-commonjs": "9.2.0",
-    "rollup-plugin-node-resolve": "4.0.0",
-    "rollup-plugin-svelte": "5.0.1"
+    "@ampproject/rollup-plugin-closure-compiler": "0.8.5",
+    "@minna-ui/preprocess": "*",
+    "rollup": "1.10.0",
+    "rollup-plugin-commonjs": "9.3.4",
+    "rollup-plugin-node-resolve": "4.2.3",
+    "rollup-plugin-svelte": "5.0.3"
+  },
+  "devDependencies": {
+    "@types/glob": "7.1.1",
+    "@types/google-closure-compiler": "0.0.18",
+    "@types/rollup-plugin-node-resolve": "4.0.0",
+    "del": "4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "name": "@minna-ui/rollup-plugin-purgecss",
+  "version": "0.21.0",
+  "description": "Remove unused styles using Purgecss in rollup for use in Minna UI projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-purgecss",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "css",
+    "minna-ui",
+    "purgecss",
+    "rollup",
+    "rollup-plugin",
+    "wearegenki"
+  ],
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "rollup": "^1.0.0"
+  },
+  "dependencies": {
+    "deepmerge": "^3.1.0",
+    "purgecss": "^1.2.0",
+    "rollup-pluginutils": "^2.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

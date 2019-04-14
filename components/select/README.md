@@ -71,7 +71,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaSelect />
@@ -113,8 +113,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaSelect from '@minna-ui/select';
 
    new MinnaSelect({
-     target: document.querySelector('#minna-select'),
      data: {},
+     target: document.querySelector('#minna-select'),
    });
    ```
 

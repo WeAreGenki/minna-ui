@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/stylelint-config",
   "version": "0.21.0",
-  "description": "Stylelint config preset for use in minna-ui projects.",
+  "description": "Stylelint config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/stylelint-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
@@ -13,20 +13,30 @@
     "stylelint",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "prettier": "^1.15.0",
     "stylelint": "^9.2.0"
   },
   "dependencies": {
-    "stylelint-a11y": "^1.1.10",
+    "stylelint-a11y": "^1.1.11",
     "stylelint-config-css-modules": "^1.3.0",
-    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-declaration-strict-value": "^1.1.2",
     "stylelint-high-performance-animation": "^1.1.1",
-    "stylelint-order": "^2.0.0"
+    "stylelint-order": "^2.2.1"
   },
   "devDependencies": {
-    "@types/stylelint": "9.4.1"
+    "@types/stylelint": "9.10.0"
   },
   "publishConfig": {
     "access": "public"

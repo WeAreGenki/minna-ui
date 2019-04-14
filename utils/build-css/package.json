@@ -1,17 +1,41 @@
 {
   "name": "@minna-ui/build-css",
-  "private": true,
   "version": "0.21.0",
+  "description": "Internal Minna UI CSS builder.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-css",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
   "bin": {
     "build-css": "cli/index.js"
   },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "postcss": "*"
   },
   "dependencies": {
-    "@minna-ui/postcss-config": "^0.21.0",
+    "@minna-ui/postcss-config": "*",
     "clean-css": "4.2.1",
-    "del": "3.0.0",
     "postcss-load-config": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/clean-css": "4.2.1",
+    "del": "4.1.0"
+  },
+  "engines": {
+    "node": ">=10.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

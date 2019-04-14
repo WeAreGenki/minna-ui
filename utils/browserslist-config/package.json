@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/browserslist-config",
   "version": "0.21.0",
-  "description": "Browserslist presets for use in minna-ui projects.",
+  "description": "Browserslist presets for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/browserslist-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
@@ -12,9 +12,15 @@
     "minna-ui",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "files": [
-    "*.js"
+    "lib"
   ],
   "publishConfig": {
     "access": "public"

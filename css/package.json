@@ -16,7 +16,8 @@
     "wearegenki"
   ],
   "scripts": {
-    "build": "build-css src dist"
+    "build": "build-css src dist",
+    "prebuild": "rm -rf dist"
   },
   "style": "dist/index.css",
   "browser": "dist/index.css",
@@ -25,6 +26,10 @@
     "dist",
     "src"
   ],
+  "devDependencies": {
+    "@minna-ui/build-css": "*",
+    "postcss-extend-rule": "^2.0.0"
+  },
   "publishConfig": {
     "access": "public"
   }

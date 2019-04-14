@@ -7,7 +7,10 @@
 .button {
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
+  font-weight: $text-weight-heavy;
   color: $button-text-color;
+  text-decoration: none;
+  text-transform: uppercase;
   background-color: $button-background-color;
   border: 0;
   border-radius: $button-radius;

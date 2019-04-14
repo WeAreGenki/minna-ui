@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch component renders correctly with no props 1`] = `
+"<div class=\\"switch\\" role=\\"switch\\" tabindex=\\"0\\" aria-checked=\\"false\\"><div class=\\"switch-slider\\"></div>
+  <div class=\\"switch-on\\">ON</div>
+  <div class=\\"switch-off\\">OFF</div></div>"
+`;

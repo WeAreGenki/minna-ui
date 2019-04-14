@@ -3,6 +3,8 @@
 
 # `@minna-ui/tslint-config`
 
+> **IMPORTANT:** This package is deprecated! Use `@minna-ui/eslint-config` instead which now supports TypeScript and is far more capable than TSLint.
+
 TSLint config presets for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects.
 
 ## Usage

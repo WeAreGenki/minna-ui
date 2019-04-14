@@ -19,18 +19,23 @@
     "web-components"
   ],
   "scripts": {
-    "build": "build-component"
+    "build": "build-component",
+    "prebuild": "rm -rf dist"
   },
-  "svelte": "src/Navbar.html",
-  "module": "dist/index.es.mjs",
+  "svelte": "src/Navbar.svelte",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "style": "dist/index.css",
+  "typings": "types.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "types.d.ts"
   ],
-  "dependencies": {
-    "@minna-ui/css": "^0.21.0"
+  "devDependencies": {
+    "@minna-ui/build-component": "*",
+    "@minna-ui/css": "^0.21.0",
+    "svelte": "^3.0.0-beta.23"
   },
   "publishConfig": {
     "access": "public"

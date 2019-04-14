@@ -1,5 +1,1 @@
-@import '@minna-ui/css/src/_variables-color.css';
-@import '@minna-ui/css/src/_variables.css';
-@import '@minna-ui/css/src/mixins/at-media.css';
-@import '@minna-ui/css/src/mixins/font-face.css';
-@import '@minna-ui/css/src/mixins/triangle.css';
+@import '@minna-ui/css/src/import.css';

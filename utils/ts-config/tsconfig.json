@@ -1,29 +1,41 @@
+// https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
 {
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "checkJs": true,
-    "esModuleInterop": true,
-    "importHelpers": true,
-    "module": "esnext",
+    "target": "es2018", // compatible with node v10
+    "module": "esnext", // when building backend libs use `commonjs`
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+
+    // recommended in projects which have multiple output files or apps
+    // "importHelpers": true,
+
+    // recommended in projects which also include .js files
+    // "allowJs": true,
+    // "checkJs": true,
+
+    "strict": true,
+    "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
+    // "noImplicitReturns": true, // prefer to handle with ESLint
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
-    "resolveJsonModule": true,
-    "strict": true,
-    "target": "es2018"
+
+    "paths": {
+      "##/*": ["src/*"] // webpack/rollup/postcss alias
+    }
   },
+  // FIXME: `exclude` doesn't get inherited when using `extends`
   "exclude": [
     "**/.*rc.js",
     "**/*.config.js",
-    "__sapper__",
-    "dist",
-    "node_modules",
-    "test/coverage"
+    "**/__sapper__/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "**/test/coverage/*"
   ],
   "typeAcquisition": {
     "enable": true

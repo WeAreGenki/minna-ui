@@ -218,6 +218,8 @@
   }
 </style>
 
+<svelte:options tag="minna-switch" />
+
 <div
   class="switch {mini ? 'switch-mini' : ''} {disabled ? 'switch-disabled' : ''} {value ? 'switch-checked' : ''}"
   role="switch"

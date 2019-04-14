@@ -238,6 +238,8 @@
   }
 </style>
 
+<svelte:options tag="minna-navbar" />
+
 <header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">
     <button

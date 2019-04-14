@@ -30,6 +30,8 @@
   }
 </style>
 
+<svelte:options tag="minna-collapse" />
+
 <button class="button button-collapse" on:click="{handleClick}">
   {isOpen ? textClose : textOpen}
 </button>

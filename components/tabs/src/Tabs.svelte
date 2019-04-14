@@ -19,12 +19,13 @@
     active = index;
   }
 </script>
+-->
 
 <style type="text/postcss">
   @import './_tabs.css';
   @import 'import.css';
 
-  .tabs-title {
+  /* .tabs-title {
     padding: 1em;
     border-bottom: 3px solid transparent;
 
@@ -37,10 +38,13 @@
 
   .tabs-title-active {
     border-color: $intent-primary;
-  }
+  } */
 </style>
 
+<svelte:options tag="minna-tabs" />
+
 <div class="tabs">
+  <!--
   <nav>
     <a href="#1" class="tabs-title {active === 1 ? 'tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 1)}">1</a>
     <a href="#2" class="tabs-title {active === 2 ? 'tabs-title-active' : ''}" on:click|preventDefault="{event => handleClick(event, 2)}">2</a>
@@ -51,5 +55,5 @@
     {#if active === 2}<slot name="2"></slot>{/if}
     {#if active === 3}<slot name="3"></slot>{/if}
   </div>
+  -->
 </div>
--->

@@ -25,6 +25,7 @@
   "svelte": "src/Tabs.svelte",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "browser": "dist/index.web.js",
   "style": "dist/index.css",
   "typings": "types.d.ts",
   "files": [

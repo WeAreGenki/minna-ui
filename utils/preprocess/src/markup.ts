@@ -9,10 +9,11 @@ import { MarkupPreprocessor } from './types';
  * @param opts - User defined options.
  * @param opts.enabled - Enable preprocessor to transform HTML code.
  */
-export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
-  content,
-}) => {
-  if (!enabled) return;
+export const markup = ({
+  enabled = true,
+  unsafe = true,
+} = {}): MarkupPreprocessor => ({ content }) => {
+  if (!enabled) return undefined;
 
   let code = `${content}`;
   let count = 0;
@@ -45,7 +46,7 @@ export const markup = ({ enabled = true } = {}): MarkupPreprocessor => ({
   code = code.replace(/<!--.*?-->/gsu, '');
 
   // remove whitespace between tags
-  code = code.replace(/>\s*?</gm, '><');
+  code = code.replace(/>\s*?</gm, unsafe ? '><' : '> <');
 
   // reduce multiple whitespace down to a single space
   code = code.replace(/\s{2,}/gm, ' ');

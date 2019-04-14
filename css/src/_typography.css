@@ -28,7 +28,7 @@ body {
     /**
       * Enable font subpixel anti-aliasing but only on hi-pixel density screens,
       * using a technique from Twitter.
-      * REF: https://www.zachleat.com/web/font-smooth/
+      * @see https://www.zachleat.com/web/font-smooth/
       */
     /* autoprefixer: ignore next */
     /* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
@@ -95,7 +95,7 @@ p {
 
   @if $use-enhanced-type {
     /**
-     * Better hyphenation.
+     * Better hyphenation; improved word flow, especially on small screens.
      * @see http://clagnut.com/blog/2395
      */
     hyphens: auto;

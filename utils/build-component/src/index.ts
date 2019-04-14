@@ -2,40 +2,46 @@
  * Minna UI component compiler.
  */
 
-/* eslint-disable @typescript-eslint/camelcase */
-
 import { basename } from 'path';
 import * as rollup from 'rollup';
-import compiler from '@ampproject/rollup-plugin-closure-compiler';
+import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
+import { terser } from 'rollup-plugin-terser';
 import { preprocess } from '@minna-ui/preprocess';
 
-const compilerOpts = {
-  compilation_level: 'SIMPLE',
-  language_out: 'ECMASCRIPT5',
-  // debug: true,
-  // warning_level: 'VERBOSE',
-};
+interface CssResult {
+  code: string;
+  map?: string;
+}
+
+interface RollupSvelteCss extends CssResult {
+  write(path: string): void;
+}
 
 interface BuildComponentResult {
-  // FIXME: Don't use `any` type once svelte has types available
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  css: any;
-  // element: {
-  //   bundle: rollup.RollupBuild;
-  //   result: rollup.RollupOutput;
-  // };
+  cjs: {
+    bundle: rollup.RollupBuild;
+    result: rollup.RollupOutput;
+  };
+  css: CssResult;
+  element: {
+    bundle: rollup.RollupBuild;
+    result: rollup.RollupOutput;
+  };
   esm: {
     bundle: rollup.RollupBuild;
     result: rollup.RollupOutput;
   };
-  main: {
-    bundle: rollup.RollupBuild;
-    result: rollup.RollupOutput;
-  };
 }
+
+const terserOpts = {
+  module: true,
+  output: {
+    comments: /#__PURE__/,
+  },
+};
 
 /**
  * Run component build process.
@@ -45,21 +51,21 @@ interface BuildComponentResult {
 export = async function run(
   env: NodeJS.ProcessEnv,
 ): Promise<BuildComponentResult> {
+  const pkgBrowser = env.npm_package_browser;
+  const pkgHomepage = env.npm_package_homepage;
+  const pkgMain = env.npm_package_main;
+  const pkgModule = env.npm_package_module;
+  const pkgName = env.npm_package_name;
+  const pkgStyle = env.npm_package_style;
   const pkgSvelte = env.npm_package_svelte;
+  const pkgVersion = env.npm_package_version;
 
-  if (!pkgSvelte) {
-    throw new Error(
-      'Package.json `svelte` field not found, it this a svelte component?',
-    );
-  }
+  if (!pkgBrowser) throw new Error('package.json#browser is not defined');
+  if (!pkgMain) throw new Error('packge.json#main is not defined');
+  if (!pkgStyle) throw new Error('packge.json#style is not defined');
+  if (!pkgSvelte) throw new Error('package.json#svelte is not defined');
 
   process.env.NODE_ENV = env.NODE_ENV || 'production';
-  const pkgName = env.npm_package_name;
-  const pkgVersion = env.npm_package_version;
-  const pkgHomepage = env.npm_package_homepage;
-  const pkgModule = env.npm_package_module;
-  const pkgMain = env.npm_package_main;
-  const pkgStyle = env.npm_package_style;
   const name = basename(pkgSvelte, '.svelte');
 
   const banner = `/*!
@@ -69,42 +75,53 @@ export = async function run(
  */`;
 
   try {
-    let resolveCss: Function;
-    const resultCss = new Promise((res) => {
+    let resolveCss: (value: CssResult) => void;
+    const resultCss: Promise<CssResult> = new Promise((res) => {
       resolveCss = res;
     });
 
-    const bundleMain = await rollup.rollup({
+    const bundleCjs = await rollup.rollup({
       input: pkgSvelte,
       plugins: [
         svelte({
-          preprocess,
-          // FIXME: Don't use `any` type once svelte has types available
-          // eslint-disable-next-line sort-keys, @typescript-eslint/no-explicit-any
-          css(css: any) {
-            resolveCss(css);
+          css(css: RollupSvelteCss) {
+            resolveCss({
+              code: css.code,
+              map: css.map,
+            });
             css.write(pkgStyle);
           },
+          preprocess,
         }),
         resolve(),
         commonjs(),
-        compiler(compilerOpts),
+        buble({
+          transforms: {
+            dangerousForOf: true,
+          },
+        }),
+        terser(terserOpts),
       ],
     });
 
-    // const bundleElement = await rollup.rollup({
-    //   input: pkgSvelte,
-    //   plugins: [
-    //     svelte({
-    //       preprocess,
-    //       css: false,
-    //       customElement: true,
-    //     }),
-    //     resolve(),
-    //     commonjs(),
-    //     compiler({ ...compilerOpts, language_out: 'ECMASCRIPT_2015' }),
-    //   ],
-    // });
+    const bundleElement = await rollup.rollup({
+      input: pkgSvelte,
+      plugins: [
+        svelte({
+          customElement: true,
+          preprocess,
+        }),
+        resolve(),
+        commonjs(),
+        buble({
+          transforms: {
+            classes: false,
+            dangerousForOf: true,
+          },
+        }),
+        terser(terserOpts),
+      ],
+    });
 
     const bundleEsm = await rollup.rollup({
       input: pkgSvelte,
@@ -118,7 +135,7 @@ export = async function run(
       ],
     });
 
-    const resultMain = bundleMain.write({
+    const resultCjs = bundleCjs.write({
       banner,
       file: pkgMain,
       format: 'iife',
@@ -126,13 +143,13 @@ export = async function run(
       sourcemap: true,
     });
 
-    // const resultElement = bundleElement.write({
-    //   name,
-    //   banner,
-    //   file: pkgMain.replace(/\.js/, '.element.js'),
-    //   format: 'iife',
-    //   sourcemap: true,
-    // });
+    const resultElement = bundleElement.write({
+      banner,
+      file: pkgBrowser,
+      format: 'iife',
+      name,
+      sourcemap: true,
+    });
 
     const resultEsm = bundleEsm.write({
       banner,
@@ -144,18 +161,18 @@ export = async function run(
 
     // await here to capture any errors
     const results = {
+      cjs: {
+        bundle: await bundleCjs,
+        result: await resultCjs,
+      },
       css: await resultCss,
-      // element: {
-      //   bundle: await bundleElement,
-      //   result: await resultElement,
-      // },
+      element: {
+        bundle: await bundleElement,
+        result: await resultElement,
+      },
       esm: {
         bundle: await bundleEsm,
         result: await resultEsm,
-      },
-      main: {
-        bundle: await bundleMain,
-        result: await resultMain,
       },
     };
 

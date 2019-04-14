@@ -1033,9 +1033,9 @@
     universal-user-agent "^2.0.1"
 
 "@octokit/rest@^16.16.0":
-  version "16.23.5"
-  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.23.5.tgz#835de07e68646f66abb18d13886803571afe5fbe"
-  integrity sha512-7RcYNXeBvmKdbXdaRGCDzaq8snEaZrD7X+jUFT6ZjEMNgaSYrkl7pB+ICh+dnTpubAeFPpxeKR+82msCbgxqew==
+  version "16.24.1"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.24.1.tgz#883a4c144e9d8e4daa868d156d336fc67c5280b4"
+  integrity sha512-V2GVL+cfuwNTcZ9qtBMOR9pIftWo1AiZIiGvWNmTcIQG5mkj83ZXC+g3w5g0cVXt7Hi+mSOrD2bZ7HJOuouUNg==
   dependencies:
     "@octokit/request" "3.0.0"
     atob-lite "^2.0.0"
@@ -4408,9 +4408,9 @@ ignore@^4.0.3, ignore@^4.0.6:
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
 ignore@^5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.6.tgz#562dacc7ec27d672dde433aa683c543b24c17694"
-  integrity sha512-/+hp3kUf/Csa32ktIaj0OlRqQxrgs30n62M90UBpNd9k+ENEch5S+hmbW3DtcJGz3sYFTh4F3A6fQ0q7KWsp4w==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.0.tgz#a949efb645e5d67fd78e46f470bee6b8c5d862f9"
+  integrity sha512-dJEmMwloo0gq40chdtDmE4tMp67ZGwN7MFTgjNqWi2VHEi5Ya6JkuvPWasjcAIm7lg+2if8xxn5R199wspcplg==
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -4542,9 +4542,9 @@ inquirer@3.0.6:
     through "^2.3.6"
 
 inquirer@^6.2.0, inquirer@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.2.2.tgz#46941176f65c9eb20804627149b743a218f25406"
-  integrity sha512-Z2rREiXA6cHRR9KBOarR3WuLlFzlIfAEIiB45ll5SSadMg7WqOh1MKEjjndfuH5ewXdixWCxqnVfGOQzPeiztA==
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.3.1.tgz#7a413b5e7950811013a3db491c61d1f3b776e8e7"
+  integrity sha512-MmL624rfkFt4TG9y/Jvmt8vdmOo836U7Y0Hxr2aFk3RelZEGX4Igk0KabWrcaaZaTv9uzglOqWh1Vly+FAWAXA==
   dependencies:
     ansi-escapes "^3.2.0"
     chalk "^2.4.2"
@@ -4557,7 +4557,7 @@ inquirer@^6.2.0, inquirer@^6.2.2:
     run-async "^2.2.0"
     rxjs "^6.4.0"
     string-width "^2.1.0"
-    strip-ansi "^5.0.0"
+    strip-ansi "^5.1.0"
     through "^2.3.6"
 
 invariant@^2.2.4:
@@ -7159,9 +7159,9 @@ performance-now@^2.1.0:
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
 picomatch@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.3.tgz#8523b368260e5f6fb5da5e45fc7a582f9a0a15e2"
-  integrity sha512-NSJqCeCfH7loxpU6i04aBiJZv4oZFlLKTLTyoWCpJnC28Qm0T1XUfNfzwLi+vtFNGIjc9pyvx/NJUJhFQ3Ptdg==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.4.tgz#b972630d6ba532d905a4d6524c095d0d2140b4ed"
+  integrity sha512-lN1llt2d+xBz96Vp+yj0qMUVMyDsqvNSecdRDIEuh72kQi1N6ttkxPJ7zDVwKR4ehD2R3WhMKqdp/5LeRfc+PA==
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -9784,10 +9784,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.0.0-beta.23, svelte@^3.0.0-beta.23:
-  version "3.0.0-beta.23"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.23.tgz#fa96b91638e34bbaed01aad50df4d4192e252d70"
-  integrity sha512-jn9AI6idldjcIOuFZkA/HvULv97jjrtS1FVh7bjnFx7i7IuDpMFRbn+WYmnPoW+JXvLMFnNa+BbraDfjrMARSg==
+svelte@3.0.0-beta.25, svelte@^3.0.0-beta.25:
+  version "3.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.25.tgz#e2895cb28338a90a805eb5c12414955030e329c8"
+  integrity sha512-54PKgHDRlrRbcsRuX2K5IaIVPLXVfx8f/a5tcM8etOJLLLnWHT/8a1KXicA48xVmup12s6K4bwwSAswxcjKYAQ==
 
 svg-tags@^1.0.0:
   version "1.0.0"

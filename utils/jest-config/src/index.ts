@@ -3,11 +3,11 @@
 export = {
   testRunner: 'jest-circus/runner',
   transform: {
-    '^.+\\.([jt]sx?|mjs)$': 'babel-jest',
+    '^.+\\.([jt]sx?|mjs)$': '@sucrase/jest-plugin',
     '^.+\\.svelte$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/lib/null-transform.js',
   },
-  transformIgnorePatterns: ['node_modules/.+\\.(?!mjs|esm?\\.js)$'],
+  transformIgnorePatterns: ['node_modules/.+\\.(?!(mjs|esm?\\.js))$'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
   testPathIgnorePatterns: [
     '<rootDir>/__sapper__/',
@@ -31,8 +31,8 @@ export = {
   ],
   moduleNameMapper: {
     '^.+\\.(jpg|jpeg|png|gif|svg|eot|otf|webp|ttf|woff2?|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '@minna-ui/jest-config/lib/stubMock.js',
-    '^.+\\.p?css$': 'identity-obj-proxy',
+      '@minna-ui/jest-config/lib/stub-mock.js',
+    '^.+\\.(p|post|s)?css$': 'identity-obj-proxy',
     '^##/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverageFrom: [

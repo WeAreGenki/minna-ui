@@ -27,8 +27,8 @@
     "lint:css": "stylelint '**/*.{css,html,js,md,mjs,svelte,svg,ts}'",
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
     "lint:types": "tsc --noEmit",
-    "test": "yarn lint && JEST_CIRCUS=1 jest --notify --watch",
-    "test-ci": "JEST_CIRCUS=1 jest --coverage --runInBand --ci",
+    "test": "yarn lint && jest --notify --watch",
+    "test-ci": "jest --coverage --runInBand --ci",
     "report:browsers": "yarn browserslist",
     "report:css": "yarn autoprefixer --info"
   },

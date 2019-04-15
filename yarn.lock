@@ -1982,9 +1982,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957:
-  version "1.0.30000957"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000957.tgz#fb1026bf184d7d62c685205358c3b24b9e29f7b3"
-  integrity sha512-8wxNrjAzyiHcLXN/iunskqQnJquQQ6VX8JHfW5kLgAPRSiSuKZiNfmIkP5j7jgyXqAQBSoXyJxfnbCFS0ThSiQ==
+  version "1.0.30000959"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000959.tgz#215d3455866da874179c6170202f0cc64f961cfd"
+  integrity sha512-6BvqmS0VLmY4sJCz6AbIJRQfcns8McDxi424y+3kmtisJeA9/5qslP+K8sqremDau7UU4WSsqdRP032JrqZY8Q==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -4092,11 +4092,6 @@ globals@^11.1.0, globals@^11.7.0:
   resolved "https://registry.yarnpkg.com/globals/-/globals-11.11.0.tgz#dcf93757fa2de5486fbeed7118538adf789e9c2e"
   integrity sha512-WHq43gS+6ufNOEqlrDBxVEbb8ntfXrfAUU2ZOpCxrBdGKW3gyv8mCxAfIBD0DroPKGrJ2eSsXsLtY9MPntsyTw==
 
-globalyzer@^0.1.0:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/globalyzer/-/globalyzer-0.1.4.tgz#bc8e273afe1ac7c24eea8def5b802340c5cc534f"
-  integrity sha512-LeguVWaxgHN0MNbWC6YljNMzHkrCny9fzjmEUdnF1kQ7wATFD1RHFRqA1qxaX2tgxGENlcxjOflopBwj3YZiXA==
-
 globby@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
@@ -4139,11 +4134,6 @@ globjoin@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
-
-globrex@^0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
-  integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
 gonzales-pe@^4.2.3:
   version "4.2.4"
@@ -9244,14 +9234,13 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sirv@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.2.4.tgz#7db3f02ef424c3fdb74771b134cfc9bd155678d4"
-  integrity sha512-0YaLzpD6dPiJZUqDEwDqk9NLGZDm/nNWvpg8Rym+3hdt5pWGRrlggjjt1KtF0+tZgGtyI4F5f5JZ9XTCp53Oqw==
+sirv@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.3.0.tgz#67821c0a830f234792ad15723b4d39ed41cefecd"
+  integrity sha512-g+hRjKq9I0LLcnA+oenpdDpDgRt0NDb/DoqtX9WzGAfOBNYn9xlMA5RWcEds9/7yFVF1+UnPDdu7N6AngsvY2Q==
   dependencies:
     "@polka/url" "^0.5.0"
     mime "^2.3.1"
-    tiny-glob "^0.2.0"
 
 sisteransi@^1.0.0:
   version "1.0.0"
@@ -9953,14 +9942,6 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
-tiny-glob@^0.2.0:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/tiny-glob/-/tiny-glob-0.2.6.tgz#9e056e169d9788fe8a734dfa1ff02e9b92ed7eda"
-  integrity sha512-A7ewMqPu1B5PWwC3m7KVgAu96Ch5LA0w4SnEN/LbDREj/gAD0nPWboRbn8YoP9ISZXqeNAlMvKSKoEuhcfK3Pw==
-  dependencies:
-    globalyzer "^0.1.0"
-    globrex "^0.1.1"
-
 tinydate@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tinydate/-/tinydate-1.0.1.tgz#5e38797e2e3e79ce2300543f586c6caa2dfcf668"
@@ -10125,10 +10106,10 @@ tslint-eslint-rules@^5.4.0:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint-microsoft-contrib@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/tslint-microsoft-contrib/-/tslint-microsoft-contrib-6.1.0.tgz#cc487575f2cdb8fe3774bf3f2ba61ff61dc7856e"
-  integrity sha512-8DgmiPTgNQSYTjrKKv/h1aHnDd7EkGAjTxatrjfSDp5jUXENGI7Qj7qi7T8xBdTZN9Z3nb80u0NhdBBOMcQFHg==
+tslint-microsoft-contrib@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/tslint-microsoft-contrib/-/tslint-microsoft-contrib-6.1.1.tgz#1de9b5c2867f6cec762bab9d8e1619f2b8eb59fc"
+  integrity sha512-u6tK+tgt8Z1YRJxe4kpWWEx/6FTFxdga50+osnANifsfC7BMzh8c/t/XbNntTRiwMfpHkQ9xtUjizCDLxN1Yeg==
   dependencies:
     tsutils "^2.27.2 <2.29.0"
 

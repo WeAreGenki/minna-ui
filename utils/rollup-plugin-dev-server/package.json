@@ -28,9 +28,9 @@
   },
   "dependencies": {
     "@minna-ui/utils": "^0.21.0",
-    "@wearegenki/node-utils": "^0.1.2",
+    "@wearegenki/node-utils": "^0.2.0",
     "deepmerge": "^3.1.0",
-    "sirv": "^0.3.0"
+    "sirv": "^0.3.1"
   },
   "publishConfig": {
     "access": "public"

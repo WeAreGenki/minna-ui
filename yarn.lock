@@ -1130,10 +1130,10 @@
   dependencies:
     postcss "7.x.x"
 
-"@types/prettier@^1.16.0":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.16.1.tgz#328d1c9b54402e44119398bcb6a31b7bbd606d59"
-  integrity sha512-db6pZL5QY3JrlCHBhYQzYDci0xnoDuxfseUuguLRr3JNk+bnCfpkK6p8quiUDyO8A0vbpBKkk59Fw125etrNeA==
+"@types/prettier@^1.16.2":
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.16.2.tgz#c924147c5baa5eebc455e6cef5e3c29ac0654b6b"
+  integrity sha512-ASI5zoMgx4D2WxwtAfjoUGk2AHg7wthX5MHMxUuq9KpXh4n7yR17T4O7lN0kGFm48C1XBK8J2kJjrmCQsvr19A==
 
 "@types/q@^1.5.1":
   version "1.5.2"
@@ -1230,10 +1230,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wearegenki/node-utils@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.1.2.tgz#37466a0eb0d2ff4e5d3bb44008d7b5cb07ca1039"
-  integrity sha512-Ww9QSaGUvf+ci1PXw0mGakuM+9YGhhxoH3mNwrLZa5XW6CQrCIw+XBFVFKg9KkgU1TTZlArRYOTXt6O10hiVTw==
+"@wearegenki/node-utils@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.2.0.tgz#33008cc096c06b83d3f230f054ca9ee4158022eb"
+  integrity sha512-bBzbdd7jj/Gn+6e0kW78aieFIMP/5hHUxGeUTQ7DoYnQiUMBHckuovWGs0IoM6jcYQN39zSExk2XNDp9/gCuCw==
   dependencies:
     colorette "^1.0.7"
 
@@ -2263,9 +2263,9 @@ compare-versions@^3.2.1:
   integrity sha512-tK69D7oNXXqUW3ZNo/z7NXTEz22TCF0pTE+YF9cxvaAM9XnkLo1fV621xCLrRR6aevJlKxExkss0vWqUCUpqdg==
 
 component-emitter@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
-  integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
+  integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -9196,10 +9196,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sirv@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.3.0.tgz#67821c0a830f234792ad15723b4d39ed41cefecd"
-  integrity sha512-g+hRjKq9I0LLcnA+oenpdDpDgRt0NDb/DoqtX9WzGAfOBNYn9xlMA5RWcEds9/7yFVF1+UnPDdu7N6AngsvY2Q==
+sirv@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.3.1.tgz#a346c5d9bb4b50f60cb73423041b9c1694532287"
+  integrity sha512-03p4fuXPfhlNrDjUBw5bGF//4i0Rjwf7hVm8XhuKgeguHGQPr4pV+lgAJZKSP9BaJKn+QG9QvTxLX1wSYshccg==
   dependencies:
     "@polka/url" "^0.5.0"
     mime "^2.3.1"
@@ -9745,10 +9745,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.0.0-beta.25, svelte@^3.0.0-beta.25:
-  version "3.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.25.tgz#e2895cb28338a90a805eb5c12414955030e329c8"
-  integrity sha512-54PKgHDRlrRbcsRuX2K5IaIVPLXVfx8f/a5tcM8etOJLLLnWHT/8a1KXicA48xVmup12s6K4bwwSAswxcjKYAQ==
+svelte@3.0.0-beta.26, svelte@^3.0.0-beta.26:
+  version "3.0.0-beta.26"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.0.0-beta.26.tgz#68c1ba96a4bf642ce0025d29d1e08a1535a9765d"
+  integrity sha512-Zjt1oeJGtTeJJz9mczDl3rj8ZZwTmVObz5OYfkkjIwrzAs2BvvgAxwRhTgSjLSbrQmtloFf66ea1whX8NP/Y6A==
 
 svg-tags@^1.0.0:
   version "1.0.0"

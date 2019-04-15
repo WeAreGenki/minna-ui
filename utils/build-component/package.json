@@ -21,7 +21,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "svelte": "^3.0.0-beta.25"
+    "svelte": "^3.0.0-beta.26"
   },
   "dependencies": {
     "@minna-ui/preprocess": "*",

@@ -7,7 +7,7 @@ export = {
     '^.+\\.svelte$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/lib/null-transform.js',
   },
-  transformIgnorePatterns: ['node_modules/.+\\.(?!mjs|esm?\\.js)$'],
+  transformIgnorePatterns: ['node_modules/.+\\.(?!(mjs|esm?\\.js))$'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
   testPathIgnorePatterns: [
     '<rootDir>/__sapper__/',

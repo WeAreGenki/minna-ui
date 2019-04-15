@@ -32,7 +32,7 @@ export = {
   moduleNameMapper: {
     '^.+\\.(jpg|jpeg|png|gif|svg|eot|otf|webp|ttf|woff2?|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '@minna-ui/jest-config/lib/stub-mock.js',
-    '^.+\\.p?css$': 'identity-obj-proxy',
+    '^.+\\.(p|post|s)?css$': 'identity-obj-proxy',
     '^##/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverageFrom: [

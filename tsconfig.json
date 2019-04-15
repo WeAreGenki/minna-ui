@@ -6,9 +6,8 @@
     "baseUrl": ".",
     // "composite": true,
     "declaration": true,
-    // FIXME: So far `incremental` brings more headaches than performance gains
-    // "incremental": true,
-    // "tsBuildInfoFile": "./.tsbuildinfo",
+    // consider uncommenting next line, ref: https://github.com/Microsoft/TypeScript/issues/29490
+    // "isolatedModules": true, // ensure compatibility with sucrase
     "paths": { "*": ["types/*"] },
     "sourceMap": true
   },

@@ -10,9 +10,9 @@ export = {
   transformIgnorePatterns: ['node_modules/.+\\.(?!(mjs|esm?\\.js))$'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
   testPathIgnorePatterns: [
-    '<rootDir>/__sapper__/',
     '/__fixtures__/',
     '/__mocks__/',
+    '/__sapper__/',
     '/dist/',
     '/node_modules/',
   ],
@@ -47,9 +47,9 @@ export = {
     '!**/*externs.{js,ts}',
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/__sapper__/',
     '/__fixtures__/',
     '/__mocks__/',
+    '/__sapper__/',
     '/__tests__/',
     '/dist/',
     '/fixtures/',
@@ -57,9 +57,5 @@ export = {
     '/test/',
   ],
   coverageDirectory: '<rootDir>/test/coverage',
-  watchPathIgnorePatterns: [
-    '<rootDir>/__sapper__/',
-    '/dist/',
-    '/node_modules/',
-  ],
+  watchPathIgnorePatterns: ['/__sapper__/', '/dist/', '/node_modules/'],
 };

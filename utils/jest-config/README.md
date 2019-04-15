@@ -26,8 +26,8 @@ Add tasks to your `package.json`:
 ```json
 {
   "scripts": {
-    "test": "JEST_CIRCUS=1 jest --notify --watch",
-    "test-ci": "JEST_CIRCUS=1 jest --coverage --runInBand --ci"
+    "test": "jest --notify --watch",
+    "test-ci": "jest --coverage --runInBand --ci"
   }
 }
 ```

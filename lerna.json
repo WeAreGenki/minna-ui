@@ -4,6 +4,10 @@
   "command": {
     "publish": {
       "allowBranch": "master"
+    },
+    "version": {
+      "signGitCommit": true,
+      "signGitTag": true
     }
   },
   "ignoreChanges": [

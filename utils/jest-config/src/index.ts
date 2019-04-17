@@ -3,7 +3,7 @@
 export = {
   testRunner: 'jest-circus/runner',
   transform: {
-    '^.+\\.([jt]sx?|mjs)$': '@sucrase/jest-plugin',
+    '^.+\\.([jt]sx?|mjs)$': '@minna-ui/jest-config/lib/es-transform.js',
     '^.+\\.svelte$': '@minna-ui/jest-config/lib/svelte-transform.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/lib/null-transform.js',
   },

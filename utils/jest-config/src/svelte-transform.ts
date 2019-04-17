@@ -10,7 +10,7 @@ import { basename } from 'path';
 import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extraneous-dependencies
 
 export function process(src: string, filename: string): jest.TransformedSource {
-  // strip out <style> tags to prevent failure when unable to parse PostCSS etc.
+  // strip out <style> tags to prevent errors when unable to parse PostCSS etc.
   const re = /<style[^>]*>([\S\s]*?)<\/style>/g;
   const normalised = src.replace(re, '');
 
@@ -22,7 +22,8 @@ export function process(src: string, filename: string): jest.TransformedSource {
 
   // FIXME: Remove this once upstream issue is fixed:
   // TODO: Add link to Github issue and PR once I submit them
-  const esInterop = '\nObject.defineProperty(exports, "__esModule", {\n\tvalue: true\n});';
+  const esInterop =
+    '\nObject.defineProperty(exports, "__esModule", {\n\tvalue: true\n});';
 
   return {
     code: result.js.code + esInterop,

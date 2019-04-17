@@ -1,3 +1,5 @@
+// FIXME: Split this file out into multiple files named after the transform file they're testing
+
 /* eslint-env browser */
 /* eslint-disable security/detect-eval-with-expression */
 

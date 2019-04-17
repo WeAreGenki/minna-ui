@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 
-export = {
+export default {
   testRunner: 'jest-circus/runner',
   transform: {
     '^.+\\.([jt]sx?|mjs)$': '@minna-ui/jest-config/lib/es-transform.js',

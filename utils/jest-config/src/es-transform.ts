@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { Transform, transform } from 'sucrase';
 
 function getTransforms(filename: string): Transform[] | null {

@@ -1,3 +1,6 @@
+// based on `@sucrase/jest-plugin` but without flow support and with mjs support
+// @see https://github.com/alangpierce/sucrase/blob/master/integrations/jest-plugin/src/index.ts
+
 // eslint-disable-next-line import/named
 import { Transform, transform } from 'sucrase';
 

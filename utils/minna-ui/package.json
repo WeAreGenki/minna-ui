@@ -34,7 +34,7 @@
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
-    "svelte": "^3.0.0-beta.26"
+    "svelte": "^3.0.0-beta.28"
   },
   "dependencies": {
     "@minna-ui/code-view": "^0.21.0",

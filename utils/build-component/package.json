@@ -21,7 +21,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "svelte": "^3.0.0-beta.26"
+    "svelte": "^3.0.0-beta.28"
   },
   "dependencies": {
     "@minna-ui/preprocess": "*",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@types/rollup-plugin-buble": "0.19.1",
-    "@types/rollup-plugin-node-resolve": "4.0.0",
     "del": "4.1.0"
   },
   "publishConfig": {

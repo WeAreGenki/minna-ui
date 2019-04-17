@@ -1,6 +1,6 @@
 {
   "name": "minna-css",
-  "version": "0.22.0-beta.0",
+  "version": "0.22.1-beta.0",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -25,7 +25,7 @@
     "*.css.map"
   ],
   "devDependencies": {
-    "@minna-ui/css": "^0.22.0-beta.0"
+    "@minna-ui/css": "^0.22.1-beta.0"
   },
   "publishConfig": {
     "access": "public"

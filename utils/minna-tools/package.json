@@ -1,6 +1,6 @@
 {
   "name": "minna-tools",
-  "version": "0.22.0-beta.0",
+  "version": "0.22.1-beta.0",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -33,19 +33,19 @@
     "typescript": "^3.3.0"
   },
   "dependencies": {
-    "@minna-ui/browserslist-config": "^0.22.0-beta.0",
-    "@minna-ui/eslint-config": "^0.22.0-beta.0",
-    "@minna-ui/jest-config": "^0.22.0-beta.0",
-    "@minna-ui/prettier-config": "^0.22.0-beta.0",
-    "@minna-ui/remark-config": "^0.22.0-beta.0",
-    "@minna-ui/rollup-plugin-dev-server": "^0.22.0-beta.0",
-    "@minna-ui/rollup-plugin-emit-css": "^0.22.0-beta.0",
-    "@minna-ui/rollup-plugin-emit-html": "^0.22.0-beta.0",
-    "@minna-ui/rollup-plugin-postcss": "^0.22.0-beta.0",
-    "@minna-ui/rollup-plugin-purgecss": "^0.22.0-beta.0",
-    "@minna-ui/stylelint-config": "^0.22.0-beta.0",
-    "@minna-ui/ts-config": "^0.22.0-beta.0",
-    "@minna-ui/utils": "^0.22.0-beta.0"
+    "@minna-ui/browserslist-config": "^0.22.1-beta.0",
+    "@minna-ui/eslint-config": "^0.22.1-beta.0",
+    "@minna-ui/jest-config": "^0.22.1-beta.0",
+    "@minna-ui/prettier-config": "^0.22.1-beta.0",
+    "@minna-ui/remark-config": "^0.22.1-beta.0",
+    "@minna-ui/rollup-plugin-dev-server": "^0.22.1-beta.0",
+    "@minna-ui/rollup-plugin-emit-css": "^0.22.1-beta.0",
+    "@minna-ui/rollup-plugin-emit-html": "^0.22.1-beta.0",
+    "@minna-ui/rollup-plugin-postcss": "^0.22.1-beta.0",
+    "@minna-ui/rollup-plugin-purgecss": "^0.22.1-beta.0",
+    "@minna-ui/stylelint-config": "^0.22.1-beta.0",
+    "@minna-ui/ts-config": "^0.22.1-beta.0",
+    "@minna-ui/utils": "^0.22.1-beta.0"
   },
   "publishConfig": {
     "access": "public"

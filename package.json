@@ -12,7 +12,7 @@
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
     "update": "yarn upgrade-interactive --latest",
     "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=dev --force-publish",
-    "release:beta": "yarn prepack && lerna publish --cd-version=prerelease --preid=beta --dist-tag=beta",
+    "release:beta": "yarn prepack && lerna publish prerelease --preid=beta --dist-tag=beta",
     "release": "yarn prepack && lerna publish",
     "release:fix-failed": "lerna publish from-package",
     "prerelease:next": "yarn prerelease",

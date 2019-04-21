@@ -20,8 +20,6 @@ export function process(src: string, filename: string): jest.TransformedSource {
     format: 'cjs',
   });
 
-  // FIXME: Remove this once upstream issue is fixed:
-  // TODO: Add link to Github issue and PR once I submit them
   const esInterop =
     '\nObject.defineProperty(exports, "__esModule", {\n\tvalue: true\n});';
 

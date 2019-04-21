@@ -2,7 +2,7 @@
  * Tool to compile Minna UI CSS packages.
  */
 
-/* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection */
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection, no-restricted-syntax */
 
 import CleanCSS from 'clean-css';
 import fs from 'fs';
@@ -19,39 +19,39 @@ const readdir = promisify(fs.readdir);
 /**
  * Print a list of warnings or errors to the process stderr.
  *
- * @param origin - Which lib the warning came from.
+ * @param from - Which lib the warning came from.
  * @param level - The severity of either WARN or ERR.
  * @param warnings - List of warnings to iterate over.
  */
 function compileWarn(
-  origin: string,
+  from: string,
   level: string,
   warnings: string[] | postcss.ResultMessage[],
 ): void {
   /* istanbul ignore if */
   if (warnings.length && level === 'ERR') {
-    process.exitCode = 1; // prevents tests running too long
+    // prevent tests running too long
+    process.exitCode = 1;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  warnings.forEach((err: any) => {
-    /* istanbul ignore if */
-    if (!/^Ignoring local source map at/.test(err)) {
-      // eslint-disable-next-line no-console
-      console.warn(`[${origin}] ${level}: ${err.toString()}`);
-    }
-  });
+  for (const err of warnings) {
+    if (typeof err === 'string' && !/^Ignoring local source map at/.test(err)) return;
+
+    // eslint-disable-next-line no-console
+    console.warn(`[${from}] ${level}: ${err.toString()}`);
+  }
 }
 
 interface ProcessCssOpts {
+  banner?: string;
   from: string;
-  to: string;
-  banner: string;
+  optimize?: boolean;
+  to?: string;
 }
 
 interface ProcessCssResult {
-  min: CleanCSS.Output;
-  result: postcss.Result;
+  code: string;
+  map?: string | { toString: () => string };
 }
 
 /**
@@ -65,6 +65,7 @@ interface ProcessCssResult {
 async function processCss({
   banner = '',
   from,
+  optimize = process.env.NODE_ENV === 'production',
   to = from,
 }: ProcessCssOpts): Promise<ProcessCssResult> {
   const src = await readFile(from, 'utf8');
@@ -82,36 +83,44 @@ async function processCss({
 
   compileWarn('PostCSS', 'WARN', result.warnings());
 
-  // minify resulting CSS
-  const min = await new CleanCSS({
-    level: {
-      1: { all: true },
-      2: { all: true },
-    },
-    returnPromise: true,
-    sourceMap: !!result.map,
-  }).minify(result.css, result.map ? result.map.toString() : '');
-
-  compileWarn('CleanCSS', 'ERR', min.errors);
-  compileWarn('CleanCSS', 'WARN', min.warnings);
+  let code = result.css;
+  // eslint-disable-next-line prefer-destructuring
+  let map: string | { toString(): string } = result.map;
+  const hasMap = !!map;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const filePath = options.to!;
-  const fileName = basename(filePath);
   const dirPath = dirname(filePath);
 
-  // clean-css removes the source map comment so we need to add it back in
-  min.styles = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
+  if (optimize) {
+    // minify resulting CSS
+    const min = new CleanCSS({
+      level: {
+        1: { all: true },
+        2: { all: true },
+      },
+      sourceMap: hasMap,
+    }).minify(code, map && map.toString ? map.toString() : '');
+
+    compileWarn('CleanCSS', 'ERR', min.errors);
+    compileWarn('CleanCSS', 'WARN', min.warnings);
+
+    const fileName = basename(filePath);
+
+    // clean-css removes the source map comment so we need to add it back in
+    code = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
+    map = min.sourceMap;
+  }
 
   // create the output directory
   await mkdir(dirPath, { recursive: true });
 
-  writeFile(filePath, min.styles);
-  writeFile(`${filePath}.map`, min.sourceMap.toString());
+  writeFile(filePath, code);
+  writeFile(`${filePath}.map`, map);
 
   return {
-    min,
-    result,
+    code,
+    map,
   };
 }
 

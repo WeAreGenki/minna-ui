@@ -30,7 +30,7 @@
     "@minna-ui/utils": "^0.22.1-beta.0",
     "@wearegenki/node-utils": "^0.2.0",
     "deepmerge": "^3.1.0",
-    "sirv": "^0.3.1"
+    "sirv": "^0.4.0"
   },
   "publishConfig": {
     "access": "public"

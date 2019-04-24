@@ -34,7 +34,7 @@
     "postcss-load-config": "^2.0.0",
     "purgecss": "^1.1.0",
     "rollup-pluginutils": "^2.3.3",
-    "sirv": "^0.2.2"
+    "sirv": "^0.4.0"
   },
   "publishConfig": {
     "access": "public"

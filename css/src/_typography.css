@@ -19,10 +19,11 @@ body {
 
   @if $use-enhanced-type {
     /**
-      * OpenType features:
+      * Enable font OpenType features:
       *   calt = contextual alternates
+      *   case = case alternates
       */
-    font-feature-settings: 'calt';
+    font-feature-settings: 'calt', 'case';
     text-rendering: geometricPrecision;
 
     /**
@@ -151,6 +152,15 @@ li {
   th,
   td {
     padding: 0.9rem 1rem;
+  }
+
+  td {
+    @if $use-enhanced-type {
+      /**
+       * Tabular (monospaced) figures.
+       */
+      font-variant: tabular-nums;
+    }
   }
 
   tbody > tr:nth-child(odd) {

@@ -12,22 +12,9 @@
     "prettier",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "main": "prettierrc.json",
   "peerDependencies": {
-    "prettier": "^1.15.0"
-  },
-  "dependencies": {
-    "@types/prettier": "^1.16.3",
-    "deepmerge": "^3.1.0"
+    "prettier": "^1.17.0"
   },
   "publishConfig": {
     "access": "public"

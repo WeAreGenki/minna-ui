@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Svelte style preprocessor adds a banner comment 1`] = `
+"
+<div id=\\"target\\">test</div>
+
+<style type=\\"text/postcss\\">
+  #target {
+    color: red;
+  }
+
+    #target:focus {
+      background: #000;
+    }
+</style>
+"
+`;
+
+exports[`Svelte style preprocessor does not process without type attribute 1`] = `
+"
+<div id=\\"target\\">test</div>
+
+<style>
+  #target {
+    color: red;
+
+    &:focus {
+      background: #000;
+    }
+  }
+</style>
+"
+`;
+
+exports[`Svelte style preprocessor processes a component 1`] = `
+"<!--
+  TEST COMPONENT
+
+  A simple Svelte component for use in tests.
+
+  NOTE:
+    In the code, object properties starting with _ are safe to mangle; the name
+    can be shortened at build time for smaller JavaScript bundles.
+-->
+
+<script>
+  export let name = 'Elon Musk';
+
+  // computed
+  $: reversed = name.split('').reverse().join('');
+
+  // refs
+  let target;
+  let nameReversed;
+</script>
+
+<style type=\\"text/postcss\\">
+  $body-margin: 0;
+
+  /* stylelint-disable no-descending-specificity */
+  @media screen and (min-width: 30em) {
+  :global(body) {
+      margin: $body-margin
+  }
+    }
+
+  .text {
+    color: rgb(255, 0, 0);
+  }
+
+  /* red */
+
+  .text:focus {
+      background: rgb(0, 0, 0); /* black */
+    }
+
+  .wrapper > .text {
+      margin-top: 1rem;
+    }
+</style>
+
+<div class=\\"wrapper\\">
+  <div class=\\"text\\" bind:this=\\"{target}\\">
+    test {name}
+  </div>
+
+  <div class=\\"text\\" bind:this=\\"{nameReversed}\\">
+    test <span>{reversed}</span>
+  </div>
+</div>
+"
+`;
+
+exports[`Svelte style preprocessor processes a simple component 1`] = `
+"
+<div id=\\"target\\">test</div>
+
+<style type=\\"text/postcss\\">
+  #target {
+    color: red;
+  }
+
+    #target:focus {
+      background: #000;
+    }
+</style>
+"
+`;

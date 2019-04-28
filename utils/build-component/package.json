@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/rollup-plugin-buble": "0.19.1",
-    "del": "4.1.0"
+    "del": "4.1.1"
   },
   "publishConfig": {
     "access": "public"

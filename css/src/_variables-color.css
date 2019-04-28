@@ -15,7 +15,11 @@
     ↳ https://github.com/palantir/blueprint/blob/develop/packages/core/src/common/_color-aliases.scss
     ↳ https://blueprintjs.com/docs/#core/colors
 */
-/* TODO: Refactor all these colours into a brighter, more cheerful pallette. */
+
+/*
+ TODO: Refactor all these colours into a brighter, more cheerful pallette.
+  ↳ https://themer.dev/
+*/
 
 /* stylelint-disable function-blacklist */
 

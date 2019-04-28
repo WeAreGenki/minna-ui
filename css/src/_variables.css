@@ -229,3 +229,9 @@ $spinner-color: $intent-primary !default;
 $spinner-background-color: $light-gray1 !default;
 $spinner-animate-speed: 880ms !default;
 $spinner-animate-timing: ease !default;
+
+/* Accessibility */
+
+$selection-text-color: $white;
+/* stylelint-disable-next-line function-blacklist */
+$selection-background-color: hsl(222, 51%, 41%);

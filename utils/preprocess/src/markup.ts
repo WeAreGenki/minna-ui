@@ -43,7 +43,7 @@ export const markup = ({
   }
 
   // remove HTML comments
-  code = code.replace(/<!--.*?-->/gsu, '');
+  code = code.replace(/<!--[\s\S]*?-->/gu, '');
 
   // remove whitespace between tags
   code = code.replace(/>\s*?</gm, unsafe ? '><' : '> <');

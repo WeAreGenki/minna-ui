@@ -2,6 +2,8 @@
  * Minna UI component compiler.
  */
 
+/* eslint-disable @typescript-eslint/camelcase */
+
 import { basename } from 'path';
 import * as rollup from 'rollup';
 import buble from 'rollup-plugin-buble';
@@ -37,10 +39,24 @@ interface BuildComponentResult {
 }
 
 const terserOpts = {
+  compress: {
+    drop_console: false,
+    drop_debugger: true,
+    keep_fargs: false,
+    negate_iife: false,
+    passes: 4,
+    pure_funcs: ['Object.freeze'],
+    pure_getters: true,
+    side_effects: true,
+  },
+  mangle: true,
   module: true,
   output: {
-    comments: /#__PURE__/,
+    comments: /__PURE__/,
+    wrap_iife: true,
   },
+  sourcemap: true,
+  warnings: true,
 };
 
 /**

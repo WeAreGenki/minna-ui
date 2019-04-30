@@ -21,9 +21,8 @@ body {
     /**
       * Enable font OpenType features:
       *   calt = contextual alternates
-      *   case = case alternates
       */
-    font-feature-settings: 'calt', 'case';
+    font-feature-settings: 'calt';
     text-rendering: geometricPrecision;
 
     /**

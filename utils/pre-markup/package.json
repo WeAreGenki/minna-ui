@@ -16,7 +16,7 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "svelte": "^2.0.0"
+    "svelte": "^2.0.0 || ^3.0.0"
   },
   "dependencies": {
     "deepmerge": "^3.1.0",

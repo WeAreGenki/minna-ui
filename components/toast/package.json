@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/toast",
-  "version": "0.22.1-beta.1",
+  "version": "0.22.1-beta.2",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/toast",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -34,8 +34,8 @@
     "types.d.ts"
   ],
   "devDependencies": {
-    "@minna-ui/build-component": "^0.22.1-beta.1",
-    "@minna-ui/css": "^0.22.1-beta.1",
+    "@minna-ui/build-component": "^0.22.1-beta.2",
+    "@minna-ui/css": "^0.22.1-beta.2",
     "svelte": "^3.2.0"
   },
   "publishConfig": {

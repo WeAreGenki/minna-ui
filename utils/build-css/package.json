@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/build-css",
-  "version": "0.22.1-beta.1",
+  "version": "0.22.1-beta.2",
   "description": "Internal Minna UI CSS builder.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-css",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -24,7 +24,7 @@
     "postcss": "*"
   },
   "dependencies": {
-    "@minna-ui/postcss-config": "^0.22.1-beta.0",
+    "@minna-ui/postcss-config": "^0.22.1-beta.2",
     "clean-css": "4.2.1",
     "postcss-load-config": "2.0.0"
   },

@@ -39,7 +39,7 @@
     "postcss-use": "^3.0.0"
   },
   "devDependencies": {
-    "@types/autoprefixer": "9.4.0",
+    "@types/autoprefixer": "9.5.0",
     "@types/cssnano": "4.0.0",
     "@types/postcss-nested": "4.1.0"
   },

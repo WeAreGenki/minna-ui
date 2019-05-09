@@ -29,6 +29,8 @@ export function process(
   if (transforms !== null) {
     const result = transform(src, {
       filePath: filename,
+      jsxFragmentPragma: 'Fragment', // Preact style JSX
+      jsxPragma: 'h',
       transforms,
     });
 

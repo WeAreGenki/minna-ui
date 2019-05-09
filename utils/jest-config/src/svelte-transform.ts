@@ -11,7 +11,7 @@ import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extr
 
 export function process(src: string, filename: string): jest.TransformedSource {
   // strip out <style> tags to prevent errors when unable to parse PostCSS etc.
-  const re = /<style[^>]*>([\S\s]*?)<\/style>/g;
+  const re = /<style[^>]*>[\S\s]*?<\/style>/g;
   const normalised = src.replace(re, '');
 
   const result = compile(normalised, {

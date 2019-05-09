@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/prettier-config",
-  "version": "0.21.0",
-  "description": "Prettier config preset for use in minna-ui projects.",
+  "version": "0.22.1-beta.2",
+  "description": "Prettier config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/prettier-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
@@ -12,13 +12,9 @@
     "prettier",
     "wearegenki"
   ],
-  "main": "index.js",
+  "main": "prettierrc.json",
   "peerDependencies": {
-    "prettier": "^1.15.0"
-  },
-  "dependencies": {
-    "@types/prettier": "^1.15.2",
-    "deepmerge": "^3.1.0"
+    "prettier": "^1.17.0"
   },
   "publishConfig": {
     "access": "public"

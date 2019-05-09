@@ -20,9 +20,11 @@
   - [Switch](components/switch.md)
   - [Tabs](components/tabs.md)
   - [Toasts](components/toasts.md)
-  - [Tooltip Action](components/tooltip-action.md)
+  - [Tooltip](components/tooltip.md)
 
 - Utils
+
+  <!-- FIXME: Update these with the lastest utils -->
 
   - [ESLint Config](utils/eslint-config.md)
   - [Jest Config](utils/jest-config.md)

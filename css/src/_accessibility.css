@@ -11,3 +11,10 @@
     animation: none !important; /* stylelint-disable-line declaration-no-important */
   }
 }
+
+/* Interaction */
+
+::selection {
+  color: $selection-text-color;
+  background-color: $selection-background-color;
+}

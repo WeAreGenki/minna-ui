@@ -20,11 +20,16 @@
   color: $card-hover-text-color;
   box-shadow: $card-hover-shadow;
 
-  /* override anchor pseudo state style since cards already have visual cues */
-  a&:hover,
-  a&:focus {
-    color: $card-hover-text-color;
-    text-decoration: unset;
+  a& {
+    font-weight: $text-weight;
+    text-decoration: none;
+
+    /* override anchor pseudo state style as cards already have visual cues */
+    &:hover,
+    &:focus {
+      color: $card-hover-text-color;
+      text-decoration: unset;
+    }
   }
 
   /**
@@ -70,8 +75,10 @@
 .card-button {
   padding: $button-padding-y $button-padding-x;
   margin: auto 0 0;
+  font-weight: $text-weight-heavy;
   color: $card-button-text-color;
   text-align: center;
+  text-transform: uppercase;
   border-top: $card-button-border;
   border-bottom-right-radius: $radius-large;
   border-bottom-left-radius: $radius-large;

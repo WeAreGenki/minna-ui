@@ -1,0 +1,44 @@
+{
+  "name": "@minna-ui/tooltip",
+  "version": "0.22.1-beta.2",
+  "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "component",
+    "design-system",
+    "minna-ui",
+    "postcss",
+    "svelte",
+    "svelte-actions",
+    "ui-components",
+    "wearegenki"
+  ],
+  "scripts": {
+    "build": "yarn build:css && yarn build:esm && yarn build:cjs",
+    "build:css": "build-css src dist",
+    "build:esm": "tsc --project ./tsconfig.esm.json && mv dist/index.js dist/index.mjs && mv dist/index.js.map dist/index.mjs.map",
+    "build:cjs": "tsc",
+    "prebuild": "rm -rf dist"
+  },
+  "style": "dist/index.css",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "svelte": ">2.0.0"
+  },
+  "devDependencies": {
+    "@minna-ui/build-css": "^0.22.1-beta.2",
+    "@minna-ui/css": "^0.22.1-beta.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

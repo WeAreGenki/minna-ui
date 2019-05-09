@@ -4,6 +4,40 @@
   "extends": "@minna-ui/ts-config",
   "compilerOptions": {
     "baseUrl": ".",
-    "noEmit": true
-  }
+    // "composite": true,
+    "declaration": true,
+    // consider uncommenting next line, ref: https://github.com/Microsoft/TypeScript/issues/29490
+    // "isolatedModules": true, // ensure compatibility with sucrase
+    "paths": { "*": ["types/*"] },
+    "sourceMap": true
+  },
+  "exclude": [
+    "**/__tests__/*",
+    "**/.*rc.js",
+    "**/*.config.js",
+    "**/cli/index.js",
+    "**/dist/*",
+    "**/node_modules/*",
+    "test/coverage"
+  ]
+  // "references": [
+  //   { "path": "./components/tooltip" },
+  //   { "path": "./utils/browserslist-config" },
+  //   { "path": "./utils/build-component" },
+  //   { "path": "./utils/build-css" },
+  //   { "path": "./utils/eslint-config" },
+  //   { "path": "./utils/jest-config" },
+  //   { "path": "./utils/minna-tools" },
+  //   { "path": "./utils/minna-ui" },
+  //   { "path": "./utils/postcss-config" },
+  //   { "path": "./utils/preprocess" },
+  //   { "path": "./utils/prettier-config" },
+  //   { "path": "./utils/remark-config" },
+  //   { "path": "./utils/rollup-plugin-dev-server" },
+  //   { "path": "./utils/rollup-plugin-emit-css" },
+  //   { "path": "./utils/rollup-plugin-emit-html" },
+  //   { "path": "./utils/rollup-plugin-postcss" },
+  //   { "path": "./utils/stylelint-config" },
+  //   { "path": "./utils/tslint-config" }
+  // ]
 }

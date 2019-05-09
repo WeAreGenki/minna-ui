@@ -1,7 +1,7 @@
 {
   "name": "@minna-ui/postcss-config",
-  "version": "0.21.0",
-  "description": "PostCSS config preset for use in minna-ui projects.",
+  "version": "0.22.1-beta.2",
+  "description": "PostCSS config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "homepage": "https://wearegenki.github.io/minna-ui",
@@ -14,22 +14,34 @@
     "postcss-plugin",
     "wearegenki"
   ],
-  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "postcss": "^7.0.0"
   },
   "dependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^9.5.1",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
-    "cssnano-preset-advanced": "^4.0.6",
     "deepmerge": "^3.1.0",
-    "postcss-advanced-variables": "^3.0.0",
+    "postcss-advanced-variables": "MaxMilton/postcss-advanced-variables#precompiled",
     "postcss-color-mod-function": "^3.0.3",
-    "postcss-extend-rule": "^2.0.0",
-    "postcss-import": "^12.0.1",
-    "postcss-nested": "^4.1.1",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-nested": "^4.1.2",
     "postcss-use": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/autoprefixer": "9.5.0",
+    "@types/cssnano": "4.0.0",
+    "@types/postcss-nested": "4.1.0"
   },
   "publishConfig": {
     "access": "public"

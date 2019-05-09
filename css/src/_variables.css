@@ -55,6 +55,11 @@ $gutter-compact: calc($gutter-row / 4) 0 !default;
 
 /* Typography */
 
+/**
+ * Enables better text readability and visual style but also degrades font
+ * rendering performance.
+ */
+$use-enhanced-type: false !default;
 /* prettier-ignore */
 $font-stack:
   -apple-system,
@@ -84,7 +89,8 @@ $text-weight: 400 !default;
 $text-weight-heavy: 700 !default;
 $line-height: 1.5 !default;
 /* font size modular scale = base 1em, ratio = 1.2 */
-$headline-text-size: 4.3em !default;
+$headline-text-size: 15vw !default; /* fluid on s screens */
+$headline-text-size-ns: 4.2em !default;
 $h1-text-size: 2.986em !default;
 $h2-text-size: 2.488em !default;
 $h3-text-size: 2.074em !default;
@@ -96,6 +102,7 @@ $paragraph-line-height: 1.7 !default;
 $paragraph-lead-text-size: 1.5em !default;
 $paragraph-lead-text-weight: $text-weight-light !default;
 $link-click-area: 0.4em !default; /* reduce if links overlap */
+$link-text-weight: 600 !default;
 $li-margin-between: 0.5em !default;
 $hr-margin: 3em 0 !default;
 $hr-border: 1px solid $divider-black !default;
@@ -222,3 +229,9 @@ $spinner-color: $intent-primary !default;
 $spinner-background-color: $light-gray1 !default;
 $spinner-animate-speed: 880ms !default;
 $spinner-animate-timing: ease !default;
+
+/* Accessibility */
+
+$selection-text-color: $white;
+/* stylelint-disable-next-line function-blacklist */
+$selection-background-color: hsl(222, 51%, 41%);

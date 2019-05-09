@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/css",
-  "version": "0.21.0",
+  "version": "0.22.1-beta.2",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/css",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -16,7 +16,8 @@
     "wearegenki"
   ],
   "scripts": {
-    "build": "build-css src dist"
+    "build": "build-css src dist",
+    "prebuild": "rm -rf dist"
   },
   "style": "dist/index.css",
   "browser": "dist/index.css",
@@ -25,6 +26,10 @@
     "dist",
     "src"
   ],
+  "devDependencies": {
+    "@minna-ui/build-css": "^0.22.1-beta.2",
+    "postcss-extend-rule": "^2.0.0"
+  },
   "publishConfig": {
     "access": "public"
   }

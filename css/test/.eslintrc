@@ -1,3 +1,0 @@
-{
-  "extends": ["@minna-ui/eslint-config/jest"]
-}

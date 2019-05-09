@@ -69,7 +69,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaSwitch />
@@ -111,8 +111,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaSwitch from '@minna-ui/switch';
 
    new MinnaSwitch({
-     target: document.querySelector('#minna-switch'),
      data: {},
+     target: document.querySelector('#minna-switch'),
    });
    ```
 

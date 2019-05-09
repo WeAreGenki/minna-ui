@@ -69,7 +69,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaNavbar />
@@ -111,8 +111,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaNavbar from '@minna-ui/navbar';
 
    new MinnaNavbar({
-     target: document.querySelector('#minna-navbar'),
      data: {},
+     target: document.querySelector('#minna-navbar'),
    });
    ```
 

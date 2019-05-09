@@ -2,8 +2,12 @@
 
 'use strict';
 
-module.exports = require('@minna-ui/prettier-config')({
+const config = require('@minna-ui/prettier-config');
+
+module.exports = {
+  ...config,
   overrides: [
+    ...config.overrides,
     {
       files: '*.css',
       options: {
@@ -11,4 +15,4 @@ module.exports = require('@minna-ui/prettier-config')({
       },
     },
   ],
-});
+};

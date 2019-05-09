@@ -1,0 +1,39 @@
+{
+  "name": "@minna-ui/remark-config",
+  "version": "0.22.1-beta.0",
+  "description": "Remark lint config preset for use in Minna UI projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/remark-config",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "minna-ui",
+    "markdown",
+    "remark",
+    "remark-lint",
+    "wearegenki"
+  ],
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf lib"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "peerDependencies": {
+    "remark-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "remark-lint": "^6.0.4",
+    "remark-preset-lint-consistent": "^2.0.2",
+    "remark-preset-lint-markdown-style-guide": "^2.1.2",
+    "remark-preset-lint-recommended": "^3.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

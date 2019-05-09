@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "singleQuote": true,
+  "trailingComma": "all",
+
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "htmlWhitespaceSensitivity": "ignore",
+        "requirePragma": true
+      }
+    },
+    {
+      "files": "*.html",
+      "options": {
+        "requirePragma": true
+      }
+    },
+    {
+      "files": [
+        "*.spec.js",
+        "*.spec.ts",
+        "*.test.js",
+        "*.test.jsx",
+        "*.test.ts",
+        "*.test.tsx"
+      ],
+      "options": {
+        "printWidth": 100
+      }
+    }
+  ]
+}

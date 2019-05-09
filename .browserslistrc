@@ -1,5 +1,0 @@
-[production]
-extends @minna-ui/browserslist-config
-
-[development]
-extends @minna-ui/browserslist-config/dev

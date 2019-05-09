@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostCSS config compiles CSS with debug option false 1`] = `
+"/* red */
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable */
+
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with debug option true 1`] = `
+"/* red */
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable */
+
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with optimize option false 1`] = `
+"/* red */
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable */
+
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with optimize option true 1`] = `
+"body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with unsafe option false 1`] = `
+"body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles CSS with unsafe option true 1`] = `
+"body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;
+
+exports[`PostCSS config compiles valid CSS 1`] = `
+"/* red */
+body {
+  margin: 0;
+}
+/* stylelint-disable selector-max-id */
+#target {
+  color: rgb(255, 0, 0);
+}
+#target .focus,
+  #target:focus {
+    background: rgb(0, 0, 0);
+  }
+.wrapper + #target {
+    background: rgb(33, 33, 33);
+  }
+/* stylelint-enable */
+
+/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+`;

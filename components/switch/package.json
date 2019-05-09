@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/switch",
-  "version": "0.21.0",
+  "version": "0.22.1-beta.2",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/switch",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -19,18 +19,24 @@
     "web-components"
   ],
   "scripts": {
-    "build": "build-component"
+    "build": "build-component",
+    "prebuild": "rm -rf dist"
   },
-  "svelte": "src/Switch.html",
-  "module": "dist/index.es.mjs",
+  "svelte": "src/Switch.svelte",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
+  "browser": "dist/index.web.js",
   "style": "dist/index.css",
+  "types": "types.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "types.d.ts"
   ],
-  "dependencies": {
-    "@minna-ui/css": "^0.21.0"
+  "devDependencies": {
+    "@minna-ui/build-component": "^0.22.1-beta.2",
+    "@minna-ui/css": "^0.22.1-beta.2",
+    "svelte": "^3.2.2"
   },
   "publishConfig": {
     "access": "public"

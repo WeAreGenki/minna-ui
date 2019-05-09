@@ -57,8 +57,8 @@ The easiest way to use the component is to add the CDN hosted version directly i
    ```html
    <script>
      new MinnaTabs({
-       target: document.querySelector('#minna-tabs'),
        data: {},
+       target: document.querySelector('#minna-tabs'),
      });
    </script>
    ```
@@ -75,7 +75,7 @@ Because this is actually a Svelte component, using it in your Svelte projects is
 
 1. Add to your Svelte component:
 
-   `MySvelteComponent.html`:
+   `MySvelteComponent.svelte`:
 
    ```html
    <MinnaTabs />
@@ -117,8 +117,8 @@ This component can also be used alongside any JavaScript project, regardless of 
    import MinnaTabs from '@minna-ui/tabs';
 
    new MinnaTabs({
-     target: document.querySelector('#minna-tabs'),
      data: {},
+     target: document.querySelector('#minna-tabs'),
    });
    ```
 

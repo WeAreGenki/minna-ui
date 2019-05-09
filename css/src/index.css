@@ -19,6 +19,8 @@
  * @format
  */
 
+@charset 'utf-8';
+
 @import './_variables-color.css';
 @import './_variables.css';
 @import './mixins/at-media.css';

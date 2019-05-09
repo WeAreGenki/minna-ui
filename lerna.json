@@ -1,5 +1,5 @@
 {
-  "version": "0.21.0",
+  "version": "0.22.1-beta.2",
   "packages": [
     "components/*",
     "css",
@@ -8,17 +8,24 @@
   "command": {
     "publish": {
       "allowBranch": "master"
+    },
+    "version": {
+      "signGitCommit": true,
+      "signGitTag": true
     }
   },
   "ignoreChanges": [
     "**/__fixtures__/**",
+    "**/__mocks__/**",
     "**/__tests__/**",
-    "**/dist/**",
-    "**/test/**",
-    "**/.*rc",
     "**/.*rc.js",
+    "**/.*rc",
     "**/*.config.js",
-    "**/*.md"
+    "**/*.md",
+    "**/dist/**",
+    "**/lib/**",
+    "**/test/**",
+    "**/types/**"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

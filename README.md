@@ -14,7 +14,7 @@
 
 😸 A fast, friendly, and fun web <abbr title="User Interface">UI</abbr> kit for everyone.
 
-A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. It can be used as standalone CSS and web components or in a Svelte project or some other JavaScript framework project.
+A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. Simple to use as standalone CSS and web components. Supports advanced use in a Svelte or any other JavaScript framework project too.
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 

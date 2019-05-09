@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/code-view",
-  "version": "0.22.1-beta.2",
+  "version": "0.22.1",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/code-view",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -35,8 +35,8 @@
     "types.d.ts"
   ],
   "devDependencies": {
-    "@minna-ui/build-component": "^0.22.1-beta.2",
-    "@minna-ui/css": "^0.22.1-beta.2",
+    "@minna-ui/build-component": "^0.22.1",
+    "@minna-ui/css": "^0.22.1",
     "svelte": "^3.2.2"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 {
   "name": "minna-ui",
-  "version": "0.22.1-beta.2",
+  "version": "0.22.1",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -37,17 +37,17 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/code-view": "^0.22.1-beta.2",
-    "@minna-ui/collapse": "^0.22.1-beta.2",
-    "@minna-ui/css": "^0.22.1-beta.2",
-    "@minna-ui/navbar": "^0.22.1-beta.2",
-    "@minna-ui/postcss-config": "^0.22.1-beta.2",
-    "@minna-ui/preprocess": "^0.22.1-beta.2",
-    "@minna-ui/select": "^0.22.1-beta.2",
-    "@minna-ui/switch": "^0.22.1-beta.2",
-    "@minna-ui/tabs": "^0.22.1-beta.2",
-    "@minna-ui/toast": "^0.22.1-beta.2",
-    "@minna-ui/tooltip": "^0.22.1-beta.2"
+    "@minna-ui/code-view": "^0.22.1",
+    "@minna-ui/collapse": "^0.22.1",
+    "@minna-ui/css": "^0.22.1",
+    "@minna-ui/navbar": "^0.22.1",
+    "@minna-ui/postcss-config": "^0.22.1",
+    "@minna-ui/preprocess": "^0.22.1",
+    "@minna-ui/select": "^0.22.1",
+    "@minna-ui/switch": "^0.22.1",
+    "@minna-ui/tabs": "^0.22.1",
+    "@minna-ui/toast": "^0.22.1",
+    "@minna-ui/tooltip": "^0.22.1"
   },
   "publishConfig": {
     "access": "public"

@@ -9,32 +9,43 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.22.2][] - 2019-05-10
+
+This changelog entry is summarized. There where a lot of commits this release so we'll go over the highlights. Please review the commit log for a full list of changes.
+
 ### Added
 
-- `@minna-ui/prettier-config` - Support `.svelte` file extension.
-- `@minna-ui/jest-config` - Support `.svelte` file extension and other improvements.
-- `@minna-ui/eslint-config` - TypeScript support, new rules, and support `.svelte` file extension.
-- `@minna-ui/tslint-config` - Deprecation notice. We'll convert TSLint rules to ESLint on an ongoing basis as they become availiable.
+- Full support for Svelte v3 🎉
+- Support for the Svelte component `.svelte` file extension, replacing `.html`, in relevant packages.
+- New `minna-tools` package containing all general dev tooling configs (e.g. linting, prettier). These were remove from the `minna-ui` package to make it easy to use them in non-Svelte projects (preact, node servers, etc.).
+- Extra functionality in the `minna-ui` package to make it quick and easy to use components and tools without needing to search for the correct package name to import from.
+- All components now also support usage as [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components). This is now the recommended way to use them when you don't want to deal with a build process. It's now also the default when you use the components from a <abbr title="content delivery network">CDN</abbr>. There's still some styling issues which we'll hammer out in an upcoming release.
+- `@minna-ui/eslint-config` - TypeScript support, new rules.
+- New packages to replace `@minna-ui/rollup-plugins`:
+  - `@minna-ui/rollup-plugin-dev-server`
+  - `@minna-ui/rollup-plugin-emit-css`
+  - `@minna-ui/rollup-plugin-emit-html`
+  - `@minna-ui/rollup-plugin-postcss`
+  - `@minna-ui/rollup-plugin-purgecss`
 
 ### Removed
 
-- `@minna-ui/tslint-config` - Package is no longer automatically installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
-- `@minna-ui/eslint-config` - Jest preset has been merged into the main config and `jest.js` no longer availiable. You should delete any `.eslintrc` files for loading the old preset.
-- `@minna-ui/postcss-config` - Preset no longer includes the `postcss-extends` plugin. If you want `@extends` functionality we recommend installing the plugin seperately and using the `@use` rule.
-- `@minna-ui/build-css` + `@minna-ui/build-component` - no longer remove directories as part of the build process. This should be handled seperately via a `pacakge.json#scripts` task.
+- Support for Svelte v2.
+- `@minna-ui/eslint-config` - Jest preset has been merged into the main config and `jest.js` no longer available. You should delete any `.eslintrc` files for loading the old preset.
+- `@minna-ui/postcss-config` - Preset no longer includes the `postcss-extends` plugin. If you want `@extends` functionality we recommend installing the plugin separately and using the `@use` rule.
+- `@minna-ui/rollup-plugins` - This package has been removed in favour of separate packages for each plugin.
+- `@minna-ui/build-css` + `@minna-ui/build-component` - No longer remove directories as part of the build process. This should be handled separately via a `pacakge.json#scripts` task.
 
 ### Changed
 
-- Convert all components to Svelte v3 syntax.
-- Rename all components from `*.html` to `*.svelte`.
+- Convert all packages to TypeScript. Generate type declarations. File paths changed; most utils files are now in a `@minna-ui/<package_name>/lib/*` directory.
+- `@minna-ui/css` - General improvements.
+- `@minna-ui/postcss-config` - Complete refactor to be faster, more simple, and reliable. Now only safe transforms are performed by default.
+- `@minna-ui/prettier-config` - Simplify how the package now that prettier has built-in support for shared configs.
+- `@minna-ui/jest-config` - Behind the scenes we now use [Sucrase](https://github.com/alangpierce/sucrase) to transpile your JavaScript and TypeScript into code compatible with Node and Jest. Significantly faster tests. Also added support for Preact.
+- `@minna-ui/tslint-config` - Package deprecated and no longer installed as a dependency of `minna-ui`. You'll need to manually add it to your `"devDependencies"` if you want to continue using TSLint. We recommend switching to a pure `eslint` + `@minna-ui/eslint-config` setup.
 - Rename component `@minna-ui/remarklint-config` to `@minna-ui/remark-config`.
-- Convert all packages to use TypeScript and to generate type declarations. Many file paths have changed because of this, most util files are now under a `@minna-ui/<package_name>/lib/*` directory.
-- `@minna-ui/postcss-config` - Complete refactor to be faster and more simple. Now only does safe transforms by default.
-- `@minna-ui/rollup-plugins` - `makeCss` - By default don't write empty CSS files to disk. This can be controlled with the new `writeEmpty` option.
-- `@minna-ui/rollup-plugins` - `makeCss` - Rename option `safe` to `unsafe`.
-- Totally overhaul internal build tooling for stablity and reliablity.
-- Refactor internal lint tasks and VS Code settings.
-- Use shared package for some node utils.
+- Refactor internal tooling for stability and reliability.
 - Updated package dependencies.
 
 ### Fixed
@@ -697,7 +708,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.21.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.22.1...HEAD
+[0.22.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.21.0...v0.22.1
 [0.21.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.20.0...v0.21.0
 [0.20.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.1...v0.20.0
 [0.19.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.0...v0.19.1

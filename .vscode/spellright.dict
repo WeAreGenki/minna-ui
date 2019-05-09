@@ -1,3 +1,4 @@
+browserslist
 cli
 config
 css
@@ -9,10 +10,13 @@ navbar
 param
 postcss
 pre
+Preact
 preprocessor
+prerelease
 Segoe
 stylelint
 submenu
+Svelte
 UI
 utils
 whitespace

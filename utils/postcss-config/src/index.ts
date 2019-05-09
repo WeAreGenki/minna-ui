@@ -13,7 +13,6 @@ import nested from 'postcss-nested';
 import atUse from 'postcss-use';
 import { ImportCacheEntry, resolve } from './css-import-resolve';
 
-// TODO: Could/should this be cached on disk for faster rebulds?
 const importCache = {};
 
 interface PluginOptions {

@@ -9158,10 +9158,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sirv@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.4.0.tgz#531bafb86806135bac7ac053cb19efa42a0347e9"
-  integrity sha512-k/dcRW7Ry2VgERDiLyyq3peGZEnqP2EcTcG5646QjoLwz7lnDA50i20m/3Rn7J4FLtimyoKQsG4E2BItctwjhg==
+sirv@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/sirv/-/sirv-0.4.2.tgz#842ed22f3aab58faee84eea66cf66066e123d6db"
+  integrity sha512-dQbZnsMaIiTQPZmbGmktz+c74zt/hyrJEB4tdp2Jj0RNv9J6B/OWR5RyrZEvIn9fyh9Zlg2OlE2XzKz6wMKGAw==
   dependencies:
     "@polka/url" "^0.5.0"
     mime "^2.3.1"
@@ -9604,10 +9604,10 @@ stylelint-declaration-strict-value@^1.1.3:
   resolved "https://registry.yarnpkg.com/stylelint-declaration-strict-value/-/stylelint-declaration-strict-value-1.1.3.tgz#5afaf44019c08ddca76975dbd66f1f4f77abbb0d"
   integrity sha512-k/DvGu9lEKE0X59aZfc5t0lHJJE1DfD7btRTM+FMZNX0TPACv5RuE9l5YuPGBXlBDX5QTJeSKakEddMn3jEg6g==
 
-stylelint-high-performance-animation@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/stylelint-high-performance-animation/-/stylelint-high-performance-animation-1.2.0.tgz#2993102baca5138b3cda1138baf0264bed22d413"
-  integrity sha512-OeHiAmnx0ItB7FbDNulsuEG9clVbNGNWmefybN1zgvctceh9aK/pHjCmHNmDuD6RuFRfBKYdueOhYMeVOpxqfA==
+stylelint-high-performance-animation@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/stylelint-high-performance-animation/-/stylelint-high-performance-animation-1.2.1.tgz#544ab13978707c19d1d581d079aa848fa709717a"
+  integrity sha512-jHkX30yZP7Z7/EdbS7XyBEn7tWgTZAeJ0XnRXIS776QnVy4FBzsE2GcY9oQPJOPk/z7DdBr4jjpSuh9tn8UeIw==
 
 stylelint-order@^3.0.0:
   version "3.0.0"
@@ -9707,10 +9707,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.2.0, svelte@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.2.0.tgz#92e4208178ccd9ecfd7ca931a9c38e64434f0f73"
-  integrity sha512-i/FSWUcqVw9JBo9bY69/ZI89WCCpyhdWjvAroOroI4qnQboh0WGlgjnFOEKOTvlv1XONd8cVpRGbOYYE3Ec6TQ==
+svelte@3.2.1, svelte@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.2.1.tgz#2bd89dbb49de623cea72730a4acaf92b4c1ec8e4"
+  integrity sha512-DH3WZHua5t87AjvCx8gU5cLQlhRF/KCyRWLpz4TXWwDVs1FEibIhXTXUWRd0EqU8/m/1e4stzL4MnboF8LxyHg==
 
 svg-tags@^1.0.0:
   version "1.0.0"

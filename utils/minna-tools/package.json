@@ -19,7 +19,7 @@
     "clean": "rm -f ./*.js ./*.d.ts"
   },
   "main": "index.js",
-  "typings": "index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "*.js",
     "*.d.ts"

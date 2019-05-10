@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Fixed
+
+- `@minna-ui/jest-config` - Prevent unwanted attributes in Jest snapshots of Preact components.
+
 ## [0.22.1][] - 2019-05-10
 
 This changelog entry is summarized. There where a lot of commits this release so we'll go over the highlights. Please review the commit log for a full list of changes.

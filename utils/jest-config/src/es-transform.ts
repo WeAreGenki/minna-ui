@@ -31,6 +31,7 @@ export function process(
       filePath: filename,
       jsxFragmentPragma: 'Fragment', // Preact style JSX
       jsxPragma: 'h',
+      production: true, // don't add debug attributes to snapshots
       transforms,
     });
 

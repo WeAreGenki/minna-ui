@@ -12,9 +12,4 @@ export = {
     browser: false,
     node: true,
   },
-  rules: {
-    /* eslint-enable sort-keys */
-    'jsdoc/require-param-type': 'off',
-    'jsdoc/require-returns-type': 'off',
-  },
 };

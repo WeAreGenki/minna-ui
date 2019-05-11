@@ -155,7 +155,9 @@ export = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        'jsdoc/require-param-type': 'off',
         'jsdoc/require-param': 'off',
+        'jsdoc/require-returns-type': 'off',
         'jsdoc/require-returns': 'off',
       },
     },
@@ -165,6 +167,10 @@ export = {
       files: ['*.d.ts'],
       rules: {
         '@typescript-eslint/no-extraneous-class': 'off',
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
         'no-useless-constructor': 'off', // crashes node process
         'no-var': 'off',
         'vars-on-top': 'off',

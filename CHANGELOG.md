@@ -9,9 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Changed
+
+- `@minna-ui/eslint-config` - TypeScript improvements.
+- Updated package dependencies.
+
 ### Fixed
 
-- `@minna-ui/jest-config` - Prevent unwanted attributes in Jest snapshots of Preact components.
+- `@minna-ui/jest-config` - Prevent unwanted attributes in Jest snapshots of JSX components (e.g. Preact).
 
 ## [0.22.1][] - 2019-05-10
 
@@ -21,7 +26,7 @@ This changelog entry is summarized. There where a lot of commits this release so
 
 - Full support for Svelte v3 🎉
 - Support for the Svelte component `.svelte` file extension, replacing `.html`, in relevant packages.
-- New `minna-tools` package containing all general dev tooling configs (e.g. linting, prettier). These were remove from the `minna-ui` package to make it easy to use them in non-Svelte projects (preact, node servers, etc.).
+- New `minna-tools` package containing all general dev tooling configs (e.g. linting, prettier). These were remove from the `minna-ui` package to make it easy to use them in non-Svelte projects (Preact, node servers, etc.).
 - Extra functionality in the `minna-ui` package to make it quick and easy to use components and tools without needing to search for the correct package name to import from.
 - All components now also support usage as [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components). This is now the recommended way to use them when you don't want to deal with a build process. It's now also the default when you use the components from a <abbr title="content delivery network">CDN</abbr>. There's still some styling issues which we'll hammer out in an upcoming release.
 - `@minna-ui/eslint-config` - TypeScript support, new rules.

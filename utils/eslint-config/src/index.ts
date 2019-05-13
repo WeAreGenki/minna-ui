@@ -84,6 +84,8 @@ export = {
       'error',
       2,
       {
+        // ESTree spec node types: https://github.com/estree/estree
+        // TS types: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/src/ts-estree/ast-node-types.ts
         ignoredNodes: ['ConditionalExpression *'], // incompatible with prettier :'(
         SwitchCase: 1,
       },
@@ -97,13 +99,14 @@ export = {
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
+    // '@typescript-eslint/prefer-regexp-exec': 'warn', // FIXME: Uncomment once feature is released
     '@typescript-eslint/unified-signatures': 'error',
     'comma-dangle': [
       'error',
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
-        functions: 'only-multiline', // comma on multiline function params is OK 👌
+        functions: 'only-multiline', // on multiline function params OK 👌
         imports: 'always-multiline',
         objects: 'always-multiline',
       },
@@ -119,11 +122,11 @@ export = {
     ],
     'import/no-deprecated': 'warn',
     'import/prefer-default-export': 'off',
-    indent: 'off', // use `@typescript-eslint/indent` instead
     'jsdoc/check-examples': 'warn',
     'jsdoc/check-indentation': 'warn',
     'jsdoc/require-description-complete-sentence': 'warn',
     'jsdoc/require-hyphen-before-param-description': 'warn',
+    'jsdoc/require-jsdoc': 'off', // too annoying
     'max-len': [
       'error',
       {

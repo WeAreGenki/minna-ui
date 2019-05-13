@@ -27,13 +27,13 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.7.0",
-    "@typescript-eslint/parser": "^1.7.0",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-html": "^5.0.4",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jest": "^22.5.1",
-    "eslint-plugin-jsdoc": "^4.8.3",
+    "eslint-plugin-jsdoc": "^4.8.4",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "^1.1.0"

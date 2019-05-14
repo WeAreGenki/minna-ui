@@ -3,7 +3,7 @@
 
 # `@minna-ui/preprocess`
 
-Collection of Svelte preprocessors for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. It consists of a markup preprocessor which strips out excessive whitespace and a style preprocessor which runs styles through [PostCSS](https://github.com/postcss/postcss).
+Collection of Svelte preprocessors for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projects. It consists of a markup preprocessor which strips out excessive whitespace (collapses relevant whitespace down to a single space but leaves relevant tags alone, e.g. `<pre>`, `<script>`, `<style>`) and a style preprocessor which runs styles through [PostCSS](https://github.com/postcss/postcss).
 
 ## Usage
 

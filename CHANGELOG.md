@@ -11,12 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- `@minna-ui/eslint-config` - TypeScript improvements.
+- `@minna-ui/eslint-config` - TypeScript related rule improvements.
 - Updated package dependencies.
 
 ### Fixed
 
-- `@minna-ui/jest-config` - Prevent unwanted attributes in Jest snapshots of JSX components (e.g. Preact).
+- `@minna-ui/jest-config` - Prevent unwanted attributes in Jest snapshots of JSX components (Preact, Hyperapp, etc.).
 
 ## [0.22.1][] - 2019-05-10
 

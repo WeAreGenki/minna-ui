@@ -97,6 +97,13 @@ export = {
     ],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        args: 'none',
+        ignoreRestSiblings: true,
+      },
+    ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
     // '@typescript-eslint/prefer-regexp-exec': 'warn', // FIXME: Uncomment once feature is released

@@ -24,11 +24,13 @@
  * TODO: Remove this notice comment once no longer necessary.
  */
 
+// FIXME: Need to wait until upstream issue is fixed before using this in VS
+// Code + Prettier extension with `prettier-eslint` integration
+//  ↳ https://github.com/prettier/prettier-eslint/issues/201
+
 export = {
   parserOptions: {
     project: 'tsconfig.json',
-    // FIXME: This doesn't work with Prettier + `prettier-eslint` integration
-    // and nor does setting the value to `__dirname` in a root `.eslintrc.js`
     tsconfigRootDir: process.cwd(),
   },
   rules: {
@@ -38,7 +40,5 @@ export = {
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
-    'jsdoc/require-param-type': 'off',
-    'jsdoc/require-returns-type': 'off',
   },
 };

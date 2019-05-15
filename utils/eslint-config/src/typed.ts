@@ -38,6 +38,7 @@ export = {
     '@typescript-eslint/no-for-in-array': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+    // '@typescript-eslint/prefer-regexp-exec': 'warn', // currently broken
     '@typescript-eslint/require-array-sort-compare': 'warn',
     '@typescript-eslint/restrict-plus-operands': 'warn',
   },

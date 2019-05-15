@@ -106,7 +106,6 @@ export = {
     ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
-    '@typescript-eslint/prefer-regexp-exec': 'warn',
     '@typescript-eslint/unified-signatures': 'error',
     'comma-dangle': [
       'error',

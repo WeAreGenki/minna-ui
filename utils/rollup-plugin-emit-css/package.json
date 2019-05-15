@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "clean-css": "^4.2.1",
-    "rollup-pluginutils": "^2.6.0"
+    "rollup-pluginutils": "^2.7.0"
   },
   "publishConfig": {
     "access": "public"

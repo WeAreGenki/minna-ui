@@ -97,9 +97,15 @@ export = {
     ],
     '@typescript-eslint/no-extraneous-class': 'error',
     '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        args: 'none',
+        ignoreRestSiblings: true,
+      },
+    ],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-function-type': 'warn',
-    // '@typescript-eslint/prefer-regexp-exec': 'warn', // FIXME: Uncomment once feature is released
     '@typescript-eslint/unified-signatures': 'error',
     'comma-dangle': [
       'error',
@@ -131,7 +137,7 @@ export = {
       'error',
       {
         code: 80, // consistency with prettier
-        ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable',
+        ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
@@ -234,7 +240,8 @@ export = {
           'error',
           {
             code: 100, // consistency with prettier override
-            ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable',
+            ignorePattern:
+              'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
             ignoreRegExpLiterals: true,
             ignoreStrings: true,
             ignoreTemplateLiterals: true,

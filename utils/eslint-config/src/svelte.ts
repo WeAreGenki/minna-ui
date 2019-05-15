@@ -22,37 +22,15 @@ export = {
     {
       files: ['*.svelte'],
       rules: {
-        'import/first': 'off', // not fixable
+        // import order cannot be determined correctly in .svelte components
+        'import/first': 'off',
+        // components are compiled at build-time so devDependencies are OK
         'import/no-extraneous-dependencies': [
           'error',
-          {
-            devDependencies: true,
-          },
+          { devDependencies: true },
         ],
+        // Svelte abuses the syntax with `export let`
         'import/no-mutable-exports': 'off',
-        'no-labels': 'off',
-
-        // NOTE: Based on airbnb-base rule but with `LabeledStatement` removed
-        // Keep up to date with changes to the upstream source:
-        // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L332
-        'no-restricted-syntax': [
-          'error',
-          {
-            selector: 'ForInStatement',
-            message:
-              'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
-          },
-          {
-            selector: 'ForOfStatement',
-            message:
-              'iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them. Separately, loops should be avoided in favor of array iterations.',
-          },
-          {
-            selector: 'WithStatement',
-            message:
-              '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
-          },
-        ],
       },
     },
   ],

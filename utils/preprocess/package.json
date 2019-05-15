@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/preprocess",
-  "version": "0.22.1",
+  "version": "0.22.2",
   "description": "Code transformers and svelte preprocessor for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/preprocess",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

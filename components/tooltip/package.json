@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/tooltip",
-  "version": "0.22.1",
+  "version": "0.22.2",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@minna-ui/build-css": "0.22.1",
-    "@minna-ui/css": "0.22.1"
+    "@minna-ui/css": "^0.22.2"
   },
   "publishConfig": {
     "access": "public"

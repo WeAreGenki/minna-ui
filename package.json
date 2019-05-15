@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@wearegenki/renovate-config": "1.0.0",
-    "codecov": "3.4.0",
+    "codecov": "3.5.0",
     "docsify-cli": "4.3.0",
     "eslint": "5.16.0",
     "jest": "24.8.0",

@@ -65,9 +65,7 @@ console.log(myMarkup); // '<div><h1>My Title</h1></div>'
 
 <!-- prettier-ignore -->
 ```js
-/*#__PURE__*/html`
-  <p>my markup</p>
-`;
+/*#__PURE__*/html`...`; // eslint-disable-line
 ```
 
 ## Licence

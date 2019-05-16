@@ -16,6 +16,7 @@ export = {
   settings: {
     'svelte3/ignore-styles': (attr: BlockAttributes) =>
       attr.type === 'text/postcss',
+    'svelte3/lint-template': true,
   },
   overrides: [
     // Svelte components

@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@minna-ui/preprocess": "^0.22.2",
-    "rollup": "1.12.2",
+    "rollup": "1.12.3",
     "rollup-plugin-buble": "0.19.6",
     "rollup-plugin-commonjs": "10.0.0",
     "rollup-plugin-node-resolve": "5.0.0",

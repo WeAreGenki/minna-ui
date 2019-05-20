@@ -36,7 +36,7 @@
     "eslint-plugin-jsdoc": "^5.0.2",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^1.2.0"
+    "eslint-plugin-svelte3": "^1.2.2"
   },
   "devDependencies": {
     "@types/eslint": "4.16.6"

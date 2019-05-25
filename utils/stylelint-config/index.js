@@ -2,11 +2,14 @@
  * Stylelint config preset for Minna UI projects.
  */
 
-// TODO: Write tests for any particularly custom rules or rules with regexes
+// TODO: Write tests for any particularly custom rules or rules with regex
 
 // https://stylelint.io/user-guide/configuration/
 
-export = {
+'use strict';
+
+/** @type {import('stylelint').Configuration} */
+module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
   plugins: [
     'stylelint-a11y',

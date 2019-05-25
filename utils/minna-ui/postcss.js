@@ -1,2 +1,3 @@
-// eslint-disable-next-line global-require
-export = require('@minna-ui/postcss-config');
+'use strict'; // eslint-disable-line
+
+module.exports = require('@minna-ui/postcss-config');

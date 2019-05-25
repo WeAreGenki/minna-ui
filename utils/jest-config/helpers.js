@@ -11,8 +11,9 @@ const { spawn } = require('child_process');
  * Run a binary file in a separate process and get stdout/stderr.
  *
  * @param {string} path - The full path to the binary file.
- * @param {string[]} args - Arguments to pass to the called script.
- * @param {NodeJS.ProcessEnv} env - Override `process.env` with custom parameters.
+ * @param {string[]} [args] - Arguments to pass to the called script.
+ * @param {NodeJS.ProcessEnv} [env] - Custom parameters to override those
+ * supplied by `process.env`.
  * @returns {Promise<string[]>} Returns the stdout or stderr messages.
  */
 exports.runBin = function runBin(path, args = [], env = process.env) {

@@ -1,9 +1,10 @@
-'use strict';
+'use strict'; // eslint-disable-line
 
-function __export(m) {
-  for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+function exportStar(mod) {
+  // eslint-disable-next-line
+  for (var p in mod) if (!exports.hasOwnProperty(p)) exports[p] = mod[p];
 }
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-__export(require('@minna-ui/preprocess'));
+exportStar(require('@minna-ui/preprocess'));

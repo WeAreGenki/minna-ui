@@ -1,11 +1,11 @@
 /**
  * TSLint config preset for Minna UI projects.
  *
- * @deprecated Use `@minna-ui/eslint-config` instead which now supports
- * TypeScript and is far more capable than TSLint.
+ * @deprecated Use ESLint + `@minna-ui/eslint-config` instead which now
+ * supports TypeScript and is more capable than TSLint.
  */
 
-// TODO: Convert all rules to ESLint and use a pure ESLint setup instead
+'use strict';
 
 // lint rules shared between both TypeScript and JavaScript
 const commonRules = {
@@ -35,7 +35,8 @@ const commonRules = {
   'variable-name': [true, 'ban-keywords', 'check-format', 'allow-pascal-case'],
 };
 
-export = {
+/** @type {import('tslint').Configuration} */
+module.exports = {
   extends: [
     'tslint:latest',
     'tslint-microsoft-contrib',

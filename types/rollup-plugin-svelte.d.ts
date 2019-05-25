@@ -1,4 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-declare function index(options: any): any;
-export = index;
+declare function rollupPluginSvelte(options: any): any;
+export = rollupPluginSvelte;

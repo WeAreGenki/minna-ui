@@ -1,5 +1,6 @@
 /**
  * Minna UI Svelte & Sapper ESLint config add-on.
+ *
  * @fileoverview Provides extra config for Svelte & Sapper projects. This
  * config is and add-on which should extend the base config preset.
  * @see https://eslint.org/docs/user-guide/configuring
@@ -7,15 +8,14 @@
 
 /* eslint-disable sort-keys */
 
-interface BlockAttributes {
-  type: string;
-}
+'use strict';
 
-export = {
+/** @type {import('./types').ESLintConfig} */
+module.exports = {
   plugins: ['svelte3'],
   settings: {
-    'svelte3/ignore-styles': (attr: BlockAttributes) =>
-      attr.type === 'text/postcss',
+    /** @param {import('./types').BlockAttributes} attr */
+    'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
     // TODO: Uncomment once false positives are handled better
     // 'svelte3/lint-template': true,
   },

@@ -1,5 +1,6 @@
 /**
  * Minna UI typed ESLint config add-on.
+ *
  * @fileoverview Provides extra config for TypeScript projects. The rules
  * included need TypeScript type info to work (e.g. you have a
  * `tsconfig.json` in your project root). This config is and add-on which
@@ -11,7 +12,10 @@
 
 /* eslint-disable sort-keys */
 
-export = {
+'use strict';
+
+/** @type {import('./types').ESLintConfig} */
+module.exports = {
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: process.cwd(),

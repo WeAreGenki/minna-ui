@@ -18,17 +18,12 @@
     "unit-testing",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
   "main": "jest-preset.js",
-  "types": "lib/index.d.ts",
   "files": [
     "__fixtures__",
-    "jest-preset.js",
-    "lib"
+    "mocks",
+    "transforms",
+    "*.js"
   ],
   "peerDependencies": {
     "jest": "^24.0.0"

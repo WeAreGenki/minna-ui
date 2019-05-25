@@ -1,3 +1,3 @@
 #!/bin/sh
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
-require('../lib/index.js')(process.env);
+require('../lib/index.js').run(process.env);

@@ -64,7 +64,7 @@ const terserOpts = {
  *
  * @param env - Node `process.env`.
  */
-export = async function run(
+export async function run(
   env: NodeJS.ProcessEnv,
 ): Promise<BuildComponentResult> {
   const pkgBrowser = env.npm_package_browser;
@@ -201,4 +201,4 @@ export = async function run(
     process.exit(2);
     throw err;
   }
-};
+}

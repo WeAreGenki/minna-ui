@@ -12,34 +12,27 @@
     "minna-ui",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "index.js",
   "files": [
-    "lib"
+    "*.d.ts",
+    "*.js"
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@types/eslint": "^4.16.6",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.5",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jest": "^22.5.1",
-    "eslint-plugin-jsdoc": "^6.0.1",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-jsdoc": "^6.0.3",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^1.2.2"
-  },
-  "devDependencies": {
-    "@types/eslint": "4.16.6"
+    "eslint-plugin-svelte3": "^1.2.3"
   },
   "publishConfig": {
     "access": "public"

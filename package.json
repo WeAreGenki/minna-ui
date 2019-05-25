@@ -127,12 +127,12 @@
     ]
   },
   "prettierIgnore": [
-    "cli",
+    "cli/index.js",
+    "components/*/dist",
     "docs/index.html",
     "node_modules",
-    "packages/*/dist",
-    "packages/*/lib",
     "test/coverage",
+    "utils/*/lib",
     "yarn.lock"
   ],
   "jest": {

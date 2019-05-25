@@ -16,7 +16,8 @@
     "**/.*rc.js",
     "**/*.config.js",
     "**/cli/index.js",
-    "**/dist/*",
+    "components/*/dist/*",
+    "utils/*/lib/*",
     "**/node_modules/*",
     "test/coverage"
   ]
@@ -25,19 +26,10 @@
   //   { "path": "./utils/browserslist-config" },
   //   { "path": "./utils/build-component" },
   //   { "path": "./utils/build-css" },
-  //   { "path": "./utils/eslint-config" },
-  //   { "path": "./utils/jest-config" },
-  //   { "path": "./utils/minna-tools" },
-  //   { "path": "./utils/minna-ui" },
-  //   { "path": "./utils/postcss-config" },
   //   { "path": "./utils/preprocess" },
-  //   { "path": "./utils/prettier-config" },
-  //   { "path": "./utils/remark-config" },
   //   { "path": "./utils/rollup-plugin-dev-server" },
   //   { "path": "./utils/rollup-plugin-emit-css" },
   //   { "path": "./utils/rollup-plugin-emit-html" },
-  //   { "path": "./utils/rollup-plugin-postcss" },
-  //   { "path": "./utils/stylelint-config" },
-  //   { "path": "./utils/tslint-config" }
+  //   { "path": "./utils/rollup-plugin-postcss" }
   // ]
 }

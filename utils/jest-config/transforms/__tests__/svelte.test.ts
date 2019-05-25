@@ -1,35 +1,19 @@
-// FIXME: Split this file out into multiple files named after the transform file they're testing
-
 /* eslint-env browser */
 /* eslint-disable security/detect-eval-with-expression */
 
 import fs from 'fs';
-import path from 'path';
+import { join } from 'path';
 import { promisify } from 'util';
-import { process } from '../svelte-transform';
-import nullTransform from '../null-transform';
+import { process } from '../svelte.js';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-const sourcePath = path.join(__dirname, '../../__fixtures__/TestComponent.svelte');
-const sourceCssPath = path.join(__dirname, '../../__fixtures__/styles.css');
+const sourcePath = join(__dirname, '../__fixtures__/TestComponent.svelte');
 
 let source = '';
-let sourceCss = '';
 
 beforeAll(async () => {
-  [source, sourceCss] = await Promise.all([
-    readFile(sourcePath, 'utf8'),
-    readFile(sourceCssPath, 'utf8'),
-  ]);
-});
-
-describe('Null transform', () => {
-  it('outputs empty content when importing CSS', () => {
-    // @ts-ignore
-    const styles = nullTransform.process(sourceCss, sourceCssPath);
-    expect(styles).toEqual('');
-  });
+  source = await readFile(sourcePath, 'utf8');
 });
 
 describe('Svelte transform', () => {

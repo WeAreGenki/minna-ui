@@ -5,11 +5,19 @@
  * jest preset for non-svelte projects.
  */
 
-import { basename } from 'path';
-// @ts-ignore TODO: Once svelte has types remove this exception
-import { compile } from 'svelte/compiler'; // eslint-disable-line import/no-extraneous-dependencies
+'use strict';
 
-export function process(src: string, filename: string): jest.TransformedSource {
+const { basename } = require('path');
+const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
+
+/** @typedef {import('jest')} jest */
+
+/**
+ * @param {string} src - File source code.
+ * @param {string} filename - File name.
+ * @returns {jest.TransformedSource} Transformed source code.
+ */
+exports.process = (src, filename) => {
   // strip out <style> tags to prevent errors when unable to parse PostCSS etc.
   const re = /<style[^>]*>[\S\s]*?<\/style>/g;
   const normalised = src.replace(re, '');
@@ -21,10 +29,10 @@ export function process(src: string, filename: string): jest.TransformedSource {
   });
 
   const esInterop =
-    '\nObject.defineProperty(exports, "__esModule", {\n\tvalue: true\n});';
+    'Object.defineProperty(exports, "__esModule", { value: true });';
 
   return {
     code: result.js.code + esInterop,
     map: result.js.map,
   };
-}
+};

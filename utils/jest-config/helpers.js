@@ -2,25 +2,25 @@
  * Helper functions for use in tests.
  */
 
+'use strict';
+
 // eslint-disable-next-line security/detect-child-process
-import { spawn } from 'child_process';
+const { spawn } = require('child_process');
 
 /**
  * Run a binary file in a separate process and get stdout/stderr.
  *
- * @param path - The full path to the binary file.
- * @param args - Arguments to pass to the called script.
- * @param env - Override `process.env` with custom parameters.
- * @returns Returns a promise with an array of the stdout or stderr messages.
+ * @param {string} path - The full path to the binary file.
+ * @param {string[]} args - Arguments to pass to the called script.
+ * @param {NodeJS.ProcessEnv} env - Override `process.env` with custom parameters.
+ * @returns {Promise<string[]>} Returns the stdout or stderr messages.
  */
-export function runBin(
-  path: string,
-  args = [],
-  env = process.env,
-): Promise<string[]> {
+exports.runBin = function runBin(path, args = [], env = process.env) {
   return new Promise((resolve, reject) => {
-    const stdout: string[] = [];
-    const stderr: string[] = [];
+    /** @type {string[]} */
+    const stdout = [];
+    /** @type {string[]} */
+    const stderr = [];
 
     const child = spawn(path, args, { env });
 
@@ -48,7 +48,7 @@ export function runBin(
       }
     });
   });
-}
+};
 
 /* eslint-disable max-len */
 // TODO: Add this to the docs or make a live example rather then keeping here

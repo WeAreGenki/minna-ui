@@ -5,9 +5,11 @@
 
 // NOTE: If you want to reuse this functionality in other projects, you'll need
 // to copy this file. It's not possible to use this from a package because it
-// needs to be run before packages are installed.
+// needs to be run _before_ packages are installed.
 
 /* eslint-disable no-console */
+
+// @ts-ignore - Namespaces error is false negative
 
 'use strict';
 

@@ -7,7 +7,7 @@ import merge from 'deepmerge';
 import flexbugFixes from 'postcss-flexbugs-fixes';
 import postcss from 'postcss';
 import advancedVars from 'postcss-advanced-variables';
-// @ts-ignore FIXME: TS can't deal with mjs correctly yet
+// @ts-ignore - FIXME: TS can't deal with mjs correctly yet
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
 import atUse from 'postcss-use';

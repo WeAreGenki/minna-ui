@@ -1,8 +1,10 @@
 'use strict';
 
+/** @param {any} mod - Module exports. */
 function exportStar(mod) {
+  // @ts-ignore
   // eslint-disable-next-line
-  for (var p in mod) if (!exports.hasOwnProperty(p)) exports[p] = mod[p];
+  for (const p in mod) if (!exports.hasOwnProperty(p)) exports[p] = mod[p];
 }
 
 Object.defineProperty(exports, '__esModule', { value: true });

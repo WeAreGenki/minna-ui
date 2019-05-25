@@ -1,0 +1,14 @@
+// https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
+// this config is for the actual building of packages
+
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "checkJs": false,
+    "declaration": true,
+    "isolatedModules": false,
+    "noEmit": false
+  }
+}

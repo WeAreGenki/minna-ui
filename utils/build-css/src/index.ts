@@ -35,7 +35,9 @@ function compileWarn(
   }
 
   for (const err of warnings) {
-    if (typeof err === 'string' && !/^Ignoring local source map at/.test(err)) return;
+    if (typeof err === 'string' && !/^Ignoring local source map at/.test(err)) {
+      return;
+    }
 
     // eslint-disable-next-line no-console
     console.warn(`[${from}] ${level}: ${err.toString()}`);
@@ -130,7 +132,7 @@ async function processCss({
  * @param env - Node `process.env`.
  * @param argv - Node `process.argv`.
  */
-export = async function run(
+export async function run(
   env: NodeJS.ProcessEnv,
   argv: string[] = [],
 ): Promise<ProcessCssResult[]> {
@@ -210,4 +212,4 @@ export = async function run(
     process.exit(2);
     throw err;
   }
-};
+}

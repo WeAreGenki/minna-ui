@@ -14,7 +14,10 @@
 module.exports = {
   plugins: ['svelte3'],
   settings: {
-    /** @param {import('./types').BlockAttributes} attr */
+    /**
+     * @param {import('./types').BlockAttributes} attr - Tag attributes.
+     * @returns {boolean} If style block should be ignored.
+     */
     'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
     // TODO: Uncomment once false positives are handled better
     // 'svelte3/lint-template': true,

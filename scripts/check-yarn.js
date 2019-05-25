@@ -11,12 +11,11 @@
 
 'use strict';
 
-const path = require('path');
+const { posix } = require('path');
 
 const reset = '\x1B[0m';
 const redBold = '\x1B[1;91m';
 const yellow = '\x1B[0;33m';
-const execpath = path.posix.normalize(process.env.npm_execpath);
 
 // TODO: Get more path samples
 /**
@@ -40,8 +39,13 @@ const execpath = path.posix.normalize(process.env.npm_execpath);
  *  - `node_modules/lerna/cli.js`
  */
 
-if (execpath && execpath.indexOf('yarn.js') === -1) {
-  if (execpath.indexOf('lerna/cli.js') === -1) {
+if (process.env.npm_execpath) {
+  const execpath = posix.normalize(process.env.npm_execpath);
+
+  if (
+    execpath.indexOf('yarn.js') === -1 &&
+    execpath.indexOf('lerna/cli.js') === -1
+  ) {
     console.log(`
 ---------------------------------------------------------------------------
  ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!

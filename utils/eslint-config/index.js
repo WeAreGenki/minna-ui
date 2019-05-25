@@ -223,6 +223,7 @@ module.exports = {
         '*.test.tsx',
       ],
       // `extends` aren't allowed in overrides so inject the config manually
+      // @ts-ignore - Don't care about types here
       ...require('eslint-plugin-jest').configs.recommended, // eslint-disable-line global-require
       plugins: ['jest', 'import'],
       env: {

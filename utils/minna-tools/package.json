@@ -12,17 +12,9 @@
     "minna-ui",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "yarn clean",
-    "clean": "rm -f ./*.js ./*.d.ts"
-  },
   "main": "index.js",
-  "types": "index.d.ts",
   "files": [
-    "*.js",
-    "*.d.ts"
+    "*.js"
   ],
   "peerDependencies": {
     "eslint": "^5.0.0",

@@ -54,7 +54,7 @@
       "extends @minna-ui/browserslist-config"
     ],
     "development": [
-      "extends @minna-ui/browserslist-config/lib/dev"
+      "extends @minna-ui/browserslist-config/dev"
     ]
   },
   "postcss": {
@@ -72,8 +72,8 @@
     "root": true,
     "extends": [
       "@minna-ui/eslint-config",
-      "@minna-ui/eslint-config/lib/typed",
-      "@minna-ui/eslint-config/lib/svelte"
+      "@minna-ui/eslint-config/typed",
+      "@minna-ui/eslint-config/svelte"
     ]
   },
   "eslintIgnore": [

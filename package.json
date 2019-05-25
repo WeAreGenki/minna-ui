@@ -84,11 +84,7 @@
     "/test/coverage/**",
     "/utils/*/cli/index.js",
     "/utils/*/lib/**",
-    "/utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte",
-    "/utils/minna-tools/*.js",
-    "/utils/minna-tools/*.d.ts",
-    "/utils/minna-ui/*.js",
-    "/utils/minna-ui/*.d.ts"
+    "/utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte"
   ],
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",

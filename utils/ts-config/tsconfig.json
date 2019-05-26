@@ -13,7 +13,7 @@
     // recommended in projects which have multiple output files or apps
     // "importHelpers": true,
 
-    // recommended in projects which also include .js files
+    // recommended in projects which include .js files
     // "allowJs": true,
     // "checkJs": true,
 

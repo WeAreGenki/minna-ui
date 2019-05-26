@@ -10,9 +10,5 @@
 /utils/*/lib/
 /utils/minna-css/*.css
 /utils/minna-css/*.map
-/utils/minna-tools/*.d.ts
-/utils/minna-tools/*.js
-/utils/minna-ui/*.d.ts
-/utils/minna-ui/*.js
 node_modules/
 package-lock.json*

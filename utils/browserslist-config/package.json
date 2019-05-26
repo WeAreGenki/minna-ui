@@ -12,15 +12,9 @@
     "minna-ui",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "index.js",
   "files": [
-    "lib"
+    "*.js"
   ],
   "publishConfig": {
     "access": "public"

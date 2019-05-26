@@ -9,11 +9,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.23.0][] - 2019-05-26
+
+### Changed
+
+- Converted some packages from TypeScript into plain JavaScript with JSDoc style type annotations. These packages are simple (e.g. configs exporting an object) and didn't heavily rely on type safety. Internal file paths may have changed. The following packages are effected:
+  - `minna-ui`
+  - `minna-tools`
+  - `@minna-ui/browserslist-config`
+  - `@minna-ui/eslint-config`
+  - `@minna-ui/jest-config`
+  - `@minna-ui/remark-config`
+  - `@minna-ui/stylelint-config`
+  - `@minna-ui/tslint-config`
+- `@minna-ui/eslint-config` - General improvements, especially for projects which use multiple/nested configs.
+- Updated package dependencies.
+
+### Fixed
+
+- TypeScript checks are not run on JavaScript files.
+- Type checks fail on packages which declare module types; module declarations should be located globally.
+
 ## [0.22.2][] - 2019-05-16
 
 ### Changed
 
-- `@minna-ui/eslint-config` - Rule improvements and fixing anoyances, mostly for TypeScript files and Svelte components.
+- `@minna-ui/eslint-config` - Rule improvements and fixing annoyances, mostly for TypeScript files and Svelte components.
 - Updated package dependencies.
 
 ### Fixed
@@ -719,8 +740,9 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.22.2...HEAD
-[0.22.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.21.1...v0.22.2
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.23.0...HEAD
+[0.23.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.22.2...v0.23.0
+[0.22.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.22.1...v0.22.2
 [0.22.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.21.0...v0.22.1
 [0.21.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.20.0...v0.21.0
 [0.20.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.19.1...v0.20.0

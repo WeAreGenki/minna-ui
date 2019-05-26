@@ -13,16 +13,7 @@
     "stylelint",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "main": "index.js",
   "peerDependencies": {
     "prettier": "^1.15.0",
     "stylelint": "^10.0.0"

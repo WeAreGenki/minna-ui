@@ -14,16 +14,7 @@
     "remark-lint",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf lib"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "main": "index.js",
   "peerDependencies": {
     "remark-cli": "^6.0.1"
   },

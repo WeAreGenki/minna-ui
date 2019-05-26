@@ -25,9 +25,9 @@
     "preinstall": "node scripts/check-yarn.js",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",
-    "lint:css": "stylelint '**/*.{css,html,js,md,mjs,svelte,svg,ts}'",
+    "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}",
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
-    "lint:types": "tsc --noEmit || true",
+    "lint:types": "tsc --noEmit --allowJs --checkJs",
     "test": "yarn lint && jest --notify --watch",
     "test-ci": "jest --coverage --runInBand --ci",
     "report:browsers": "yarn browserslist",
@@ -47,14 +47,14 @@
     "stylelint": "10.0.1",
     "svelte": "3.4.2",
     "tslib": "1.9.3",
-    "typescript": "3.4.5"
+    "typescript": "3.5.0-rc"
   },
   "browserslist": {
     "production": [
       "extends @minna-ui/browserslist-config"
     ],
     "development": [
-      "extends @minna-ui/browserslist-config/lib/dev"
+      "extends @minna-ui/browserslist-config/dev"
     ]
   },
   "postcss": {
@@ -72,8 +72,8 @@
     "root": true,
     "extends": [
       "@minna-ui/eslint-config",
-      "@minna-ui/eslint-config/lib/typed",
-      "@minna-ui/eslint-config/lib/svelte"
+      "@minna-ui/eslint-config/typed",
+      "@minna-ui/eslint-config/svelte"
     ]
   },
   "eslintIgnore": [
@@ -84,11 +84,7 @@
     "/test/coverage/**",
     "/utils/*/cli/index.js",
     "/utils/*/lib/**",
-    "/utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte",
-    "/utils/minna-tools/*.js",
-    "/utils/minna-tools/*.d.ts",
-    "/utils/minna-ui/*.js",
-    "/utils/minna-ui/*.d.ts"
+    "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
   ],
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
@@ -102,8 +98,8 @@
       "docs/index.html",
       "test/coverage/**",
       "utils/*/lib/**",
-      "utils/jest-config/__fixtures__/styles-bad-syntax.css",
-      "utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte",
+      "utils/jest-config/fixtures/styles-bad-syntax.css",
+      "utils/jest-config/fixtures/TestComponentBadSyntax.svelte",
       "utils/minna-css/*.css"
     ],
     "rules": {
@@ -131,22 +127,22 @@
     ]
   },
   "prettierIgnore": [
-    "cli",
+    "cli/index.js",
+    "components/*/dist",
     "docs/index.html",
     "node_modules",
-    "packages/*/dist",
-    "packages/*/lib",
     "test/coverage",
+    "utils/*/lib",
     "yarn.lock"
   ],
   "jest": {
     "preset": "@minna-ui/jest-config",
     "coverageThreshold": {
       "global": {
-        "branches": 50,
-        "functions": 50,
-        "lines": 50,
-        "statements": 50
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
       }
     }
   },

@@ -12,7 +12,7 @@ import { style } from '../style';
 const readFile = promisify(fs.readFile);
 
 // don't require() component to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
+const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 
 const preprocessOpts = {
   style: style({

@@ -19,18 +19,12 @@
     "wearegenki",
     "web-components"
   ],
-  "scripts": {
-    "build": "tsc && tsc --project ./tsconfig.esm.json",
-    "prebuild": "yarn clean",
-    "clean": "rm -f ./*.js ./*.d.ts"
-  },
   "main": "index.js",
-  "module": "index.esm.js",
+  "module": "index.mjs",
   "style": "index.css",
   "files": [
     "*.css",
-    "*.js",
-    "*.d.ts"
+    "*.js"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",

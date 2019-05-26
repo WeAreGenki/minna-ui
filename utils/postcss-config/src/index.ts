@@ -7,7 +7,7 @@ import merge from 'deepmerge';
 import flexbugFixes from 'postcss-flexbugs-fixes';
 import postcss from 'postcss';
 import advancedVars from 'postcss-advanced-variables';
-// @ts-ignore FIXME: TS can't deal with mjs correctly yet
+// @ts-ignore - TODO: Uncomment once TS can deal with mjs correctly
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
 import atUse from 'postcss-use';
@@ -55,7 +55,7 @@ interface PluginOptions {
 /**
  * PostCSS configuration preset for Minna UI projects.
  */
-export = postcss.plugin(
+module.exports = postcss.plugin(
   'minna-ui',
   ({
     debug = true,

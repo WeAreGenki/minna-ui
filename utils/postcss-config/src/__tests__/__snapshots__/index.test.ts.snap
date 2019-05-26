@@ -18,7 +18,7 @@ body {
   }
 /* stylelint-enable */
 
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with debug option true 1`] = `
@@ -39,7 +39,7 @@ body {
   }
 /* stylelint-enable */
 
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with optimize option false 1`] = `
@@ -60,22 +60,22 @@ body {
   }
 /* stylelint-enable */
 
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with optimize option true 1`] = `
 "body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with unsafe option false 1`] = `
 "body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles CSS with unsafe option true 1`] = `
 "body{margin:0}#target{color:red}#target .focus,#target:focus{background:#000}.wrapper+#target{background:#212121}
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;
 
 exports[`PostCSS config compiles valid CSS 1`] = `
@@ -96,5 +96,5 @@ body {
   }
 /* stylelint-enable */
 
-/*# sourceMappingURL=utils/jest-config/__fixtures__/import.css.map */"
+/*# sourceMappingURL=utils/jest-config/fixtures/import.css.map */"
 `;

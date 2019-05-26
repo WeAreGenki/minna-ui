@@ -1,10 +1,10 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "baseUrl": ".",
     "module": "commonjs",
-    "paths": { "*": ["types/*", "../../types/*"] },
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "paths": { "*": ["../../types/*"] }
   },
   "include": ["./src"]
 }

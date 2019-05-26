@@ -10,10 +10,10 @@ import buildCss from '../index';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
-const srcPathSimple = require.resolve('@minna-ui/jest-config/__fixtures__/simple.css');
-const srcPathImport = require.resolve('@minna-ui/jest-config/__fixtures__/import.css');
+const srcPathSimple = require.resolve('@minna-ui/jest-config/fixtures/simple.css');
+const srcPathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
 const srcPathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/__fixtures__/styles-bad-syntax.css',
+  '@minna-ui/jest-config/fixtures/styles-bad-syntax.css',
 );
 const dist = path.join(__dirname, 'dist');
 

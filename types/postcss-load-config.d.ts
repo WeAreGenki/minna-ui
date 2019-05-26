@@ -2,7 +2,7 @@
 
 import postcss from 'postcss';
 
-declare function index(
+declare function postcssLoadConfig(
   ctx?: postcss.ProcessOptions,
   path?: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -12,4 +12,4 @@ declare function index(
   options: postcss.ProcessOptions;
 }>;
 
-export = index;
+export = postcssLoadConfig;

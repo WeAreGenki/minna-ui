@@ -8,7 +8,7 @@ import { process } from '../svelte.js';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-const sourcePath = join(__dirname, '../fixtures/TestComponent.svelte');
+const sourcePath = join(__dirname, '../../fixtures/TestComponent.svelte');
 
 let source = '';
 

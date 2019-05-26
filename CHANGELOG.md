@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Converted some packages from TypeScript into plain JavaScript with JSDoc style type annotations. These packages are simple (e.g. configs exporting an object) and didn't heavily rely on type safety. Internal file paths may have changed. The following packages are effected:
+- Converted some packages from TypeScript into plain JavaScript with JSDoc style type annotations. These packages are simple (e.g. configs exporting an object) and didn't heavily rely on type safety. Internal file paths may have changed. The following packages are affected:
   - `minna-ui`
   - `minna-tools`
   - `@minna-ui/browserslist-config`

@@ -11,7 +11,7 @@ import postcssConfig from '../index';
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 const jestConfigPath = require.resolve('@minna-ui/jest-config');
-const fixturesPath = path.join(path.dirname(jestConfigPath), '__fixtures__');
+const fixturesPath = path.join(path.dirname(jestConfigPath), 'fixtures');
 const sourceCssPath = path.join(fixturesPath, 'import.css');
 // const sourceCssMixinPath = path.join(fixturesPath, 'mixin.css');
 // const mixinsPath = path.join(fixturesPath, 'css-mixins');

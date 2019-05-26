@@ -10,9 +10,9 @@ import buildComponent from '../index';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
-const sourcePath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
+const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 const sourcePathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/__fixtures__/TestComponentBadSyntax.svelte',
+  '@minna-ui/jest-config/fixtures/TestComponentBadSyntax.svelte',
 );
 const dist = path.join(__dirname, 'dist');
 

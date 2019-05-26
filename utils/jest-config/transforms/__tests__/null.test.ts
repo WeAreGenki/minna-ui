@@ -7,7 +7,7 @@ import { process } from '../null.js';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-const sourcePath = join(__dirname, '../__fixtures__/styles.css');
+const sourcePath = join(__dirname, '../fixtures/styles.css');
 
 let source = '';
 

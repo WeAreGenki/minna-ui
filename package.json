@@ -84,7 +84,7 @@
     "/test/coverage/**",
     "/utils/*/cli/index.js",
     "/utils/*/lib/**",
-    "/utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte"
+    "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
   ],
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
@@ -98,8 +98,8 @@
       "docs/index.html",
       "test/coverage/**",
       "utils/*/lib/**",
-      "utils/jest-config/__fixtures__/styles-bad-syntax.css",
-      "utils/jest-config/__fixtures__/TestComponentBadSyntax.svelte",
+      "utils/jest-config/fixtures/styles-bad-syntax.css",
+      "utils/jest-config/fixtures/TestComponentBadSyntax.svelte",
       "utils/minna-css/*.css"
     ],
     "rules": {

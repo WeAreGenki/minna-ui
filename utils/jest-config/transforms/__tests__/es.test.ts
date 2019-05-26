@@ -7,12 +7,12 @@ import { process } from '../es.js';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-// const sourceJsPath = join(__dirname, '../__fixtures__/????');
-// const sourceJsxPath = join(__dirname, '../__fixtures__/????');
-// const sourceTsPath = join(__dirname, '../__fixtures__/????');
-// const sourceTsxPath = join(__dirname, '../__fixtures__/????');
-// const sourceMjsPath = join(__dirname, '../__fixtures__/????');
-const sourceCssPath = join(__dirname, '../__fixtures__/styles.css');
+// const sourceJsPath = join(__dirname, '../fixtures/????');
+// const sourceJsxPath = join(__dirname, '../fixtures/????');
+// const sourceTsPath = join(__dirname, '../fixtures/????');
+// const sourceTsxPath = join(__dirname, '../fixtures/????');
+// const sourceMjsPath = join(__dirname, '../fixtures/????');
+const sourceCssPath = join(__dirname, '../fixtures/styles.css');
 
 // let sourceJs = '';
 // let sourceJsx = '';

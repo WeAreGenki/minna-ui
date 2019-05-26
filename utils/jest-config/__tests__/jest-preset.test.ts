@@ -10,7 +10,7 @@ describe('Jest test runner', () => {
   it('handles ES6 modules correctly', () => {
     expect.assertions(3);
     function wrapper(): void {
-      const { shout, whisper } = require('../__fixtures__/importable.js');
+      const { shout, whisper } = require('../fixtures/importable.js');
       expect(shout('Hello')).toEqual('HELLO');
       expect(whisper('Hello')).toEqual('hello');
     }

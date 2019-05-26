@@ -8,7 +8,7 @@ import { process } from '../svelte.js';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
-const sourcePath = join(__dirname, '../__fixtures__/TestComponent.svelte');
+const sourcePath = join(__dirname, '../fixtures/TestComponent.svelte');
 
 let source = '';
 
@@ -64,7 +64,7 @@ describe('Svelte transform', () => {
     expect.assertions(5);
     function wrapper(): void {
       // eslint-disable-next-line global-require
-      const ComponentImports = require('../../__fixtures__/TestComponentImports.svelte').default;
+      const ComponentImports = require('../../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
       const component = new ComponentImports({ target });
       expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');

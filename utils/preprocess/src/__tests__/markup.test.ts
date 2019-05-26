@@ -10,7 +10,7 @@ import { markup } from '../markup';
 const readFile = promisify(fs.readFile);
 
 // don't require() components to avoid Jest transform
-const componentPath = require.resolve('@minna-ui/jest-config/__fixtures__/TestComponent.svelte');
+const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 
 const opts = {
   markup: markup(),

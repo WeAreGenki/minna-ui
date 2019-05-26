@@ -20,7 +20,7 @@
   ],
   "main": "jest-preset.js",
   "files": [
-    "__fixtures__",
+    "fixtures",
     "mocks",
     "transforms",
     "*.js"

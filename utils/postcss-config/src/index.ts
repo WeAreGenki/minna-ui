@@ -53,7 +53,7 @@ interface PluginOptions {
 /**
  * PostCSS configuration preset for Minna UI projects.
  */
-export = postcss.plugin(
+export default postcss.plugin(
   'minna-ui',
   ({
     debug = true,

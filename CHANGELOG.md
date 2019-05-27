@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Changed
+
+- `@minna-ui/postcss-config` - Internal improvements to make it easier to create another PostCSS preset which extends from this one.
+
 ## [0.23.0][] - 2019-05-26
 
 ### Changed

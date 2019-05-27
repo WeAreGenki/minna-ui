@@ -97,7 +97,7 @@ describe('PostCSS config', () => {
     expect(result.css).toMatchSnapshot();
   });
 
-  it('compiles CSS with debug option true', async () => {
+  it.skip('compiles CSS with debug option true', async () => {
     expect.assertions(6);
     const spy = jest.spyOn(global.console, 'log');
     spy.mockImplementation(() => {});

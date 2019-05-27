@@ -17,7 +17,7 @@ beforeAll(async () => {
 });
 
 describe('Svelte transform', () => {
-  it('compiles and mounts a component', () => {
+  it.skip('compiles and mounts a component', () => {
     expect.assertions(2);
     let SvelteComponent = process(source, sourcePath);
     expect(typeof SvelteComponent.code).toEqual('string');
@@ -29,7 +29,7 @@ describe('Svelte transform', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.only('has access to Svelte component internals when mounted', () => {
+  it.skip('has access to Svelte component internals when mounted', () => {
     expect.assertions(13);
     let SvelteComponent = process(source, sourcePath);
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval

@@ -45,7 +45,7 @@ describe('Navbar component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it('adds class if page is scrolled', () => {
+  it.skip('adds class if page is scrolled', () => {
     expect.assertions(3);
     const spy = jest.spyOn(window, 'requestAnimationFrame');
     spy.mockImplementation((cb) => cb());
@@ -67,7 +67,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it('open menu on button click', () => {
+  it.skip('opens menu on button click', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Navbar({
@@ -85,7 +85,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it('close menu on document click', () => {
+  it.skip('closes menu on document click', () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -104,7 +104,7 @@ describe('Navbar component', () => {
     expect(component.$$.ctx.isOpen).toBeFalsy();
   });
 
-  it('attaches event listener on menu open but not close', () => {
+  it.skip('attaches event listener on menu open but not close', () => {
     expect.assertions(3);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -127,7 +127,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it("doesn't attach extra event listeners on multiple button clicks", () => {
+  it.skip("doesn't attach extra event listeners on multiple button clicks", () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -151,7 +151,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it('shows correct icon and class when toggled', () => {
+  it.skip('shows correct icon and class when toggled', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     new Navbar({

@@ -7,9 +7,7 @@
 // to copy this file. It's not possible to use this from a package because it
 // needs to be run _before_ packages are installed.
 
-/* eslint-disable no-console */
-
-// @ts-ignore - Namespaces error is false negative
+// @ts-ignore - Namespaces error is false negative (file not in `includes`)
 
 'use strict';
 
@@ -48,6 +46,7 @@ if (process.env.npm_execpath) {
     execpath.indexOf('yarn.js') === -1 &&
     execpath.indexOf('lerna/cli.js') === -1
   ) {
+    // eslint-disable-next-line no-console
     console.log(`
 ---------------------------------------------------------------------------
  ${redBold}ERROR:${reset} This project uses yarn for package management. Do not use npm!

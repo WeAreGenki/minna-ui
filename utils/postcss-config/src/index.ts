@@ -1,5 +1,3 @@
-/* eslint-disable security/detect-non-literal-regexp, security/detect-object-injection */
-
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import mediaQueryPacker from 'css-mqpacker';
@@ -11,7 +9,7 @@ import advancedVars from 'postcss-advanced-variables';
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
 import atUse from 'postcss-use';
-import { ImportCacheEntry, resolve } from './css-import-resolve';
+import { aliasedResolve, ImportAlias } from './css-import-resolve';
 
 const importCache = {};
 
@@ -21,10 +19,10 @@ interface PluginOptions {
   /**
    * A map of import aliases. Given a matching regex key, will replace the
    * import path with the value.
+   * @example
+   * { '^##\\/(.*)$': 'src/$1' }
    */
-  importAlias?: {
-    [alias: string]: string;
-  };
+  importAlias?: ImportAlias;
   /**
    * A list of extra paths to search when resolving `@import` rules in CSS.
    * First, imports will try to resolve according to the
@@ -43,7 +41,7 @@ interface PluginOptions {
   unsafe?: boolean;
   /**
    * Any other options will be passed to all PostCSS plugins and to the
-   * `nanocss` preset options.</br></br>This can be particuarly powerful if
+   * `nanocss` preset options.</br></br>This can be particularly powerful if
    * you need to pass options when using the `@use` rule — use the plugin
    * name as a key, as shown in the
    * [postcss-use docs](https://github.com/postcss/postcss-use#options-1).
@@ -55,7 +53,7 @@ interface PluginOptions {
 /**
  * PostCSS configuration preset for Minna UI projects.
  */
-module.exports = postcss.plugin(
+export = postcss.plugin(
   'minna-ui',
   ({
     debug = true,
@@ -78,26 +76,6 @@ module.exports = postcss.plugin(
       );
     }
 
-    const importResolve = (
-      id: string,
-      cwd: string,
-      // FIXME:
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      opts: any,
-    ): ImportCacheEntry => {
-      // replace import aliases before trying to resolve
-      Object.entries(importAlias).forEach(([alias, value]) => {
-        const aliasRe = new RegExp(alias);
-
-        if (aliasRe.test(id)) {
-          // eslint-disable-next-line no-param-reassign
-          id = id.replace(aliasRe, value);
-        }
-      });
-
-      return resolve(id, cwd, opts.importCache);
-    };
-
     const cssnanoOpts = merge(
       {
         calc: {
@@ -112,7 +90,7 @@ module.exports = postcss.plugin(
         // postcss-advanced-variables
         importCache,
         importPaths,
-        importResolve,
+        importResolve: aliasedResolve(importAlias),
         unresolved: debug ? 'warn' : 'ignore',
 
         // postcss-use
@@ -120,8 +98,8 @@ module.exports = postcss.plugin(
         resolveFromFile: true,
 
         // autoprefixer
-        grid: true, // IE 11 support
         flexbox: 'no-2009',
+        grid: true, // IE 11 support
         remove: false,
 
         // cssnano

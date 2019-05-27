@@ -138,3 +138,33 @@ export function resolve(
       .catch(() => Promise.reject(new Error('CSS Module not found')))
   );
 }
+
+/**
+ * @example
+ * { '^##\\/(.*)$': 'src/$1' }
+ */
+export interface ImportAlias {
+  [alias: string]: string;
+}
+
+/**
+ * Provides the same functionality as `resolve` but firstly replaces paths
+ * with matching aliases.
+ */
+export function aliasedResolve(importAlias: ImportAlias): typeof resolve {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (id: string, cwd: string, opts: any): ImportCacheEntry => {
+    // replace import aliases before trying to resolve
+    Object.entries(importAlias).forEach(([alias, value]) => {
+      // eslint-disable-next-line security/detect-non-literal-regexp
+      const aliasRe = new RegExp(alias);
+
+      if (aliasRe.test(id)) {
+        // eslint-disable-next-line no-param-reassign
+        id = id.replace(aliasRe, value);
+      }
+    });
+
+    return resolve(id, cwd, opts.importCache);
+  };
+}

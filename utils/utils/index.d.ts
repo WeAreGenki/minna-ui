@@ -1,5 +1,5 @@
 /** Generic error handler for nodejs callbacks. */
-export declare function handleErr(err: Error): void;
+export declare function handleErr(err?: Error): void;
 
 /**
  * Get the most recent git reference.

@@ -57,7 +57,7 @@ export const style = (
     return {
       code: result.css,
       dependencies,
-      map: result.map,
+      map: result.map.toString(),
     };
   } catch (err) {
     if (err.name === 'CssSyntaxError') {

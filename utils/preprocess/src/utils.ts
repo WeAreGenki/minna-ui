@@ -1,4 +1,5 @@
 import { markup } from './markup';
+import { PreprocessResults } from './types';
 
 const minify = markup();
 
@@ -14,7 +15,7 @@ export function html(strings: TemplateStringsArray, ...values: any[]): string {
     code += string + (values[index] || '');
   });
 
-  const result = minify({ content: code });
+  const result = minify({ content: code }) as PreprocessResults;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return result!.code;

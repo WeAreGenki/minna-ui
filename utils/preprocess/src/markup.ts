@@ -2,7 +2,7 @@
 
 // FIXME: Replace once svelte is fixed
 // import { PreprocessorGroup } from 'svelte/types/preprocess';
-import { PreprocessorGroup } from './types';
+import { MarkupPreprocessor } from './types';
 
 /**
  * Minna UI svelte markup preprocessor.
@@ -14,7 +14,7 @@ import { PreprocessorGroup } from './types';
 export const markup = ({
   enabled = true,
   unsafe = true,
-} = {}): PreprocessorGroup['markup'] => ({ content }) => {
+} = {}): MarkupPreprocessor => ({ content }) => {
   if (!enabled) return undefined;
 
   let code = `${content}`;

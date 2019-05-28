@@ -4,21 +4,25 @@
 
 import { SourceMap } from 'magic-string'; // eslint-disable-line
 
+export interface PreprocessResults {
+  code: string;
+  map?: SourceMap | string;
+  dependencies?: string[];
+}
+
 export type Preprocessor = (options: {
   content: string;
   attributes: Record<string, string | boolean>;
   filename?: string;
-}) =>
-  | { code: string; map?: SourceMap | string; dependencies?: string[] }
-  | undefined;
+}) => PreprocessResults | undefined | Promise<PreprocessResults | undefined>;
+
+export type MarkupPreprocessor = (options: {
+  content: string;
+  filename?: string;
+}) => PreprocessResults | undefined | Promise<PreprocessResults | undefined>;
 
 export interface PreprocessorGroup {
-  markup?: (options: {
-    content: string;
-    filename: string;
-  }) =>
-    | { code: string; map?: SourceMap | string; dependencies?: string[] }
-    | undefined;
+  markup?: MarkupPreprocessor;
   style?: Preprocessor;
   script?: Preprocessor;
 }

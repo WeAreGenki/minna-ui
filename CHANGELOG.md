@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- `@minna-ui/browserslist-config` - Update settings for better browser coverage.
 - `@minna-ui/postcss-config` - Internal improvements to make it easier to create another PostCSS preset which extends from this one.
 
 ### Fixed

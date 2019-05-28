@@ -1,30 +1,24 @@
-// based on https://github.com/sveltejs/svelte/blob/master/src/preprocess/index.ts
+// FIXME: Remove this file after svelte is fixed
 
-/* eslint-disable @typescript-eslint/indent */ // broken upstream https://github.com/typescript-eslint/typescript-eslint/issues/121
+/* eslint-disable @typescript-eslint/indent */
 
-interface PreprocessorReturn {
-  code: string;
-  dependencies?: string[];
-  map?: string | { toString: () => string };
-}
+import { SourceMap } from 'magic-string'; // eslint-disable-line
 
-/**
- * @returns Returning `undefined` will cause the preprocessor not to run and
- * the original code to be used as is.
- */
 export type Preprocessor = (options: {
+  content: string;
   attributes: Record<string, string | boolean>;
-  content: string;
   filename?: string;
-}) => Promise<PreprocessorReturn | undefined> | PreprocessorReturn | undefined;
-
-export type MarkupPreprocessor = (options: {
-  content: string;
-  filename?: string;
-}) => PreprocessorReturn | undefined;
+}) =>
+  | { code: string; map?: SourceMap | string; dependencies?: string[] }
+  | undefined;
 
 export interface PreprocessorGroup {
-  markup?: MarkupPreprocessor;
-  script?: Preprocessor;
+  markup?: (options: {
+    content: string;
+    filename: string;
+  }) =>
+    | { code: string; map?: SourceMap | string; dependencies?: string[] }
+    | undefined;
   style?: Preprocessor;
+  script?: Preprocessor;
 }

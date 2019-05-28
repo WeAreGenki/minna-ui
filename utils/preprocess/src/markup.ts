@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
-import { MarkupPreprocessor } from './types';
+// FIXME: Replace once svelte is fixed
+// import { PreprocessorGroup } from 'svelte/types/preprocess';
+import { PreprocessorGroup } from './types';
 
 /**
  * Minna UI svelte markup preprocessor.
@@ -12,7 +14,7 @@ import { MarkupPreprocessor } from './types';
 export const markup = ({
   enabled = true,
   unsafe = true,
-} = {}): MarkupPreprocessor => ({ content }) => {
+} = {}): PreprocessorGroup['markup'] => ({ content }) => {
   if (!enabled) return undefined;
 
   let code = `${content}`;

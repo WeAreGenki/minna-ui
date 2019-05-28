@@ -9,10 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.24.0][] - 2019-05-28
+
 ### Changed
 
 - `@minna-ui/browserslist-config` - Update settings for better browser coverage.
 - `@minna-ui/postcss-config` - Internal improvements to make it easier to create another PostCSS preset which extends from this one.
+- `@minna-ui/utils` - Convert from TypeScript to plain JavaScript.
+- Updated package dependencies.
 
 ### Fixed
 
@@ -749,7 +753,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.23.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.24.0...HEAD
+[0.24.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.23.0...v0.24.0
 [0.23.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.22.2...v0.23.0
 [0.22.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.22.1...v0.22.2
 [0.22.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.21.0...v0.22.1

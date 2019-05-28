@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+
 /* Components */
 export { default as CodeView } from '@minna-ui/code-view';
 export { default as Collapse } from '@minna-ui/collapse';
@@ -11,4 +13,5 @@ export { default as Toast } from '@minna-ui/toast';
 export * from '@minna-ui/tooltip';
 
 /* Utils */
+// @ts-ignore - Module only available after build
 export * from '@minna-ui/preprocess/lib/utils';

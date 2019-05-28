@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/tslint-config",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "TSLint config presets for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/tslint-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

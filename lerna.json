@@ -1,6 +1,10 @@
 {
-  "version": "0.23.0",
-  "packages": ["components/*", "css", "utils/*"],
+  "version": "0.24.0",
+  "packages": [
+    "components/*",
+    "css",
+    "utils/*"
+  ],
   "command": {
     "publish": {
       "allowBranch": "master"

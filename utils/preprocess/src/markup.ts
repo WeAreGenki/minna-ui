@@ -1,5 +1,7 @@
 /* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
+// FIXME: Replace once svelte is fixed
+// import { PreprocessorGroup } from 'svelte/types/preprocess';
 import { MarkupPreprocessor } from './types';
 
 /**

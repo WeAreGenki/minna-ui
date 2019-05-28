@@ -1,11 +1,11 @@
 /** @jest-environment node */
 
-import tooltip from '../index';
+import { Tooltip } from '..';
 
-describe('Tooltip action', () => {
+describe('Tooltip', () => {
   it('should do something', () => {
     expect.hasAssertions();
-    expect(tooltip).toBeDefined();
+    expect(Tooltip).toBeDefined();
     // TODO
   });
 });

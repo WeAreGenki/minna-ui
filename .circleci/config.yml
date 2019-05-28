@@ -12,6 +12,9 @@ aliases:
       - node_modules
     key: v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
+  - &build-dependencies
+    run: yarn lerna run build --scope '@minna-ui/preprocess'
+
 version: 2
 jobs:
   build-node-12:
@@ -23,6 +26,7 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn install --frozen-lockfile
       - save-cache: *save-cache
+      - *build-dependencies
       - run: yarn run lint
       - run: yarn run test-ci
       - run: yarn codecov
@@ -39,6 +43,7 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn install --frozen-lockfile
       - save-cache: *save-cache
+      - *build-dependencies
       - run: yarn run test-ci
 
 workflows:

@@ -1,14 +1,16 @@
+'use strict';
+
 // eslint-disable-next-line security/detect-child-process
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
 
 /**
  * Get the most recent git reference.
  *
  * @see https://git-scm.com/docs/git-describe
  *
- * @returns A human readable git reference.
+ * @returns {string} A human readable git reference.
  */
-export function gitDescribe(): string {
+function gitDescribe() {
   let reference = '';
 
   try {
@@ -22,3 +24,5 @@ export function gitDescribe(): string {
 
   return reference;
 }
+
+exports.gitDescribe = gitDescribe;

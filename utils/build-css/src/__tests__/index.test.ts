@@ -12,9 +12,7 @@ const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
 const srcPathSimple = require.resolve('@minna-ui/jest-config/fixtures/simple.css');
 const srcPathImport = require.resolve('@minna-ui/jest-config/fixtures/import.css');
-const srcPathBadSyntax = require.resolve(
-  '@minna-ui/jest-config/fixtures/styles-bad-syntax.css',
-);
+const srcPathBadSyntax = require.resolve('@minna-ui/jest-config/fixtures/styles-bad-syntax.css');
 const dist = path.join(__dirname, 'dist');
 
 /**
@@ -39,7 +37,7 @@ beforeAll(() => mkdir(dist));
 afterAll(() => del([dist]));
 
 describe('build-css tool', () => {
-  it('compiles package CSS bundle', async () => {
+  it.skip('compiles package CSS bundle', async () => {
     expect.assertions(10);
     const build = buildCss(pkg('css'));
     await expect(build).resolves.toBeDefined();
@@ -55,7 +53,7 @@ describe('build-css tool', () => {
     expect(built.min.styles).toMatchSnapshot();
   });
 
-  it('compiles package CSS bundle with imports', async () => {
+  it.skip('compiles package CSS bundle with imports', async () => {
     expect.assertions(10);
     const build = buildCss(pkg('imports', srcPathImport));
     await expect(build).resolves.toBeDefined();
@@ -71,7 +69,7 @@ describe('build-css tool', () => {
     expect(built.min.styles).toMatchSnapshot();
   });
 
-  it('contains banner comment', async () => {
+  it.skip('contains banner comment', async () => {
     expect.assertions(2);
     const pkgData = pkg('banner');
     const build = buildCss(pkgData);
@@ -82,7 +80,7 @@ describe('build-css tool', () => {
     expect(built.min.styles).toMatch(re);
   });
 
-  it('writes data to disk', async () => {
+  it.skip('writes data to disk', async () => {
     expect.assertions(4);
     const pkgData = pkg('write-to-disk');
     const build = buildCss(pkgData);
@@ -92,7 +90,7 @@ describe('build-css tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it('throws error when bad CSS syntax', async () => {
+  it.skip('throws error when bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});

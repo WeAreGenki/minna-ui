@@ -14,8 +14,6 @@
     "sourceMap": true
   },
   "exclude": [
-    "**/.*rc.js",
-    "**/*.config.js",
     "**/cli/index.js",
     "components/*/dist/*",
     "utils/*/lib/*",

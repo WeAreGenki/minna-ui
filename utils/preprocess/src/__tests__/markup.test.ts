@@ -69,7 +69,7 @@ describe('Svelte markup preprocessor', () => {
     spy.mockRestore();
   });
 
-  it('processes a simple component', async () => {
+  it.skip('processes a simple component', async () => {
     expect.assertions(4);
     const output = preprocess(sourceSimple, opts);
     await expect(output).resolves.toBeDefined();
@@ -107,7 +107,7 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('creates and mounts a component', async () => {
+  it.skip('creates and mounts a component', async () => {
     expect.assertions(1);
     const processed = await preprocess(source, opts);
     const TestComponent = create(processed.toString(), svelteOpts);
@@ -147,7 +147,7 @@ describe('Svelte markup preprocessor', () => {
   //   expect(unsafeWhitespace.toString().length).toBeLessThan(safe.toString().length);
   // });
 
-  it('prints error on bad HTML syntax', async () => {
+  it.skip('prints error on bad HTML syntax', async () => {
     expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write');
     spy.mockImplementation(() => {});

@@ -19,7 +19,7 @@
     "build": "tsc",
     "prebuild": "rm -rf lib"
   },
-  "main": "lib/index.js",
+  "main": "index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib"

@@ -38,7 +38,7 @@ beforeAll(() => mkdir(dist));
 afterAll(() => del([dist]));
 
 describe('build-component tool', () => {
-  it('compiles package esm bundle', async () => {
+  it.skip('compiles package esm bundle', async () => {
     expect.assertions(6);
     const build = buildComponent(pkg('esm'));
     await expect(build).resolves.toBeDefined();
@@ -50,7 +50,7 @@ describe('build-component tool', () => {
     expect(built.esm.result.output[0].map.sources).toHaveLength(2);
   }, 10000); // FIXME: Reduce execution time of this test
 
-  it('compiles package main bundle', async () => {
+  it.skip('compiles package main bundle', async () => {
     expect.assertions(4);
     const build = buildComponent(pkg('main'));
     await expect(build).resolves.toBeDefined();
@@ -60,7 +60,7 @@ describe('build-component tool', () => {
     expect(built.main.result.output[0].code).toMatch(':"Elon Musk"');
   });
 
-  it('compiles package css bundle', async () => {
+  it.skip('compiles package css bundle', async () => {
     expect.assertions(4);
     const build = buildComponent(pkg('css'));
     await expect(build).resolves.toBeDefined();
@@ -70,7 +70,7 @@ describe('build-component tool', () => {
     expect(built.css.code).toMatchSnapshot();
   });
 
-  it('contains banner comments', async () => {
+  it.skip('contains banner comments', async () => {
     expect.assertions(3);
     const pkgData = pkg('banner');
     const build = buildComponent(pkgData);
@@ -83,7 +83,7 @@ describe('build-component tool', () => {
     expect(built.main.result.output[0].code).toMatch(re2);
   });
 
-  it('writes data to disk', async () => {
+  it.skip('writes data to disk', async () => {
     expect.assertions(7);
     const pkgData = pkg('write-to-disk');
     const build = buildComponent(pkgData);
@@ -96,7 +96,7 @@ describe('build-component tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it('throws an error when bad HTML syntax', async () => {
+  it.skip('throws an error when bad HTML syntax', async () => {
     expect.assertions(1);
     const build = buildComponent({
       ...pkg('bad-syntax'),

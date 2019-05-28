@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Svelte transform mounts components which import ES6 modules 1`] = `"Elon Musk ELON MUSK elon musk"`;

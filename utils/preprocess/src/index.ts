@@ -1,6 +1,8 @@
+// FIXME: Replace once svelte is fixed
+// import { PreprocessorGroup } from 'svelte/types/preprocess';
+import { PreprocessorGroup } from './types';
 import { markup } from './markup';
 import { style } from './style';
-import { PreprocessorGroup } from './types';
 
 export const preprocess: PreprocessorGroup = {
   markup: markup({

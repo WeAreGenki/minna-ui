@@ -9,7 +9,9 @@ function exportStar(m) {
 }
 
 Object.defineProperty(exports, '__esModule', { value: true });
+// @ts-ignore
 exportStar(require('@minna-ui/rollup-plugin-dev-server'));
+// @ts-ignore
 exportStar(require('@minna-ui/rollup-plugin-emit-css'));
 // @ts-ignore
 exportStar(require('@minna-ui/rollup-plugin-emit-html'));

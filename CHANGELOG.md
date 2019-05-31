@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Changed
+
+- Optimise event handling in components.
+- Set data as immutable in some components for better performance.
+- Updated package dependencies.
+
 ## [0.24.1][] - 2019-05-30
 
 ### Changed

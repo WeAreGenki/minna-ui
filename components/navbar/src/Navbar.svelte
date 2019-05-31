@@ -58,68 +58,51 @@
 -->
 
 <script>
-  import { onMount } from 'svelte';
+  import { listen } from 'svelte/internal';
 
-  // props
   export let items = [];
-  export let segment; // current URL path; in sapper, pass in "segment"
+  export let segment; // Current URL path; in sapper, pass in "segment"
 
-  // reactive data
   let isOpen;
   let hasScrolled;
 
-  let wait;
-  let lastHasScrolled;
-
-  function update() {
+  // No need to debounce with rAF because as it turns out the `scroll` event is
+  // fired at about the same rate
+  function scrollHandler() {
     const scrolled = window.pageYOffset !== 0;
 
-    // don't set component state if nothing has changed
+    // Don't invalidate component state if nothing has changed
     /* istanbul ignore else */
-    if (scrolled !== lastHasScrolled) {
-      lastHasScrolled = scrolled;
+    if (scrolled !== hasScrolled) {
       hasScrolled = scrolled;
     }
-
-    wait = false;
   }
 
-  // debounce scroll event using rAF
-  function scrollHandler() {
-    /* istanbul ignore if */
-    if (wait) return;
-    wait = true;
-    requestAnimationFrame(update);
-  }
+  let cancelClick;
 
   function clickHandler() {
     isOpen = false;
-    document.removeEventListener('click', clickHandler);
+    cancelClick();
   }
 
   function openMenu() {
     if (!isOpen) {
       isOpen = true;
 
-      // re-queue at end of execution queue to avoid race condition
+      // Run at end of execution queue to avoid race condition closing itself
       setTimeout(() => {
-        // close when user clicks anywhere
-        document.addEventListener('click', clickHandler);
-      }, 0);
+        // Close when user clicks anywhere
+        cancelClick = listen(document, 'click', clickHandler);
+      });
     }
   }
-
-  onMount(() => {
-    document.addEventListener('scroll', scrollHandler, false);
-  });
 </script>
-
 
 <style type="text/postcss">
   @import './_navbar.css';
   @import 'import.css';
 
-  /* offset page content so it's not covered by the fixed navbar */
+  /* Offset page content so it's not covered by the fixed navbar */
   :global(body) {
     margin-top: $navbar-body-offset;
   }
@@ -143,7 +126,7 @@
       box-shadow: $navbar-shadow;
       opacity: 0;
       transition: opacity $navbar-animate-speed-out ease-in-out;
-      backface-visibility: hidden; /* promote to own layer to avoid repaints */
+      backface-visibility: hidden; /* Promote to own layer to avoid repaints */
 
       @if $navbar-optimize {
         will-change: opacity;
@@ -238,7 +221,9 @@
   }
 </style>
 
-<svelte:options tag="minna-navbar" />
+<svelte:options tag="minna-navbar" immutable={true} />
+
+<svelte:window on:scroll={scrollHandler} />
 
 <header class="navbar {(hasScrolled || isOpen) ? 'navbar-active' : ''}">
   <nav class="dfc fww con" role="navigation">

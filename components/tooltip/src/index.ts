@@ -1,3 +1,5 @@
+import { listen } from 'svelte/internal';
+
 // TODO: Remove this type once svelte ships with official types
 // TODO: Move this to a central place
 type SvelteAction = (
@@ -35,14 +37,14 @@ export const Tooltip: SvelteAction = (node: HTMLElement, text: string) => {
     tooltip.remove();
   }
 
-  node.addEventListener('mouseenter', append);
-  node.addEventListener('mouseleave', remove);
+  const cancelMouseenter = listen(node, 'mouseenter', append);
+  const cancelMouseleave = listen(node, 'mouseleave', remove);
 
   return {
     destroy() {
       remove();
-      node.removeEventListener('mouseenter', append);
-      node.removeEventListener('mouseleave', remove);
+      cancelMouseenter();
+      cancelMouseleave();
     },
 
     update(newText: string) {

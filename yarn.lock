@@ -1195,6 +1195,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.3.tgz#5d8d24e0033fc6393efadc85cb59c1f638095c9a"
   integrity sha512-zkOxCS/fA+3SsdA+9Yun0iANxzhQRiNwTvJSr6N95JhuJ/x27z9G2URx1Jpt3zYFfCGUXZGL5UDxt5eyLE7wgw==
 
+"@types/node@^12.0.4":
+  version "12.0.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
+  integrity sha512-j8YL2C0fXq7IONwl/Ud5Kt0PeXw22zGERt+HSSnwbKOJVsAGkEz3sFCYwaF9IOuoG1HOtE0vKCj6sXF7Q0+Vaw==
+
 "@types/postcss-nested@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@types/postcss-nested/-/postcss-nested-4.1.0.tgz#288b5368f20c55e832969a5108f36ccc193dcafd"
@@ -3285,10 +3290,10 @@ eslint-plugin-jest@^22.6.4:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.6.4.tgz#2895b047dd82f90f43a58a25cf136220a21c9104"
   integrity sha512-36OqnZR/uMCDxXGmTsqU4RwllR0IiB/XF8GW3ODmhsjiITKuI0GpgultWFt193ipN3HARkaIcKowpE6HBvRHNg==
 
-eslint-plugin-jsdoc@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-7.2.0.tgz#a65927fc12e008dfe0ae8d66dff6bf1e637dcf7e"
-  integrity sha512-3Lap6GIRlFAEiGheWXYDkGE30MH+X6pu4E1ZRjBoBVjfV5EyrfUgQI9m8LtSI4v9RBFtmEf8A8MZOqCGnR6I8A==
+eslint-plugin-jsdoc@^7.2.3:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-7.2.3.tgz#04d21890cdadf33290f865b27f2f901f1321aa42"
+  integrity sha512-233HUc5ftIlmswaNmck++gkoW2iubcDDbM4KCzTHaawJFODuTNriDmZyKm8+7GgNnnwlkrE0mmD4TCzrdMTnsA==
   dependencies:
     comment-parser "^0.5.4"
     jsdoctypeparser "3.1.0"
@@ -9018,7 +9023,7 @@ rollup-plugin-terser@5.0.0:
     serialize-javascript "^1.7.0"
     terser "^4.0.0"
 
-rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.7.0, rollup-pluginutils@^2.7.1:
+rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.7.0:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.7.1.tgz#a7915ce8b12c177364784bf38a1590cc6c2c8250"
   integrity sha512-3nRf3buQGR9qz/IsSzhZAJyoK663kzseps8itkYHr+Z7ESuaffEPfgRinxbCRA0pf0gzLqkNKkSb8aNVTq75NA==

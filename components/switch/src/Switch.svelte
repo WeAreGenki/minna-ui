@@ -218,7 +218,7 @@
   }
 </style>
 
-<svelte:options tag="minna-switch" />
+<svelte:options tag="minna-switch" immutable={true} />
 
 <div
   class="switch {mini ? 'switch-mini' : ''} {disabled ? 'switch-disabled' : ''} {value ? 'switch-checked' : ''}"

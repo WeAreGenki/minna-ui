@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `@minna-ui/tslint-config` - Removed deprecated package.
 - Moved unfinished and experimental packages to the [minna-ui-labs repo](https://github.com/WeAreGenki/minna-ui-labs) for incubation.
+- `@minna-ui/ts-config` - Remove `tslib` dependency as it's not strictly important.
 
 ### Changed
 

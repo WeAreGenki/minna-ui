@@ -15,7 +15,6 @@
   ],
   "main": "tsconfig.json",
   "peerDependencies": {
-    "tslib": "^1.9.3",
     "typescript": "^3.3.0"
   },
   "publishConfig": {

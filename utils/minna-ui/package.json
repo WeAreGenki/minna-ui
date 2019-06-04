@@ -31,7 +31,6 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/code-view": "^0.24.0",
     "@minna-ui/collapse": "^0.24.0",
     "@minna-ui/css": "^0.24.0",
     "@minna-ui/navbar": "^0.24.0",
@@ -39,8 +38,6 @@
     "@minna-ui/preprocess": "^0.24.0",
     "@minna-ui/select": "^0.24.0",
     "@minna-ui/switch": "^0.24.0",
-    "@minna-ui/tabs": "^0.24.0",
-    "@minna-ui/toast": "^0.24.0",
     "@minna-ui/tooltip": "^0.24.0"
   },
   "publishConfig": {

@@ -1,6 +1,8 @@
 {
   "name": "minna-ui-monorepo",
   "private": true,
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "license": "Apache-2.0",
   "workspaces": [
     "components/*",
     "css",

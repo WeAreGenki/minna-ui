@@ -60,7 +60,6 @@
     ]
   },
   "postcss": {
-    "syntax": "postcss-scss",
     "plugins": {
       "@minna-ui/postcss-config": {
         "importAlias": {
@@ -68,7 +67,8 @@
         },
         "unsafe": true
       }
-    }
+    },
+    "syntax": "postcss-scss"
   },
   "eslintConfig": {
     "root": true,

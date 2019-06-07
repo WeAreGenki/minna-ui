@@ -15,6 +15,16 @@
 
 .mw0 { min-width: 0; }
 
+/* Transforms */
+
+.flip-h { transform: scaleX(-1); }
+.flip-v { transform: scaleY(-1); }
+.rot-90 { transform: rotate(-90deg); }
+.rot-45 { transform: rotate(-45deg); }
+.rot45 { transform: rotate(45deg); }
+.rot90 { transform: rotate(90deg); }
+.rot180 { transform: rotate(180deg); }
+
 /* Text alignment */
 
 .tl { text-align: left; } /* default */

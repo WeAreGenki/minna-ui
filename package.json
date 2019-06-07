@@ -1,6 +1,8 @@
 {
   "name": "minna-ui-monorepo",
   "private": true,
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "license": "Apache-2.0",
   "workspaces": [
     "components/*",
     "css",
@@ -58,7 +60,6 @@
     ]
   },
   "postcss": {
-    "syntax": "postcss-scss",
     "plugins": {
       "@minna-ui/postcss-config": {
         "importAlias": {
@@ -66,7 +67,8 @@
         },
         "unsafe": true
       }
-    }
+    },
+    "syntax": "postcss-scss"
   },
   "eslintConfig": {
     "root": true,

@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/rollup-plugin-emit-html",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "Compile and emit HTML and CSS in rollup.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-emit-html",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

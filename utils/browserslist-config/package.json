@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/browserslist-config",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "Browserslist presets for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/browserslist-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

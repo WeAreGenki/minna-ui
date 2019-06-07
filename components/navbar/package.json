@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/navbar",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/navbar",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -34,8 +34,8 @@
     "types.d.ts"
   ],
   "devDependencies": {
-    "@minna-ui/build-component": "^0.24.0",
-    "@minna-ui/css": "^0.24.0",
+    "@minna-ui/build-component": "^0.25.0",
+    "@minna-ui/css": "^0.25.0",
     "svelte": "3.4.4"
   },
   "publishConfig": {

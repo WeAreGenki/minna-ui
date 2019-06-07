@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.25.0][] - 2019-06-08
+
 ### Added
 
 - `@minna-ui/css` - New transform utilities.
@@ -16,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 
 - `@minna-ui/tslint-config` - Removed deprecated package.
-- Moved unfinished and experimental packages to the [minna-ui-labs repo](https://github.com/WeAreGenki/minna-ui-labs) for incubation.
+- Moved unfinished or experimental packages to a new [minna-ui-labs repo](https://github.com/WeAreGenki/minna-ui-labs) for incubation.
 - `@minna-ui/ts-config` - Remove `tslib` dependency as it's not strictly important.
 
 ### Changed
@@ -779,7 +781,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.24.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.25.0...HEAD
+[0.25.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.24.1...v0.25.0
 [0.24.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.24.0...v0.24.1
 [0.24.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.23.0...v0.24.0
 [0.23.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.22.2...v0.23.0

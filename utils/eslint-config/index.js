@@ -148,6 +148,7 @@ module.exports = {
     'no-console': isProd ? 'error' : 'warn',
     'no-debugger': isProd ? 'error' : 'warn',
     'no-return-assign': ['error', 'except-parens'],
+    'no-useless-constructor': 'off', // handled via `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': ['error', { consistent: true }],
     'sort-keys': ['error', 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */

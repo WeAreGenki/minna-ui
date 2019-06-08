@@ -1,3 +1,8 @@
+// TODO: Add integration/UI test to check the content is visually not shown
+
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import { tick } from 'svelte';
 import Collapse from '../Collapse.svelte';
 
 describe('Collapse component', () => {
@@ -12,16 +17,42 @@ describe('Collapse component', () => {
     expect(wrapper).not.toThrow();
   });
 
-  it('collapsed content shows and hides on click', () => {
-    expect.assertions(4);
+  it('is collapsed by default', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Collapse({ target });
     expect(component.$$.ctx.isOpen).toBeFalsy();
-    const button = target.querySelector('button');
-    button.click();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    button.click();
+    expect(target.querySelector('.collapse-hide')).not.toBeNull();
+  });
+
+  it('shows collapsed content on click', async () => {
+    expect.assertions(4);
+    const target = document.createElement('div');
+    const component = new Collapse({ target });
+    const button = target.querySelector('button')!;
     expect(component.$$.ctx.isOpen).toBeFalsy();
-    expect(document.querySelector('collapse-hide')).toBeNull();
+    expect(target.querySelector('.collapse-hide')).not.toBeNull();
+    button.click();
+    await tick();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(target.querySelector('.collapse-hide')).toBeNull();
+  });
+
+  it('hides collapsed content on click', async () => {
+    expect.assertions(4);
+    const target = document.createElement('div');
+    const component = new Collapse({
+      props: {
+        isOpen: true,
+      },
+      target,
+    });
+    const button = target.querySelector('button')!;
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(target.querySelector('.collapse-hide')).toBeNull();
+    button.click();
+    await tick();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(target.querySelector('.collapse-hide')).not.toBeNull();
   });
 });

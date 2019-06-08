@@ -1,27 +1,31 @@
-/**
- * TODO: Remove this file once Svelte components can be generated with
- * TypeScript natively.
- */
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-type Props = Record<string, any>;
+import { SvelteComponent } from 'svelte/internal';
 
-/** @see https://v3.svelte.technology/docs#client-side-component-api */
-interface ComponentOptions {
-  accessors?: boolean;
+/** @see https://svelte.dev/docs#Client-side_component_API */
+interface SvelteComponentOptions {
+  /**
+   * A child of `target` to render the component immediately before. Cannot be
+   * used with `hydrate: true`.
+   */
   anchor?: HTMLElement;
+  /**
+   * Instructs Svelte to upgrade existing DOM (usually from server-side
+   * rendering) rather than creating new elements. It will only work if the
+   * component was compiled with the [`hydratable: true` option](https://svelte.dev/docs#svelte_compile).
+   */
   hydrate?: boolean;
+  /**
+   * If `true`, will play transitions on initial render, rather than waiting
+   * for subsequent state changes.
+   */
   intro?: boolean;
-  props?: Props;
+  /** An object of properties to supply to the component. */
+  props?: Record<string, any>;
+  /** A `HTMLElement` to render to. */
   target: HTMLElement;
 }
 
-interface Component {
-  $$: any;
-  $destroy(): void;
-  $on(event: Event, callback: () => void): void;
-  $set(props: Props): void;
+export default class Collapse extends SvelteComponent {
+  public constructor(options: SvelteComponentOptions);
 }
-
-export default function Collapse(opts: ComponentOptions): Component;

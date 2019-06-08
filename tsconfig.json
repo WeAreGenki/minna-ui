@@ -18,7 +18,6 @@
     "components/*/dist/*",
     "utils/*/lib/*",
     "**/node_modules/*",
-    "**/__tests__/*", // FIXME: Improve types in tests and then remove this line
     "test/coverage"
   ]
 }

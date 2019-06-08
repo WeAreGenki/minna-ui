@@ -1,6 +1,6 @@
 {
   "name": "minna-tools",
-  "version": "0.25.0",
+  "version": "0.25.1",
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@minna-ui/browserslist-config": "^0.25.0",
-    "@minna-ui/eslint-config": "^0.25.0",
+    "@minna-ui/eslint-config": "^0.25.1",
     "@minna-ui/jest-config": "^0.25.0",
     "@minna-ui/prettier-config": "^0.25.0",
     "@minna-ui/remark-config": "^0.25.0",

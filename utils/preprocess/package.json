@@ -21,7 +21,8 @@
   "scripts": {
     "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
-    "prebuild": "rm -rf lib"
+    "prebuild": "yarn clean",
+    "clean": "rm -rf lib"
   },
   "sideEffects": false,
   "main": "lib/index.js",

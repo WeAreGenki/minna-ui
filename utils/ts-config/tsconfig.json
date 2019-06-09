@@ -2,18 +2,18 @@
 
 {
   "compilerOptions": {
-    "target": "es2018", // compatible with node v10
-    "module": "esnext", // when building backend libs use `commonjs`
+    "target": "es2018", // Compatible with node v10
+    "module": "esnext", // When building backend libs use `commonjs`
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "alwaysStrict": true,
 
-    // recommended in projects which have multiple output files or apps
+    // Recommended in projects which have multiple output files or apps
     // "importHelpers": true,
 
-    // recommended in projects which include .js files
+    // Recommended in projects which include .js files
     // "allowJs": true,
     // "checkJs": true,
 
@@ -21,10 +21,10 @@
     "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true, // recommended to disable this is node apps
+    "noUnusedParameters": true, // Recommended to disable this is node apps
 
     "paths": {
-      "##/*": ["src/*"] // webpack/rollup/postcss alias
+      "##/*": ["src/*"] // Webpack/Rollup/PostCSS alias
     }
   },
   "exclude": [

@@ -92,18 +92,14 @@ describe('build-component tool', () => {
   });
 
   it('reports error on bad HTML syntax', async () => {
-    expect.assertions(3);
+    expect.assertions(2);
     const build = buildComponent({
       ...pkg('bad-syntax'),
       npm_package_svelte: sourcePathBadSyntax,
     });
-    const spy1 = jest.spyOn(process, 'exit');
-    const spy2 = jest.spyOn(console, 'error');
-    // @ts-ignore - Override `never` type
-    spy1.mockImplementation(() => {});
-    spy2.mockImplementation(() => {});
+    const spy = jest.spyOn(console, 'error');
+    spy.mockImplementation(() => {});
     await expect(build).rejects.toThrowErrorMatchingSnapshot();
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

@@ -56,7 +56,7 @@ exports.runBin = function runBin(path, args = [], env = process.env) {
 // XXX: Full example of CLI Bin test:
 
 // /** @jest-environment node */
-// const { runBin } = require('@minna-ui/jest-config/lib/helpers.js');
+// const { runBin } = require('@minna-ui/jest-config/dist/helpers.js');
 // const cliPath = require.resolve('../cli/index.js');
 
 // /**

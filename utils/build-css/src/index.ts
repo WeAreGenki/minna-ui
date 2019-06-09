@@ -23,9 +23,9 @@ const readdir = promisify(fs.readdir);
  * @param level - The severity of either WARN or ERR.
  * @param warnings - List of warnings to iterate over.
  */
-function compileWarn(
+function warn(
   from: string,
-  level: string,
+  level: 'ERR' | 'WARN',
   warnings: string[] | postcss.ResultMessage[],
 ): void {
   /* istanbul ignore if */
@@ -35,7 +35,7 @@ function compileWarn(
   }
 
   for (const err of warnings) {
-    if (typeof err === 'string' && !/^Ignoring local source map at/.test(err)) {
+    if (typeof err === 'string' && /^Ignoring local source map/.test(err)) {
       return;
     }
 
@@ -83,7 +83,7 @@ async function processCss({
   const sourceCss = banner + src;
   const result = await postcss(plugins).process(sourceCss, options);
 
-  compileWarn('PostCSS', 'WARN', result.warnings());
+  warn('PostCSS', 'WARN', result.warnings());
 
   let code = result.css;
   // eslint-disable-next-line prefer-destructuring
@@ -104,8 +104,8 @@ async function processCss({
       sourceMap: hasMap,
     }).minify(code, map && map.toString ? map.toString() : '');
 
-    compileWarn('CleanCSS', 'ERR', min.errors);
-    compileWarn('CleanCSS', 'WARN', min.warnings);
+    warn('CleanCSS', 'ERR', min.errors);
+    warn('CleanCSS', 'WARN', min.warnings);
 
     const fileName = basename(filePath);
 
@@ -148,7 +148,8 @@ export async function run(
  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
- */`;
+ */
+`;
 
     const inputDir = argv[2];
     const outputDir = argv[3];
@@ -209,7 +210,7 @@ export async function run(
     }
 
     // we always want internal builds to fail on error
-    process.exit(2);
+    process.exitCode = 2;
     throw err;
   }
 }

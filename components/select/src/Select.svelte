@@ -44,32 +44,44 @@
 -->
 
 <script>
-  import { beforeUpdate, onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
-  // props
-  export let id = '';
-  export let items = []; // `options` is already defined on Svelte instances
+  /**
+   * @typedef {object} SelectItem
+   * @property {string} id - Option item `id` attribute. This is set as the
+   * component value when selection.
+   * @property {string} text - The text to show users.
+   * @property {boolean} disable - Disable to prevent selection and show in a
+   * disabled state.
+   */
+
+  export let autocomplete = 'off';
+  export let disabled = false;
   export let filterable = true;
   export let filterHelp = 'Filter...';
+  export let isOpen = false;
   export let placeholder = 'Choose...';
-  export let autocomplete = 'off';
-  export let readonly;
-  export let disabled;
-  export let required; // FIXME: Add a way to do custom validation
+  export let readonly = false;
+  export let required = false; // FIXME: Add a way to do custom validation
+  /** @type {string} */
+  export let id;
+  /** @type {SelectItem[]} */
+  export let items;
+  /** @type {string} */
   export let value;
-  export let isOpen;
 
-  // refs
-  let input;
-
-  // reactive data
   let inputText = '';
-  let selected = 0; // index of the currently selected item
+  /** Index of the current selected item. */
+  let selected = 0;
+  /**
+   * Input element reference.
+   * @type {HTMLInputElement}
+   */
+  let input;
+  /** @type {SelectItem[]} */
+  let previousFilteredItems;
+  let previousValue = value;
 
-  // computed
-  $: normalizedItems = items.map((item) =>
-    (item.id ? item : { id: item, text: item })
-  );
   $: filteredItems = (!isOpen || !filterable || inputText === '')
     ? normalizedItems
     : normalizedItems.filter(
@@ -78,13 +90,13 @@
         .indexOf(inputText.toLowerCase()) > -1,
     );
 
-  // non-reactive data
-  let previousFilteredItems;
-  let previousValue = value;
+  $: normalizedItems = items.map((item) =>
+    (item.id ? item : { id: item, text: item })
+  );
 
   function setIndex() {
     if (value) {
-      // save the current item's index for highlighting in the options
+      // Save the current item's index for highlighting in the options
       selected = filteredItems.findIndex(option => option.id === value);
     }
   }
@@ -93,6 +105,20 @@
     inputText = value
       ? normalizedItems.find(option => option.id === value).text
       : '';
+  }
+
+  $: {
+    if (filteredItems !== previousFilteredItems) {
+      previousFilteredItems = filteredItems;
+      setIndex();
+    }
+  }
+
+  $: {
+    if (value && (value !== previousValue)) {
+      previousValue = value;
+      setInput();
+    }
   }
 
   function open() {
@@ -110,7 +136,7 @@
   }
 
   function emitInput() {
-    // fire a synthetic "input" event (useful to trigger validation)
+    // Fire a synthetic "input" event (to trigger validation etc.)
     const event = new KeyboardEvent('input', { bubbles: true });
     input.dispatchEvent(event);
     close();
@@ -118,8 +144,8 @@
 
   function select(event) {
     if (event) {
-      // option selected via mouse
-      event.preventDefault(); // don't trigger <input> blur event
+      // Option selected via mouse
+      event.preventDefault(); // Don't trigger <input> blur event
 
       const { target } = event;
 
@@ -129,7 +155,7 @@
         emitInput();
       }
     } else {
-      // option selected via keyboard
+      // Option selected via keyboard
       const option = filteredItems[selected]; // eslint-disable-line security/detect-object-injection
 
       if (!option.disabled) {
@@ -145,7 +171,7 @@
 
     let steps = 1;
 
-    // skip over disabled items or if there's no items left
+    // Skip over disabled items or if there's no items left
     while (filteredItems[selected - steps].disabled) {
       steps += 1;
       if (filteredItems[selected - steps] === undefined) return;
@@ -155,7 +181,7 @@
   }
 
   function down() {
-    // jump to last availiable item if index is out of bounds (e.g. after
+    // Jump to last availiable item if index is out of bounds (e.g. after
     // filtering)
     if (selected >= filteredItems.length - 1) {
       selected = filteredItems.length - 1;
@@ -164,7 +190,7 @@
 
     let steps = 1;
 
-    // skip over disabled items or if there's no items left
+    // Skip over disabled items or if there's no items left
     while (filteredItems[selected + steps].disabled) {
       steps += 1;
       if (filteredItems[selected + steps] === undefined) return;
@@ -174,7 +200,7 @@
   }
 
   function handleKeyDown(event) {
-    // choose key with graceful fallback for old browsers
+    // Choose key with graceful fallback for old browsers
     switch (event.key || event.keyCode) {
       case ' ':
       case 'Spacebar':
@@ -185,7 +211,7 @@
         break;
       case 'Enter':
       case 13:
-        event.preventDefault(); // don't submit form
+        event.preventDefault(); // Don't submit form
         if (isOpen) {
           select();
         } else {
@@ -201,7 +227,7 @@
       case 'ArrowUp':
       case 'Up':
       case 38:
-        event.preventDefault(); // don't scroll page or move cursor
+        event.preventDefault(); // Don't scroll page or move cursor
         if (isOpen) {
           up();
         } else {
@@ -211,7 +237,7 @@
       case 'ArrowDown':
       case 'Down':
       case 40:
-        event.preventDefault(); // don't scroll page or move cursor
+        event.preventDefault(); // Don't scroll page or move cursor
         if (isOpen) {
           down();
         } else {
@@ -219,21 +245,9 @@
         }
         break;
       default:
-      // no matching key
+      // No matching key
     }
   }
-
-  beforeUpdate(() => {
-    if (filteredItems !== previousFilteredItems) {
-      previousFilteredItems = filteredItems;
-      setIndex();
-    }
-
-    if (value && (value !== previousValue)) {
-      previousValue = value;
-      setInput();
-    }
-  });
 
   onMount(setInput);
 </script>
@@ -337,12 +351,7 @@
 
 <svelte:options tag="minna-select" />
 
-<div
-  class="select-wrapper pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}"
->
-  <!--
-    TODO: Could the input be replaced with a div+contentEditable? Would it have any extra value?
-  -->
+<div class="select-wrapper pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}">
   <input
     id="{id}"
     bind:this="{input}"

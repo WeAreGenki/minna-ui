@@ -7,6 +7,7 @@
 // to copy this file. It's not possible to use this from a package because it
 // needs to be run _before_ packages are installed.
 
+/* istanbul ignore file */
 // @ts-ignore - Namespaces error is false negative (file not in `includes`)
 
 'use strict';

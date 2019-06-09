@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import { tick } from 'svelte';
 import Switch from '../Switch.svelte';
 
 describe('Switch component', () => {
@@ -6,12 +9,12 @@ describe('Switch component', () => {
     function wrapper(): void {
       const target = document.createElement('div');
       new Switch({ target });
-      const el = target.querySelector('.switch');
+      const el = target.querySelector('.switch')!;
       expect(el.getAttribute('tabindex')).toEqual('0');
       expect(el.getAttribute('disabled')).toBeNull();
       expect(el.getAttribute('required')).toBeNull();
-      expect(document.querySelector('switch-checked')).toBeNull();
-      expect(document.querySelector('switch-disabled')).toBeNull();
+      expect(document.querySelector('.switch-checked')).toBeNull();
+      expect(document.querySelector('.switch-disabled')).toBeNull();
       expect(target.innerHTML).toMatchSnapshot();
     }
     expect(wrapper).not.toThrow();
@@ -55,8 +58,10 @@ describe('Switch component', () => {
     });
     expect(component.$$.ctx.textOn).toEqual('YES');
     expect(component.$$.ctx.textOff).toEqual('NO');
-    expect(target.querySelector('.switch-on').innerHTML).toEqual('YES');
-    expect(target.querySelector('.switch-off').innerHTML).toEqual('NO');
+    const switchOn = target.querySelector('.switch-on')!;
+    const switchOff = target.querySelector('.switch-off')!;
+    expect(switchOn.innerHTML).toEqual('YES');
+    expect(switchOff.innerHTML).toEqual('NO');
   });
 
   it('renders with mini prop', () => {
@@ -83,10 +88,10 @@ describe('Switch component', () => {
     });
     expect(component.$$.ctx.disabled).toBeTruthy();
     expect(target.querySelector('.switch-disabled')).not.toBeNull();
-    expect(target.querySelector('.switch').getAttribute('tabindex')).toEqual('-1');
+    expect(target.querySelector('.switch')!.getAttribute('tabindex')).toEqual('-1');
   });
 
-  it.skip('toggles class when value changes', () => {
+  it('toggles class when value changes', async () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Switch({
@@ -97,15 +102,16 @@ describe('Switch component', () => {
     });
     expect(component.$$.ctx.value).toEqual(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
-    component.value = true;
+    component.$set({ value: true });
+    await tick();
     expect(target.querySelector('.switch-checked')).not.toBeNull();
-    component.value = false;
+    component.$set({ value: false });
+    await tick();
     expect(target.querySelector('.switch-checked')).toBeNull();
   });
 
-  // FIXME: Use a spy to validate the function was called
-  it('toggles value on click', () => {
-    expect.assertions(2);
+  it('toggles value on click', async () => {
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new Switch({
       props: {
@@ -113,17 +119,17 @@ describe('Switch component', () => {
       },
       target,
     });
-    // const spy = jest.spyOn(component.$$.ctx, 'toggle');
     expect(component.$$.ctx.value).toEqual(true);
-    target.querySelector('.switch').click();
-    // expect(spy).toHaveBeenCalled();
+    expect(target.querySelector('.switch-checked')).not.toBeNull();
+    const el = target.querySelector<HTMLDivElement>('.switch')!;
+    el.click();
+    await tick();
     expect(component.$$.ctx.value).toEqual(false);
-    // spy.mockRestore();
+    expect(target.querySelector('.switch-checked')).toBeNull();
   });
 
-  // FIXME: Use a spy to validate the function was called
-  it('does not toggle value on click when disabled', () => {
-    expect.assertions(2);
+  it('does not toggle value on click when disabled', async () => {
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new Switch({
       props: {
@@ -132,16 +138,17 @@ describe('Switch component', () => {
       },
       target,
     });
-    // const spy = jest.spyOn(component.$$.ctx, 'toggle');
     expect(component.$$.ctx.value).toEqual(true);
-    target.querySelector('.switch').click();
-    // expect(spy).toHaveBeenCalled();
+    expect(target.querySelector('.switch-checked')).not.toBeNull();
+    const el = target.querySelector<HTMLDivElement>('.switch')!;
+    el.click();
+    await tick();
     expect(component.$$.ctx.value).toEqual(true);
-    // spy.mockRestore();
+    expect(target.querySelector('.switch-checked')).not.toBeNull();
   });
 
-  it('toggles on enter key press', () => {
-    expect.assertions(2);
+  it('toggles on enter key press', async () => {
+    expect.assertions(6);
     const target = document.createElement('div');
     const component = new Switch({
       props: {
@@ -149,12 +156,19 @@ describe('Switch component', () => {
       },
       target,
     });
+    expect(component.$$.ctx.value).toEqual(true);
+    expect(target.querySelector('.switch-checked')).not.toBeNull();
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
     component.$$.ctx.handleKeyDown(event1);
+    await tick();
     expect(component.$$.ctx.value).toEqual(false);
+    expect(target.querySelector('.switch-checked')).toBeNull();
+    // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
     component.$$.ctx.handleKeyDown(event2);
+    await tick();
     expect(component.$$.ctx.value).toEqual(true);
+    expect(target.querySelector('.switch-checked')).not.toBeNull();
   });
 
   it('toggles on spacebar key press', () => {
@@ -172,6 +186,7 @@ describe('Switch component', () => {
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
     component.$$.ctx.handleKeyDown(event2);
     expect(component.$$.ctx.value).toEqual(true);
+    // @ts-ignore - keyCode does actually exist!
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
     component.$$.ctx.handleKeyDown(event3);
     expect(component.$$.ctx.value).toEqual(false);
@@ -204,6 +219,7 @@ describe('Switch component', () => {
     const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
     component.$$.ctx.handleKeyDown(event1);
     expect(component.$$.ctx.value).toEqual(true);
+    // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
     component.$$.ctx.handleKeyDown(event2);
     expect(component.$$.ctx.value).toEqual(true);

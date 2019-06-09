@@ -1,38 +1,20 @@
 /* eslint-env browser */
 
 import fs from 'fs';
-// import zlib from 'zlib';
 import { promisify } from 'util';
+// @ts-ignore - FIXME: Remove this line once the next version of Svelte is released
 import { preprocess, create } from 'svelte/compiler';
 import { markup } from '../markup';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 
-// don't require() components to avoid Jest transform
+// don't import component to avoid Jest transform
 const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 
 const opts = {
   markup: markup(),
   style: () => ({ code: '/*discarded*/' }),
-};
-// const optsUnsafe = {
-//   markup: markup({ unsafe: true }),
-//   style: () => ({ code: '/*discarded*/' }),
-// };
-// const optsUnsafeWhitespace = {
-//   markup: markup({ unsafeWhitespace: true }),
-//   style: () => ({ code: '/*discarded*/' }),
-// };
-const svelteOpts = {
-  filename: 'TestComponent.svelte',
-  name: 'TestComponent',
-  onwarn(warning, onwarn) {
-    /* istanbul ignore if */
-    if (process.env.NODE_ENV !== 'development' && !/A11y:/.test(warning.message)) {
-      onwarn(warning);
-    }
-  },
 };
 
 const sourceSimple = `
@@ -79,26 +61,6 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  // it.skip('processes a simple component with unsafe', async () => {
-  //   expect.assertions(4);
-  //   const output = preprocess(sourceSimple, optsUnsafe);
-  //   await expect(output).resolves.toBeDefined();
-  //   const result = (await output).toString();
-  //   expect(result).toMatch('> <');
-  //   expect(result).not.toMatch('><');
-  //   expect(result).toMatchSnapshot();
-  // });
-
-  // it.skip('processes a simple component with unsafeWhitespace', async () => {
-  //   expect.assertions(4);
-  //   const output = preprocess(sourceSimple, optsUnsafeWhitespace);
-  //   await expect(output).resolves.toBeDefined();
-  //   const result = (await output).toString();
-  //   expect(result).toMatch('><');
-  //   expect(result).not.toMatch('> <');
-  //   expect(result).toMatchSnapshot();
-  // });
-
   it('processes a component', async () => {
     expect.assertions(2);
     const output = preprocess(source, opts);
@@ -110,47 +72,16 @@ describe('Svelte markup preprocessor', () => {
   it.skip('creates and mounts a component', async () => {
     expect.assertions(1);
     const processed = await preprocess(source, opts);
-    const TestComponent = create(processed.toString(), svelteOpts);
+    const TestComponent = create(processed.toString());
     const target = document.createElement('div');
     new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  // it.skip('unsafe option makes output smaller', async () => {
-  //   expect.assertions(2);
-  //   const [unsafe, safe] = await Promise.all([
-  //     preprocess(sourceSimple, optsUnsafe),
-  //     preprocess(sourceSimple, opts),
-  //   ]);
-  //   expect(unsafe.toString()).not.toEqual(safe.toString());
-  //   expect(unsafe.toString().length).toBeLessThan(safe.toString().length);
-  // });
-
-  // it.skip("unsafe option makes output smaller when gzip'd", async () => {
-  //   expect.assertions(1);
-  //   const [unsafe, safe] = await Promise.all([
-  //     preprocess(sourceSimple, optsUnsafe),
-  //     preprocess(sourceSimple, opts),
-  //   ]);
-  //   const unsafeGZip = zlib.gzipSync(unsafe.toString());
-  //   const safeGZip = zlib.gzipSync(safe.toString());
-  //   expect(unsafeGZip.length).toBeLessThan(safeGZip.length);
-  // });
-
-  // it.skip('unsafeWhitespace option makes output smaller', async () => {
-  //   expect.assertions(2);
-  //   const [unsafeWhitespace, safe] = await Promise.all([
-  //     preprocess(sourceSimple, optsUnsafeWhitespace),
-  //     preprocess(sourceSimple, opts),
-  //   ]);
-  //   expect(unsafeWhitespace.toString()).not.toEqual(safe.toString());
-  //   expect(unsafeWhitespace.toString().length).toBeLessThan(safe.toString().length);
-  // });
-
   it.skip('prints error on bad HTML syntax', async () => {
     expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(() => true);
     await preprocess(sourceBadSyntax, opts);
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();

@@ -1,12 +1,12 @@
 /** @jest-environment node */
 
-/* eslint-disable security/detect-non-literal-fs-filename */
+/* eslint-disable security/detect-non-literal-fs-filename, @typescript-eslint/camelcase, @typescript-eslint/no-non-null-assertion */
 
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 import del from 'del';
-import buildCss from '../index';
+import { run as buildCss } from '../index';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
@@ -22,65 +22,65 @@ const dist = path.join(__dirname, 'dist');
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
-  /* eslint-disable @typescript-eslint/camelcase */
   npm_package_browser: path.join(dist, outDir, 'index.css'),
   npm_package_homepage: 'https://ui.wearegenki.com',
   npm_package_main: srcPath,
   npm_package_name: 'test-css',
   npm_package_style: path.join(dist, outDir, 'index.css'),
   npm_package_version: '1.2.3',
-  /* eslint-enable */
 });
 
-beforeAll(() => mkdir(dist));
+beforeAll(() => {
+  del([dist]); // in case of failed test runs
+  mkdir(dist);
+});
 
-afterAll(() => del([dist]));
+afterEach(() => del([dist]));
 
 describe('build-css tool', () => {
-  it.skip('compiles package CSS bundle', async () => {
-    expect.assertions(10);
+  it('compiles package CSS bundle', async () => {
+    expect.assertions(5);
     const build = buildCss(pkg('css'));
+    const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
-    const built = (await build)[0];
-    expect(built.result.css).not.toEqual('');
-    expect(built.result.warnings()).toHaveLength(0);
-    expect(built.result.css).toMatchSnapshot();
-    expect(built.min.styles).not.toEqual('');
-    expect(built.min.errors).toHaveLength(0);
-    expect(built.min.warnings).toHaveLength(1);
-    expect(built.min.warnings[0]).toMatch(/^Ignoring local source map/);
-    expect(built.min.styles).toMatch('\n/*# sourceMappingURL=index.css.map */');
-    expect(built.min.styles).toMatchSnapshot();
+    const output = await build;
+    expect(output.length).toEqual(1); // one output file
+    expect(output[0].code).toBeTruthy(); // not empty
+    expect(output[0].code).toMatchSnapshot();
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it.skip('compiles package CSS bundle with imports', async () => {
-    expect.assertions(10);
+  it('compiles package CSS bundle with imports', async () => {
+    expect.assertions(5);
     const build = buildCss(pkg('imports', srcPathImport));
+    const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
-    const built = (await build)[0];
-    expect(built.result.css).not.toEqual('');
-    expect(built.result.warnings()).toHaveLength(0);
-    expect(built.result.css).toMatchSnapshot();
-    expect(built.min.styles).not.toEqual('');
-    expect(built.min.errors).toHaveLength(0);
-    expect(built.min.warnings).toHaveLength(1);
-    expect(built.min.warnings[0]).toMatch(/^Ignoring local source map/);
-    expect(built.min.styles).toMatch('\n/*# sourceMappingURL=index.css.map */');
-    expect(built.min.styles).toMatchSnapshot();
+    const output = await build;
+    expect(output.length).toEqual(1); // one output file
+    expect(output[0].code).toBeTruthy(); // not empty
+    expect(output[0].code).toMatchSnapshot();
+    expect(spy).not.toHaveBeenCalled();
   });
 
-  it.skip('contains banner comment', async () => {
+  it('generates a source map', async () => {
     expect.assertions(2);
+    const build = buildCss(pkg('css'));
+    const output = (await build)[0];
+    expect(output.code).toMatch('\n/*# sourceMappingURL=index.css.map */');
+    expect(output.map!.toString()).toMatchSnapshot();
+  });
+
+  it('injects banner comment', async () => {
+    expect.assertions(1);
     const pkgData = pkg('banner');
     const build = buildCss(pkgData);
-    await expect(build).resolves.toBeDefined();
-    const built = (await build)[0];
+    const output = (await build)[0];
     // eslint-disable-next-line security/detect-non-literal-regexp
     const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
-    expect(built.min.styles).toMatch(re);
+    expect(output.code).toMatch(re);
   });
 
-  it.skip('writes data to disk', async () => {
+  it('writes data to disk', async () => {
     expect.assertions(4);
     const pkgData = pkg('write-to-disk');
     const build = buildCss(pkgData);
@@ -90,15 +90,13 @@ describe('build-css tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it.skip('throws error when bad CSS syntax', async () => {
+  it('reports error on bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
-    await expect(build).rejects.toThrow();
+    await expect(build).rejects.toThrowError();
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();
   });
-
-  it.todo('end process with non-zero exit code on build error');
 });

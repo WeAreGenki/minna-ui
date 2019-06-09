@@ -11,4 +11,4 @@ export * from '@minna-ui/tooltip';
 
 /* Utils */
 // @ts-ignore - Module only available after build
-export * from '@minna-ui/preprocess/lib/utils';
+export * from '@minna-ui/preprocess/dist/utils';

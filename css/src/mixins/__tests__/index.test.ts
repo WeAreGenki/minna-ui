@@ -7,8 +7,9 @@
 // TODO: Create new dir + files for mixin tests
 // TODO: Create new test files for each CSS file
 
+// @ts-ignore - FIXME: Remove this line once there's an import
 describe('CSS mixins', () => {
-  it('placeholder', () => {});
+  it.todo('placeholder');
 });
 
 // const postcss = require('postcss');

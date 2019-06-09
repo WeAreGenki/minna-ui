@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Removed
+
+- `@minna-ui/ts-config` - Don't enable automatic type acquisition by default.
+
+### Fixed
+
+- `@minna-ui/select` - Edge case where a filtered list is not reset when closing the select list box.
+- `@minna-ui/jest-config` - Don't collect test coverage from .d.ts files.
+- Component unit tests.
+- Types for Svelte components.
+
+### Changed
+
+- All packages which previously used `<package_dir>/lib/*` now use `<package_dir>/dist/*` instead. This maintains consistency between components and utils.
+- `@minna-ui/jest-config` - Disable CSS modules support by default. We mostly use Svelte which has an alternative.
+- `@minna-ui/navbar` - Logo slot is now the default slot; it's no longer required to use a named slot.
+
 ## [0.25.1][] - 2019-06-08
 
 ### Fixed

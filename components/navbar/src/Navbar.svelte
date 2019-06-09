@@ -51,7 +51,7 @@
     the markup via a slot, that is, by adding it in between Navbar tags:
 
       <Navbar items="{[...]}">
-        <span slot="logo" class="navbar-logo">YOUR LOGO</span>
+        <span class="navbar-logo">YOUR LOGO</span>
       </Navbar>
 
   @format
@@ -240,7 +240,7 @@
     </button>
 
     <a href="/" class="navbar-logo-link" title="Home">
-      <slot name="logo">
+      <slot>
         <svg class="navbar-logo"><use xlink:href="#logo" /></svg>
       </slot>
     </a>

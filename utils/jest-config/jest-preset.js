@@ -1,5 +1,6 @@
 // https://jestjs.io/docs/en/configuration
 
+/* istanbul ignore file */
 /* eslint-disable sort-keys */
 
 'use strict';
@@ -11,7 +12,7 @@ module.exports = {
     '^.+\\.svelte$': '@minna-ui/jest-config/transforms/svelte.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/transforms/null.js',
   },
-  transformIgnorePatterns: ['node_modules/.+\\.(?!(mjs|esm?\\.js))$'],
+  transformIgnorePatterns: ['node_modules/.+\\.(?!esm?\\.)js$'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
   testPathIgnorePatterns: [
     '/__fixtures__/',
@@ -36,8 +37,12 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.(jpg|jpeg|png|gif|svg|eot|otf|webp|ttf|woff2?|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '@minna-ui/jest-config/mocks/stub.js',
-    '^.+\\.(p|post|s)?css$': 'identity-obj-proxy',
+    // Recommended in projects with CSS modules
+    // '^.+\\.(p|post|s)?css$': 'identity-obj-proxy',
     '^##/(.*)$': '<rootDir>/src/$1',
+    // TODO: Submit issue to sucrase + remove once upstream is fixed
+    // Workaround for sucrase transform error
+    'eslint-utils': 'eslint-utils/index.js',
   },
   collectCoverageFrom: [
     '**/*.{html,js,jsx,mjs,svelte,ts,tsx}',
@@ -46,10 +51,10 @@ module.exports = {
     '!*.d.ts',
     '!**/.*rc.{js,ts}',
     '!**/*.config.{js,ts}',
+    '!**/*.d.ts',
     '!**/*externs.{js,ts}',
     '!**/bin/**',
     '!**/cli/**',
-    '!**/jest-preset.{js,ts}',
   ],
   coveragePathIgnorePatterns: [
     '/__fixtures__/',

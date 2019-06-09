@@ -49,7 +49,6 @@
 <script>
   import { createEventDispatcher, afterUpdate } from 'svelte';
 
-  // props
   export let textOn = 'ON';
   export let textOff = 'OFF';
   export let value;

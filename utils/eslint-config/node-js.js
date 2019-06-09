@@ -11,6 +11,8 @@
 
 'use strict';
 
+const OFF = 0;
+
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
   parser: 'espree', // Default eslint parser (JS only)
@@ -29,12 +31,12 @@ module.exports = {
   rules: {
     /* eslint-enable sort-keys */
     // Turn off rules which require TS type info
-    '@typescript-eslint/no-for-in-array': 'off',
-    '@typescript-eslint/no-unnecessary-qualifier': 'off',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/require-array-sort-compare': 'off',
-    '@typescript-eslint/restrict-plus-operands': 'off',
+    '@typescript-eslint/no-for-in-array': OFF,
+    '@typescript-eslint/no-unnecessary-qualifier': OFF,
+    '@typescript-eslint/no-unnecessary-type-assertion': OFF,
+    '@typescript-eslint/no-var-requires': OFF,
+    '@typescript-eslint/require-array-sort-compare': OFF,
+    '@typescript-eslint/restrict-plus-operands': OFF,
   },
 
   // eslint-disable-next-line sort-keys

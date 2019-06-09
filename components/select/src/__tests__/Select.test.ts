@@ -1,3 +1,10 @@
+// TODO: Add integration/UI tests
+//  ↳ Responsive CSS
+//  ↳ Disabled state works as expected
+
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import { tick } from 'svelte';
 import Select from '../Select.svelte';
 
 const items = [
@@ -28,15 +35,6 @@ const selectOpts = {
 };
 
 describe('Select component', () => {
-  it.skip('throws error with no props', () => {
-    expect.assertions(1);
-    function wrapper(): void {
-      const target = document.createElement('div');
-      new Select({ target });
-    }
-    expect(wrapper).toThrow();
-  });
-
   it('renders correctly with required props set', () => {
     expect.assertions(10);
     const target = document.createElement('div');
@@ -44,8 +42,8 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    const select = target.querySelector('.select');
-    expect(Array.isArray(component.$$.ctx.items)).toEqual(true);
+    const select = target.querySelector('.select')!;
+    expect(Array.isArray(component.$$.ctx.items)).toBeTruthy();
     expect(component.$$.ctx.items).not.toHaveLength(0);
     expect(component.$$.ctx.input).toBeDefined();
     expect(select.getAttribute('tabindex')).toEqual('0');
@@ -82,8 +80,8 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.filterable).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.filterable).toBeFalsy();
+    const select = target.querySelector('.select')!;
     expect(select.getAttribute('placeholder')).toEqual('Choose...'); // not "Filer..."
     expect(target.innerHTML).toMatchSnapshot();
   });
@@ -100,7 +98,7 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.filterHelp).toEqual('Filter me');
-    const select = target.querySelector('.select');
+    const select = target.querySelector('.select')!;
     expect(select.getAttribute('placeholder')).toEqual('Filter me');
     expect(target.innerHTML).toMatchSnapshot();
   });
@@ -116,13 +114,12 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.placeholder).toEqual('Hold your places');
-    const select = target.querySelector('.select');
+    const select = target.querySelector('.select')!;
     expect(select.getAttribute('placeholder')).toEqual('Hold your places');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  // FIXME: Add disabled back once SSR works correctly
-  it.skip('renders with disabled prop', () => {
+  it('renders with disabled prop', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
@@ -132,8 +129,8 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.disabled).toEqual(true);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.disabled).toBeTruthy();
+    const select = target.querySelector('.select')!;
     expect(select.getAttribute('disabled')).not.toBeNull();
     expect(select.getAttribute('tabindex')).toEqual('-1');
     expect(target.querySelector('.select-disabled')).not.toBeNull();
@@ -150,17 +147,16 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.readonly).toEqual(true);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.readonly).toBeTruthy();
+    const select = target.querySelector('.select')!;
     expect(select.getAttribute('readonly')).not.toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('renders with required prop', () => {
-    // TODO: Write tests once we have custom validation in the component
-  });
+  // TODO: Write tests once we have custom validation in the component
+  it.todo('renders with required prop');
 
-  it.skip('updates selected index on value change', () => {
+  it('updates selected index on value change', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
@@ -171,30 +167,27 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.selected).toEqual(1);
-    component.value = 'kr';
-    // component.setIndex();
+    component.$set({ value: 'kr' });
+    component.$$.ctx.open();
     expect(component.$$.ctx.selected).toEqual(3);
   });
 
-  it.skip('shows on click', () => {
-    expect.assertions(3);
+  it('shows on click', async () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'open', 'get');
-    const select = target.querySelector('.select');
-    expect(component.$$.ctx.isOpen).toEqual(false);
+    const select = target.querySelector<HTMLInputElement>('.select')!;
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     select.click();
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    spy.mockRestore();
+    await tick();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
   });
 
-  // FIXME: Add disabled back once SSR works correctly
-  it.skip('does not show on click when disabled', () => {
-    expect.assertions(3);
+  it('does not show on click when disabled', async () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: {
@@ -203,101 +196,89 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'open', 'get');
-    const select = target.querySelector('.select');
-    expect(component.$$.ctx.isOpen).toEqual(false);
+    const select = target.querySelector<HTMLInputElement>('.select')!;
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     select.click();
-    expect(spy).not.toHaveBeenCalled(); // browsers shouldn't send MouseEvents for disabled inputs
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    spy.mockRestore();
+    await tick();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
   });
 
-  it.skip('shows on enter key press', () => {
-    expect.assertions(4);
+  it('shows on enter key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
   });
 
-  it.skip('shows on spacebar key press', () => {
-    expect.assertions(7);
+  it('shows on spacebar key press', () => {
+    expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector('.select')!;
     const event1 = new KeyboardEvent('keydown', { key: ' ' }); // spacebar
     select.dispatchEvent(event1);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
     select.dispatchEvent(event2);
-    expect(spy1).toHaveBeenCalledTimes(2);
-    expect(spy2).toHaveBeenCalledTimes(1); // shouldn't open again
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
   });
 
-  it.skip('shows on down key press', () => {
-    expect.assertions(4);
+  it('shows on down key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
   });
 
-  it.skip('shows on up key press', () => {
-    expect.assertions(4);
+  it('shows on up key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
   });
 
-  it.skip('shows automatically on focus', () => {
+  it('shows automatically on focus', () => {
+    expect.assertions(3);
+    const target = document.createElement('div');
+    document.body.appendChild(target);
+    const component = new Select({
+      props: selectOpts,
+      target,
+    });
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector<HTMLInputElement>('.select')!;
+    select.focus();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(document.activeElement).toBe(select);
+  });
+
+  it('hides on click outside the component', () => {
     expect.assertions(4);
     const target = document.createElement('div');
     document.body.appendChild(target);
@@ -305,38 +286,17 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    const select = target.querySelector<HTMLInputElement>('.select')!;
     select.focus();
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    expect(document.activeElement).toBe(select);
-    spy.mockRestore();
-  });
-
-  it.skip('hides on click outside the component', () => {
-    expect.assertions(5);
-    const target = document.createElement('div');
-    document.body.appendChild(target);
-    const component = new Select({
-      props: selectOpts,
-      target,
-    });
-    const spy = jest.spyOn(component.$$.ctx, 'close', 'get');
-    const select = target.querySelector('.select');
-    select.focus();
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(document.activeElement).toBe(select);
     select.blur();
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(false);
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     expect(document.activeElement).toBe(document.body);
-    spy.mockRestore();
   });
 
-  it.skip('hides on ESC key press', () => {
-    expect.assertions(4);
+  it('hides on ESC key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: {
@@ -345,41 +305,29 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'close', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
   });
 
-  it.skip('does nothing on invalid key press', () => {
-    expect.assertions(4);
+  it('does nothing on invalid key press', () => {
+    expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'open', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'xxx' });
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).not.toHaveBeenCalled();
-    expect(component.$$.ctx.isOpen).toEqual(false);
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
   });
 
-  it.skip('selects next item on down key press', () => {
-    expect.assertions(8);
+  it('selects next item on down key press', () => {
+    expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
       props: {
@@ -389,156 +337,130 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'down', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(component.$$.ctx.selected).toEqual(0);
-    const select = target.querySelector('.select');
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(spy2).toHaveBeenCalledTimes(1);
     expect(component.$$.ctx.selected).toEqual(1);
     select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(2);
-    expect(spy2).toHaveBeenCalledTimes(2);
     expect(component.$$.ctx.selected).toEqual(2);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy1.mockRestore();
-    spy2.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
   });
 
-  it.skip('selects previous item on up key press', () => {
-    expect.assertions(8);
-    const target = document.createElement('div');
-    const component = new Select({
-      props: {
-        ...selectOpts,
-        isOpen: true,
-        selected: 2,
-      },
-      target,
-    });
-    const spy1 = jest.spyOn(component.$$.ctx, 'handleKeyDown', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'up', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
-    expect(component.$$.ctx.selected).toEqual(2);
-    const select = target.querySelector('.select');
-    const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
-    select.dispatchEvent(event);
-    expect(spy2).toHaveBeenCalledTimes(1);
-    expect(component.$$.ctx.selected).toEqual(1);
-    select.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(2);
-    expect(spy2).toHaveBeenCalledTimes(2);
-    expect(component.$$.ctx.selected).toEqual(0);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy1.mockRestore();
-    spy2.mockRestore();
-  });
-
-  it.skip('skips over disabled items on down key press', () => {
-    expect.assertions(6);
-    const target = document.createElement('div');
-    const component = new Select({
-      props: {
-        ...selectOpts,
-        isOpen: true,
-        items: itemsDisabled,
-        selected: 1,
-      },
-      target,
-    });
-    const spy = jest.spyOn(component.$$.ctx, 'down', 'get');
-    expect(component.$$.ctx.selected).toEqual(1);
-    const select = target.querySelector('.select');
-    const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(3);
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(7);
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(7);
-    expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy.mockRestore();
-  });
-
-  it.skip('skips over disabled items on up key press', () => {
-    expect.assertions(6);
-    const target = document.createElement('div');
-    const component = new Select({
-      props: {
-        ...selectOpts,
-        isOpen: true,
-        items: itemsDisabled,
-        selected: 7,
-      },
-      target,
-    });
-    const spy = jest.spyOn(component.$$.ctx, 'up', 'get');
-    expect(component.$$.ctx.selected).toEqual(7);
-    const select = target.querySelector('.select');
-    const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(3);
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
-    select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
-    expect(spy).toHaveBeenCalledTimes(3);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy.mockRestore();
-  });
-
-  it.skip("doesn't go past end of items on down key press", () => {
+  it('selects previous item on up key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
       props: {
         ...selectOpts,
-        isOpen: true,
-        selected: 3,
+        value: items[2].id,
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'down', 'get');
-    expect(component.$$.ctx.selected).toEqual(3);
-    const select = target.querySelector('.select');
-    const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+    component.$$.ctx.open(); // to set correct selected index
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.$$.ctx.selected).toEqual(2);
+    const select = target.querySelector('.select')!;
+    const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(4);
+    expect(component.$$.ctx.selected).toEqual(1);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(4);
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy.mockRestore();
+    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
   });
 
-  it.skip("doesn't go past end of items on up key press", () => {
+  it('skips over disabled items on down key press', () => {
     expect.assertions(5);
     const target = document.createElement('div');
     const component = new Select({
       props: {
         ...selectOpts,
-        isOpen: true,
-        selected: 1,
+        items: itemsDisabled,
+        value: itemsDisabled[1].id,
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'up', 'get');
+    component.$$.ctx.open(); // to set correct selected index
     expect(component.$$.ctx.selected).toEqual(1);
-    const select = target.querySelector('.select');
+    const select = target.querySelector('.select')!;
+    const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(3);
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(7);
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(7);
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+  });
+
+  it('skips over disabled items on up key press', () => {
+    expect.assertions(5);
+    const target = document.createElement('div');
+    const component = new Select({
+      props: {
+        ...selectOpts,
+        items: itemsDisabled,
+        value: itemsDisabled[7].id,
+      },
+      target,
+    });
+    component.$$.ctx.open(); // to set correct selected index
+    expect(component.$$.ctx.selected).toEqual(7);
+    const select = target.querySelector('.select')!;
+    const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(3);
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(1);
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+  });
+
+  it("doesn't go past end of items on down key press", () => {
+    expect.assertions(4);
+    const target = document.createElement('div');
+    const component = new Select({
+      props: {
+        ...selectOpts,
+        value: items[3].id,
+      },
+      target,
+    });
+    component.$$.ctx.open(); // to set correct selected index
+    expect(component.$$.ctx.selected).toEqual(3);
+    const select = target.querySelector('.select')!;
+    const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(4);
+    select.dispatchEvent(event);
+    expect(component.$$.ctx.selected).toEqual(4);
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+  });
+
+  it("doesn't go past end of items on up key press", () => {
+    expect.assertions(4);
+    const target = document.createElement('div');
+    const component = new Select({
+      props: {
+        ...selectOpts,
+        value: items[1].id,
+      },
+      target,
+    });
+    component.$$.ctx.open(); // to set correct selected index
+    expect(component.$$.ctx.selected).toEqual(1);
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     expect(component.$$.ctx.selected).toEqual(0);
     select.dispatchEvent(event);
     expect(component.$$.ctx.selected).toEqual(0);
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
-    spy.mockRestore();
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
   });
 
-  it.skip('selects an item on click', () => {
+  it('selects an item on click', () => {
     expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
@@ -548,28 +470,28 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'select', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'emitInput', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(component.$$.ctx.selected).toEqual(0);
+    const select = target.querySelector('.select')!;
     const option = target.querySelector('.option[value="jp"]');
-    const listbox = target.querySelector('.select-listbox');
+    const listbox = target.querySelector('.select-listbox')!;
     const event = new MouseEvent('mousedown');
     Object.defineProperty(event, 'target', { enumerable: true, value: option });
-    const spy3 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of select()
+    const spy1 = jest.spyOn(select, 'dispatchEvent');
+    const spy2 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of select()
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
     expect(spy2).toHaveBeenCalled();
-    expect(spy3).toHaveBeenCalled();
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    component.$$.ctx.open(); // to set correct selected index
     expect(component.$$.ctx.selected).toEqual(2);
-    expect(component.$$.ctx.isOpen).toEqual(false);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     spy1.mockRestore();
     spy2.mockRestore();
-    spy3.mockRestore();
   });
 
-  it.skip("doesn't select an item on click when option disabled", () => {
-    expect.assertions(7);
+  it("doesn't select an item on click when option disabled", () => {
+    expect.assertions(6);
     const target = document.createElement('div');
     const component = new Select({
       props: {
@@ -584,28 +506,26 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'select', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'emitInput', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(component.$$.ctx.selected).toEqual(0);
+    const select = target.querySelector('.select')!;
     const option = target.querySelector('.option[value="two"]');
-    const listbox = target.querySelector('.select-listbox');
+    const listbox = target.querySelector('.select-listbox')!;
+    const spy1 = jest.spyOn(select, 'dispatchEvent');
     const event = new MouseEvent('mousedown');
     Object.defineProperty(event, 'target', { enumerable: true, value: option });
-    const spy3 = jest.spyOn(event, 'preventDefault');
+    const spy2 = jest.spyOn(event, 'preventDefault');
     listbox.dispatchEvent(event);
-    expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).not.toHaveBeenCalled();
-    expect(spy3).toHaveBeenCalledTimes(1);
+    expect(spy1).not.toHaveBeenCalled(); // doesn't emit an event
+    expect(spy2).toHaveBeenCalled();
     expect(component.$$.ctx.selected).toEqual(0);
-    expect(component.$$.ctx.isOpen).toEqual(true); // still open
+    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
     spy1.mockRestore();
     spy2.mockRestore();
-    spy3.mockRestore();
   });
 
-  it.skip('selects item on enter key press', () => {
-    expect.assertions(8);
+  it('selects item on enter key press', () => {
+    expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
       props: {
@@ -614,28 +534,25 @@ describe('Select component', () => {
       },
       target,
     });
-    const spy1 = jest.spyOn(component.$$.ctx, 'select', 'get');
-    const spy2 = jest.spyOn(component.$$.ctx, 'emitInput', 'get');
-    expect(component.$$.ctx.isOpen).toEqual(true);
+    expect(component.$$.ctx.isOpen).toBeTruthy();
     expect(component.$$.ctx.selected).toEqual(0);
-    const select = target.querySelector('.select');
+    const select = target.querySelector('.select')!;
     const event1 = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+    const spy1 = jest.spyOn(event1, 'preventDefault');
     select.dispatchEvent(event1);
     expect(component.$$.ctx.selected).toEqual(1);
     const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
-    const spy3 = jest.spyOn(event2, 'preventDefault');
+    const spy2 = jest.spyOn(event2, 'preventDefault');
     select.dispatchEvent(event2);
-    expect(spy1).toHaveBeenCalledTimes(1);
+    expect(spy1).toHaveBeenCalled();
     expect(spy2).toHaveBeenCalled();
-    expect(spy3).toHaveBeenCalledTimes(1);
     expect(component.$$.ctx.selected).toEqual(1);
-    expect(component.$$.ctx.isOpen).toEqual(false);
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     spy1.mockRestore();
     spy2.mockRestore();
-    spy3.mockRestore();
   });
 
-  it.skip('typing in input filters the shown items', () => {
+  it('typing in input filters the shown items', async () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
@@ -646,12 +563,17 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.filteredItems).toHaveLength(5);
-    component.inputText = 'o';
+    const select = target.querySelector<HTMLInputElement>('.select')!;
+    select.value = 'o'; // simulate input + event
+    const event = new Event('input');
+    select.dispatchEvent(event);
+    await tick();
     expect(component.$$.ctx.filteredItems).toHaveLength(2);
-    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
+    const listbox = target.querySelector('.select-listbox')!;
+    expect(listbox.outerHTML).toMatchSnapshot();
   });
 
-  it.skip('shows feedback message when filter has no match', () => {
+  it('shows feedback message when filter has no match', async () => {
     expect.assertions(3);
     const target = document.createElement('div');
     const component = new Select({
@@ -662,33 +584,37 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.filteredItems).toHaveLength(5);
-    component.inputText = 'no match';
+    const select = target.querySelector<HTMLInputElement>('.select')!;
+    select.value = 'xxxxx'; // simulate input + event
+    const event = new Event('input');
+    select.dispatchEvent(event);
+    await tick();
     expect(component.$$.ctx.filteredItems).toHaveLength(0);
-    expect(target.querySelector('.select-listbox').outerHTML).toMatchSnapshot();
+    const listbox = target.querySelector('.select-listbox')!;
+    expect(listbox.outerHTML).toMatchSnapshot();
   });
 
-  it.skip('input is reset on ESC key press', () => {
-    expect.assertions(2);
+  it('input is reset on ESC key press', () => {
+    expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
       props: {
         ...selectOpts,
-        inputText: 'filter text',
-        isOpen: true,
         value: 'au',
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'setInput', 'get');
-    const select = target.querySelector('.select');
+    expect(component.$$.ctx.inputText).toEqual('Australia');
+    component.$$.ctx.open();
+    expect(component.$$.ctx.inputText).toEqual('');
+    const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(component.$$.ctx.isOpen).toBeFalsy();
     expect(component.$$.ctx.inputText).toEqual('Australia');
-    spy.mockRestore();
   });
 
-  it.skip('can dynamically add items', () => {
+  it('can dynamically add items', async () => {
     expect.assertions(4);
     const target = document.createElement('div');
     const component = new Select({
@@ -696,10 +622,11 @@ describe('Select component', () => {
       target,
     });
     expect(component.$$.ctx.items).toHaveLength(5);
-    component.items = [...items, { id: 'new', text: 'New' }];
+    component.$set({ items: [...items, { id: 'new', text: 'New' }] });
+    await tick();
     expect(component.$$.ctx.items).toHaveLength(6);
-    const newListItem = target.querySelector('[value="new"]');
-    expect(newListItem).toBeTruthy();
-    expect(newListItem.outerHTML).toMatchSnapshot();
+    const newItem = target.querySelector('[value="new"]')!;
+    expect(newItem).toBeTruthy();
+    expect(newItem.outerHTML).toMatchSnapshot();
   });
 });

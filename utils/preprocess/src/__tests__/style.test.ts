@@ -4,6 +4,7 @@
 
 import fs from 'fs';
 import { promisify } from 'util';
+// @ts-ignore - FIXME: Remove this line once the next version of Svelte is released
 import { compile, preprocess } from 'svelte/compiler';
 import nested from 'postcss-nested';
 import { style } from '../style';
@@ -16,7 +17,7 @@ const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestCompon
 
 const preprocessOpts = {
   style: style({
-    /* stylelint-disable-next-line */
+    /* stylelint-disable-next-line */ // false positive!
     plugins: [nested],
   }),
 };
@@ -98,7 +99,7 @@ describe('Svelte style preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it.skip("compiles a component's CSS", async () => {
+  it("compiles a component's CSS", async () => {
     expect.assertions(2);
     const processed = await preprocess(source, preprocessOpts);
     const result = compile(processed.toString());
@@ -109,7 +110,7 @@ describe('Svelte style preprocessor', () => {
   it('prints error on bad CSS syntax', async () => {
     expect.assertions(1);
     const spy = jest.spyOn(process.stderr, 'write');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(() => true);
     await preprocess(sourceBadSyntax, preprocessOpts);
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();

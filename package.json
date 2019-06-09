@@ -13,13 +13,11 @@
     "docs": "docsify serve ./docs",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
     "update": "yarn upgrade-interactive --latest",
-    "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=dev --force-publish",
-    "release:beta": "yarn prepack && lerna publish prerelease --preid=beta --dist-tag=beta",
     "release": "yarn prepack && lerna publish",
+    "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
     "release:fix-failed": "lerna publish from-package",
-    "prerelease:next": "yarn prerelease",
-    "prerelease:beta": "yarn prerelease",
     "prerelease": "yarn lint && yarn test-ci",
+    "prerelease:next": "yarn prerelease",
     "prepack": "yarn build && yarn predocs",
     "build": "lerna run build --stream",
     "prebuild": "yarn clean",
@@ -30,7 +28,7 @@
     "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}",
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
     "lint:types": "tsc --noEmit",
-    "test": "yarn lint && jest --notify --watch",
+    "test": "jest --notify --watch",
     "test-ci": "jest --coverage --runInBand --ci",
     "report:browsers": "yarn browserslist",
     "report:css": "yarn autoprefixer --info"
@@ -79,27 +77,24 @@
     ]
   },
   "eslintIgnore": [
+    "**/dist/**",
     "**/node_modules/**",
-    "/components/*/dist/**",
-    "/css/dist/**",
     "/docs/index.html",
     "/test/coverage/**",
     "/utils/*/cli/index.js",
-    "/utils/*/lib/**",
+    "/utils/eslint-config/__tests__/__fixtures__",
     "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
   ],
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
     "ignoreFiles": [
       "**/*.d.ts",
+      "**/dist/**",
       "**/node_modules/**",
-      "components/*/dist/**",
       "components/tooltip/README.md",
-      "css/dist/**",
       "docs/_dist/**",
       "docs/index.html",
       "test/coverage/**",
-      "utils/*/lib/**",
       "utils/jest-config/fixtures/styles-bad-syntax.css",
       "utils/jest-config/fixtures/TestComponentBadSyntax.svelte",
       "utils/minna-css/*.css"
@@ -130,21 +125,20 @@
   },
   "prettierIgnore": [
     "cli/index.js",
-    "components/*/dist",
+    "dist",
     "docs/index.html",
     "node_modules",
     "test/coverage",
-    "utils/*/lib",
     "yarn.lock"
   ],
   "jest": {
     "preset": "@minna-ui/jest-config",
     "coverageThreshold": {
       "global": {
-        "branches": 20,
-        "functions": 20,
-        "lines": 20,
-        "statements": 20
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
       }
     }
   },

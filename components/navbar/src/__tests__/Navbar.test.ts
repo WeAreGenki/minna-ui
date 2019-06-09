@@ -1,34 +1,19 @@
-// TODO: Integration or E2E tests in a real browser since these tests are less than ideal
+// TODO: Integration/UI tests using puppeteer
+//  ↳ Responsive CSS
 
-// TODO: CSS unit tests for responsive functionality
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-// TODO: Test CSS output when using CSS variables (custom properties)
-
+import { tick } from 'svelte';
 import Navbar from '../Navbar.svelte';
+import UseSlot from './__fixtures__/UseSlot.svelte';
 
 const items = [
   { text: 'Page One', url: 'page-one' },
   { text: 'Page Two', url: 'page-two' },
-  {
-    children: [
-      { text: 'Child One - More', url: 'more/child-one' },
-      { text: 'Child Two - More', url: 'more/child-two' },
-    ],
-    text: 'More ▾',
-  },
   { text: 'About Us', url: 'about' },
 ];
 
 describe('Navbar component', () => {
-  it.skip('throws error with no props', () => {
-    expect.assertions(1);
-    function wrapper(): void {
-      const target = document.createElement('div');
-      new Navbar({ target });
-    }
-    expect(wrapper).toThrow();
-  });
-
   it('renders correctly with required props set', () => {
     expect.assertions(4);
     const target = document.createElement('div');
@@ -41,33 +26,12 @@ describe('Navbar component', () => {
     });
     expect(Array.isArray(component.$$.ctx.items)).toEqual(true);
     expect(component.$$.ctx.items).not.toHaveLength(0);
-    expect(target.querySelector('.navbar').getAttribute('navbar-active')).toBeNull();
+    const navbar = target.querySelector('.navbar')!;
+    expect(navbar.getAttribute('navbar-active')).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('adds class if page is scrolled', () => {
-    expect.assertions(3);
-    const spy = jest.spyOn(window, 'requestAnimationFrame');
-    spy.mockImplementation((cb) => cb());
-    const target = document.createElement('div');
-    const component = new Navbar({
-      props: {
-        items,
-        segment: undefined,
-      },
-      target,
-    });
-    // @ts-ignore Fine for a unit test since we're actualy using JSDOM
-    window.pageYOffset = 50;
-    const event = new UIEvent('scroll');
-    document.dispatchEvent(event);
-    expect(spy).toHaveBeenCalled();
-    expect(component.$$.ctx.hasScrolled).toEqual(true);
-    expect(target.querySelector('.navbar-active')).not.toBeNull();
-    spy.mockRestore();
-  });
-
-  it.skip('opens menu on button click', () => {
+  it('adds class if page is scrolled', async () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Navbar({
@@ -77,15 +41,32 @@ describe('Navbar component', () => {
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'openMenu', 'get');
-    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
-    button.click();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(spy).toHaveBeenCalled();
-    spy.mockRestore();
+    // @ts-ignore - We know we're writing to a read only property
+    window.pageYOffset = 50;
+    const event = new UIEvent('scroll');
+    window.dispatchEvent(event);
+    await tick();
+    expect(component.$$.ctx.hasScrolled).toEqual(true);
+    expect(target.querySelector('.navbar-active')).not.toBeNull();
   });
 
-  it.skip('closes menu on document click', () => {
+  it('opens menu on button click', () => {
+    expect.assertions(2);
+    const target = document.createElement('div');
+    const component = new Navbar({
+      props: {
+        items,
+        segment: undefined,
+      },
+      target,
+    });
+    expect(component.$$.ctx.isOpen).toBeFalsy();
+    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
+    button.click();
+    expect(component.$$.ctx.isOpen).toBeTruthy();
+  });
+
+  it('closes menu on document click', () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -96,7 +77,7 @@ describe('Navbar component', () => {
       },
       target,
     });
-    component.openMenu();
+    component.$$.ctx.openMenu();
     jest.runAllTimers(); // for component setTimeout
     expect(component.$$.ctx.isOpen).toBeTruthy();
     const event = new MouseEvent('click');
@@ -104,7 +85,7 @@ describe('Navbar component', () => {
     expect(component.$$.ctx.isOpen).toBeFalsy();
   });
 
-  it.skip('attaches event listener on menu open but not close', () => {
+  it('attaches event listener on menu open but not close', () => {
     expect.assertions(3);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -116,7 +97,7 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    component.openMenu();
+    component.$$.ctx.openMenu();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalled();
     spy.mockReset();
@@ -127,7 +108,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it.skip("doesn't attach extra event listeners on multiple button clicks", () => {
+  it("doesn't attach extra event listeners on multiple button clicks", () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
@@ -139,7 +120,7 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
+    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
     button.click();
     jest.runAllTimers();
     button.click();
@@ -151,7 +132,7 @@ describe('Navbar component', () => {
     spy.mockRestore();
   });
 
-  it.skip('shows correct icon and class when toggled', () => {
+  it('shows correct icon and class when toggled', async () => {
     expect.assertions(4);
     const target = document.createElement('div');
     new Navbar({
@@ -161,13 +142,15 @@ describe('Navbar component', () => {
       },
       target,
     });
-    const icon = target.querySelector('button.navbar-button > svg > use');
-    const navbarLinks = target.querySelector('.navbar-links');
-    expect(icon.getAttribute('xlink:href')).toEqual('#menu');
+    const icon1 = target.querySelector<SVGUseElement>('.navbar-icon > use')!;
+    const navbarLinks = target.querySelector('.navbar-links')!;
+    expect(icon1.getAttribute('xlink:href')).toEqual('#menu');
     expect(navbarLinks.classList.contains('df')).toBeFalsy();
-    const button: HTMLButtonElement = target.querySelector('button.navbar-button');
+    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
     button.click();
-    expect(icon.getAttribute('xlink:href')).toEqual('#x');
+    await tick();
+    const icon2 = target.querySelector<SVGUseElement>('.navbar-icon > use')!;
+    expect(icon2.getAttribute('xlink:href')).toEqual('#x');
     expect(navbarLinks.classList.contains('df')).toBeTruthy();
   });
 
@@ -181,39 +164,14 @@ describe('Navbar component', () => {
       },
       target,
     });
-    expect(
-      target.querySelector('[href="page-two"]').classList.contains('navbar-link-active'),
-    ).toBeTruthy();
-    expect(
-      target.querySelector('[href="page-one"]').classList.contains('navbar-link-active'),
-    ).not.toBeTruthy();
+    const linkPageTwo = target.querySelector('[href="page-two"]')!;
+    const linkPageOne = target.querySelector('[href="page-one"]')!;
+    expect(linkPageTwo.classList.contains('navbar-link-active')).toBeTruthy();
+    expect(linkPageOne.classList.contains('navbar-link-active')).not.toBeTruthy();
   });
 
-  // FIXME: Work out how nested menus should work
-  it.skip('adds class to active menu item in nested route', () => {
-    expect.assertions(2);
-    const target = document.createElement('div');
-    new Navbar({
-      props: {
-        items,
-        // FIXME: Bring this up to date with how things work in Sapper 0.15.x
-        // segment: 'page-two/child-two',
-        segment: 'page-two',
-      },
-      target,
-    });
-    // console.log('@@ 22 target', target.innerHTML);
-    // console.log('@@ 33', target.querySelector('.navbar-links').innerHTML);
-    expect(
-      target.querySelector('[href="page-two"]').classList.contains('navbar-link-active'),
-    ).toBeTruthy();
-    expect(
-      target.querySelector('[href="page-one"]').classList.contains('navbar-link-active'),
-    ).not.toBeTruthy();
-  });
-
-  it.skip('can dynamically add menu items', () => {
-    expect.assertions(2);
+  it('can dynamically add menu items', () => {
+    expect.assertions(3);
     const target = document.createElement('div');
     const component = new Navbar({
       props: {
@@ -222,28 +180,26 @@ describe('Navbar component', () => {
       },
       target,
     });
-    component.set({
+    expect(component.$$.ctx.items).toHaveLength(3);
+    component.$set({
       items: [...items, { name: 'Page New', url: 'page-new' }],
     });
-    expect(component.$$.ctx.items).toHaveLength(6);
+    expect(component.$$.ctx.items).toHaveLength(4);
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('renders custom markup when slot content is used', () => {
+  it('renders custom markup when slot content is used', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    // const component = new Navbar({
-    new Navbar({
+    new UseSlot({
       props: {
         items,
         segment: undefined,
       },
       target,
     });
-    // component.set({
-    //   items: [...items, { name: 'Page New', url: 'page-new' }],
-    // });
-    // expect(component.$$.ctx.items).toHaveLength(6);
+    const logo = target.querySelector('.navbar-logo-link')!;
+    expect(logo.textContent).toEqual('Custom Slot Content');
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

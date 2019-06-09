@@ -1,14 +1,13 @@
 /** @jest-environment node */
 
-/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp */
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp, @typescript-eslint/no-non-null-assertion, @typescript-eslint/camelcase */
 
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 import del from 'del';
-import buildComponent from '../index';
+import { run as buildComponent } from '../index';
 
-const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
 const sourcePath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 const sourcePathBadSyntax = require.resolve(
@@ -22,7 +21,7 @@ const dist = path.join(__dirname, 'dist');
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const pkg = (dirName: string) => ({
-  /* eslint-disable @typescript-eslint/camelcase */
+  npm_package_browser: path.join(dist, dirName, 'index.web.js'),
   npm_package_homepage: 'https://ui.wearegenki.com/',
   npm_package_main: path.join(dist, dirName, 'index.js'),
   npm_package_module: path.join(dist, dirName, 'index.mjs'),
@@ -30,37 +29,34 @@ const pkg = (dirName: string) => ({
   npm_package_style: path.join(dist, dirName, 'index.css'),
   npm_package_svelte: sourcePath,
   npm_package_version: '1.2.3',
-  /* eslint-enable @typescript-eslint/camelcase */
 });
 
-beforeAll(() => mkdir(dist));
-
-afterAll(() => del([dist]));
+afterEach(() => del([dist]));
 
 describe('build-component tool', () => {
-  it.skip('compiles package esm bundle', async () => {
+  it('compiles package esm bundle', async () => {
     expect.assertions(6);
     const build = buildComponent(pkg('esm'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
     expect(built.esm.result.output[0].code).toMatch('export default TestComponent');
     expect(built.esm.result.output[0].code).not.toMatch('TestComponent=function');
-    expect(built.esm.result.output[0].code).toMatch("name: 'Elon Musk'");
-    expect(built.esm.result.output[0].code).toMatch('component.refs._target ===');
-    expect(built.esm.result.output[0].map.sources).toHaveLength(2);
-  }, 10000); // FIXME: Reduce execution time of this test
-
-  it.skip('compiles package main bundle', async () => {
-    expect.assertions(4);
-    const build = buildComponent(pkg('main'));
-    await expect(build).resolves.toBeDefined();
-    const built = await build;
-    expect(built.main.result.output[0].code).toMatch('var TestComponent=function(');
-    expect(built.main.result.output[0].code).not.toMatch('export default TestComponent');
-    expect(built.main.result.output[0].code).toMatch(':"Elon Musk"');
+    expect(built.esm.result.output[0].code).toMatch("name = 'Elon Musk'");
+    expect(built.esm.result.output[0].code).toMatch('target = $$node');
+    expect(built.esm.result.output[0].map!.sources).toHaveLength(2);
   });
 
-  it.skip('compiles package css bundle', async () => {
+  it('compiles package cjs bundle', async () => {
+    expect.assertions(4);
+    const build = buildComponent(pkg('cjs'));
+    await expect(build).resolves.toBeDefined();
+    const built = await build;
+    expect(built.cjs.result.output[0].code).toMatch('var TestComponent=(function(');
+    expect(built.cjs.result.output[0].code).not.toMatch('export default TestComponent');
+    expect(built.cjs.result.output[0].code).toMatch('="Elon Musk"');
+  });
+
+  it('compiles package css bundle', async () => {
     expect.assertions(4);
     const build = buildComponent(pkg('css'));
     await expect(build).resolves.toBeDefined();
@@ -70,20 +66,19 @@ describe('build-component tool', () => {
     expect(built.css.code).toMatchSnapshot();
   });
 
-  it.skip('contains banner comments', async () => {
-    expect.assertions(3);
+  it('injects banner comments', async () => {
+    expect.assertions(4);
     const pkgData = pkg('banner');
     const build = buildComponent(pkgData);
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    const re1 = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
-    expect(built.esm.result.output[0].code).toMatch(re1);
-    // expect(built.css.code).toMatch(re1);
-    const re2 = new RegExp(`\\/\\*\\n ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
-    expect(built.main.result.output[0].code).toMatch(re2);
+    const re = new RegExp(`\\/\\*!\\n \\* ${pkgData.npm_package_name} v\\d\\.\\d\\.\\d`);
+    expect(built.esm.result.output[0].code).toMatch(re);
+    expect(built.css.code).toMatch(re);
+    expect(built.cjs.result.output[0].code).toMatch(re);
   });
 
-  it.skip('writes data to disk', async () => {
+  it('writes data to disk', async () => {
     expect.assertions(7);
     const pkgData = pkg('write-to-disk');
     const build = buildComponent(pkgData);
@@ -96,17 +91,15 @@ describe('build-component tool', () => {
     await expect(stat(`${pkgData.npm_package_style}.map`)).resolves.toBeDefined();
   });
 
-  it.skip('throws an error when bad HTML syntax', async () => {
-    expect.assertions(1);
+  it('reports error on bad HTML syntax', async () => {
+    expect.assertions(2);
     const build = buildComponent({
       ...pkg('bad-syntax'),
-      // eslint-disable-next-line @typescript-eslint/camelcase
       npm_package_svelte: sourcePathBadSyntax,
     });
-    // FIXME: Error is different if jest is run in --ci mode and between node versions
-    // await expect(build).rejects.toThrowErrorMatchingSnapshot();
-    await expect(build).rejects.toThrow();
+    const spy = jest.spyOn(console, 'error');
+    spy.mockImplementation(() => {});
+    await expect(build).rejects.toThrowErrorMatchingSnapshot();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
-
-  it.todo('end process with non-zero exit code on build error');
 });

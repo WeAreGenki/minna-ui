@@ -1,5 +1,6 @@
 // FIXME: Remove this file after svelte is fixed
 
+/* istanbul ignore file */
 /* eslint-disable @typescript-eslint/indent */
 
 import { SourceMap } from 'magic-string'; // eslint-disable-line

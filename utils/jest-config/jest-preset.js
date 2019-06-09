@@ -1,5 +1,6 @@
 // https://jestjs.io/docs/en/configuration
 
+/* istanbul ignore file */
 /* eslint-disable sort-keys */
 
 'use strict';
@@ -51,7 +52,6 @@ module.exports = {
     '!**/*externs.{js,ts}',
     '!**/bin/**',
     '!**/cli/**',
-    '!**/jest-preset.js',
   ],
   coveragePathIgnorePatterns: [
     '/__fixtures__/',

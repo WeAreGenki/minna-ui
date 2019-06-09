@@ -13,7 +13,7 @@ aliases:
     key: v2-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
   - &build-dependencies
-    run: yarn lerna run build --scope '@minna-ui/preprocess'
+    run: yarn lerna run build --scope '@minna-ui/preprocess' --scope '@minna-ui/postcss-config'
 
 version: 2
 jobs:

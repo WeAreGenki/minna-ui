@@ -10,6 +10,9 @@
 
 'use strict';
 
+const OFF = 0;
+const ERROR = 2;
+
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
   plugins: ['svelte3'],
@@ -26,16 +29,16 @@ module.exports = {
     // Svelte components
     {
       files: ['*.svelte'],
+      parserOptions: {
+        sourceType: 'module',
+      },
       rules: {
         // import order cannot be determined correctly in .svelte components
-        'import/first': 'off',
+        'import/first': OFF,
         // components are compiled at build-time so devDependencies are OK
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
+        'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
         // Svelte abuses the syntax with `export let`
-        'import/no-mutable-exports': 'off',
+        'import/no-mutable-exports': OFF,
       },
     },
   ],

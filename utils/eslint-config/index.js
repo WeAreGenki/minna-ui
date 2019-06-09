@@ -1,5 +1,7 @@
 /**
  * ESLint config preset for Minna UI projects.
+ *
+ * @see http://eslint.org/docs/user-guide/configuring.html
  */
 
 /* eslint-disable sort-keys */
@@ -8,22 +10,26 @@
 
 const isProd = process.env.NODE_ENV === 'production';
 
+const OFF = 0;
+const WARNING = 1;
+const ERROR = 2;
+
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
   extends: [
     'eslint:recommended',
     'airbnb-base',
     'plugin:jsdoc/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended', // FIXME: Breaks tests
     'plugin:security/recommended',
   ],
   plugins: [
-    'security',
     'import',
     'html',
     'markdown',
     'jsdoc',
     '@typescript-eslint',
+    'security',
   ],
   parser: '@typescript-eslint/parser',
   env: {
@@ -32,7 +38,7 @@ module.exports = {
   },
   settings: {
     'html/indent': '+2',
-    'html/report-bad-indent': 'error',
+    'html/report-bad-indent': ERROR,
     'html/xml-extensions': ['.svg', '.xhtml', 'xml'],
     'import/extensions': [
       '.mjs',
@@ -64,7 +70,7 @@ module.exports = {
   rules: {
     /* eslint-enable sort-keys */
     '@typescript-eslint/ban-types': [
-      'error',
+      ERROR,
       {
         types: {
           Array: 'Use [] instead',
@@ -77,11 +83,11 @@ module.exports = {
       },
     ],
     '@typescript-eslint/explicit-function-return-type': [
-      'error',
+      ERROR,
       { allowExpressions: true, allowTypedFunctionExpressions: true },
     ],
     '@typescript-eslint/indent': [
-      'error',
+      ERROR,
       2,
       {
         // ESTree spec node types: https://github.com/estree/estree
@@ -90,25 +96,25 @@ module.exports = {
         SwitchCase: 1,
       },
     ],
-    '@typescript-eslint/member-ordering': 'error',
+    '@typescript-eslint/member-ordering': ERROR,
     '@typescript-eslint/no-empty-interface': [
-      'error',
+      ERROR,
       { allowSingleExtends: true },
     ],
-    '@typescript-eslint/no-extraneous-class': 'error',
-    '@typescript-eslint/no-this-alias': 'error',
+    '@typescript-eslint/no-extraneous-class': ERROR,
+    '@typescript-eslint/no-this-alias': ERROR,
     '@typescript-eslint/no-unused-vars': [
-      'warn',
+      WARNING,
       {
         args: 'none',
         ignoreRestSiblings: true,
       },
     ],
-    '@typescript-eslint/no-useless-constructor': 'error',
-    '@typescript-eslint/prefer-function-type': 'warn',
-    '@typescript-eslint/unified-signatures': 'error',
+    '@typescript-eslint/no-useless-constructor': ERROR,
+    '@typescript-eslint/prefer-function-type': WARNING,
+    '@typescript-eslint/unified-signatures': ERROR,
     'comma-dangle': [
-      'error',
+      ERROR,
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
@@ -117,24 +123,24 @@ module.exports = {
         objects: 'always-multiline',
       },
     ],
-    'id-length': ['error', { exceptions: ['_'], min: 2 }], // encourage descriptive names
+    'id-length': [ERROR, { exceptions: ['_'], min: 2 }], // encourage descriptive names
     'import/extensions': [
-      'error',
+      ERROR,
       'ignorePackages', // do use file extensions
       {
         ts: 'never',
         tsx: 'never',
       },
     ],
-    'import/no-deprecated': 'warn',
-    'import/prefer-default-export': 'off',
-    'jsdoc/check-examples': 'warn',
-    'jsdoc/check-indentation': 'warn',
-    'jsdoc/require-description-complete-sentence': 'warn',
-    'jsdoc/require-hyphen-before-param-description': 'warn',
-    'jsdoc/require-jsdoc': 'off', // too annoying
+    'import/no-deprecated': WARNING,
+    'import/prefer-default-export': OFF,
+    'jsdoc/check-examples': WARNING,
+    'jsdoc/check-indentation': WARNING,
+    'jsdoc/require-description-complete-sentence': WARNING,
+    'jsdoc/require-hyphen-before-param-description': WARNING,
+    'jsdoc/require-jsdoc': OFF, // too annoying
     'max-len': [
-      'error',
+      ERROR,
       {
         code: 80, // consistency with prettier
         ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
@@ -145,19 +151,19 @@ module.exports = {
         ignoreUrls: true,
       },
     ],
-    'no-console': isProd ? 'error' : 'warn',
-    'no-debugger': isProd ? 'error' : 'warn',
-    'no-return-assign': ['error', 'except-parens'],
-    'no-useless-constructor': 'off', // handled via `@typescript-eslint/no-useless-constructor`
-    'object-curly-newline': ['error', { consistent: true }],
-    'sort-keys': ['error', 'asc', { caseSensitive: false, natural: true }],
+    'no-console': isProd ? ERROR : WARNING,
+    'no-debugger': isProd ? ERROR : WARNING,
+    'no-return-assign': [ERROR, 'except-parens'],
+    'no-useless-constructor': OFF, // handled via `@typescript-eslint/no-useless-constructor`
+    'object-curly-newline': [ERROR, { consistent: true }],
+    'sort-keys': [ERROR, 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */
 
     // rules incompatible with prettier :'(
-    'arrow-parens': 'off',
-    'function-paren-newline': 'off',
-    'implicit-arrow-linebreak': 'off',
-    'operator-linebreak': 'off',
+    'arrow-parens': OFF,
+    'function-paren-newline': OFF,
+    'implicit-arrow-linebreak': OFF,
+    'operator-linebreak': OFF,
   },
 
   overrides: [
@@ -165,10 +171,10 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        'jsdoc/require-param-type': 'off',
-        'jsdoc/require-param': 'off',
-        'jsdoc/require-returns-type': 'off',
-        'jsdoc/require-returns': 'off',
+        'jsdoc/require-param-type': OFF,
+        'jsdoc/require-param': OFF,
+        'jsdoc/require-returns-type': OFF,
+        'jsdoc/require-returns': OFF,
       },
     },
 
@@ -176,14 +182,11 @@ module.exports = {
     {
       files: ['*.d.ts'],
       rules: {
-        '@typescript-eslint/no-extraneous-class': 'off',
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-        'no-useless-constructor': 'off', // crashes node process
-        'no-var': 'off',
-        'vars-on-top': 'off',
+        '@typescript-eslint/no-extraneous-class': OFF,
+        'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+        'no-useless-constructor': OFF, // crashes node process
+        'no-var': OFF,
+        'vars-on-top': OFF,
       },
     },
 
@@ -202,7 +205,7 @@ module.exports = {
       rules: {
         // can use any installed dependency
         'import/no-extraneous-dependencies': [
-          'error',
+          ERROR,
           {
             devDependencies: true,
             peerDependencies: true,
@@ -232,14 +235,14 @@ module.exports = {
       },
       rules: {
         'import/no-extraneous-dependencies': [
-          'error',
+          ERROR,
           {
             devDependencies: true,
             peerDependencies: true,
           },
         ],
         'max-len': [
-          'error',
+          ERROR,
           {
             code: 100, // consistency with prettier override
             ignorePattern:
@@ -251,7 +254,7 @@ module.exports = {
             ignoreUrls: true,
           },
         ],
-        'no-new': 'off', // allow testing constructors
+        'no-new': OFF, // allow testing constructors
       },
     },
 
@@ -269,12 +272,12 @@ module.exports = {
         node: false,
       },
       rules: {
-        'comma-dangle': ['error', 'never'],
-        'func-names': 'off',
-        'object-shorthand': ['error', 'never'],
-        'prefer-arrow-callback': 'off',
-        'prefer-destructuring': 'off',
-        'no-var': 'off',
+        'comma-dangle': [ERROR, 'never'],
+        'func-names': OFF,
+        'object-shorthand': [ERROR, 'never'],
+        'prefer-arrow-callback': OFF,
+        'prefer-destructuring': OFF,
+        'no-var': OFF,
       },
     },
 
@@ -282,7 +285,7 @@ module.exports = {
     {
       files: ['*.css.d.ts', '*.pcss.d.ts'],
       rules: {
-        '@typescript-eslint/member-delimiter-style': 'off',
+        '@typescript-eslint/member-delimiter-style': OFF,
       },
     },
 
@@ -291,9 +294,9 @@ module.exports = {
       files: ['*.md'],
       rules: {
         // turns off rules that don't make sense in code snippets
-        'import/no-extraneous-dependencies': 'off',
-        'import/no-unresolved': 'off',
-        strict: 'off',
+        'import/no-extraneous-dependencies': OFF,
+        'import/no-unresolved': OFF,
+        strict: OFF,
       },
     },
 

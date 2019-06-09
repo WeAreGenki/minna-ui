@@ -14,6 +14,9 @@
 
 'use strict';
 
+const WARNING = 1;
+const ERROR = 2;
+
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
   parserOptions: {
@@ -22,11 +25,11 @@ module.exports = {
   },
   rules: {
     /* eslint-enable sort-keys */
-    '@typescript-eslint/no-for-in-array': 'error',
-    '@typescript-eslint/no-unnecessary-qualifier': 'error',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
-    // '@typescript-eslint/prefer-regexp-exec': 'warn', // currently broken
-    '@typescript-eslint/require-array-sort-compare': 'warn',
-    '@typescript-eslint/restrict-plus-operands': 'warn',
+    '@typescript-eslint/no-for-in-array': ERROR,
+    '@typescript-eslint/no-unnecessary-qualifier': ERROR,
+    '@typescript-eslint/no-unnecessary-type-assertion': WARNING,
+    // '@typescript-eslint/prefer-regexp-exec': WARNING, // currently broken
+    '@typescript-eslint/require-array-sort-compare': WARNING,
+    '@typescript-eslint/restrict-plus-operands': WARNING,
   },
 };

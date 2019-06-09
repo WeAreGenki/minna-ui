@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Collapse component renders correctly with no props 1`] = `"<button class=\\"button button-collapse\\">Expand ▾</button> <div class=\\"collapse collapse-hide\\"></div>"`;
+
+exports[`Collapse component renders correctly with textOpen/textClose props 1`] = `"<button class=\\"button button-collapse\\">more</button> <div class=\\"collapse collapse-hide\\"></div>"`;
+
+exports[`Collapse component renders correctly with textOpen/textClose props 2`] = `"<button class=\\"button button-collapse\\">less</button> <div class=\\"collapse \\"></div>"`;

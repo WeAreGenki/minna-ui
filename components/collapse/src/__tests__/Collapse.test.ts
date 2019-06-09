@@ -17,6 +17,25 @@ describe('Collapse component', () => {
     expect(wrapper).not.toThrow();
   });
 
+  it('renders correctly with textOpen/textClose props', async () => {
+    expect.assertions(4);
+    const target = document.createElement('div');
+    const component = new Collapse({
+      props: {
+        textClose: 'less',
+        textOpen: 'more',
+      },
+      target,
+    });
+    const button = target.querySelector<HTMLButtonElement>('.button-collapse')!;
+    expect(button.innerHTML).toEqual('more');
+    expect(target.innerHTML).toMatchSnapshot();
+    component.$set({ isOpen: true });
+    await tick();
+    expect(button.innerHTML).toEqual('less');
+    expect(target.innerHTML).toMatchSnapshot();
+  });
+
   it('is collapsed by default', () => {
     expect.assertions(2);
     const target = document.createElement('div');

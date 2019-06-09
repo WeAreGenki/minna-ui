@@ -8,13 +8,18 @@ import syntax from 'postcss-scss';
 // import { Preprocessor } from 'svelte/types/preprocess';
 import { Preprocessor } from './types';
 
+interface StylePreprocessorOptions extends postcss.ProcessOptions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  plugins?: postcss.Plugin<any>[];
+}
+
 /**
  * Minna UI svelte style preprocessor.
  *
  * @param opts - PostCSS options.
  */
 export const style = (
-  opts: postcss.ProcessOptions = {},
+  opts: StylePreprocessorOptions = {},
 ): Preprocessor => async ({ attributes, content, filename }) => {
   if (attributes.type !== 'text/postcss') return;
 

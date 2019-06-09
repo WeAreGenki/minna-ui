@@ -4,6 +4,7 @@
 
 import { tick } from 'svelte';
 import Collapse from '../Collapse.svelte';
+import UseSlot from './__fixtures__/UseSlot.svelte';
 
 describe('Collapse component', () => {
   it('renders correctly with no props', () => {
@@ -22,17 +23,25 @@ describe('Collapse component', () => {
     const target = document.createElement('div');
     const component = new Collapse({
       props: {
-        textClose: 'less',
-        textOpen: 'more',
+        textClose: 'close',
+        textOpen: 'open',
       },
       target,
     });
     const button = target.querySelector<HTMLButtonElement>('.button-collapse')!;
-    expect(button.innerHTML).toEqual('more');
+    expect(button.innerHTML).toEqual('open');
     expect(target.innerHTML).toMatchSnapshot();
     component.$set({ isOpen: true });
     await tick();
-    expect(button.innerHTML).toEqual('less');
+    expect(button.innerHTML).toEqual('close');
+    expect(target.innerHTML).toMatchSnapshot();
+  });
+
+  it('renders slot content correctly', () => {
+    expect.assertions(2);
+    const target = document.createElement('div');
+    new UseSlot({ target });
+    expect(target.querySelector('p.lead')).not.toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
 

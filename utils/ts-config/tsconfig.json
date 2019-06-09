@@ -34,8 +34,5 @@
     "**/dist/*",
     "**/node_modules/*",
     "**/test/coverage/*"
-  ],
-  "typeAcquisition": {
-    "enable": true
-  }
+  ]
 }

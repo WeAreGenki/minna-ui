@@ -52,7 +52,7 @@ const terserOpts = {
   mangle: true,
   module: true,
   output: {
-    comments: /__PURE__/,
+    comments: /^!|__PURE__/,
     wrap_iife: true,
   },
   sourcemap: true,
@@ -101,6 +101,8 @@ export async function run(
       plugins: [
         svelte({
           css(css: RollupSvelteCss) {
+            // eslint-disable-next-line no-param-reassign
+            css.code = `${banner}\n${css.code}`;
             resolveCss({
               code: css.code,
               map: css.map,

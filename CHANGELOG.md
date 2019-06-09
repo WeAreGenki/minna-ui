@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - `@minna-ui/select` - Edge case where a filtered list is not reset when closing the select list box.
+- `@minna-ui/jest-config` - Don't collect test coverage from .d.ts files.
 - Component unit tests.
 - Types for Svelte components.
 

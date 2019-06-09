@@ -39,6 +39,8 @@
   }
 </style>
 
+<svelte:options tag="test-component" immutable={true} />
+
 <div class="wrapper">
   <div class="text" bind:this="{target}">
     test {name}

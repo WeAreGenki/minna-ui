@@ -11,7 +11,6 @@
 <script>
   export let name = 'Elon Musk';
 
-  // computed
   $: reversed = name.split('').reverse().join('');
 
   // refs
@@ -20,12 +19,10 @@
 </script>
 
 <style type="text/postcss">
-  $body-margin: 0;
-
   /* stylelint-disable no-descending-specificity */
   :global(body) {
     @media screen and (min-width: 30em) {
-      margin: $body-margin;
+      margin: 0;
     }
   }
 

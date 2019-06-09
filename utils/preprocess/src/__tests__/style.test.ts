@@ -4,6 +4,7 @@
 
 import fs from 'fs';
 import { promisify } from 'util';
+// @ts-ignore - FIXME: Remove this line once the next version of Svelte is released
 import { compile, preprocess } from 'svelte/compiler';
 import nested from 'postcss-nested';
 import { style } from '../style';

@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Removed
+
+- `@minna-ui/ts-config` - Don't enable automatic type acquisition by default.
+
 ### Fixed
 
 - `@minna-ui/select` - Edge case where a filtered list is not reset when closing the select list box.

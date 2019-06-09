@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import fs from 'fs';
 import { promisify } from 'util';
 // @ts-ignore - FIXME: Remove this line once the next version of Svelte is released

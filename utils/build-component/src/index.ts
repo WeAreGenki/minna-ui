@@ -200,7 +200,7 @@ export async function run(
     console.error('[build-component]', err);
 
     // we always want internal builds to fail on error
-    process.exit(2);
+    process.exitCode = 2;
     throw err;
   }
 }

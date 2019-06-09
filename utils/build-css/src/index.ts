@@ -209,7 +209,7 @@ export async function run(
     }
 
     // we always want internal builds to fail on error
-    process.exit(2);
+    process.exitCode = 2;
     throw err;
   }
 }

@@ -15,8 +15,7 @@
   },
   "exclude": [
     "**/cli/index.js",
-    "components/*/dist/*",
-    "utils/*/lib/*",
+    "**/dist/*",
     "**/node_modules/*",
     "test/coverage"
   ]

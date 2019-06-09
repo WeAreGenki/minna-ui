@@ -19,9 +19,7 @@
     "**/*.config.js",
     "**/*.md",
     "**/dist/**",
-    "**/lib/**",
-    "**/test/**",
-    "**/types/**"
+    "**/test/**"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

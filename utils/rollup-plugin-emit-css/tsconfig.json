@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "module": "commonjs",
     "paths": { "*": ["../../types/*"] },
-    "outDir": "./lib"
+    "outDir": "./dist"
   },
   "include": ["./src"]
 }

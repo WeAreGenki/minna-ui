@@ -18,12 +18,12 @@
     "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "yarn clean",
-    "clean": "rm -rf lib"
+    "clean": "rm -rf dist"
   },
   "main": "index.js",
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0"

@@ -77,27 +77,23 @@
     ]
   },
   "eslintIgnore": [
+    "**/dist/**",
     "**/node_modules/**",
-    "/components/*/dist/**",
-    "/css/dist/**",
     "/docs/index.html",
     "/test/coverage/**",
     "/utils/*/cli/index.js",
-    "/utils/*/lib/**",
     "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
   ],
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
     "ignoreFiles": [
       "**/*.d.ts",
+      "**/dist/**",
       "**/node_modules/**",
-      "components/*/dist/**",
       "components/tooltip/README.md",
-      "css/dist/**",
       "docs/_dist/**",
       "docs/index.html",
       "test/coverage/**",
-      "utils/*/lib/**",
       "utils/jest-config/fixtures/styles-bad-syntax.css",
       "utils/jest-config/fixtures/TestComponentBadSyntax.svelte",
       "utils/minna-css/*.css"
@@ -128,11 +124,10 @@
   },
   "prettierIgnore": [
     "cli/index.js",
-    "components/*/dist",
+    "dist",
     "docs/index.html",
     "node_modules",
     "test/coverage",
-    "utils/*/lib",
     "yarn.lock"
   ],
   "jest": {

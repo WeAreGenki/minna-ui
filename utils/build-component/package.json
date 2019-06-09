@@ -11,15 +11,15 @@
     "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
     "prebuild": "yarn clean",
-    "clean": "rm -rf lib"
+    "clean": "rm -rf dist"
   },
   "bin": {
     "build-component": "cli/index.js"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "peerDependencies": {
     "svelte": "^3.0.0"

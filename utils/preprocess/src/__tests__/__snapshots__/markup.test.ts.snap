@@ -4,7 +4,6 @@ exports[`Svelte markup preprocessor processes a component 1`] = `
 "<script>
   export let name = 'Elon Musk';
 
-  // computed
   $: reversed = name.split('').reverse().join('');
 
   // refs

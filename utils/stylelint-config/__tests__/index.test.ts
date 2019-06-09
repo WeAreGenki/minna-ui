@@ -74,6 +74,7 @@ describe('Stylelint config', () => {
     await expect(output).resolves.toBeDefined();
     const result = await output;
     expect(result.results[0].errored).toBeTruthy();
+    // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].warnings[0].rule).toEqual('CssSyntaxError');
   });
 
@@ -84,12 +85,15 @@ describe('Stylelint config', () => {
       config,
     });
     expect(result.results[0].errored).toBeTruthy();
+    // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].warnings[0].rule).toEqual('order/properties-order');
+    // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].warnings[1].rule).toEqual('order/properties-order');
   });
 
   it('has no config parse errors', async () => {
     const result = await stylelint.lint(stylelintOpts);
+    // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].parseErrors).toHaveLength(0);
   });
 

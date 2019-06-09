@@ -10,5 +10,6 @@
     "declaration": true,
     "isolatedModules": false,
     "noEmit": false
-  }
+  },
+  "exclude": ["**/__tests__/*", "**/cli/index.js", "**/node_modules/*"]
 }

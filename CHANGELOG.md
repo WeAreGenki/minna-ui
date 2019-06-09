@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Component unit tests.
 - Types for Svelte components.
 
+### Changed
+
+- `@minna-ui/jest-config` - Disable CSS modules support by default. We mostly use Svelte which has an alternative.
+- `@minna-ui/navbar` - Logo slot is now the default slot; it's no longer required to use a named slot.
+
 ## [0.25.1][] - 2019-06-08
 
 ### Fixed

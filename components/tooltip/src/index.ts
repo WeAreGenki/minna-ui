@@ -15,26 +15,26 @@ type SvelteAction = (
 /**
  * Tooltip Svelte action.
  */
-export const Tooltip: SvelteAction = (node: HTMLElement, text: string) => {
-  const tooltip = document.createElement('div');
-  tooltip.className = 'tooltip';
-  tooltip.textContent = text;
+export const tooltip: SvelteAction = (node: HTMLElement, text: string) => {
+  const el = document.createElement('div');
+  el.className = 'tooltip';
+  el.textContent = text;
 
   function position(): void {
     const { top, right, bottom } = node.getBoundingClientRect();
-    tooltip.style.top = `${(top + bottom) / 2}px`;
-    tooltip.style.left = `${right}px`;
+    el.style.top = `${(top + bottom) / 2}px`;
+    el.style.left = `${right}px`;
   }
 
   function append(): void {
-    document.body.appendChild(tooltip);
-    tooltip.style.opacity = '0';
-    setTimeout(() => (tooltip.style.opacity = '1'));
+    document.body.appendChild(el);
+    el.style.opacity = '0';
+    setTimeout(() => (el.style.opacity = '1'));
     position();
   }
 
   function remove(): void {
-    tooltip.remove();
+    el.remove();
   }
 
   const cancelMouseenter = listen(node, 'mouseenter', append);
@@ -48,7 +48,7 @@ export const Tooltip: SvelteAction = (node: HTMLElement, text: string) => {
     },
 
     update(newText: string) {
-      tooltip.textContent = newText;
+      el.textContent = newText;
     },
   };
 };

@@ -12,7 +12,7 @@ module.exports = {
     '^.+\\.svelte$': '@minna-ui/jest-config/transforms/svelte.js',
     '^.+\\.(csv|xml)$': '@minna-ui/jest-config/transforms/null.js',
   },
-  transformIgnorePatterns: ['node_modules/.+\\.(?!(mjs|esm?\\.js))$'],
+  transformIgnorePatterns: ['node_modules/.+\\.(?!esm?\\.)js$'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$',
   testPathIgnorePatterns: [
     '/__fixtures__/',
@@ -40,6 +40,9 @@ module.exports = {
     // Recommended in projects with CSS modules
     // '^.+\\.(p|post|s)?css$': 'identity-obj-proxy',
     '^##/(.*)$': '<rootDir>/src/$1',
+    // TODO: Submit issue to sucrase + remove once upstream is fixed
+    // Workaround for sucrase transform error
+    'eslint-utils': 'eslint-utils/index.js',
   },
   collectCoverageFrom: [
     '**/*.{html,js,jsx,mjs,svelte,ts,tsx}',

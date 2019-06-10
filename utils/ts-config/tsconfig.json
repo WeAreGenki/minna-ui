@@ -2,7 +2,7 @@
 
 {
   "compilerOptions": {
-    "target": "es2018", // Compatible with node v10
+    "target": "es2019", // Compatible with node v10
     "module": "esnext", // When building backend libs use `commonjs`
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

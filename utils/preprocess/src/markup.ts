@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
-import { PreprocessorGroup } from 'svelte/types/preprocess';
+import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
 
 export function minify(source: string, unsafe = false): string {
   let code = `${source}`;

@@ -4,7 +4,7 @@ import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
 import syntax from 'postcss-scss';
-import { Preprocessor } from 'svelte/types/preprocess';
+import { Preprocessor } from 'svelte/types/compiler/preprocess';
 
 interface StylePreprocessorOptions extends postcss.ProcessOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

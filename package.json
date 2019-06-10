@@ -7,7 +7,6 @@
     "bootstrap": "lerna bootstrap --hoist",
     "docs": "docsify serve ./docs",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
-    "update": "npm run upgrade-interactive --latest",
     "release": "npm run prepack && lerna publish",
     "release:next": "npm run prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
     "release:fix-failed": "lerna publish from-package",
@@ -24,8 +23,8 @@
     "lint:types": "tsc --noEmit",
     "test": "jest --notify --watch",
     "test-ci": "jest --coverage --runInBand --ci",
-    "report:browsers": "npm run browserslist",
-    "report:css": "npm run autoprefixer --info"
+    "report:browsers": "browserslist",
+    "report:css": "autoprefixer --info"
   },
   "dependencies": {
     "@minna-ui/browserslist-config": "file:utils/browserslist-config",

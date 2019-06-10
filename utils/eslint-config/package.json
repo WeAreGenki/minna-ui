@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/eslint-config",
-  "version": "0.25.1",
+  "version": "0.26.0",
   "description": "ESLint config presets for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

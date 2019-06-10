@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/postcss-config",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "description": "PostCSS config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

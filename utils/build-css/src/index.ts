@@ -8,7 +8,7 @@ import CleanCSS from 'clean-css';
 import fs from 'fs';
 import { basename, dirname, join } from 'path';
 import postcss from 'postcss';
-import postcssLoadConfig from 'postcss-load-config';
+import postcssrc from 'postcss-load-config';
 import { promisify } from 'util';
 
 const readFile = promisify(fs.readFile);
@@ -72,16 +72,11 @@ async function processCss({
 }: ProcessCssOpts): Promise<ProcessCssResult> {
   const src = await readFile(from, 'utf8');
 
-  const { options, plugins } = await postcssLoadConfig({
-    from,
-    map: {
-      inline: false,
-    },
-    to,
-  });
+  const ctx = { from, map: { inline: false }, to };
+  const source = banner + src;
 
-  const sourceCss = banner + src;
-  const result = await postcss(plugins).process(sourceCss, options);
+  const { options, plugins } = await postcssrc(ctx, from);
+  const result = await postcss(plugins).process(source, options);
 
   warn('PostCSS', 'WARN', result.warnings());
 

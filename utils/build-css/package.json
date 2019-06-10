@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
-    "prebuild": "yarn clean",
-    "clean": "rm -rf dist"
+    "prebuild": "rm -rf dist"
   },
   "bin": {
     "build-css": "cli/index.js"

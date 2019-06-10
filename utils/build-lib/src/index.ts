@@ -2,56 +2,25 @@
  * Minna UI lib package compiler.
  */
 
-// TODO: Implement --watch
-
-/* eslint-disable @typescript-eslint/camelcase, global-require, security/detect-object-injection, no-console, id-length */
+/* eslint-disable @typescript-eslint/camelcase, global-require, no-console, id-length */
 
 import { statSync } from 'fs';
 import mri from 'mri';
 import { join } from 'path';
-import * as rollup from 'rollup';
-import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
-// @ts-ignore - FIXME: It's ironic this package doesn't have types...
 import typescript from 'rollup-plugin-typescript';
 import { makeLegalIdentifier } from 'rollup-pluginutils';
-
-interface BuildLibResult {
-  main?: rollup.RollupOutput;
-  module?: rollup.RollupOutput;
-}
-
-function resolveEntryFile(cwd: string): string {
-  const files = [
-    'index.js',
-    'index.ts',
-    'index.jsx',
-    'index.tsx',
-    'src/index.js',
-    'src/index.ts',
-    'src/index.jsx',
-    'src/index.tsx',
-  ];
-  let result = '';
-  let index = 0;
-
-  while (!result && index < files.length) {
-    index += 1;
-
-    try {
-      const file = join(cwd, files[index]);
-      if (statSync(file)) result = file;
-    } catch (err) {}
-  }
-  if (!result) {
-    throw new Error("Couldn't find any entry files and src was not defined");
-  }
-
-  return result;
-}
+import { build } from './build';
+import { BuildLibResult } from './types';
+import { resolveEntryFile } from './utils';
+import { watch } from './watch';
 
 /**
  * Build a lib or simple package.
+ *
+ * Tip: Use a TypeScript `tsconfig.json` config to control output
+ * compatibility. For example, if you want compatibility with old browsers
+ * use `"target": "es5"`.
  *
  * @param env - Node `process.env`.
  * @param argv - Node `process.argv`.
@@ -59,7 +28,7 @@ function resolveEntryFile(cwd: string): string {
 export async function run(
   env: NodeJS.ProcessEnv,
   argv: string[] = [],
-): Promise<BuildLibResult> {
+): Promise<BuildLibResult | void> {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const pkgName = env.npm_package_name!;
   const pkgMain = env.npm_package_main;
@@ -76,12 +45,12 @@ export async function run(
   const pkg = await import(join(cwd, 'package.json'));
 
   const args = mri(argv.slice(2), {
-    alias: { m: 'sourcemap', s: 'src', w: 'watch' },
+    alias: { c: 'tsconfig', m: 'sourcemap', s: 'src', w: 'watch' },
     boolean: ['sourcemap', 'watch'],
-    default: { m: true },
+    default: { c: 'tsconfig.json', m: true },
   });
   const input = args.src || args._[0] || resolveEntryFile(cwd);
-  const { sourcemap } = args;
+  const { sourcemap, tsconfig, watch: watchMode } = args;
 
   const name = makeLegalIdentifier(pkgName);
   const external = Object.keys(pkg.dependencies || {}).concat(
@@ -90,77 +59,33 @@ export async function run(
   );
 
   const typescriptOpts = {
-    exclude: /\.css$/,
+    exclude: /\.(post|p)?css$/,
+    module: 'esnext',
+    target: 'es2019', // FIXME: Why is out TS not inheriting this from `@minna-ui/ts-config`?
     typescript: require('typescript'),
   };
 
-  try {
-    const tsConfigPath = join(cwd, 'tsconfig.json');
+  const tsConfigPath = join(cwd, tsconfig);
 
+  try {
     if (statSync(tsConfigPath)) {
-      // @ts-ignore - FIXME: Deal with missing types
+      // @ts-ignore - TODO: Correctly add the value in a way TS likes
       typescriptOpts.tsconfig = tsConfigPath;
     }
   } catch (err) {}
 
-  try {
-    let outputMain;
-    let outputModule;
+  const plugins = [commonjs(), typescript(typescriptOpts)];
 
-    if (pkgMain) {
-      const bundleMain = await rollup.rollup({
-        external,
-        input,
-        plugins: [
-          commonjs(),
-          typescript(typescriptOpts),
-          buble({
-            transforms: {
-              dangerousForOf: true,
-            },
-          }),
-        ],
-      });
+  const options = {
+    external,
+    input,
+    name,
+    pkgMain,
+    pkgModule,
+    pkgTypes,
+    plugins,
+    sourcemap,
+  };
 
-      const resultMain = bundleMain.write({
-        file: pkgMain,
-        format: 'commonjs',
-        name,
-        sourcemap,
-      });
-
-      outputMain = resultMain;
-    }
-
-    if (pkgModule) {
-      const bundleModule = await rollup.rollup({
-        external,
-        input,
-        plugins: [commonjs(), typescript(typescriptOpts)],
-      });
-
-      const resultModule = bundleModule.write({
-        file: pkgModule,
-        format: 'esm',
-        name,
-        sourcemap,
-      });
-
-      outputModule = resultModule;
-    }
-
-    // await here to capture any errors
-    const output = {
-      main: outputMain && (await outputMain),
-      module: outputModule && (await outputModule),
-    };
-
-    return output;
-  } catch (err) {
-    console.error('[build-lib]', err);
-
-    // we always want internal builds to fail on error
-    process.exitCode = 2;
-    throw err;
-  }
+  return watchMode ? watch(options) : build(options);
 }

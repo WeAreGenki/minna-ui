@@ -35,7 +35,12 @@ export async function run(
   const pkgModule = env.npm_package_module;
   const pkgTypes = env.npm_package_types;
 
-  if (!pkgModule) console.warn('packge.json#module is not defined');
+  if (!pkgMain && !pkgModule) {
+    throw new Error(
+      'You need to specify at least one of packge.json#main or packge.json#module',
+    );
+  }
+  if (!pkgMain) console.warn('packge.json#main is not defined');
   if (!pkgModule) console.warn('packge.json#module is not defined');
   if (!pkgTypes) console.warn('packge.json#types is not defined');
 
@@ -56,12 +61,13 @@ export async function run(
   const external = Object.keys(pkg.dependencies || {}).concat(
     Object.keys(pkg.peerDependencies || {}),
     Object.keys(pkg.optionalDependencies || {}),
+    require('module').builtinModules,
   );
 
   const typescriptOpts = {
     exclude: /\.(post|p)?css$/,
     module: 'esnext',
-    target: 'es2019', // FIXME: Why is out TS not inheriting this from `@minna-ui/ts-config`?
+    target: 'es2019', // FIXME: Why is this not inherited from `@minna-ui/ts-config`?
     typescript: require('typescript'),
   };
 

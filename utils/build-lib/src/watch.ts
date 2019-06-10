@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { watch as rollupWatch } from 'rollup';
 import { BuildLibProps } from './types';
 
@@ -45,6 +47,23 @@ export async function watch({
     // TODO: Generate `*.d.ts` files
   }
 
-  // @ts-ignore - We already check there's at least one file to build
-  rollupWatch(config);
+  // @ts-ignore - `config` will never be zero length
+  const watcher = rollupWatch(config);
+
+  console.log('Starting build in watch mode...');
+
+  watcher.on('event', (event) => {
+    switch (event.code) {
+      case 'END':
+        console.log(new Date(Date.now()), '- Generated new bundle/s');
+        break;
+
+      case 'FATAL':
+      case 'ERROR':
+        console.error(event.error);
+        break;
+
+      default:
+    }
+  });
 }

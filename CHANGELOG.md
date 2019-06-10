@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.26.0][] - 2019-06-11
+
+### Added
+
+- `@minna-ui/build-lib` - New internal package for building libs or simple packages. The advantage over `tsc` is bundles the output into a single file and builds multiple bundles (e.g. commonjs and ES modules). Also has a watch mode which builds multiple bundles (not possible with `tsc`). More improvements to come.
+
 ### Removed
 
 - `@minna-ui/ts-config` - Don't enable automatic type acquisition by default.
@@ -22,9 +28,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- We've switched from `yarn` to `npm`. Experimental and may be rolled back if there's any issues.
 - All packages which previously used `<package_dir>/lib/*` now use `<package_dir>/dist/*` instead. This maintains consistency between components and utils.
 - `@minna-ui/jest-config` - Disable CSS modules support by default. We mostly use Svelte which has an alternative.
 - `@minna-ui/navbar` - Logo slot is now the default slot; it's no longer required to use a named slot.
+- `@minna-ui/eslint-config` - General improvements.
 
 ## [0.25.1][] - 2019-06-08
 
@@ -804,7 +812,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.25.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.26.0...HEAD
+[0.26.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.25.1...v0.26.0
 [0.25.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.25.0...v0.25.1
 [0.25.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.24.1...v0.25.0
 [0.24.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.24.0...v0.24.1

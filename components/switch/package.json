@@ -34,9 +34,8 @@
     "types.d.ts"
   ],
   "devDependencies": {
-    "@minna-ui/build-component": "^0.25.0",
-    "@minna-ui/css": "^0.25.0",
-    "svelte": "3.5.1"
+    "@minna-ui/build-component": "file:../../utils/build-component",
+    "@minna-ui/css": "file:../../css"
   },
   "publishConfig": {
     "access": "public"

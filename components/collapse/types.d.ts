@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { SvelteComponent } from 'svelte/internal';
+import { SvelteComponent } from 'svelte/types/runtime/internal';
 
 /** @see https://svelte.dev/docs#Client-side_component_API */
 interface SvelteComponentOptions {

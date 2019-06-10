@@ -13,7 +13,10 @@
     "wearegenki"
   ],
   "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
   "files": [
+    "*.d.ts",
     "*.js"
   ],
   "peerDependencies": {
@@ -25,19 +28,19 @@
     "typescript": "^3.3.0"
   },
   "dependencies": {
-    "@minna-ui/browserslist-config": "^0.25.0",
-    "@minna-ui/eslint-config": "^0.25.1",
-    "@minna-ui/jest-config": "^0.25.0",
-    "@minna-ui/prettier-config": "^0.25.0",
-    "@minna-ui/remark-config": "^0.25.0",
-    "@minna-ui/rollup-plugin-dev-server": "^0.25.0",
-    "@minna-ui/rollup-plugin-emit-css": "^0.25.0",
-    "@minna-ui/rollup-plugin-emit-html": "^0.25.0",
-    "@minna-ui/rollup-plugin-postcss": "^0.25.0",
-    "@minna-ui/rollup-plugin-purgecss": "^0.25.0",
-    "@minna-ui/stylelint-config": "^0.25.0",
-    "@minna-ui/ts-config": "^0.25.0",
-    "@minna-ui/utils": "^0.25.0"
+    "@minna-ui/browserslist-config": "file:../browserslist-config",
+    "@minna-ui/eslint-config": "file:../eslint-config",
+    "@minna-ui/jest-config": "file:../jest-config",
+    "@minna-ui/prettier-config": "file:../prettier-config",
+    "@minna-ui/remark-config": "file:../remark-config",
+    "@minna-ui/rollup-plugin-dev-server": "file:../rollup-plugin-dev-server",
+    "@minna-ui/rollup-plugin-emit-css": "file:../rollup-plugin-emit-css",
+    "@minna-ui/rollup-plugin-emit-html": "file:../rollup-plugin-emit-html",
+    "@minna-ui/rollup-plugin-postcss": "file:../rollup-plugin-postcss",
+    "@minna-ui/rollup-plugin-purgecss": "file:../rollup-plugin-purgecss",
+    "@minna-ui/stylelint-config": "file:../stylelint-config",
+    "@minna-ui/ts-config": "file:../ts-config",
+    "@minna-ui/utils": "file:../utils"
   },
   "publishConfig": {
     "access": "public"

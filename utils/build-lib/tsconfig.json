@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "es2015",
+    "module": "commonjs",
     "paths": { "*": ["../../types/*"] },
     "outDir": "./dist"
   },

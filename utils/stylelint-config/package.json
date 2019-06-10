@@ -26,9 +26,6 @@
     "stylelint-high-performance-animation": "^1.2.1",
     "stylelint-order": "^3.0.0"
   },
-  "devDependencies": {
-    "@types/stylelint": "9.10.0"
-  },
   "publishConfig": {
     "access": "public"
   }

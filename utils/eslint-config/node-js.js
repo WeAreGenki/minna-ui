@@ -42,9 +42,9 @@ module.exports = {
   // eslint-disable-next-line sort-keys
   overrides: [
     {
-      // It's common to write unit tests in TS or include type declarations
+      // It's common to write unit tests in TS/ESM or include type declarations
       // even in JS projects so we handle that scenario
-      files: ['*.ts', '*.tsx', '*.d.ts'],
+      files: ['*.ts', '*.tsx', '*.d.ts', '*.mjs'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 2019,

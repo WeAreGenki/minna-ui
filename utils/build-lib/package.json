@@ -1,0 +1,31 @@
+{
+  "name": "@minna-ui/build-lib",
+  "version": "0.25.0",
+  "description": "Internal Minna UI package builder.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-lib",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "bin": {
+    "build-lib": "cli/index.js"
+  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "mri": "^1.1.4",
+    "rollup": "^1.14.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-pluginutils": "^2.8.1",
+    "tslib": "^1.9.3",
+    "typescript": "^3.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

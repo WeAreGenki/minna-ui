@@ -1,23 +1,9 @@
 /* eslint-disable no-restricted-syntax, security/detect-object-injection */
 
-// FIXME: Replace once svelte is fixed
-// import { PreprocessorGroup } from 'svelte/types/preprocess';
-import { MarkupPreprocessor } from './types';
+import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
 
-/**
- * Minna UI svelte markup preprocessor.
- * Reduces the whitespace in svelte components to a minimum.
- *
- * @param opts - User defined options.
- * @param opts.enabled - Enable preprocessor to transform HTML code.
- */
-export const markup = ({
-  enabled = true,
-  unsafe = true,
-} = {}): MarkupPreprocessor => ({ content }) => {
-  if (!enabled) return undefined;
-
-  let code = `${content}`;
+export function minify(source: string, unsafe = false): string {
+  let code = `${source}`;
   let count = 0;
 
   const tags = [
@@ -64,7 +50,26 @@ export const markup = ({
     code = code.replace(marker, blocks.get(marker));
   }
 
+  return code;
+}
+
+type MarkupPreprocessor = PreprocessorGroup['markup'];
+
+/**
+ * Minna UI svelte markup preprocessor.
+ * Reduces the whitespace in svelte components to a minimum.
+ *
+ * @param opts - User defined options.
+ * @param opts.enabled - Enable preprocessor to transform HTML code.
+ */
+export const markup = ({
+  enabled = true,
+  unsafe = true,
+  // @ts-ignore - FIXME: Contribute types fix upstream
+} = {}): MarkupPreprocessor => ({ content }) => {
+  if (!enabled) return null;
+
   return {
-    code,
+    code: minify(content, unsafe),
   };
 };

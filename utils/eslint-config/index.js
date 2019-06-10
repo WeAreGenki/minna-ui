@@ -153,6 +153,7 @@ module.exports = {
     ],
     'no-console': isProd ? ERROR : WARNING,
     'no-debugger': isProd ? ERROR : WARNING,
+    'no-empty': [ERROR, { allowEmptyCatch: true }],
     'no-return-assign': [ERROR, 'except-parens'],
     'no-useless-constructor': OFF, // handled via `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],

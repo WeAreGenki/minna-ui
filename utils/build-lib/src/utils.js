@@ -1,9 +1,15 @@
 /* eslint-disable security/detect-object-injection */
 
-import { statSync } from 'fs';
-import { join } from 'path';
+'use strict';
 
-export function resolveEntryFile(cwd: string): string {
+const { statSync } = require('fs');
+const { join } = require('path');
+
+/**
+ * @param {string} cwd - Current working directory.
+ * @returns {string} Path to the matching entry file.
+ */
+function resolveEntryFile(cwd) {
   const files = [
     'index.js',
     'index.ts',
@@ -35,3 +41,5 @@ export function resolveEntryFile(cwd: string): string {
 
   return result;
 }
+
+exports.resolveEntryFile = resolveEntryFile;

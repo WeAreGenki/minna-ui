@@ -1,7 +1,15 @@
-import { rollup } from 'rollup';
-import { BuildLibProps, BuildLibResult } from './types';
+'use strict';
 
-export async function build({
+const { rollup } = require('rollup');
+
+/** @typedef {import('./types').BuildLibProps} BuildLibProps */
+/** @typedef {import('./types').BuildLibResult} BuildLibResult */
+
+/**
+ * @param {BuildLibProps} options - Shared config options.
+ * @returns {Promise<BuildLibResult>} Resulting output from the builds.
+ */
+async function build({
   external,
   input,
   name,
@@ -10,7 +18,7 @@ export async function build({
   pkgTypes,
   plugins,
   sourcemap,
-}: BuildLibProps): Promise<BuildLibResult> {
+}) {
   try {
     let outputMain;
     let outputModule;
@@ -69,3 +77,5 @@ export async function build({
     throw err;
   }
 }
+
+exports.build = build;

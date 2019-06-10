@@ -2,18 +2,22 @@
  * Minna UI lib package compiler.
  */
 
+/* global NodeJS */
 /* eslint-disable @typescript-eslint/camelcase, global-require, no-console, id-length */
 
-import { statSync } from 'fs';
-import mri from 'mri';
-import { join } from 'path';
-import commonjs from 'rollup-plugin-commonjs';
-import typescript from 'rollup-plugin-typescript';
-import { makeLegalIdentifier } from 'rollup-pluginutils';
-import { build } from './build';
-import { BuildLibResult } from './types';
-import { resolveEntryFile } from './utils';
-import { watch } from './watch';
+'use strict';
+
+const { statSync } = require('fs');
+const mri = require('mri');
+const { join } = require('path');
+const commonjs = require('rollup-plugin-commonjs');
+const typescript = require('rollup-plugin-typescript');
+const { makeLegalIdentifier } = require('rollup-pluginutils');
+const { build } = require('./build');
+const { resolveEntryFile } = require('./utils');
+const { watch } = require('./watch');
+
+/** @typedef {import('./types').BuildLibResult} BuildLibResult */
 
 /**
  * Build a lib or simple package.
@@ -22,19 +26,42 @@ import { watch } from './watch';
  * compatibility. For example, if you want compatibility with old browsers
  * use `"target": "es5"`.
  *
- * @param env - Node `process.env`.
- * @param argv - Node `process.argv`.
+ * @param {NodeJS.ProcessEnv} env - Node `process.env`.
+ * @param {string[]} [argv] - Node `process.argv`.
+ * @returns {Promise<BuildLibResult | undefined>} Resulting output when running
+ * in build mode. When running in watch mode this will never resolve.
  */
-export async function run(
-  env: NodeJS.ProcessEnv,
-  argv: string[] = [],
-): Promise<BuildLibResult | void> {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const pkgName = env.npm_package_name!;
+async function run(env, argv = []) {
+  const args = mri(argv.slice(2), {
+    alias: { c: 'tsconfig', h: 'help', m: 'sourcemap', w: 'watch' },
+    boolean: ['help', 'sourcemap', 'watch'],
+    default: { c: 'tsconfig.json', m: true },
+  });
+  const { help, sourcemap, tsconfig, watch: watchMode } = args;
+
+  if (help) {
+    console.log(`
+Build a lib or simple package. Typically zero additional configuration is
+required because your package.json is the config.
+
+USAGE:
+  build-lib [src] [options]
+
+OPTIONS
+  -h --help       Print this help message and exit.
+  -w --watch      Continuously watch files for changes and rebuild.
+  -c --tsconfig   Custom path to your TypeScript config (default tsconfig.json)
+  -m --sourcemap  Generate code source maps (default true)
+`);
+    return;
+  }
+
+  const pkgName = env.npm_package_name;
   const pkgMain = env.npm_package_main;
   const pkgModule = env.npm_package_module;
   const pkgTypes = env.npm_package_types;
 
+  if (!pkgName) throw new Error('packge.json#name is not defined');
   if (!pkgMain && !pkgModule) {
     throw new Error(
       'You need to specify at least one of packge.json#main or packge.json#module',
@@ -47,16 +74,9 @@ export async function run(
   process.env.NODE_ENV = env.NODE_ENV || 'production';
 
   const cwd = process.cwd();
-  const pkg = await import(join(cwd, 'package.json'));
+  const pkg = require(join(cwd, 'package.json')); // eslint-disable-line
 
-  const args = mri(argv.slice(2), {
-    alias: { c: 'tsconfig', m: 'sourcemap', s: 'src', w: 'watch' },
-    boolean: ['sourcemap', 'watch'],
-    default: { c: 'tsconfig.json', m: true },
-  });
-  const input = args.src || args._[0] || resolveEntryFile(cwd);
-  const { sourcemap, tsconfig, watch: watchMode } = args;
-
+  const input = args._[0] || resolveEntryFile(cwd);
   const name = makeLegalIdentifier(pkgName);
   const external = Object.keys(pkg.dependencies || {}).concat(
     Object.keys(pkg.peerDependencies || {}),
@@ -93,5 +113,8 @@ export async function run(
     sourcemap,
   };
 
+  // eslint-disable-next-line consistent-return
   return watchMode ? watch(options) : build(options);
 }
+
+exports.run = run;

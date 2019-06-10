@@ -1,9 +1,16 @@
 /* eslint-disable no-console */
 
-import { watch as rollupWatch } from 'rollup';
-import { BuildLibProps } from './types';
+'use strict';
 
-export async function watch({
+const { watch: rollupWatch } = require('rollup');
+
+/** @typedef {import('./types').BuildLibProps} BuildLibProps */
+
+/**
+ * @param {BuildLibProps} options - Shared config options.
+ * @returns {Promise} Never actually resolves as it keeps watching indefinitely.
+ */
+async function watch({
   external,
   input,
   name,
@@ -12,7 +19,7 @@ export async function watch({
   pkgTypes,
   plugins,
   sourcemap,
-}: BuildLibProps): Promise<void> {
+}) {
   const config = [];
 
   if (pkgMain) {
@@ -67,3 +74,5 @@ export async function watch({
     }
   });
 }
+
+exports.watch = watch;

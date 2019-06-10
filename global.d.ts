@@ -27,7 +27,7 @@ interface ComponentOptions {
 }
 
 declare module '*.svelte' {
-  import { SvelteComponent } from 'svelte/internal';
+  import { SvelteComponent } from 'svelte/types/runtime/internal';
 
   class Component extends SvelteComponent {
     public constructor(options?: ComponentOptions);

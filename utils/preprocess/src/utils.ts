@@ -1,7 +1,4 @@
-import { markup } from './markup';
-import { PreprocessResults } from './types';
-
-const minify = markup();
+import { minify } from './markup';
 
 /**
  * Minify whitespace in HTML contained in a tagged template literal.
@@ -11,12 +8,8 @@ export function html(strings: TemplateStringsArray, ...values: any[]): string {
   let code = '';
 
   strings.forEach((string, index) => {
-    // eslint-disable-next-line security/detect-object-injection
-    code += string + (values[index] || '');
+    code += `${string}${values[index] || ''}`;
   });
 
-  const result = minify({ content: code }) as PreprocessResults;
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return result!.code;
+  return minify(code, true);
 }

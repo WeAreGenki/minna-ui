@@ -4,9 +4,7 @@ import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssLoadConfig from 'postcss-load-config';
 import syntax from 'postcss-scss';
-// FIXME: Replace once svelte is fixed
-// import { Preprocessor } from 'svelte/types/preprocess';
-import { Preprocessor } from './types';
+import { Preprocessor } from 'svelte/types/preprocess';
 
 interface StylePreprocessorOptions extends postcss.ProcessOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,15 +13,17 @@ interface StylePreprocessorOptions extends postcss.ProcessOptions {
 
 /**
  * Minna UI svelte style preprocessor.
+ * Processes style blocks with a `type="text/postcss"` attribute using PostCSS.
  *
  * @param opts - PostCSS options.
  */
 export const style = (
   opts: StylePreprocessorOptions = {},
+  // @ts-ignore - FIXME: Contribute types fix upstream
 ): Preprocessor => async ({ attributes, content, filename }) => {
-  if (attributes.type !== 'text/postcss') return;
+  if (attributes.type !== 'text/postcss') return null;
 
-  // merge user provided options into default context
+  // Merge user provided options into default context
   const context = merge(
     {
       from: filename,
@@ -37,11 +37,8 @@ export const style = (
     opts,
   );
 
-  /**
-   * Compile PostCSS code into CSS.
-   */
   try {
-    const { plugins, options } = await postcssLoadConfig(context);
+    const { plugins, options } = await postcssLoadConfig(context, filename);
     const result = await postcss(plugins).process(content, options);
 
     for (const err of result.warnings()) {
@@ -51,14 +48,13 @@ export const style = (
 
     const dependencies: string[] = [];
 
-    // register dependencies so rollup can watch them for changes
+    // Register dependencies for Rollup to detect changes
     for (const msg of result.messages) {
       if (msg.type === 'dependency') {
         dependencies.push(msg.file);
       }
     }
 
-    // eslint-disable-next-line consistent-return
     return {
       code: result.css,
       dependencies,
@@ -66,7 +62,8 @@ export const style = (
     };
   } catch (err) {
     if (err.name === 'CssSyntaxError') {
-      process.stderr.write(err.message + err.showSourceCode());
+      const { message, showSourceCode } = err as postcss.CssSyntaxError;
+      process.stderr.write(message + showSourceCode());
     } else {
       // eslint-disable-next-line no-console
       throw console.error(err);

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.26.1][] - 2019-06-11
+
+### Fixed
+
+- `minna-tools` - Missing exports.
+
 ## [0.26.0][] - 2019-06-11
 
 ### Added

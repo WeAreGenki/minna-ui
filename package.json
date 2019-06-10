@@ -4,6 +4,7 @@
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "license": "Apache-2.0",
   "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
     "docs": "docsify serve ./docs",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
     "update": "npm run upgrade-interactive --latest",

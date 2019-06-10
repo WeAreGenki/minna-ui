@@ -33,16 +33,11 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
     "deepmerge": "^3.1.0",
-    "postcss-advanced-variables": "MaxMilton/postcss-advanced-variables#precompiled",
+    "postcss-advanced-variables": "github:MaxMilton/postcss-advanced-variables#precompiled",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-nested": "^4.1.2",
     "postcss-use": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/autoprefixer": "9.5.0",
-    "@types/cssnano": "4.0.0",
-    "@types/postcss-nested": "4.1.0"
   },
   "publishConfig": {
     "access": "public"

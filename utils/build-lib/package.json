@@ -25,11 +25,6 @@
     "tslib": "^1.9.3",
     "typescript": "^3.5.1"
   },
-  "devDependencies": {
-    "@types/mri": "1.1.0",
-    "@types/node": "12.0.7",
-    "del": "4.1.1"
-  },
   "publishConfig": {
     "access": "public"
   }

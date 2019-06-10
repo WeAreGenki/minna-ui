@@ -22,8 +22,7 @@
     "build": "yarn build:css && yarn build:js",
     "build:js": "build-lib",
     "build:css": "build-css src dist",
-    "prebuild": "yarn clean",
-    "clean": "rm -rf dist"
+    "prebuild": "rm -rf dist"
   },
   "style": "dist/index.css",
   "main": "dist/index.js",
@@ -36,9 +35,9 @@
     "svelte": "^3.0.0"
   },
   "devDependencies": {
-    "@minna-ui/build-css": "0.25.0",
-    "@minna-ui/build-lib": "0.25.0",
-    "@minna-ui/css": "0.25.0"
+    "@minna-ui/build-css": "file:../../utils/build-css",
+    "@minna-ui/build-lib": "file:../../utils/build-lib",
+    "@minna-ui/css": "file:../../css"
   },
   "publishConfig": {
     "access": "public"

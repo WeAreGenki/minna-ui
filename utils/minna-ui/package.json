@@ -33,14 +33,14 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/collapse": "^0.25.0",
-    "@minna-ui/css": "^0.25.0",
-    "@minna-ui/navbar": "^0.25.0",
-    "@minna-ui/postcss-config": "^0.25.0",
-    "@minna-ui/preprocess": "^0.25.0",
-    "@minna-ui/select": "^0.25.0",
-    "@minna-ui/switch": "^0.25.0",
-    "@minna-ui/tooltip": "^0.25.0"
+    "@minna-ui/collapse": "file:../../components/collapse",
+    "@minna-ui/css": "file:../../css",
+    "@minna-ui/navbar": "file:../../components/navbar",
+    "@minna-ui/postcss-config": "file:../postcss-config",
+    "@minna-ui/preprocess": "file:../preprocess",
+    "@minna-ui/select": "file:../../components/select",
+    "@minna-ui/switch": "file:../../components/switch",
+    "@minna-ui/tooltip": "file:../../components/tooltip"
   },
   "publishConfig": {
     "access": "public"

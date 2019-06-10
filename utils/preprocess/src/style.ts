@@ -21,7 +21,7 @@ export const style = (
   opts: StylePreprocessorOptions = {},
   // @ts-ignore - FIXME: Contribute types fix upstream
 ): Preprocessor => async ({ attributes, content, filename }) => {
-  if (attributes.type !== 'text/postcss') return null;
+  if (attributes.type !== 'text/postcss') return;
 
   // Merge user provided options into default context
   const context = merge(
@@ -55,6 +55,7 @@ export const style = (
       }
     }
 
+    // eslint-disable-next-line consistent-return
     return {
       code: result.css,
       dependencies,

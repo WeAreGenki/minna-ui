@@ -8,4 +8,4 @@
 /utils/minna-css/*.map
 dist/
 node_modules/
-package-lock.json*
+yarn.lock

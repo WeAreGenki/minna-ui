@@ -2,7 +2,7 @@
 
 import merge from 'deepmerge';
 import postcss from 'postcss';
-import postcssLoadConfig from 'postcss-load-config';
+import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
 import { Preprocessor } from 'svelte/types/compiler/preprocess';
 
@@ -38,7 +38,7 @@ export const style = (
   );
 
   try {
-    const { plugins, options } = await postcssLoadConfig(context, filename);
+    const { plugins, options } = await postcssrc(context, filename);
     const result = await postcss(plugins).process(content, options);
 
     for (const err of result.warnings()) {

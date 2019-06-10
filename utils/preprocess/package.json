@@ -21,8 +21,7 @@
   "scripts": {
     "dev": "tsc --watch --preserveWatchOutput",
     "build": "tsc",
-    "prebuild": "yarn clean",
-    "clean": "rm -rf dist"
+    "prebuild": "rm -rf dist"
   },
   "sideEffects": false,
   "main": "dist/index.js",
@@ -39,9 +38,6 @@
     "deepmerge": "^3.1.0",
     "postcss-load-config": "^2.0.0",
     "postcss-scss": "^2.0.0"
-  },
-  "devDependencies": {
-    "postcss-nested": "4.1.2"
   },
   "publishConfig": {
     "access": "public"

@@ -20,8 +20,5 @@
     "**/*.md",
     "**/dist/**",
     "**/test/**"
-  ],
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "registry": "https://registry.npmjs.org/"
+  ]
 }

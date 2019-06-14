@@ -16,7 +16,7 @@ aliases:
     run: if [[ "$(npm -v)" != "$(npm v npm dist-tags.latest)" ]]; then npm i -g npm@latest; fi
 
   - &build-dependencies
-    run: npx lerna run build --scope '@minna-ui/preprocess' --scope '@minna-ui/postcss-config' --scope '@minna-ui/rollup-plugin-*'
+    run: npx lerna run build
 
 version: 2
 jobs:

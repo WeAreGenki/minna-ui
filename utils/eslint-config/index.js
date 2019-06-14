@@ -84,7 +84,11 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': [
       ERROR,
-      { allowExpressions: true, allowTypedFunctionExpressions: true },
+      {
+        allowExpressions: true,
+        allowHigherOrderFunctions: true,
+        allowTypedFunctionExpressions: true,
+      },
     ],
     '@typescript-eslint/indent': [
       ERROR,
@@ -228,7 +232,7 @@ module.exports = {
         '*.test.tsx',
       ],
       // `extends` aren't allowed in overrides so inject the config manually
-      // @ts-ignore - Don't care about types here
+      // @ts-ignore - We don't need types here
       ...require('eslint-plugin-jest').configs.recommended, // eslint-disable-line global-require
       plugins: ['jest', 'import'],
       env: {

@@ -9,7 +9,7 @@ aliases:
 
   - &save-cache
     paths:
-      - node_modules
+      - "$HOME"/.npm
     key: v3-dependencies-{{ .Branch }}-{{ checksum "package-lock.json" }}
 
   - &update-npm

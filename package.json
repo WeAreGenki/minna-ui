@@ -3,20 +3,26 @@
   "private": true,
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "license": "Apache-2.0",
+  "workspaces": [
+    "components/*",
+    "css",
+    "utils/*"
+  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
     "docs": "docsify serve ./docs",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
-    "release": "npm run prepack && lerna publish",
-    "release:next": "npm run prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
+    "release": "yarn prepack && lerna publish",
+    "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
     "release:fix-failed": "lerna publish from-package",
-    "prerelease": "npm run lint && npm run test-ci",
-    "prerelease:next": "npm run prerelease",
-    "prepack": "npm run build && npm run predocs",
+    "prerelease": "yarn lint && yarn test-ci",
+    "prerelease:next": "yarn prerelease",
+    "prepack": "yarn build && yarn predocs",
     "build": "lerna run build --stream",
-    "prebuild": "npm run clean",
+    "prebuild": "yarn clean",
     "clean": "lerna clean --yes",
-    "lint": "npm run lint:md && npm run lint:css && npm run lint:js && npm run lint:types",
+    "prepare": "lerna bootstrap",
+    "preinstall": "node scripts/check-yarn.js",
+    "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",
     "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}",
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
@@ -25,35 +31,6 @@
     "test-ci": "jest --coverage --runInBand --ci",
     "report:browsers": "browserslist",
     "report:css": "autoprefixer --info"
-  },
-  "dependencies": {
-    "@minna-ui/browserslist-config": "file:utils/browserslist-config",
-    "@minna-ui/build-component": "file:utils/build-component",
-    "@minna-ui/build-css": "file:utils/build-css",
-    "@minna-ui/build-lib": "file:utils/build-lib",
-    "@minna-ui/collapse": "file:components/collapse",
-    "@minna-ui/css": "file:css",
-    "@minna-ui/eslint-config": "file:utils/eslint-config",
-    "@minna-ui/jest-config": "file:utils/jest-config",
-    "@minna-ui/navbar": "file:components/navbar",
-    "@minna-ui/postcss-config": "file:utils/postcss-config",
-    "@minna-ui/preprocess": "file:utils/preprocess",
-    "@minna-ui/prettier-config": "file:utils/prettier-config",
-    "@minna-ui/remark-config": "file:utils/remark-config",
-    "@minna-ui/rollup-plugin-dev-server": "file:utils/rollup-plugin-dev-server",
-    "@minna-ui/rollup-plugin-emit-css": "file:utils/rollup-plugin-emit-css",
-    "@minna-ui/rollup-plugin-emit-html": "file:utils/rollup-plugin-emit-html",
-    "@minna-ui/rollup-plugin-postcss": "file:utils/rollup-plugin-postcss",
-    "@minna-ui/rollup-plugin-purgecss": "file:utils/rollup-plugin-purgecss",
-    "@minna-ui/select": "file:components/select",
-    "@minna-ui/stylelint-config": "file:utils/stylelint-config",
-    "@minna-ui/switch": "file:components/switch",
-    "@minna-ui/tooltip": "file:components/tooltip",
-    "@minna-ui/ts-config": "file:utils/ts-config",
-    "@minna-ui/utils": "file:utils/utils",
-    "minna-css": "file:utils/minna-css",
-    "minna-tools": "file:utils/minna-tools",
-    "minna-ui": "file:utils/minna-ui"
   },
   "devDependencies": {
     "@types/autoprefixer": "9.5.0",
@@ -163,8 +140,8 @@
     "dist",
     "docs/index.html",
     "node_modules",
-    "package-lock.json",
-    "test/coverage"
+    "test/coverage",
+    "yarn.lock"
   ],
   "jest": {
     "preset": "@minna-ui/jest-config",
@@ -184,6 +161,6 @@
   },
   "engines": {
     "node": ">=12.4.0",
-    "npm": ">=6.9.0"
+    "yarn": ">=1.16.0"
   }
 }

@@ -1,10 +1,6 @@
 {
   "version": "0.26.1",
-  "packages": [
-    "components/*",
-    "css",
-    "utils/*"
-  ],
+  "packages": ["components/*", "css", "utils/*"],
   "command": {
     "publish": {
       "allowBranch": "master"
@@ -24,5 +20,8 @@
     "**/*.md",
     "**/dist/**",
     "**/test/**"
-  ]
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "registry": "https://registry.npmjs.org/"
 }

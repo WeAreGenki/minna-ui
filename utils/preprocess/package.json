@@ -39,6 +39,9 @@
     "postcss-load-config": "^2.0.0",
     "postcss-scss": "^2.0.0"
   },
+  "devDependencies": {
+    "postcss-nested": "4.1.2"
+  },
   "publishConfig": {
     "access": "public"
   }

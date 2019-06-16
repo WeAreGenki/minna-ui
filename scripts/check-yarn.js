@@ -35,6 +35,7 @@
  */
 
 if (process.env.npm_execpath) {
+  // eslint-disable-next-line global-require
   const execpath = require('path').posix.normalize(process.env.npm_execpath);
 
   if (

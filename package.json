@@ -185,12 +185,5 @@
   "engines": {
     "node": ">=12.4.0",
     "npm": ">=6.9.0"
-  },
-  "os": [
-    "!win32",
-    "darwin",
-    "freebsd",
-    "linux",
-    "openbsd"
-  ]
+  }
 }

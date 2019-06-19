@@ -80,7 +80,7 @@
     "remark-cli": "6.0.1",
     "rollup": "1.15.6",
     "stylelint": "10.1.0",
-    "svelte": "3.5.1",
+    "svelte": "3.5.2",
     "tslib": "1.10.0",
     "typescript": "3.5.2"
   },

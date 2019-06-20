@@ -32,6 +32,9 @@
     "rollup-plugin-svelte": "^5.1.0",
     "rollup-plugin-terser": "^5.0.0"
   },
+  "devDependencies": {
+    "del": "4.1.1"
+  },
   "publishConfig": {
     "access": "public"
   }

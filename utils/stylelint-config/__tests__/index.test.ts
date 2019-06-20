@@ -49,7 +49,7 @@ describe('Stylelint config', () => {
     const output = stylelint.lint(stylelintOpts);
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBeFalsy();
+    expect(result.results[0].errored).toBe(false);
     expect(result.results[0].warnings).toHaveLength(0);
   });
 
@@ -61,7 +61,7 @@ describe('Stylelint config', () => {
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].errored).toBe(true);
     expect(result.results[0].warnings).not.toHaveLength(0);
   });
 
@@ -73,9 +73,9 @@ describe('Stylelint config', () => {
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].errored).toBe(true);
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
-    expect(result.results[0].warnings[0].rule).toEqual('CssSyntaxError');
+    expect(result.results[0].warnings[0].rule).toBe('CssSyntaxError');
   });
 
   it('detects invalid CSS property order', async () => {
@@ -84,25 +84,28 @@ describe('Stylelint config', () => {
       code: sourceOrderInvalid,
       config,
     });
-    expect(result.results[0].errored).toBeTruthy();
+    expect(result.results[0].errored).toBe(true);
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
-    expect(result.results[0].warnings[0].rule).toEqual('order/properties-order');
+    expect(result.results[0].warnings[0].rule).toBe('order/properties-order');
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
-    expect(result.results[0].warnings[1].rule).toEqual('order/properties-order');
+    expect(result.results[0].warnings[1].rule).toBe('order/properties-order');
   });
 
   it('has no config parse errors', async () => {
+    expect.assertions(1);
     const result = await stylelint.lint(stylelintOpts);
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].parseErrors).toHaveLength(0);
   });
 
   it('has no config deprecations', async () => {
+    expect.assertions(1);
     const result = await stylelint.lint(stylelintOpts);
     expect(result.results[0].deprecations).toHaveLength(0);
   });
 
   it('has no invalid config options', async () => {
+    expect.assertions(1);
     const result = await stylelint.lint(stylelintOpts);
     expect(result.results[0].invalidOptionWarnings).toHaveLength(0);
   });

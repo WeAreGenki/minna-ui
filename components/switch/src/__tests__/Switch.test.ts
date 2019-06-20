@@ -10,7 +10,7 @@ describe('Switch component', () => {
       const target = document.createElement('div');
       new Switch({ target });
       const el = target.querySelector('.switch')!;
-      expect(el.getAttribute('tabindex')).toEqual('0');
+      expect(el.getAttribute('tabindex')).toBe('0');
       expect(el.getAttribute('disabled')).toBeNull();
       expect(el.getAttribute('required')).toBeNull();
       expect(document.querySelector('.switch-checked')).toBeNull();
@@ -29,7 +29,7 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
   });
 
@@ -42,7 +42,7 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(false);
+    expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
   });
 
@@ -56,12 +56,12 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.textOn).toEqual('YES');
-    expect(component.$$.ctx.textOff).toEqual('NO');
+    expect(component.textOn).toBe('YES');
+    expect(component.textOff).toBe('NO');
     const switchOn = target.querySelector('.switch-on')!;
     const switchOff = target.querySelector('.switch-off')!;
-    expect(switchOn.innerHTML).toEqual('YES');
-    expect(switchOff.innerHTML).toEqual('NO');
+    expect(switchOn.innerHTML).toBe('YES');
+    expect(switchOff.innerHTML).toBe('NO');
   });
 
   it('renders with mini prop', () => {
@@ -73,7 +73,7 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.mini).toBeTruthy();
+    expect(component.mini).toBe(true);
     expect(target.querySelector('.switch-mini')).not.toBeNull();
   });
 
@@ -86,9 +86,9 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.disabled).toBeTruthy();
+    expect(component.disabled).toBe(true);
     expect(target.querySelector('.switch-disabled')).not.toBeNull();
-    expect(target.querySelector('.switch')!.getAttribute('tabindex')).toEqual('-1');
+    expect(target.querySelector('.switch')!.getAttribute('tabindex')).toBe('-1');
   });
 
   it('toggles class when value changes', async () => {
@@ -100,7 +100,7 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(false);
+    expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
     component.$set({ value: true });
     await tick();
@@ -119,12 +119,12 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
     const el = target.querySelector<HTMLDivElement>('.switch')!;
     el.click();
     await tick();
-    expect(component.$$.ctx.value).toEqual(false);
+    expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
   });
 
@@ -138,12 +138,12 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
     const el = target.querySelector<HTMLDivElement>('.switch')!;
     el.click();
     await tick();
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
   });
 
@@ -156,18 +156,18 @@ describe('Switch component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.$$.ctx.handleKeyDown(event1);
+    component.handleKeyDown(event1);
     await tick();
-    expect(component.$$.ctx.value).toEqual(false);
+    expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
     // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
-    component.$$.ctx.handleKeyDown(event2);
+    component.handleKeyDown(event2);
     await tick();
-    expect(component.$$.ctx.value).toEqual(true);
+    expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
   });
 
@@ -181,18 +181,19 @@ describe('Switch component', () => {
       target,
     });
     const event1 = new KeyboardEvent('keydown', { key: ' ' });
-    component.$$.ctx.handleKeyDown(event1);
-    expect(component.$$.ctx.value).toEqual(false);
+    component.handleKeyDown(event1);
+    expect(component.value).toBe(false);
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    component.$$.ctx.handleKeyDown(event2);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event2);
+    expect(component.value).toBe(true);
     // @ts-ignore - keyCode does actually exist!
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
-    component.$$.ctx.handleKeyDown(event3);
-    expect(component.$$.ctx.value).toEqual(false);
+    component.handleKeyDown(event3);
+    expect(component.value).toBe(false);
   });
 
   it('does not toggle on key press when disabled', () => {
+    expect.assertions(1);
     const target = document.createElement('div');
     const component = new Switch({
       props: {
@@ -202,8 +203,8 @@ describe('Switch component', () => {
       target,
     });
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.$$.ctx.handleKeyDown(event);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event);
+    expect(component.value).toBe(true);
   });
 
   it('does not toggle on invalid key press', () => {
@@ -217,18 +218,18 @@ describe('Switch component', () => {
     });
     const spy = jest.spyOn(component.$$.ctx, 'toggle');
     const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
-    component.$$.ctx.handleKeyDown(event1);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event1);
+    expect(component.value).toBe(true);
     // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
-    component.$$.ctx.handleKeyDown(event2);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event2);
+    expect(component.value).toBe(true);
     const event3 = new KeyboardEvent('keydown', { key: '' });
-    component.$$.ctx.handleKeyDown(event3);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event3);
+    expect(component.value).toBe(true);
     const event4 = new KeyboardEvent('keydown');
-    component.$$.ctx.handleKeyDown(event4);
-    expect(component.$$.ctx.value).toEqual(true);
+    component.handleKeyDown(event4);
+    expect(component.value).toBe(true);
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });

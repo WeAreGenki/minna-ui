@@ -66,6 +66,9 @@ module.exports = {
         ],
       },
     },
+    jsdoc: {
+      matchingFileName: 'example.md',
+    },
   },
   rules: {
     /* eslint-enable sort-keys */
@@ -143,6 +146,7 @@ module.exports = {
     'jsdoc/require-description-complete-sentence': WARNING,
     'jsdoc/require-hyphen-before-param-description': WARNING,
     'jsdoc/require-jsdoc': OFF, // too annoying
+    'jsdoc/require-returns': [WARNING, { forceReturnsWithAsync: true }],
     'max-len': [
       ERROR,
       {
@@ -246,6 +250,24 @@ module.exports = {
             peerDependencies: true,
           },
         ],
+        'jest/consistent-test-it': ERROR,
+        'jest/expect-expect': ERROR,
+        'jest/lowercase-name': [WARNING, { ignore: ['describe'] }],
+        'jest/no-commented-out-tests': WARNING,
+        'jest/no-empty-title': ERROR,
+        'jest/no-large-snapshots': WARNING,
+        'jest/no-test-callback': WARNING,
+        'jest/no-test-return-statement': WARNING,
+        'jest/no-truthy-falsy': ERROR,
+        'jest/prefer-called-with': WARNING,
+        'jest/prefer-expect-assertions': WARNING,
+        'jest/prefer-spy-on': WARNING,
+        'jest/prefer-strict-equal': WARNING,
+        'jest/prefer-to-be-null': ERROR,
+        'jest/prefer-to-be-undefined': ERROR,
+        'jest/prefer-to-contain': ERROR,
+        'jest/prefer-to-have-length': ERROR,
+        'jest/prefer-todo': ERROR,
         'max-len': [
           ERROR,
           {
@@ -260,6 +282,14 @@ module.exports = {
           },
         ],
         'no-new': OFF, // allow testing constructors
+      },
+    },
+
+    // unit test snapshots
+    {
+      files: ['*.snap'],
+      rules: {
+        quotes: OFF,
       },
     },
 
@@ -298,7 +328,8 @@ module.exports = {
     {
       files: ['*.md'],
       rules: {
-        // turns off rules that don't make sense in code snippets
+        // disable rules that don't make sense in code snippets
+        '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,
         strict: OFF,

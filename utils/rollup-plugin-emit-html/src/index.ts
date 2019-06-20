@@ -26,7 +26,6 @@ interface EmitHtmlOptions {
    * Perform output code optimisations (e.g. CSS minification). You can
    * optionally use an object to pass through options to the optimizer/s.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   optimize?: boolean | CleanCSS.OptionsOutput;
   /** Attribute/s to add to script tag. */
   scriptAttr?: string;

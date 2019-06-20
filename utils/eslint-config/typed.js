@@ -10,8 +10,6 @@
  * @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
  */
 
-/* eslint-disable sort-keys */
-
 'use strict';
 
 const WARNING = 1;

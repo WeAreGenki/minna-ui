@@ -4,7 +4,7 @@
 
 // TODO: Inject page reload script into HTML
 
-/* eslint-disable no-console, security/detect-object-injection */
+/* eslint-disable no-console */
 
 import { log } from '@wearegenki/node-utils';
 import merge from 'deepmerge';

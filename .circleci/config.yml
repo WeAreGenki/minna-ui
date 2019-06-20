@@ -3,20 +3,14 @@
 aliases:
   - &restore-cache
     keys:
-      - v3-dependencies-{{ .Branch }}-{{ checksum "package-lock.json" }}
-      - v3-dependencies-{{ .Branch }}-
-      - v3-dependencies-
+      - v4-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - v4-dependencies-{{ .Branch }}-
+      - v4-dependencies-
 
   - &save-cache
     paths:
-      - $HOME/.npm
-    key: v3-dependencies-{{ .Branch }}-{{ checksum "package-lock.json" }}
-
-  - &update-npm
-    run: if [[ "$(npm -v)" != "$(npm v npm dist-tags.latest)" ]]; then npm i -g npm@latest; fi
-
-  - &build-dependencies
-    run: npx lerna run build
+      - node_modules
+    key: v4-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
 version: 2
 jobs:
@@ -27,13 +21,12 @@ jobs:
     steps:
       - checkout
       - restore-cache: *restore-cache
-      - *update-npm
-      - run: npm ci
+      - run: yarn install --frozen-lockfile
       - save-cache: *save-cache
-      - *build-dependencies
-      - run: npm run lint
-      - run: npm run test-ci
-      - run: npx codecov
+      - run: yarn build
+      - run: yarn run lint
+      - run: yarn run test-ci
+      - run: yarn codecov
       - store_artifacts:
           path: test/coverage
           prefix: coverage
@@ -45,11 +38,9 @@ jobs:
   #   steps:
   #     - checkout
   #     - restore-cache: *restore-cache
-  #     - *update-npm
-  #     - run: npm ci
+  #     - run: yarn install --frozen-lockfile
   #     - save-cache: *save-cache
-  #     - *build-dependencies
-  #     - run: npm run test-ci
+  #     - run: yarn run test-ci
 
 workflows:
   version: 2

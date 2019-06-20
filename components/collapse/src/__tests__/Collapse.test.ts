@@ -29,11 +29,11 @@ describe('Collapse component', () => {
       target,
     });
     const button = target.querySelector<HTMLButtonElement>('.button-collapse')!;
-    expect(button.innerHTML).toEqual('open');
+    expect(button.innerHTML).toBe('open');
     expect(target.innerHTML).toMatchSnapshot();
     component.$set({ isOpen: true });
     await tick();
-    expect(button.innerHTML).toEqual('close');
+    expect(button.innerHTML).toBe('close');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -49,7 +49,7 @@ describe('Collapse component', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Collapse({ target });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     expect(target.querySelector('.collapse-hide')).not.toBeNull();
   });
 
@@ -58,11 +58,11 @@ describe('Collapse component', () => {
     const target = document.createElement('div');
     const component = new Collapse({ target });
     const button = target.querySelector('button')!;
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     expect(target.querySelector('.collapse-hide')).not.toBeNull();
     button.click();
     await tick();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     expect(target.querySelector('.collapse-hide')).toBeNull();
   });
 
@@ -76,11 +76,11 @@ describe('Collapse component', () => {
       target,
     });
     const button = target.querySelector('button')!;
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     expect(target.querySelector('.collapse-hide')).toBeNull();
     button.click();
     await tick();
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     expect(target.querySelector('.collapse-hide')).not.toBeNull();
   });
 });

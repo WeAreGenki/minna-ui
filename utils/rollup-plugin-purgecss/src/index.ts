@@ -41,7 +41,6 @@ export function purgecss({
   return {
     name: 'purgecss',
 
-    // eslint-disable-next-line sort-keys
     async transform(code, id) {
       if (!filter(id)) return;
 

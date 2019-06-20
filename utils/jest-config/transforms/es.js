@@ -3,7 +3,6 @@
 
 'use strict';
 
-// eslint-disable-next-line import/named
 const { transform } = require('sucrase');
 
 /**

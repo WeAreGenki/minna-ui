@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import postcss from 'postcss';
 
 declare function postcssLoadConfig(

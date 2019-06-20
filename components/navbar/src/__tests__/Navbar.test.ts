@@ -24,8 +24,8 @@ describe('Navbar component', () => {
       },
       target,
     });
-    expect(Array.isArray(component.$$.ctx.items)).toEqual(true);
-    expect(component.$$.ctx.items).not.toHaveLength(0);
+    expect(Array.isArray(component.items)).toBe(true);
+    expect(component.items).not.toHaveLength(0);
     const navbar = target.querySelector('.navbar')!;
     expect(navbar.getAttribute('navbar-active')).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
@@ -34,19 +34,19 @@ describe('Navbar component', () => {
   it('adds class if page is scrolled', async () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new Navbar({
+    new Navbar({
       props: {
         items,
         segment: undefined,
       },
       target,
     });
+    expect(target.querySelector('.navbar-active')).toBeNull();
     // @ts-ignore - We know we're writing to a read only property
     window.pageYOffset = 50;
     const event = new UIEvent('scroll');
     window.dispatchEvent(event);
     await tick();
-    expect(component.$$.ctx.hasScrolled).toEqual(true);
     expect(target.querySelector('.navbar-active')).not.toBeNull();
   });
 
@@ -60,10 +60,10 @@ describe('Navbar component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
     button.click();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('closes menu on document click', () => {
@@ -77,12 +77,12 @@ describe('Navbar component', () => {
       },
       target,
     });
-    component.$$.ctx.openMenu();
+    component.openMenu();
     jest.runAllTimers(); // for component setTimeout
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
   });
 
   it('attaches event listener on menu open but not close', () => {
@@ -97,13 +97,13 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    component.$$.ctx.openMenu();
+    component.openMenu();
     jest.runAllTimers();
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('');
     spy.mockReset();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });
@@ -125,7 +125,7 @@ describe('Navbar component', () => {
     jest.runAllTimers();
     button.click();
     jest.runAllTimers();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     button.click();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(1);
@@ -144,14 +144,14 @@ describe('Navbar component', () => {
     });
     const icon1 = target.querySelector<SVGUseElement>('.navbar-icon > use')!;
     const navbarLinks = target.querySelector('.navbar-links')!;
-    expect(icon1.getAttribute('xlink:href')).toEqual('#menu');
-    expect(navbarLinks.classList.contains('df')).toBeFalsy();
+    expect(icon1.getAttribute('xlink:href')).toBe('#menu');
+    expect(navbarLinks.classList.contains('df')).toBe(false);
     const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
     button.click();
     await tick();
     const icon2 = target.querySelector<SVGUseElement>('.navbar-icon > use')!;
-    expect(icon2.getAttribute('xlink:href')).toEqual('#x');
-    expect(navbarLinks.classList.contains('df')).toBeTruthy();
+    expect(icon2.getAttribute('xlink:href')).toBe('#x');
+    expect(navbarLinks.classList.contains('df')).toBe(true);
   });
 
   it('adds class to active menu item', () => {
@@ -166,8 +166,8 @@ describe('Navbar component', () => {
     });
     const linkPageTwo = target.querySelector('[href="page-two"]')!;
     const linkPageOne = target.querySelector('[href="page-one"]')!;
-    expect(linkPageTwo.classList.contains('navbar-link-active')).toBeTruthy();
-    expect(linkPageOne.classList.contains('navbar-link-active')).not.toBeTruthy();
+    expect(linkPageTwo.classList.contains('navbar-link-active')).toBe(true);
+    expect(linkPageOne.classList.contains('navbar-link-active')).not.toBe(true);
   });
 
   it('can dynamically add menu items', () => {
@@ -180,11 +180,11 @@ describe('Navbar component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.items).toHaveLength(3);
+    expect(component.items).toHaveLength(3);
     component.$set({
       items: [...items, { name: 'Page New', url: 'page-new' }],
     });
-    expect(component.$$.ctx.items).toHaveLength(4);
+    expect(component.items).toHaveLength(4);
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -199,7 +199,7 @@ describe('Navbar component', () => {
       target,
     });
     const logo = target.querySelector('.navbar-logo-link')!;
-    expect(logo.textContent).toEqual('Custom Slot Content');
+    expect(logo.textContent).toBe('Custom Slot Content');
     expect(target.innerHTML).toMatchSnapshot();
   });
 });

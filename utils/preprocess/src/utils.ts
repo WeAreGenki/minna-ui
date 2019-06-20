@@ -8,6 +8,7 @@ export function html(strings: TemplateStringsArray, ...values: any[]): string {
   let code = '';
 
   strings.forEach((string, index) => {
+    // eslint-disable-next-line security/detect-object-injection
     code += `${string}${values[index] || ''}`;
   });
 

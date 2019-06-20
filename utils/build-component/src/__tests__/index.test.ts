@@ -61,7 +61,7 @@ describe('build-component tool', () => {
     const build = buildComponent(pkg('css'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
-    expect(built.css.code).not.toBeFalsy();
+    expect(built.css.code).not.toBe(false);
     expect(built.css.code).not.toBe('');
     expect(built.css.code).toMatchSnapshot();
   });

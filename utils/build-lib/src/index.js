@@ -3,7 +3,7 @@
  */
 
 /* global NodeJS */
-/* eslint-disable @typescript-eslint/camelcase, global-require, no-console, id-length */
+/* eslint-disable global-require, no-console, id-length */
 
 'use strict';
 

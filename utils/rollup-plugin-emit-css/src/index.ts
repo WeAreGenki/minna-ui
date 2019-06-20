@@ -1,6 +1,6 @@
 // TODO: Add source map support
 
-/* eslint-disable no-restricted-syntax, security/detect-object-injection */
+/* eslint-disable no-restricted-syntax */
 
 import CleanCSS from 'clean-css';
 import { basename, extname } from 'path';

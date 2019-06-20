@@ -44,8 +44,8 @@ describe('build-css tool', () => {
     const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
     const output = await build;
-    expect(output.length).toEqual(1); // one output file
-    expect(output[0].code).toBeTruthy(); // not empty
+    expect(output).toHaveLength(1); // one output file
+    expect(output[0].code).toBe(true); // not empty
     expect(output[0].code).toMatchSnapshot();
     expect(spy).not.toHaveBeenCalled();
   });
@@ -56,8 +56,8 @@ describe('build-css tool', () => {
     const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
     const output = await build;
-    expect(output.length).toEqual(1); // one output file
-    expect(output[0].code).toBeTruthy(); // not empty
+    expect(output).toHaveLength(1); // one output file
+    expect(output[0].code).toBe(true); // not empty
     expect(output[0].code).toMatchSnapshot();
     expect(spy).not.toHaveBeenCalled();
   });
@@ -96,7 +96,7 @@ describe('build-css tool', () => {
     spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrowError();
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('');
     spy.mockRestore();
   });
 });

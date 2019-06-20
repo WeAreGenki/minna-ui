@@ -83,8 +83,7 @@ describe('Svelte style preprocessor', () => {
 
   it('does not process without type attribute', async () => {
     expect.assertions(2);
-    let result = await preprocess(sourceNoTypeAttr, preprocessOpts);
-    result = result.toString();
+    const result = (await preprocess(sourceNoTypeAttr, preprocessOpts)).toString();
     expect(result).toMatch('&:focus');
     expect(result).toMatchSnapshot();
   });
@@ -94,7 +93,7 @@ describe('Svelte style preprocessor', () => {
     const output = preprocess(source, preprocessOpts);
     await expect(output).resolves.toBeDefined();
     const result = (await output).toString();
-    expect(result).not.toBeFalsy();
+    expect(result).not.toBe(false);
     expect(result).not.toEqual('');
     expect(result).toMatchSnapshot();
   });
@@ -103,7 +102,7 @@ describe('Svelte style preprocessor', () => {
     expect.assertions(2);
     const processed = await preprocess(source, preprocessOpts);
     const result = compile(processed.toString());
-    expect(result.css.code).not.toBeFalsy();
+    expect(result.css.code).not.toBe(false);
     expect(result.css.code).toMatchSnapshot();
   });
 
@@ -112,7 +111,7 @@ describe('Svelte style preprocessor', () => {
     const spy = jest.spyOn(process.stderr, 'write');
     spy.mockImplementation(() => true);
     await preprocess(sourceBadSyntax, preprocessOpts);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('');
     spy.mockRestore();
   });
 });

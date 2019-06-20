@@ -17,8 +17,9 @@ beforeAll(async () => {
 
 describe('Null transform', () => {
   it('outputs empty content when importing CSS', () => {
+    expect.assertions(1);
     // @ts-ignore - Function has no arguments which is expected
     const styles = process(source, sourcePath);
-    expect(styles).toEqual('');
+    expect(styles).toBe('');
   });
 });

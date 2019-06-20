@@ -10,13 +10,15 @@
 // });
 
 describe('Base ESLint config', () => {
-  it('runs on empty.js without errors', () => {
-    // expect.assertions(2);
-    // const [name, src] = empty;
-    // const result = cli.executeOnText(src, name);
-    // expect(result.errorCount).toEqual(0);
-    // expect(result.warningCount).toEqual(0);
-  });
+  it.todo('fix tests!!!');
+
+  // it('runs on empty.js without errors', () => {
+  //   expect.assertions(2);
+  //   const [name, src] = empty;
+  //   const result = cli.executeOnText(src, name);
+  //   expect(result.errorCount).toEqual(0);
+  //   expect(result.warningCount).toEqual(0);
+  // });
 
   // it.each(valid)('runs on %s without errors', (name, src) => {
   //   expect.assertions(2);

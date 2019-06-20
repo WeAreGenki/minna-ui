@@ -3,7 +3,7 @@
  * @see https://github.com/jonathantneal/css-import-resolve
  */
 
-/* eslint-disable security/detect-object-injection, no-param-reassign, no-confusing-arrow */
+/* eslint-disable security/detect-object-injection, no-confusing-arrow */
 
 import { readFile } from 'fs';
 import { isAbsolute, join, sep } from 'path';
@@ -16,6 +16,7 @@ export type ImportCacheEntry = Promise<{
 export type ImportCache = Record<string, ImportCacheEntry>;
 
 function fileContents(file: string, cache: ImportCache): ImportCacheEntry {
+  // eslint-disable-next-line no-param-reassign
   cache[file] =
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
@@ -122,6 +123,7 @@ export function resolve(
 ): ImportCacheEntry {
   if (isAbsolute(id)) {
     // no need to prefix with `cwd`
+    // eslint-disable-next-line no-param-reassign
     cwd = '';
   }
 

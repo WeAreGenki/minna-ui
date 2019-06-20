@@ -6,6 +6,7 @@
 
 describe('Rollup emit CSS plugin', () => {
   it('placeholder', async () => {
-    expect(1 + 2).toEqual(3);
+    expect.assertions(1);
+    expect(1 + 2).toBe(3);
   });
 });

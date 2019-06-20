@@ -20,7 +20,7 @@ describe('Svelte transform', () => {
   it.skip('compiles and mounts a component', () => {
     expect.assertions(2);
     let SvelteComponent = process(source, sourcePath);
-    expect(typeof SvelteComponent.code).toEqual('string');
+    expect(typeof SvelteComponent.code).toBe('string');
     SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
 
     const target = document.createElement('div');
@@ -49,14 +49,14 @@ describe('Svelte transform', () => {
     expect(component.$$).toHaveProperty('context');
     expect(component.$$).toHaveProperty('callbacks');
 
-    expect(component.$$.ctx.name).toEqual('Elon Musk');
-    expect(component.$$.ctx.reversed).toEqual('ksuM nolE');
+    expect(component.name).toBe('Elon Musk');
+    expect(component.reversed).toBe('ksuM nolE');
 
     component.name = 'Vladimir Putin';
 
     // refs
-    expect(component.$$.ctx.target.textContent).toEqual('test Vladimir Putin');
-    expect(component.$$.ctx.nameReversed.textContent).toEqual('test nituP rimidalV');
+    expect(component.target.textContent).toBe('test Vladimir Putin');
+    expect(component.nameReversed.textContent).toBe('test nituP rimidalV');
   });
 
   // XXX: Uses require() instead of process() + eval() so imports are relative
@@ -67,9 +67,9 @@ describe('Svelte transform', () => {
       const ComponentImports = require('../../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
       const component = new ComponentImports({ target });
-      expect(target.innerHTML).toEqual('Elon Musk ELON MUSK elon musk');
-      expect(component.$$.ctx.loud).toEqual('ELON MUSK');
-      expect(component.$$.ctx.quiet).toEqual('elon musk');
+      expect(target.innerHTML).toBe('Elon Musk ELON MUSK elon musk');
+      expect(component.loud).toBe('ELON MUSK');
+      expect(component.quiet).toBe('elon musk');
       expect(target.innerHTML).toMatchSnapshot();
     }
     expect(wrapper).not.toThrow();

@@ -43,13 +43,13 @@ describe('Select component', () => {
       target,
     });
     const select = target.querySelector('.select')!;
-    expect(Array.isArray(component.$$.ctx.items)).toBeTruthy();
-    expect(component.$$.ctx.items).not.toHaveLength(0);
-    expect(component.$$.ctx.input).toBeDefined();
-    expect(select.getAttribute('tabindex')).toEqual('0');
+    expect(Array.isArray(component.items)).toBe(true);
+    expect(component.items).not.toHaveLength(0);
+    expect(component.input).toBeDefined();
+    expect(select.getAttribute('tabindex')).toBe('0');
     expect(select.getAttribute('disabled')).toBeNull();
     expect(select.getAttribute('required')).toBeNull();
-    expect(select.getAttribute('placeholder')).not.toBeFalsy();
+    expect(select.getAttribute('placeholder')).not.toBe(false);
     expect(document.querySelector('select-active')).toBeNull();
     expect(document.querySelector('select-disabled')).toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
@@ -65,7 +65,7 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.inputText).toEqual('Japan');
+    expect(component.inputText).toBe('Japan');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -80,9 +80,9 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.filterable).toBeFalsy();
+    expect(component.filterable).toBe(false);
     const select = target.querySelector('.select')!;
-    expect(select.getAttribute('placeholder')).toEqual('Choose...'); // not "Filer..."
+    expect(select.getAttribute('placeholder')).toBe('Choose...'); // not "Filer..."
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -97,9 +97,9 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.filterHelp).toEqual('Filter me');
+    expect(component.filterHelp).toBe('Filter me');
     const select = target.querySelector('.select')!;
-    expect(select.getAttribute('placeholder')).toEqual('Filter me');
+    expect(select.getAttribute('placeholder')).toBe('Filter me');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -113,9 +113,9 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.placeholder).toEqual('Hold your places');
+    expect(component.placeholder).toBe('Hold your places');
     const select = target.querySelector('.select')!;
-    expect(select.getAttribute('placeholder')).toEqual('Hold your places');
+    expect(select.getAttribute('placeholder')).toBe('Hold your places');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -129,10 +129,10 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.disabled).toBeTruthy();
+    expect(component.disabled).toBe(true);
     const select = target.querySelector('.select')!;
     expect(select.getAttribute('disabled')).not.toBeNull();
-    expect(select.getAttribute('tabindex')).toEqual('-1');
+    expect(select.getAttribute('tabindex')).toBe('-1');
     expect(target.querySelector('.select-disabled')).not.toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
@@ -147,7 +147,7 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.readonly).toBeTruthy();
+    expect(component.readonly).toBe(true);
     const select = target.querySelector('.select')!;
     expect(select.getAttribute('readonly')).not.toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
@@ -166,10 +166,10 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.selected).toBe(1);
     component.$set({ value: 'kr' });
-    component.$$.ctx.open();
-    expect(component.$$.ctx.selected).toEqual(3);
+    component.open();
+    expect(component.selected).toBe(3);
   });
 
   it('shows on click', async () => {
@@ -180,10 +180,10 @@ describe('Select component', () => {
       target,
     });
     const select = target.querySelector<HTMLInputElement>('.select')!;
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     select.click();
     await tick();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('does not show on click when disabled', async () => {
@@ -197,10 +197,10 @@ describe('Select component', () => {
       target,
     });
     const select = target.querySelector<HTMLInputElement>('.select')!;
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     select.click();
     await tick();
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
   });
 
   it('shows on enter key press', () => {
@@ -210,11 +210,11 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('shows on spacebar key press', () => {
@@ -224,15 +224,15 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector('.select')!;
     const event1 = new KeyboardEvent('keydown', { key: ' ' }); // spacebar
     select.dispatchEvent(event1);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
     select.dispatchEvent(event2);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('shows on down key press', () => {
@@ -242,11 +242,11 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('shows on up key press', () => {
@@ -256,11 +256,11 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
   });
 
   it('shows automatically on focus', () => {
@@ -271,11 +271,11 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector<HTMLInputElement>('.select')!;
     select.focus();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(document.activeElement).toBe(select);
+    expect(component.isOpen).toBe(true);
+    expect(document.activeElement).toStrictEqual(select);
   });
 
   it('hides on click outside the component', () => {
@@ -288,11 +288,11 @@ describe('Select component', () => {
     });
     const select = target.querySelector<HTMLInputElement>('.select')!;
     select.focus();
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(document.activeElement).toBe(select);
+    expect(component.isOpen).toBe(true);
+    expect(document.activeElement).toStrictEqual(select);
     select.blur();
-    expect(component.$$.ctx.isOpen).toBeFalsy();
-    expect(document.activeElement).toBe(document.body);
+    expect(component.isOpen).toBe(false);
+    expect(document.activeElement).toStrictEqual(document.body);
   });
 
   it('hides on ESC key press', () => {
@@ -305,11 +305,11 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(component.isOpen).toBe(true);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
   });
 
   it('does nothing on invalid key press', () => {
@@ -319,11 +319,11 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'xxx' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(component.isOpen).toBe(false);
   });
 
   it('selects next item on down key press', () => {
@@ -337,15 +337,15 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.isOpen).toBe(true);
+    expect(component.selected).toBe(0);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.selected).toBe(1);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(2);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(2);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it('selects previous item on up key press', () => {
@@ -358,16 +358,16 @@ describe('Select component', () => {
       },
       target,
     });
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(component.$$.ctx.selected).toEqual(2);
+    component.open(); // to set correct selected index
+    expect(component.isOpen).toBe(true);
+    expect(component.selected).toBe(2);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.selected).toBe(1);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(0);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(0);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it('skips over disabled items on down key press', () => {
@@ -381,17 +381,17 @@ describe('Select component', () => {
       },
       target,
     });
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.selected).toEqual(1);
+    component.open(); // to set correct selected index
+    expect(component.selected).toBe(1);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(3);
+    expect(component.selected).toBe(3);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(7);
+    expect(component.selected).toBe(7);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(7);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(7);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it('skips over disabled items on up key press', () => {
@@ -405,17 +405,17 @@ describe('Select component', () => {
       },
       target,
     });
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.selected).toEqual(7);
+    component.open(); // to set correct selected index
+    expect(component.selected).toBe(7);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(3);
+    expect(component.selected).toBe(3);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.selected).toBe(1);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(1);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(1);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it("doesn't go past end of items on down key press", () => {
@@ -428,15 +428,15 @@ describe('Select component', () => {
       },
       target,
     });
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.selected).toEqual(3);
+    component.open(); // to set correct selected index
+    expect(component.selected).toBe(3);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(4);
+    expect(component.selected).toBe(4);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(4);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(4);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it("doesn't go past end of items on up key press", () => {
@@ -449,15 +449,15 @@ describe('Select component', () => {
       },
       target,
     });
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.selected).toEqual(1);
+    component.open(); // to set correct selected index
+    expect(component.selected).toBe(1);
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.selected).toBe(0);
     select.dispatchEvent(event);
-    expect(component.$$.ctx.selected).toEqual(0);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(component.selected).toBe(0);
+    expect(component.isOpen).toBe(true); // still open
   });
 
   it('selects an item on click', () => {
@@ -470,8 +470,8 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.isOpen).toBe(true);
+    expect(component.selected).toBe(0);
     const select = target.querySelector('.select')!;
     const option = target.querySelector('.option[value="jp"]');
     const listbox = target.querySelector('.select-listbox')!;
@@ -481,11 +481,11 @@ describe('Select component', () => {
     const spy2 = jest.spyOn(event, 'preventDefault'); // only present in mouse event part of select()
     listbox.dispatchEvent(event);
     expect(spy1).toHaveBeenCalledTimes(1);
-    expect(spy2).toHaveBeenCalled();
-    expect(component.$$.ctx.isOpen).toBeFalsy();
-    component.$$.ctx.open(); // to set correct selected index
-    expect(component.$$.ctx.selected).toEqual(2);
-    expect(component.$$.ctx.isOpen).toBeTruthy();
+    expect(spy2).toHaveBeenCalledWith(event);
+    expect(component.isOpen).toBe(false);
+    component.open(); // to set correct selected index
+    expect(component.selected).toBe(2);
+    expect(component.isOpen).toBe(true);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -506,8 +506,8 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.isOpen).toBe(true);
+    expect(component.selected).toBe(0);
     const select = target.querySelector('.select')!;
     const option = target.querySelector('.option[value="two"]');
     const listbox = target.querySelector('.select-listbox')!;
@@ -517,9 +517,9 @@ describe('Select component', () => {
     const spy2 = jest.spyOn(event, 'preventDefault');
     listbox.dispatchEvent(event);
     expect(spy1).not.toHaveBeenCalled(); // doesn't emit an event
-    expect(spy2).toHaveBeenCalled();
-    expect(component.$$.ctx.selected).toEqual(0);
-    expect(component.$$.ctx.isOpen).toBeTruthy(); // still open
+    expect(spy2).toHaveBeenCalledWith(event);
+    expect(component.selected).toBe(0);
+    expect(component.isOpen).toBe(true); // still open
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -534,20 +534,20 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.isOpen).toBeTruthy();
-    expect(component.$$.ctx.selected).toEqual(0);
+    expect(component.isOpen).toBe(true);
+    expect(component.selected).toBe(0);
     const select = target.querySelector('.select')!;
     const event1 = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     const spy1 = jest.spyOn(event1, 'preventDefault');
     select.dispatchEvent(event1);
-    expect(component.$$.ctx.selected).toEqual(1);
+    expect(component.selected).toBe(1);
     const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
     const spy2 = jest.spyOn(event2, 'preventDefault');
     select.dispatchEvent(event2);
-    expect(spy1).toHaveBeenCalled();
-    expect(spy2).toHaveBeenCalled();
-    expect(component.$$.ctx.selected).toEqual(1);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
+    expect(spy1).toHaveBeenCalledWith(event1);
+    expect(spy2).toHaveBeenCalledWith(event2);
+    expect(component.selected).toBe(1);
+    expect(component.isOpen).toBe(false);
     spy1.mockRestore();
     spy2.mockRestore();
   });
@@ -562,13 +562,13 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.filteredItems).toHaveLength(5);
+    expect(component.filteredItems).toHaveLength(5);
     const select = target.querySelector<HTMLInputElement>('.select')!;
     select.value = 'o'; // simulate input + event
     const event = new Event('input');
     select.dispatchEvent(event);
     await tick();
-    expect(component.$$.ctx.filteredItems).toHaveLength(2);
+    expect(component.filteredItems).toHaveLength(2);
     const listbox = target.querySelector('.select-listbox')!;
     expect(listbox.outerHTML).toMatchSnapshot();
   });
@@ -583,13 +583,13 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.filteredItems).toHaveLength(5);
+    expect(component.filteredItems).toHaveLength(5);
     const select = target.querySelector<HTMLInputElement>('.select')!;
     select.value = 'xxxxx'; // simulate input + event
     const event = new Event('input');
     select.dispatchEvent(event);
     await tick();
-    expect(component.$$.ctx.filteredItems).toHaveLength(0);
+    expect(component.filteredItems).toHaveLength(0);
     const listbox = target.querySelector('.select-listbox')!;
     expect(listbox.outerHTML).toMatchSnapshot();
   });
@@ -604,14 +604,14 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.$$.ctx.inputText).toEqual('Australia');
-    component.$$.ctx.open();
-    expect(component.$$.ctx.inputText).toEqual('');
+    expect(component.inputText).toBe('Australia');
+    component.open();
+    expect(component.inputText).toBe('');
     const select = target.querySelector('.select')!;
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     select.dispatchEvent(event);
-    expect(component.$$.ctx.isOpen).toBeFalsy();
-    expect(component.$$.ctx.inputText).toEqual('Australia');
+    expect(component.isOpen).toBe(false);
+    expect(component.inputText).toBe('Australia');
   });
 
   it('can dynamically add items', async () => {
@@ -621,12 +621,12 @@ describe('Select component', () => {
       props: selectOpts,
       target,
     });
-    expect(component.$$.ctx.items).toHaveLength(5);
+    expect(component.items).toHaveLength(5);
     component.$set({ items: [...items, { id: 'new', text: 'New' }] });
     await tick();
-    expect(component.$$.ctx.items).toHaveLength(6);
+    expect(component.items).toHaveLength(6);
     const newItem = target.querySelector('[value="new"]')!;
-    expect(newItem).toBeTruthy();
+    expect(newItem).toBe(true);
     expect(newItem.outerHTML).toMatchSnapshot();
   });
 });

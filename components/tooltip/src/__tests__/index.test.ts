@@ -5,7 +5,8 @@ describe('Tooltip', () => {
   it('renders nothing visible by default', () => {
     expect.assertions(1);
     const target = document.createElement('div');
-    const component = new BasicTooltip({ target });
+    // const component = new BasicTooltip({ target });
+    new BasicTooltip({ target });
     // console.log('@@@@', component.$$.ctx);
     // expect(target.innerHTML).toEqual('xx');
     expect(target.innerHTML).toBeDefined();
@@ -14,7 +15,8 @@ describe('Tooltip', () => {
   it('attaches tooltip on hover', () => {
     expect.assertions(1);
     const target = document.createElement('div');
-    const component = new BasicTooltip({ target });
+    // const component = new BasicTooltip({ target });
+    new BasicTooltip({ target });
     // console.log('@@@@', component.$$.ctx);
     // expect(target.innerHTML).toEqual('xx');
     expect(target.innerHTML).toBeDefined();

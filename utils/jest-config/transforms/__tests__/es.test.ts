@@ -45,7 +45,8 @@ describe('ES transform', () => {
   it.todo('processes .mjs files correctly');
 
   it("doesn't modify .css files", () => {
+    expect.assertions(1);
     const code = process(sourceCss, sourceCssPath);
-    expect(code).toEqual(sourceCss);
+    expect(code).toStrictEqual(sourceCss);
   });
 });

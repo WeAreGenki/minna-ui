@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-syntax, security/detect-object-injection */
+/* eslint-disable no-restricted-syntax */
 
 import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
 

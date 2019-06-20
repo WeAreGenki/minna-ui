@@ -83,7 +83,7 @@ describe('Svelte markup preprocessor', () => {
     const spy = jest.spyOn(process.stderr, 'write');
     spy.mockImplementation(() => true);
     await preprocess(sourceBadSyntax, opts);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith('');
     spy.mockRestore();
   });
 });

@@ -24,6 +24,7 @@ exports.process = (src, filename) => {
   const normalised = src.replace(re, '');
 
   const result = compile(normalised, {
+    accessors: true, // easy access to component internals for tests
     css: false,
     filename: basename(filename),
     format: 'cjs',

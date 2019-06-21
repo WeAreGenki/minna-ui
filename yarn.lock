@@ -1049,7 +1049,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.26.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-e019cbe9-68c2-40e2-91de-e3e6b833cefe-1561059457029/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:utils/preprocess"
     rollup "^1.14.6"
     rollup-plugin-buble "^0.19.6"
     rollup-plugin-commonjs "^10.0.0"
@@ -1060,7 +1060,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.26.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-f5d2bc8e-d0e0-483b-a04f-98a61a207dfb-1561059457031/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "^4.2.1"
     postcss-load-config "^2.1.0"
 
@@ -1143,7 +1143,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.26.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-43fa39a1-6a01-48d1-89c7-62ce065ab45c-1561059457047/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:utils/utils"
     "@wearegenki/node-utils" "^0.2.0"
     deepmerge "^3.3.0"
     sirv "^0.4.2"
@@ -9158,10 +9158,10 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.7.0,
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.15.6, rollup@^1.14.6:
-  version "1.15.6"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.15.6.tgz#caf0ed28d2d78e3a59c1398e5a3695fb600a0ef0"
-  integrity sha512-s3Vn3QJQ5YVFfIG4nXoG9VdL1I37IZsft+4ZyeBhxE0df1kCFz9e+4bEAbR4mKH3pvBO9e9xjdxWPhhIp0r9ow==
+rollup@1.16.1:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.1.tgz#67955b3736f34b80778fb83ac3ac4d340763547b"
+  integrity sha512-cq2HT0OQF7sStRZpoiWgGorExkCxs7asewKtQcEkEam+xGDwT2QlF1P0J6OjKiqNj8bFzggfizPhEcI3mEUIfQ==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.0.8"
@@ -9174,6 +9174,15 @@ rollup@^0.63.4:
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
+
+rollup@^1.14.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.15.6.tgz#caf0ed28d2d78e3a59c1398e5a3695fb600a0ef0"
+  integrity sha512-s3Vn3QJQ5YVFfIG4nXoG9VdL1I37IZsft+4ZyeBhxE0df1kCFz9e+4bEAbR4mKH3pvBO9e9xjdxWPhhIp0r9ow==
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "^12.0.8"
+    acorn "^6.1.1"
 
 rsvp@^4.8.4:
   version "4.8.5"

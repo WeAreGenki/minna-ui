@@ -1095,7 +1095,7 @@
     eslint-plugin-jsdoc "^8.3.0"
     eslint-plugin-markdown "^1.0.0"
     eslint-plugin-security "^1.4.0"
-    eslint-plugin-svelte3 "^1.2.3"
+    eslint-plugin-svelte3 "^2.0.0"
 
 "@minna-ui/jest-config@file:utils/jest-config":
   version "0.26.0"
@@ -3523,10 +3523,10 @@ eslint-plugin-security@^1.4.0:
   dependencies:
     safe-regex "^1.1.0"
 
-eslint-plugin-svelte3@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte3/-/eslint-plugin-svelte3-1.2.3.tgz#d6ffaaaac55c77d2d59e8a06e168e66990ddc072"
-  integrity sha512-2FhqmE5HwPsbpsPalM6Ej9VdXML5vHYUoSvS1dvJ9tZr8wDATuOnebP5DIHt3U0EHGUYwIjJGBn2JG2gXgb9Wg==
+eslint-plugin-svelte3@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte3/-/eslint-plugin-svelte3-2.0.0.tgz#f65cea28cff806648c2cd57e8856c3987e5fc2b6"
+  integrity sha512-u+8eNJQU3Qr62QHPE4St/KeF1fjImnNwFI6LRKyWccZLn6VeGpQ5oBFOCzJamzmsK+1yB8wkrgpeDMyHQDacDw==
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"

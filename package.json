@@ -53,9 +53,9 @@
     "postcss-scss": "2.0.0",
     "prettier": "1.18.2",
     "remark-cli": "6.0.1",
-    "rollup": "1.16.1",
+    "rollup": "1.16.2",
     "stylelint": "10.1.0",
-    "svelte": "3.5.3",
+    "svelte": "3.5.4",
     "tslib": "1.10.0",
     "typescript": "3.5.2"
   },

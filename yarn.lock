@@ -2542,7 +2542,7 @@ commander@^2.19.0, commander@~2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
 
-comment-parser@^0.5.4:
+comment-parser@^0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.5.5.tgz#c2584cae7c2f0afc773e96b2ee98f8c10cbd693d"
   integrity sha512-oB3TinFT+PV3p8UwDQt71+HkG03+zwPwikDlKU6ZDmql6QX2zFlQ+G0GGSDqyJhdZi4PSlzFBm+YJ+ebOX3Vgw==
@@ -3498,12 +3498,13 @@ eslint-plugin-jest@^22.7.0:
   integrity sha512-0U9nBd9V6+GKpM/KvRDcmMuPsewSsdM7NxCozgJkVAh8IrwHmQ0aw44/eYuVkhT8Fcdhsz0zYiyPtKg147eXMQ==
 
 eslint-plugin-jsdoc@^8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-8.3.0.tgz#8dff25994e01e5ccea78c9e385b48a12beba1bb7"
-  integrity sha512-d7eMMhUqjbmF88AqmlV1Z/swcbIRAhJqyN+fjCt0IxeaLIObUtuOtHvGcC0RszisTdAZ2JGVI6MeGJJ6OisYZg==
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-8.6.0.tgz#5a4bc764c55b81bd15c18630b5c29a5625ca0141"
+  integrity sha512-04h778Afn4AEa7V68Zt+sg1jJuP7y/JoyJeLQYkvKZcb7p2HIN+MirMSLHRL15vJGbAZKco4kT5rYYc1nP2/3w==
   dependencies:
-    comment-parser "^0.5.4"
+    comment-parser "^0.5.5"
     debug "^4.1.1"
+    flat-map-polyfill "^0.3.8"
     jsdoctypeparser "4.0.0"
     lodash "^4.17.11"
 
@@ -3943,6 +3944,11 @@ flat-cache@^2.0.1:
     flatted "^2.0.0"
     rimraf "2.6.3"
     write "1.0.3"
+
+flat-map-polyfill@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/flat-map-polyfill/-/flat-map-polyfill-0.3.8.tgz#4ec0bfb7c70e2962f00db03548d3620471fd8697"
+  integrity sha512-ZfmD5MnU7GglUEhiky9C7yEPaNq1/wh36RDohe+Xr3nJVdccwHbdTkFIYvetcdsoAckUKT51fuf44g7Ni5Doyg==
 
 flatted@^2.0.0:
   version "2.0.0"

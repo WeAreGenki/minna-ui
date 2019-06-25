@@ -8,8 +8,6 @@
 
 'use strict';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
@@ -20,7 +18,8 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:jsdoc/recommended',
-    'plugin:@typescript-eslint/recommended', // FIXME: Breaks tests
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:security/recommended',
   ],
   plugins: [
@@ -49,7 +48,7 @@ module.exports = {
       '.tsx',
       '.d.ts',
     ],
-    'import/ignore': ['.css', '.svelte'],
+    'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
       node: {
         extensions: [
@@ -104,6 +103,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/member-ordering': ERROR,
+    '@typescript-eslint/no-empty-function': ERROR,
     '@typescript-eslint/no-empty-interface': [
       ERROR,
       { allowSingleExtends: true },
@@ -159,8 +159,8 @@ module.exports = {
         ignoreUrls: true,
       },
     ],
-    'no-console': isProd ? ERROR : WARNING,
-    'no-debugger': isProd ? ERROR : WARNING,
+    'no-console': ERROR,
+    'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
     'no-return-assign': [ERROR, 'except-parens'],
     'no-useless-constructor': OFF, // handled via `@typescript-eslint/no-useless-constructor`
@@ -180,6 +180,7 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        'jsdoc/no-types': ERROR,
         'jsdoc/require-param-type': OFF,
         'jsdoc/require-param': OFF,
         'jsdoc/require-returns-type': OFF,
@@ -290,6 +291,7 @@ module.exports = {
       files: ['*.snap'],
       rules: {
         quotes: OFF,
+        strict: OFF,
       },
     },
 
@@ -344,6 +346,16 @@ module.exports = {
       },
       env: {
         commonjs: false,
+      },
+    },
+
+    // JSX
+    {
+      files: ['*.jsx'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
   ],

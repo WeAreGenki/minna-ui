@@ -22,11 +22,15 @@ module.exports = {
     tsconfigRootDir: process.cwd(),
   },
   rules: {
-    /* eslint-enable sort-keys */
+    // FIXME: Broken parserOptions.project
+    // '@typescript-eslint/no-floating-promises': ERROR,
     '@typescript-eslint/no-for-in-array': ERROR,
     '@typescript-eslint/no-unnecessary-qualifier': ERROR,
     '@typescript-eslint/no-unnecessary-type-assertion': WARNING,
-    // '@typescript-eslint/prefer-regexp-exec': WARNING, // currently broken
+    // FIXME: Uncomment after next release
+    // '@typescript-eslint/prefer-readonly': ERROR,
+    // FIXME: Broken parserOptions.project
+    // '@typescript-eslint/prefer-regexp-exec': WARNING,
     '@typescript-eslint/require-array-sort-compare': WARNING,
     '@typescript-eslint/restrict-plus-operands': WARNING,
   },

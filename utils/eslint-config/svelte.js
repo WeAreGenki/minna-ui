@@ -22,22 +22,26 @@ module.exports = {
      * @returns {boolean} If style block should be ignored.
      */
     'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
-    // TODO: Uncomment once false positives are handled better
-    // 'svelte3/lint-template': true,
   },
   overrides: [
     // Svelte components
     {
       files: ['*.svelte'],
+      processor: 'svelte3/svelte3',
       parserOptions: {
+        ecmaVersion: 2019,
         sourceType: 'module',
+      },
+      env: {
+        es6: true,
+        browser: true,
       },
       rules: {
         // import order cannot be determined correctly in .svelte components
         'import/first': OFF,
         // components are compiled at build-time so devDependencies are OK
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
-        // Svelte abuses the syntax with `export let`
+        // Svelte abuses syntax with `export let`
         'import/no-mutable-exports': OFF,
       },
     },

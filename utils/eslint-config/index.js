@@ -25,7 +25,7 @@ module.exports = {
   ],
   plugins: [
     'import',
-    'html',
+    // 'html', // FIXME: Enable once supports ESLint v6 - https://github.com/BenoitZugmeyer/eslint-plugin-html/issues/118
     'markdown',
     'jsdoc',
     '@typescript-eslint',

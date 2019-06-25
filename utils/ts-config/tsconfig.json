@@ -22,6 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true, // Recommended to disable this is node apps
+    "forceConsistentCasingInFileNames": true,
 
     "paths": {
       "##/*": ["src/*"] // Webpack/Rollup/PostCSS alias

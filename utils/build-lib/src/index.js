@@ -100,6 +100,7 @@ OPTIONS
     }
   } catch (err) {}
 
+  // @ts-ignore - FIXME: commonjs does provide type of this should work
   const plugins = [commonjs(), typescript(typescriptOpts)];
 
   const options = {

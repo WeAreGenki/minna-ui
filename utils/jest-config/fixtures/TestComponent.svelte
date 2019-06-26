@@ -19,7 +19,6 @@
 </script>
 
 <style type="text/postcss">
-  /* stylelint-disable no-descending-specificity */
   :global(body) {
     @media screen and (min-width: 30em) {
       margin: 0;

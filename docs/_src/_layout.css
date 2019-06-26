@@ -17,7 +17,6 @@
 /* stylelint-disable no-descending-specificity */
 /* stylelint-disable selector-no-qualifying-type */
 /* stylelint-disable selector-max-type */
-/* stylelint-disable a11y/selector-pseudo-class-focus */
 /* stylelint-disable scale-unlimited/declaration-strict-value */
 
 /* stylelint-disable declaration-no-important */
@@ -486,7 +485,8 @@ body.sticky {
       left: -12px;
       width: 20px;
       height: 20px;
-      /* font-family: Dosis, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; */ /* stylelint-disable-line max-line-length */
+      /* stylelint-disable-next-line max-line-length */
+      /* font-family: Dosis, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; */
       /* font-size: 14px; */
       font-weight: $text-weight-heavy;
       line-height: 20px;

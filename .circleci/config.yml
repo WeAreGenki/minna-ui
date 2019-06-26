@@ -26,7 +26,7 @@ jobs:
       - run: yarn build
       - run: yarn run lint
       - run: yarn run test-ci
-      - run: yarn codecov
+      - run: cat ./test/coverage/lcov.info | yarn codacy-coverage
       - store_artifacts:
           path: test/coverage
           prefix: coverage

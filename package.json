@@ -43,7 +43,7 @@
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.0",
     "@wearegenki/renovate-config": "1.0.0",
-    "codecov": "3.5.0",
+    "codacy-coverage": "3.4.0",
     "docsify-cli": "4.3.0",
     "eslint": "6.0.1",
     "jest": "24.8.0",

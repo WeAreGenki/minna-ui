@@ -17,6 +17,7 @@
     "**/cli/index.js",
     "**/dist/*",
     "**/node_modules/*",
-    "test/coverage"
+    "test/coverage",
+    "utils/eslint-config/__tests__/__fixtures__/*" // TODO: Disable this in the unit tests
   ]
 }

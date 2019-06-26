@@ -26,7 +26,7 @@
     "lint:md": "remark --frail --quiet .",
     "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts} --report-needless-disables",
     "FIXME__lint:js": "eslint --ext html,js,md,mjs,snap,svelte,svg,ts --report-unused-disable-directives .",
-    "lint:js": "eslint --ext js,md,mjs,snap,svelte,svg,ts --report-unused-disable-directives .",
+    "lint:js": "eslint --ext js,md,mjs,snap,svelte,ts --report-unused-disable-directives .",
     "lint:types": "tsc --noEmit",
     "test": "jest --notify --watch",
     "test-ci": "jest --coverage --runInBand --ci",

@@ -37,12 +37,27 @@ module.exports = {
         browser: true,
       },
       rules: {
+        '@typescript-eslint/indent': [
+          ERROR,
+          2,
+          {
+            ignoredNodes: [
+              'ConditionalExpression *', // prettier
+              'Identifier',
+            ],
+            SwitchCase: 1,
+          },
+        ],
         // import order cannot be determined correctly in .svelte components
         'import/first': OFF,
         // components are compiled at build-time so devDependencies are OK
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
         // Svelte abuses syntax with `export let`
         'import/no-mutable-exports': OFF,
+
+        // FIXME: Remove this once upstream issue is fixed: https://github.com/sveltejs/eslint-plugin-svelte3/issues/22
+        'no-unused-expressions': OFF,
+        'eol-last': OFF,
       },
     },
   ],

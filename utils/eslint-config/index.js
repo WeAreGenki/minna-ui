@@ -98,7 +98,7 @@ module.exports = {
       {
         // ESTree spec node types: https://github.com/estree/estree
         // TS types: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/src/ts-estree/ast-node-types.ts
-        ignoredNodes: ['ConditionalExpression *'], // incompatible with prettier :'(
+        ignoredNodes: ['ConditionalExpression *'], // prettier :'(
         SwitchCase: 1,
       },
     ],
@@ -334,6 +334,7 @@ module.exports = {
         '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,
+        'no-console': WARNING,
         strict: OFF,
       },
     },

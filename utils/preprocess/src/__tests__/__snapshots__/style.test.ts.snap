@@ -18,7 +18,7 @@ exports[`Svelte style preprocessor adds a banner comment 1`] = `
 
 exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
 "@media screen and (min-width: 30em){body{margin:0
-  }}.text.svelte-10n8aay{color:rgb(255, 0, 0)}.text.svelte-10n8aay:focus{background:rgb(0, 0, 0)}.wrapper.svelte-10n8aay>.text.svelte-10n8aay{margin-top:1rem}"
+  }}.text.svelte-1ghwuak{color:rgb(255, 0, 0)}.text.svelte-1ghwuak:focus{background:rgb(0, 0, 0)}.wrapper.svelte-1ghwuak>.text.svelte-1ghwuak{margin-top:1rem}"
 `;
 
 exports[`Svelte style preprocessor does not process without type attribute 1`] = `
@@ -59,7 +59,6 @@ exports[`Svelte style preprocessor processes a component 1`] = `
 </script>
 
 <style type=\\"text/postcss\\">
-  /* stylelint-disable no-descending-specificity */
   @media screen and (min-width: 30em) {
   :global(body) {
       margin: 0

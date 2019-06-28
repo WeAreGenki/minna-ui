@@ -3525,9 +3525,9 @@ eslint-plugin-security@^1.4.0:
     safe-regex "^1.1.0"
 
 eslint-plugin-svelte3@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte3/-/eslint-plugin-svelte3-2.0.0.tgz#f65cea28cff806648c2cd57e8856c3987e5fc2b6"
-  integrity sha512-u+8eNJQU3Qr62QHPE4St/KeF1fjImnNwFI6LRKyWccZLn6VeGpQ5oBFOCzJamzmsK+1yB8wkrgpeDMyHQDacDw==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte3/-/eslint-plugin-svelte3-2.1.0.tgz#1c80da829c8f8f76598e0f643d6d06c48157979e"
+  integrity sha512-HP1mN91p7wMn6UzlFoD0tFbcvQYa9p8bn6OL8BsRA6zqfHDEsaaGNSiHm6XVn7GCePINmcepC3NjIIm0d5eV3g==
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"

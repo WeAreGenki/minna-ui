@@ -24,7 +24,7 @@ module.exports = {
   ],
   plugins: [
     'import',
-    // 'html', // FIXME: Enable once supports ESLint v6 - https://github.com/BenoitZugmeyer/eslint-plugin-html/issues/118
+    'html',
     'markdown',
     'jsdoc',
     '@typescript-eslint',
@@ -60,12 +60,16 @@ module.exports = {
           '.tsx',
           '.json',
           '.css',
+          '.pcss',
           '.node',
           '.d.ts',
         ],
       },
     },
     jsdoc: {
+      additionalTagNames: {
+        customTags: ['jest-environment', 'jsx'],
+      },
       matchingFileName: 'example.md',
     },
   },
@@ -98,7 +102,7 @@ module.exports = {
       {
         // ESTree spec node types: https://github.com/estree/estree
         // TS types: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/src/ts-estree/ast-node-types.ts
-        ignoredNodes: ['ConditionalExpression *'], // prettier :'(
+        ignoredNodes: ['ConditionalExpression *'], // Prettier :'(
         SwitchCase: 1,
       },
     ],
@@ -125,7 +129,7 @@ module.exports = {
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
-        functions: 'only-multiline', // on multiline function params OK 👌
+        functions: 'only-multiline', // On multiline function params is OK 👌
         imports: 'always-multiline',
         objects: 'always-multiline',
       },
@@ -163,12 +167,12 @@ module.exports = {
     'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
     'no-return-assign': [ERROR, 'except-parens'],
-    'no-useless-constructor': OFF, // handled via `@typescript-eslint/no-useless-constructor`
+    'no-useless-constructor': OFF, // Handled via `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],
-    'sort-keys': [ERROR, 'asc', { caseSensitive: false, natural: true }],
+    'sort-keys': [WARNING, 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */
 
-    // rules incompatible with prettier :'(
+    // Rules incompatible with prettier :'(
     'arrow-parens': OFF,
     'function-paren-newline': OFF,
     'implicit-arrow-linebreak': OFF,
@@ -185,6 +189,11 @@ module.exports = {
         'jsdoc/require-param': OFF,
         'jsdoc/require-returns-type': OFF,
         'jsdoc/require-returns': OFF,
+        'lines-between-class-members': [
+          ERROR,
+          'always',
+          { exceptAfterSingleLine: true }, // Useful to declare class member types
+        ],
       },
     },
 
@@ -310,6 +319,7 @@ module.exports = {
       },
       rules: {
         'comma-dangle': [ERROR, 'never'],
+        'eol-last': OFF,
         'func-names': OFF,
         'object-shorthand': [ERROR, 'never'],
         'prefer-arrow-callback': OFF,
@@ -332,6 +342,7 @@ module.exports = {
       rules: {
         // disable rules that don't make sense in code snippets
         '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
+        '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,
         'no-console': WARNING,

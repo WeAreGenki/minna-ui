@@ -42,8 +42,8 @@ module.exports = {
           2,
           {
             ignoredNodes: [
-              'ConditionalExpression *', // prettier
-              'Identifier',
+              'ConditionalExpression *', // Prettier :'(
+              'Identifier', // Svelte template expressions
             ],
             SwitchCase: 1,
           },
@@ -54,10 +54,6 @@ module.exports = {
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
         // Svelte abuses syntax with `export let`
         'import/no-mutable-exports': OFF,
-
-        // FIXME: Remove this once upstream issue is fixed: https://github.com/sveltejs/eslint-plugin-svelte3/issues/22
-        'no-unused-expressions': OFF,
-        'eol-last': OFF,
       },
     },
   ],

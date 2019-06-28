@@ -8,8 +8,6 @@
 
 'use strict';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
@@ -20,7 +18,8 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:jsdoc/recommended',
-    'plugin:@typescript-eslint/recommended', // FIXME: Breaks tests
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:security/recommended',
   ],
   plugins: [
@@ -49,7 +48,7 @@ module.exports = {
       '.tsx',
       '.d.ts',
     ],
-    'import/ignore': ['.css', '.svelte'],
+    'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
       node: {
         extensions: [
@@ -61,12 +60,16 @@ module.exports = {
           '.tsx',
           '.json',
           '.css',
+          '.pcss',
           '.node',
           '.d.ts',
         ],
       },
     },
     jsdoc: {
+      additionalTagNames: {
+        customTags: ['jest-environment', 'jsx'],
+      },
       matchingFileName: 'example.md',
     },
   },
@@ -99,11 +102,12 @@ module.exports = {
       {
         // ESTree spec node types: https://github.com/estree/estree
         // TS types: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/src/ts-estree/ast-node-types.ts
-        ignoredNodes: ['ConditionalExpression *'], // incompatible with prettier :'(
+        ignoredNodes: ['ConditionalExpression *'], // Prettier :'(
         SwitchCase: 1,
       },
     ],
     '@typescript-eslint/member-ordering': ERROR,
+    '@typescript-eslint/no-empty-function': ERROR,
     '@typescript-eslint/no-empty-interface': [
       ERROR,
       { allowSingleExtends: true },
@@ -125,7 +129,7 @@ module.exports = {
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
-        functions: 'only-multiline', // on multiline function params OK 👌
+        functions: 'only-multiline', // On multiline function params is OK 👌
         imports: 'always-multiline',
         objects: 'always-multiline',
       },
@@ -159,16 +163,16 @@ module.exports = {
         ignoreUrls: true,
       },
     ],
-    'no-console': isProd ? ERROR : WARNING,
-    'no-debugger': isProd ? ERROR : WARNING,
+    'no-console': ERROR,
+    'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
     'no-return-assign': [ERROR, 'except-parens'],
-    'no-useless-constructor': OFF, // handled via `@typescript-eslint/no-useless-constructor`
+    'no-useless-constructor': OFF, // Handled via `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],
-    'sort-keys': [ERROR, 'asc', { caseSensitive: false, natural: true }],
+    'sort-keys': [WARNING, 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */
 
-    // rules incompatible with prettier :'(
+    // Rules incompatible with prettier :'(
     'arrow-parens': OFF,
     'function-paren-newline': OFF,
     'implicit-arrow-linebreak': OFF,
@@ -180,10 +184,16 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        'jsdoc/no-types': ERROR,
         'jsdoc/require-param-type': OFF,
         'jsdoc/require-param': OFF,
         'jsdoc/require-returns-type': OFF,
         'jsdoc/require-returns': OFF,
+        'lines-between-class-members': [
+          ERROR,
+          'always',
+          { exceptAfterSingleLine: true }, // Useful to declare class member types
+        ],
       },
     },
 
@@ -290,6 +300,7 @@ module.exports = {
       files: ['*.snap'],
       rules: {
         quotes: OFF,
+        strict: OFF,
       },
     },
 
@@ -308,6 +319,7 @@ module.exports = {
       },
       rules: {
         'comma-dangle': [ERROR, 'never'],
+        'eol-last': OFF,
         'func-names': OFF,
         'object-shorthand': [ERROR, 'never'],
         'prefer-arrow-callback': OFF,
@@ -327,11 +339,18 @@ module.exports = {
     // markdown documentation files
     {
       files: ['*.md'],
+      parserOptions: {
+        ecmaFeatures: {
+          impliedStrict: true,
+        },
+      },
       rules: {
         // disable rules that don't make sense in code snippets
         '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
+        '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,
+        'no-console': OFF,
         strict: OFF,
       },
     },
@@ -344,6 +363,16 @@ module.exports = {
       },
       env: {
         commonjs: false,
+      },
+    },
+
+    // JSX
+    {
+      files: ['*.jsx'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
   ],

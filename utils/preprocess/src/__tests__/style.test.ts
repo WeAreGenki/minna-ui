@@ -74,6 +74,7 @@ describe('Svelte style preprocessor', () => {
     expect.assertions(2);
     let result = await preprocess(sourceSimple, {
       ...preprocessOpts,
+      // @ts-ignore - FIXME!
       banner: '/*!\n * minna-ui\n */\n',
     });
     result = result.toString();

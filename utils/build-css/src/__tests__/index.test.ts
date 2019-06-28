@@ -17,8 +17,9 @@ const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param outDir Where to write the files to.
- * @param srcPath Where to read the files from.
+ *
+ * @param outDir - Where to write the files to.
+ * @param srcPath - Where to read the files from.
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({

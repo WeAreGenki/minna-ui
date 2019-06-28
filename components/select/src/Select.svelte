@@ -75,6 +75,7 @@
   let selected = 0;
   /**
    * Input element reference.
+   *
    * @type {HTMLInputElement}
    */
   let input;

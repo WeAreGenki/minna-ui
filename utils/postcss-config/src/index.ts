@@ -14,11 +14,12 @@ import { aliasedResolve, ImportAlias } from './css-import-resolve';
 const importCache = {};
 
 interface PluginOptions {
-  /** Show useful debugging feedback (e.g. unresolved variables). */
+  /** Show useful debugging feedback (unresolved variables etc.). */
   debug?: boolean;
   /**
    * A map of import aliases. Given a matching regex key, will replace the
    * import path with the value.
+   *
    * @example
    * { '^##\\/(.*)$': 'src/$1' }
    */
@@ -36,7 +37,7 @@ interface PluginOptions {
    */
   optimize?: boolean;
   /**
-   * Apply potentially unsafe transformations (e.g. combining same `@media`).
+   * Apply potentially unsafe transformations (combining same `@media` etc.).
    */
   unsafe?: boolean;
   /**

@@ -67,5 +67,6 @@ module.exports = {
     '/test/',
   ],
   coverageDirectory: '<rootDir>/test/coverage',
+  coverageReporters: ['lcov', 'text'],
   watchPathIgnorePatterns: ['/__sapper__/', '/dist/', '/node_modules/'],
 };

@@ -1,10 +1,10 @@
 /**
  * Minna UI typed ESLint config add-on.
  *
- * @fileoverview Provides extra config for TypeScript projects. The rules
- * included need TypeScript type info to work (e.g. you have a
- * `tsconfig.json` in your project root). This config is and add-on which
- * should extend the base config preset.
+ * @file Provides extra config for TypeScript projects. The rules included need
+ * TypeScript type info to work (e.g. you have a `tsconfig.json` in your
+ * project root). This config is an add-on which should extend the base config
+ * preset.
  * @see https://eslint.org/docs/user-guide/configuring
  * @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
  * @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser

@@ -1,5 +1,6 @@
 /**
  * Based on an existing, unmaintained project with a little clean up.
+ *
  * @see https://github.com/jonathantneal/css-import-resolve
  */
 

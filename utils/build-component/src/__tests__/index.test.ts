@@ -17,7 +17,8 @@ const dist = path.join(__dirname, 'dist');
 
 /**
  * Generate mock package.json env variables.
- * @param dirName Directory name.
+ *
+ * @param dirName - Directory name.
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const pkg = (dirName: string) => ({

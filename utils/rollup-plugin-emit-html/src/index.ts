@@ -9,7 +9,7 @@ import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
 interface EmitHtmlOptions {
-  /** Path prefix for files in URLs (e.g. in script.src). */
+  /** Path prefix for files in URLs (in script.src etc.). */
   basePath?: string;
   /**
    * Document HTML content. `%CSS%` and `%JS%` will be replaced with tags

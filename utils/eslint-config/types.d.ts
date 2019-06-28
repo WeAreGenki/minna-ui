@@ -1,8 +1,8 @@
 /**
- * ESLint types
+ * ESLint types.
  *
- * @fileoverview The `@types/eslint` package is missing types so we need to
- * manually add them here.
+ * @file The `@types/eslint` package is missing types so we need to manually
+ * add them here.
  * @see https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/eslint/index.d.ts
  */
 

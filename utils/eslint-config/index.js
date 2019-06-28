@@ -339,13 +339,18 @@ module.exports = {
     // markdown documentation files
     {
       files: ['*.md'],
+      parserOptions: {
+        ecmaFeatures: {
+          impliedStrict: true,
+        },
+      },
       rules: {
         // disable rules that don't make sense in code snippets
         '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,
-        'no-console': WARNING,
+        'no-console': OFF,
         strict: OFF,
       },
     },

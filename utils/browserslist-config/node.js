@@ -1,10 +1,11 @@
-// https://github.com/browserslist/browserslist
-
 'use strict';
 
 /**
  * Supports the latest node LTS version.
- * Kept up to date with release schedule:
- * @see {@link https://github.com/nodejs/Release#release-schedule}
+ *
+ * Keep up to date with release schedule.
+ *
+ * @see https://github.com/nodejs/Release#release-schedule
+ * @see https://github.com/browserslist/browserslist
  */
 module.exports = ['node 10'];

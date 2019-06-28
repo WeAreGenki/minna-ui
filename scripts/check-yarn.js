@@ -1,7 +1,7 @@
 /**
- * Check For Yarn Package Manager
+ * Check For Yarn Package Manager.
  *
- * @overview Prevents installing using `npm`; forces using `yarn`.
+ * @file Prevents installing using `npm`; forces using `yarn`.
  */
 
 // NOTE: If you want to reuse this functionality in other projects, you'll need
@@ -14,23 +14,24 @@
 
 // TODO: Get more path samples
 /**
- * Sample paths:
- *  Linux:
+ * Sample executable paths.
+ *
+ * Linux:
  *  - yarn bin: `/usr/lib/node_modules/yarn/bin/yarn.js`
  *  - yarn package: ``
  *  - npm bin: ``
  *  - npm package: `~/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
- *  Windows:
+ * Windows:
  *  - yarn bin: ``
  *  - yarn package: ``
  *  - npm bin: ``
  *  - npm package: ``
- *  macOS:
+ * macOS:
  *  - yarn bin: ``
  *  - yarn package: ``
  *  - npm bin: ``
  *  - npm package: ``
- *  Lerna:
+ * Lerna:
  *  - `node_modules/lerna/cli.js`
  */
 

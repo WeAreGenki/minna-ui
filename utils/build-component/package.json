@@ -27,7 +27,7 @@
     "@minna-ui/preprocess": "file:../preprocess",
     "rollup": "^1.16.1",
     "rollup-plugin-buble": "^0.19.6",
-    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.1.0",
     "rollup-plugin-svelte": "^5.1.0",
     "rollup-plugin-terser": "^5.0.0"

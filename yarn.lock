@@ -1049,7 +1049,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.26.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-b36a0b03-2994-40a4-a01c-279a15497bee-1561754467560/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:utils/preprocess"
     rollup "^1.16.1"
     rollup-plugin-buble "^0.19.6"
     rollup-plugin-commonjs "^10.0.1"
@@ -1060,7 +1060,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.26.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-0480b5ae-88be-4d66-a002-1e7e7d78f9c6-1561754467563/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "^4.2.1"
     postcss-load-config "^2.1.0"
 
@@ -1143,7 +1143,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.26.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-34504172-c8c5-40b6-8871-35b91128a3ed-1561754467575/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:utils/utils"
     "@wearegenki/node-utils" "^0.2.0"
     deepmerge "^3.3.0"
     sirv "^0.4.2"
@@ -9264,10 +9264,10 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.16.2, rollup@^1.16.1:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.2.tgz#959aeae4b06c8e540749bac442d6d37aefb9217d"
-  integrity sha512-UAZxaQvH0klYZdF+90xv9nGb+m4p8jdoaow1VL5/RzDK/gN/4CjvaMmJNcOIv1/+gtzswKhAg/467mzF0sLpAg==
+rollup@1.16.3:
+  version "1.16.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.3.tgz#9b8bcf31523efc83447a9624bd2fe6ca58caa1e7"
+  integrity sha512-iXINUUEk2NTZXE3GcUtLQt2cvfQsAUXBQ8AFsDK8tg7Wp5bwTKdZXPdzB2IJQwHpdUNfsIgYMAfajurh7SVTnA==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.0.8"
@@ -9280,6 +9280,15 @@ rollup@^0.63.4:
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
+
+rollup@^1.16.1:
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.16.2.tgz#959aeae4b06c8e540749bac442d6d37aefb9217d"
+  integrity sha512-UAZxaQvH0klYZdF+90xv9nGb+m4p8jdoaow1VL5/RzDK/gN/4CjvaMmJNcOIv1/+gtzswKhAg/467mzF0sLpAg==
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "^12.0.8"
+    acorn "^6.1.1"
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -10021,10 +10030,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.1.tgz#f6771e32c4e1e9c2a28f5886e26d849fd11d6754"
-  integrity sha512-4TaCyB0nBgpsdLBZ8T0ovIgbVpNoCmXnPvBkJ0v1P9RYY2gcYd7Yv1FX+O7hW4Ak1v8uVSKh6WU0XBlN2oZXEw==
+svelte@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.2.tgz#2eb8d58498b0c45739c8627d1f67ebc902f99f2c"
+  integrity sha512-OzKC7mzHkEXbCxe3+NsHty2NShtFjYDDmJhgmMprXjaCBoTm03lrGUQz0moJxD89+u7iSCUz7GqOT6NE7PgkXA==
 
 svg-tags@^1.0.0:
   version "1.0.0"

@@ -4,7 +4,7 @@
  * @see http://eslint.org/docs/user-guide/configuring.html
  */
 
-/* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
 
 'use strict';
 
@@ -261,6 +261,7 @@ module.exports = {
         '*.test.tsx',
       ],
       // `extends` aren't allowed in overrides so inject the config manually
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore - We don't need types here
       ...require('eslint-plugin-jest').configs.recommended, // eslint-disable-line global-require
       plugins: ['jest', 'import'],
@@ -268,6 +269,7 @@ module.exports = {
         jest: true,
       },
       rules: {
+        '@typescript-eslint/no-magic-numbers': OFF, // too verbose for short unit tests
         'import/no-extraneous-dependencies': [
           ERROR,
           {

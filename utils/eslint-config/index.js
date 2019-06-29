@@ -68,7 +68,7 @@ module.exports = {
     },
     jsdoc: {
       additionalTagNames: {
-        customTags: ['jest-environment', 'jsx'],
+        customTags: ['externs', 'jest-environment', 'jsx'],
       },
       matchingFileName: 'example.md',
     },

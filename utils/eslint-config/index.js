@@ -75,6 +75,7 @@ module.exports = {
   },
   rules: {
     /* eslint-enable sort-keys */
+    '@typescript-eslint/ban-ts-ignore': WARNING,
     '@typescript-eslint/ban-types': [
       ERROR,
       {
@@ -113,6 +114,17 @@ module.exports = {
       { allowSingleExtends: true },
     ],
     '@typescript-eslint/no-extraneous-class': ERROR,
+    '@typescript-eslint/no-magic-numbers': [
+      WARNING,
+      {
+        detectObjects: false,
+        enforceConst: true,
+        ignore: [],
+        ignoreArrayIndexes: true,
+        ignoreEnums: true,
+        ignoreNumericLiteralTypes: true,
+      },
+    ],
     '@typescript-eslint/no-this-alias': ERROR,
     '@typescript-eslint/no-unused-vars': [
       WARNING,
@@ -122,6 +134,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-useless-constructor': ERROR,
+    '@typescript-eslint/prefer-for-of': WARNING,
     '@typescript-eslint/prefer-function-type': WARNING,
     '@typescript-eslint/unified-signatures': ERROR,
     'comma-dangle': [
@@ -166,8 +179,9 @@ module.exports = {
     'no-console': ERROR,
     'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
+    'no-magic-numbers': OFF, // Handled by `@typescript-eslint/no-magic-numbers`
     'no-return-assign': [ERROR, 'except-parens'],
-    'no-useless-constructor': OFF, // Handled via `@typescript-eslint/no-useless-constructor`
+    'no-useless-constructor': OFF, // Handled by `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],
     'sort-keys': [WARNING, 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */
@@ -184,11 +198,12 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        '@typescript-eslint/no-require-imports': ERROR,
         'jsdoc/no-types': ERROR,
-        'jsdoc/require-param-type': OFF,
         'jsdoc/require-param': OFF,
-        'jsdoc/require-returns-type': OFF,
+        'jsdoc/require-param-type': OFF,
         'jsdoc/require-returns': OFF,
+        'jsdoc/require-returns-type': OFF,
         'lines-between-class-members': [
           ERROR,
           'always',
@@ -321,10 +336,10 @@ module.exports = {
         'comma-dangle': [ERROR, 'never'],
         'eol-last': OFF,
         'func-names': OFF,
+        'no-var': OFF,
         'object-shorthand': [ERROR, 'never'],
         'prefer-arrow-callback': OFF,
         'prefer-destructuring': OFF,
-        'no-var': OFF,
       },
     },
 
@@ -363,6 +378,9 @@ module.exports = {
       },
       env: {
         commonjs: false,
+      },
+      rules: {
+        '@typescript-eslint/no-require-imports': ERROR,
       },
     },
 

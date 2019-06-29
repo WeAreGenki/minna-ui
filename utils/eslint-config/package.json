@@ -30,10 +30,10 @@
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jest": "^22.7.1",
-    "eslint-plugin-jsdoc": "^10.0.0",
+    "eslint-plugin-jsdoc": "^10.0.1",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^2.2.0"
+    "eslint-plugin-svelte3": "^2.2.2"
   },
   "publishConfig": {
     "access": "public"

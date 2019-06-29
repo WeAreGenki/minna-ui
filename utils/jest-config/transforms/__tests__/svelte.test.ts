@@ -63,10 +63,10 @@ describe('Svelte transform', () => {
   it('mounts components which import ES6 modules', () => {
     expect.assertions(5);
     function wrapper(): void {
-      // eslint-disable-next-line global-require
-      const ComponentImports = require('../../fixtures/TestComponentImports.svelte').default;
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, global-require
+      const TestComponent = require('../../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
-      const component = new ComponentImports({ target });
+      const component = new TestComponent({ target });
       expect(target.innerHTML).toBe('Elon Musk ELON MUSK elon musk');
       expect(component.loud).toBe('ELON MUSK');
       expect(component.quiet).toBe('elon musk');

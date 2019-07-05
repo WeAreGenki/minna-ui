@@ -1049,7 +1049,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.26.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-0945499c-167b-463e-a8c4-bd61b6bf4841-1562362255770/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-b1d9f35a-b45c-4117-a590-083d3ef82e23-1562364425584/node_modules/@minna-ui/preprocess"
     rollup "^1.16.3"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.0.1"
@@ -1060,7 +1060,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.26.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-b46e453b-86cf-4c1b-9eae-1068e65c708b-1562362255772/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-86dc57ca-abca-4f77-85c1-a23484563fbb-1562364425588/node_modules/@minna-ui/postcss-config"
     clean-css "^4.2.1"
     postcss-load-config "^2.1.0"
 
@@ -1088,6 +1088,7 @@
     "@types/eslint" "^4.16.6"
     "@typescript-eslint/eslint-plugin" "^1.11.0"
     "@typescript-eslint/parser" "^1.11.0"
+    escape-regex-string "^1.0.6"
     eslint-config-airbnb-base "^13.2.0"
     eslint-plugin-html "^6.0.0"
     eslint-plugin-import "^2.18.0"
@@ -1144,7 +1145,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.26.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-06d08a1f-d019-4b4b-8d85-99e61af52395-1562362255787/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-cf662335-7685-483b-a39f-96ca1ef1b2ab-1562364425599/node_modules/@minna-ui/utils"
     "@wearegenki/node-utils" "^0.2.0"
     deepmerge "^3.3.0"
     sirv "^0.4.2"
@@ -3471,6 +3472,11 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
+
+escape-regex-string@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/escape-regex-string/-/escape-regex-string-1.0.6.tgz#f536d8997ab19ec395385dcf2ea28b4e080899eb"
+  integrity sha512-AcaPwAOKpF52ETT4uu4vmpqQphuQGjIEhdDwG/gAJYah8ixJlrSBFjhtLMT7frc9y3RWgOnLov9E0MsRBdeRbw==
 
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"

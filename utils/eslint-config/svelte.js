@@ -11,6 +11,7 @@
 'use strict';
 
 const OFF = 0;
+const WARNING = 1;
 const ERROR = 2;
 
 /** @type {import('./types').ESLintConfig} */
@@ -38,6 +39,8 @@ module.exports = {
       },
       rules: {
         // FIXME: Use TS/indent rule once upstream issue is resolved: https://github.com/sveltejs/eslint-plugin-svelte3/issues/22
+        '@typescript-eslint/indent': OFF,
+        indent: [ERROR, 2, { SwitchCase: 1 }],
         // '@typescript-eslint/indent': [
         //   ERROR,
         //   2,
@@ -49,8 +52,17 @@ module.exports = {
         //     SwitchCase: 1,
         //   },
         // ],
-        '@typescript-eslint/indent': OFF,
-        indent: [ERROR, 2, { SwitchCase: 1 }],
+        '@typescript-eslint/no-magic-numbers': [
+          WARNING,
+          {
+            detectObjects: false,
+            enforceConst: true,
+            ignore: [-1, 0], // Often used for tabindex
+            ignoreArrayIndexes: true,
+            ignoreEnums: true,
+            ignoreNumericLiteralTypes: true,
+          },
+        ],
         // Import order cannot be determined correctly in .svelte components
         'import/first': OFF,
         // Components are compiled at build-time so in devDependencies is OK

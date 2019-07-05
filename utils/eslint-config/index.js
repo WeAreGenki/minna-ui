@@ -394,11 +394,24 @@ module.exports = {
 
     // JSX
     {
-      files: ['*.jsx'],
+      files: ['*.jsx', '*.tsx'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
         },
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': [
+          WARNING,
+          {
+            detectObjects: false,
+            enforceConst: true,
+            ignore: [-1, 0], // Often used for tabindex
+            ignoreArrayIndexes: true,
+            ignoreEnums: true,
+            ignoreNumericLiteralTypes: true,
+          },
+        ],
       },
     },
   ],

@@ -6,7 +6,7 @@
  * @see https://eslint.org/docs/user-guide/configuring
  */
 
-/* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
 
 'use strict';
 
@@ -18,7 +18,7 @@ module.exports = {
   plugins: ['svelte3'],
   settings: {
     /**
-     * @param {import('./types').BlockAttributes} attr - Tag attributes.
+     * @param {import('./types').BlockAttributes} attr - Style tag attributes.
      * @returns {boolean} If style block should be ignored.
      */
     'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
@@ -51,8 +51,9 @@ module.exports = {
         // ],
         '@typescript-eslint/indent': OFF,
         indent: [ERROR, 2, { SwitchCase: 1 }],
+        // Import order cannot be determined correctly in .svelte components
         'import/first': OFF,
-        // components are compiled at build-time so devDependencies are OK
+        // Components are compiled at build-time so in devDependencies is OK
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
         // Svelte abuses syntax with `export let`
         'import/no-mutable-exports': OFF,

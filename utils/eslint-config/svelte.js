@@ -37,18 +37,20 @@ module.exports = {
         browser: true,
       },
       rules: {
-        '@typescript-eslint/indent': [
-          ERROR,
-          2,
-          {
-            ignoredNodes: [
-              'ConditionalExpression *', // Prettier :'(
-              'Identifier', // Svelte template expressions
-            ],
-            SwitchCase: 1,
-          },
-        ],
-        // import order cannot be determined correctly in .svelte components
+        // FIXME: Use TS/indent rule once upstream issue is resolved: https://github.com/sveltejs/eslint-plugin-svelte3/issues/22
+        // '@typescript-eslint/indent': [
+        //   ERROR,
+        //   2,
+        //   {
+        //     ignoredNodes: [
+        //       'ConditionalExpression *', // Prettier :'(
+        //       // 'Identifier', // Svelte template expressions
+        //     ],
+        //     SwitchCase: 1,
+        //   },
+        // ],
+        '@typescript-eslint/indent': OFF,
+        indent: [ERROR, 2, { SwitchCase: 1 }],
         'import/first': OFF,
         // components are compiled at build-time so devDependencies are OK
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],

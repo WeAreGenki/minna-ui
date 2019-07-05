@@ -8,6 +8,8 @@
 
 'use strict';
 
+const { join } = require('path');
+
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
@@ -50,7 +52,10 @@ module.exports = {
     ],
     'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
-      node: {
+      [join(__dirname, 'import-resolver.js')]: {
+        alias: {
+          '^##\\/(.*)$': 'src/$1',
+        },
         extensions: [
           '.mjs',
           '.js',

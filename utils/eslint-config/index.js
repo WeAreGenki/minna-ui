@@ -41,6 +41,7 @@ module.exports = {
     'html/indent': '+2',
     'html/report-bad-indent': ERROR,
     'html/xml-extensions': ['.svg', '.xhtml', 'xml'],
+    'import/cache': Infinity, // Only OK when not using long running processes e.g. eslint-loader
     'import/extensions': [
       '.mjs',
       '.js',

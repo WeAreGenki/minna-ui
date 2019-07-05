@@ -29,7 +29,7 @@
     "postcss-load-config": "^2.1.0"
   },
   "devDependencies": {
-    "del": "4.1.1"
+    "del": "5.0.0"
   },
   "engines": {
     "node": ">=12.4.0"

@@ -27,8 +27,8 @@
   box-sizing: border-box;
   max-width: 100%;
   padding: $input-padding-y $input-padding-x;
-  font-size: $input-text-size;
   color: $input-text-color;
+  font-size: $input-text-size;
   background-color: $input-background-color;
   border: $input-border;
   border-radius: $input-radius;

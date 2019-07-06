@@ -20,10 +20,10 @@
     position: absolute;
     width: $spinner-size;
     height: $spinner-size;
-    content: '';
     border: $spinner-width solid $spinner-background-color;
     border-top-color: $spinner-color;
     border-radius: 50%;
     animation: spinner $spinner-animate-speed $spinner-animate-timing infinite;
+    content: '';
   }
 }

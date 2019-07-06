@@ -12,8 +12,8 @@
 }
 
 .sidenav-link {
-  padding: $nav-link-padding-y $nav-link-padding-x;
   margin: $side-nav-link-margin;
+  padding: $nav-link-padding-y $nav-link-padding-x;
 }
 
 .sidenav-link-active {
@@ -31,6 +31,6 @@
 
 .footer-link {
   display: inline-block;
-  padding: $nav-link-padding-y $nav-link-padding-x;
   margin: 0 $gutter-col 0 calc(-1 * $gutter-col);
+  padding: $nav-link-padding-y $nav-link-padding-x;
 }

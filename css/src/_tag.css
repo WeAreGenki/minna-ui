@@ -7,8 +7,8 @@
 .tag {
   display: inline-block;
   padding: $tag-padding;
-  font-size: $tag-text-size;
   color: $tag-text-color;
+  font-size: $tag-text-size;
   vertical-align: $tag-alignment;
   background-color: $tag-background-color;
   border-radius: $tag-border-radius;

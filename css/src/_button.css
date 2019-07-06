@@ -7,10 +7,10 @@
 .button {
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
-  font-weight: $text-weight-heavy;
   color: $button-text-color;
-  text-decoration: none;
+  font-weight: $text-weight-heavy;
   text-transform: uppercase;
+  text-decoration: none;
   background-color: $button-background-color;
   border: 0;
   border-radius: $button-radius;
@@ -71,8 +71,8 @@
 
 .button-link {
   display: inline-block;
-  padding: $button-padding-y $button-padding-x;
   margin: 0;
+  padding: $button-padding-y $button-padding-x;
   line-height: $line-height;
 }
 

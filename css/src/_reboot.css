@@ -36,14 +36,14 @@
 
 .button,
 .select {
-  cursor: pointer;
   outline-offset: -2px;
+  cursor: pointer;
 }
 
 .input,
 .textarea {
-  cursor: text;
   outline-offset: -2px;
+  cursor: text;
 }
 
 .textarea {

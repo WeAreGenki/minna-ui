@@ -91,9 +91,9 @@ body:not(.ready) {
 }
 
 .search .search-keyword {
+  color: var(--theme-color, $intent-primary);
   font-style: normal;
   font-weight: $text-weight-heavy;
-  color: var(--theme-color, $intent-primary);
 }
 
 /* img {
@@ -107,8 +107,8 @@ body:not(.ready) {
 
 kbd {
   display: inline-block;
-  padding: 3px 5px;
   margin-bottom: 3px;
+  padding: 3px 5px;
   font-size: 12px !important;
   line-height: 12px;
   vertical-align: middle;
@@ -143,8 +143,8 @@ li input[type='checkbox'] {
   }
 
   & > a {
-    padding: 5px 0;
     margin: 0 1rem;
+    padding: 5px 0;
   }
 
   ul,
@@ -155,8 +155,8 @@ li input[type='checkbox'] {
   }
 
   a {
-    font-size: 16px;
     color: inherit;
+    font-size: 16px;
     text-decoration: none;
     transition: color 300ms;
 
@@ -176,20 +176,20 @@ li input[type='checkbox'] {
   li {
     position: relative;
     display: inline-block;
-    padding: 5px 0;
     margin: 0 1rem;
+    padding: 5px 0;
 
     ul {
       position: absolute;
       top: 100%;
       right: -15px;
-      box-sizing: border-box;
       display: none;
+      box-sizing: border-box;
       max-height: calc(100vh - 61px);
       padding: 10px 0;
       overflow-y: auto;
-      text-align: left;
       white-space: nowrap;
+      text-align: left;
       background-color: $white;
       border: 1px solid $light-gray2;
       border-bottom-color: $gray5;
@@ -205,8 +205,8 @@ li input[type='checkbox'] {
 
       a {
         display: block;
-        padding: 0;
         margin: 0;
+        padding: 0;
         font-size: inherit;
 
         &.active {
@@ -321,8 +321,8 @@ main {
   }
 
   ul {
-    padding: 0;
     margin: 0 0 0 15px;
+    padding: 0;
   }
 
   li > p {
@@ -420,8 +420,8 @@ body.sticky {
 .markdown-section {
   position: relative;
   max-width: 800px;
-  padding: 30px 15px 40px 15px;
   margin: 0 auto;
+  padding: 30px 15px 40px 15px;
 
   /* & > * {
     box-sizing: border-box;
@@ -447,8 +447,8 @@ body.sticky {
     width: 100%;
     margin-bottom: 1rem;
     overflow: auto;
-    border-spacing: 0;
     border-collapse: collapse;
+    border-spacing: 0;
   }
 
   th {
@@ -472,8 +472,8 @@ body.sticky {
 
   p.tip {
     position: relative;
-    padding: 12px 24px 12px 30px;
     margin: 2em 0;
+    padding: 12px 24px 12px 30px;
     background-color: $light-gray4;
     border-left: 4px solid $rose5;
     border-top-right-radius: 2px;
@@ -488,13 +488,13 @@ body.sticky {
       /* stylelint-disable-next-line max-line-length */
       /* font-family: Dosis, 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; */
       /* font-size: 14px; */
+      color: $app-background-color;
       font-weight: $text-weight-heavy;
       line-height: 20px;
-      color: $app-background-color;
       text-align: center;
-      content: '!';
       background-color: $rose5;
       border-radius: 100%;
+      content: '!';
     }
 
     code {

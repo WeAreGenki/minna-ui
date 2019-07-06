@@ -100,8 +100,8 @@
 /* Mouse */
 
 .hide-on-hover {
-  transition: opacity $animate-speed-in ease-out;
   backface-visibility: hidden; /* promote into own layer to avoid repaints */
+  transition: opacity $animate-speed-in ease-out;
 
   &:hover,
   &:focus {

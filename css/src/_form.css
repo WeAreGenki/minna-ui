@@ -32,7 +32,7 @@
   background-color: $input-background-color;
   border: $input-border;
   border-radius: $input-radius;
-  outline-offset: $outline-offset;
+  outline-offset: $input-outline-offset;
 
   &:hover {
     outline: $input-hover-outline;

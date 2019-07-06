@@ -47,7 +47,7 @@
 -->
 
 <script>
-  import { createEventDispatcher, afterUpdate } from 'svelte';
+  import { afterUpdate, createEventDispatcher } from 'svelte';
 
   export let textOn = 'ON';
   export let textOff = 'OFF';
@@ -108,7 +108,7 @@
     text-align: center;
     background-color: $switch-off-background-color;
     border-radius: $button-radius;
-    outline-offset: $outline-offset;
+    outline-offset: $switch-outline-offset;
     box-shadow: $switch-inner-shadow, $switch-shadow;
     backface-visibility: hidden; /* promote to own layer to avoid repaints */
     cursor: pointer;
@@ -126,11 +126,11 @@
     }
 
     &:hover {
-      outline: $input-hover-outline;
+      outline: $switch-hover-outline;
     }
 
     &:focus {
-      outline: $input-focus-outline;
+      outline: $switch-focus-outline;
     }
   }
 

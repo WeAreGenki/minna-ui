@@ -12,19 +12,19 @@
   USAGE:
     HTML markup for typical use:
 
-      <Select id="select-example" bind:value="example" items="[
+      <Select id="select-example" bind:value="{example}" items="{[
         { id: 'ex1', text: 'Example 1' },
         { id: 'ex2', text: 'Example 2' },
         { id: 'ex3', text: 'Example 3', disabled: true },
-      ]"/>
+      ]}"/>
 
     You can also use a simple list of items (works best with short item names):
 
-      <Select id="select-example" bind:value="example" items="[
+      <Select id="select-example" bind:value="{example}" items="{[
         'Example 1',
         'Example 2',
         'Example 3',
-      ]"/>
+      ]}"/>
 
     See more available options/properties in the component data() below.
 

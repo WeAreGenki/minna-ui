@@ -3471,6 +3471,11 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
+escape-regex-string@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/escape-regex-string/-/escape-regex-string-1.0.6.tgz#f536d8997ab19ec395385dcf2ea28b4e080899eb"
+  integrity sha512-AcaPwAOKpF52ETT4uu4vmpqQphuQGjIEhdDwG/gAJYah8ixJlrSBFjhtLMT7frc9y3RWgOnLov9E0MsRBdeRbw==
+
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -3543,12 +3548,13 @@ eslint-plugin-jest@^22.7.1:
   integrity sha512-CrT3AzA738neimv8G8iK2HCkrCwHnAJeeo7k5TEHK86VMItKl6zdJT/tHBDImfnVVAYsVs4Y6BUdBZQCCgfiyw==
 
 eslint-plugin-jsdoc@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-11.0.0.tgz#90d0680dc487a1b022fe4194b8ba2bec7833e944"
-  integrity sha512-HbXbgSgHRZ8SdVj/ZgKODBz00C4D6JOBpzZPjR9XgACxv9cbOJ7BZsOSsRrjnTvrezBWQPTmal6BTVZHsEixNA==
+  version "11.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-11.2.1.tgz#ac757d292bc33d58488e7fbd6ff1b8612cf70a5e"
+  integrity sha512-Cvt9+E1A8Xjy0BM1v3LF9mi5jb1Ax6nKkWdJ5sicfdMO/utu5hXOSS6p/cuOinaVFzz1/n560z4BGGb99eVC2g==
   dependencies:
     comment-parser "^0.5.5"
     debug "^4.1.1"
+    escape-regex-string "^1.0.6"
     flat-map-polyfill "^0.3.8"
     jsdoctypeparser "4.0.0"
     lodash "^4.17.11"

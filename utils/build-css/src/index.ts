@@ -2,10 +2,11 @@
  * Tool to compile Minna UI CSS packages.
  */
 
-/* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection, no-restricted-syntax */
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-object-injection, no-restricted-syntax, id-length, no-console */
 
 import CleanCSS from 'clean-css';
 import fs from 'fs';
+import mri from 'mri';
 import { basename, dirname, join } from 'path';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
@@ -15,6 +16,8 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const mkdir = promisify(fs.mkdir);
 const readdir = promisify(fs.readdir);
+
+const ARGS_START = 2;
 
 /**
  * Print a list of warnings or errors to the process stderr.
@@ -48,6 +51,7 @@ interface ProcessCssOpts {
   banner?: string;
   from: string;
   optimize?: boolean;
+  sourcemap?: boolean;
   to?: string;
 }
 
@@ -68,11 +72,12 @@ async function processCss({
   banner = '',
   from,
   optimize = process.env.NODE_ENV === 'production',
+  sourcemap,
   to = from,
 }: ProcessCssOpts): Promise<ProcessCssResult> {
   const src = await readFile(from, 'utf8');
 
-  const ctx = { from, map: { inline: false }, to };
+  const ctx = { from, map: sourcemap && { inline: false }, to };
   const source = banner + src;
 
   const { options, plugins } = await postcssrc(ctx, from);
@@ -82,15 +87,15 @@ async function processCss({
 
   let code = result.css;
   // eslint-disable-next-line prefer-destructuring
-  let map: string | { toString(): string } = result.map;
-  const hasMap = !!map;
+  let map: string | { toString(): string } | undefined = result.map;
+  const hasMap = sourcemap && !!map;
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const filePath = options.to!;
   const dirPath = dirname(filePath);
 
   if (optimize) {
-    // minify resulting CSS
+    // Minify resulting CSS
     const min = new CleanCSS({
       level: {
         1: { all: true },
@@ -104,16 +109,20 @@ async function processCss({
 
     const fileName = basename(filePath);
 
-    // clean-css removes the source map comment so we need to add it back in
-    code = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
-    map = min.sourceMap;
+    if (sourcemap) {
+      // Add back source map comment because clean-css removes it
+      code = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
+      map = min.sourceMap;
+    }
   }
 
-  // create the output directory
+  // Create output directory
   await mkdir(dirPath, { recursive: true });
 
   writeFile(filePath, code);
-  writeFile(`${filePath}.map`, map);
+  if (sourcemap) {
+    writeFile(`${filePath}.map`, map);
+  }
 
   return {
     code,
@@ -130,29 +139,52 @@ async function processCss({
 export async function run(
   env: NodeJS.ProcessEnv,
   argv: string[] = [],
-): Promise<ProcessCssResult[]> {
-  try {
-    process.env.NODE_ENV = env.NODE_ENV || 'production';
-    const pkgName = env.npm_package_name;
-    const pkgVersion = env.npm_package_version;
-    const pkgHomepage = env.npm_package_homepage;
-    const pkgStyle = env.npm_package_style;
-    const pkgMain = env.npm_package_main;
+): Promise<ProcessCssResult[] | undefined> {
+  const args = mri(argv.slice(ARGS_START), {
+    alias: { b: 'banner', h: 'help', m: 'sourcemap' },
+    boolean: ['banner', 'help', 'sourcemap'],
+    default: { b: true, m: true },
+  });
+  const { help, banner: hasBanner, sourcemap } = args;
 
-    const cssBanner = `/*!
- * ${pkgName} v${pkgVersion} - ${pkgHomepage}
+  if (help) {
+    console.log(`
+Build CSS. Typically zero additional configuration is required because your
+package.json is the config.
+
+USAGE:
+  build-css [src] [dest] [options]
+
+OPTIONS
+  -h --help       Print this help message and exit.
+  -b --banner     Inject banner text atop the output (default true).
+  -m --sourcemap  Generate code source maps (default true).
+`);
+    return;
+  }
+
+  process.env.NODE_ENV = env.NODE_ENV || 'production';
+  const pkgName = env.npm_package_name;
+  const pkgVersion = env.npm_package_version;
+  const pkgHomepage = env.npm_package_homepage;
+  const pkgStyle = env.npm_package_style;
+  const pkgMain = env.npm_package_main;
+
+  const cssBanner = `/*!
+  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */
 `;
 
-    const inputDir = argv[2];
-    const outputDir = argv[3];
-    const noBanner = argv.includes('--no-banner');
-    const banner = noBanner ? '' : cssBanner;
-    const inputCss: string[] = [];
-    const outputCss: string[] = [];
+  const inputDir = args._[0];
+  const outputDir = args._[1];
+  const cwd = process.cwd();
+  const banner = hasBanner ? cssBanner : '';
+  const inputCss: string[] = [];
+  const outputCss: string[] = [];
 
+  try {
     if (!inputDir) {
       if (!pkgStyle && !pkgMain) {
         throw new Error('No input file or directory specified!');
@@ -174,8 +206,8 @@ export async function run(
       );
 
       cssFiles.forEach((fileName) => {
-        inputCss.push(join(inputDir, fileName));
-        outputCss.push(join(outputDir, fileName));
+        inputCss.push(join(cwd, inputDir, fileName));
+        outputCss.push(join(cwd, outputDir, fileName));
       });
     }
 
@@ -185,26 +217,25 @@ export async function run(
       const from = inputCss[index];
       const to = outputCss[index];
 
-      const result = processCss({ banner, from, to });
+      const result = processCss({ banner, from, sourcemap, to });
       results.push(result);
     }
 
-    // await here to capture any errors
+    // Await here to capture any errors
     const allResults = await Promise.all(results);
 
+    // eslint-disable-next-line consistent-return
     return allResults;
   } catch (err) {
     if (err.showSourceCode) {
-      // eslint-disable-next-line no-console
       console.error(
         `[build-css] PostCSS error: ${err.message}:\n${err.showSourceCode()}`,
       );
     } else {
-      // eslint-disable-next-line no-console
       console.error('[build-css]', err);
     }
 
-    // we always want internal builds to fail on error
+    // We always want internal builds to fail on error
     process.exitCode = 2;
     throw err;
   }

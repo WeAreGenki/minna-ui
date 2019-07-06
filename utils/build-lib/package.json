@@ -7,13 +7,18 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
-  "bin": {
-    "build-lib": "cli/index.js"
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf dist"
   },
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "bin": {
+    "build-component": "cli/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "dependencies": {
     "mri": "^1.1.4",

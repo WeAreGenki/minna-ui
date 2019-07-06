@@ -1,15 +1,13 @@
 /* eslint-disable security/detect-object-injection */
 
-'use strict';
-
-const { statSync } = require('fs');
-const { join } = require('path');
+import { statSync } from 'fs';
+import { join } from 'path';
 
 /**
- * @param {string} cwd - Current working directory.
- * @returns {string} Path to the matching entry file.
+ * @param cwd - Current working directory.
+ * @returns Path to the matching entry file.
  */
-function resolveEntryFile(cwd) {
+export function resolveEntryFile(cwd: string): string {
   const files = [
     'index.js',
     'index.ts',
@@ -35,11 +33,9 @@ function resolveEntryFile(cwd) {
 
   if (!result) {
     throw new Error(
-      "Couldn't find any entry file. Add entry src path to the `build-lib` cli.",
+      "Couldn't find an entry file. Add entry src path to the `build-lib` cli.",
     );
   }
 
   return result;
 }
-
-exports.resolveEntryFile = resolveEntryFile;

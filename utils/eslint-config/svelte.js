@@ -52,17 +52,6 @@ module.exports = {
         //     SwitchCase: 1,
         //   },
         // ],
-        '@typescript-eslint/no-magic-numbers': [
-          WARNING,
-          {
-            detectObjects: false,
-            enforceConst: true,
-            ignore: [-1, 0], // Often used for tabindex
-            ignoreArrayIndexes: true,
-            ignoreEnums: true,
-            ignoreNumericLiteralTypes: true,
-          },
-        ],
         // Import order cannot be determined correctly in .svelte components
         'import/first': OFF,
         // Components are compiled at build-time so in devDependencies is OK

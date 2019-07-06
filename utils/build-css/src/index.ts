@@ -172,7 +172,7 @@ OPTIONS
   const pkgMain = env.npm_package_main;
 
   const cssBanner = `/*!
-  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
+ * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */

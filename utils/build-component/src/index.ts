@@ -142,6 +142,8 @@ export async function run(
     });
 
     const bundleEsm = await rollup.rollup({
+      // Allow Svelte to be tree-shaken when users import multiple components
+      external: ['svelte', 'svelte/internal'],
       input: pkgSvelte,
       plugins: [
         svelte({

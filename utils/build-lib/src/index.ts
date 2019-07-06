@@ -51,8 +51,8 @@ USAGE:
 OPTIONS
   -h --help       Print this help message and exit.
   -w --watch      Continuously watch files for changes and rebuild.
-  -c --tsconfig   Custom path to your TypeScript config (default tsconfig.json)
-  -m --sourcemap  Generate code source maps (default true)
+  -c --tsconfig   Custom path to your TypeScript config (default tsconfig.json).
+  -m --sourcemap  Generate code source maps (default true).
 `);
     return;
   }

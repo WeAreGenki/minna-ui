@@ -10,12 +10,14 @@
 const { statSync } = require('fs');
 const mri = require('mri');
 const { join } = require('path');
-const commonjs = require('rollup-plugin-commonjs');
+const commonjs = require('rollup-plugin-commonjs').default;
 const typescript = require('rollup-plugin-typescript');
 const { makeLegalIdentifier } = require('rollup-pluginutils');
 const { build } = require('./build');
 const { resolveEntryFile } = require('./utils');
 const { watch } = require('./watch');
+
+const ARGS_START = 2;
 
 /** @typedef {import('./types').BuildLibResult} BuildLibResult */
 
@@ -32,7 +34,7 @@ const { watch } = require('./watch');
  * in build mode. When running in watch mode this will never resolve.
  */
 async function run(env, argv = []) {
-  const args = mri(argv.slice(2), {
+  const args = mri(argv.slice(ARGS_START), {
     alias: { c: 'tsconfig', h: 'help', m: 'sourcemap', w: 'watch' },
     boolean: ['help', 'sourcemap', 'watch'],
     default: { c: 'tsconfig.json', m: true },
@@ -95,12 +97,10 @@ OPTIONS
 
   try {
     if (statSync(tsConfigPath)) {
-      // @ts-ignore - TODO: Correctly add the value in a way TS likes
       typescriptOpts.tsconfig = tsConfigPath;
     }
   } catch (err) {}
 
-  // @ts-ignore - FIXME: commonjs does provide type of this should work
   const plugins = [commonjs(), typescript(typescriptOpts)];
 
   const options = {

@@ -74,19 +74,21 @@
   }
 
   function handleKeyDown(event) {
-    // choose key with graceful fallback for old browsers
+    // Choose key with graceful fallback for old browsers
+    /* eslint-disable @typescript-eslint/no-magic-numbers */
     switch (event.key || event.keyCode) {
       case 'Enter':
-      case 13: // enter
+      case 13: // Enter
       case ' ':
       case 'Spacebar':
       case 32:
-        event.preventDefault(); // don't submit form (enter) or scroll page (space)
+        event.preventDefault(); // Don't submit form (enter) or scroll page (space)
         toggle();
         break;
       default:
-      // no matching key
+        // No matching key
     }
+    /* eslint-enable @typescript-eslint/no-magic-numbers */
   }
 </script>
 
@@ -101,18 +103,18 @@
     display: inline-flex;
     width: $switch-width;
     padding: $switch-padding;
-    line-height: 1;
     color: $switch-off-text-color;
+    line-height: 1;
     text-align: center;
-    cursor: pointer;
     background-color: $switch-off-background-color;
     border-radius: $button-radius;
     outline-offset: $outline-offset;
     box-shadow: $switch-inner-shadow, $switch-shadow;
+    backface-visibility: hidden; /* promote to own layer to avoid repaints */
+    cursor: pointer;
     /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
     transition: background-color $switch-animate-out-speed ease-out;
     transition-delay: 0s;
-    backface-visibility: hidden; /* promote to own layer to avoid repaints */
 
     @if $switch-optimize {
       will-change: background-color;
@@ -198,10 +200,10 @@
 
   .switch-disabled {
     color: $button-disabled-text-color;
-    cursor: not-allowed;
     background-color: $button-background-color;
     border: $switch-disabled-border;
     box-shadow: none; /* inner shadow */
+    cursor: not-allowed;
     transition: none;
 
     @if $switch-optimize {

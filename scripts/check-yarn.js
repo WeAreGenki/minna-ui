@@ -17,22 +17,22 @@
  * Sample executable paths.
  *
  * Linux:
- *  - yarn bin: `/usr/lib/node_modules/yarn/bin/yarn.js`
- *  - yarn package: ``
- *  - npm bin: ``
- *  - npm package: `~/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
+ * - yarn bin: `/usr/lib/node_modules/yarn/bin/yarn.js`
+ * - yarn package: ``
+ * - npm bin: ``
+ * - npm package: `~/.config/yarn/global/node_modules/npm/bin/npm-cli.js`
  * Windows:
- *  - yarn bin: ``
- *  - yarn package: ``
- *  - npm bin: ``
- *  - npm package: ``
- * macOS:
- *  - yarn bin: ``
- *  - yarn package: ``
- *  - npm bin: ``
- *  - npm package: ``
+ * - yarn bin: ``
+ * - yarn package: ``
+ * - npm bin: ``
+ * - npm package: ``
+ * MacOS:
+ * - yarn bin: ``
+ * - yarn package: ``
+ * - npm bin: ``
+ * - npm package: ``
  * Lerna:
- *  - `node_modules/lerna/cli.js`
+ * - `node_modules/lerna/cli.js`.
  */
 
 if (process.env.npm_execpath) {

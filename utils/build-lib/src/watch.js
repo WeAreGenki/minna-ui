@@ -20,6 +20,7 @@ async function watch({
   plugins,
   sourcemap,
 }) {
+  /** @type {import('rollup').RollupWatchOptions[]} */
   const config = [];
 
   if (pkgMain) {
@@ -54,7 +55,6 @@ async function watch({
     // TODO: Generate `*.d.ts` files
   }
 
-  // @ts-ignore - `config` will never be zero length
   const watcher = rollupWatch(config);
 
   console.log('Starting build in watch mode...');

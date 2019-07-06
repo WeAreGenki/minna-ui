@@ -138,7 +138,7 @@ async function processCss({
 export async function run(
   env: NodeJS.ProcessEnv,
   argv: string[] = [],
-): Promise<ProcessCssResult[] | undefined> {
+): Promise<ProcessCssResult[]> {
   const args = mri(argv.slice(ARGS_START), {
     alias: { b: 'banner', h: 'help', m: 'sourcemap' },
     boolean: ['banner', 'help', 'sourcemap'],
@@ -159,6 +159,8 @@ OPTIONS
   -b --banner     Inject banner text atop the output (default true).
   -m --sourcemap  Generate code source maps (default true).
 `);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore - Easier to deal with a wrong return type here than possible nulls tests
     return;
   }
 

@@ -9,4 +9,6 @@
 
 <svelte:options tag="test-component-imports" immutable={true} />
 
-{name} {loud} {quiet}
+<div id="name">{name}</div>
+<div id="loud">{loud}</div>
+<div id="quiet">{quiet}</div>

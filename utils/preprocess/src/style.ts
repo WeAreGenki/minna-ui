@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 
 import merge from 'deepmerge';
-import postcss from 'postcss';
+import postcss, { CssSyntaxError } from 'postcss';
 import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
 import { Preprocessor } from 'svelte/types/compiler/preprocess';
@@ -63,8 +63,10 @@ export const style = (
     };
   } catch (err) {
     if (err.name === 'CssSyntaxError') {
-      const { message, showSourceCode } = err as postcss.CssSyntaxError;
-      process.stderr.write(message + showSourceCode());
+      process.stderr.write(
+        (err as CssSyntaxError).message +
+          (err as CssSyntaxError).showSourceCode(),
+      );
     } else {
       // eslint-disable-next-line no-console
       throw console.error(err);

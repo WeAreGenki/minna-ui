@@ -36,14 +36,13 @@ afterEach(() => del([dist]));
 
 describe('build-component tool', () => {
   it('compiles package esm bundle', async () => {
-    expect.assertions(6);
+    expect.assertions(5);
     const build = buildComponent(pkg('esm'));
     await expect(build).resolves.toBeDefined();
     const built = await build;
     expect(built.esm.result.output[0].code).toMatch('export default TestComponent');
     expect(built.esm.result.output[0].code).not.toMatch('TestComponent=function');
     expect(built.esm.result.output[0].code).toMatch("name = 'Elon Musk'");
-    expect(built.esm.result.output[0].code).toMatch('target = $$node');
     expect(built.esm.result.output[0].map!.sources).toHaveLength(2);
   });
 

@@ -24,7 +24,7 @@ module.exports = {
     'a11y/content-property-no-static-value': [true, { severity: 'warning' }],
     'a11y/font-size-is-readable': [true, { severity: 'warning' }],
     'a11y/line-height-is-vertical-rhythmed': [true, { severity: 'warning' }],
-    'a11y/media-prefers-reduced-motion': false, // Not useful
+    'a11y/media-prefers-reduced-motion': null, // Not useful
     'a11y/no-display-none': [true, { severity: 'warning' }],
     'a11y/no-obsolete-attribute': [true, { severity: 'warning' }],
     'a11y/no-obsolete-element': [true, { severity: 'warning' }],

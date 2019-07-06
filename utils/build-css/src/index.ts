@@ -42,7 +42,6 @@ function warn(
       return;
     }
 
-    // eslint-disable-next-line no-console
     console.warn(`[${from}] ${level}: ${err.toString()}`);
   }
 }

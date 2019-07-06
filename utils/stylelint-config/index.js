@@ -125,7 +125,8 @@ module.exports = {
       'rules',
       { hasBlock: true, type: 'at-rule' },
     ],
-    // Similar order to `stylelint-config-rational-order` but with customised
+    // Similar order to `stylelint-config-rational-order` but with
+    // customisations (mostly around fonts)
     // @see https://github.com/constverum/stylelint-config-rational-order
     'order/properties-order': [
       {
@@ -203,10 +204,11 @@ module.exports = {
         groupName: 'typography',
         properties: [
           'color',
+          'src',
           'font',
-          'font-weight',
-          'font-size',
           'font-family',
+          'font-size',
+          'font-weight',
           'font-style',
           'font-variant',
           'font-size-adjust',
@@ -216,6 +218,7 @@ module.exports = {
           'font-emphasize-position',
           'font-emphasize-style',
           'font-smooth',
+          'font-display',
           'line-height',
           'direction',
           'letter-spacing',
@@ -257,7 +260,6 @@ module.exports = {
           'page-break-after',
           'page-break-before',
           'page-break-inside',
-          'src',
         ],
       },
       {
@@ -347,7 +349,6 @@ module.exports = {
           'baseline-shift',
           'dominant-baseline',
           'text-anchor',
-          'word-spacing',
           'writing-mode',
           'fill',
           'fill-opacity',

@@ -73,9 +73,6 @@ module.exports = {
       },
     },
     jsdoc: {
-      additionalTagNames: {
-        customTags: ['externs', 'jest-environment', 'jsx'],
-      },
       matchingFileName: 'example.md',
     },
   },
@@ -166,6 +163,10 @@ module.exports = {
     'import/prefer-default-export': OFF,
     'jsdoc/check-examples': WARNING,
     'jsdoc/check-indentation': WARNING,
+    'jsdoc/check-tag-names': [
+      WARNING,
+      { definedTags: ['externs', 'jest-environment', 'jsx'] },
+    ],
     'jsdoc/require-description-complete-sentence': WARNING,
     'jsdoc/require-hyphen-before-param-description': WARNING,
     'jsdoc/require-jsdoc': OFF, // Far too annoying

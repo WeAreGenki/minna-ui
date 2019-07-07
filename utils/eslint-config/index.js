@@ -277,6 +277,7 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/no-magic-numbers': OFF, // Too verbose for short unit tests
+        'import/first': OFF, // OK to set up mocks before imports
         'import/no-extraneous-dependencies': [
           ERROR,
           {

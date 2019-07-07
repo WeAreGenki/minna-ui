@@ -35,8 +35,27 @@ const selectOpts = {
 };
 
 describe('Select component', () => {
-  it('renders correctly with required props set', () => {
+  it('has default props set correctly', () => {
     expect.assertions(10);
+    const target = document.createElement('div');
+    const component = new Select({
+      props: { items: [] },
+      target,
+    });
+    expect(component.autocomplete).toBe('off');
+    expect(component.disabled).toBe(false);
+    expect(component.filterable).toBe(true);
+    expect(component.filterHelp).toBe('Filter...');
+    expect(component.isOpen).toBe(false);
+    expect(component.placeholder).toBe('Choose...');
+    expect(component.readonly).toBe(false);
+    expect(component.required).toBe(false);
+    expect(component.id).toBeUndefined();
+    expect(component.value).toBeUndefined();
+  });
+
+  it('renders correctly with required props set', () => {
+    expect.assertions(9);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
@@ -45,7 +64,6 @@ describe('Select component', () => {
     const select = target.querySelector('.select')!;
     expect(Array.isArray(component.items)).toBe(true);
     expect(component.items).not.toHaveLength(0);
-    expect(component.input).toBeDefined();
     expect(select.getAttribute('tabindex')).toBe('0');
     expect(select.getAttribute('disabled')).toBeNull();
     expect(select.getAttribute('required')).toBeNull();
@@ -55,17 +73,18 @@ describe('Select component', () => {
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it('renders with value set', () => {
+  it('renders with value prop set', () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new Select({
+    new Select({
       props: {
         ...selectOpts,
         value: 'jp',
       },
       target,
     });
-    expect(component.inputText).toBe('Japan');
+    const active = target.querySelector('.option-active')!;
+    expect(active.getAttribute('value')).toBe('jp');
     expect(target.innerHTML).toMatchSnapshot();
   });
 
@@ -156,7 +175,7 @@ describe('Select component', () => {
   // TODO: Write tests once we have custom validation in the component
   it.todo('renders with required prop');
 
-  it('updates selected index on value change', () => {
+  it('updates selected item on value change', async () => {
     expect.assertions(2);
     const target = document.createElement('div');
     const component = new Select({
@@ -166,10 +185,14 @@ describe('Select component', () => {
       },
       target,
     });
-    expect(component.selected).toBe(1);
-    component.$set({ value: 'kr' });
-    component.open();
-    expect(component.selected).toBe(3);
+    const active1 = target.querySelector('.option-active')!;
+    expect(active1.getAttribute('value')).toBe('cn');
+    component.value = 'kr';
+    const select = target.querySelector<HTMLSelectElement>('.select')!;
+    select.click(); // To set correct selected index
+    await tick();
+    const active2 = target.querySelector('.option-active')!;
+    expect(active2.getAttribute('value')).toBe('kr');
   });
 
   it('shows on click', async () => {
@@ -379,7 +402,6 @@ describe('Select component', () => {
     expect(component.isOpen).toBe(true); // Still open
   });
 
-  // FIXME: Incorrect input value!!
   it('skips over disabled items on down key press', async () => {
     expect.assertions(5);
     const target = document.createElement('div');
@@ -394,24 +416,23 @@ describe('Select component', () => {
     const select = target.querySelector<HTMLSelectElement>('.select')!;
     select.click(); // To set correct selected index
     const active1 = target.querySelector('.option-active')!;
-    expect(active1.getAttribute('value')).toBe('XXXX');
+    expect(active1.getAttribute('value')).toBe('1');
     const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
     select.dispatchEvent(event);
     await tick();
     const active2 = target.querySelector('.option-active')!;
-    expect(active2.getAttribute('value')).toBe('XXXX');
+    expect(active2.getAttribute('value')).toBe('3');
     select.dispatchEvent(event);
     await tick();
     const active3 = target.querySelector('.option-active')!;
-    expect(active3.getAttribute('value')).toBe('XXXX');
+    expect(active3.getAttribute('value')).toBe('7');
     select.dispatchEvent(event);
     await tick();
     const active4 = target.querySelector('.option-active')!;
-    expect(active4.getAttribute('value')).toBe('XXXX');
+    expect(active4.getAttribute('value')).toBe('7');
     expect(component.isOpen).toBe(true); // Still open
   });
 
-  // FIXME: Incorrect input value!!
   it('skips over disabled items on up key press', async () => {
     expect.assertions(5);
     const target = document.createElement('div');
@@ -426,20 +447,20 @@ describe('Select component', () => {
     const select = target.querySelector<HTMLSelectElement>('.select')!;
     select.click(); // To set correct selected index
     const active1 = target.querySelector('.option-active')!;
-    expect(active1.getAttribute('value')).toBe('XXXX');
+    expect(active1.getAttribute('value')).toBe('7');
     const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
     select.dispatchEvent(event);
     await tick();
     const active2 = target.querySelector('.option-active')!;
-    expect(active2.getAttribute('value')).toBe('XXXX');
+    expect(active2.getAttribute('value')).toBe('3');
     select.dispatchEvent(event);
     await tick();
     const active3 = target.querySelector('.option-active')!;
-    expect(active3.getAttribute('value')).toBe('XXXX');
+    expect(active3.getAttribute('value')).toBe('1');
     select.dispatchEvent(event);
     await tick();
     const active4 = target.querySelector('.option-active')!;
-    expect(active4.getAttribute('value')).toBe('XXXX');
+    expect(active4.getAttribute('value')).toBe('1');
     expect(component.isOpen).toBe(true); // Still open
   });
 

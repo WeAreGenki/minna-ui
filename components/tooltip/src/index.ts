@@ -22,6 +22,7 @@ export const tooltip: SvelteAction = (node: HTMLElement, text: string) => {
 
   function position(): void {
     const { top, right, bottom } = node.getBoundingClientRect();
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     el.style.top = `${(top + bottom) / 2}px`;
     el.style.left = `${right}px`;
   }

@@ -1092,7 +1092,7 @@
     eslint-plugin-html "^6.0.0"
     eslint-plugin-import "^2.18.0"
     eslint-plugin-jest "^22.7.1"
-    eslint-plugin-jsdoc "^11.0.0"
+    eslint-plugin-jsdoc "^12.0.0"
     eslint-plugin-markdown "^1.0.0"
     eslint-plugin-security "^1.4.0"
     eslint-plugin-svelte3 "^2.2.0"
@@ -3471,6 +3471,11 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
+escape-regex-string@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/escape-regex-string/-/escape-regex-string-1.0.6.tgz#f536d8997ab19ec395385dcf2ea28b4e080899eb"
+  integrity sha512-AcaPwAOKpF52ETT4uu4vmpqQphuQGjIEhdDwG/gAJYah8ixJlrSBFjhtLMT7frc9y3RWgOnLov9E0MsRBdeRbw==
+
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -3542,13 +3547,14 @@ eslint-plugin-jest@^22.7.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.7.1.tgz#5dcdf8f7a285f98040378220d6beca581f0ab2a1"
   integrity sha512-CrT3AzA738neimv8G8iK2HCkrCwHnAJeeo7k5TEHK86VMItKl6zdJT/tHBDImfnVVAYsVs4Y6BUdBZQCCgfiyw==
 
-eslint-plugin-jsdoc@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-11.0.0.tgz#90d0680dc487a1b022fe4194b8ba2bec7833e944"
-  integrity sha512-HbXbgSgHRZ8SdVj/ZgKODBz00C4D6JOBpzZPjR9XgACxv9cbOJ7BZsOSsRrjnTvrezBWQPTmal6BTVZHsEixNA==
+eslint-plugin-jsdoc@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-12.0.0.tgz#a0b089d4652f353c5f8654883ccd715b01f85012"
+  integrity sha512-mhWp7AFA9rgyr0RGfjHEl/nIBMlm/IqZ2DiWsRHZEjaS22XtYElxGp3G/7vhDENmUCckX35rQGAph/fUlXHS7w==
   dependencies:
     comment-parser "^0.5.5"
     debug "^4.1.1"
+    escape-regex-string "^1.0.6"
     flat-map-polyfill "^0.3.8"
     jsdoctypeparser "4.0.0"
     lodash "^4.17.11"

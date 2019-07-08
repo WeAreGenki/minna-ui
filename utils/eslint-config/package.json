@@ -33,7 +33,7 @@
     "eslint-plugin-jsdoc": "^15.2.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^2.5.0",
+    "eslint-plugin-svelte3": "^2.6.0",
     "resolve": "^1.11.1"
   },
   "publishConfig": {

@@ -156,9 +156,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'import/no-deprecated': WARNING,
+    // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // 'import/no-deprecated': WARNING,
     'import/prefer-default-export': OFF,
-    'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
+    // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // 'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
+    'jsdoc/check-examples': OFF,
     'jsdoc/check-indentation': WARNING,
     'jsdoc/check-tag-names': [
       WARNING,
@@ -195,6 +198,20 @@ module.exports = {
     'function-paren-newline': OFF,
     'implicit-arrow-linebreak': OFF,
     'operator-linebreak': OFF,
+
+    // Rules which are too slow
+    // TODO: Consider removing after issue is resolved:
+    // - https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // - https://github.com/benmosher/eslint-plugin-import/pull/1409
+    'import/default': OFF,
+    'import/export': OFF,
+    'import/named': OFF,
+    'import/namespace': OFF,
+    'import/no-cycle': OFF,
+    'import/no-deprecated': OFF,
+    'import/no-named-as-default-member': OFF,
+    'import/no-named-as-default': OFF,
+    'import/no-unused-modules': OFF,
   },
 
   overrides: [

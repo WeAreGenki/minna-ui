@@ -72,9 +72,6 @@ module.exports = {
         ],
       },
     },
-    jsdoc: {
-      matchingFileName: 'example.md',
-    },
   },
   rules: {
     /* eslint-enable sort-keys */
@@ -161,7 +158,7 @@ module.exports = {
     ],
     'import/no-deprecated': WARNING,
     'import/prefer-default-export': OFF,
-    'jsdoc/check-examples': WARNING,
+    'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
     'jsdoc/check-indentation': WARNING,
     'jsdoc/check-tag-names': [
       WARNING,

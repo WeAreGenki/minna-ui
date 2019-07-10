@@ -1144,7 +1144,7 @@
   version "0.26.0"
   dependencies:
     "@minna-ui/utils" "file:utils/utils"
-    "@wearegenki/node-utils" "^0.2.0"
+    "@wearegenki/node-utils" "^0.3.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
 
@@ -1554,10 +1554,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@wearegenki/node-utils@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.2.0.tgz#33008cc096c06b83d3f230f054ca9ee4158022eb"
-  integrity sha512-bBzbdd7jj/Gn+6e0kW78aieFIMP/5hHUxGeUTQ7DoYnQiUMBHckuovWGs0IoM6jcYQN39zSExk2XNDp9/gCuCw==
+"@wearegenki/node-utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.3.0.tgz#97a152a67dc3a8a07db4f3cb8138cd07f990855c"
+  integrity sha512-OVrr/r8lYARWZ6ePoIMFPTFjOJSliXUljHPZ+IArWTm8vD73escaW+N1DUy3bDYmOOOnSKrEhzlmwz4BhGa5oQ==
   dependencies:
     colorette "^1.0.7"
 

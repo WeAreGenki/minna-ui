@@ -37,7 +37,7 @@
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.6.0",
+    "@types/node": "12.6.2",
     "@types/postcss-nested": "4.1.0",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.0",
@@ -53,11 +53,11 @@
     "postcss-scss": "2.0.0",
     "prettier": "1.18.2",
     "remark-cli": "6.0.1",
-    "rollup": "1.16.6",
+    "rollup": "1.16.7",
     "stylelint": "10.1.0",
-    "svelte": "3.6.5",
+    "svelte": "3.6.7",
     "tslib": "1.10.0",
-    "typescript": "3.5.2"
+    "typescript": "3.5.3"
   },
   "browserslist": {
     "production": [

@@ -32,6 +32,8 @@ const pkg = (dirName: string) => ({
   npm_package_version: '1.2.3',
 });
 
+jest.setTimeout(10e3);
+
 afterEach(() => del([dist]));
 
 describe('build-component tool', () => {

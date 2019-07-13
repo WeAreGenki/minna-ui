@@ -28,7 +28,7 @@
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-pluginutils": "^2.8.1",
     "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.3"
   },
   "publishConfig": {
     "access": "public"

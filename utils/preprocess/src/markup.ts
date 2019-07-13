@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 
-// import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
+import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
 
 export function minify(source: string, unsafe = false): string {
   let code = `${source}`;
@@ -53,16 +53,7 @@ export function minify(source: string, unsafe = false): string {
   return code;
 }
 
-// type MarkupPreprocessor = PreprocessorGroup['markup'];
-type MarkupPreprocessor = (options: {
-  content: string;
-  filename: string;
-}) => {
-  code: string;
-  // map?: SourceMap | string;
-  map?: string;
-  dependencies?: string[];
-} | null;
+type MarkupPreprocessor = PreprocessorGroup['markup'];
 
 /**
  * Minna UI svelte markup preprocessor.
@@ -74,10 +65,11 @@ type MarkupPreprocessor = (options: {
 export const markup = ({
   enabled = true,
   unsafe = true,
+  // @ts-ignore - FIXME: null is a valid return type, submit PR upstream
 } = {}): MarkupPreprocessor => ({ content }) => {
   if (!enabled) return null;
 
-  return {
-    code: minify(content, unsafe),
-  };
+  const code = minify(content, unsafe);
+
+  return { code };
 };

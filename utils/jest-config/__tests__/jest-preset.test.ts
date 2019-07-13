@@ -11,7 +11,7 @@ describe('Jest test runner', () => {
   it('handles ES6 modules correctly', () => {
     expect.assertions(3);
     function wrapper(): void {
-      const { shout, whisper } = require('../fixtures/importable.js');
+      const { shout, whisper } = require('../fixtures/importable.mjs');
       expect(shout('Hello')).toBe('HELLO');
       expect(whisper('Hello')).toBe('hello');
     }

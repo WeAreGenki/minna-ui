@@ -1,12 +1,13 @@
 /**
  * Minna UI Svelte & Sapper ESLint config add-on.
  *
- * @file Provides extra config for Svelte & Sapper projects. This config is
- * an add-on which should extend the base config preset.
+ * @file This config is an add-on which should extend the base config preset.
+ * Provides extra config for Svelte & Sapper projects.
+ *
  * @see https://eslint.org/docs/user-guide/configuring
  */
 
-/* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
+/* eslint-disable sort-keys */
 
 'use strict';
 
@@ -22,12 +23,18 @@ module.exports = {
      * @returns {boolean} If style block should be ignored.
      */
     'svelte3/ignore-styles': (attr) => attr.type === 'text/postcss',
+    'svelte3/named-blocks': true,
   },
   overrides: [
     // Svelte components
     {
       files: ['*.svelte'],
       processor: 'svelte3/svelte3',
+    },
+
+    // Svelte component all blocks
+    {
+      files: ['**/*.svelte/*.js'],
       parserOptions: {
         ecmaVersion: 2019,
         sourceType: 'module',
@@ -37,26 +44,23 @@ module.exports = {
         browser: true,
       },
       rules: {
-        // FIXME: Use TS/indent rule once upstream issue is resolved: https://github.com/sveltejs/eslint-plugin-svelte3/issues/22
-        '@typescript-eslint/indent': OFF,
-        indent: [ERROR, 2, { SwitchCase: 1 }],
-        // '@typescript-eslint/indent': [
-        //   ERROR,
-        //   2,
-        //   {
-        //     ignoredNodes: [
-        //       'ConditionalExpression *', // Prettier :'(
-        //       // 'Identifier', // Svelte template expressions
-        //     ],
-        //     SwitchCase: 1,
-        //   },
-        // ],
+        // FIXME: Remove this line once issue is fixed: https://github.com/sveltejs/eslint-plugin-svelte3/issues/36
+        'import/no-unresolved': OFF,
+
         // Import order cannot be determined correctly in .svelte components
         'import/first': OFF,
-        // Components are compiled at build-time so in devDependencies is OK
+        // Components are compiled at build-time so devDependencies are OK
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
         // Svelte abuses syntax with `export let`
         'import/no-mutable-exports': OFF,
+      },
+    },
+
+    // Svelte component template blocks
+    {
+      files: ['**/*.svelte/*_template.js'],
+      rules: {
+        '@typescript-eslint/indent': OFF,
       },
     },
   ],

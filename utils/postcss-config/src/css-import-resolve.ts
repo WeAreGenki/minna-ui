@@ -4,7 +4,7 @@
  * @see https://github.com/jonathantneal/css-import-resolve
  */
 
-/* eslint-disable security/detect-object-injection, no-confusing-arrow */
+/* eslint-disable security/detect-object-injection, no-confusing-arrow, no-param-reassign */
 
 import { readFile } from 'fs';
 import { isAbsolute, join, sep } from 'path';
@@ -17,17 +17,11 @@ export type ImportCacheEntry = Promise<{
 export type ImportCache = Record<string, ImportCacheEntry>;
 
 function fileContents(file: string, cache: ImportCache): ImportCacheEntry {
-  // eslint-disable-next-line no-param-reassign
   cache[file] =
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
       readFile(file, 'utf8', (error, contents) =>
-        error
-          ? rejectPromise(error)
-          : resolvePromise({
-              contents,
-              file,
-            }),
+        error ? rejectPromise(error) : resolvePromise({ contents, file }),
       ),
     );
 
@@ -48,37 +42,33 @@ function isRelative(id: string): boolean {
 }
 
 function resolveAsFile(file: string, cache: ImportCache): ImportCacheEntry {
-  // resolve `file` as the file
-  return (
-    fileContents(file, cache)
-      // otherwise, resolve `file.css` as the file
-      .catch(() => fileContents(`${file}.css`, cache))
+  // Resolve `file` as the file
+  return fileContents(file, cache).catch(() =>
+    // Otherwise, resolve `file.css` as the file
+    fileContents(`${file}.css`, cache),
   );
 }
 
 function resolveAsDirectory(dir: string, cache: ImportCache): ImportCacheEntry {
-  // resolve the JSON contents of `dir/package.json` as `pkg`
+  // Resolve the JSON contents of `dir/package.json` as `pkg`
   return jsonContents(dir, cache).then((pkg) =>
-    // if `pkg` has a `style` field
     'style' in pkg
-      ? // resolve `dir/pkg.style` as the file
+      ? // Resolve `dir/pkg.style` as the file
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         fileContents(join(dir, pkg.style!), cache)
-      : // otherwise, resolve `dir/index.css` as the file
+      : // Otherwise, resolve `dir/index.css` as the file
         fileContents(join(dir, 'index.css'), cache),
   );
 }
 
 function nodeModulesDirs(cwd: string): string[] {
-  const segments = cwd.split(sep);
-
-  let count = segments.length;
-
   const dirs = [];
+  const segments = cwd.split(sep);
+  let count = segments.length;
 
   while (count > 0) {
     if (segments[count] !== 'node_modules') {
-      // add `/`-joined `segments[0 - count]` and `node_modules` to `dirs`
+      // Add `/`-joined `segments[0 - count]` and `node_modules` to `dirs`
       dirs.push(
         join(segments.slice(0, count).join('/') || '/', 'node_modules'),
       );
@@ -95,16 +85,15 @@ function resolveAsModule(
   id: string,
   cache: ImportCache,
 ): ImportCacheEntry {
-  // for each `dir` in the node modules directory using `cwd`
+  // For each `dir` in the node modules directory using `cwd`
   return nodeModulesDirs(cwd).reduce(
-    (promise, dir) =>
-      // @ts-ignore FIXME: Can this be solved to make TS happy?
-      promise.catch(
-        // resolve as a file using `dir/id` as `file`
-        () =>
-          resolveAsFile(join(dir, id), cache)
-            // otherwise, resolve as a directory using `dir/id` as `dir`
-            .catch(() => resolveAsDirectory(join(dir, id), cache)),
+    (promise: ImportCacheEntry, dir) =>
+      promise.catch(() =>
+        // Resolve as a file using `dir/id` as `file`
+        resolveAsFile(join(dir, id), cache).catch(() =>
+          // Otherwise, resolve as a directory using `dir/id` as `dir`
+          resolveAsDirectory(join(dir, id), cache),
+        ),
       ),
     Promise.reject(),
   );
@@ -123,28 +112,27 @@ export function resolve(
   cache: ImportCache = {},
 ): ImportCacheEntry {
   if (isAbsolute(id)) {
-    // no need to prefix with `cwd`
-    // eslint-disable-next-line no-param-reassign
     cwd = '';
   }
 
   return (
-    // resolve as a file using `cwd/id` as `file`
+    // Resolve as a file using `cwd/id` as `file`
     resolveAsFile(join(cwd, id), cache)
-      // otherwise, resolve as a directory using `cwd/id` as `dir`
+      // Otherwise, resolve as a directory using `cwd/id` as `dir`
       .catch(() => resolveAsDirectory(join(cwd, id), cache))
-      // otherwise, if `id` does not begin with `/`, `./`, or `../`
+      // Otherwise, if `id` does not begin with `/`, `./`, or `../`
       .catch(() =>
         !isRelative(id) ? resolveAsModule(cwd, id, cache) : Promise.reject(),
       )
-      // otherwise, throw `"CSS Module not found"`
+      // Otherwise, throw `"CSS Module not found"`
       .catch(() => Promise.reject(new Error('CSS Module not found')))
   );
 }
 
 /**
- * @example
- * { '^##\\/(.*)$': 'src/$1' }
+ * @example ```json
+ * { "^##\\/(.*)$": "src/$1" }
+ * ```
  */
 export interface ImportAlias {
   [alias: string]: string;
@@ -157,13 +145,12 @@ export interface ImportAlias {
 export function aliasedResolve(importAlias: ImportAlias): typeof resolve {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (id: string, cwd: string, opts: any): ImportCacheEntry => {
-    // replace import aliases before trying to resolve
+    // Replace import aliases before trying to resolve
     Object.entries(importAlias).forEach(([alias, value]) => {
       // eslint-disable-next-line security/detect-non-literal-regexp
       const aliasRe = new RegExp(alias);
 
       if (aliasRe.test(id)) {
-        // eslint-disable-next-line no-param-reassign
         id = id.replace(aliasRe, value);
       }
     });

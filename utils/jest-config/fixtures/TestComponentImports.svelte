@@ -1,5 +1,5 @@
 <script>
-  import { shout, whisper } from './importable.js';
+  import { shout, whisper } from './importable.mjs';
 
   export let name = 'Elon Musk';
 

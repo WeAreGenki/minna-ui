@@ -9,15 +9,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.27.0][] - 2019-07-14
+
 ### Added
 
 - `@minna-ui/jest-config` - Imported Svelte components now have their props exposed as <abbr title="getters and setters">accessors</abbr>.
 - `@minna-ui/ts-config` - Add option to detect inconsistent file case in imports.
 
+### Fixed
+
+- Components compiled as ES modules keep imports to `svelte/internal` allowing for better tree shaking.
+- All unit tests are now passing again.
+- Remove <abbr title="operating system">OS</abbr> restriction, developers on windows can now try to build the project.
+
 ### Changed
 
 - Revert back to `yarn` instead of `npm` for managing package internally. It was an interesting experiment but yarn is still much better, especially for monorepos.
-- `@minna-ui/eslint-config` - General improvements.
+- `@minna-ui/eslint-config` - Various improvements.
+- `@minna-ui/css` - Better accessibility for focus outline styles.
+- General clean up.
 - Updated package dependencies.
 
 ## [0.26.1][] - 2019-06-11

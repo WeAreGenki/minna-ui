@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/rollup-plugin-emit-css",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "description": "Optimise and emit CSS in rollup.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-emit-css",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

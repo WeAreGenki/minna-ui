@@ -1,7 +1,17 @@
 /**
- * ESLint config preset for Minna UI projects.
+ * Minna UI base ESLint config preset.
  *
- * @see http://eslint.org/docs/user-guide/configuring.html
+ * @file Provides all base ESLint configuration including parsing of many file
+ * types (see various file extension settings in config), a somewhat
+ * opinionated (but not overly forceful) set of base rules, and file overrides
+ * to automate applying the correct rules for different files (based on file
+ * name). It's intended to use this config along with Prettier and VS Code
+ * with `"prettier.eslintIntegration": true`.
+ * @see https://eslint.org/docs/user-guide/configuring
+ *
+ * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
+ * environment variable, e.g. `TIMING=1 yarn eslint ...`. After a lint run
+ * ESLint will print a table with timing stats and highlight the slowest rules.
  */
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
@@ -55,7 +65,7 @@ module.exports = {
     'import/resolver': {
       [join(__dirname, 'import-resolver.js')]: {
         alias: {
-          '^##\\/(.*)$': 'src/$1',
+          '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
         },
         extensions: [
           '.mjs',

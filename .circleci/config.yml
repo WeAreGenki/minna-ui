@@ -40,6 +40,7 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn install --frozen-lockfile
       - save-cache: *save-cache
+      - run: yarn build
       - run: yarn run test-ci
 
 workflows:

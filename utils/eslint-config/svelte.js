@@ -1,8 +1,9 @@
 /**
  * Minna UI Svelte & Sapper ESLint config add-on.
  *
- * @file Provides extra config for Svelte & Sapper projects. This config is
- * an add-on which should extend the base config preset.
+ * @file This config is an add-on which should extend the base config preset.
+ * Provides extra config for Svelte & Sapper projects.
+ *
  * @see https://eslint.org/docs/user-guide/configuring
  */
 

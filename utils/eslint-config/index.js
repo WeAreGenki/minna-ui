@@ -7,11 +7,12 @@
  * to automate applying the correct rules for different files (based on file
  * name). It's intended to use this config along with Prettier and VS Code
  * with `"prettier.eslintIntegration": true`.
+ *
  * @see https://eslint.org/docs/user-guide/configuring
  *
  * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
- * environment variable, e.g. `TIMING=1 yarn eslint ...`. After a lint run
- * ESLint will print a table with timing stats and highlight the slowest rules.
+ * environment variable, e.g. `TIMING=1 yarn eslint ...`. Once run, ESLint will
+ * print a table with timing stats and highlight the slowest rules.
  */
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
@@ -177,7 +178,7 @@ module.exports = {
       WARNING,
       { definedTags: ['externs', 'jest-environment', 'jsx'] },
     ],
-    'jsdoc/require-description-complete-sentence': WARNING,
+    'jsdoc/require-description-complete-sentence': OFF, // TODO: Enable once fixed: https://github.com/gajus/eslint-plugin-jsdoc/issues/337
     'jsdoc/require-hyphen-before-param-description': WARNING,
     'jsdoc/require-jsdoc': OFF, // Far too annoying
     'jsdoc/require-returns': [WARNING, { forceReturnsWithAsync: true }],
@@ -282,6 +283,8 @@ module.exports = {
     // Unit tests
     {
       files: [
+        '__mocks__/*',
+        '__tests__/*',
         '*.spec.js',
         '*.spec.mjs',
         '*.spec.ts',

@@ -1,15 +1,15 @@
 /* eslint-env browser */
 
+import { process as transform } from '@minna-ui/jest-config/transforms/es.js'; // eslint-disable-line import/no-extraneous-dependencies
 import fs from 'fs';
 import { promisify } from 'util';
-// @ts-ignore - FIXME: Remove this line once the next version of Svelte is released
-import { preprocess, create } from 'svelte/compiler';
+import { compile, preprocess } from 'svelte/compiler';
 import { markup } from '../markup';
 
 // eslint-disable-next-line security/detect-non-literal-fs-filename
 const readFile = promisify(fs.readFile);
 
-// don't import component to avoid Jest transform
+// Don't import component to avoid Jest transform
 const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestComponent.svelte');
 
 const opts = {
@@ -32,7 +32,6 @@ const sourceSimple = `
   <!-- comment -->
   <!---->
 `;
-const sourceBadSyntax = '<div id="" class=">test</span>';
 let source = '';
 
 beforeAll(async () => {
@@ -51,13 +50,13 @@ describe('Svelte markup preprocessor', () => {
     spy.mockRestore();
   });
 
-  it.skip('processes a simple component', async () => {
+  it('processes a simple component', async () => {
     expect.assertions(4);
     const output = preprocess(sourceSimple, opts);
     await expect(output).resolves.toBeDefined();
     const result = (await output).toString();
-    expect(result).toMatch('> <');
-    expect(result).not.toMatch('><');
+    expect(result).toMatch('><');
+    expect(result).not.toMatch('> <');
     expect(result).toMatchSnapshot();
   });
 
@@ -69,21 +68,14 @@ describe('Svelte markup preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it.skip('creates and mounts a component', async () => {
+  it('creates and mounts a component', async () => {
     expect.assertions(1);
     const processed = await preprocess(source, opts);
-    const TestComponent = create(processed.toString());
+    const result = compile(processed.toString());
+    // eslint-disable-next-line no-eval, security/detect-eval-with-expression
+    const TestComponent = eval(transform(result.js.code, 'component.ts').code);
     const target = document.createElement('div');
     new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
-  });
-
-  it.skip('prints error on bad HTML syntax', async () => {
-    expect.assertions(1);
-    const spy = jest.spyOn(process.stderr, 'write');
-    spy.mockImplementation(() => true);
-    await preprocess(sourceBadSyntax, opts);
-    expect(spy).toHaveBeenCalledWith('');
-    spy.mockRestore();
   });
 });

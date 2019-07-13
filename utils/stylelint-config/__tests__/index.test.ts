@@ -5,8 +5,8 @@ import config from '../index';
 
 const sourceCssValid = `body {
   margin: 0;
-  font-family: 'Roboto Mono Regular', sans-serif;
   color: rgb(37, 32, 64);
+  font-family: 'Roboto Mono Regular', sans-serif;
   background-color: rgb(250, 250, 250);
 }
 `;
@@ -49,7 +49,7 @@ describe('Stylelint config', () => {
     const output = stylelint.lint(stylelintOpts);
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBe(false);
+    expect(result.errored).toBe(false);
     expect(result.results[0].warnings).toHaveLength(0);
   });
 
@@ -61,7 +61,7 @@ describe('Stylelint config', () => {
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBe(true);
+    expect(result.errored).toBe(true);
     expect(result.results[0].warnings).not.toHaveLength(0);
   });
 
@@ -73,22 +73,20 @@ describe('Stylelint config', () => {
     });
     await expect(output).resolves.toBeDefined();
     const result = await output;
-    expect(result.results[0].errored).toBe(true);
+    expect(result.errored).toBe(true);
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].warnings[0].rule).toBe('CssSyntaxError');
   });
 
   it('detects invalid CSS property order', async () => {
-    expect.assertions(3);
+    expect.assertions(2);
     const result = await stylelint.lint({
       code: sourceOrderInvalid,
       config,
     });
-    expect(result.results[0].errored).toBe(true);
+    expect(result.errored).toBe(true);
     // @ts-ignore - FIXME: Submit PR to update @types/stylelint
     expect(result.results[0].warnings[0].rule).toBe('order/properties-order');
-    // @ts-ignore - FIXME: Submit PR to update @types/stylelint
-    expect(result.results[0].warnings[1].rule).toBe('order/properties-order');
   });
 
   it('has no config parse errors', async () => {

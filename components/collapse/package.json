@@ -27,7 +27,7 @@
   "main": "dist/index.js",
   "browser": "dist/index.web.js",
   "style": "dist/index.css",
-  "types": "types.d.ts",
+  "types": "index.d.ts",
   "files": [
     "dist",
     "src",

@@ -16,10 +16,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `@minna-ui/jest-config` - Imported Svelte components now have their props exposed as <abbr title="getters and setters">accessors</abbr>.
 - `@minna-ui/ts-config` - Add option to detect inconsistent file case in imports.
 
-### Removed
-
-- Components no longer provide their own `types.d.ts` files because Svelte now comes with component module types out of the box.
-
 ### Fixed
 
 - Components compiled as ES modules keep imports to `svelte/internal` allowing for better tree shaking.

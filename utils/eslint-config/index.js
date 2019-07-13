@@ -1,12 +1,24 @@
 /**
- * ESLint config preset for Minna UI projects.
+ * Minna UI base ESLint config preset.
  *
- * @see http://eslint.org/docs/user-guide/configuring.html
+ * @file Provides all base ESLint configuration including parsing of many file
+ * types (see various file extension settings in config), a somewhat
+ * opinionated (but not overly forceful) set of base rules, and file overrides
+ * to automate applying the correct rules for different files (based on file
+ * name). It's intended to use this config along with Prettier and VS Code
+ * with `"prettier.eslintIntegration": true`.
+ * @see https://eslint.org/docs/user-guide/configuring
+ *
+ * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
+ * environment variable, e.g. `TIMING=1 yarn eslint ...`. After a lint run
+ * ESLint will print a table with timing stats and highlight the slowest rules.
  */
 
-/* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
 
 'use strict';
+
+const { join } = require('path');
 
 const OFF = 0;
 const WARNING = 1;
@@ -39,6 +51,7 @@ module.exports = {
     'html/indent': '+2',
     'html/report-bad-indent': ERROR,
     'html/xml-extensions': ['.svg', '.xhtml', 'xml'],
+    'import/cache': Infinity, // Only OK when not using long running processes e.g. eslint-loader
     'import/extensions': [
       '.mjs',
       '.js',
@@ -50,7 +63,10 @@ module.exports = {
     ],
     'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
-      node: {
+      [join(__dirname, 'import-resolver.js')]: {
+        alias: {
+          '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
+        },
         extensions: [
           '.mjs',
           '.js',
@@ -66,15 +82,10 @@ module.exports = {
         ],
       },
     },
-    jsdoc: {
-      additionalTagNames: {
-        customTags: ['jest-environment', 'jsx'],
-      },
-      matchingFileName: 'example.md',
-    },
   },
   rules: {
     /* eslint-enable sort-keys */
+    '@typescript-eslint/ban-ts-ignore': WARNING,
     '@typescript-eslint/ban-types': [
       ERROR,
       {
@@ -100,8 +111,8 @@ module.exports = {
       ERROR,
       2,
       {
-        // ESTree spec node types: https://github.com/estree/estree
-        // TS types: https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/src/ts-estree/ast-node-types.ts
+        // ESTree spec: https://github.com/estree/estree
+        // TS node types: https://git.io/fj6bE
         ignoredNodes: ['ConditionalExpression *'], // Prettier :'(
         SwitchCase: 1,
       },
@@ -113,6 +124,17 @@ module.exports = {
       { allowSingleExtends: true },
     ],
     '@typescript-eslint/no-extraneous-class': ERROR,
+    '@typescript-eslint/no-magic-numbers': [
+      WARNING,
+      {
+        detectObjects: false,
+        enforceConst: false,
+        ignore: [-1, 0, 1],
+        ignoreArrayIndexes: true,
+        ignoreEnums: true,
+        ignoreNumericLiteralTypes: true,
+      },
+    ],
     '@typescript-eslint/no-this-alias': ERROR,
     '@typescript-eslint/no-unused-vars': [
       WARNING,
@@ -122,6 +144,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-useless-constructor': ERROR,
+    '@typescript-eslint/prefer-for-of': WARNING,
     '@typescript-eslint/prefer-function-type': WARNING,
     '@typescript-eslint/unified-signatures': ERROR,
     'comma-dangle': [
@@ -134,27 +157,34 @@ module.exports = {
         objects: 'always-multiline',
       },
     ],
-    'id-length': [ERROR, { exceptions: ['_'], min: 2 }], // encourage descriptive names
+    'id-length': [ERROR, { exceptions: ['_'], min: 2 }], // Encourage descriptive names
     'import/extensions': [
       ERROR,
-      'ignorePackages', // do use file extensions
+      'ignorePackages', // Do use file extensions
       {
         ts: 'never',
         tsx: 'never',
       },
     ],
-    'import/no-deprecated': WARNING,
+    // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // 'import/no-deprecated': WARNING,
     'import/prefer-default-export': OFF,
-    'jsdoc/check-examples': WARNING,
+    // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // 'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
+    'jsdoc/check-examples': OFF,
     'jsdoc/check-indentation': WARNING,
+    'jsdoc/check-tag-names': [
+      WARNING,
+      { definedTags: ['externs', 'jest-environment', 'jsx'] },
+    ],
     'jsdoc/require-description-complete-sentence': WARNING,
     'jsdoc/require-hyphen-before-param-description': WARNING,
-    'jsdoc/require-jsdoc': OFF, // too annoying
+    'jsdoc/require-jsdoc': OFF, // Far too annoying
     'jsdoc/require-returns': [WARNING, { forceReturnsWithAsync: true }],
     'max-len': [
       ERROR,
       {
-        code: 80, // consistency with prettier
+        code: 80, // Consistency with prettier
         ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
@@ -166,8 +196,9 @@ module.exports = {
     'no-console': ERROR,
     'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
+    'no-magic-numbers': OFF, // Handled by `@typescript-eslint/no-magic-numbers`
     'no-return-assign': [ERROR, 'except-parens'],
-    'no-useless-constructor': OFF, // Handled via `@typescript-eslint/no-useless-constructor`
+    'no-useless-constructor': OFF, // Handled by `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],
     'sort-keys': [WARNING, 'asc', { caseSensitive: false, natural: true }],
     /* eslint-disable sort-keys */
@@ -177,6 +208,20 @@ module.exports = {
     'function-paren-newline': OFF,
     'implicit-arrow-linebreak': OFF,
     'operator-linebreak': OFF,
+
+    // Rules which are too slow
+    // TODO: Consider removing after issue is resolved:
+    // - https://github.com/typescript-eslint/typescript-eslint/issues/389
+    // - https://github.com/benmosher/eslint-plugin-import/pull/1409
+    'import/default': OFF,
+    'import/export': OFF,
+    'import/named': OFF,
+    'import/namespace': OFF,
+    'import/no-cycle': OFF,
+    'import/no-deprecated': OFF,
+    'import/no-named-as-default-member': OFF,
+    'import/no-named-as-default': OFF,
+    'import/no-unused-modules': OFF,
   },
 
   overrides: [
@@ -184,11 +229,12 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        '@typescript-eslint/no-require-imports': ERROR,
         'jsdoc/no-types': ERROR,
-        'jsdoc/require-param-type': OFF,
         'jsdoc/require-param': OFF,
-        'jsdoc/require-returns-type': OFF,
+        'jsdoc/require-param-type': OFF,
         'jsdoc/require-returns': OFF,
+        'jsdoc/require-returns-type': OFF,
         'lines-between-class-members': [
           ERROR,
           'always',
@@ -203,26 +249,26 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-extraneous-class': OFF,
         'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
-        'no-useless-constructor': OFF, // crashes node process
+        'no-useless-constructor': OFF, // Crashes node process
         'no-var': OFF,
         'vars-on-top': OFF,
       },
     },
 
-    // config files
+    // Config files
     {
       files: ['*.config.js', '*rc.js'],
-      excludedFiles: ['preact.config.js', 'rollup.config.js'], // use ES modules
+      excludedFiles: ['preact.config.js', 'rollup.config.js'], // Use ES modules
       parserOptions: {
         sourceType: 'script',
       },
       env: {
-        // should be node CommonJS format
+        // Should be node CommonJS format
         commonjs: true,
         node: true,
       },
       rules: {
-        // can use any installed dependency
+        // Can use any installed dependency
         'import/no-extraneous-dependencies': [
           ERROR,
           {
@@ -233,7 +279,7 @@ module.exports = {
       },
     },
 
-    // unit tests
+    // Unit tests
     {
       files: [
         '*.spec.js',
@@ -245,14 +291,17 @@ module.exports = {
         '*.test.ts',
         '*.test.tsx',
       ],
-      // `extends` aren't allowed in overrides so inject the config manually
-      // @ts-ignore - We don't need types here
+      // Using `extends` isn't allowed in overrides; inject config manually
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore - We don't care about types here
       ...require('eslint-plugin-jest').configs.recommended, // eslint-disable-line global-require
       plugins: ['jest', 'import'],
       env: {
         jest: true,
       },
       rules: {
+        '@typescript-eslint/no-magic-numbers': OFF, // Too verbose for short unit tests
+        'import/first': OFF, // OK to set up mocks before imports
         'import/no-extraneous-dependencies': [
           ERROR,
           {
@@ -281,7 +330,7 @@ module.exports = {
         'max-len': [
           ERROR,
           {
-            code: 100, // consistency with prettier override
+            code: 100, // Consistency with prettier override
             ignorePattern:
               'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
             ignoreRegExpLiterals: true,
@@ -291,11 +340,11 @@ module.exports = {
             ignoreUrls: true,
           },
         ],
-        'no-new': OFF, // allow testing constructors
+        'no-new': OFF, // Allows testing constructors
       },
     },
 
-    // unit test snapshots
+    // Unit test snapshots
     {
       files: ['*.snap'],
       rules: {
@@ -304,7 +353,7 @@ module.exports = {
       },
     },
 
-    // raw html files (without transpiling)
+    // Raw HTML (without transpiling)
     {
       files: ['*.html'],
       parserOptions: {
@@ -321,14 +370,14 @@ module.exports = {
         'comma-dangle': [ERROR, 'never'],
         'eol-last': OFF,
         'func-names': OFF,
+        'no-var': OFF,
         'object-shorthand': [ERROR, 'never'],
         'prefer-arrow-callback': OFF,
         'prefer-destructuring': OFF,
-        'no-var': OFF,
       },
     },
 
-    // autogenerated declaration files
+    // Auto-generated declarations
     {
       files: ['*.css.d.ts', '*.pcss.d.ts'],
       rules: {
@@ -336,7 +385,7 @@ module.exports = {
       },
     },
 
-    // markdown documentation files
+    // Markdown documentation files
     {
       files: ['*.md'],
       parserOptions: {
@@ -345,7 +394,7 @@ module.exports = {
         },
       },
       rules: {
-        // disable rules that don't make sense in code snippets
+        // Disable rules that don't make sense in code snippets
         '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
@@ -364,11 +413,14 @@ module.exports = {
       env: {
         commonjs: false,
       },
+      rules: {
+        '@typescript-eslint/no-require-imports': ERROR,
+      },
     },
 
     // JSX
     {
-      files: ['*.jsx'],
+      files: ['*.jsx', '*.tsx'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,

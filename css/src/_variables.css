@@ -36,7 +36,6 @@ $shadow: 0 4px 20px 1px color-mod($shadow-color alpha(0.2)) !default;
 $shadow-hover: 0 13px 42px 0 color-mod($shadow-color alpha(0.3)) !default;
 $animate-speed-in: 224ms;
 $animate-speed-out: 192ms;
-$outline-offset: 3px !default;
 
 /* Grid */
 
@@ -107,6 +106,16 @@ $li-margin-between: 0.5em !default;
 $hr-margin: 3em 0 !default;
 $hr-border: 1px solid $divider-black !default;
 
+/* Accessibility */
+
+$selection-text-color: $white !default;
+/* stylelint-disable-next-line function-blacklist */
+$selection-background-color: hsl(222, 51%, 41%) !default;
+$outline-offset: 5px !default;
+$outline-width: 4px !default;
+$outline-hover: $outline-width solid $outline-color-hover !default;
+$outline-focus: $outline-width solid $outline-color !default;
+
 /* Navigation */
 
 $nav-link-padding-x: 1.3em !default;
@@ -121,6 +130,7 @@ $footer-text-color: $text-color-muted !default;
 $button-padding-x: 1.75em !default;
 $button-padding-y: 0.682em !default;
 $button-text-color: $dark-gray2 !default;
+$button-text-weight: $text-weight-heavy !default;
 $button-background-color: $white !default;
 $button-radius: $radius !default;
 /* prettier-ignore */
@@ -135,6 +145,9 @@ $button-disabled-border-color: $light-gray2 !default;
 $button-mini-padding:
   calc($button-padding-y / 2)
   calc($button-padding-x / 2) !default;
+$button-outline-offset: $outline-offset !default;
+$button-focus-outline: $outline-focus !default;
+$button-active-outline: $outline-hover !default;
 
 /* Forms */
 
@@ -148,8 +161,9 @@ $input-text-color: $text-color !default;
 $input-background-color: $white !default;
 $input-border: 1px solid $gray5 !default;
 $input-radius: $radius !default;
-$input-hover-outline: 3px solid $outline-color-hover !default;
-$input-focus-outline: 3px solid $outline-color !default;
+$input-outline-offset: $outline-offset !default;
+$input-hover-outline: $outline-hover !default;
+$input-focus-outline: $outline-focus !default;
 $input-invalid-color: $red2 !default;
 $input-invalid-border: 3px solid $intent-danger !default;
 $input-placeholder-text-color: $gray2 !default;
@@ -229,9 +243,3 @@ $spinner-color: $intent-primary !default;
 $spinner-background-color: $light-gray1 !default;
 $spinner-animate-speed: 880ms !default;
 $spinner-animate-timing: ease !default;
-
-/* Accessibility */
-
-$selection-text-color: $white;
-/* stylelint-disable-next-line function-blacklist */
-$selection-background-color: hsl(222, 51%, 41%);

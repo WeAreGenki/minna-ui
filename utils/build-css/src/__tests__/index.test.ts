@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 import del from 'del';
-import { run as buildCss } from '../index';
+import { run as buildCss } from '..';
 
 const mkdir = promisify(fs.mkdir);
 const stat = promisify(fs.stat);
@@ -32,7 +32,7 @@ const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
 });
 
 beforeAll(() => {
-  del([dist]); // in case of failed test runs
+  del([dist]); // In case of failed test runs
   mkdir(dist);
 });
 
@@ -45,8 +45,8 @@ describe('build-css tool', () => {
     const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
     const output = await build;
-    expect(output).toHaveLength(1); // one output file
-    expect(output[0].code).toBe(true); // not empty
+    expect(output).toHaveLength(1); // One output file
+    expect(output[0].code).toBeDefined();
     expect(output[0].code).toMatchSnapshot();
     expect(spy).not.toHaveBeenCalled();
   });
@@ -57,8 +57,8 @@ describe('build-css tool', () => {
     const spy = jest.spyOn(console, 'warn');
     await expect(build).resolves.toBeDefined();
     const output = await build;
-    expect(output).toHaveLength(1); // one output file
-    expect(output[0].code).toBe(true); // not empty
+    expect(output).toHaveLength(1); // One output file
+    expect(output[0].code).toBeDefined();
     expect(output[0].code).toMatchSnapshot();
     expect(spy).not.toHaveBeenCalled();
   });
@@ -97,7 +97,9 @@ describe('build-css tool', () => {
     spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrowError();
-    expect(spy).toHaveBeenCalledWith('');
+    expect(spy).toHaveBeenCalledWith(
+      expect.stringContaining('jest-config/fixtures/styles-bad-syntax.css:21:1: Unclosed block:'),
+    );
     spy.mockRestore();
   });
 });

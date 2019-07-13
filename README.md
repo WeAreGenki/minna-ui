@@ -2,10 +2,10 @@
 
 <!-- TODO: Move much of this content into the docs and simplify this file as much as possible -->
 
-<!-- TODO: Move all the aplicable component, CSS, and utils README content into the docs too! -->
+<!-- TODO: Move all the applicable component, CSS, and utils README content into the docs too! -->
 
 [![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
-[![Coverage status](https://img.shields.io/codecov/c/github/WeAreGenki/minna-ui.svg)](https://codecov.io/gh/WeAreGenki/minna-ui)
+[![Coverage status](https://img.shields.io/codacy/coverage/7224f10c01514d8999cc15db718e47e0.svg)](https://app.codacy.com/project/WeAreGenki/minna-ui/dashboard)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
@@ -22,7 +22,7 @@ A UI kit for building things with web technology which aims to be pragmatic, int
 
 ## Overview
 
-The Minna UI framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customizable web components.
+The Minna UI framework is designed around the types of projects we do at [We Are Genki](https://wearegenki.com) — ecommerce, microsites, and next-gen progressive web apps — but it's flexible so you can build any UI on the web. It aims to strike a balance between easy to use predefined styles, utilities for rapid prototyping, and opinionated but customisable web components.
 
 Under the hood components use the Svelte JavaScript framework so Minna UI is a great match for your Svelte based projects. All components are also available precompiled for easy use in any web project regardless of which framework you use.
 

@@ -121,12 +121,12 @@
       right: 0;
       bottom: 0;
       left: 0;
-      pointer-events: none;
-      content: '';
       box-shadow: $navbar-shadow;
+      backface-visibility: hidden; /* Promote to own layer to avoid repaints */
       opacity: 0;
       transition: opacity $navbar-animate-speed-out ease-in-out;
-      backface-visibility: hidden; /* Promote to own layer to avoid repaints */
+      content: '';
+      pointer-events: none;
 
       @if $navbar-optimize {
         will-change: opacity;
@@ -140,8 +140,8 @@
   }
 
   .navbar-button {
-    padding: 0;
     margin-right: 1.2em;
+    padding: 0;
     line-height: 0;
   }
 
@@ -165,8 +165,8 @@
     flex-basis: 100%;
     flex-direction: column;
     flex-grow: 1;
-    padding: $navbar-links-padding;
     margin: 0 -1rem;
+    padding: $navbar-links-padding;
 
     &.df {
       border-top: 1px solid $navbar-border-color;
@@ -177,14 +177,14 @@
       flex-basis: auto;
       flex-direction: row;
       flex-grow: 0;
-      padding: 0;
       margin: 0 -1rem 0 auto;
+      padding: 0;
     }
   }
 
   .navbar-link {
-    padding: $navbar-link-padding;
     margin: 0;
+    padding: $navbar-link-padding;
     color: $navbar-link-color;
   }
 

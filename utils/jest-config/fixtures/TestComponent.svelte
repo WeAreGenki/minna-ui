@@ -12,10 +12,6 @@
   export let name = 'Elon Musk';
 
   $: reversed = name.split('').reverse().join('');
-
-  // refs
-  let target;
-  let nameReversed;
 </script>
 
 <style type="text/postcss">
@@ -41,11 +37,11 @@
 <svelte:options tag="test-component" immutable={true} />
 
 <div class="wrapper">
-  <div class="text" bind:this="{target}">
+  <div id="name" class="text">
     test {name}
   </div>
 
-  <div class="text" bind:this="{nameReversed}">
+  <div id="nameReversed" class="text">
     test <span>{reversed}</span>
   </div>
 </div>

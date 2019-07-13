@@ -2,22 +2,20 @@
  * Minna UI lib package compiler.
  */
 
-/* global NodeJS */
-/* eslint-disable global-require, no-console, id-length */
+/* eslint-disable @typescript-eslint/no-require-imports, global-require, no-console, id-length */
 
-'use strict';
+import { statSync } from 'fs';
+import mri from 'mri';
+import { join } from 'path';
+import commonjs from 'rollup-plugin-commonjs';
+import typescript, { RollupTypescriptOptions } from 'rollup-plugin-typescript';
+import { makeLegalIdentifier } from 'rollup-pluginutils';
+import { build } from './build';
+import { resolveEntryFile } from './utils';
+import { watch } from './watch';
+import { BuildLibResult } from './types';
 
-const { statSync } = require('fs');
-const mri = require('mri');
-const { join } = require('path');
-const commonjs = require('rollup-plugin-commonjs');
-const typescript = require('rollup-plugin-typescript');
-const { makeLegalIdentifier } = require('rollup-pluginutils');
-const { build } = require('./build');
-const { resolveEntryFile } = require('./utils');
-const { watch } = require('./watch');
-
-/** @typedef {import('./types').BuildLibResult} BuildLibResult */
+const ARGS_START = 2;
 
 /**
  * Build a lib or simple package.
@@ -26,13 +24,16 @@ const { watch } = require('./watch');
  * compatibility. For example, if you want compatibility with old browsers
  * use `"target": "es5"`.
  *
- * @param {NodeJS.ProcessEnv} env - Node `process.env`.
- * @param {string[]} [argv] - Node `process.argv`.
- * @returns {Promise<BuildLibResult | undefined>} Resulting output when running
+ * @param env - Node `process.env`.
+ * @param argv - Node `process.argv`.
+ * @returns Resulting output when running
  * in build mode. When running in watch mode this will never resolve.
  */
-async function run(env, argv = []) {
-  const args = mri(argv.slice(2), {
+export async function run(
+  env: NodeJS.ProcessEnv,
+  argv: string[] = [],
+): Promise<BuildLibResult | void> {
+  const args = mri(argv.slice(ARGS_START), {
     alias: { c: 'tsconfig', h: 'help', m: 'sourcemap', w: 'watch' },
     boolean: ['help', 'sourcemap', 'watch'],
     default: { c: 'tsconfig.json', m: true },
@@ -50,8 +51,8 @@ USAGE:
 OPTIONS
   -h --help       Print this help message and exit.
   -w --watch      Continuously watch files for changes and rebuild.
-  -c --tsconfig   Custom path to your TypeScript config (default tsconfig.json)
-  -m --sourcemap  Generate code source maps (default true)
+  -c --tsconfig   Custom path to your TypeScript config (default tsconfig.json).
+  -m --sourcemap  Generate code source maps (default true).
 `);
     return;
   }
@@ -74,17 +75,24 @@ OPTIONS
   process.env.NODE_ENV = env.NODE_ENV || 'production';
 
   const cwd = process.cwd();
-  const pkg = require(join(cwd, 'package.json')); // eslint-disable-line
+  const pkg = await import(join(cwd, 'package.json'));
 
   const input = args._[0] || resolveEntryFile(cwd);
   const name = makeLegalIdentifier(pkgName);
-  const external = Object.keys(pkg.dependencies || {}).concat(
+  const externals = Object.keys(pkg.dependencies || {}).concat(
     Object.keys(pkg.peerDependencies || {}),
     Object.keys(pkg.optionalDependencies || {}),
     require('module').builtinModules,
   );
+  /** Check if an imported dependency is external (including sub paths). */
+  const external = (id: string): boolean =>
+    externals.some(
+      (key) =>
+        // eslint-disable-next-line security/detect-non-literal-regexp
+        new RegExp(`^${key}$`).test(id) || new RegExp(`^${key}/`).test(id),
+    );
 
-  const typescriptOpts = {
+  const typescriptOpts: RollupTypescriptOptions = {
     exclude: /\.(post|p)?css$/,
     module: 'esnext',
     target: 'es2019', // FIXME: Why is this not inherited from `@minna-ui/ts-config`?
@@ -95,12 +103,10 @@ OPTIONS
 
   try {
     if (statSync(tsConfigPath)) {
-      // @ts-ignore - TODO: Correctly add the value in a way TS likes
       typescriptOpts.tsconfig = tsConfigPath;
     }
   } catch (err) {}
 
-  // @ts-ignore - FIXME: commonjs does provide type of this should work
   const plugins = [commonjs(), typescript(typescriptOpts)];
 
   const options = {
@@ -117,5 +123,3 @@ OPTIONS
   // eslint-disable-next-line consistent-return
   return watchMode ? watch(options) : build(options);
 }
-
-exports.run = run;

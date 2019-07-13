@@ -1,5 +1,5 @@
 /* eslint-env browser */
-/* eslint-disable security/detect-eval-with-expression */
+/* eslint-disable @typescript-eslint/no-non-null-assertion, security/detect-eval-with-expression, no-eval */
 
 import fs from 'fs';
 import { join } from 'path';
@@ -17,26 +17,22 @@ beforeAll(async () => {
 });
 
 describe('Svelte transform', () => {
-  it.skip('compiles and mounts a component', () => {
+  it('compiles and mounts a component', () => {
     expect.assertions(2);
-    let SvelteComponent = process(source, sourcePath);
-    expect(typeof SvelteComponent.code).toBe('string');
-    SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
-
+    const result = process(source, sourcePath);
+    expect(typeof result.code).toBe('string');
+    const { default: TestComponent } = eval(result.code);
     const target = document.createElement('div');
-    // @ts-ignore
-    new SvelteComponent({ target });
+    new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
   });
 
-  it.skip('has access to Svelte component internals when mounted', () => {
+  it('has access to Svelte component internals when mounted', () => {
     expect.assertions(13);
-    let SvelteComponent = process(source, sourcePath);
-    SvelteComponent = eval(SvelteComponent.code); // eslint-disable-line no-eval
+    const result = process(source, sourcePath);
+    const { default: TestComponent } = eval(result.code);
     const target = document.createElement('div');
-
-    // @ts-ignore
-    const component = new SvelteComponent({ target });
+    const component = new TestComponent({ target });
 
     // svelte component internals
     expect(component.$$).toHaveProperty('fragment');
@@ -44,32 +40,36 @@ describe('Svelte transform', () => {
     expect(component.$$).toHaveProperty('update');
     expect(component.$$).toHaveProperty('on_mount');
     expect(component.$$).toHaveProperty('on_destroy');
-    expect(component.$$).toHaveProperty('before_render');
-    expect(component.$$).toHaveProperty('after_render');
+    expect(component.$$).toHaveProperty('before_update');
+    expect(component.$$).toHaveProperty('after_update');
     expect(component.$$).toHaveProperty('context');
     expect(component.$$).toHaveProperty('callbacks');
 
-    expect(component.name).toBe('Elon Musk');
-    expect(component.reversed).toBe('ksuM nolE');
-
+    const name1 = target.querySelector<HTMLDivElement>('#name')!;
+    expect(name1.textContent).toBe('test Elon Musk');
+    const nameReversed1 = target.querySelector<HTMLDivElement>('#nameReversed')!;
+    expect(nameReversed1.textContent).toBe('test ksuM nolE');
     component.name = 'Vladimir Putin';
-
-    // refs
-    expect(component.target.textContent).toBe('test Vladimir Putin');
-    expect(component.nameReversed.textContent).toBe('test nituP rimidalV');
+    const name2 = target.querySelector<HTMLDivElement>('#name')!;
+    expect(name2.textContent).toBe('test Vladimir Putin');
+    const nameReversed2 = target.querySelector<HTMLDivElement>('#nameReversed')!;
+    expect(nameReversed2.textContent).toBe('test nituP rimidalV');
   });
 
-  // XXX: Uses require() instead of process() + eval() so imports are relative
   it('mounts components which import ES6 modules', () => {
     expect.assertions(5);
     function wrapper(): void {
-      // eslint-disable-next-line global-require
-      const ComponentImports = require('../../fixtures/TestComponentImports.svelte').default;
+      // Use require() instead of process() + eval() so imports are relative
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, global-require
+      const TestComponent = require('../../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
-      const component = new ComponentImports({ target });
-      expect(target.innerHTML).toBe('Elon Musk ELON MUSK elon musk');
-      expect(component.loud).toBe('ELON MUSK');
-      expect(component.quiet).toBe('elon musk');
+      new TestComponent({ target });
+      const name = target.querySelector<HTMLDivElement>('#name')!;
+      expect(name.textContent).toBe('Elon Musk');
+      const loud = target.querySelector<HTMLDivElement>('#loud')!;
+      expect(loud.textContent).toBe('ELON MUSK');
+      const quiet = target.querySelector<HTMLDivElement>('#quiet')!;
+      expect(quiet.textContent).toBe('elon musk');
       expect(target.innerHTML).toMatchSnapshot();
     }
     expect(wrapper).not.toThrow();

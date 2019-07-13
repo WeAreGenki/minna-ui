@@ -31,12 +31,11 @@
   $dir: '/fonts'
 ) {
   @font-face {
-    font-family: $family;
-    /* prettier-ignore */
     src:
       local('$(name)'),
       url('$(dir)/$(name).woff2') format('woff2'),
       url('$(dir)/$(name).woff') format('woff');
+    font-family: $family;
     font-style: $style;
     font-weight: $weight;
     font-display: optional;

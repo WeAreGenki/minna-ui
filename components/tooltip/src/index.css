@@ -16,9 +16,9 @@ $tooltip-placement: translate(5px, -50%) !default;
   position: absolute;
   padding: $tooltip-padding-y $tooltip-padding-x;
   color: $tooltip-color;
-  pointer-events: none;
   background: $tooltip-background-color;
   border-radius: $radius;
   transition: opacity $tooltip-animate-speed-in;
   transform: $tooltip-placement;
+  pointer-events: none;
 }

@@ -8,7 +8,6 @@
 'use strict';
 
 const { basename } = require('path');
-// @ts-ignore - FIXME: Remove ignore once Svelte ships with types
 const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
 
 /** @typedef {import('jest')} jest */

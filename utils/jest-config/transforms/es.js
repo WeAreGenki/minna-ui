@@ -30,7 +30,7 @@ function getTransforms(filename) {
 /**
  * @param {string} src - File source code.
  * @param {string} filename - File name.
- * @returns {jest.TransformedSource | string} Transformed source code.
+ * @returns {jest.TransformedSource} Transformed source code.
  */
 exports.process = (src, filename) => {
   const transforms = getTransforms(filename);
@@ -40,7 +40,7 @@ exports.process = (src, filename) => {
       filePath: filename,
       jsxFragmentPragma: 'Fragment', // Preact style JSX
       jsxPragma: 'h',
-      production: true, // don't add debug attributes to snapshots
+      production: true, // Don't add debug attributes to snapshots
       transforms,
     });
 
@@ -50,5 +50,5 @@ exports.process = (src, filename) => {
     };
   }
 
-  return src;
+  return { code: src, map: '' };
 };

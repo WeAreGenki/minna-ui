@@ -22,6 +22,7 @@ describe('Nodejs error handler', () => {
   it('throws on string input', () => {
     expect.assertions(1);
     function wrapper(): void {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore - Wrong type on purpose
       handleErr('just a string');
     }

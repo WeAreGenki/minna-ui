@@ -13,10 +13,10 @@
 .con {
   box-sizing: border-box;
   max-width: $container-width-max;
-  padding-right: $gutter-col;
-  padding-left: $gutter-col;
   margin-right: auto;
   margin-left: auto;
+  padding-right: $gutter-col;
+  padding-left: $gutter-col;
 
   @media $l {
     padding-right: calc($gutter-col * 2);

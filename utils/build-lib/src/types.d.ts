@@ -5,8 +5,10 @@ export interface BuildLibResult {
   module?: rollup.RollupOutput;
 }
 
+type ExternalCheck = (id: string) => boolean;
+
 export interface BuildLibProps {
-  external: string[];
+  external: string[] | ExternalCheck;
   input: string;
   name: string;
   pkgMain?: string;

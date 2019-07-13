@@ -1,16 +1,12 @@
 /* eslint-disable no-console */
 
-'use strict';
-
-const { watch: rollupWatch } = require('rollup');
-
-/** @typedef {import('./types').BuildLibProps} BuildLibProps */
+import { RollupWatchOptions, watch as rollupWatch } from 'rollup';
+import { BuildLibProps } from './types';
 
 /**
- * @param {BuildLibProps} options - Shared config options.
- * @returns {Promise} Never actually resolves as it keeps watching indefinitely.
+ * @returns Never actually resolves as it keeps watching indefinitely.
  */
-async function watch({
+export async function watch({
   external,
   input,
   name,
@@ -19,8 +15,8 @@ async function watch({
   pkgTypes,
   plugins,
   sourcemap,
-}) {
-  const config = [];
+}: BuildLibProps): Promise<void> {
+  const config: RollupWatchOptions[] = [];
 
   if (pkgMain) {
     config.push({
@@ -54,7 +50,6 @@ async function watch({
     // TODO: Generate `*.d.ts` files
   }
 
-  // @ts-ignore - `config` will never be zero length
   const watcher = rollupWatch(config);
 
   console.log('Starting build in watch mode...');
@@ -74,5 +69,3 @@ async function watch({
     }
   });
 }
-
-exports.watch = watch;

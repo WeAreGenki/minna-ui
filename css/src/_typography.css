@@ -7,12 +7,12 @@
 /* Text base */
 
 body {
+  color: $text-color;
   font-family: $font-stack;
   font-size: $text-size;
-  color: $text-color;
   background-color: $app-background-color;
 
-  /* only if different from browser default */
+  /* Only if different from browser default */
   @if $text-weight != 400 {
     font-weight: $text-weight;
   }
@@ -53,9 +53,9 @@ h3,
 h4,
 h5,
 h6 {
-  /* prevent long words causing the page to overflow */
-  word-break: break-word;
+  /* Prevent long words causing the page to overflow */
   word-wrap: break-word;
+  word-break: break-word;
 
   @if $heading-text-weight != 800 AND $heading-text-weight != bold {
     font-weight: $heading-text-weight;
@@ -114,13 +114,13 @@ p {
 /* Links */
 
 a {
-  padding: $link-click-area; /* larger link click area size */
   margin: calc(-1 * $link-click-area);
-  font-weight: $link-text-weight;
+  padding: $link-click-area; /* Larger link click area size */
   color: $link-color;
+  font-weight: $link-text-weight;
   text-decoration: underline;
-  text-decoration-color: $link-line-color;
   word-wrap: break-word;
+  text-decoration-color: $link-line-color;
 
   &:hover,
   &:focus {
@@ -131,12 +131,12 @@ a {
 
 /* Lists */
 
-/* more space between list items */
+/* More space between list items */
 li {
   margin-bottom: $li-margin-between;
 }
 
-/* list style none */
+/* List style none */
 .lsn {
   padding-left: 0;
   list-style: none;
@@ -198,8 +198,8 @@ li {
 .code {
   display: inline-block;
   padding: 0.1em 0.4em;
-  line-height: $line-height; /* so it doesn't look strange in <p> */
   color: $code-text-color;
+  line-height: $line-height; /* So it doesn't look strange in <p> */
   background-color: $code-background-color;
   border: 1px solid $light-gray1;
   border-radius: $radius;

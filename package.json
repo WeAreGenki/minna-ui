@@ -24,7 +24,8 @@
     "preinstall": "node scripts/check-yarn.js",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",
-    "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts} --report-needless-disables",
+    "FIXME__lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts} --report-needless-disables",
+    "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}",
     "lint:js": "eslint --ext html,js,md,mjs,snap,svelte,svg,ts --report-unused-disable-directives .",
     "lint:types": "tsc --noEmit",
     "test": "jest --notify --watch",
@@ -39,6 +40,7 @@
     "@types/mri": "1.1.0",
     "@types/node": "12.6.2",
     "@types/postcss-nested": "4.1.0",
+    "@types/resolve": "0.0.8",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.0",
     "@wearegenki/renovate-config": "1.0.0",
@@ -47,7 +49,6 @@
     "eslint": "6.0.1",
     "jest": "24.8.0",
     "lerna": "3.15.0",
-    "magic-string": "0.25.3",
     "postcss": "7.0.17",
     "postcss-extend-rule": "2.0.0",
     "postcss-scss": "2.0.0",
@@ -158,7 +159,7 @@
     ]
   },
   "engines": {
-    "node": ">=12.4.0",
+    "node": ">=10.16.0",
     "yarn": ">=1.16.0"
   }
 }

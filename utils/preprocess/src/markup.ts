@@ -65,11 +65,11 @@ type MarkupPreprocessor = PreprocessorGroup['markup'];
 export const markup = ({
   enabled = true,
   unsafe = true,
-  // @ts-ignore - FIXME: Contribute types fix upstream
+  // @ts-ignore - FIXME: null is a valid return type, submit PR upstream
 } = {}): MarkupPreprocessor => ({ content }) => {
   if (!enabled) return null;
 
-  return {
-    code: minify(content, unsafe),
-  };
+  const code = minify(content, unsafe);
+
+  return { code };
 };

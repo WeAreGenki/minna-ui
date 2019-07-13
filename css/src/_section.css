@@ -34,8 +34,8 @@
 /* Hero section */
 
 .hero {
-  padding: $hero-padding;
   margin: $hero-margin;
+  padding: $hero-padding;
   color: $hero-text-color;
   background: $hero-background;
 }
@@ -54,10 +54,10 @@
     display: block;
     width: 100%;
     height: $diagonal-hight;
-    content: '';
     background-image: $diagonal-image;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    content: '';
 
     @media $l {
       @if $diagonal-hight-l != $diagonal-hight {

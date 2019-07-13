@@ -15,9 +15,16 @@ import rollup from 'rollup';
 import { handleErr } from '@minna-ui/utils';
 
 const dev = !!process.env.ROLLUP_WATCH;
+const DEFAULT_PORT = 5000;
+const SHUTDOWN_GRACE_TIME_MS = 1000;
 
 /** Shared server instance (even across multiple plugin invocations). */
 let server: http.Server;
+
+interface HttpServerError extends Error {
+  code: string;
+  message: string;
+}
 
 /**
  * Run a local development web server.
@@ -38,7 +45,7 @@ let server: http.Server;
 export function devServer({
   dir = './dist',
   // liveReload = true,
-  port = process.env.PORT || 5000,
+  port = process.env.PORT || DEFAULT_PORT,
   host = '0.0.0.0',
   spa = false,
   // wsPort = 13341,
@@ -46,7 +53,7 @@ export function devServer({
 } = {}): rollup.Plugin {
   if (!dev) {
     console.warn(
-      "[devserver] Not in watch mode, this probably isn't what you want.",
+      "[DEVSERVER]  Not in watch mode, this probably isn't what you want.",
     );
   }
 
@@ -54,7 +61,7 @@ export function devServer({
   if (!server) {
     process.on('exit', () => {
       server.close(handleErr);
-      console.log('[devserver] Terminated server');
+      console.log('[DEVSERVER]  Terminated server');
     });
 
     const sirvOpts = merge(
@@ -86,16 +93,15 @@ export function devServer({
     server.on('request', log);
 
     server.on('error', (err) => {
-      // @ts-ignore FIXME: Is it possible to extend a build-in lib interface?
-      if (err.code === 'EADDRINUSE') {
-        console.log('Address in use, retrying...');
+      if ((err as HttpServerError).code === 'EADDRINUSE') {
+        console.log('[DEVSERVER] Address in use, retrying...');
 
         setTimeout(() => {
           server.close();
           server.listen({ host, port: +port + 1 }, () => {
             console.log(`[DEVSERVER] Started - http://${host}:${port}/`);
           });
-        }, 1000);
+        }, SHUTDOWN_GRACE_TIME_MS);
       } else {
         throw err;
       }

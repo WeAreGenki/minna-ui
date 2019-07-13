@@ -34,3 +34,6 @@ $switch-mini-slider-inner-shadow: inset 0 -0.7rem 0.4rem color-mod(
   $shadow-color
   alpha(0.05)
 ) !default;
+$switch-outline-offset: $input-outline-offset !default;
+$switch-hover-outline: $input-hover-outline !default;
+$switch-focus-outline: $input-focus-outline !default;

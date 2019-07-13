@@ -5,9 +5,9 @@
  */
 
 .alert {
-  padding: $alert-padding;
   margin-top: $alert-margin-y;
   margin-bottom: $alert-margin-y;
+  padding: $alert-padding;
   background-color: $alert-background-color;
   border-left: $alert-border-size solid;
 

@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-require-imports, global-require */
 
 describe('Jest test runner', () => {
   it('runs basic test', () => {

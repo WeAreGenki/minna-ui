@@ -271,7 +271,7 @@ textarea {
 /* autoprefixer: ignore next */
 [type='search'] {
   -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+  outline-offset: $outline-offset; /* 2 */
 }
 
 /**

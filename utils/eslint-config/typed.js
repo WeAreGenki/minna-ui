@@ -33,5 +33,7 @@ module.exports = {
     // '@typescript-eslint/prefer-regexp-exec': WARNING,
     '@typescript-eslint/require-array-sort-compare': WARNING,
     '@typescript-eslint/restrict-plus-operands': WARNING,
+    // FIXME: Broken parserOptions.project
+    // '@typescript-eslint/unbound-method': [ERROR, { ignoreStatic: true }],
   },
 };

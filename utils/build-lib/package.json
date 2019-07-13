@@ -7,23 +7,28 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "prebuild": "rm -rf dist"
+  },
   "bin": {
     "build-lib": "cli/index.js"
   },
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "dependencies": {
     "mri": "^1.1.4",
-    "rollup": "^1.16.1",
+    "rollup": "^1.16.3",
     "rollup-plugin-commonjs": "^10.0.1",
-    "rollup-plugin-node-resolve": "^5.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-pluginutils": "^2.8.1",
     "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "typescript": "^3.5.3"
   },
   "publishConfig": {
     "access": "public"

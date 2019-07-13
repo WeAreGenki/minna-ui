@@ -158,14 +158,16 @@ describe('Switch component', () => {
     });
     expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
+    const el = target.querySelector('div.switch')!;
     const event1 = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.handleKeyDown(event1);
+    el.dispatchEvent(event1);
     await tick();
     expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
-    component.handleKeyDown(event2);
+    el.dispatchEvent(event2);
     await tick();
     expect(component.value).toBe(true);
     expect(target.querySelector('.switch-checked')).not.toBeNull();
@@ -180,15 +182,17 @@ describe('Switch component', () => {
       },
       target,
     });
+    const el = target.querySelector('div.switch')!;
     const event1 = new KeyboardEvent('keydown', { key: ' ' });
-    component.handleKeyDown(event1);
+    el.dispatchEvent(event1);
     expect(component.value).toBe(false);
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
-    component.handleKeyDown(event2);
+    el.dispatchEvent(event2);
     expect(component.value).toBe(true);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore - keyCode does actually exist!
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
-    component.handleKeyDown(event3);
+    el.dispatchEvent(event3);
     expect(component.value).toBe(false);
   });
 
@@ -202,13 +206,14 @@ describe('Switch component', () => {
       },
       target,
     });
+    const el = target.querySelector('div.switch')!;
     const event = new KeyboardEvent('keydown', { key: 'Enter' });
-    component.handleKeyDown(event);
+    el.dispatchEvent(event);
     expect(component.value).toBe(true);
   });
 
   it('does not toggle on invalid key press', () => {
-    expect.assertions(5);
+    expect.assertions(8);
     const target = document.createElement('div');
     const component = new Switch({
       props: {
@@ -216,21 +221,27 @@ describe('Switch component', () => {
       },
       target,
     });
-    const spy = jest.spyOn(component.$$.ctx, 'toggle');
-    const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
-    component.handleKeyDown(event1);
+    const el = target.querySelector('div.switch')!;
     expect(component.value).toBe(true);
+    const event1 = new KeyboardEvent('keydown', { key: 'Escape' });
+    el.dispatchEvent(event1);
+    expect(component.value).toBe(true);
+    component.value = false;
+    expect(component.value).toBe(false);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
-    component.handleKeyDown(event2);
+    el.dispatchEvent(event2);
+    expect(component.value).toBe(false);
+    component.value = true;
     expect(component.value).toBe(true);
     const event3 = new KeyboardEvent('keydown', { key: '' });
-    component.handleKeyDown(event3);
+    el.dispatchEvent(event3);
     expect(component.value).toBe(true);
+    component.value = false;
+    expect(component.value).toBe(false);
     const event4 = new KeyboardEvent('keydown');
-    component.handleKeyDown(event4);
-    expect(component.value).toBe(true);
-    expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
+    el.dispatchEvent(event4);
+    expect(component.value).toBe(false);
   });
 });

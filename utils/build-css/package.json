@@ -26,13 +26,14 @@
   "dependencies": {
     "@minna-ui/postcss-config": "file:../postcss-config",
     "clean-css": "^4.2.1",
+    "mri": "^1.1.4",
     "postcss-load-config": "^2.1.0"
   },
   "devDependencies": {
     "del": "5.0.0"
   },
   "engines": {
-    "node": ">=12.4.0"
+    "node": ">=10.16.0"
   },
   "publishConfig": {
     "access": "public"

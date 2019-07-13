@@ -12,19 +12,19 @@
   USAGE:
     HTML markup for typical use:
 
-      <Select id="select-example" bind:value="example" items="[
+      <Select id="select-example" bind:value="{example}" items="{[
         { id: 'ex1', text: 'Example 1' },
         { id: 'ex2', text: 'Example 2' },
         { id: 'ex3', text: 'Example 3', disabled: true },
-      ]"/>
+      ]}"/>
 
     You can also use a simple list of items (works best with short item names):
 
-      <Select id="select-example" bind:value="example" items="[
+      <Select id="select-example" bind:value="{example}" items="{[
         'Example 1',
         'Example 2',
         'Example 3',
-      ]"/>
+      ]}"/>
 
     See more available options/properties in the component data() below.
 
@@ -202,6 +202,7 @@
 
   function handleKeyDown(event) {
     // Choose key with graceful fallback for old browsers
+    /* eslint-disable @typescript-eslint/no-magic-numbers */
     switch (event.key || event.keyCode) {
       case ' ':
       case 'Spacebar':
@@ -246,8 +247,9 @@
         }
         break;
       default:
-      // No matching key
+        // No matching key
     }
+    /* eslint-enable @typescript-eslint/no-magic-numbers */
   }
 
   onMount(setInput);
@@ -258,8 +260,8 @@
   @import 'import.css';
 
   .hide {
-    pointer-events: none;
     opacity: 0;
+    pointer-events: none;
   }
 
   .select-wrapper {
@@ -300,16 +302,16 @@
     z-index: $select-zindex;
     width: 100%;
     padding: $input-padding-y 0;
-    font-size: $input-text-size;
     color: $input-text-color;
+    font-size: $input-text-size;
     text-align: left;
     background-color: $input-background-color;
     box-shadow: $select-shadow;
+    backface-visibility: hidden; /* promote to own layer to avoid repaints */
     /* prettier-ignore */
     transition:
       transform $select-animate-speed-out ease-out,
       opacity $select-animate-speed-out ease-out;
-    backface-visibility: hidden; /* promote to own layer to avoid repaints */
 
     @if $select-optimize {
       will-change: transform, opacity;

@@ -42,6 +42,7 @@ describe('Navbar component', () => {
       target,
     });
     expect(target.querySelector('.navbar-active')).toBeNull();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore - We know we're writing to a read only property
     window.pageYOffset = 50;
     const event = new UIEvent('scroll');
@@ -50,46 +51,54 @@ describe('Navbar component', () => {
     expect(target.querySelector('.navbar-active')).not.toBeNull();
   });
 
-  it('opens menu on button click', () => {
+  it('opens menu on button click', async () => {
     expect.assertions(2);
     const target = document.createElement('div');
-    const component = new Navbar({
+    new Navbar({
       props: {
         items,
         segment: undefined,
       },
       target,
     });
-    expect(component.isOpen).toBe(false);
-    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
+    const navbar1 = target.querySelector('.navbar-active');
+    expect(navbar1).toBeNull();
+    const button = target.querySelector<HTMLButtonElement>('.navbar-button')!;
     button.click();
-    expect(component.isOpen).toBe(true);
+    await tick();
+    const navbar2 = target.querySelector('.navbar-active');
+    expect(navbar2).not.toBeNull();
   });
 
-  it('closes menu on document click', () => {
+  it('closes menu on document click', async () => {
     expect.assertions(2);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new Navbar({
+    new Navbar({
       props: {
         items,
         segment: undefined,
       },
       target,
     });
-    component.openMenu();
-    jest.runAllTimers(); // for component setTimeout
-    expect(component.isOpen).toBe(true);
+    const button = target.querySelector<HTMLButtonElement>('.navbar-button')!;
+    button.click();
+    await tick();
+    jest.runAllTimers(); // For component setTimeout
+    const navbar1 = target.querySelector('.navbar-active');
+    expect(navbar1).not.toBeNull();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.isOpen).toBe(false);
+    await tick();
+    const navbar2 = target.querySelector('.navbar-active');
+    expect(navbar2).toBeNull();
   });
 
-  it('attaches event listener on menu open but not close', () => {
+  it('attaches event listener on menu open but not close', async () => {
     expect.assertions(3);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new Navbar({
+    new Navbar({
       props: {
         items,
         segment: undefined,
@@ -97,22 +106,27 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    component.openMenu();
+    const button = target.querySelector<HTMLButtonElement>('.navbar-button')!;
+    button.click();
     jest.runAllTimers();
-    expect(spy).toHaveBeenCalledWith('');
+    expect(spy).toHaveBeenCalledTimes(1);
     spy.mockReset();
     const event = new MouseEvent('click');
     document.dispatchEvent(event);
-    expect(component.isOpen).toBe(false);
+    await tick();
+    jest.runAllTimers();
+    const navbar = target.querySelector('.navbar-active');
+    expect(navbar).toBeNull();
     expect(spy).not.toHaveBeenCalled();
+    spy.mockClear();
     spy.mockRestore();
   });
 
-  it("doesn't attach extra event listeners on multiple button clicks", () => {
-    expect.assertions(2);
+  it("doesn't attach extra event listeners on multiple button clicks", async () => {
+    expect.assertions(3);
     jest.useFakeTimers();
     const target = document.createElement('div');
-    const component = new Navbar({
+    new Navbar({
       props: {
         items,
         segment: undefined,
@@ -120,13 +134,20 @@ describe('Navbar component', () => {
       target,
     });
     const spy = jest.spyOn(document, 'addEventListener');
-    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
+    spy.mockClear();
+    const active1 = target.querySelector('.navbar-active');
+    expect(active1).toBeNull();
+    const button = target.querySelector<HTMLButtonElement>('.navbar-button')!;
     button.click();
+    await tick();
     jest.runAllTimers();
     button.click();
+    await tick();
     jest.runAllTimers();
-    expect(component.isOpen).toBe(true);
+    const active2 = target.querySelector('.navbar-active');
+    expect(active2).not.toBeNull();
     button.click();
+    await tick();
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(1);
     spy.mockRestore();
@@ -146,7 +167,7 @@ describe('Navbar component', () => {
     const navbarLinks = target.querySelector('.navbar-links')!;
     expect(icon1.getAttribute('xlink:href')).toBe('#menu');
     expect(navbarLinks.classList.contains('df')).toBe(false);
-    const button = target.querySelector<HTMLButtonElement>('button.navbar-button')!;
+    const button = target.querySelector<HTMLButtonElement>('.navbar-button')!;
     button.click();
     await tick();
     const icon2 = target.querySelector<SVGUseElement>('.navbar-icon > use')!;

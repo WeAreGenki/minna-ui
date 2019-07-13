@@ -4,7 +4,6 @@
 
 import fs from 'fs';
 import { promisify } from 'util';
-// @ts-ignore - FIXME: Remove this line once the next version of Svelte is released
 import { compile, preprocess } from 'svelte/compiler';
 import nested from 'postcss-nested';
 import { style } from '../style';
@@ -17,7 +16,7 @@ const componentPath = require.resolve('@minna-ui/jest-config/fixtures/TestCompon
 
 const preprocessOpts = {
   style: style({
-    /* stylelint-disable-next-line */ // false positive!
+    /* stylelint-disable-next-line */ // false positive! 👾
     plugins: [nested],
   }),
 };
@@ -70,18 +69,6 @@ describe('Svelte style preprocessor', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('adds a banner comment', async () => {
-    expect.assertions(2);
-    let result = await preprocess(sourceSimple, {
-      ...preprocessOpts,
-      // @ts-ignore - FIXME!
-      banner: '/*!\n * minna-ui\n */\n',
-    });
-    result = result.toString();
-    expect(result).not.toMatch('&:focus');
-    expect(result).toMatchSnapshot();
-  });
-
   it('does not process without type attribute', async () => {
     expect.assertions(2);
     const result = (await preprocess(sourceNoTypeAttr, preprocessOpts)).toString();
@@ -112,7 +99,7 @@ describe('Svelte style preprocessor', () => {
     const spy = jest.spyOn(process.stderr, 'write');
     spy.mockImplementation(() => true);
     await preprocess(sourceBadSyntax, preprocessOpts);
-    expect(spy).toHaveBeenCalledWith('');
+    expect(spy).toHaveBeenCalledWith(expect.stringContaining('<css input>:2:3: Unclosed block'));
     spy.mockRestore();
   });
 });

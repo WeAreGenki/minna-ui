@@ -1,14 +1,18 @@
 argv
+autocomplete
 autofix
 browserslist
+calc
 cli
-color
 Color
+color
 config
+const
 css
 destructuring
 env
 eslint
+FIXME
 flexbox
 fs
 Genki
@@ -27,6 +31,7 @@ pre
 Preact
 preprocessor
 prerelease
+readonly
 rgb
 rgba
 Segoe
@@ -36,6 +41,7 @@ submenu
 Svelte
 SVG
 TODO
+typedef
 UI
 url
 utf

@@ -1049,7 +1049,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.26.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-5833a9c5-ae36-43fa-8575-e9ee1b2627da-1562971551378/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.26.0-1519ae61-0288-4fce-84bf-d3815918ff00-1563042063528/node_modules/@minna-ui/preprocess"
     rollup "^1.16.3"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.0.1"
@@ -1060,7 +1060,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.26.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-82afae6b-2445-463f-8109-9300083fd117-1562971551380/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.26.0-b09ca5a7-decd-4b5d-8ddd-3659c6934407-1563042063530/node_modules/@minna-ui/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1093,7 +1093,7 @@
     eslint-plugin-html "^6.0.0"
     eslint-plugin-import "^2.18.0"
     eslint-plugin-jest "^22.7.2"
-    eslint-plugin-jsdoc "^15.3.9"
+    eslint-plugin-jsdoc "^15.4.1"
     eslint-plugin-markdown "^1.0.0"
     eslint-plugin-security "^1.4.0"
     eslint-plugin-svelte3 "^2.7.2"
@@ -1145,7 +1145,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.26.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-34798ed0-4462-40d4-96ac-4e98f5e715d1-1562971551392/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.26.0-e68fec70-9e18-4ae3-a640-a9ec46299d1f-1563042063547/node_modules/@minna-ui/utils"
     "@wearegenki/node-utils" "^0.3.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
@@ -2243,9 +2243,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000980, caniuse-lite@^1.0.30000981:
-  version "1.0.30000983"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000983.tgz#ab3c70061ca2a3467182a10ac75109b199b647f8"
-  integrity sha512-/llD1bZ6qwNkt41AsvjsmwNOoA4ZB+8iqmf5LVyeSXuBODT/hAMFNVOh84NdUzoiYiSKqo5vQ3ZzeYHSi/olDQ==
+  version "1.0.30000984"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000984.tgz#dc96c3c469e9bcfc6ad5bdd24c77ec918ea76fe0"
+  integrity sha512-n5tKOjMaZ1fksIpQbjERuqCyfgec/m9pferkFQbLmWtqLUdmt12hNhjSwsmPdqeiG2NkITOQhr1VYIwWSAceiA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3473,11 +3473,6 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
-escape-regex-string@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/escape-regex-string/-/escape-regex-string-1.0.6.tgz#f536d8997ab19ec395385dcf2ea28b4e080899eb"
-  integrity sha512-AcaPwAOKpF52ETT4uu4vmpqQphuQGjIEhdDwG/gAJYah8ixJlrSBFjhtLMT7frc9y3RWgOnLov9E0MsRBdeRbw==
-
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -3549,14 +3544,13 @@ eslint-plugin-jest@^22.7.2:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.7.2.tgz#7ab118a66a34e46ae5e16a128b5d24fd28b43dca"
   integrity sha512-Aecqe3ulBVI7amgOycVI8ZPL8o0SnGHOf3zn2/Ciu8TXyXDHcjtwD3hOs3ss/Qh/VAwlW/DMcuiXg5btgF+XMA==
 
-eslint-plugin-jsdoc@^15.3.9:
-  version "15.3.9"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.3.9.tgz#249f970c16724ca614c0e7032df4133255e4ca96"
-  integrity sha512-+AtEL1H6bA5cXLHOFh/h3sy6scJ7QMNlTUXYm88nQZfNtsXfc6Is97IgMkqOSeoisLfbUZOCUIV0yXgg2TyYOA==
+eslint-plugin-jsdoc@^15.4.1:
+  version "15.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.4.1.tgz#cdf568e5d26017f1db6bd6f1ed66321c2ce241b3"
+  integrity sha512-fMmGf/ZhjjVs6nOfauC3XSgPPlkir0MekwxcLsrhJIqGKYFI2Qv64Fi5K+ZZY2142qfJyzDsmOmU1DnuNhMrJA==
   dependencies:
     comment-parser "^0.5.5"
     debug "^4.1.1"
-    escape-regex-string "^1.0.6"
     flat-map-polyfill "^0.3.8"
     jsdoctypeparser "5.0.1"
     lodash "^4.17.14"

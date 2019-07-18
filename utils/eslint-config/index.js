@@ -178,7 +178,7 @@ module.exports = {
       WARNING,
       { definedTags: ['externs', 'jest-environment', 'jsx'] },
     ],
-    'jsdoc/require-description-complete-sentence': OFF, // TODO: Enable once fixed: https://github.com/gajus/eslint-plugin-jsdoc/issues/337
+    'jsdoc/require-description-complete-sentence': WARNING,
     'jsdoc/require-hyphen-before-param-description': WARNING,
     'jsdoc/require-jsdoc': OFF, // Far too annoying
     'jsdoc/require-returns': [WARNING, { forceReturnsWithAsync: true }],
@@ -202,6 +202,20 @@ module.exports = {
     'no-useless-constructor': OFF, // Handled by `@typescript-eslint/no-useless-constructor`
     'object-curly-newline': [ERROR, { consistent: true }],
     'sort-keys': [WARNING, 'asc', { caseSensitive: false, natural: true }],
+    'spaced-comment': [
+      ERROR,
+      'always',
+      {
+        block: {
+          balanced: true,
+          exceptions: ['*'],
+          markers: ['!'], // Immutable comments
+        },
+        line: {
+          markers: ['/'], // TypeScript triple slash directives
+        },
+      },
+    ],
     /* eslint-disable sort-keys */
 
     // Rules incompatible with prettier :'(

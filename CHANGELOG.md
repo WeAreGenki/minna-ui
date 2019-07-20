@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.28.0][] - 2019-07-21
+
+### Added
+
+- Extracted ESLint import resolver into its own package, `@minna-ui/eslint-import-resolver`.
+
+### Changed
+
+- `@minna-ui/eslint-config` - General improvements.
+- `@minna-ui/build-lib` - Simplify externals logic.
+- Updated package dependencies.
+
+### Fixed
+
+- `@minna-ui/css` - Missing variable.
+
 ## [0.27.0][] - 2019-07-14
 
 ### Added

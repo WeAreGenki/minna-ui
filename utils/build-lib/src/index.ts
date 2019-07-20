@@ -84,7 +84,6 @@ OPTIONS
     Object.keys(pkg.optionalDependencies || {}),
     require('module').builtinModules,
   );
-  /** Is dependency or path within dependency. */
   const external = (id: string): boolean =>
     externals.some((key) => id === key || id.startsWith(key));
 

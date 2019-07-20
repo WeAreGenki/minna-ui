@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/rollup-plugin-postcss",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "description": "PostCSS runner rollup plugin for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-postcss",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

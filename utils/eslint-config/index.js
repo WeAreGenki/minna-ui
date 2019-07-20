@@ -31,17 +31,17 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:jsdoc/recommended',
+    'plugin:security/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:security/recommended',
   ],
   plugins: [
     'import',
     'html',
     'markdown',
     'jsdoc',
-    '@typescript-eslint',
     'security',
+    '@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   env: {
@@ -295,6 +295,7 @@ module.exports = {
     },
 
     // Unit tests
+    // TODO: Keep up to date with upstream config - https://git.io/fjMRx
     {
       files: [
         '__mocks__/*',
@@ -308,16 +309,13 @@ module.exports = {
         '*.test.ts',
         '*.test.tsx',
       ],
-      // Using `extends` isn't allowed in overrides; inject config manually
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore - We don't care about types here
-      ...require('eslint-plugin-jest').configs.recommended, // eslint-disable-line global-require
-      plugins: ['jest', 'import'],
+      plugins: ['jest'],
       env: {
         jest: true,
+        'jest/globals': true,
       },
       rules: {
-        '@typescript-eslint/no-magic-numbers': OFF, // Too verbose for short unit tests
+        '@typescript-eslint/no-magic-numbers': OFF, // Too verbose for tests
         'import/first': OFF, // OK to set up mocks before imports
         'import/no-extraneous-dependencies': [
           ERROR,
@@ -329,10 +327,18 @@ module.exports = {
         'jest/consistent-test-it': ERROR,
         'jest/expect-expect': ERROR,
         'jest/lowercase-name': [WARNING, { ignore: ['describe'] }],
+        'jest/no-alias-methods': WARNING,
         'jest/no-commented-out-tests': WARNING,
+        'jest/no-disabled-tests': WARNING,
         'jest/no-empty-title': ERROR,
+        'jest/no-focused-tests': ERROR,
+        'jest/no-identical-title': ERROR,
+        'jest/no-jasmine-globals': WARNING,
+        'jest/no-jest-import': ERROR,
         'jest/no-large-snapshots': WARNING,
+        'jest/no-mocks-import': WARNING,
         'jest/no-test-callback': WARNING,
+        'jest/no-test-prefixes': ERROR,
         'jest/no-test-return-statement': WARNING,
         'jest/no-truthy-falsy': ERROR,
         'jest/prefer-called-with': WARNING,
@@ -344,6 +350,9 @@ module.exports = {
         'jest/prefer-to-contain': ERROR,
         'jest/prefer-to-have-length': ERROR,
         'jest/prefer-todo': ERROR,
+        'jest/valid-describe': ERROR,
+        'jest/valid-expect-in-promise': ERROR,
+        'jest/valid-expect': ERROR,
         'max-len': [
           ERROR,
           {

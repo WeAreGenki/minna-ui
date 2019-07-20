@@ -1051,7 +1051,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.27.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.27.0-30522938-61a3-4f7e-aa48-ca77fdea66a7-1563651926573/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.27.0-0b1b52a0-3ab4-40ba-bd7e-b1587da0f38c-1563653733453/node_modules/@minna-ui/preprocess"
     rollup "^1.17.0"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.0.1"
@@ -1062,7 +1062,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.27.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.27.0-8254d063-e262-4bf1-b601-aef339391873-1563651926576/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.27.0-f4d1e3c4-8349-4d07-90b6-4be9b7941f60-1563653733455/node_modules/@minna-ui/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1088,6 +1088,7 @@
 "@minna-ui/eslint-config@file:utils/eslint-config":
   version "0.27.0"
   dependencies:
+    "@minna-ui/eslint-import-resolver" "file:../../.cache/yarn/v4/npm-@minna-ui-eslint-config-0.27.0-196adc22-a650-4d7c-93dc-f0a32ac3c97b-1563653733465/node_modules/@minna-ui/eslint-import-resolver"
     "@types/eslint" "^4.16.6"
     "@typescript-eslint/eslint-plugin" "^1.12.0"
     "@typescript-eslint/parser" "^1.12.0"
@@ -1099,6 +1100,10 @@
     eslint-plugin-markdown "^1.0.0"
     eslint-plugin-security "^1.4.0"
     eslint-plugin-svelte3 "^2.7.2"
+
+"@minna-ui/eslint-import-resolver@file:utils/eslint-import-resolver":
+  version "0.27.0"
+  dependencies:
     resolve "^1.11.1"
 
 "@minna-ui/jest-config@file:utils/jest-config":
@@ -1147,7 +1152,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.27.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.27.0-24d73b02-0128-4703-a608-05fcd750bd8b-1563651926599/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.27.0-7f4d9015-89cc-44a6-af75-2b4f749428ba-1563653733468/node_modules/@minna-ui/utils"
     "@wearegenki/node-utils" "^0.3.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"

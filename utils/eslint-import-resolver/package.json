@@ -1,0 +1,29 @@
+{
+  "name": "@minna-ui/eslint-import-resolver",
+  "version": "0.27.0",
+  "description": "ESLint config presets for use in Minna UI projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-import-resolver",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "eslint",
+    "minna-ui",
+    "wearegenki"
+  ],
+  "main": "index.js",
+  "files": [
+    "*.js",
+    "*.d.ts"
+  ],
+  "peerDependencies": {
+    "eslint": "^6.0.1"
+  },
+  "dependencies": {
+    "resolve": "^1.11.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

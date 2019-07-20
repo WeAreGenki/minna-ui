@@ -64,7 +64,7 @@ module.exports = {
     ],
     'import/ignore': ['.css', '.pcss', '.svelte'],
     'import/resolver': {
-      [join(__dirname, 'import-resolver.js')]: {
+      '@minna-ui/eslint-import-resolver': {
         alias: {
           '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
         },

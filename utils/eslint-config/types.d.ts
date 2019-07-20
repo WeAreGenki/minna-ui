@@ -8,7 +8,6 @@
  */
 
 import { Linter } from 'eslint';
-import { SyncOpts } from 'resolve';
 
 interface Override extends Linter.Config {
   files: string[] | string;
@@ -24,17 +23,4 @@ export type ESLintConfig = Linter.Config & {
 /** Svelte style or script tag block. */
 export interface BlockAttributes {
   type: string;
-}
-
-interface ImportAlias {
-  [regex: string]: string;
-}
-
-export interface ResolverOptions extends SyncOpts {
-  alias: ImportAlias;
-}
-
-export interface ResolverResult {
-  found: boolean;
-  path?: string | null;
 }

@@ -27,7 +27,7 @@ module.exports = {
     '@typescript-eslint/no-for-in-array': ERROR,
     '@typescript-eslint/no-unnecessary-qualifier': ERROR,
     '@typescript-eslint/no-unnecessary-type-assertion': WARNING,
-    // FIXME: Uncomment after next release
+    // FIXME: Broken parserOptions.project
     // '@typescript-eslint/prefer-readonly': ERROR,
     // FIXME: Broken parserOptions.project
     // '@typescript-eslint/prefer-regexp-exec': WARNING,

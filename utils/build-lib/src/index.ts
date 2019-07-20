@@ -84,13 +84,8 @@ OPTIONS
     Object.keys(pkg.optionalDependencies || {}),
     require('module').builtinModules,
   );
-  /** Check if an imported dependency is external (including sub paths). */
   const external = (id: string): boolean =>
-    externals.some(
-      (key) =>
-        // eslint-disable-next-line security/detect-non-literal-regexp
-        new RegExp(`^${key}$`).test(id) || new RegExp(`^${key}/`).test(id),
-    );
+    externals.some((key) => id === key || id.startsWith(key));
 
   const typescriptOpts: RollupTypescriptOptions = {
     exclude: /\.(post|p)?css$/,

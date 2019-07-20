@@ -146,6 +146,7 @@ $button-mini-padding:
   calc($button-padding-y / 2)
   calc($button-padding-x / 2) !default;
 $button-outline-offset: $outline-offset !default;
+$button-hover-outline: $outline-hover !default;
 $button-focus-outline: $outline-focus !default;
 $button-active-outline: $outline-hover !default;
 

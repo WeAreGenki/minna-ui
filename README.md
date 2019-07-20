@@ -1,9 +1,3 @@
-<!-- TODO: Document the new recommended way of installing by using the `minna-ui` meta package  -->
-
-<!-- TODO: Move much of this content into the docs and simplify this file as much as possible -->
-
-<!-- TODO: Move all the applicable component, CSS, and utils README content into the docs too! -->
-
 [![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
 [![Coverage status](https://img.shields.io/codacy/coverage/7224f10c01514d8999cc15db718e47e0.svg)](https://app.codacy.com/project/WeAreGenki/minna-ui/dashboard)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)

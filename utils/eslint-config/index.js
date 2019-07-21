@@ -367,6 +367,7 @@ module.exports = {
           },
         ],
         'no-new': OFF, // Allows testing constructors
+        'no-tabs': OFF, // We can't always control whitespace generation
       },
     },
 

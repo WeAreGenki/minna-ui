@@ -60,13 +60,6 @@
 
   let previousValue = value;
 
-  afterUpdate(() => {
-    if (value !== previousValue) {
-      previousValue = value;
-      dispatch('change', value);
-    }
-  });
-
   function toggle() {
     if (!disabled) {
       value = !value;
@@ -90,6 +83,13 @@
     }
     /* eslint-enable @typescript-eslint/no-magic-numbers */
   }
+
+  afterUpdate(() => {
+    if (value !== previousValue) {
+      previousValue = value;
+      dispatch('change', value);
+    }
+  });
 </script>
 
 <style type="text/postcss">

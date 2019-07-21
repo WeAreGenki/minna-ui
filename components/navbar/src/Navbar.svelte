@@ -65,6 +65,7 @@
 
   let isOpen;
   let hasScrolled;
+  let cancelClick;
 
   // No need to debounce with rAF because as it turns out the `scroll` event is
   // fired at about the same rate
@@ -77,8 +78,6 @@
       hasScrolled = scrolled;
     }
   }
-
-  let cancelClick;
 
   function clickHandler() {
     isOpen = false;

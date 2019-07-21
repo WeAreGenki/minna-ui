@@ -12,28 +12,28 @@
 
 'use strict';
 
+const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
 
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
   parserOptions: {
-    project: './tsconfig.json',
+    project: 'tsconfig.json',
     tsconfigRootDir: process.cwd(),
   },
   rules: {
-    // FIXME: Broken parserOptions.project
-    // '@typescript-eslint/no-floating-promises': ERROR,
+    '@typescript-eslint/no-floating-promises': ERROR,
     '@typescript-eslint/no-for-in-array': ERROR,
+    '@typescript-eslint/no-misused-promises': ERROR,
     '@typescript-eslint/no-unnecessary-qualifier': ERROR,
     '@typescript-eslint/no-unnecessary-type-assertion': WARNING,
-    // FIXME: Broken parserOptions.project
-    // '@typescript-eslint/prefer-readonly': ERROR,
-    // FIXME: Broken parserOptions.project
-    // '@typescript-eslint/prefer-regexp-exec': WARNING,
+    '@typescript-eslint/prefer-readonly': ERROR,
+    '@typescript-eslint/prefer-regexp-exec': WARNING,
     '@typescript-eslint/require-array-sort-compare': WARNING,
+    '@typescript-eslint/require-await': ERROR,
     '@typescript-eslint/restrict-plus-operands': WARNING,
-    // FIXME: Broken parserOptions.project
-    // '@typescript-eslint/unbound-method': [ERROR, { ignoreStatic: true }],
+    '@typescript-eslint/unbound-method': [ERROR, { ignoreStatic: true }],
+    'require-await': OFF, // Handled by `@typescript-eslint/require-await`
   },
 };

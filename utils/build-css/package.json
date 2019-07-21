@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/build-css",
-  "version": "0.28.0",
+  "version": "0.29.0",
   "description": "Internal Minna UI CSS builder.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-css",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

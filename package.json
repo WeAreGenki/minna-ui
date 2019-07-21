@@ -46,7 +46,7 @@
     "@wearegenki/renovate-config": "1.0.0",
     "codacy-coverage": "3.4.0",
     "docsify-cli": "4.3.0",
-    "eslint": "6.0.1",
+    "eslint": "6.1.0",
     "jest": "24.8.0",
     "lerna": "3.16.1",
     "postcss": "7.0.17",

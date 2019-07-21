@@ -16,7 +16,6 @@ const OFF = 0;
 
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
-  parser: 'espree', // Default eslint parser (JS only)
   parserOptions: {
     ecmaFeatures: {
       browser: false,

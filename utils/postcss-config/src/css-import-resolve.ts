@@ -18,6 +18,8 @@ export type ImportCache = Record<string, ImportCacheEntry>;
 
 function fileContents(file: string, cache: ImportCache): ImportCacheEntry {
   cache[file] =
+    // FIXME: Is this logic wrong? Why is the lint rule triggered?
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     cache[file] ||
     new Promise((resolvePromise, rejectPromise) =>
       readFile(file, 'utf8', (error, contents) =>

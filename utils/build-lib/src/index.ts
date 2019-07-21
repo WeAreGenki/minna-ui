@@ -85,7 +85,7 @@ OPTIONS
     require('module').builtinModules,
   );
   const external = (id: string): boolean =>
-    externals.some((key) => id === key || id.startsWith(key));
+    externals.some((key) => id === key || id.startsWith(`${key}/`));
 
   const typescriptOpts: RollupTypescriptOptions = {
     exclude: /\.(post|p)?css$/,

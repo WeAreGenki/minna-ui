@@ -19,8 +19,6 @@
 
 'use strict';
 
-const { join } = require('path');
-
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
@@ -66,7 +64,7 @@ module.exports = {
     'import/resolver': {
       '@minna-ui/eslint-import-resolver': {
         alias: {
-          '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
+          '^##\\/(.*)$': 'src/$1',
         },
         extensions: [
           '.mjs',
@@ -367,6 +365,7 @@ module.exports = {
           },
         ],
         'no-new': OFF, // Allows testing constructors
+        'no-tabs': OFF, // We can't always control whitespace generation
       },
     },
 

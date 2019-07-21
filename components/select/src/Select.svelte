@@ -83,18 +83,6 @@
   let previousFilteredItems;
   let previousValue = value;
 
-  $: filteredItems = (!isOpen || !filterable || inputText === '')
-    ? normalizedItems
-    : normalizedItems.filter(
-      option => option.text
-        .toLowerCase()
-        .indexOf(inputText.toLowerCase()) > -1,
-    );
-
-  $: normalizedItems = items.map((item) =>
-    (item.id ? item : { id: item, text: item })
-  );
-
   function setIndex() {
     if (value) {
       // Save the current item's index for highlighting in the options
@@ -106,20 +94,6 @@
     inputText = value
       ? normalizedItems.find(option => option.id === value).text
       : '';
-  }
-
-  $: {
-    if (filteredItems !== previousFilteredItems) {
-      previousFilteredItems = filteredItems;
-      setIndex();
-    }
-  }
-
-  $: {
-    if (value && (value !== previousValue)) {
-      previousValue = value;
-      setInput();
-    }
   }
 
   function open() {
@@ -250,6 +224,32 @@
         // No matching key
     }
     /* eslint-enable @typescript-eslint/no-magic-numbers */
+  }
+
+  $: filteredItems = (!isOpen || !filterable || inputText === '')
+    ? normalizedItems
+    : normalizedItems.filter(
+      option => option.text
+        .toLowerCase()
+        .indexOf(inputText.toLowerCase()) > -1,
+    );
+
+  $: normalizedItems = items.map((item) =>
+    (item.id ? item : { id: item, text: item })
+  );
+
+  $: {
+    if (filteredItems !== previousFilteredItems) {
+      previousFilteredItems = filteredItems;
+      setIndex();
+    }
+  }
+
+  $: {
+    if (value && (value !== previousValue)) {
+      previousValue = value;
+      setInput();
+    }
   }
 
   onMount(setInput);

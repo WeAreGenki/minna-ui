@@ -41,7 +41,7 @@ export function purgecss({
   return {
     name: 'purgecss',
 
-    async transform(code, id) {
+    transform(code, id) {
       if (!filter(id)) return;
 
       try {

@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.29.0][] - 2019-07-22
+
+### Added
+
+- `@minna-ui/eslint-config` - Add new typed lint rules.
+
+### Changed
+
+- Rearrange component internals for consistency and better build-time optimisation.
+- Updated package dependencies.
+
+### Fixed
+
+- `@minna-ui/eslint-config` - Typed rules crash the process when using the `node-js` add-on config.
+- `@minna-ui/build-lib` - Externals logic incorrect matching nested paths.
+
 ## [0.28.0][] - 2019-07-21
 
 ### Added

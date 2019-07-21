@@ -6,7 +6,7 @@ import { BuildLibProps } from './types';
 /**
  * @returns Never actually resolves as it keeps watching indefinitely.
  */
-export async function watch({
+export function watch({
   external,
   input,
   name,
@@ -15,7 +15,7 @@ export async function watch({
   pkgTypes,
   plugins,
   sourcemap,
-}: BuildLibProps): Promise<void> {
+}: BuildLibProps): void {
   const config: RollupWatchOptions[] = [];
 
   if (pkgMain) {

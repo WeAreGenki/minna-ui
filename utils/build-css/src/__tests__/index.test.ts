@@ -31,9 +31,9 @@ const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
   npm_package_version: '1.2.3',
 });
 
-beforeAll(() => {
-  del([dist]); // In case of failed test runs
-  mkdir(dist);
+beforeAll(async () => {
+  await del([dist]); // In case of failed test runs
+  await mkdir(dist);
 });
 
 afterEach(() => del([dist]));
@@ -96,7 +96,7 @@ describe('build-css tool', () => {
     const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
-    await expect(build).rejects.toThrowError();
+    await expect(build).rejects.toThrow();
     expect(spy).toHaveBeenCalledWith(
       expect.stringContaining('jest-config/fixtures/styles-bad-syntax.css:21:1: Unclosed block:'),
     );

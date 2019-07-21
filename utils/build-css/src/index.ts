@@ -118,9 +118,9 @@ async function processCss({
   // Create output directory
   await mkdir(dirPath, { recursive: true });
 
-  writeFile(filePath, code);
+  await writeFile(filePath, code);
   if (sourcemap) {
-    writeFile(`${filePath}.map`, map);
+    await writeFile(`${filePath}.map`, map);
   }
 
   return {

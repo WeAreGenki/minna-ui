@@ -50,7 +50,7 @@
     "jest": "24.8.0",
     "lerna": "3.16.4",
     "postcss": "7.0.17",
-    "postcss-extend-rule": "2.0.0",
+    "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "1.18.2",
     "remark-cli": "7.0.0",

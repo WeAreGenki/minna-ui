@@ -42,9 +42,10 @@ interface PluginOptions {
   unsafe?: boolean;
   /**
    * Any other options will be passed to all PostCSS plugins and to the
-   * `nanocss` preset options.</br></br>This can be particularly powerful if
-   * you need to pass options when using the `@use` rule — use the plugin
-   * name as a key, as shown in the
+   * `nanocss` preset options.
+   *
+   * This can be particularly powerful if you need to pass options together
+   * with the `@use` rule — use the plugin name as a key, as shown in the
    * [postcss-use docs](https://github.com/postcss/postcss-use#options-1).
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

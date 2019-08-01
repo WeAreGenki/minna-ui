@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.30.1][] - 2019-08-02
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-emit-css` - Options type is not exported.
+
 ## [0.30.0][] - 2019-08-02
 
 ### Changed
@@ -882,7 +888,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.30.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.30.1...HEAD
+[0.30.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.30.0...v0.30.1
 [0.30.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.29.0...v0.30.0
 [0.29.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.28.0...v0.29.0
 [0.28.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.27.0...v0.28.0

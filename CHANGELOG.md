@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.30.0][] - 2019-08-02
+
+### Changed
+
+- `@minna-ui/navbar` - No longer using `segment` for detecting current route, now using a new prop, `current`, which is intended to use the sapper `$page` store.
+- Updated package dependencies.
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-postcss` - Options type is not exported.
+
 ## [0.29.0][] - 2019-07-22
 
 ### Added
@@ -871,7 +882,11 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.26.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.30.0...HEAD
+[0.30.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.29.0...v0.30.0
+[0.29.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.28.0...v0.29.0
+[0.28.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.27.0...v0.28.0
+[0.27.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.26.1...v0.27.0
 [0.26.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.26.0...v0.26.1
 [0.26.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.25.1...v0.26.0
 [0.25.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.25.0...v0.25.1

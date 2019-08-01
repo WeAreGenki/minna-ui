@@ -1449,10 +1449,15 @@
   resolved "https://registry.yarnpkg.com/@types/mri/-/mri-1.1.0.tgz#66555e4d797713789ea0fefdae0898d8170bf5af"
   integrity sha512-fMl88ZoZXOB7VKazJ6wUMpZc9QIn+jcigSFRf2K/rrw4DcXn+/uGxlWX8DDlcE7JkwgIZ7BDH+JgxZPlc/Ap3g==
 
-"@types/node@*", "@types/node@12.6.8", "@types/node@^12.6.2", "@types/node@^12.6.8":
+"@types/node@*", "@types/node@^12.6.2", "@types/node@^12.6.8":
   version "12.6.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
   integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
+
+"@types/node@12.6.9":
+  version "12.6.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.9.tgz#ffeee23afdc19ab16e979338e7b536fdebbbaeaf"
+  integrity sha512-+YB9FtyxXGyD54p8rXwWaN1EWEyar5L58GlGWgtH2I9rGmLGBQcw63+0jw+ujqVavNuO47S1ByAjm9zdHMnskw==
 
 "@types/postcss-nested@4.1.0":
   version "4.1.0"
@@ -1487,10 +1492,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/stylelint@9.10.0":
-  version "9.10.0"
-  resolved "https://registry.yarnpkg.com/@types/stylelint/-/stylelint-9.10.0.tgz#843e5fbe068a9275fe3ebfbc4ad94c8fa9b1aea9"
-  integrity sha512-xnlufv0Pn+UxHpCEsobMQ/AFvGoD1YkXtHpz7S49UJcw60tzUnKQWrZs+ICYwUcw9MIaHcURUsqN7iPd59iG4g==
+"@types/stylelint@9.10.1":
+  version "9.10.1"
+  resolved "https://registry.yarnpkg.com/@types/stylelint/-/stylelint-9.10.1.tgz#211832381e43fd0774217b59f02ab389d82643ea"
+  integrity sha512-au+n/CjGixNopJmh51GeZSkqf/ahwOBkzcvizHPe3flfwWag0T+/L7uHD0Hjx7ZhmXGFSEwOCqEybD4domcyRw==
   dependencies:
     postcss "7.x.x"
 
@@ -7659,13 +7664,14 @@ postcss-discard-overridden@^4.0.1:
   dependencies:
     postcss "^7.0.0"
 
-postcss-extend-rule@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-extend-rule/-/postcss-extend-rule-2.0.0.tgz#031fe6f608cf6efd20cb58b11f343b164c18d370"
-  integrity sha512-dgr1GJzW3lUBczZJO5Fm51rktn34Uc99xR1uQyC2Td8JPep/Y+TRx6TjK0yngikOd4LxV1xyuohMMpcaOBgrfA==
+postcss-extend-rule@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-extend-rule/-/postcss-extend-rule-3.0.0.tgz#d6ee2fb24ab2b3d9b50acce1d055c1c137ab5f44"
+  integrity sha512-gMlRmW52Y86Lct+KTr+gMjxk0aUSuTyjtvelIH3a7UdaXONaKH6qSmj8KAXCW4+nhTlAsOw5JdkRjCdZ/Kjb3Q==
   dependencies:
-    postcss "^6.0.22"
-    postcss-nesting "^5.0.0"
+    postcss "^7.0.17"
+    postcss-nesting "^7.0.1"
+    postcss-tape "^5.0.2"
 
 postcss-flexbugs-fixes@^4.1.0:
   version "4.1.0"
@@ -7786,12 +7792,12 @@ postcss-nested@4.1.2, postcss-nested@^4.1.2:
     postcss "^7.0.14"
     postcss-selector-parser "^5.0.0"
 
-postcss-nesting@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-5.0.0.tgz#973e3a7dc6426543affc0b0beb367c3b2a8d9923"
-  integrity sha512-Yoe3w2mcVslnEJl5zLyz1yBxCFUpYu138apEEOCwS2HRdDw/TDxTwD1fXBrIarL8J1cPzHfVwO1m40B2/UpGCw==
+postcss-nesting@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-7.0.1.tgz#b50ad7b7f0173e5b5e3880c3501344703e04c052"
+  integrity sha512-FrorPb0H3nuVq0Sff7W2rnc3SmIcruVC6YwpcS+k687VxyxO33iE1amna7wHuRVzM8vfiYofXSBHNAZ3QhLvYg==
   dependencies:
-    postcss "^6.0.21"
+    postcss "^7.0.2"
 
 postcss-normalize-charset@^4.0.1:
   version "4.0.1"
@@ -7990,6 +7996,11 @@ postcss-syntax@^0.36.2:
   resolved "https://registry.yarnpkg.com/postcss-syntax/-/postcss-syntax-0.36.2.tgz#f08578c7d95834574e5593a82dfbfa8afae3b51c"
   integrity sha512-nBRg/i7E3SOHWxF3PpF5WnJM/jQ1YpY9000OaVXlAQj6Zp/kIqJxEDWIZ67tAd7NLuk7zqN4yqe9nc0oNAOs1w==
 
+postcss-tape@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-tape/-/postcss-tape-5.0.2.tgz#7ae011050954fdc10b17d1f1551c9d9bf14e4bdf"
+  integrity sha512-e4770WnsUzczQp/pAIsz0s0MDLAQ7luyh1/hs8QBcdfXOMrz0siEqYNHAKJIoCvGtLoi2QUjWASvTbPfyTfIWg==
+
 postcss-unique-selectors@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/postcss-unique-selectors/-/postcss-unique-selectors-4.0.1.tgz#9446911f3289bfd64c6d680f073c03b1f9ee4bac"
@@ -8035,7 +8046,7 @@ postcss-values-parser@^2.0.0:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^6.0.17, postcss@^6.0.21, postcss@^6.0.22:
+postcss@^6.0.17:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   integrity sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
@@ -10255,10 +10266,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.6.9:
-  version "3.6.9"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.9.tgz#949f4674329d04d3281f7cf340285ae3480f28da"
-  integrity sha512-k72cp0LYzennT7xgnQU0jB2HJEZ/fQamZbrHJO6JlvsNX+z6a1YJaLrtN4qQ1yfozUkeGw1TOvDxo8a5grOZMg==
+svelte@3.6.10:
+  version "3.6.10"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.6.10.tgz#054f944a8c161b16748d7f2e00a383252cd14725"
+  integrity sha512-2N9kIbDal5z/aZloaRCOQ9dlCtuCE08NZITDlSdG7fOl4kFrE2qnXCq+lSFtI15ABWCXPc17cX5vJvdOgUsKqw==
 
 svg-tags@^1.0.0:
   version "1.0.0"

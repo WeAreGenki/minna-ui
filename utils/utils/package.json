@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/utils",
-  "version": "0.29.0",
+  "version": "0.30.0",
   "description": "Small utility functions for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/utils",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

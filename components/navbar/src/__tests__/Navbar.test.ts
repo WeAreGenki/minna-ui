@@ -19,8 +19,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     const component = new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -36,8 +36,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -56,8 +56,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -76,8 +76,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -100,8 +100,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -128,8 +128,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -158,8 +158,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -180,8 +180,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new Navbar({
       props: {
+        current: 'page-two',
         items,
-        segment: 'page-two',
       },
       target,
     });
@@ -196,8 +196,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     const component = new Navbar({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });
@@ -214,8 +214,8 @@ describe('Navbar component', () => {
     const target = document.createElement('div');
     new UseSlot({
       props: {
+        current: '/',
         items,
-        segment: undefined,
       },
       target,
     });

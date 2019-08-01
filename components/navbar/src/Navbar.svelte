@@ -7,7 +7,7 @@
   USAGE:
     The "items" property should be an array of objects which look like this:
 
-      <Navbar {segment} items="{[
+      <Navbar current={$page.path} items="{[
         { url: '/page-one', text: 'Page One' },
         { url: '/page-two', text: 'Page Two' },
         { url: '/about', text: 'About Us' },
@@ -61,7 +61,8 @@
   import { listen } from 'svelte/internal';
 
   export let items = [];
-  export let segment; // Current URL path; in sapper, pass in "segment"
+  /** Current URL path; in sapper use "$page.path". */
+  export let current;
 
   let isOpen;
   let hasScrolled;
@@ -247,7 +248,7 @@
     <div class="navbar-links {isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn {segment === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
       >
         Home
       </a>
@@ -255,7 +256,7 @@
       {#each items as item}
       <a
         href="{item.url}"
-        class="navbar-link {segment === item.url ? 'navbar-link-active' : ''}"
+        class="navbar-link {current === item.url ? 'navbar-link-active' : ''}"
         rel="{item.rel || ''}"
       >
         {item.text}

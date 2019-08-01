@@ -7,7 +7,7 @@ import syntax from 'postcss-scss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
-interface RollupPostcssOptions {
+export interface RollupPostcssOptions extends postcss.ProcessOptions {
   /** Files to exclude from processing. */
   exclude?: RegExp[] | string[];
   /** Files to include in processing. */
@@ -21,7 +21,7 @@ function postcssRollup({
   exclude = [/node_modules\/@minna-ui/],
   include = [/\.(p|post)?css$/],
   ...options
-}: RollupPostcssOptions & postcss.ProcessOptions = {}): rollup.Plugin {
+}: RollupPostcssOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
 
   return {

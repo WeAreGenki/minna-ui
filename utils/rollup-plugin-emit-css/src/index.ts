@@ -7,7 +7,7 @@ import { basename, extname } from 'path';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 
-interface EmitCssOptions {
+export interface EmitCssOptions {
   /** Concatenate all css files together and emit a single CSS file. */
   combine?: boolean;
   /** Show additional logging for debug purposes. */

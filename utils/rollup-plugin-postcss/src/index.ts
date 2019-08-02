@@ -6,13 +6,9 @@ import postcssrc from 'postcss-load-config';
 import syntax from 'postcss-scss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
+import { RollupPostcssOptions } from './types';
 
-export interface RollupPostcssOptions extends postcss.ProcessOptions {
-  /** Files to exclude from processing. */
-  exclude?: RegExp[] | string[];
-  /** Files to include in processing. */
-  include?: RegExp[] | string[];
-}
+export * from './types';
 
 /**
  * Rollup plugin to process imported styles via PostCSS.

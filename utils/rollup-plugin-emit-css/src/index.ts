@@ -107,7 +107,7 @@ export function emitCss({
           processCss(css, inferredName);
         } else {
           for (const id of styles.keys()) {
-            processCss(styles.get(id), id);
+            processCss(styles.get(id), basename(id));
           }
         }
       } catch (err) {

@@ -39,6 +39,7 @@
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
     "@types/node": "12.6.9",
+    "@types/postcss-load-config": "2.0.0",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
     "@types/rollup-plugin-buble": "0.19.1",

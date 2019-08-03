@@ -8,13 +8,14 @@ const { execSync } = require('child_process');
  *
  * @see https://git-scm.com/docs/git-describe
  *
+ * @param {string} [args] - Additional arguments to pass to `git describe`.
  * @returns {string} A human readable git reference.
  */
-function gitDescribe() {
+function gitDescribe(args = '--dirty="-dev"') {
   let reference = '';
 
   try {
-    reference = execSync('git describe --always --dirty="-dev"')
+    reference = execSync(`git describe --always ${args}`)
       .toString()
       .trim();
   } catch (error) {

@@ -15,7 +15,6 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "prettier": "^1.15.0",
     "stylelint": "^10.0.0"
   },
   "dependencies": {

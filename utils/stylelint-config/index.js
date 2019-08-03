@@ -61,7 +61,7 @@ module.exports = {
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
     'max-line-length': [
-      80,
+      80, // Same as prettier
       {
         ignorePattern: ['/https?:\\/\\/[0-9,a-z]*.*/i', '/stylelint-disable/'],
       },

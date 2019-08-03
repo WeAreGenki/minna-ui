@@ -406,6 +406,7 @@ module.exports = {
     {
       files: ['*.css.d.ts', '*.pcss.d.ts'],
       rules: {
+        '@typescript-eslint/interface-name-prefix': OFF,
         '@typescript-eslint/member-delimiter-style': OFF,
       },
     },

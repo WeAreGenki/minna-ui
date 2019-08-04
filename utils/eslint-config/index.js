@@ -373,6 +373,7 @@ module.exports = {
     {
       files: ['*.snap'],
       rules: {
+        'no-tabs': OFF,
         quotes: OFF,
         strict: OFF,
       },

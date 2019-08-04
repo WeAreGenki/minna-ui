@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.31.0][] - 2019-08-04
+
+### Added
+
+- `@minna-ui/utils` - `gitDescribe` method now takes an argument allowing you to change the output.
+
+### Changed
+
+- `@minna-ui/eslint` - General improvements.
+- `@minna-ui/css` - Better loading animation timing.
+- Updated package dependencies.
+
 ## [0.30.3][] - 2019-08-02
 
 ### Fixed
@@ -900,7 +912,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.30.3...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.31.0...HEAD
+[0.31.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.30.3...v0.31.0
 [0.30.3]: https://github.com/WeAreGenki/minna-ui/compare/v0.30.2...v0.30.3
 [0.30.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.30.1...v0.30.2
 [0.30.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.30.0...v0.30.1

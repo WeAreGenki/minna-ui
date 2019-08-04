@@ -14,6 +14,11 @@ import { aliasedResolve, ImportAlias } from './css-import-resolve';
 const importCache = {};
 
 interface PluginOptions {
+  /**
+   * Modify output for compatibility with the target browser defined in a
+   * `browserslist` config.
+   */
+  compat?: boolean;
   /** Show useful debugging feedback (unresolved variables etc.). */
   debug?: boolean;
   /**
@@ -58,6 +63,7 @@ interface PluginOptions {
 export default postcss.plugin(
   'minna-ui',
   ({
+    compat = true,
     debug = true,
     importAlias = { '^##\\/(.*)$': 'src/$1' },
     importPaths = [process.cwd(), 'src', 'src/css'],
@@ -65,18 +71,16 @@ export default postcss.plugin(
     unsafe = false,
     ...options
   }: PluginOptions = {}) => {
-    let plugins = [advancedVars, atUse, nested, colorModFunction];
-
-    if (optimize) {
-      plugins = plugins.concat(
-        [
-          unsafe && mediaQueryPacker,
-          flexbugFixes,
-          autoprefixer,
-          cssnano,
-        ].filter(Boolean),
-      );
-    }
+    const plugins = [
+      advancedVars,
+      atUse,
+      nested,
+      colorModFunction,
+      optimize && unsafe && mediaQueryPacker,
+      compat && flexbugFixes,
+      compat && autoprefixer,
+      optimize && cssnano,
+    ].filter(Boolean);
 
     const cssnanoOpts = merge(
       {
@@ -101,7 +105,7 @@ export default postcss.plugin(
 
         // autoprefixer
         flexbox: 'no-2009',
-        grid: true, // IE 11 support
+        grid: 'autoplace', // IE 11 support
         remove: false,
 
         // cssnano

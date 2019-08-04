@@ -242,5 +242,5 @@ $spinner-size: 24px !default;
 $spinner-width: 4px !default;
 $spinner-color: $intent-primary !default;
 $spinner-background-color: $light-gray1 !default;
-$spinner-animate-speed: 880ms !default;
-$spinner-animate-timing: ease !default;
+$spinner-animate-speed: 1280ms !default;
+$spinner-animate-timing: cubic-bezier(0.53, 0.21, 0.29, 0.67) !default;

@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/build-component",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "description": "Internal Minna UI component builder.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-component",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

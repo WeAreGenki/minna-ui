@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/rollup-plugin-dev-server",
-  "version": "0.31.0",
+  "version": "0.31.1",
   "description": "Run a live development server as a rollup plugin.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-dev-server",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.31.1][] - 2019-08-06
+
+### Fixed
+
+- `@minna-ui/utils` - `gitDescribe` new attribute missing types.
+
 ## [0.31.0][] - 2019-08-04
 
 ### Added

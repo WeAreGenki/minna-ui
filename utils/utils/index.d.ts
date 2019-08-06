@@ -6,7 +6,7 @@ export declare function handleErr(err?: Error): void;
  *
  * @see https://git-scm.com/docs/git-describe
  *
- * @param {string} [args] - Additional arguments to pass to `git describe`.
- * @returns {string} A human readable git reference.
+ * @param [args] - Additional arguments to pass to `git describe`.
+ * @returns A human readable git reference.
  */
-export declare function gitDescribe(): string;
+export declare function gitDescribe(args: string): string;

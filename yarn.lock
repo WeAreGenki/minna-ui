@@ -1045,6 +1045,80 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@minna-ui/build-component@file:utils/build-component":
+  version "0.31.0"
+  dependencies:
+    "@minna-ui/preprocess" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-component-0.31.0-f10baf1c-efb5-4b8e-88ae-4c5ab5843e45-1565064306311/node_modules/@minna-ui/preprocess"
+    rollup "^1.18.0"
+    rollup-plugin-buble "^0.19.8"
+    rollup-plugin-commonjs "^10.0.2"
+    rollup-plugin-node-resolve "^5.2.0"
+    rollup-plugin-svelte "^5.1.0"
+    rollup-plugin-terser "^5.1.1"
+
+"@minna-ui/build-css@file:utils/build-css":
+  version "0.31.0"
+  dependencies:
+    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-css-0.31.0-253dd5f4-c87a-47b7-b181-cf82cfb69e4b-1565064306313/node_modules/@minna-ui/postcss-config"
+    clean-css "^4.2.1"
+    mri "^1.1.4"
+    postcss-load-config "^2.1.0"
+
+"@minna-ui/build-lib@file:utils/build-lib":
+  version "0.31.0"
+  dependencies:
+    mri "^1.1.4"
+    rollup "^1.18.0"
+    rollup-plugin-commonjs "^10.0.2"
+    rollup-plugin-node-resolve "^5.2.0"
+    rollup-plugin-typescript "^1.0.1"
+    rollup-pluginutils "^2.8.1"
+    tslib "^1.9.3"
+    typescript "^3.5.3"
+
+"@minna-ui/collapse@file:components/collapse":
+  version "0.31.0"
+
+"@minna-ui/css@file:css":
+  version "0.31.0"
+
+"@minna-ui/eslint-import-resolver@file:utils/eslint-import-resolver":
+  version "0.31.0"
+  dependencies:
+    resolve "^1.12.0"
+
+"@minna-ui/navbar@file:components/navbar":
+  version "0.31.0"
+
+"@minna-ui/postcss-config@file:utils/postcss-config":
+  version "0.31.0"
+  dependencies:
+    autoprefixer "^9.6.1"
+    css-mqpacker "^7.0.0"
+    cssnano "^4.1.8"
+    deepmerge "^4.0.0"
+    postcss-advanced-variables "github:MaxMilton/postcss-advanced-variables#precompiled"
+    postcss-color-mod-function "^3.0.3"
+    postcss-flexbugs-fixes "^4.1.0"
+    postcss-nested "^4.1.2"
+    postcss-use "^3.0.0"
+
+"@minna-ui/preprocess@file:utils/preprocess":
+  version "0.31.0"
+  dependencies:
+    deepmerge "^4.0.0"
+    postcss-load-config "^2.0.0"
+    postcss-scss "^2.0.0"
+
+"@minna-ui/select@file:components/select":
+  version "0.31.0"
+
+"@minna-ui/switch@file:components/switch":
+  version "0.31.0"
+
+"@minna-ui/tooltip@file:components/tooltip":
+  version "0.31.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

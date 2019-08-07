@@ -1045,78 +1045,21 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@minna-ui/browserslist-config@file:utils/browserslist-config":
-  version "0.31.0"
-
-"@minna-ui/build-component@file:utils/build-component":
-  version "0.31.0"
-  dependencies:
-    "@minna-ui/preprocess" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-component-0.31.0-5c4b13c8-f838-4599-b431-bc97f15b5406-1565147435370/node_modules/@minna-ui/preprocess"
-    rollup "^1.19.3"
-    rollup-plugin-buble "^0.19.8"
-    rollup-plugin-commonjs "^10.0.2"
-    rollup-plugin-node-resolve "^5.2.0"
-    rollup-plugin-svelte "^5.1.0"
-    rollup-plugin-terser "^5.1.1"
-
 "@minna-ui/build-css@file:utils/build-css":
   version "0.31.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-css-0.31.0-9a06f6c8-60c7-4801-8632-937f26028abf-1565147435371/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-css-0.31.0-695e5a44-d509-40bd-9765-1f83f6ac8742-1565147998569/node_modules/@minna-ui/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
 
-"@minna-ui/build-lib@file:utils/build-lib":
-  version "0.31.0"
-  dependencies:
-    mri "^1.1.4"
-    rollup "^1.19.3"
-    rollup-plugin-commonjs "^10.0.2"
-    rollup-plugin-node-resolve "^5.2.0"
-    rollup-plugin-typescript "^1.0.1"
-    rollup-pluginutils "^2.8.1"
-    tslib "^1.9.3"
-    typescript "^3.5.3"
-
-"@minna-ui/collapse@file:components/collapse":
-  version "0.31.0"
-
 "@minna-ui/css@file:css":
   version "0.31.0"
-
-"@minna-ui/eslint-config@file:utils/eslint-config":
-  version "0.31.0"
-  dependencies:
-    "@minna-ui/eslint-import-resolver" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-eslint-config-0.31.0-d542ecca-a9f9-45f2-a561-68a1071d1c02-1565147435382/node_modules/@minna-ui/eslint-import-resolver"
-    "@types/eslint" "^4.16.6"
-    "@typescript-eslint/eslint-plugin" "^1.13.0"
-    "@typescript-eslint/parser" "^1.13.0"
-    eslint-config-airbnb-base "^13.2.0"
-    eslint-plugin-html "^6.0.0"
-    eslint-plugin-import "^2.18.2"
-    eslint-plugin-jest "^22.14.1"
-    eslint-plugin-jsdoc "^15.8.0"
-    eslint-plugin-markdown "^1.0.0"
-    eslint-plugin-security "^1.4.0"
-    eslint-plugin-svelte3 "^2.7.3"
 
 "@minna-ui/eslint-import-resolver@file:utils/eslint-import-resolver":
   version "0.31.0"
   dependencies:
     resolve "^1.12.0"
-
-"@minna-ui/jest-config@file:utils/jest-config":
-  version "0.31.0"
-  dependencies:
-    "@types/jest" "^24.0.17"
-    "@types/node" "^12.7.0"
-    identity-obj-proxy "^3.0.0"
-    jest-circus "^24.8.0"
-    sucrase "^3.10.1"
-
-"@minna-ui/navbar@file:components/navbar":
-  version "0.31.0"
 
 "@minna-ui/postcss-config@file:utils/postcss-config":
   version "0.31.0"
@@ -1130,85 +1073,6 @@
     postcss-flexbugs-fixes "^4.1.0"
     postcss-nested "^4.1.2"
     postcss-use "^3.0.0"
-
-"@minna-ui/preprocess@file:utils/preprocess":
-  version "0.31.0"
-  dependencies:
-    deepmerge "^4.0.0"
-    postcss-load-config "^2.0.0"
-    postcss-scss "^2.0.0"
-
-"@minna-ui/prettier-config@file:utils/prettier-config":
-  version "0.31.0"
-
-"@minna-ui/remark-config@file:utils/remark-config":
-  version "0.31.0"
-  dependencies:
-    remark-lint "^6.0.5"
-    remark-preset-lint-consistent "^2.0.3"
-    remark-preset-lint-markdown-style-guide "^2.1.3"
-    remark-preset-lint-recommended "^3.0.3"
-
-"@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
-  version "0.31.2"
-  dependencies:
-    "@minna-ui/utils" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.31.2-2825cddd-f7fd-435b-b778-84ee58507b5a-1565147435385/node_modules/@minna-ui/utils"
-    "@wearegenki/node-utils" "^0.3.0"
-    deepmerge "^4.0.0"
-    sirv "^0.4.2"
-
-"@minna-ui/rollup-plugin-emit-css@file:utils/rollup-plugin-emit-css":
-  version "0.31.0"
-  dependencies:
-    "@types/clean-css" "^4.2.1"
-    clean-css "^4.2.1"
-    rollup-pluginutils "^2.8.1"
-
-"@minna-ui/rollup-plugin-emit-html@file:utils/rollup-plugin-emit-html":
-  version "0.31.0"
-  dependencies:
-    clean-css "^4.2.1"
-    rollup-pluginutils "^2.8.1"
-
-"@minna-ui/rollup-plugin-postcss@file:utils/rollup-plugin-postcss":
-  version "0.31.0"
-  dependencies:
-    deepmerge "^4.0.0"
-    postcss-load-config "^2.0.0"
-    postcss-scss "^2.0.0"
-    rollup-pluginutils "^2.8.1"
-
-"@minna-ui/rollup-plugin-purgecss@file:utils/rollup-plugin-purgecss":
-  version "0.31.0"
-  dependencies:
-    deepmerge "^4.0.0"
-    purgecss "^1.3.0"
-    rollup-pluginutils "^2.8.1"
-
-"@minna-ui/select@file:components/select":
-  version "0.31.0"
-
-"@minna-ui/stylelint-config@file:utils/stylelint-config":
-  version "0.31.0"
-  dependencies:
-    stylelint-a11y "^1.2.1"
-    stylelint-config-css-modules "^1.4.0"
-    stylelint-config-standard "^18.3.0"
-    stylelint-declaration-strict-value "^1.1.3"
-    stylelint-high-performance-animation "^1.2.1"
-    stylelint-order "^3.0.1"
-
-"@minna-ui/switch@file:components/switch":
-  version "0.31.0"
-
-"@minna-ui/tooltip@file:components/tooltip":
-  version "0.31.0"
-
-"@minna-ui/ts-config@file:utils/ts-config":
-  version "0.31.0"
-
-"@minna-ui/utils@file:utils/utils":
-  version "0.31.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

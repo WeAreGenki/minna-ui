@@ -29,8 +29,8 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
-    "@types/jest": "^24.0.16",
-    "@types/node": "^12.6.9",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-circus": "^24.8.0",
     "sucrase": "^3.10.1"

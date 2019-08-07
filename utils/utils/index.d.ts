@@ -9,4 +9,4 @@ export declare function handleErr(err?: Error): void;
  * @param [args] - Additional arguments to pass to `git describe`.
  * @returns A human readable git reference.
  */
-export declare function gitDescribe(args: string): string;
+export declare function gitDescribe(args?: string): string;

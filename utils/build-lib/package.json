@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/build-lib",
-  "version": "0.31.0",
+  "version": "0.31.3",
   "description": "Internal Minna UI package builder.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-lib",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

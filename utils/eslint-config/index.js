@@ -19,6 +19,8 @@
 
 'use strict';
 
+const { join } = require('path');
+
 const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
@@ -64,7 +66,8 @@ module.exports = {
     'import/resolver': {
       '@minna-ui/eslint-import-resolver': {
         alias: {
-          '^##\\/(.*)$': 'src/$1',
+          // '^##\\/(.*)$': 'src/$1',
+          '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
         },
         extensions: [
           '.mjs',

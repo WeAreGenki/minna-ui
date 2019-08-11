@@ -336,7 +336,6 @@ module.exports = {
         'jest/no-identical-title': ERROR,
         'jest/no-jasmine-globals': WARNING,
         'jest/no-jest-import': ERROR,
-        'jest/no-large-snapshots': WARNING,
         'jest/no-mocks-import': WARNING,
         'jest/no-test-callback': WARNING,
         'jest/no-test-prefixes': ERROR,
@@ -369,16 +368,6 @@ module.exports = {
         ],
         'no-new': OFF, // Allows testing constructors
         'no-tabs': OFF, // We can't always control whitespace generation
-      },
-    },
-
-    // Unit test snapshots
-    {
-      files: ['*.snap'],
-      rules: {
-        'no-tabs': OFF,
-        quotes: OFF,
-        strict: OFF,
       },
     },
 

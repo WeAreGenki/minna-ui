@@ -34,7 +34,7 @@
     "report:css": "autoprefixer --info"
   },
   "devDependencies": {
-    "@types/autoprefixer": "9.5.0",
+    "@types/autoprefixer": "9.6.0",
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",

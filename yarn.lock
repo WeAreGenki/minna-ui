@@ -1382,10 +1382,10 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-0.5.0.tgz#b21510597fd601e5d7c95008b76bf0d254ebfd31"
   integrity sha512-oZLYFEAzUKyi3SKnXvj32ZCEGH6RDnao7COuCVhDydMS9NrCSVXhM79VaKyP5+Zc33m0QXEd2DN3UkU7OsHcfw==
 
-"@types/autoprefixer@9.6.0":
-  version "9.6.0"
-  resolved "https://registry.yarnpkg.com/@types/autoprefixer/-/autoprefixer-9.6.0.tgz#d6ef2e078c8fa9adc7959fd2ce34da8e8948a860"
-  integrity sha512-s3BKeDVsopGusucdXnyw/Pc2BsvheGcQwszag+MapJWnU36xHJ4h4wEuct6Btm8Cg1Je5Is2jn+twHlXJBorkQ==
+"@types/autoprefixer@9.6.1":
+  version "9.6.1"
+  resolved "https://registry.yarnpkg.com/@types/autoprefixer/-/autoprefixer-9.6.1.tgz#8bfaf43d18f5cd59a269b7a2364e690cadcdf210"
+  integrity sha512-9aofAxm/OWxzu/Fq7lU/m2rX03f9Sr1OXF/3kEp6FNFYRFLgFcIUjxhNGgWqc5KMpXbkqxlJmc7wfab7jFj2dw==
   dependencies:
     "@types/browserslist" "*"
     postcss "7.x.x"

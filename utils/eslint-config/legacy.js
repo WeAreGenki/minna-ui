@@ -1,9 +1,10 @@
 /**
- * Minna UI node with JavaScript ESLint config add-on.
+ * Minna UI legacy JavaScript ESLint config add-on.
  *
  * @file This config is an add-on which should extend the base config preset.
- * Provides extra config for node projects which only use plain JavaScript (and
- * not TypeScript).
+ * Provides extra config for projects containing some files which are not
+ * transpiled from modern JavaScript to older JavaScript with wide browser
+ * engine coverage. Particularly useful for scripts in HTML files.
  *
  * @see https://eslint.org/docs/user-guide/configuring
  */

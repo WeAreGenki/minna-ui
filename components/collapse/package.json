@@ -36,7 +36,7 @@
   "devDependencies": {
     "@minna-ui/build-component": "file:../../utils/build-component",
     "@minna-ui/css": "file:../../css",
-    "svelte": "3.8.1"
+    "svelte": "3.9.1"
   },
   "publishConfig": {
     "access": "public"

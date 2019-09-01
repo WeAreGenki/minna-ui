@@ -48,6 +48,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  reportUnusedDisableDirectives: ERROR,
   settings: {
     'html/indent': '+2',
     'html/report-bad-indent': ERROR,

@@ -30,7 +30,7 @@
     "postcss-load-config": "^2.1.0"
   },
   "devDependencies": {
-    "del": "5.0.0"
+    "del": "5.1.0"
   },
   "engines": {
     "node": ">=10.16.0"

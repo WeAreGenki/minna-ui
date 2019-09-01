@@ -21,6 +21,7 @@
   ],
   "main": "index.js",
   "module": "index.mjs",
+  "svelte": "index.mjs",
   "types": "index.d.ts",
   "style": "index.css",
   "files": [

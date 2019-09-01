@@ -33,6 +33,10 @@
     "report:browsers": "browserslist",
     "report:css": "autoprefixer --info"
   },
+  "resolutions": {
+    "braces": "^3.0.2",
+    "marked": "^0.7.0"
+  },
   "devDependencies": {
     "@types/autoprefixer": "9.6.1",
     "@types/clean-css": "4.2.1",

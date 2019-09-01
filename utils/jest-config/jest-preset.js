@@ -7,6 +7,8 @@
 
 module.exports = {
   testRunner: 'jest-circus/runner',
+  // Jest still supports node v6 and therefore won't update jsdom past v11
+  testEnvironment: 'jest-environment-jsdom-fifteen',
   transform: {
     '^.+\\.([jt]sx?|mjs)$': '@minna-ui/jest-config/transforms/es.js',
     '^.+\\.svelte$': '@minna-ui/jest-config/transforms/svelte.js',

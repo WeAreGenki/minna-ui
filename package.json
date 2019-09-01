@@ -34,11 +34,11 @@
     "report:css": "autoprefixer --info"
   },
   "devDependencies": {
-    "@types/autoprefixer": "9.5.0",
+    "@types/autoprefixer": "9.6.1",
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.7.1",
+    "@types/node": "12.7.3",
     "@types/postcss-load-config": "2.0.0",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
@@ -47,8 +47,8 @@
     "@wearegenki/renovate-config": "1.0.0",
     "codacy-coverage": "3.4.0",
     "docsify-cli": "4.3.0",
-    "eslint": "6.1.0",
-    "jest": "24.8.0",
+    "eslint": "6.3.0",
+    "jest": "24.9.0",
     "lerna": "3.16.4",
     "postcss": "7.0.17",
     "postcss-extend-rule": "3.0.0",
@@ -57,7 +57,7 @@
     "remark-cli": "7.0.0",
     "rollup": "1.19.4",
     "stylelint": "10.1.0",
-    "svelte": "3.7.1",
+    "svelte": "3.9.1",
     "tslib": "1.10.0",
     "typescript": "3.5.3"
   },

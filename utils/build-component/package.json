@@ -33,7 +33,7 @@
     "rollup-plugin-terser": "^5.1.1"
   },
   "devDependencies": {
-    "del": "5.0.0"
+    "del": "5.1.0"
   },
   "publishConfig": {
     "access": "public"

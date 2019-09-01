@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@minna-ui/eslint-import-resolver": "file:../eslint-import-resolver",
-    "@types/eslint": "^4.16.6",
+    "@types/eslint": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "eslint-config-airbnb-base": "^13.2.0",

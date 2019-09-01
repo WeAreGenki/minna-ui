@@ -7,8 +7,11 @@
  * to automate applying the correct rules for different files (based on file
  * name). It's intended to use this config along with Prettier and VS Code
  * with `"prettier.eslintIntegration": true`.
- *
  * @see https://eslint.org/docs/user-guide/configuring
+ *
+ *
+ * TIP: If you're project is TypeScript based, also use the `typed` config. It
+ * requires extra set up steps which are outlined in the config file.
  *
  * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
  * environment variable, e.g. `TIMING=1 yarn eslint ...`. Once run, ESLint will
@@ -48,7 +51,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  reportUnusedDisableDirectives: ERROR,
+  reportUnusedDisableDirectives: true,
   settings: {
     'html/indent': '+2',
     'html/report-bad-indent': ERROR,
@@ -172,6 +175,7 @@ module.exports = {
     // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
     // 'import/no-deprecated': WARNING,
     'import/prefer-default-export': OFF,
+    indent: OFF, // Handled by `@typescript-eslint/indent`
     // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
     // 'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
     'jsdoc/check-examples': OFF,
@@ -188,7 +192,8 @@ module.exports = {
       ERROR,
       {
         code: 80, // Consistency with prettier
-        ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
+        ignorePattern:
+          'eslint-disable|eslint-enable|@ts-ignore|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
@@ -242,6 +247,14 @@ module.exports = {
   },
 
   overrides: [
+    // JavaScript
+    {
+      files: ['*.js', '*.jsx', '*.mjs'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': OFF,
+      },
+    },
+
     // TypeScript
     {
       files: ['*.ts', '*.tsx'],
@@ -359,7 +372,7 @@ module.exports = {
           {
             code: 100, // Consistency with prettier override
             ignorePattern:
-              'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
+              'eslint-disable|eslint-enable|@ts-ignore|stylelint-disable|@typedef',
             ignoreRegExpLiterals: true,
             ignoreStrings: true,
             ignoreTemplateLiterals: true,
@@ -415,7 +428,6 @@ module.exports = {
       },
       rules: {
         // Disable rules that don't make sense in code snippets
-        '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,

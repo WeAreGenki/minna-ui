@@ -38,7 +38,10 @@ function warn(
   }
 
   for (const err of warnings) {
-    if (typeof err === 'string' && /^Ignoring local source map/.test(err)) {
+    if (
+      typeof err === 'string' &&
+      err.startsWith('Ignoring local source map')
+    ) {
       return;
     }
 

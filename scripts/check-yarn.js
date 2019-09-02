@@ -39,10 +39,7 @@ if (process.env.npm_execpath) {
   // eslint-disable-next-line global-require
   const execpath = require('path').posix.normalize(process.env.npm_execpath);
 
-  if (
-    execpath.indexOf('yarn.js') === -1 &&
-    execpath.indexOf('lerna/cli.js') === -1
-  ) {
+  if (!execpath.includes('yarn.js') && !execpath.includes('lerna/cli.js')) {
     const reset = '\x1B[0m';
     const redBold = '\x1B[1;91m';
     const yellow = '\x1B[0;33m';

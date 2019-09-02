@@ -182,16 +182,16 @@ export async function run(
     // await here to capture any errors
     const results = {
       cjs: {
-        bundle: await bundleCjs,
+        bundle: bundleCjs,
         result: await resultCjs,
       },
       css: await resultCss,
       element: {
-        bundle: await bundleElement,
+        bundle: bundleElement,
         result: await resultElement,
       },
       esm: {
-        bundle: await bundleEsm,
+        bundle: bundleEsm,
         result: await resultEsm,
       },
     };

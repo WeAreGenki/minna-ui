@@ -7,8 +7,11 @@
  * to automate applying the correct rules for different files (based on file
  * name). It's intended to use this config along with Prettier and VS Code
  * with `"prettier.eslintIntegration": true`.
- *
  * @see https://eslint.org/docs/user-guide/configuring
+ *
+ *
+ * TIP: If you're project is TypeScript based, also use the `typed` config. It
+ * requires extra set up steps which are outlined in the config file.
  *
  * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
  * environment variable, e.g. `TIMING=1 yarn eslint ...`. Once run, ESLint will
@@ -18,6 +21,8 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
 
 'use strict';
+
+const { join } = require('path');
 
 const OFF = 0;
 const WARNING = 1;
@@ -46,6 +51,7 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  reportUnusedDisableDirectives: true,
   settings: {
     'html/indent': '+2',
     'html/report-bad-indent': ERROR,
@@ -64,7 +70,8 @@ module.exports = {
     'import/resolver': {
       '@minna-ui/eslint-import-resolver': {
         alias: {
-          '^##\\/(.*)$': 'src/$1',
+          // '^##\\/(.*)$': 'src/$1',
+          '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
         },
         extensions: [
           '.mjs',
@@ -168,6 +175,7 @@ module.exports = {
     // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
     // 'import/no-deprecated': WARNING,
     'import/prefer-default-export': OFF,
+    indent: OFF, // Handled by `@typescript-eslint/indent`
     // FIXME: Enable after issue is resolved: https://github.com/typescript-eslint/typescript-eslint/issues/389
     // 'jsdoc/check-examples': [WARNING, { matchingFileName: 'example.md' }],
     'jsdoc/check-examples': OFF,
@@ -184,7 +192,8 @@ module.exports = {
       ERROR,
       {
         code: 80, // Consistency with prettier
-        ignorePattern: 'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
+        ignorePattern:
+          'eslint-disable|eslint-enable|@ts-ignore|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
@@ -238,6 +247,14 @@ module.exports = {
   },
 
   overrides: [
+    // JavaScript
+    {
+      files: ['*.js', '*.jsx', '*.mjs'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': OFF,
+      },
+    },
+
     // TypeScript
     {
       files: ['*.ts', '*.tsx'],
@@ -293,7 +310,6 @@ module.exports = {
     },
 
     // Unit tests
-    // TODO: Keep up to date with upstream config - https://git.io/fjMRx
     {
       files: [
         '__mocks__/*',
@@ -307,76 +323,7 @@ module.exports = {
         '*.test.ts',
         '*.test.tsx',
       ],
-      plugins: ['jest'],
-      env: {
-        jest: true,
-        'jest/globals': true,
-      },
-      rules: {
-        '@typescript-eslint/no-magic-numbers': OFF, // Too verbose for tests
-        'import/first': OFF, // OK to set up mocks before imports
-        'import/no-extraneous-dependencies': [
-          ERROR,
-          {
-            devDependencies: true,
-            peerDependencies: true,
-          },
-        ],
-        'jest/consistent-test-it': ERROR,
-        'jest/expect-expect': ERROR,
-        'jest/lowercase-name': [WARNING, { ignore: ['describe'] }],
-        'jest/no-alias-methods': WARNING,
-        'jest/no-commented-out-tests': WARNING,
-        'jest/no-disabled-tests': WARNING,
-        'jest/no-empty-title': ERROR,
-        'jest/no-focused-tests': ERROR,
-        'jest/no-identical-title': ERROR,
-        'jest/no-jasmine-globals': WARNING,
-        'jest/no-jest-import': ERROR,
-        'jest/no-large-snapshots': WARNING,
-        'jest/no-mocks-import': WARNING,
-        'jest/no-test-callback': WARNING,
-        'jest/no-test-prefixes': ERROR,
-        'jest/no-test-return-statement': WARNING,
-        'jest/no-truthy-falsy': ERROR,
-        'jest/prefer-called-with': WARNING,
-        'jest/prefer-expect-assertions': WARNING,
-        'jest/prefer-spy-on': WARNING,
-        'jest/prefer-strict-equal': WARNING,
-        'jest/prefer-to-be-null': ERROR,
-        'jest/prefer-to-be-undefined': ERROR,
-        'jest/prefer-to-contain': ERROR,
-        'jest/prefer-to-have-length': ERROR,
-        'jest/prefer-todo': ERROR,
-        'jest/valid-describe': ERROR,
-        'jest/valid-expect-in-promise': ERROR,
-        'jest/valid-expect': ERROR,
-        'max-len': [
-          ERROR,
-          {
-            code: 100, // Consistency with prettier override
-            ignorePattern:
-              'eslint-disable|@ts-ignore|stylelint-disable|@typedef',
-            ignoreRegExpLiterals: true,
-            ignoreStrings: true,
-            ignoreTemplateLiterals: true,
-            ignoreTrailingComments: true,
-            ignoreUrls: true,
-          },
-        ],
-        'no-new': OFF, // Allows testing constructors
-        'no-tabs': OFF, // We can't always control whitespace generation
-      },
-    },
-
-    // Unit test snapshots
-    {
-      files: ['*.snap'],
-      rules: {
-        'no-tabs': OFF,
-        quotes: OFF,
-        strict: OFF,
-      },
+      ...require('./jest.js'), // eslint-disable-line global-require
     },
 
     // Raw HTML (without transpiling)
@@ -422,7 +369,6 @@ module.exports = {
       },
       rules: {
         // Disable rules that don't make sense in code snippets
-        '@typescript-eslint/indent': OFF, // FIXME: Remove once fixed - https://github.com/gajus/eslint-plugin-jsdoc/issues/211
         '@typescript-eslint/no-var-requires': OFF,
         'import/no-extraneous-dependencies': OFF,
         'import/no-unresolved': OFF,

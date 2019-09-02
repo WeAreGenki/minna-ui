@@ -87,8 +87,8 @@ module.exports = {
       ['/color/', 'fill', 'font-size', 'stroke', 'z-index'],
       {
         ignoreKeywords: {
-          '/color/': ['currentColor', 'inherit', 'unset'],
-          fill: ['currentColor', 'inherit', 'none', 'unset'],
+          '/color/': ['currentColor', 'inherit', 'transparent', 'unset'],
+          fill: ['currentColor', 'inherit', 'none', 'transparent', 'unset'],
           'font-size': ['inherit', 'initial', 'unset'],
           stroke: ['currentColor', 'inherit', 'none', 'unset'],
           'z-index': [-1, 0, 1, 'auto', 'initial'],

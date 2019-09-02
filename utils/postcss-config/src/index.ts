@@ -45,6 +45,8 @@ interface PluginOptions {
    * Apply potentially unsafe transformations (combining same `@media` etc.).
    */
   unsafe?: boolean;
+  /** Any additional $ variables you want to inject at build time. */
+  variables?: Record<string, string | null | undefined>;
   /**
    * Any other options will be passed to all PostCSS plugins and to the
    * `nanocss` preset options.
@@ -69,6 +71,7 @@ export default postcss.plugin(
     importPaths = [process.cwd(), 'src', 'src/css'],
     optimize = process.env.NODE_ENV === 'production',
     unsafe = false,
+    variables = { env: process.env.NODE_ENV },
     ...options
   }: PluginOptions = {}) => {
     const plugins = [
@@ -98,6 +101,7 @@ export default postcss.plugin(
         importPaths,
         importResolve: aliasedResolve(importAlias),
         unresolved: debug ? 'warn' : 'ignore',
+        variables,
 
         // postcss-use
         modules: '*',

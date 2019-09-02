@@ -13,6 +13,7 @@
 'use strict';
 
 const OFF = 0;
+const ERROR = 2;
 
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
@@ -37,6 +38,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': OFF,
     '@typescript-eslint/require-array-sort-compare': OFF,
     '@typescript-eslint/restrict-plus-operands': OFF,
+    strict: [ERROR, 'safe'],
   },
 
   // eslint-disable-next-line sort-keys

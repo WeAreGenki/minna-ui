@@ -1,6 +1,6 @@
 // https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 
-// this config is for the actual building of packages
+// Config for actual package builds
 
 {
   "extends": "./tsconfig.json",

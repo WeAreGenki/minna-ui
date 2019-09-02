@@ -39,11 +39,11 @@ beforeAll(async () => {
 });
 
 describe('Svelte markup preprocessor', () => {
-  it('processes without any error', async () => {
+  it('processes without any error', () => {
     expect.assertions(3);
     const spy1 = jest.spyOn(process.stderr, 'write');
     const spy2 = jest.spyOn(console, 'error');
-    await expect(() => preprocess(sourceSimple, opts)).not.toThrow();
+    expect(() => preprocess(sourceSimple, opts)).not.toThrow();
     expect(spy1).not.toHaveBeenCalled();
     expect(spy2).not.toHaveBeenCalled();
     spy1.mockRestore();

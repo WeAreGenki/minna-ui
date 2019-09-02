@@ -31,7 +31,7 @@ Included plugins (in execution order):
 
 1. Create a `postcss.config.js` file in your project root with this package as a plugin:
 
-   ```js
+   ```ts
    module.exports = {
      map: true,
      plugins: {

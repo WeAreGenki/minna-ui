@@ -1055,7 +1055,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.32.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.32.0-c2661811-e8a1-4274-96a3-ef88d9e11516-1567384637642/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:utils/preprocess"
     rollup "^1.20.3"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.1.0"
@@ -1066,7 +1066,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.32.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.32.0-d42a1554-3765-42e1-9c2a-abb304113c92-1567384637644/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1092,7 +1092,7 @@
 "@minna-ui/eslint-config@file:utils/eslint-config":
   version "0.32.0"
   dependencies:
-    "@minna-ui/eslint-import-resolver" "file:../../.cache/yarn/v4/npm-@minna-ui-eslint-config-0.32.0-c7c73328-5366-4304-9cdd-20e5c315db02-1567384637655/node_modules/@minna-ui/eslint-import-resolver"
+    "@minna-ui/eslint-import-resolver" "file:utils/eslint-import-resolver"
     "@types/eslint" "^6.0.0"
     "@typescript-eslint/eslint-plugin" "^2.0.0"
     "@typescript-eslint/parser" "^2.0.0"
@@ -1157,7 +1157,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.32.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.32.0-09ed758b-f344-4aa0-bf60-3d1d34dfcb3b-1567384637663/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:utils/utils"
     "@wearegenki/node-utils" "^0.3.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
@@ -1462,10 +1462,15 @@
   resolved "https://registry.yarnpkg.com/@types/mri/-/mri-1.1.0.tgz#66555e4d797713789ea0fefdae0898d8170bf5af"
   integrity sha512-fMl88ZoZXOB7VKazJ6wUMpZc9QIn+jcigSFRf2K/rrw4DcXn+/uGxlWX8DDlcE7JkwgIZ7BDH+JgxZPlc/Ap3g==
 
-"@types/node@*", "@types/node@12.7.3", "@types/node@^12.7.1", "@types/node@^12.7.2":
+"@types/node@*", "@types/node@^12.7.1", "@types/node@^12.7.2":
   version "12.7.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.3.tgz#27b3f40addaf2f580459fdb405222685542f907a"
   integrity sha512-3SiLAIBkDWDg6vFo0+5YJyHPWU9uwu40Qe+v+0MH8wRKYBimHvvAOyk3EzMrD/TrIlLYfXrqDqrg913PynrMJQ==
+
+"@types/node@12.7.4":
+  version "12.7.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.4.tgz#64db61e0359eb5a8d99b55e05c729f130a678b04"
+  integrity sha512-W0+n1Y+gK/8G2P/piTkBBN38Qc5Q1ZSO6B5H3QmPCUewaiXOo2GCAWZ4ElZCcNhjJuBSUSLGFUJnmlCn5+nxOQ==
 
 "@types/postcss-load-config@2.0.0":
   version "2.0.0"

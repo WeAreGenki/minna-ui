@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.33.0][] - 2019-09-06
+
+### Added
+
+- New `minna-tools-essential` package. Similar to `minna-tools` but without CSS and frontend related tooling; just NodeJS/JavaScript/TypeScript tooling.
+
+### Changed
+
+- Updated package dependencies.
+
 ## [0.32.0][] - 2019-09-02
 
 ### Added
@@ -955,7 +965,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.32.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.0...HEAD
+[0.33.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.32.0...v0.33.0
 [0.32.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.3...v0.32.0
 [0.31.3]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.2...v0.31.3
 [0.31.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.1...v0.31.2

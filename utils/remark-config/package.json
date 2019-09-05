@@ -16,7 +16,7 @@
   ],
   "main": "index.js",
   "peerDependencies": {
-    "remark-cli": "^6.0.0 || ^7.0.0"
+    "remark-cli": "^7.0.0"
   },
   "dependencies": {
     "remark-lint": "^6.0.5",

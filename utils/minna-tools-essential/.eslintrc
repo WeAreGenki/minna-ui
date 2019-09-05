@@ -1,0 +1,3 @@
+{
+  "extends": ["@minna-ui/eslint-config/node-js"]
+}

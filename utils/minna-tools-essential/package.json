@@ -1,0 +1,41 @@
+{
+  "name": "minna-tools-essential",
+  "version": "0.32.0",
+  "description": "Common tooling and configuration presets for JavaScript and TypeScript projects.",
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "dev-tools",
+    "minna-ui",
+    "wearegenki"
+  ],
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "files": [
+    "*.d.ts",
+    "*.js"
+  ],
+  "peerDependencies": {
+    "eslint": "^6.0.0",
+    "jest": "^24.0.0",
+    "prettier": "^1.15.0",
+    "remark-cli": "^7.0.0",
+    "typescript": "^3.3.0"
+  },
+  "dependencies": {
+    "@minna-ui/browserslist-config": "file:../browserslist-config",
+    "@minna-ui/eslint-config": "file:../eslint-config",
+    "@minna-ui/jest-config": "file:../jest-config",
+    "@minna-ui/prettier-config": "file:../prettier-config",
+    "@minna-ui/remark-config": "file:../remark-config",
+    "@minna-ui/ts-config": "file:../ts-config",
+    "@minna-ui/utils": "file:../utils"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

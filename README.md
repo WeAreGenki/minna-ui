@@ -8,7 +8,7 @@
 
 😸 A fast, friendly, and fun web <abbr title="User Interface">UI</abbr> kit for everyone.
 
-A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. Simple to use as standalone CSS and web components. Supports advanced use in a Svelte or any other JavaScript framework project too.
+A UI kit for building things with web technology which aims to be pragmatic, intuitive, and high performance. Simple to use as standalone CSS and web components. Supports advanced use in Svelte or any other JavaScript framework projects too.
 
 皆, みんな, or _minna_, is a Japanese adverb and verb meaning all, everyone, or everybody. It embodies the idea that through mindful attention to [universal design](https://en.wikipedia.org/wiki/Universal_design) concepts the framework can work well for everybody; _everyone's UI_.
 
@@ -44,6 +44,14 @@ The easiest way to get started is to get a copy of our example [project template
 ```sh
 wget https://github.com/WeAreGenki/minna-ui-template/archive/master.zip -o minna-ui-template.zip
 ``` -->
+
+## Made with Minna UI
+
+<!-- FIXME: Uncomment once we go live with the new website -->
+<!-- - [wearegenki.com](https://wearegenki.com) company website -->
+
+- [New Tab](https://github.com/MaxMilton/new-tab) browser extension
+- [Homie Bot](https://github.com/MaxMilton/homie-bot) home automation platform
 
 ## Browser compatibility
 

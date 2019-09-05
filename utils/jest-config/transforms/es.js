@@ -1,5 +1,15 @@
-// based on `@sucrase/jest-plugin` but without flow support and with mjs support
-// @see https://github.com/alangpierce/sucrase/blob/master/integrations/jest-plugin/src/index.ts
+/**
+ * Transform scripts in Jest using sucrase.
+ *
+ * Similar to babel-jest but significantly higher performance. Based on
+ * `@sucrase/jest-plugin` but without flow and with mjs support.
+ *
+ * @see https://github.com/alangpierce/sucrase/blob/master/integrations/jest-plugin/src/index.ts
+ */
+
+// TODO: Hoist mocks above imports
+//  ↳ https://github.com/facebook/jest/blob/master/packages/babel-plugin-jest-hoist/src/index.ts
+//  ↳ Open a feature request issue upstream - https://github.com/alangpierce/sucrase/tree/master/integrations/jest-plugin
 
 'use strict';
 

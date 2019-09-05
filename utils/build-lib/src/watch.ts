@@ -4,7 +4,9 @@ import { RollupWatchOptions, watch as rollupWatch } from 'rollup';
 import { BuildLibProps } from './types';
 
 /**
- * @returns Never actually resolves as it keeps watching indefinitely.
+ * Watch files for changes and trigger a rebuild as necessary.
+ *
+ * Never actually returns as it keeps watching indefinitely.
  */
 export function watch({
   external,

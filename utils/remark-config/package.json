@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/remark-config",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "Remark lint config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/remark-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

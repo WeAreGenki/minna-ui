@@ -1,6 +1,6 @@
 {
   "name": "minna-tools-essential",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "Common tooling and configuration presets for JavaScript and TypeScript projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

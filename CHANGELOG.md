@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.33.2][] - 2019-09-08
+
+### Fixed
+
+- Missing components types
+
 ## [0.33.1][] - 2019-09-08
 
 ### Changed
@@ -975,7 +981,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.2...HEAD
+[0.33.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.1...v0.33.2
 [0.33.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.0...v0.33.1
 [0.33.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.32.0...v0.33.0
 [0.32.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.3...v0.32.0

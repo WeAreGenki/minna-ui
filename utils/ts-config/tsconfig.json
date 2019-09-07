@@ -29,8 +29,6 @@
     }
   },
   "exclude": [
-    "**/.*rc.js",
-    "**/*.config.js",
     "**/__sapper__/*",
     "**/dist/*",
     "**/node_modules/*",

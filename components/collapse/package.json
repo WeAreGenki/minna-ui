@@ -29,9 +29,9 @@
   "style": "dist/index.css",
   "types": "index.d.ts",
   "files": [
+    "*.d.ts",
     "dist",
-    "src",
-    "types.d.ts"
+    "src"
   ],
   "devDependencies": {
     "@minna-ui/build-component": "file:../../utils/build-component",

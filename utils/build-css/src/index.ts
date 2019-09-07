@@ -29,7 +29,7 @@ const ARGS_START = 2;
 function warn(
   from: string,
   level: 'ERR' | 'WARN',
-  warnings: string[] | postcss.ResultMessage[],
+  warnings: string[] | postcss.Warning[],
 ): void {
   /* istanbul ignore if */
   if (warnings.length && level === 'ERR') {

@@ -54,7 +54,7 @@
     "eslint": "6.3.0",
     "jest": "24.9.0",
     "lerna": "3.16.4",
-    "postcss": "7.0.17",
+    "postcss": "7.0.18",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "1.18.2",

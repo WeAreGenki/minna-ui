@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.33.1][] - 2019-09-08
+
+### Changed
+
+- Updated package dependencies.
+
+### Fixed
+
+- `@minna-ui/ts-config` - Adjust `excludes` paths now that typescript _does_ inherit this property correctly when using `extends`.
+
 ## [0.33.0][] - 2019-09-06
 
 ### Added
@@ -965,7 +975,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.1...HEAD
+[0.33.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.0...v0.33.1
 [0.33.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.32.0...v0.33.0
 [0.32.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.3...v0.32.0
 [0.31.3]: https://github.com/WeAreGenki/minna-ui/compare/v0.31.2...v0.31.3

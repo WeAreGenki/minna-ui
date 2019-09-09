@@ -15,4 +15,4 @@
   <a href="#/README" class="button button-cta ml4">Get Started</a>
 </div>
 
-![color](#fafafa)
+<!-- ![color](#fafafa) -->

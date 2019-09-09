@@ -7,13 +7,14 @@ module.exports = {
     'remark-preset-lint-consistent',
     'remark-preset-lint-recommended',
     'remark-preset-lint-markdown-style-guide',
+    'remark-validate-links',
 
-    // rules
+    // Rules
     'remark-lint-emphasis-marker',
     ['lint-maximum-line-length', false],
     ['lint-list-item-indent', 'space'],
   ],
   settings: {
-    emphasis: '_', // same as prettier
+    emphasis: '_', // Same as prettier
   },
 };

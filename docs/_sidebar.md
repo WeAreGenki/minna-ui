@@ -1,6 +1,6 @@
 - Getting started
 
-  - [Overview](README.md)
+  - [Overview](overview.md)
   - [Quick Start](quick-start.md)
   - [Design Philosophy](design-philosophy.md)
   - [Examples](examples.md)
@@ -24,8 +24,6 @@
 
 - Utils
 
-  <!-- FIXME: Update these with the lastest utils -->
-
   - [ESLint Config](utils/eslint-config.md)
   - [Jest Config](utils/jest-config.md)
   - [PostCSS Config](utils/postcss-config.md)
@@ -37,6 +35,6 @@
   - [TSint Config](utils/tslint-config.md)
   - [TypeScript Config](utils/ts-config.md)
 
-- [Contributing](CONTRIBUTING.md)
+- [Contributing](../CONTRIBUTING.md)
 
-- [Changelog](CHANGELOG.md)
+- [Changelog](../CHANGELOG.md)

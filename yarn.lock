@@ -1060,7 +1060,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.33.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-component-0.33.0-a7a370a0-cf82-4dd5-9f5c-183c360ae927-1568066817950/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:utils/preprocess"
     rollup "^1.21.2"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.1.0"
@@ -1071,7 +1071,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.33.1"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-build-css-0.33.1-4684418d-dae6-470b-8bd9-4af722f14843-1568066817953/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1097,7 +1097,7 @@
 "@minna-ui/eslint-config@file:utils/eslint-config":
   version "0.33.0"
   dependencies:
-    "@minna-ui/eslint-import-resolver" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-eslint-config-0.33.0-95a1994e-ba19-49c9-a847-a81f010aedc5-1568066817965/node_modules/@minna-ui/eslint-import-resolver"
+    "@minna-ui/eslint-import-resolver" "file:utils/eslint-import-resolver"
     "@types/eslint" "^6.1.1"
     "@typescript-eslint/eslint-plugin" "^2.2.0"
     "@typescript-eslint/parser" "^2.2.0"
@@ -1163,7 +1163,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.33.0"
   dependencies:
-    "@minna-ui/utils" "file:../../../../../../../home/max/.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.33.0-a65f30f2-8cad-408b-92a3-25f8de37622f-1568066817971/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:utils/utils"
     "@wearegenki/node-utils" "^0.3.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
@@ -10345,10 +10345,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.12.0:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.12.0.tgz#a30ec57c2d0e73638d6e8c28a3ac0f19f8ba1115"
-  integrity sha512-9/broj3bjShrsk3FuVDH0Bho2BchPKT8ubAqRcTqwkqrO9npOS3Vi98Yb5mBaa4bYV+ELTuvPvaQZbCJYMFRdg==
+svelte@3.12.1:
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.12.1.tgz#ddfacd43272ac3255907c682b74ee7d3d8b06b0c"
+  integrity sha512-t29WJNjHIqfrdMcVXqIyRfgLEaNz7MihKXTpb8qHlbzvf0WyOOIhIlwIGvl6ahJ9+9CLJwz0sjhFNAmPgo8BHg==
 
 svg-tags@^1.0.0:
   version "1.0.0"

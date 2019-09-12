@@ -42,7 +42,7 @@
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.7.4",
+    "@types/node": "12.7.5",
     "@types/postcss-load-config": "2.0.0",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
@@ -63,7 +63,7 @@
     "stylelint": "10.1.0",
     "svelte": "3.12.1",
     "tslib": "1.10.0",
-    "typescript": "3.6.2"
+    "typescript": "3.6.3"
   },
   "browserslist": {
     "production": [

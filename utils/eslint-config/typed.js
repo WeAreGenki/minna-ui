@@ -12,6 +12,7 @@
 
 'use strict';
 
+const OFF = 0;
 const WARNING = 1;
 const ERROR = 2;
 
@@ -25,9 +26,14 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-floating-promises': ERROR,
+    '@typescript-eslint/no-unnecessary-condition': [
+      WARNING,
+      { ignoreRhs: true },
+    ],
     '@typescript-eslint/no-unnecessary-qualifier': ERROR,
     '@typescript-eslint/prefer-readonly': ERROR,
     '@typescript-eslint/require-array-sort-compare': WARNING,
     '@typescript-eslint/restrict-plus-operands': WARNING,
+    'no-constant-condition': OFF,
   },
 };

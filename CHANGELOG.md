@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+### Fixed
+
+- `@minna-ui/utils` - Fix parameter type on `handleErr` function.
+
 ## [0.33.2][] - 2019-09-08
 
 ### Fixed

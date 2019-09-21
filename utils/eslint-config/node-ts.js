@@ -11,9 +11,11 @@
 
 'use strict';
 
+const OFF = 0;
+const ERROR = 2;
+
 /** @type {import('./types').ESLintConfig} */
 module.exports = {
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
@@ -21,5 +23,18 @@ module.exports = {
   env: {
     browser: false,
     node: true,
+  },
+  rules: {
+    '@typescript-eslint/no-require-imports': ERROR,
+    'jsdoc/no-types': ERROR,
+    'jsdoc/require-param': OFF,
+    'jsdoc/require-param-type': OFF,
+    'jsdoc/require-returns': OFF,
+    'jsdoc/require-returns-type': OFF,
+    'lines-between-class-members': [
+      ERROR,
+      'always',
+      { exceptAfterSingleLine: true }, // Useful to declare class member types
+    ],
   },
 };

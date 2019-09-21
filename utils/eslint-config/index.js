@@ -1,21 +1,21 @@
 /**
  * Minna UI base ESLint config preset.
  *
- * @file Provides all base ESLint configuration including parsing of many file
- * types (see various file extension settings in config), a somewhat
- * opinionated (but not overly forceful) set of base rules, and file overrides
- * to automate applying the correct rules for different files (based on file
- * name). It's intended to use this config along with Prettier and VS Code
- * with `"prettier.eslintIntegration": true`.
- * @see https://eslint.org/docs/user-guide/configuring
+ * @file Base ESLint configuration including parsing of various file types, a
+ * somewhat opinionated set of base rules, and file overrides to automate
+ * applying the different rules for different files (based on file name).
  *
+ * This preset makes use of file extensions to infer the file type. Make sure
+ * you use the correct extension otherwise you may get incorrect lint feedback.
  *
- * TIP: If you're project is TypeScript based, also use the `typed` config. It
+ * TIP: If you have a TypeScript project, use the `typed` add-on config. It
  * requires extra set up steps which are outlined in the config file.
  *
- * MAINTAINERS: To debug the performance impact of rules, use the `TIMING=1`
- * environment variable, e.g. `TIMING=1 yarn eslint ...`. Once run, ESLint will
- * print a table with timing stats and highlight the slowest rules.
+ * MAINTAINERS: To debug rule performance, use a `TIMING=1` environment
+ * variable, e.g. `TIMING=1 yarn eslint ...`. ESLint will print a table with
+ * timing stats and highlight the slowest rules.
+ *
+ * @see https://eslint.org/docs/user-guide/configuring
  */
 
 /* eslint-disable @typescript-eslint/no-magic-numbers, sort-keys */
@@ -23,6 +23,9 @@
 'use strict';
 
 const { join } = require('path');
+const nodeJsConfig = require('./node-js.js');
+const nodeTsConfig = require('./node-ts.js');
+const jestConfig = require('./jest.js');
 
 const OFF = 0;
 const WARNING = 1;
@@ -70,7 +73,6 @@ module.exports = {
     'import/resolver': {
       '@minna-ui/eslint-import-resolver': {
         alias: {
-          // '^##\\/(.*)$': 'src/$1',
           '^##\\/(.*)$': join(process.cwd(), 'src/$1'),
         },
         extensions: [
@@ -113,6 +115,10 @@ module.exports = {
         allowTypedFunctionExpressions: true,
       },
     ],
+    '@typescript-eslint/explicit-member-accessibility': [
+      ERROR,
+      { accessibility: 'no-public' },
+    ],
     '@typescript-eslint/indent': [
       ERROR,
       2,
@@ -139,6 +145,7 @@ module.exports = {
         ignoreArrayIndexes: true,
         ignoreEnums: true,
         ignoreNumericLiteralTypes: true,
+        ignoreReadonlyClassProperties: true,
       },
     ],
     '@typescript-eslint/no-this-alias': ERROR,
@@ -188,6 +195,7 @@ module.exports = {
     'jsdoc/require-hyphen-before-param-description': WARNING,
     'jsdoc/require-jsdoc': OFF, // Far too annoying
     'jsdoc/require-returns': [WARNING, { forceReturnsWithAsync: true }],
+    'max-classes-per-file': WARNING,
     'max-len': [
       ERROR,
       {
@@ -249,28 +257,47 @@ module.exports = {
   overrides: [
     // JavaScript
     {
+      files: ['*.js', '*.jsx'],
+      parserOptions: nodeJsConfig.parserOptions,
+      rules: nodeJsConfig.rules,
+    },
+    {
       files: ['*.js', '*.jsx', '*.mjs'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': OFF,
+        '@typescript-eslint/explicit-member-accessibility': OFF,
+      },
+    },
+
+    // ES module files
+    {
+      files: ['*.mjs'],
+      parserOptions: {
+        sourceType: 'module',
+      },
+      env: {
+        commonjs: false,
+      },
+      rules: {
+        '@typescript-eslint/no-require-imports': ERROR,
+      },
+    },
+
+    // JSX
+    {
+      files: ['*.jsx', '*.tsx'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
 
     // TypeScript
     {
       files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-require-imports': ERROR,
-        'jsdoc/no-types': ERROR,
-        'jsdoc/require-param': OFF,
-        'jsdoc/require-param-type': OFF,
-        'jsdoc/require-returns': OFF,
-        'jsdoc/require-returns-type': OFF,
-        'lines-between-class-members': [
-          ERROR,
-          'always',
-          { exceptAfterSingleLine: true }, // Useful to declare class member types
-        ],
-      },
+      parserOptions: nodeTsConfig.parserOptions,
+      rules: nodeTsConfig.rules,
     },
 
     // TypeScript declaration files
@@ -323,7 +350,7 @@ module.exports = {
         '*.test.ts',
         '*.test.tsx',
       ],
-      ...require('./jest.js'), // eslint-disable-line global-require
+      ...jestConfig,
     },
 
     // Raw HTML (without transpiling)
@@ -374,30 +401,6 @@ module.exports = {
         'import/no-unresolved': OFF,
         'no-console': OFF,
         strict: OFF,
-      },
-    },
-
-    // ES module files
-    {
-      files: ['*.mjs'],
-      parserOptions: {
-        sourceType: 'module',
-      },
-      env: {
-        commonjs: false,
-      },
-      rules: {
-        '@typescript-eslint/no-require-imports': ERROR,
-      },
-    },
-
-    // JSX
-    {
-      files: ['*.jsx', '*.tsx'],
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
       },
     },
   ],

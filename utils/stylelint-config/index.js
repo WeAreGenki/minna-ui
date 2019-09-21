@@ -70,6 +70,9 @@ module.exports = {
     'font-family-name-quotes': 'always-where-recommended',
     'font-weight-notation': 'numeric',
     'function-blacklist': ['hsl', 'hsla'], // Only rgb() or rgba()
+    // FIXME: Enable this rule once it supports regular $ vars or create our
+    // own copy of the rule - https://github.com/stylelint/stylelint/blob/master/lib/rules/function-calc-no-invalid/index.js
+    'function-calc-no-invalid': null,
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
     'max-line-length': [

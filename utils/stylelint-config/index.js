@@ -15,6 +15,7 @@ module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
   plugins: [
     'stylelint-a11y',
+    'stylelint-csstree-validator',
     'stylelint-declaration-strict-value',
     'stylelint-high-performance-animation',
     'stylelint-order',
@@ -51,7 +52,18 @@ module.exports = {
     'at-rule-semicolon-space-before': 'never',
     'color-named': 'never',
     'color-no-hex': true, // Only rgb() or rgba()
-    'comment-empty-line-before': null, // not helpful for rapid development
+    'comment-empty-line-before': null, // Not helpful for rapid development
+    'csstree/validator': {
+      ignore: [
+        // TODO: Remove once CSS Fonts Module Level 4 is supported by CSSTree
+        'font-display',
+        // TODO: Remove once CSS Text Module Level 4 is supported by CSSTree
+        'hyphenate-limit-chars',
+        'hyphenate-limit-lines',
+        'hyphenate-limit-last',
+        'hyphenate-limit-zone',
+      ],
+    },
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'declaration-block-semicolon-space-after': 'always-single-line',
     'declaration-no-important': true,

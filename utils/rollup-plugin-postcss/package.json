@@ -34,7 +34,7 @@
     "deepmerge": "^4.0.0",
     "postcss-load-config": "^2.0.0",
     "postcss-scss": "^2.0.0",
-    "rollup-pluginutils": "^2.8.1"
+    "rollup-pluginutils": "^2.8.2"
   },
   "publishConfig": {
     "access": "public"

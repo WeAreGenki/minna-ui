@@ -15,6 +15,7 @@ module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
   plugins: [
     'stylelint-a11y',
+    'stylelint-csstree-validator',
     'stylelint-declaration-strict-value',
     'stylelint-high-performance-animation',
     'stylelint-order',
@@ -51,13 +52,27 @@ module.exports = {
     'at-rule-semicolon-space-before': 'never',
     'color-named': 'never',
     'color-no-hex': true, // Only rgb() or rgba()
-    'comment-empty-line-before': null, // not helpful for rapid development
+    'comment-empty-line-before': null, // Not helpful for rapid development
+    'csstree/validator': {
+      ignore: [
+        // TODO: Remove once CSS Fonts Module Level 4 is supported by CSSTree
+        'font-display',
+        // TODO: Remove once CSS Text Module Level 4 is supported by CSSTree
+        'hyphenate-limit-chars',
+        'hyphenate-limit-lines',
+        'hyphenate-limit-last',
+        'hyphenate-limit-zone',
+      ],
+    },
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'declaration-block-semicolon-space-after': 'always-single-line',
     'declaration-no-important': true,
     'font-family-name-quotes': 'always-where-recommended',
     'font-weight-notation': 'numeric',
     'function-blacklist': ['hsl', 'hsla'], // Only rgb() or rgba()
+    // FIXME: Enable this rule once it supports regular $ vars or create our
+    // own copy of the rule - https://github.com/stylelint/stylelint/blob/master/lib/rules/function-calc-no-invalid/index.js
+    'function-calc-no-invalid': null,
     'function-url-no-scheme-relative': true,
     'function-url-quotes': 'always',
     'max-line-length': [

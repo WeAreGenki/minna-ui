@@ -22,11 +22,11 @@
   ],
   "dependencies": {
     "mri": "^1.1.4",
-    "rollup": "^1.21.2",
+    "rollup": "^1.21.4",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
-    "rollup-pluginutils": "^2.8.1",
+    "rollup-pluginutils": "^2.8.2",
     "tslib": "^1.9.3",
     "typescript": "^3.6.3"
   },

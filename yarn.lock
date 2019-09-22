@@ -1055,7 +1055,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.34.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.34.0-10c80367-a81b-400d-9728-15531d53d8a4-1569111300066/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:../../.cache/yarn/v4/npm-@minna-ui-build-component-0.34.0-2294f26b-bccb-4da5-9c1f-b373ac5160a0-1569117583338/node_modules/@minna-ui/preprocess"
     rollup "^1.21.4"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.1.0"
@@ -1066,7 +1066,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.34.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.34.0-759eef2d-958e-4a0c-b5d1-17305623ea31-1569111300069/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:../../.cache/yarn/v4/npm-@minna-ui-build-css-0.34.0-c3342a4a-68f5-4ce9-8116-54f27feeae6f-1569117583339/node_modules/@minna-ui/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1077,6 +1077,7 @@
     mri "^1.1.4"
     rollup "^1.21.4"
     rollup-plugin-commonjs "^10.1.0"
+    rollup-plugin-json "^4.0.0"
     rollup-plugin-node-resolve "^5.2.0"
     rollup-plugin-typescript "^1.0.1"
     rollup-pluginutils "^2.8.2"
@@ -1092,7 +1093,7 @@
 "@minna-ui/eslint-config@file:utils/eslint-config":
   version "0.34.0"
   dependencies:
-    "@minna-ui/eslint-import-resolver" "file:../../.cache/yarn/v4/npm-@minna-ui-eslint-config-0.34.0-47ee2eff-e66f-4d1e-82d8-788c70f38395-1569111300079/node_modules/@minna-ui/eslint-import-resolver"
+    "@minna-ui/eslint-import-resolver" "file:../../.cache/yarn/v4/npm-@minna-ui-eslint-config-0.34.0-8b404aa5-e2ec-4e62-8bc2-c1ad35166836-1569117583350/node_modules/@minna-ui/eslint-import-resolver"
     "@types/eslint" "^6.1.1"
     "@typescript-eslint/eslint-plugin" "^2.3.0"
     "@typescript-eslint/parser" "^2.3.0"
@@ -1158,8 +1159,8 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.34.0"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.34.0-97ff15bb-b6ea-4741-a080-de25d3b84166-1569111300084/node_modules/@minna-ui/utils"
-    "@wearegenki/node-utils" "^0.3.0"
+    "@minna-ui/utils" "file:../../.cache/yarn/v4/npm-@minna-ui-rollup-plugin-dev-server-0.34.0-df117614-e41b-455f-8129-8dda1abc4155-1569117583355/node_modules/@minna-ui/utils"
+    "@wearegenki/node-utils" "^0.4.0"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
 
@@ -1605,10 +1606,10 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
-"@wearegenki/node-utils@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.3.0.tgz#97a152a67dc3a8a07db4f3cb8138cd07f990855c"
-  integrity sha512-OVrr/r8lYARWZ6ePoIMFPTFjOJSliXUljHPZ+IArWTm8vD73escaW+N1DUy3bDYmOOOnSKrEhzlmwz4BhGa5oQ==
+"@wearegenki/node-utils@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@wearegenki/node-utils/-/node-utils-0.4.0.tgz#d86149a8932b8aeeb3484fb3322c961324ae6e9a"
+  integrity sha512-lybBfZImHYVFQn7Zwp/pGBwhIXc3FeNPLRFHro81sdo7/FzMbqSae5dSYc0/2bZYfNUQhvl0E32qWxcaNg67rQ==
   dependencies:
     colorette "^1.0.7"
 
@@ -9504,6 +9505,13 @@ rollup-plugin-commonjs@^10.1.0:
     magic-string "^0.25.2"
     resolve "^1.11.0"
     rollup-pluginutils "^2.8.1"
+
+rollup-plugin-json@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-4.0.0.tgz#a18da0a4b30bf5ca1ee76ddb1422afbb84ae2b9e"
+  integrity sha512-hgb8N7Cgfw5SZAkb3jf0QXii6QX/FOkiIq2M7BAQIEydjHvTyxXHQiIzZaTFgx1GK0cRCHOCBHIyEkkLdWKxow==
+  dependencies:
+    rollup-pluginutils "^2.5.0"
 
 rollup-plugin-node-resolve@^5.2.0:
   version "5.2.0"

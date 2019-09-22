@@ -7,13 +7,15 @@
 import { statSync } from 'fs';
 import mri from 'mri';
 import { join } from 'path';
+import rollup from 'rollup';
 import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
 import typescript, { RollupTypescriptOptions } from 'rollup-plugin-typescript';
 import { makeLegalIdentifier } from 'rollup-pluginutils';
 import { build } from './build';
+import { BuildLibProps, BuildLibResult } from './types';
 import { resolveEntryFile } from './utils';
 import { watch } from './watch';
-import { BuildLibResult } from './types';
 
 const ARGS_START = 2;
 
@@ -97,14 +99,18 @@ OPTIONS
   const tsConfigPath = join(cwd, tsconfig);
 
   try {
-    if (statSync(tsConfigPath)) {
+    if (statSync(tsConfigPath).isFile()) {
       typescriptOpts.tsconfig = tsConfigPath;
     }
   } catch (err) {}
 
-  const plugins = [commonjs(), typescript(typescriptOpts)];
+  const plugins: rollup.Plugin[] = [
+    json(),
+    commonjs(),
+    typescript(typescriptOpts),
+  ];
 
-  const options = {
+  const options: BuildLibProps = {
     external,
     input,
     name,

@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/jest-config",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "description": "Jest config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/jest-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

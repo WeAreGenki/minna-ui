@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/stylelint-config",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "description": "Stylelint config preset for use in Minna UI projects.",
   "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/stylelint-config",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",

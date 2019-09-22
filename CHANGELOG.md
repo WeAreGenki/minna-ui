@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.34.0][] - 2019-09-22
+
+### Added
+
+- `@minna-ui/stylelint-config` - Check declaration values to validate against W3C specs and browsers extensions. If you use very modern properties you may get false errors.
+- `@minna-ui/remark-config` - In-document link validation.
+
+### Changed
+
+- `@minna-ui/eslint-config` - Restructure so more file types have the correct rules by default and general rule improvements.
+- Updated package dependencies.
+
 ### Fixed
 
 - `@minna-ui/utils` - Fix parameter type on `handleErr` function.
@@ -985,7 +997,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.33.2...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.34.0...HEAD
+[0.34.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.2...v0.34.0
 [0.33.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.1...v0.33.2
 [0.33.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.0...v0.33.1
 [0.33.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.32.0...v0.33.0

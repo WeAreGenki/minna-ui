@@ -13,7 +13,6 @@
     "wearegenki"
   ],
   "main": "index.js",
-  "module": "index.mjs",
   "types": "index.d.ts",
   "files": [
     "*.d.ts",

@@ -16,7 +16,7 @@
   $btn-animate-speed-in: $animate-speed-in,
   $btn-animate-speed-out: $animate-speed-out
 ) {
-  color: $white;
+  color: $light1;
   background-color: $btn-bg-color;
   /* prettier-ignore */
   box-shadow:

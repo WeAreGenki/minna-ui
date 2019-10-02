@@ -8,9 +8,9 @@
 
 $select-optimize: false !default;
 $select-zindex: 4 !default;
-$select-background-color: $white !default;
+$select-background-color: $light1 !default;
 $select-shadow: $shadow, $shadow-hover !default;
-$select-selected-text-color: $white !default;
+$select-selected-text-color: $light1 !default;
 $select-selected-background-color: $link-color !default;
 $select-caret-color: $input-text-color !default;
 $select-caret-size: 0.3em !default;

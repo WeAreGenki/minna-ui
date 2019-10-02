@@ -1,12 +1,104 @@
 /**
  * GLOBAL VARIABLES
  *
- * NOTE:
- *   - Colour variables are in _variables-color.css.
- *   - Components also contain their own CSS variables.
+ * NOTE: Components also contain their own CSS variables.
  *
  * @format
  */
+
+/* Colour palette */
+
+/**
+ * Based on the excellent GNOME HIG colours
+ * @see https://developer.gnome.org/hig/stable/icon-design.html.en
+ */
+$light1: rgb(255, 255, 255) !default;
+$light2: rgb(246, 245, 244) !default;
+$light3: rgb(222, 221, 218) !default;
+$light4: rgb(192, 191, 188) !default;
+$light5: rgb(154, 153, 150) !default;
+$dark1: rgb(119, 118, 123) !default;
+$dark2: rgb(94, 92, 100) !default;
+$dark3: rgb(61, 56, 70) !default;
+$dark4: rgb(36, 31, 49) !default;
+$dark5: rgb(0, 0, 0) !default;
+$blue1: rgb(153, 193, 241) !default;
+$blue2: rgb(98, 160, 234) !default;
+$blue3: rgb(53, 132, 228) !default;
+$blue4: rgb(28, 113, 216) !default;
+$blue5: rgb(26, 95, 180) !default;
+$green1: rgb(143, 240, 164) !default;
+$green2: rgb(87, 227, 137) !default;
+$green3: rgb(51, 209, 122) !default;
+$green4: rgb(46, 194, 126) !default;
+$green5: rgb(38, 162, 105) !default;
+$yellow1: rgb(249, 240, 107) !default;
+$yellow2: rgb(248, 228, 92) !default;
+$yellow3: rgb(246, 211, 45) !default;
+$yellow4: rgb(245, 194, 17) !default;
+$yellow5: rgb(229, 165, 10) !default;
+$orange1: rgb(255, 190, 111) !default;
+$orange2: rgb(255, 163, 72) !default;
+$orange3: rgb(255, 120, 0) !default;
+$orange4: rgb(230, 97, 0) !default;
+$orange5: rgb(198, 70, 0) !default;
+$red1: rgb(246, 97, 81) !default;
+$red2: rgb(237, 51, 59) !default;
+$red3: rgb(224, 27, 36) !default;
+$red4: rgb(192, 28, 40) !default;
+$red5: rgb(165, 29, 45) !default;
+$purple1: rgb(220, 138, 221) !default;
+$purple2: rgb(192, 97, 203) !default;
+$purple3: rgb(145, 65, 172) !default;
+$purple4: rgb(129, 61, 156) !default;
+$purple5: rgb(97, 53, 131) !default;
+$brown1: rgb(205, 171, 143) !default;
+$brown2: rgb(181, 131, 90) !default;
+$brown3: rgb(152, 106, 68) !default;
+$brown4: rgb(134, 94, 60) !default;
+$brown5: rgb(99, 69, 44) !default;
+
+/* Colours */
+
+/* FIXME: Reduce the amount of colour variables */
+/* TODO: It probably makes more sense for these to be together with the other
+styles e.g., text colours with the typography vars -- contextual is better */
+$intent-primary: $blue4 !default;
+$intent-success: $green4 !default;
+$intent-warning: $orange4 !default;
+$intent-danger: $red4 !default;
+/* $app-background-color: $light2 !default; */
+$app-background-color: rgb(249, 249, 249) !default;
+$dark-app-background-color: $dark4 !default;
+$outline-color: color-mod($blue3 alpha(0.6)) !default;
+$outline-color-hover: color-mod($light5 alpha(0.6)) !default;
+$text-color: $dark4 !default;
+$text-color-muted: $dark1 !default;
+$text-color-disabled: color-mod($text-color-muted alpha(0.5)) !default;
+$heading-color: $text-color !default;
+$link-color: $intent-primary !default;
+/* FIXME: Probably don't use such a thing, it's not a normal pattern */
+$link-line-color: color-mod($link-color lightness(80%)) !default;
+$link-color-hover: $link-color !default;
+$link-line-color-hover: $link-line-color !default;
+/* FIXME: Better shadow colour */
+/* $shadow-color: color-mod($blue5 blend($purple5 30%)) !default; */
+$shadow-color: color-mod($dark4 blend($blue5 70%)) !default;
+$dark-text-color: $light2 !default;
+$dark-text-color-muted: $light4 !default;
+/* stylelint-disable-next-line max-line-length */ /* prettier-ignore */
+$dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5)) !default;
+$dark-heading-color: $dark-text-color !default;
+$dark-link-color: $blue2 !default;
+$background-color-muted: $light3 !default;
+$divider-black: color-mod($dark5 alpha(0.15)) !default;
+$dark-divider-black: color-mod($dark5 alpha(0.4)) !default;
+$dark-divider-white: color-mod($light1 alpha(0.15)) !default;
+$code-text-color: $purple5 !default;
+$dark-code-text-color: $purple1 !default;
+/* FIXME: Probably a waste to use alpha to set a colour tone */
+$code-background-color: color-mod($purple1 alpha(0.7)) !default;
+$dark-code-background-color: color-mod($purple5 alpha(0.3)) !default;
 
 /* Media queries */
 
@@ -27,6 +119,7 @@ $breakpoints: ns, m, l !default;
 
 /* General */
 
+/* TODO: Group together all $use-* variables? */
 $use-global-border-box: false !default; /* see `_reboot.css` for overview */
 $spacing-values: 0, 0.25em, 0.5em, 1em, 2em, 4em, 8em, 16em !default;
 $radius: 0.2rem !default; /* 3.2px */
@@ -39,7 +132,7 @@ $animate-speed-out: 192ms;
 
 /* Grid */
 
-$container-width-max: 50em !default; /* 1050px @ 21px font-size */
+$container-width-max: 50em !default; /* 1000px @ 20px font-size */
 $container-narrow-width-max: 30em !default;
 $item-size: 1fr !default;
 $auto-rows: auto !default;
@@ -87,8 +180,8 @@ $text-weight-light: 300 !default;
 $text-weight: 400 !default;
 $text-weight-heavy: 700 !default;
 $line-height: 1.5 !default;
-/* font size modular scale = base 1em, ratio = 1.2 */
-$headline-text-size: 15vw !default; /* fluid on s screens */
+/* Font size modular scale = base 1em, ratio = 1.2 */
+$headline-text-size: 15vw !default; /* Fluid on s screens */
 $headline-text-size-ns: 4.2em !default;
 $h1-text-size: 2.986em !default;
 $h2-text-size: 2.488em !default;
@@ -100,15 +193,15 @@ $heading-text-weight: $text-weight !default;
 $paragraph-line-height: 1.7 !default;
 $paragraph-lead-text-size: 1.5em !default;
 $paragraph-lead-text-weight: $text-weight-light !default;
-$link-click-area: 0.4em !default; /* reduce if links overlap */
-$link-text-weight: 600 !default;
+$link-click-area: 0.4em !default; /* Reduce if links overlap */
+$link-text-weight: $text-weight !default;
 $li-margin-between: 0.5em !default;
 $hr-margin: 3em 0 !default;
 $hr-border: 1px solid $divider-black !default;
 
 /* Accessibility */
 
-$selection-text-color: $white !default;
+$selection-text-color: $light1 !default;
 /* stylelint-disable-next-line function-blacklist */
 $selection-background-color: hsl(222, 51%, 41%) !default;
 $outline-offset: 5px !default;
@@ -129,18 +222,18 @@ $footer-text-color: $text-color-muted !default;
 
 $button-padding-x: 1.75em !default;
 $button-padding-y: 0.682em !default;
-$button-text-color: $dark-gray2 !default;
+$button-text-color: $dark4 !default;
 $button-text-weight: $text-weight-heavy !default;
-$button-background-color: $white !default;
+$button-background-color: $light1 !default;
 $button-radius: $radius !default;
 /* prettier-ignore */
 $button-shadow:
   0 2px 8px 0 color-mod($shadow-color alpha(0.3)),
   inset 0 -16px 10px 0 color-mod($shadow-color alpha(0.03)) !default;
-$button-hover-background-color: $light-gray2 !default;
-$button-active-background-color: $light-gray1 !default;
+$button-hover-background-color: $light3 !default;
+$button-active-background-color: $light3 !default;
 $button-disabled-text-color: $text-color-disabled !default;
-$button-disabled-border-color: $light-gray2 !default;
+$button-disabled-border-color: $light3 !default;
 /* prettier-ignore */
 $button-mini-padding:
   calc($button-padding-y / 2)
@@ -154,30 +247,30 @@ $button-active-outline: $outline-hover !default;
 
 $form-group-margin: 1.5rem !default;
 $label-margin: 0.5em !default;
-$label-text-color: $dark-gray2 !default;
+$label-text-color: $dark4 !default;
 $input-padding-x: 1rem !default;
 $input-padding-y: 0.5rem !default;
 $input-text-size: 1.2em !default;
 $input-text-color: $text-color !default;
-$input-background-color: $white !default;
-$input-border: 1px solid $gray5 !default;
+$input-background-color: $light1 !default;
+$input-border: 1px solid $light2 !default;
 $input-radius: $radius !default;
 $input-outline-offset: $outline-offset !default;
 $input-hover-outline: $outline-hover !default;
 $input-focus-outline: $outline-focus !default;
 $input-invalid-color: $red2 !default;
 $input-invalid-border: 3px solid $intent-danger !default;
-$input-placeholder-text-color: $gray2 !default;
+$input-placeholder-text-color: $dark1 !default;
 $input-disabled-text-color: $text-color-disabled !default;
 $input-disabled-background-color: initial !default;
-$input-disabled-border: 1px solid $light-gray2 !default;
-$input-disabled-placeholder-text-color: $gray5 !default;
+$input-disabled-border: 1px solid $light3 !default;
+$input-disabled-placeholder-text-color: $light2 !default;
 $form-help-margin: $label-margin !default;
-$form-help-text-color: $dark-gray5 !default;
+$form-help-text-color: $dark3 !default;
 
 /* Cards */
 
-$card-background-color: $white !default;
+$card-background-color: $light1 !default;
 $card-shadow: 0 2px 8px 1px color-mod($shadow-color alpha(0.18)) !default;
 $card-hover-zindex: 1 !default;
 $card-hover-text-color: $text-color !default;
@@ -187,13 +280,13 @@ $card-hover-animate-speed-out: $animate-speed-out !default;
 $card-hover-hover-shadow: $shadow-hover !default;
 $card-body-margin: 1.2rem 2rem !default;
 $card-button-text-color: $button-text-color !default;
-$card-button-border: 1px solid $light-gray4 !default;
+$card-button-border: 1px solid color-mod($light3 alpha(0.5)) !default;
 
 /* Alerts */
 
 $alert-padding: 1em !default;
 $alert-margin-y: 2em !default;
-$alert-background-color: $light-gray4 !default;
+$alert-background-color: $light3 !default;
 $alert-border-size: 0.4rem !default;
 $alert-tip-text-color: $green1 !default;
 $alert-tip-border-color: $green5 !default;
@@ -208,8 +301,8 @@ $alert-error-border-color: $red5 !default;
 
 $tag-padding: 0.04em 0.44em 0.185em !default;
 $tag-text-size: 0.9em !default;
-$tag-text-color: $gray1 !default;
-$tag-background-color: $light-gray4 !default;
+$tag-text-color: $dark3 !default;
+$tag-background-color: $light2 !default;
 $tag-alignment: 0.1em !default;
 $tag-border-radius: $radius !default;
 $tag-margin-between: 1em !default;
@@ -219,9 +312,9 @@ $tag-margin-between: 1em !default;
 $hero-padding: 1.5rem 0 !default;
 $hero-margin: 2rem 0 !default;
 $hero-text-color: $dark-text-color !default;
-$hero-background: linear-gradient($angle, $cobalt1, $cobalt3) !default;
+$hero-background: linear-gradient($angle, $blue5, $blue3) !default;
 /* stylelint-disable-next-line max-line-length */ /* prettier-ignore */
-$hero-dark-background: linear-gradient($angle, $dark-gray1, $dark-gray3) !default;
+$hero-dark-background: linear-gradient($angle, $dark4, $dark3) !default;
 $diagonal-hight: 4rem !default;
 $diagonal-hight-l: 6rem !default;
 /**
@@ -230,9 +323,9 @@ $diagonal-hight-l: 6rem !default;
  */
 /* $diagonal-image: url('diagonal.svg'); */
 $diagonal-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1 1'%3E%3Cpath fill='%23fafafa' d='M1 0L0 1V0z'/%3E%3C/svg%3E") !default;
-$diagonal-background-color: $light-gray3 !default;
-$diagonal-dark-text-color: $white !default;
-$diagonal-dark-background-color: $dark-gray1 !default;
+$diagonal-background-color: $light2 !default;
+$diagonal-dark-text-color: $light2 !default;
+$diagonal-dark-background-color: $dark4 !default;
 $diagonal-dark-link-color: $dark-link-color !default;
 $diagonal-dark-input-invalid-color: $red5 !default;
 
@@ -241,6 +334,6 @@ $diagonal-dark-input-invalid-color: $red5 !default;
 $spinner-size: 24px !default;
 $spinner-width: 4px !default;
 $spinner-color: $intent-primary !default;
-$spinner-background-color: $light-gray1 !default;
+$spinner-background-color: $light3 !default;
 $spinner-animate-speed: 1280ms !default;
 $spinner-animate-timing: cubic-bezier(0.53, 0.21, 0.29, 0.67) !default;

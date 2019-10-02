@@ -121,11 +121,12 @@ a {
   text-decoration: underline;
   word-wrap: break-word;
   text-decoration-color: $link-line-color;
+  cursor: pointer;
 
   &:hover,
   &:focus {
-    color: $link-color;
-    text-decoration-color: $link-color;
+    color: $link-color-hover;
+    text-decoration-color: $link-color-hover;
   }
 }
 
@@ -201,6 +202,6 @@ li {
   color: $code-text-color;
   line-height: $line-height; /* So it doesn't look strange in <p> */
   background-color: $code-background-color;
-  border: 1px solid $light-gray1;
+  border: 1px solid $light3;
   border-radius: $radius;
 }

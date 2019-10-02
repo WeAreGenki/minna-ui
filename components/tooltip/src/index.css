@@ -7,8 +7,8 @@
 
 $tooltip-padding-x: 1em !default;
 $tooltip-padding-y: 0.5em !default;
-$tooltip-color: $white !default;
-$tooltip-background-color: $black !default;
+$tooltip-color: $light1 !default;
+$tooltip-background-color: $dark5 !default;
 $tooltip-animate-speed-in: $animate-speed-in !default;
 $tooltip-placement: translate(5px, -50%) !default;
 

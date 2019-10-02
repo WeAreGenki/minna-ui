@@ -25,13 +25,13 @@
   "dependencies": {
     "@minna-ui/eslint-import-resolver": "file:../eslint-import-resolver",
     "@types/eslint": "^6.1.1",
-    "@typescript-eslint/eslint-plugin": "^2.3.1",
-    "@typescript-eslint/parser": "^2.3.1",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.17.0",
-    "eslint-plugin-jsdoc": "^15.9.2",
+    "eslint-plugin-jsdoc": "^15.9.7",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "^2.7.3"

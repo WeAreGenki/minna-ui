@@ -1055,7 +1055,7 @@
 "@minna-ui/build-component@file:utils/build-component":
   version "0.34.0"
   dependencies:
-    "@minna-ui/preprocess" "file:../../.cache/yarn/v5/npm-@minna-ui-build-component-0.34.0-84a9301e-9cce-416e-9db2-fa61fe54c7c7-1570053631811/node_modules/@minna-ui/preprocess"
+    "@minna-ui/preprocess" "file:utils/preprocess"
     rollup "^1.22.0"
     rollup-plugin-buble "^0.19.8"
     rollup-plugin-commonjs "^10.1.0"
@@ -1066,7 +1066,7 @@
 "@minna-ui/build-css@file:utils/build-css":
   version "0.34.0"
   dependencies:
-    "@minna-ui/postcss-config" "file:../../.cache/yarn/v5/npm-@minna-ui-build-css-0.34.0-b9998422-c693-4903-a8f2-40d51d1b8420-1570053631812/node_modules/@minna-ui/postcss-config"
+    "@minna-ui/postcss-config" "file:utils/postcss-config"
     clean-css "^4.2.1"
     mri "^1.1.4"
     postcss-load-config "^2.1.0"
@@ -1093,7 +1093,7 @@
 "@minna-ui/eslint-config@file:utils/eslint-config":
   version "0.34.0"
   dependencies:
-    "@minna-ui/eslint-import-resolver" "file:../../.cache/yarn/v5/npm-@minna-ui-eslint-config-0.34.0-993d6071-f49b-4b09-a727-80039af48c1f-1570053631822/node_modules/@minna-ui/eslint-import-resolver"
+    "@minna-ui/eslint-import-resolver" "file:utils/eslint-import-resolver"
     "@types/eslint" "^6.1.1"
     "@typescript-eslint/eslint-plugin" "^2.3.2"
     "@typescript-eslint/parser" "^2.3.2"
@@ -1159,7 +1159,7 @@
 "@minna-ui/rollup-plugin-dev-server@file:utils/rollup-plugin-dev-server":
   version "0.34.1"
   dependencies:
-    "@minna-ui/utils" "file:../../.cache/yarn/v5/npm-@minna-ui-rollup-plugin-dev-server-0.34.1-b8466199-4660-417e-9532-2d0df52888ac-1570053631827/node_modules/@minna-ui/utils"
+    "@minna-ui/utils" "file:utils/utils"
     "@wearegenki/node-utils" "^0.4.1"
     deepmerge "^4.0.0"
     sirv "^0.4.2"
@@ -1467,7 +1467,12 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
   integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
 
-"@types/node@12.7.9", "@types/node@^12.7.8":
+"@types/node@12.7.11":
+  version "12.7.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.11.tgz#be879b52031cfb5d295b047f5462d8ef1a716446"
+  integrity sha512-Otxmr2rrZLKRYIybtdG/sgeO+tHY20GxeDjcGmUnmmlCWyEnv2a2x1ZXBo3BTec4OiTXMQCiazB8NMBf0iRlFw==
+
+"@types/node@^12.7.8":
   version "12.7.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.9.tgz#da0210f91096aa67138cf5afd04c4d629f8a406a"
   integrity sha512-P57oKTJ/vYivL2BCfxCC5tQjlS8qW31pbOL6qt99Yrjm95YdHgNZwjrTTjMBh+C2/y6PXIX4oz253+jUzxKKfQ==

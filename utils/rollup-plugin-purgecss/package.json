@@ -29,7 +29,7 @@
     "rollup": "^1.0.0"
   },
   "dependencies": {
-    "deepmerge": "^4.1.1",
+    "deepmerge": "^4.2.0",
     "purgecss": "^1.4.0",
     "rollup-pluginutils": "^2.8.2"
   },

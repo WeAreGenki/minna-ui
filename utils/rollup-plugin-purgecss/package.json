@@ -29,8 +29,8 @@
     "rollup": "^1.0.0"
   },
   "dependencies": {
-    "deepmerge": "^4.2.1",
-    "purgecss": "^1.4.0",
+    "deepmerge": "^4.2.2",
+    "purgecss": "^1.4.1",
     "rollup-pluginutils": "^2.8.2"
   },
   "publishConfig": {

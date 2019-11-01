@@ -13,7 +13,7 @@
     "prebuild": "rm -rf dist"
   },
   "bin": {
-    "build-lib": "cli/index.js"
+    "build-lib": "./bin/build-lib.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

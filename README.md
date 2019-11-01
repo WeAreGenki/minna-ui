@@ -1,5 +1,5 @@
 [![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
-[![Coverage status](https://img.shields.io/codacy/coverage/7224f10c01514d8999cc15db718e47e0.svg)](https://app.codacy.com/project/WeAreGenki/minna-ui/dashboard)
+[![Coverage status](https://img.shields.io/codeclimate/coverage/WeAreGenki/minna-ui)](https://codeclimate.com/github/WeAreGenki/minna-ui)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)

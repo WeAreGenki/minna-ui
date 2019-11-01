@@ -1087,7 +1087,7 @@
     eslint-plugin-html "^6.0.0"
     eslint-plugin-import "^2.18.2"
     eslint-plugin-jest "^22.20.1"
-    eslint-plugin-jsdoc "^16.0.0"
+    eslint-plugin-jsdoc "^17.0.0"
     eslint-plugin-markdown "^1.0.1"
     eslint-plugin-security "^1.4.0"
     eslint-plugin-svelte3 "^2.7.3"
@@ -3641,10 +3641,10 @@ eslint-plugin-jest@^22.20.1:
   dependencies:
     "@typescript-eslint/experimental-utils" "^1.13.0"
 
-eslint-plugin-jsdoc@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-16.0.0.tgz#bad3ab01716df2a3a27a1bd0fb7c2f52b066c035"
-  integrity sha512-oLfH3+w8CIf65+8jgANLzn5KgF1gEpoOH9MBNuuIDveu3InEu9CQC2SJgZy1GgYtf6LccbsfhIZpwZLoAyMANg==
+eslint-plugin-jsdoc@^17.0.0:
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-17.0.0.tgz#e440b13661bc39c0d9a7e45ddbf16390eac70703"
+  integrity sha512-/eBXikzrGLXTzseEG4MqX28bO69LgFThM02Xa7OpeOeoZwZ/vQjh3Div2+u3RJ7Mtv00jFlXUpnl772ov9fdGQ==
   dependencies:
     comment-parser "^0.6.2"
     debug "^4.1.1"

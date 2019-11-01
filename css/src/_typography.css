@@ -10,10 +10,13 @@ body {
   color: $text-color;
   font-family: $font-stack;
   font-size: $text-size;
-  background-color: $app-background-color;
 
   /* Only if different from browser default */
-  @if $text-weight != 400 {
+  @if $app-background-color != rgb(255, 255, 255) {
+    background-color: $app-background-color;
+  }
+
+  @if $text-weight != 400 AND $text-weight != normal {
     font-weight: $text-weight;
   }
 
@@ -53,6 +56,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin-bottom: 0.65em;
   /* Prevent long words causing the page to overflow */
   word-wrap: break-word;
   word-break: break-word;
@@ -117,16 +121,12 @@ a {
   margin: calc(-1 * $link-click-area);
   padding: $link-click-area; /* Larger link click area size */
   color: $link-color;
-  font-weight: $link-text-weight;
-  text-decoration: underline;
   word-wrap: break-word;
-  text-decoration-color: $link-line-color;
   cursor: pointer;
 
   &:hover,
   &:focus {
     color: $link-color-hover;
-    text-decoration-color: $link-color-hover;
   }
 }
 

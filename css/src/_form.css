@@ -29,18 +29,18 @@
   padding: $input-padding-y $input-padding-x;
   color: $input-text-color;
   font-size: $input-text-size;
+  vertical-align: middle;
   background-color: $input-background-color;
   border: $input-border;
   border-radius: $input-radius;
-  outline-offset: $input-outline-offset;
 
   &:hover {
-    outline: $input-hover-outline;
+    /* FIXME: Add hover style */
   }
 
   &:focus,
   &:active {
-    outline: $input-focus-outline;
+    /* FIXME: Add focus/active style */
   }
 
   &[disabled] {
@@ -74,7 +74,6 @@
     border: $input-border;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    box-shadow: none;
   }
 
   & > .input {

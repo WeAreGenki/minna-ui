@@ -7,17 +7,18 @@
 .button {
   display: inline-block;
   padding: $button-padding-y $button-padding-x;
-  color: $button-text-color;
+  color: inherit;
   font-weight: $button-text-weight;
-  text-transform: uppercase;
+  line-height: inherit;
   text-decoration: none;
+  vertical-align: middle;
   background-color: $button-background-color;
-  border: 0;
+  border: $button-border;
   border-radius: $button-radius;
-  outline-offset: $button-outline-offset;
   box-shadow: $button-shadow;
+  user-select: none;
 
-  /* &:hover,
+  &:hover,
   &:focus {
     text-decoration: none;
     background-color: $button-hover-background-color;
@@ -25,17 +26,6 @@
 
   &:active {
     background-color: $button-active-background-color;
-    box-shadow: none;
-  } */
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    outline: $button-hover-outline;
-  }
-
-  &:active {
-    outline: $button-active-outline;
     /**
      * FIXME: Try using an inverted shadow so it looks like the button is
      * pressed in (see chrome settings page for reference).

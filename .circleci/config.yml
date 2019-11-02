@@ -23,6 +23,12 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn install --frozen-lockfile
       - save-cache: *save-cache
+
+      # FIXME: Remove
+      - run: ls -la ./css/node_modules/@minna-ui/build-css
+      - run: ls -la ./css/node_modules/@minna-ui/build-css/bin
+      - run: cat ./css/node_modules/@minna-ui/build-css/package.json
+
       - run: yarn build
       - run: yarn run lint
       - run: yarn run test-ci

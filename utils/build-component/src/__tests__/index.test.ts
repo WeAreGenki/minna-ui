@@ -44,7 +44,7 @@ describe('build-component tool', () => {
     const built = await build;
     expect(built.esm.result.output[0].code).toMatch('export default TestComponent');
     expect(built.esm.result.output[0].code).not.toMatch('TestComponent=function');
-    expect(built.esm.result.output[0].code).toMatch("name = 'Elon Musk'");
+    expect(built.esm.result.output[0].code).toMatch('name = "Elon Musk"');
     expect(built.esm.result.output[0].map!.sources).toHaveLength(1); // Component only, svlete should not be imported
   });
 

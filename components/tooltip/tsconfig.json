@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": { "*": ["../../types/*"] },
+    "paths": { "*": ["*", "../../types/*"] },
     "outDir": "./dist"
   },
   "include": ["./src"]

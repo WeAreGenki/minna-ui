@@ -10,7 +10,10 @@
     "checkJs": true,
     "isolatedModules": true, // Ensure compatibility with sucrase & @babel/preset-typescript
     "noEmit": true,
-    "paths": { "*": ["types/*"] },
+    "paths": {
+      "*": ["*", "types/*"],
+      "@minna-ui/*": ["components/*/src", "utils/*/src", "utils/*/"]
+    },
     "sourceMap": true
   },
   "exclude": [

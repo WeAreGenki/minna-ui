@@ -17,7 +17,7 @@
     "prerelease": "yarn prepack && yarn lint && yarn test-ci",
     "prerelease:next": "yarn prerelease",
     "prepack": "yarn build && yarn predocs",
-    "build": "lerna run build --stream --include-dependencies",
+    "build": "lerna run build --stream",
     "prepare": "lerna bootstrap",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",

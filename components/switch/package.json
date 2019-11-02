@@ -33,10 +33,12 @@
     "dist",
     "src"
   ],
+  "peerDependencies": {
+    "svelte": "^3.0.0"
+  },
   "devDependencies": {
-    "@minna-ui/build-component": "file:../../utils/build-component",
-    "@minna-ui/css": "file:../../css",
-    "svelte": "3.12.1"
+    "@minna-ui/build-component": "*",
+    "@minna-ui/css": "*"
   },
   "publishConfig": {
     "access": "public"

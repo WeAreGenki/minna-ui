@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "commonjs",
-    "paths": { "*": ["../../types/*"] },
+    "paths": { "*": ["*", "../../types/*"] },
     "outDir": "./dist"
   },
   "include": ["./src"]

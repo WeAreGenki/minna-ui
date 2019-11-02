@@ -34,6 +34,6 @@ module.exports = {
     '@typescript-eslint/prefer-readonly': ERROR,
     '@typescript-eslint/require-array-sort-compare': WARNING,
     '@typescript-eslint/restrict-plus-operands': WARNING,
-    'no-constant-condition': OFF,
+    'no-constant-condition': OFF, // Handled by `@typescript-eslint/no-unnecessary-condition`
   },
 };

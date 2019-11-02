@@ -27,7 +27,7 @@
     "src"
   ],
   "devDependencies": {
-    "@minna-ui/build-css": "file:../utils/build-css"
+    "@minna-ui/build-css": "*"
   },
   "publishConfig": {
     "access": "public"

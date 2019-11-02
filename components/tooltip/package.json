@@ -35,9 +35,9 @@
     "svelte": "^3.0.0"
   },
   "devDependencies": {
-    "@minna-ui/build-css": "file:../../utils/build-css",
-    "@minna-ui/build-lib": "file:../../utils/build-lib",
-    "@minna-ui/css": "file:../../css",
+    "@minna-ui/build-css": "*",
+    "@minna-ui/build-lib": "*",
+    "@minna-ui/css": "*",
     "svelte": "3.12.1"
   },
   "publishConfig": {

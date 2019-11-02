@@ -33,6 +33,9 @@
     "dist",
     "src"
   ],
+  "peerDependencies": {
+    "svelte": "^3.0.0"
+  },
   "devDependencies": {
     "@minna-ui/build-component": "*",
     "@minna-ui/css": "*"

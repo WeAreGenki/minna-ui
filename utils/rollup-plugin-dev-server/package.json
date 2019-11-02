@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@minna-ui/utils": "file:../utils",
-    "@wearegenki/node-utils": "^0.4.1",
-    "deepmerge": "^4.2.1",
+    "@wearegenki/node-utils": "^0.4.2",
+    "deepmerge": "^4.2.2",
     "sirv": "^0.4.2"
   },
   "publishConfig": {

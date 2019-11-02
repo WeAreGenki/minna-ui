@@ -23,9 +23,10 @@
 'use strict';
 
 const { join } = require('path');
+const jestConfig = require('./jest.js');
+const legacyConfig = require('./legacy.js');
 const nodeJsConfig = require('./node-js.js');
 const nodeTsConfig = require('./node-ts.js');
-const jestConfig = require('./jest.js');
 
 const OFF = 0;
 const WARNING = 1;
@@ -89,6 +90,9 @@ module.exports = {
           '.d.ts',
         ],
       },
+    },
+    jsdoc: {
+      mode: 'typescript',
     },
   },
   rules: {
@@ -271,12 +275,13 @@ module.exports = {
 
     // ES module files
     {
-      files: ['*.mjs'],
+      files: ['*.mjs', 'preact.config.js', 'rollup.config.js'],
       parserOptions: {
         sourceType: 'module',
       },
       env: {
         commonjs: false,
+        node: true, // It's uncommon to use ESM in browsers
       },
       rules: {
         '@typescript-eslint/no-require-imports': ERROR,
@@ -320,7 +325,6 @@ module.exports = {
         sourceType: 'script',
       },
       env: {
-        // Should be node CommonJS format
         commonjs: true,
         node: true,
       },
@@ -366,15 +370,7 @@ module.exports = {
         es6: false,
         node: false,
       },
-      rules: {
-        'comma-dangle': [ERROR, 'never'],
-        'eol-last': OFF,
-        'func-names': OFF,
-        'no-var': OFF,
-        'object-shorthand': [ERROR, 'never'],
-        'prefer-arrow-callback': OFF,
-        'prefer-destructuring': OFF,
-      },
+      rules: legacyConfig.rules,
     },
 
     // Auto-generated declarations

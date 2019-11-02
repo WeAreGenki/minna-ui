@@ -13,7 +13,7 @@
     "prebuild": "rm -rf dist"
   },
   "bin": {
-    "build-component": "cli/index.js"
+    "build-component": "./bin/build-component.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,8 +24,8 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/preprocess": "file:../preprocess",
-    "rollup": "^1.25.2",
+    "@minna-ui/preprocess": "*",
+    "rollup": "^1.26.2",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

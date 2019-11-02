@@ -8,7 +8,7 @@ Utilities for use in [`Minna UI`](https://github.com/WeAreGenki/minna-ui) projec
 _Included utilities:_
 
 - `handleErr` — Simple error handler for node API methods with callbacks.
-- `gitDescribe` — Get the result from the `git decribe` command which is useful when used together with [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace) to programatically inject an app release/version.
+- `gitDescribe` — Get the result from the `git decribe` command which is useful when used together with [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace) to programatically inject an app release/version.
 
 ## Usage
 

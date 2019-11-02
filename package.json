@@ -11,17 +11,14 @@
   "scripts": {
     "docs": "docsify serve ./docs",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
-    "release": "yarn prepack && lerna publish",
-    "release:next": "yarn prepack && lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
+    "release": "lerna publish",
+    "release:next": "lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
     "release:fix-failed": "lerna publish from-package",
-    "prerelease": "yarn lint && yarn test-ci",
+    "prerelease": "yarn prepack && yarn lint && yarn test-ci",
     "prerelease:next": "yarn prerelease",
     "prepack": "yarn build && yarn predocs",
     "build": "lerna run build --stream",
-    "prebuild": "yarn clean",
-    "clean": "lerna clean --yes",
     "prepare": "lerna bootstrap",
-    "preinstall": "node scripts/check-yarn.js",
     "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:md": "remark --frail --quiet .",
     "FIXME__lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts} --report-needless-disables",
@@ -29,7 +26,7 @@
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
     "lint:types": "tsc --noEmit",
     "test": "jest --notify --watch",
-    "test-ci": "jest --coverage --runInBand --ci",
+    "test-ci": "jest --coverage --ci",
     "report:browsers": "browserslist",
     "report:css": "autoprefixer --info"
   },
@@ -42,14 +39,13 @@
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.11.7",
+    "@types/node": "12.12.5",
     "@types/postcss-load-config": "2.0.0",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.1",
     "@wearegenki/renovate-config": "1.0.0",
-    "codacy-coverage": "3.4.0",
     "docsify-cli": "4.3.0",
     "eslint": "6.6.0",
     "jest": "24.9.0",
@@ -59,9 +55,9 @@
     "postcss-scss": "2.0.0",
     "prettier": "1.18.2",
     "remark-cli": "7.0.0",
-    "rollup": "1.25.2",
+    "rollup": "1.26.2",
     "stylelint": "11.1.1",
-    "svelte": "3.12.1",
+    "svelte": "3.13.0-alpha.2",
     "tslib": "1.10.0",
     "typescript": "3.6.4"
   },
@@ -151,10 +147,10 @@
     "preset": "@minna-ui/jest-config",
     "coverageThreshold": {
       "global": {
-        "branches": 40,
-        "functions": 40,
-        "lines": 40,
-        "statements": 40
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
       }
     }
   },
@@ -164,7 +160,7 @@
     ]
   },
   "engines": {
-    "node": ">=10.16.0",
+    "node": ">=8.0.0",
     "yarn": ">=1.16.0"
   }
 }

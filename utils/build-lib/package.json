@@ -13,7 +13,7 @@
     "prebuild": "rm -rf dist"
   },
   "bin": {
-    "build-lib": "cli/index.js"
+    "build-lib": "./bin/build-lib.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "mri": "^1.1.4",
-    "rollup": "^1.25.2",
+    "rollup": "^1.26.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",

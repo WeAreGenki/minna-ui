@@ -3,14 +3,14 @@
 aliases:
   - &restore-cache
     keys:
-      - v4-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - v4-dependencies-{{ .Branch }}-
-      - v4-dependencies-
+      - v6-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - v6-dependencies-{{ .Branch }}-
+      - v6-dependencies-
 
   - &save-cache
     paths:
       - node_modules
-    key: v4-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+    key: v6-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
 version: 2
 jobs:
@@ -26,7 +26,12 @@ jobs:
       - run: yarn build
       - run: yarn run lint
       - run: yarn run test-ci
-      - run: cat ./test/coverage/lcov.info | yarn codacy-coverage
+      - run:
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json test/coverage/lcov.info
+            ./cc-test-reporter upload-coverage || true
       - store_artifacts:
           path: test/coverage
           destination: coverage

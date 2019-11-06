@@ -95,7 +95,6 @@ export function emitCss({
             this.error(
               "Couldn't get name from one of fileName, rollup#output.name, or rollup#output.file",
             );
-            return;
           }
 
           const inferredName =

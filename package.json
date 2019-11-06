@@ -39,7 +39,7 @@
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.12.5",
+    "@types/node": "12.12.6",
     "@types/postcss-load-config": "2.0.0",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",

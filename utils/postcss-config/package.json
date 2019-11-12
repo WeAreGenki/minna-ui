@@ -1,28 +1,30 @@
 {
   "name": "@minna-ui/postcss-config",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "PostCSS config preset for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/postcss-config",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "css",
     "minna-ui",
     "postcss",
     "postcss-plugin",
     "wearegenki"
-  ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
-  },
-  "main": "index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0"
@@ -38,7 +40,5 @@
     "postcss-nested": "^4.2.1",
     "postcss-use": "^3.0.0"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "types": "dist/index.d.ts"
 }

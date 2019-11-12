@@ -1,12 +1,24 @@
 {
   "name": "@minna-ui/preprocess",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Code transformers and svelte preprocessor for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/preprocess",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/preprocess",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "css",
     "html",
@@ -17,18 +29,6 @@
     "svelte",
     "svelte-preprocessor",
     "wearegenki"
-  ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
-  },
-  "sideEffects": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "postcss-nested": "4.2.1"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "module": "dist/index.mjs",
+  "sideEffects": false,
+  "types": "dist/index.d.ts"
 }

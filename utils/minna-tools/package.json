@@ -1,23 +1,24 @@
 {
   "name": "minna-tools",
   "version": "0.34.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "index.js",
+  "files": [
+    "*.d.ts",
+    "*.js"
+  ],
   "keywords": [
     "dev-tools",
     "minna-ui",
     "wearegenki"
-  ],
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.ts",
-  "files": [
-    "*.d.ts",
-    "*.js"
   ],
   "peerDependencies": {
     "eslint": "^6.0.0",
@@ -43,7 +44,6 @@
     "@minna-ui/ts-config": "^0.34.0",
     "@minna-ui/utils": "^0.34.0"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "module": "index.mjs",
+  "types": "index.d.ts"
 }

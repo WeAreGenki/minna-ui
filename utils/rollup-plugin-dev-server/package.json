@@ -1,27 +1,29 @@
 {
   "name": "@minna-ui/rollup-plugin-dev-server",
   "version": "0.34.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Run a live development server as a rollup plugin.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-dev-server",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-dev-server",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "minna-ui",
     "rollup",
     "rollup-plugin",
     "wearegenki"
-  ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
-  },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
   ],
   "peerDependencies": {
     "rollup": "^1.0.0"
@@ -32,7 +34,5 @@
     "deepmerge": "^4.2.2",
     "sirv": "^0.4.2"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "types": "dist/index.d.ts"
 }

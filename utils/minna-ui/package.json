@@ -1,12 +1,21 @@
 {
   "name": "minna-ui",
   "version": "0.34.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "index.js",
+  "files": [
+    "*.css",
+    "*.d.ts",
+    "*.js"
+  ],
   "keywords": [
     "css",
     "css-framework",
@@ -18,16 +27,6 @@
     "ui-kit",
     "wearegenki",
     "web-components"
-  ],
-  "main": "index.js",
-  "module": "index.mjs",
-  "svelte": "index.mjs",
-  "types": "index.d.ts",
-  "style": "index.css",
-  "files": [
-    "*.d.ts",
-    "*.css",
-    "*.js"
   ],
   "peerDependencies": {
     "postcss": "^7.0.0",
@@ -43,7 +42,8 @@
     "@minna-ui/switch": "^0.34.0",
     "@minna-ui/tooltip": "^0.34.0"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "module": "index.mjs",
+  "style": "index.css",
+  "svelte": "index.mjs",
+  "types": "index.d.ts"
 }

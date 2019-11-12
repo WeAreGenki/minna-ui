@@ -1,12 +1,25 @@
 {
   "name": "@minna-ui/switch",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/switch",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/switch",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "build-component",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "*.d.ts",
+    "dist",
+    "src"
+  ],
   "keywords": [
     "component",
     "design-system",
@@ -18,21 +31,6 @@
     "wearegenki",
     "web-components"
   ],
-  "scripts": {
-    "build": "build-component",
-    "prebuild": "rm -rf dist"
-  },
-  "svelte": "src/Switch.svelte",
-  "module": "dist/index.mjs",
-  "main": "dist/index.js",
-  "browser": "dist/index.web.js",
-  "style": "dist/index.css",
-  "types": "index.d.ts",
-  "files": [
-    "*.d.ts",
-    "dist",
-    "src"
-  ],
   "peerDependencies": {
     "svelte": "^3.0.0"
   },
@@ -40,7 +38,9 @@
     "@minna-ui/build-component": "^0.34.0",
     "@minna-ui/css": "^0.34.0"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "browser": "dist/index.web.js",
+  "module": "dist/index.mjs",
+  "style": "dist/index.css",
+  "svelte": "src/Switch.svelte",
+  "types": "index.d.ts"
 }

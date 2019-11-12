@@ -27,7 +27,7 @@
     "rollup": "^1.0.0"
   },
   "dependencies": {
-    "@minna-ui/utils": "file:../utils",
+    "@minna-ui/utils": "^0.34.0",
     "@wearegenki/node-utils": "^0.4.2",
     "deepmerge": "^4.2.2",
     "sirv": "^0.4.2"

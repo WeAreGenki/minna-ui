@@ -26,13 +26,13 @@
     "typescript": "^3.3.0"
   },
   "dependencies": {
-    "@minna-ui/browserslist-config": "file:../browserslist-config",
-    "@minna-ui/eslint-config": "file:../eslint-config",
-    "@minna-ui/jest-config": "file:../jest-config",
-    "@minna-ui/prettier-config": "file:../prettier-config",
-    "@minna-ui/remark-config": "file:../remark-config",
-    "@minna-ui/ts-config": "file:../ts-config",
-    "@minna-ui/utils": "file:../utils"
+    "@minna-ui/browserslist-config": "^0.34.0",
+    "@minna-ui/eslint-config": "^0.34.0",
+    "@minna-ui/jest-config": "^0.34.0",
+    "@minna-ui/prettier-config": "^0.34.0",
+    "@minna-ui/remark-config": "^0.34.0",
+    "@minna-ui/ts-config": "^0.34.0",
+    "@minna-ui/utils": "^0.34.0"
   },
   "publishConfig": {
     "access": "public"

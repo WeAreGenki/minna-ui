@@ -31,7 +31,8 @@
   },
   "resolutions": {
     "braces": "^3.0.2",
-    "marked": "^0.7.0"
+    "marked": "^0.7.0",
+    "vfile": "^4.0.2"
   },
   "devDependencies": {
     "@types/autoprefixer": "9.6.1",

@@ -10203,10 +10203,10 @@ supports-color@^6.0.0, supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte@3.13.0-alpha.2:
-  version "3.13.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.13.0-alpha.2.tgz#dc8201c53befe035b6a04e3a7d2b7afe9494782f"
-  integrity sha512-QITttvtBvVNblbm9dqodKbZqMzckjTe+nAkFC/gm3WaNi/LjvQDXFtO+XhCTDcpMr6gVKsVo5/M3tiLMbp5qGQ==
+svelte@3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.14.0.tgz#c8d27df6a6dcbbe34de8a03c5031f5f899465930"
+  integrity sha512-BYUxQpkS5fODrQyVVRea8ws2mXJXonwrFVjPjaVQuBPSRtidzn55PsuXJHvAZHHpi+vxBZi/Bimrs7exADX7pA==
 
 svg-tags@^1.0.0:
   version "1.0.0"

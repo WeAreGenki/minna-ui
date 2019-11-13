@@ -1,12 +1,25 @@
 {
   "name": "@minna-ui/rollup-plugin-purgecss",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Remove unused styles using Purgecss in rollup for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-purgecss",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/rollup-plugin-purgecss",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "css",
     "minna-ui",
@@ -15,16 +28,6 @@
     "rollup-plugin",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
-  },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
     "rollup": "^1.0.0"
   },
@@ -32,8 +35,5 @@
     "deepmerge": "^4.2.2",
     "purgecss": "^1.4.1",
     "rollup-pluginutils": "^2.8.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

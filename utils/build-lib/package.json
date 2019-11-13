@@ -1,22 +1,25 @@
 {
   "name": "@minna-ui/build-lib",
   "version": "0.34.1",
-  "description": "Internal Minna UI package builder.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-lib",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
-  "license": "Apache-2.0",
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
+  "publishConfig": {
+    "access": "public"
   },
+  "description": "Internal Minna UI package builder.",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-lib",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "bin": {
     "build-lib": "./bin/build-lib.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
   "files": [
     "dist"
   ],
@@ -30,8 +33,5 @@
     "rollup-pluginutils": "^2.8.2",
     "tslib": "^1.9.3",
     "typescript": "^3.7.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

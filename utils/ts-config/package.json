@@ -1,23 +1,23 @@
 {
   "name": "@minna-ui/ts-config",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "TypeScript config preset for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/ts-config",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/ts-config",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "tsconfig.json",
   "keywords": [
     "minna-ui",
     "tsconfig",
     "typescript",
     "wearegenki"
   ],
-  "main": "tsconfig.json",
   "peerDependencies": {
     "typescript": "^3.3.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

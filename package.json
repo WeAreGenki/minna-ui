@@ -1,38 +1,32 @@
 {
   "name": "minna-ui-monorepo",
   "private": true,
-  "repository": "https://github.com/WeAreGenki/minna-ui",
   "license": "Apache-2.0",
-  "workspaces": [
-    "components/*",
-    "css",
-    "utils/*"
-  ],
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "engines": {
+    "node": ">=8.0.0",
+    "yarn": ">=1.16.0"
+  },
   "scripts": {
-    "docs": "docsify serve ./docs",
-    "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
-    "release": "lerna publish",
-    "release:next": "lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
-    "release:fix-failed": "lerna publish from-package",
-    "prerelease": "yarn prepack && yarn lint && yarn test-ci",
-    "prerelease:next": "yarn prerelease",
-    "prepack": "yarn build && yarn predocs",
-    "build": "lerna run build --stream",
-    "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
-    "lint:md": "remark --frail --quiet .",
     "FIXME__lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts} --report-needless-disables",
+    "build": "lerna run build --stream",
+    "docs": "docsify serve ./docs",
+    "lint": "yarn lint:md && yarn lint:css && yarn lint:js && yarn lint:types",
     "lint:css": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}",
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
+    "lint:md": "remark --frail --quiet .",
     "lint:types": "tsc --noEmit",
-    "test": "jest --notify --watch",
-    "test-ci": "jest --coverage --ci",
+    "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
+    "prepack": "yarn build && yarn predocs",
+    "prerelease": "yarn prepack && yarn lint && yarn test-ci",
+    "prerelease:next": "yarn prerelease",
+    "release": "lerna publish",
+    "release:fix-failed": "lerna publish from-package",
+    "release:next": "lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
     "report:browsers": "browserslist",
-    "report:css": "autoprefixer --info"
-  },
-  "resolutions": {
-    "braces": "^3.0.2",
-    "marked": "^0.7.0",
-    "vfile": "^4.0.2"
+    "report:css": "autoprefixer --info",
+    "test": "jest --notify --watch",
+    "test-ci": "jest --coverage --ci"
   },
   "devDependencies": {
     "@types/autoprefixer": "9.6.1",
@@ -61,6 +55,11 @@
     "tslib": "1.10.0",
     "typescript": "3.7.2"
   },
+  "resolutions": {
+    "braces": "^3.0.2",
+    "marked": "^0.7.0",
+    "vfile": "^4.0.2"
+  },
   "browserslist": {
     "production": [
       "extends @minna-ui/browserslist-config"
@@ -68,17 +67,6 @@
     "development": [
       "extends @minna-ui/browserslist-config/dev"
     ]
-  },
-  "postcss": {
-    "plugins": {
-      "@minna-ui/postcss-config": {
-        "importAlias": {
-          "^import\\.css$": "@minna-ui/css/src/import.css"
-        },
-        "unsafe": true
-      }
-    },
-    "syntax": "postcss-scss"
   },
   "eslintConfig": {
     "root": true,
@@ -97,6 +85,50 @@
     "/utils/eslint-config/__tests__/__fixtures__",
     "/utils/jest-config/fixtures/TestComponentBadSyntax.svelte"
   ],
+  "jest": {
+    "preset": "@minna-ui/jest-config",
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
+      }
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "@minna-ui/postcss-config": {
+        "importAlias": {
+          "^import\\.css$": "@minna-ui/css/src/import.css"
+        },
+        "unsafe": true
+      }
+    },
+    "syntax": "postcss-scss"
+  },
+  "prettierIgnore": [
+    "cli/index.js",
+    "dist",
+    "docs/index.html",
+    "node_modules",
+    "test/coverage",
+    "yarn.lock"
+  ],
+  "remarkConfig": {
+    "plugins": [
+      "@minna-ui/remark-config",
+      [
+        "lint-no-file-name-irregular-characters",
+        "\\.a-zA-Z0-9-_"
+      ]
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "@wearegenki"
+    ]
+  },
   "stylelint": {
     "extends": "@minna-ui/stylelint-config",
     "ignoreFiles": [
@@ -126,41 +158,9 @@
       ]
     }
   },
-  "remarkConfig": {
-    "plugins": [
-      "@minna-ui/remark-config",
-      [
-        "lint-no-file-name-irregular-characters",
-        "\\.a-zA-Z0-9-_"
-      ]
-    ]
-  },
-  "prettierIgnore": [
-    "cli/index.js",
-    "dist",
-    "docs/index.html",
-    "node_modules",
-    "test/coverage",
-    "yarn.lock"
-  ],
-  "jest": {
-    "preset": "@minna-ui/jest-config",
-    "coverageThreshold": {
-      "global": {
-        "branches": 30,
-        "functions": 30,
-        "lines": 30,
-        "statements": 30
-      }
-    }
-  },
-  "renovate": {
-    "extends": [
-      "@wearegenki"
-    ]
-  },
-  "engines": {
-    "node": ">=8.0.0",
-    "yarn": ">=1.16.0"
-  }
+  "workspaces": [
+    "components/*",
+    "css",
+    "utils/*"
+  ]
 }

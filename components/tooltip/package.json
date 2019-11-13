@@ -1,12 +1,29 @@
 {
   "name": "@minna-ui/tooltip",
   "version": "0.34.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/components/tooltip",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "style": "dist/index.css",
+  "scripts": {
+    "build": "yarn build:css && yarn build:js",
+    "build:css": "build-css src dist",
+    "build:js": "build-lib",
+    "dev": "build-lib --watch",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "component",
     "design-system",
@@ -17,20 +34,6 @@
     "ui-components",
     "wearegenki"
   ],
-  "scripts": {
-    "dev": "build-lib --watch",
-    "build": "yarn build:css && yarn build:js",
-    "build:js": "build-lib",
-    "build:css": "build-css src dist",
-    "prebuild": "rm -rf dist"
-  },
-  "style": "dist/index.css",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
     "svelte": "^3.0.0"
   },
@@ -38,8 +41,5 @@
     "@minna-ui/build-css": "^0.34.0",
     "@minna-ui/build-lib": "^0.34.0",
     "@minna-ui/css": "^0.34.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

@@ -1,12 +1,24 @@
 {
   "name": "minna-css",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "😸 A fast, friendly, and fun web UI kit for everyone.",
-  "repository": "https://github.com/WeAreGenki/minna-ui",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "index.css",
+  "scripts": {
+    "build": "cp ../../css/dist/*.css .",
+    "prebuild": "rm -f ./*.css"
+  },
+  "files": [
+    "*.css",
+    "*.css.map"
+  ],
   "keywords": [
     "css",
     "css-framework",
@@ -15,19 +27,7 @@
     "ui-kit",
     "wearegenki"
   ],
-  "scripts": {
-    "build": "cp ../../css/dist/*.css .",
-    "prebuild": "rm -f ./*.css"
-  },
-  "main": "index.css",
-  "files": [
-    "*.css",
-    "*.css.map"
-  ],
   "devDependencies": {
     "@minna-ui/css": "^0.34.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

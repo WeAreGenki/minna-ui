@@ -1,19 +1,22 @@
 {
   "name": "@minna-ui/stylelint-config",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Stylelint config preset for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/stylelint-config",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/stylelint-config",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
+  "main": "index.js",
   "keywords": [
     "javascript",
     "minna-ui",
     "stylelint",
     "wearegenki"
   ],
-  "main": "index.js",
   "peerDependencies": {
     "stylelint": "^11.0.0"
   },
@@ -25,8 +28,5 @@
     "stylelint-declaration-strict-value": "^1.1.6",
     "stylelint-high-performance-animation": "^1.3.0",
     "stylelint-order": "^3.1.1"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

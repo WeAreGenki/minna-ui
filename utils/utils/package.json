@@ -1,24 +1,24 @@
 {
   "name": "@minna-ui/utils",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Small utility functions for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/utils",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
-  "keywords": [
-    "minna-ui",
-    "utils",
-    "wearegenki"
-  ],
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/utils",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
   "types": "index.d.js",
   "files": [
     "*.d.ts",
     "*.js"
   ],
-  "publishConfig": {
-    "access": "public"
-  }
+  "keywords": [
+    "minna-ui",
+    "utils",
+    "wearegenki"
+  ]
 }

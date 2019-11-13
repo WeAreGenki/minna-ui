@@ -1,21 +1,24 @@
 {
   "name": "@minna-ui/eslint-config",
   "version": "0.34.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "ESLint config presets for use in Minna UI projects.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-config",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
   "license": "Apache-2.0",
-  "keywords": [
-    "eslint",
-    "minna-ui",
-    "wearegenki"
-  ],
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/eslint-config",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
   "files": [
     "*.d.ts",
     "*.js"
+  ],
+  "keywords": [
+    "eslint",
+    "minna-ui",
+    "wearegenki"
   ],
   "peerDependencies": {
     "eslint": "^6.0.0",
@@ -35,8 +38,5 @@
     "eslint-plugin-markdown": "^1.0.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "^2.7.3"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

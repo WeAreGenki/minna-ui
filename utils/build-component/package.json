@@ -1,22 +1,25 @@
 {
   "name": "@minna-ui/build-component",
   "version": "0.34.0",
-  "description": "Internal Minna UI component builder.",
-  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-component",
-  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "homepage": "https://wearegenki.github.io/minna-ui",
-  "author": "Max Milton <max@wearegenki.com>",
-  "license": "Apache-2.0",
-  "scripts": {
-    "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc",
-    "prebuild": "rm -rf dist"
+  "publishConfig": {
+    "access": "public"
   },
+  "description": "Internal Minna UI component builder.",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/WeAreGenki/minna-ui/tree/master/utils/build-component",
+  "author": "Max Milton <max@wearegenki.com>",
+  "homepage": "https://wearegenki.github.io/minna-ui",
+  "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "bin": {
     "build-component": "./bin/build-component.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "prebuild": "rm -rf dist"
+  },
   "files": [
     "dist"
   ],
@@ -34,8 +37,5 @@
   },
   "devDependencies": {
     "del": "5.1.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

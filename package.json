@@ -34,7 +34,7 @@
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
     "@types/node": "12.12.7",
-    "@types/postcss-load-config": "2.0.0",
+    "@types/postcss-load-config": "2.0.1",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
     "@types/rollup-plugin-buble": "0.19.1",
@@ -51,7 +51,7 @@
     "remark-cli": "7.0.1",
     "rollup": "1.27.0",
     "stylelint": "11.1.1",
-    "svelte": "3.14.0",
+    "svelte": "3.14.1",
     "tslib": "1.10.0",
     "typescript": "3.7.2"
   },

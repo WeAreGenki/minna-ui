@@ -11,6 +11,7 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
@@ -37,6 +38,5 @@
     "postcss-load-config": "^2.0.0",
     "postcss-scss": "^2.0.0",
     "rollup-pluginutils": "^2.8.2"
-  },
-  "types": "dist/index.d.ts"
+  }
 }

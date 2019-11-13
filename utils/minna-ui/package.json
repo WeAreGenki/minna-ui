@@ -11,6 +11,10 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "style": "index.css",
+  "svelte": "index.mjs",
   "files": [
     "*.css",
     "*.d.ts",
@@ -41,9 +45,5 @@
     "@minna-ui/select": "^0.34.0",
     "@minna-ui/switch": "^0.34.0",
     "@minna-ui/tooltip": "^0.34.0"
-  },
-  "module": "index.mjs",
-  "style": "index.css",
-  "svelte": "index.mjs",
-  "types": "index.d.ts"
+  }
 }

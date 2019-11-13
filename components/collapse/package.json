@@ -11,6 +11,11 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "browser": "dist/index.web.js",
+  "types": "index.d.ts",
+  "style": "dist/index.css",
+  "svelte": "src/Collapse.svelte",
   "scripts": {
     "build": "build-component",
     "prebuild": "rm -rf dist"
@@ -37,10 +42,5 @@
   "devDependencies": {
     "@minna-ui/build-component": "^0.34.0",
     "@minna-ui/css": "^0.34.0"
-  },
-  "browser": "dist/index.web.js",
-  "module": "dist/index.mjs",
-  "style": "dist/index.css",
-  "svelte": "src/Collapse.svelte",
-  "types": "index.d.ts"
+  }
 }

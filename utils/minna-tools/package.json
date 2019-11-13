@@ -11,6 +11,8 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
   "files": [
     "*.d.ts",
     "*.js"
@@ -43,7 +45,5 @@
     "@minna-ui/stylelint-config": "^0.34.0",
     "@minna-ui/ts-config": "^0.34.0",
     "@minna-ui/utils": "^0.34.0"
-  },
-  "module": "index.mjs",
-  "types": "index.d.ts"
+  }
 }

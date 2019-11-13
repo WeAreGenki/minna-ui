@@ -11,6 +11,7 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
@@ -39,6 +40,5 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-nested": "^4.2.1",
     "postcss-use": "^3.0.0"
-  },
-  "types": "dist/index.d.ts"
+  }
 }

@@ -10,10 +10,11 @@
   "author": "Max Milton <max@wearegenki.com>",
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
-  "main": "dist/index.js",
   "bin": {
     "build-lib": "./bin/build-lib.js"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
@@ -32,6 +33,5 @@
     "rollup-pluginutils": "^2.8.2",
     "tslib": "^1.9.3",
     "typescript": "^3.7.2"
-  },
-  "types": "dist/index.d.ts"
+  }
 }

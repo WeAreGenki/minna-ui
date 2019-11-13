@@ -11,6 +11,8 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "src/index.css",
+  "browser": "dist/index.css",
+  "style": "dist/index.css",
   "scripts": {
     "build": "build-css src dist",
     "prebuild": "rm -rf dist"
@@ -29,7 +31,5 @@
   ],
   "devDependencies": {
     "@minna-ui/build-css": "^0.34.0"
-  },
-  "browser": "dist/index.css",
-  "style": "dist/index.css"
+  }
 }

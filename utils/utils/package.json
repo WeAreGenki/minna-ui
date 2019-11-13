@@ -11,6 +11,7 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "index.js",
+  "types": "index.d.js",
   "files": [
     "*.d.ts",
     "*.js"
@@ -19,6 +20,5 @@
     "minna-ui",
     "utils",
     "wearegenki"
-  ],
-  "types": "index.d.js"
+  ]
 }

@@ -11,6 +11,9 @@
   "homepage": "https://wearegenki.github.io/minna-ui",
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "style": "dist/index.css",
   "scripts": {
     "build": "yarn build:css && yarn build:js",
     "build:css": "build-css src dist",
@@ -38,8 +41,5 @@
     "@minna-ui/build-css": "^0.34.0",
     "@minna-ui/build-lib": "^0.34.0",
     "@minna-ui/css": "^0.34.0"
-  },
-  "module": "dist/index.mjs",
-  "style": "dist/index.css",
-  "types": "dist/index.d.ts"
+  }
 }

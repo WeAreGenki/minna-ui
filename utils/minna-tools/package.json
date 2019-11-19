@@ -37,7 +37,6 @@
     "@minna-ui/jest-config": "^0.34.0",
     "@minna-ui/prettier-config": "^0.34.0",
     "@minna-ui/remark-config": "^0.34.0",
-    "@minna-ui/rollup-plugin-dev-server": "^0.34.0",
     "@minna-ui/rollup-plugin-emit-css": "^0.34.0",
     "@minna-ui/rollup-plugin-emit-html": "^0.34.0",
     "@minna-ui/rollup-plugin-postcss": "^0.34.0",

@@ -71,13 +71,6 @@ export function emitHtml({
   ...data
 }: EmitHtmlOptions = {}): rollup.Plugin {
   const filter = createFilter(include, exclude);
-
-  // if `template` is a path and the file exists use its content otherwise
-  // assume that `template` is the actual template content itself
-  const htmlTemplate = existsSync(template)
-    ? readFileSync(template, 'utf8')
-    : template;
-
   const styles: { [id: string]: string } = {};
 
   return {
@@ -147,6 +140,16 @@ export function emitHtml({
         let body = await Promise.resolve(content);
         body = body.replace('%CSS%', cssResult);
         body = body.replace('%JS%', scripts.join('\n'));
+
+        let htmlTemplate = template;
+
+        // When `template` is a file path which exists use its content as the
+        // template otherwise we assume `template` is the actual template itself
+        if (existsSync(template)) {
+          // Read template file every time in case it has changed between builds
+          htmlTemplate = readFileSync(template, 'utf8');
+          this.addWatchFile(template);
+        }
 
         const html = compileTemplate(htmlTemplate)({
           content: body,

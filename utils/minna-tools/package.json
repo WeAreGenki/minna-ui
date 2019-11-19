@@ -28,7 +28,7 @@
     "postcss": "^7.0.0",
     "prettier": "^1.15.0",
     "remark-cli": "^7.0.0",
-    "stylelint": "^10.0.0 || ^11.0.0",
+    "stylelint": "^12.0.0",
     "typescript": "^3.3.0"
   },
   "dependencies": {
@@ -37,7 +37,6 @@
     "@minna-ui/jest-config": "^0.34.0",
     "@minna-ui/prettier-config": "^0.34.0",
     "@minna-ui/remark-config": "^0.34.0",
-    "@minna-ui/rollup-plugin-dev-server": "^0.34.0",
     "@minna-ui/rollup-plugin-emit-css": "^0.34.0",
     "@minna-ui/rollup-plugin-emit-html": "^0.34.0",
     "@minna-ui/rollup-plugin-postcss": "^0.34.0",

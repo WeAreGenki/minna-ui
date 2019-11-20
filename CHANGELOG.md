@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.35.0][] - 2019-11-21
+
+### Added
+
+- `@minna-ui/prettier-config` - Add plugin to format `package.json` files.
+
+### Changed
+
+- `@minna-ui/eslint-config` - Continued improvements.
+- Use a more standard shebang in packages which have a `bin` registered.
+- Updated package dependencies.
+- Switch test coverage providers and update CI.
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-emit-html` - No rebuild when template file changes.
+
 ## [0.34.1][] - 2019-09-22
 
 ### Added
@@ -1003,7 +1020,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.34.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.0...HEAD
+[0.35.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.1...v0.35.0
 [0.34.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.0...v0.34.1
 [0.34.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.2...v0.34.0
 [0.33.2]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.1...v0.33.2

@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - `@minna-ui/rollup-plugin-emit-html` - No rebuild when template file changes.
+- `@minna-ui/jest-config` - Whitespace in svelte snapshots is not preserved making snapshots hard to read.
 
 ## [0.34.1][] - 2019-09-22
 

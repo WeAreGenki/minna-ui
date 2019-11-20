@@ -27,6 +27,7 @@ exports.process = (src, filename) => {
     css: false,
     filename: basename(filename),
     format: 'cjs',
+    preserveWhitespace: true,
   });
 
   const esInterop =

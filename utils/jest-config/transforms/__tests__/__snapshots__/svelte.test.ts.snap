@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Svelte transform compiles and mounts a component 1`] = `"<div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\">test Elon Musk</div> <div id=\\"nameReversed\\" class=\\"text\\">test <span>ksuM nolE</span></div></div>"`;
+exports[`Svelte transform compiles and mounts a component 1`] = `
+"<div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\">test Elon Musk</div>
+
+  <div id=\\"nameReversed\\" class=\\"text\\">test <span>ksuM nolE</span></div></div>"
+`;
 
 exports[`Svelte transform mounts components which import ES6 modules 1`] = `"<div id=\\"name\\">Elon Musk</div> <div id=\\"loud\\">ELON MUSK</div> <div id=\\"quiet\\">elon musk</div>"`;

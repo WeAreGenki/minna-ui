@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- `@minna-ui/jest-config` - Remove custom jsdom environment package, `jest-environment-jsdom-fifteen`, since jest uses jsdom v15 by default now.
+- `@minna-ui/jest-config` - Remove custom jsdom environment package, `jest-environment-jsdom-fifteen`, since jest uses jsdom v15 by default as of jest v25.
 
 ### Changed
 

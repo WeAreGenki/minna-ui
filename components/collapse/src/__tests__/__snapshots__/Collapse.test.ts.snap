@@ -1,9 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Collapse component renders correctly with no props 1`] = `"<button class=\\"button button-collapse\\">Expand ▾</button> <div class=\\"collapse collapse-hide\\"></div>"`;
+exports[`Collapse component renders correctly with no props 1`] = `
+"<button class=\\"button button-collapse\\">Expand ▾</button>
 
-exports[`Collapse component renders correctly with textOpen/textClose props 1`] = `"<button class=\\"button button-collapse\\">open</button> <div class=\\"collapse collapse-hide\\"></div>"`;
+<div class=\\"collapse collapse-hide\\"></div>"
+`;
 
-exports[`Collapse component renders correctly with textOpen/textClose props 2`] = `"<button class=\\"button button-collapse\\">close</button> <div class=\\"collapse \\"></div>"`;
+exports[`Collapse component renders correctly with textOpen/textClose props 1`] = `
+"<button class=\\"button button-collapse\\">open</button>
 
-exports[`Collapse component renders slot content correctly 1`] = `"<button class=\\"button button-collapse\\">Expand ▾</button> <div class=\\"collapse collapse-hide\\"><p class=\\"lead\\">Inner content</p></div>"`;
+<div class=\\"collapse collapse-hide\\"></div>"
+`;
+
+exports[`Collapse component renders correctly with textOpen/textClose props 2`] = `
+"<button class=\\"button button-collapse\\">close</button>
+
+<div class=\\"collapse \\"></div>"
+`;
+
+exports[`Collapse component renders slot content correctly 1`] = `
+"<button class=\\"button button-collapse\\">Expand ▾</button>
+
+<div class=\\"collapse collapse-hide\\"><p class=\\"lead\\">Inner content</p></div>"
+`;

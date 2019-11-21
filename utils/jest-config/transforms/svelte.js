@@ -18,15 +18,16 @@ const { compile } = require('svelte/compiler'); // eslint-disable-line import/no
  * @returns {jest.TransformedSource} Transformed source code.
  */
 exports.process = (src, filename) => {
-  // strip out <style> tags to prevent errors when unable to parse PostCSS etc.
+  // Strip out <style> tags to prevent errors when unable to parse PostCSS etc.
   const re = /<style[^>]*>[\S\s]*?<\/style>/g;
   const normalised = src.replace(re, '');
 
   const result = compile(normalised, {
-    accessors: true, // easy access to component internals for tests
+    accessors: true, // Easy access to component internals for tests
     css: false,
     filename: basename(filename),
     format: 'cjs',
+    preserveWhitespace: true,
   });
 
   const esInterop =

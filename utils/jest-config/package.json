@@ -29,14 +29,13 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^25.0.0"
   },
   "dependencies": {
     "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.7",
+    "@types/node": "^12.12.11",
     "identity-obj-proxy": "^3.0.0",
-    "jest-circus": "^24.9.0",
-    "jest-environment-jsdom-fifteen": "^1.0.0",
+    "jest-circus": "^25.0.0",
     "sucrase": "^3.10.1"
   }
 }

@@ -34,7 +34,7 @@
   }
 </style>
 
-<svelte:options tag="test-component" immutable={true} />
+<svelte:options immutable="{true}" />
 
 <div class="wrapper">
   <div id="name" class="text">

@@ -60,7 +60,7 @@ exports[`Svelte style preprocessor processes a component 1`] = `
     }
 </style>
 
-<svelte:options tag=\\"test-component\\" immutable={true} />
+<svelte:options immutable=\\"{true}\\" />
 
 <div class=\\"wrapper\\">
   <div id=\\"name\\" class=\\"text\\">

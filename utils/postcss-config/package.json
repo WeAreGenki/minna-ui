@@ -31,7 +31,7 @@
     "postcss": "^7.0.0"
   },
   "dependencies": {
-    "autoprefixer": "^9.7.1",
+    "autoprefixer": "^9.7.2",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.8",
     "deepmerge": "^4.2.2",

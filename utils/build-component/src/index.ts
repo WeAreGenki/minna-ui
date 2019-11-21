@@ -128,6 +128,8 @@ export async function run(
         svelte({
           customElement: true,
           preprocess,
+          // FIXME: Make this customisable or use a new technique to name tags
+          tag: pkgName!.replace('@minna-ui/', 'minna-'),
         }),
         resolve(),
         commonjs(),

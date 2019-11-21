@@ -360,7 +360,7 @@
     type="text"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
-    readonly="{!filterable || readonly || !isOpen}"
+    readonly="{readonly || !filterable || !isOpen}"
     disabled="{disabled}"
     autocomplete="off"
     aria-haspopup="listbox"

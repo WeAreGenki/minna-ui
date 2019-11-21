@@ -6,7 +6,7 @@ exports[`Select component can dynamically add items 1`] = `
 `;
 
 exports[`Select component renders correctly with required props set 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col  \\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
@@ -18,7 +18,7 @@ exports[`Select component renders correctly with required props set 1`] = `
 `;
 
 exports[`Select component renders with disabled prop 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col select-disabled \\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"-1\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" readonly=\\"\\" disabled=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col select-disabled \\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"-1\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" disabled=\\"\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
@@ -42,7 +42,7 @@ exports[`Select component renders with filterHelp prop 1`] = `
 `;
 
 exports[`Select component renders with filterable prop set to false 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  select-active\\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col  select-active\\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox \\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
@@ -54,7 +54,7 @@ exports[`Select component renders with filterable prop set to false 1`] = `
 `;
 
 exports[`Select component renders with placeholder prop 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Hold your places\\" autocomplete=\\"off\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col  \\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Hold your places\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
@@ -66,7 +66,7 @@ exports[`Select component renders with placeholder prop 1`] = `
 `;
 
 exports[`Select component renders with readonly prop 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col  \\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
@@ -78,7 +78,7 @@ exports[`Select component renders with readonly prop 1`] = `
 `;
 
 exports[`Select component renders with value prop set 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" readonly=\\"\\" aria-haspopup=\\"listbox\\">
+"<div class=\\"select-wrapper pos-r dib f-col  \\"><input readonly=\\"\\" id=\\"test-select\\" class=\\"select\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>
 
   <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  \\" value=\\"au\\" role=\\"option\\">Australia

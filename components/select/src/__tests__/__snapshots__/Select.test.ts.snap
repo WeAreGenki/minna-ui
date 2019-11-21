@@ -65,18 +65,6 @@ exports[`Select component renders with placeholder prop 1`] = `
       </div></div></div>"
 `;
 
-exports[`Select component renders with readonly prop 1`] = `
-"<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" type=\\"text\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" readonly=\\"\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
-  <div class=\\"select-caret\\"></div>
-
-  <div class=\\"select-listbox hide\\" role=\\"listbox\\"><div class=\\"option  option-active\\" value=\\"au\\" role=\\"option\\">Australia
-      </div><div class=\\"option  \\" value=\\"cn\\" role=\\"option\\">China
-      </div><div class=\\"option  \\" value=\\"jp\\" role=\\"option\\">Japan
-      </div><div class=\\"option  \\" value=\\"kr\\" role=\\"option\\">Korea
-      </div><div class=\\"option  \\" value=\\"other\\" role=\\"option\\">Other / Unknown
-      </div></div></div>"
-`;
-
 exports[`Select component renders with value prop set 1`] = `
 "<div class=\\"select-wrapper pos-r dib f-col  \\"><input id=\\"test-select\\" class=\\"select\\" type=\\"text\\" tabindex=\\"0\\" placeholder=\\"Choose...\\" readonly=\\"\\" autocomplete=\\"off\\" aria-haspopup=\\"listbox\\">
   <div class=\\"select-caret\\"></div>

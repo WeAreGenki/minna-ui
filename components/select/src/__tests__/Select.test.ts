@@ -36,7 +36,7 @@ const selectOpts = {
 
 describe('Select component', () => {
   it('has default props set correctly', () => {
-    expect.assertions(9);
+    expect.assertions(7);
     const target = document.createElement('div');
     const component = new Select({
       props: { items: [] },
@@ -47,14 +47,12 @@ describe('Select component', () => {
     expect(component.filterHelp).toBe('Filter...');
     expect(component.isOpen).toBe(false);
     expect(component.placeholder).toBe('Choose...');
-    expect(component.readonly).toBe(false);
-    expect(component.required).toBe(false);
     expect(component.id).toBeUndefined();
     expect(component.value).toBeUndefined();
   });
 
   it('renders correctly with required props set', () => {
-    expect.assertions(9);
+    expect.assertions(8);
     const target = document.createElement('div');
     const component = new Select({
       props: selectOpts,
@@ -65,7 +63,6 @@ describe('Select component', () => {
     expect(component.items).not.toHaveLength(0);
     expect(select.getAttribute('tabindex')).toBe('0');
     expect(select.getAttribute('disabled')).toBeNull();
-    expect(select.getAttribute('required')).toBeNull();
     expect(select.getAttribute('placeholder')).not.toBe(false);
     expect(document.querySelector('select-active')).toBeNull();
     expect(document.querySelector('select-disabled')).toBeNull();
@@ -154,25 +151,6 @@ describe('Select component', () => {
     expect(target.querySelector('.select-disabled')).not.toBeNull();
     expect(target.innerHTML).toMatchSnapshot();
   });
-
-  it('renders with readonly prop', () => {
-    expect.assertions(3);
-    const target = document.createElement('div');
-    const component = new Select({
-      props: {
-        ...selectOpts,
-        readonly: true,
-      },
-      target,
-    });
-    expect(component.readonly).toBe(true);
-    const select = target.querySelector('.select')!;
-    expect(select.getAttribute('readonly')).not.toBeNull();
-    expect(target.innerHTML).toMatchSnapshot();
-  });
-
-  // TODO: Write tests once we have custom validation in the component
-  it.todo('renders with required prop');
 
   it('updates selected item on value change', async () => {
     expect.assertions(2);

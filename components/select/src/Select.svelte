@@ -60,8 +60,6 @@
   export let filterHelp = 'Filter...';
   export let isOpen = false;
   export let placeholder = 'Choose...';
-  export let readonly = false;
-  export let required = false; // FIXME: Add a way to do custom validation
   /** @type {string} */
   export let id;
   /** @type {SelectItem[]} */
@@ -360,7 +358,7 @@
     type="text"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
-    readonly="{readonly || !filterable || !isOpen}"
+    readonly="{!filterable || !isOpen}"
     disabled="{disabled}"
     autocomplete="off"
     aria-haspopup="listbox"

@@ -36,13 +36,12 @@ const selectOpts = {
 
 describe('Select component', () => {
   it('has default props set correctly', () => {
-    expect.assertions(10);
+    expect.assertions(9);
     const target = document.createElement('div');
     const component = new Select({
       props: { items: [] },
       target,
     });
-    expect(component.autocomplete).toBe('off');
     expect(component.disabled).toBe(false);
     expect(component.filterable).toBe(true);
     expect(component.filterHelp).toBe('Filter...');

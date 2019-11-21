@@ -55,7 +55,6 @@
    * disabled state.
    */
 
-  export let autocomplete = 'off';
   export let disabled = false;
   export let filterable = true;
   export let filterHelp = 'Filter...';
@@ -361,9 +360,9 @@
     type="text"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
-    autocomplete="{autocomplete}"
     readonly="{!filterable || readonly || !isOpen}"
     disabled="{disabled}"
+    autocomplete="off"
     aria-haspopup="listbox"
     on:click="{open}"
     on:focus="{open}"

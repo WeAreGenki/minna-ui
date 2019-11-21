@@ -1031,7 +1031,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.1...HEAD
+[0.35.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.35.0...v0.35.1
 [0.35.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.1...v0.35.0
 [0.34.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.0...v0.34.1
 [0.34.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.2...v0.34.0

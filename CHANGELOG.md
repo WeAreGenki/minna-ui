@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.35.1][] - 2019-11-21
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-emit-html` - Incorrect location of `addWatchFile` method call within the plugin.
+
 ## [0.35.0][] - 2019-11-21
 
 ### Added
@@ -1025,7 +1031,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.0...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.1...HEAD
+[0.35.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.35.0...v0.35.1
 [0.35.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.1...v0.35.0
 [0.34.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.0...v0.34.1
 [0.34.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.33.2...v0.34.0

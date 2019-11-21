@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/css",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "publishConfig": {
     "access": "public"
   },
@@ -30,6 +30,6 @@
     "wearegenki"
   ],
   "devDependencies": {
-    "@minna-ui/build-css": "^0.34.0"
+    "@minna-ui/build-css": "^0.35.0"
   }
 }

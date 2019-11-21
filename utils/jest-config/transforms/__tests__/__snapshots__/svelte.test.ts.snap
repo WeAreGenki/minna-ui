@@ -6,4 +6,8 @@ exports[`Svelte transform compiles and mounts a component 1`] = `
   <div id=\\"nameReversed\\" class=\\"text\\">test <span>ksuM nolE</span></div></div>"
 `;
 
-exports[`Svelte transform mounts components which import ES6 modules 1`] = `"<div id=\\"name\\">Elon Musk</div> <div id=\\"loud\\">ELON MUSK</div> <div id=\\"quiet\\">elon musk</div>"`;
+exports[`Svelte transform mounts components which import ES6 modules 1`] = `
+"<div id=\\"name\\">Elon Musk</div>
+<div id=\\"loud\\">ELON MUSK</div>
+<div id=\\"quiet\\">elon musk</div>"
+`;

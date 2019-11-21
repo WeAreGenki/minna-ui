@@ -1,6 +1,6 @@
 {
   "name": "minna-tools",
-  "version": "0.35.0",
+  "version": "0.35.1",
   "publishConfig": {
     "access": "public"
   },
@@ -38,7 +38,7 @@
     "@minna-ui/prettier-config": "^0.35.0",
     "@minna-ui/remark-config": "^0.35.0",
     "@minna-ui/rollup-plugin-emit-css": "^0.35.0",
-    "@minna-ui/rollup-plugin-emit-html": "^0.35.0",
+    "@minna-ui/rollup-plugin-emit-html": "^0.35.1",
     "@minna-ui/rollup-plugin-postcss": "^0.35.0",
     "@minna-ui/rollup-plugin-purgecss": "^0.35.0",
     "@minna-ui/stylelint-config": "^0.35.0",

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.35.1][] - 2019-11-21
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-emit-html` - Incorrect location of `addWatchFile` method call within the plugin.
+
 ## [0.35.0][] - 2019-11-21
 
 ### Added

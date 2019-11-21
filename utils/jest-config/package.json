@@ -36,7 +36,6 @@
     "@types/node": "^12.12.11",
     "identity-obj-proxy": "^3.0.0",
     "jest-circus": "^24.9.0",
-    "jest-environment-jsdom-fifteen": "^1.0.0",
     "sucrase": "^3.10.1"
   }
 }

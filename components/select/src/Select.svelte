@@ -352,8 +352,6 @@
   }
 </style>
 
-<svelte:options tag="minna-select" />
-
 <div class="select-wrapper pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}">
   <input
     id="{id}"

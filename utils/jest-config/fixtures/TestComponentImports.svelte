@@ -7,7 +7,7 @@
   $: quiet = whisper(name);
 </script>
 
-<svelte:options tag="test-component-imports" immutable={true} />
+<svelte:options immutable="{true}" />
 
 <div id="name">{name}</div>
 <div id="loud">{loud}</div>

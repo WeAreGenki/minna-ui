@@ -30,7 +30,7 @@
   }
 </style>
 
-<svelte:options tag="minna-collapse" immutable={true} />
+<svelte:options immutable="{true}" />
 
 <button class="button button-collapse" on:click="{handleClick}">
   {isOpen ? textClose : textOpen}

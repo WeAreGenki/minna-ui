@@ -358,6 +358,7 @@
     bind:this="{input}"
     bind:value="{inputText}"
     class="select"
+    type="text"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
     autocomplete="{autocomplete}"

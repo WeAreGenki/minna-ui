@@ -221,7 +221,7 @@
   }
 </style>
 
-<svelte:options tag="minna-navbar" immutable={true} />
+<svelte:options immutable="{true}" />
 
 <svelte:window on:scroll={scrollHandler} />
 

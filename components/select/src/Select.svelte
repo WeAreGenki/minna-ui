@@ -55,14 +55,11 @@
    * disabled state.
    */
 
-  export let autocomplete = 'off';
   export let disabled = false;
   export let filterable = true;
   export let filterHelp = 'Filter...';
   export let isOpen = false;
   export let placeholder = 'Choose...';
-  export let readonly = false;
-  export let required = false; // FIXME: Add a way to do custom validation
   /** @type {string} */
   export let id;
   /** @type {SelectItem[]} */
@@ -352,19 +349,18 @@
   }
 </style>
 
-<svelte:options tag="minna-select" />
-
 <div class="select-wrapper pos-r dib f-col {disabled ? 'select-disabled' : ''} {isOpen ? 'select-active' : ''}">
   <input
     id="{id}"
     bind:this="{input}"
     bind:value="{inputText}"
     class="select"
+    type="text"
     tabindex="{disabled ? -1 : 0}"
     placeholder="{filterable && isOpen ? filterHelp : placeholder}"
-    autocomplete="{autocomplete}"
-    readonly="{!filterable || readonly || !isOpen}"
+    readonly="{!filterable || !isOpen}"
     disabled="{disabled}"
+    autocomplete="off"
     aria-haspopup="listbox"
     on:click="{open}"
     on:focus="{open}"

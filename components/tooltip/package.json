@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/tooltip",
-  "version": "0.34.1",
+  "version": "0.35.0",
   "publishConfig": {
     "access": "public"
   },
@@ -38,8 +38,8 @@
     "svelte": "^3.0.0"
   },
   "devDependencies": {
-    "@minna-ui/build-css": "^0.34.0",
-    "@minna-ui/build-lib": "^0.34.0",
-    "@minna-ui/css": "^0.34.0"
+    "@minna-ui/build-css": "^0.35.0",
+    "@minna-ui/build-lib": "^0.35.0",
+    "@minna-ui/css": "^0.35.0"
   }
 }

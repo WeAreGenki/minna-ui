@@ -40,4 +40,4 @@
     - https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
 
 -->
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1 1"><path fill="#fafafa" d="M1 0L0 1V0z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1 1"><path fill="#f6f5f4" d="M1 0L0 1V0z"/></svg>

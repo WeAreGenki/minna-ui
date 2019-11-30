@@ -41,7 +41,7 @@
     "@types/stylelint": "9.10.1",
     "@wearegenki/renovate-config": "1.0.0",
     "docsify-cli": "4.4.0",
-    "eslint": "6.7.1",
+    "eslint": "6.7.2",
     "jest": "25.0.0",
     "lerna": "3.19.0",
     "postcss": "7.0.23",
@@ -51,7 +51,7 @@
     "remark-cli": "7.0.1",
     "rollup": "1.27.5",
     "stylelint": "12.0.0",
-    "svelte": "3.15.0",
+    "svelte": "3.16.0",
     "tslib": "1.10.0",
     "typescript": "3.7.2"
   },

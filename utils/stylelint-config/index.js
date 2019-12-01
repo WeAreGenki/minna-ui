@@ -35,18 +35,7 @@ module.exports = {
     'a11y/selector-pseudo-class-focus': true,
     'at-rule-no-unknown': [
       true,
-      {
-        ignoreAtRules: [
-          'content',
-          'each',
-          'else',
-          'for',
-          'if',
-          'include',
-          'mixin',
-          'use',
-        ],
-      },
+      { ignoreAtRules: ['each', 'else', 'if', 'mixin', 'use'] },
     ],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',

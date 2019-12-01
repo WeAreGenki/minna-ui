@@ -76,6 +76,7 @@ export default postcss.plugin(
   }: PluginOptions = {}) => {
     const plugins = [
       advancedVars,
+      advancedVars, // TODO: Don't run twice, it's temp to handle vars in @media
       atUse,
       nested,
       colorModFunction,

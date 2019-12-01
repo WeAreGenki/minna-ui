@@ -35,7 +35,16 @@ module.exports = {
     'a11y/selector-pseudo-class-focus': true,
     'at-rule-no-unknown': [
       true,
-      { ignoreAtRules: ['each', 'else', 'if', 'mixin', 'use'] },
+      {
+        ignoreAtRules: [
+          'each',
+          'else',
+          'if',
+          'mixin',
+          'use',
+          'include', // TODO: Remove when we switch to the new postcss plugin
+        ],
+      },
     ],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',

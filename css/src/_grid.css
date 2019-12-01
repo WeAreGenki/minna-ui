@@ -62,7 +62,7 @@
   .w$(step) { grid-column-end: span $step; }
 
   @each $bp in $breakpoints {
-    @include at-media($bp) {
+    @media $($bp) {
       .$(bp)-x$(step) { grid-template-columns: repeat($step, $item-size); }
       .$(bp)-c$(step) { grid-column-start: $step; }
       .$(bp)-w$(step) { grid-column-end: span $step; }
@@ -76,7 +76,7 @@
   .h$(step) { grid-row-end: span $step; }
 
   @each $bp in $breakpoints {
-    @include at-media($bp) {
+    @media $($bp) {
       .$(bp)-y$(step) { grid-template-rows: repeat($step, auto); }
       .$(bp)-r$(step) { grid-row-start: $step; }
       .$(bp)-h$(step) { grid-row-end: span $step; }
@@ -134,7 +134,7 @@
 .flow-col { grid-auto-flow: column; } /* default */
 
 @each $bp in $breakpoints {
-  @include at-media($bp) {
+  @media $($bp) {
     .$(bp)-middle {
       align-items: center;
       justify-content: center;

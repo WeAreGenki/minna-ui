@@ -1,6 +1,6 @@
 /**
- * POSITION
- */
+* POSITION
+*/
 
 .pos-f { position: fixed; }
 .pos-a { position: absolute; }
@@ -11,9 +11,9 @@
 /* Direction */
 
 /**
- * TODO: If we never use anything other than .t0, .r0, .b0, l0 then remove
- * the other steps here.
- */
+* TODO: If we never use anything other than .t0, .r0, .b0, l0 then remove
+* the other steps here.
+*/
 
 @each $value $i in $spacing-values {
   .t$(i) { top: $value; }
@@ -29,7 +29,7 @@
   }
 
   @each $bp in $breakpoints {
-    @include at-media($bp) {
+    @media $($bp) {
       .$(bp)-t$(i) { top: $value; }
       .$(bp)-r$(i) { right: $value; }
       .$(bp)-b$(i) { bottom: $value; }

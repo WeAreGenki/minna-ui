@@ -13,5 +13,5 @@
 }
 
 .button-cta {
-  @include button($cta-color, $blue2, $blue1, $blue2);
+  @include button($cta-color, $blue2, $blue1);
 }

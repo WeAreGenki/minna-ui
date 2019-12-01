@@ -475,7 +475,7 @@ body.sticky {
     margin: 2em 0;
     padding: 12px 24px 12px 30px;
     background-color: $light3;
-    border-left: 4px solid $rose5;
+    border-left: 4px solid $red4;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 
@@ -492,7 +492,7 @@ body.sticky {
       font-weight: $text-weight-heavy;
       line-height: 20px;
       text-align: center;
-      background-color: $rose5;
+      background-color: $red4;
       border-radius: 100%;
       content: '!';
     }

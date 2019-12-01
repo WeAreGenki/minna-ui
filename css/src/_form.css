@@ -35,12 +35,12 @@
   border-radius: $input-radius;
 
   &:hover {
-    /* FIXME: Add hover style */
+    /* TODO: Add hover style */
   }
 
   &:focus,
   &:active {
-    /* FIXME: Add focus/active style */
+    /* TODO: Add focus/active style */
   }
 
   &[disabled] {
@@ -60,9 +60,17 @@
 }
 
 /* TODO: Create more custom input styles */
-/* .radio {} */
-/* .checkbox {} */
-/* .range {} */
+.radio {
+  /* TODO */
+}
+
+.checkbox {
+  /* TODO */
+}
+
+.range {
+  /* TODO */
+}
 
 /* Grouped form elements */
 

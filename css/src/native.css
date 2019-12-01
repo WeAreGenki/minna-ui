@@ -5,7 +5,7 @@
  * style more native elements by default. We try to keep opinionated styles like
  * these out of the standard CSS bundle to give developers more freedom in how
  * things look. But for times when you want everything to look great
- * out-of-the-box, then this package is a good choice.
+ * out-of-the-box, this package is a good choice.
  */
 
 @import './index.css';

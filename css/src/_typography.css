@@ -121,12 +121,14 @@ a {
   margin: calc(-1 * $link-click-area);
   padding: $link-click-area; /* Larger link click area size */
   color: $link-color;
+  text-decoration: none;
   word-wrap: break-word;
   cursor: pointer;
 
   &:hover,
   &:focus {
     color: $link-color-hover;
+    text-decoration: underline;
   }
 }
 
@@ -186,8 +188,20 @@ li {
 
 /* Quotes */
 
-/* TODO: New blockquote styles */
-/* .blockquote {} */
+.blockquote {
+  margin: 2em 0;
+  padding: 0 1em;
+  font-size: $blockquote-text-size;
+  border-left: 6px solid $intent-primary;
+}
+
+.blockquote-footer {
+  font-size: $blockquote-footer-text-size;
+
+  &::before {
+    content: '\2014 \00A0';
+  }
+}
 
 /* Code */
 

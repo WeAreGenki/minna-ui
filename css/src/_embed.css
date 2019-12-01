@@ -1,0 +1,29 @@
+/**
+ * EMBED UTILITIES
+ */
+
+/**
+ * Embed a video in an iframe and size it responsively while maintaining a 16x9
+ * aspect ratio. Typically used to embed Youtube videos.
+ */
+.embed-video {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    padding-top: 56.25%; /* Maintain 16x9 ratio */
+    content: '';
+  }
+
+  > iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

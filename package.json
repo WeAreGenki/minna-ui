@@ -44,7 +44,7 @@
     "eslint": "6.7.2",
     "jest": "25.0.0",
     "lerna": "3.19.0",
-    "postcss": "7.0.23",
+    "postcss": "7.0.24",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "1.19.1",
@@ -58,7 +58,7 @@
   "resolutions": {
     "braces": "^3.0.2",
     "marked": "^0.7.0",
-    "postcss": "^7.0.23",
+    "postcss": "7.0.24",
     "vfile": "^4.0.2"
   },
   "browserslist": {

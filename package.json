@@ -33,7 +33,7 @@
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "12.12.14",
+    "@types/node": "12.12.21",
     "@types/postcss-load-config": "2.0.1",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "0.0.8",
@@ -44,21 +44,21 @@
     "eslint": "6.7.2",
     "jest": "25.0.0",
     "lerna": "3.19.0",
-    "postcss": "7.0.23",
+    "postcss": "7.0.25",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "1.19.1",
     "remark-cli": "7.0.1",
-    "rollup": "1.27.6",
+    "rollup": "1.27.13",
     "stylelint": "12.0.0",
-    "svelte": "3.16.0",
+    "svelte": "3.16.5",
     "tslib": "1.10.0",
-    "typescript": "3.7.2"
+    "typescript": "3.7.3"
   },
   "resolutions": {
     "braces": "^3.0.2",
     "marked": "^0.7.0",
-    "postcss": "^7.0.23",
+    "postcss": "7.0.25",
     "vfile": "^4.0.2"
   },
   "browserslist": {

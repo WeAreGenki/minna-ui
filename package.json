@@ -56,9 +56,6 @@
     "typescript": "3.7.3"
   },
   "resolutions": {
-    "braces": "^3.0.2",
-    "marked": "^0.7.0",
-    "postcss": "7.0.25",
     "vfile": "^4.0.2"
   },
   "browserslist": {

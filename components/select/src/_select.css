@@ -4,8 +4,6 @@
  * @format
  */
 
-@import 'import.css';
-
 $select-optimize: false !default;
 $select-zindex: 4 !default;
 $select-background-color: $light1 !default;

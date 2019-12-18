@@ -1,9 +1,10 @@
 /**
  * Tooltip
+ *
  * @format
  */
 
-@import '@minna-ui/css/src/import.css';
+@import '@@/import.css';
 
 $tooltip-padding-x: 1em !default;
 $tooltip-padding-y: 0.5em !default;

@@ -99,8 +99,8 @@
 </script>
 
 <style type="text/postcss">
+  @import '@@/import.css';
   @import './_navbar.css';
-  @import 'import.css';
 
   /* Offset page content so it's not covered by the fixed navbar */
   :global(body) {

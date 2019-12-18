@@ -1,4 +1,4 @@
-@import '@minna-ui/css/src/import.css';
+@import '@@/import.css';
 @import './_variables.css';
 @import './_layout.css';
 @import './_coverpage.css';

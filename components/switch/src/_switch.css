@@ -4,8 +4,6 @@
 
 /* stylelint-disable max-line-length */
 
-@import 'import.css';
-
 $switch-optimize: false !default;
 $switch-width: 6em !default;
 $switch-padding: $button-padding-y 0 !default;

@@ -31,6 +31,9 @@ const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
   npm_package_version: '1.2.3',
 });
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
+
 beforeAll(async () => {
   await del([dist]); // In case of failed test runs
   await mkdir(dist);
@@ -94,7 +97,7 @@ describe('build-css tool', () => {
   it('reports error on bad CSS syntax', async () => {
     expect.assertions(2);
     const spy = jest.spyOn(console, 'error');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(noop);
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrow();
     expect(spy).toHaveBeenCalledWith(

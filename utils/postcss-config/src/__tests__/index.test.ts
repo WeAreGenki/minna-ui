@@ -27,6 +27,9 @@ const options = {
 let sourceCss = '';
 // let sourceCssMixin = '';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
+
 beforeAll(async () => {
   // [sourceCss, sourceCssMixin] = await Promise.all([
   //   readFile(sourceCssPath, 'utf8'),
@@ -100,7 +103,7 @@ describe('PostCSS config', () => {
   it.skip('compiles CSS with debug option true', async () => {
     expect.assertions(6);
     const spy = jest.spyOn(global.console, 'log');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(noop);
     const output = postcss(postcssConfig({ debug: true })).process(sourceCss, options);
     await expect(output).resolves.toBeDefined();
     const result = await output;
@@ -115,7 +118,7 @@ describe('PostCSS config', () => {
   it('compiles CSS with debug option false', async () => {
     expect.assertions(6);
     const spy = jest.spyOn(global.console, 'log');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(noop);
     const output = postcss(postcssConfig({ debug: false })).process(sourceCss, options);
     await expect(output).resolves.toBeDefined();
     const result = await output;

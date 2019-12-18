@@ -40,9 +40,9 @@ module.exports = {
           'each',
           'else',
           'if',
+          'include', // TODO: Remove once we switch over to the new PostCSS stack
           'mixin',
           'use',
-          'include', // TODO: Remove when we switch to the new postcss plugin
         ],
       },
     ],

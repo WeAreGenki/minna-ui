@@ -15,6 +15,9 @@ const sourcePathBadSyntax = require.resolve(
 );
 const dist = path.join(__dirname, 'dist');
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = (): void => {};
+
 /**
  * Generate mock package.json env variables.
  *
@@ -100,7 +103,7 @@ describe('build-component tool', () => {
       npm_package_svelte: sourcePathBadSyntax,
     });
     const spy = jest.spyOn(console, 'error');
-    spy.mockImplementation(() => {});
+    spy.mockImplementation(noop);
     await expect(build).rejects.toThrowErrorMatchingSnapshot();
     expect(spy).toHaveBeenCalledTimes(1);
   });

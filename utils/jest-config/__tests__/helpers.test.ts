@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
 import path from 'path';
-import { runBin } from '../helpers';
+import { runBin } from '../helpers.js';
 
 const cliGood = path.join(__dirname, '../fixtures/cli-good.js');
 const cliError = path.join(__dirname, '../fixtures/cli-error.js');
@@ -26,6 +26,6 @@ describe('Helper functions', () => {
     expect.assertions(2);
     const result = runBin(cliExitCode);
     await expect(result).rejects.toBeDefined();
-    await expect(result).rejects.toEqual([]); // empty array
+    await expect(result).rejects.toStrictEqual([]); // empty array
   });
 });

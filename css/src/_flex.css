@@ -10,7 +10,7 @@
  * Much of the time when using flexbox you really just want to vertically align
  * elements, so this class is a shortcut for that.
  */
- .dfc {
+.dfc {
   display: flex;
   align-items: center;
 }

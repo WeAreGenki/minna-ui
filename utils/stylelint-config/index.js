@@ -35,7 +35,16 @@ module.exports = {
     'a11y/selector-pseudo-class-focus': true,
     'at-rule-no-unknown': [
       true,
-      { ignoreAtRules: ['each', 'else', 'if', 'mixin', 'use'] },
+      {
+        ignoreAtRules: [
+          'each',
+          'else',
+          'if',
+          'include', // TODO: Remove once we switch over to the new PostCSS stack
+          'mixin',
+          'use',
+        ],
+      },
     ],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-space-before': 'never',

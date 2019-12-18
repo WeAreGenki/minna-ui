@@ -3,6 +3,7 @@
 import merge from 'deepmerge';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
+// @ts-ignore
 import syntax from 'postcss-scss';
 import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';

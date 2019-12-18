@@ -15,7 +15,8 @@
   "types": "index.d.ts",
   "files": [
     "*.d.ts",
-    "*.js"
+    "*.js",
+    "*.mjs"
   ],
   "keywords": [
     "dev-tools",

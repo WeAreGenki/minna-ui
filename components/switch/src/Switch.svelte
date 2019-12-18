@@ -54,7 +54,6 @@
   export let value;
   export let mini;
   export let disabled;
-  export let required; // FIXME: Add custom validation
 
   const dispatch = createEventDispatcher();
 

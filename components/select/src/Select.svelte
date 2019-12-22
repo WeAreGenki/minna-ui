@@ -253,7 +253,7 @@
 </script>
 
 <style type="text/postcss">
-  @import '@@/import.css';
+  @import '%%/import.css';
   @import './_select.css';
 
   .hide {

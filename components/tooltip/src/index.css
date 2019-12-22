@@ -4,7 +4,7 @@
  * @format
  */
 
-@import '@@/import.css';
+@import '%%/import.css';
 
 $tooltip-padding-x: 1em !default;
 $tooltip-padding-y: 0.5em !default;

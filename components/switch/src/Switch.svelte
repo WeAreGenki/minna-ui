@@ -92,7 +92,7 @@
 </script>
 
 <style type="text/postcss">
-  @import '@@/import.css';
+  @import '%%/import.css';
   @import './_switch.css';
 
   /* This purposely looks like .button and uses many .button variables */

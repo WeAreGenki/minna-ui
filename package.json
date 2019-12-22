@@ -22,7 +22,7 @@
     "prerelease:next": "yarn prerelease",
     "release": "lerna publish",
     "release:fix-failed": "lerna publish from-package",
-    "release:next": "lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next",
+    "release:next": "lerna publish --canary --preid=next --exact --dist-tag=next --allow-branch=next --force-publish",
     "report:browsers": "browserslist",
     "report:css": "autoprefixer --info",
     "test": "jest --notify --watch",

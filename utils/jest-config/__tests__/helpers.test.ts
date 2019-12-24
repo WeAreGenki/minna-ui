@@ -10,21 +10,21 @@ const cliExitCode = path.join(__dirname, '../fixtures/cli-exit-code.js');
 describe('Helper functions', () => {
   it('runs CLI binary without error', async () => {
     expect.assertions(2);
-    const result = runBin(cliGood);
+    const result = runBin('node', [cliGood]);
     await expect(result).resolves.toBeDefined();
     await expect(result).resolves.toContain('OK');
   });
 
   it('errors on CLI binary with error', async () => {
     expect.assertions(2);
-    const result = runBin(cliError);
+    const result = runBin('node', [cliError]);
     await expect(result).rejects.toBeDefined();
     await expect(result).rejects.toContain('BAD');
   });
 
   it('errors on CLI binary which has non-zero exit', async () => {
     expect.assertions(2);
-    const result = runBin(cliExitCode);
+    const result = runBin('node', [cliExitCode]);
     await expect(result).rejects.toBeDefined();
     await expect(result).rejects.toStrictEqual([]); // empty array
   });

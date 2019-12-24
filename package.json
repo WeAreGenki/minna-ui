@@ -36,7 +36,7 @@
     "@types/node": "12.12.21",
     "@types/postcss-load-config": "2.0.1",
     "@types/postcss-nested": "4.1.0",
-    "@types/resolve": "0.0.8",
+    "@types/resolve": "1.14.0",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.1",
     "@wearegenki/renovate-config": "1.0.0",

@@ -34,6 +34,9 @@ const pkg = (outDir: string, srcPath: string = srcPathSimple) => ({
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
 
+/** Normalise path seperators; Windows to Unix. */
+const normalisePath = (text: string): string => text.replace(/\\\\/g, '/');
+
 beforeAll(async () => {
   await del([dist]); // In case of failed test runs
   await mkdir(dist);
@@ -71,8 +74,7 @@ describe('build-css tool', () => {
     const build = buildCss(pkg('css'));
     const output = (await build)[0];
     expect(output.code).toMatch('\n/*# sourceMappingURL=index.css.map */');
-    // Normalise path seperators; windows > unix
-    expect(output.map!.toString().replace(/\\\\/g, '/')).toMatchSnapshot();
+    expect(normalisePath(output.map!.toString())).toMatchSnapshot();
   });
 
   it('injects banner comment', async () => {
@@ -102,7 +104,9 @@ describe('build-css tool', () => {
     const build = buildCss(pkg('bad-syntax', srcPathBadSyntax));
     await expect(build).rejects.toThrow();
     expect(spy).toHaveBeenCalledWith(
-      expect.stringContaining('jest-config/fixtures/styles-bad-syntax.css:21:1: Unclosed block:'),
+      expect.stringMatching(
+        /jest-config[\\\\/]fixtures[\\\\/]styles-bad-syntax\.css:21:1: Unclosed block:/,
+      ),
     );
     spy.mockRestore();
   });

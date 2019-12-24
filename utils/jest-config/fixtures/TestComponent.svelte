@@ -37,11 +37,11 @@
 <svelte:options immutable="{true}" />
 
 <div class="wrapper">
-  <div id="name" class="text">
-    test {name}
+  <div id="name" class="text" tabindex="-1">
+    Name: {name}
   </div>
 
   <div id="nameReversed" class="text">
-    test <span>{reversed}</span>
+    Name: <span>{reversed}</span>
   </div>
 </div>

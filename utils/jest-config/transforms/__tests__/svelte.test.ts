@@ -1,5 +1,5 @@
 /* eslint-env browser */
-/* eslint-disable @typescript-eslint/no-non-null-assertion, security/detect-eval-with-expression, no-eval */
+/* eslint-disable @typescript-eslint/no-non-null-assertion, security/detect-eval-with-expression, no-eval, global-require */
 
 import fs from 'fs';
 import { join } from 'path';
@@ -46,21 +46,20 @@ describe('Svelte transform', () => {
     expect(component.$$).toHaveProperty('callbacks');
 
     const name1 = target.querySelector<HTMLDivElement>('#name')!;
-    expect(name1.textContent).toBe('test Elon Musk');
+    expect(name1.textContent).toBe('Name: Elon Musk');
     const nameReversed1 = target.querySelector<HTMLDivElement>('#nameReversed')!;
-    expect(nameReversed1.textContent).toBe('test ksuM nolE');
+    expect(nameReversed1.textContent).toBe('Name: ksuM nolE');
     component.name = 'Vladimir Putin';
     const name2 = target.querySelector<HTMLDivElement>('#name')!;
-    expect(name2.textContent).toBe('test Vladimir Putin');
+    expect(name2.textContent).toBe('Name: Vladimir Putin');
     const nameReversed2 = target.querySelector<HTMLDivElement>('#nameReversed')!;
-    expect(nameReversed2.textContent).toBe('test nituP rimidalV');
+    expect(nameReversed2.textContent).toBe('Name: nituP rimidalV');
   });
 
   it('mounts components which import ES6 modules', () => {
     expect.assertions(5);
     function wrapper(): void {
       // Use require() instead of process() + eval() so imports are relative
-      // eslint-disable-next-line @typescript-eslint/no-require-imports, global-require
       const TestComponent = require('../../fixtures/TestComponentImports.svelte').default;
       const target = document.createElement('div');
       new TestComponent({ target });

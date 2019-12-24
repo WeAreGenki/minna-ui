@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@types/jest": "^24.0.24",
-    "@types/node": "^12.12.21",
+    "@types/node": "^13.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-circus": "^25.0.0",
-    "sucrase": "^3.10.1"
+    "sucrase": "^3.11.0"
   }
 }

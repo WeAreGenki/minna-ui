@@ -1,4 +1,4 @@
-[![Build status](https://img.shields.io/circleci/project/github/WeAreGenki/minna-ui.svg)](https://circleci.com/gh/WeAreGenki/minna-ui)
+[![Build status](https://img.shields.io/github/workflow/status/WeAreGenki/minna-ui/ci)](https://github.com/WeAreGenki/minna-ui/actions)
 [![Coverage status](https://img.shields.io/codeclimate/coverage/WeAreGenki/minna-ui)](https://codeclimate.com/github/WeAreGenki/minna-ui)
 [![NPM version](https://img.shields.io/npm/v/minna-ui.svg)](https://www.npmjs.com/package/minna-ui)
 [![Licence](https://img.shields.io/npm/l/minna-ui.svg)](https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE)

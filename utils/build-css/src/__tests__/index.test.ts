@@ -71,7 +71,8 @@ describe('build-css tool', () => {
     const build = buildCss(pkg('css'));
     const output = (await build)[0];
     expect(output.code).toMatch('\n/*# sourceMappingURL=index.css.map */');
-    expect(output.map!.toString()).toMatchSnapshot();
+    // Normalise path seperators; windows > unix
+    expect(output.map!.toString().replace('\\', '/')).toMatchSnapshot();
   });
 
   it('injects banner comment', async () => {

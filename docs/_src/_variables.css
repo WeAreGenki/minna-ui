@@ -3,6 +3,7 @@ $brand-blue: rgb(50, 116, 228);
 $blue3: $brand-blue;
 $intent-primary: $brand-blue;
 
-$cta-color: var(--theme-color, $intent-primary);
+/* $cta-color: var(--theme-color, $intent-primary); */
+$cta-color: $intent-primary;
 
 $sidebar-width: 300px;

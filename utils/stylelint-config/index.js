@@ -37,12 +37,10 @@ module.exports = {
       true,
       {
         ignoreAtRules: [
-          'content',
           'each',
           'else',
-          'for',
           'if',
-          'include',
+          'include', // TODO: Remove once we switch over to the new PostCSS stack
           'mixin',
           'use',
         ],

@@ -18,7 +18,8 @@
   "files": [
     "*.css",
     "*.d.ts",
-    "*.js"
+    "*.js",
+    "*.mjs"
   ],
   "keywords": [
     "css",

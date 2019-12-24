@@ -4,8 +4,6 @@
  * @format
  */
 
-@import 'import.css';
-
 $navbar-optimize: false !default;
 $navbar-zindex: 5 !default;
 $navbar-background-color: $app-background-color !default;

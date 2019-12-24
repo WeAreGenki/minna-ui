@@ -19,10 +19,11 @@
 
     "strict": true,
     "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true, // Recommended to disable this is node apps
-    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
 
     "paths": {
       "##/*": ["src/*"] // Webpack/Rollup/PostCSS alias

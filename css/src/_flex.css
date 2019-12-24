@@ -59,7 +59,7 @@
 .order-unset { order: unset; }
 
 @each $bp in $breakpoints {
-  @include at-media($bp) {
+  @media $($bp) {
     .$(bp)-dfc {
       display: flex;
       align-items: center;

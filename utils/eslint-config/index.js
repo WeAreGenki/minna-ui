@@ -177,8 +177,11 @@ module.exports = {
     'id-length': [ERROR, { exceptions: ['_'], min: 2 }], // Encourage descriptive names
     'import/extensions': [
       ERROR,
-      'ignorePackages', // Do use file extensions
+      'always',
       {
+        js: 'ignorePackages',
+        jsx: 'ignorePackages',
+        mjs: 'ignorePackages',
         ts: 'never',
         tsx: 'never',
       },

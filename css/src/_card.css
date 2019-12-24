@@ -76,9 +76,8 @@
   margin: auto 0 0;
   padding: $button-padding-y $button-padding-x;
   color: $card-button-text-color;
-  font-weight: $text-weight-heavy;
+  font-weight: $button-text-weight;
   text-align: center;
-  text-transform: uppercase;
   border-top: $card-button-border;
   border-bottom-right-radius: $radius-large;
   border-bottom-left-radius: $radius-large;

@@ -33,7 +33,7 @@
 .tu { text-align: unset; }
 
 @each $bp in $breakpoints {
-  @include at-media($bp) {
+  @media $($bp) {
     .$(bp)-tl { text-align: left; }
     .$(bp)-tr { text-align: right; }
     .$(bp)-tc { text-align: center; }

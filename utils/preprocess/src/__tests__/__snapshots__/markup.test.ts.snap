@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Svelte markup preprocessor creates and mounts a component 1`] = `"<div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\">test Elon Musk </div><div id=\\"nameReversed\\" class=\\"text\\">test <span>ksuM nolE</span></div></div>"`;
+exports[`Svelte markup preprocessor creates and mounts a component 1`] = `"<div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\" tabindex=\\"-1\\">Name: Elon Musk </div><div id=\\"nameReversed\\" class=\\"text\\">Name: <span>ksuM nolE</span></div></div>"`;
 
 exports[`Svelte markup preprocessor processes a component 1`] = `
 "<script>
   export let name = 'Elon Musk';
 
   $: reversed = name.split('').reverse().join('');
-</script><style type=\\"text/postcss\\">/*discarded*/</style><svelte:options immutable=\\"{true}\\" /><div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\"> test {name} </div><div id=\\"nameReversed\\" class=\\"text\\"> test <span>{reversed}</span></div></div>"
+</script><style type=\\"text/postcss\\">/*discarded*/</style><svelte:options immutable=\\"{true}\\" /><div class=\\"wrapper\\"><div id=\\"name\\" class=\\"text\\" tabindex=\\"-1\\"> Name: {name} </div><div id=\\"nameReversed\\" class=\\"text\\"> Name: <span>{reversed}</span></div></div>"
 `;
 
 exports[`Svelte markup preprocessor processes a simple component 1`] = `"<div id=\\"target\\"> test </div><hr class=\\"one two three\\"><input type=\\"text\\" name=\\"test\\" class =\\"\\" readonly=\\"readonly\\"> whitespace"`;

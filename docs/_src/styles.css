@@ -1,4 +1,4 @@
-@import '@minna-ui/css/src/import.css';
+@import '%%/import.css';
 @import './_variables.css';
 @import './_layout.css';
 @import './_coverpage.css';
@@ -13,5 +13,5 @@
 }
 
 .button-cta {
-  @include button($cta-color, $blue2, $blue1, $blue2);
+  @include button($cta-color, $blue2, $blue1);
 }

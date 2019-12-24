@@ -112,7 +112,7 @@ kbd {
   font-size: 12px !important;
   line-height: 12px;
   vertical-align: middle;
-  border: solid 1px $gray5;
+  border: solid 1px $light2;
   border-radius: 3px;
 }
 
@@ -190,9 +190,9 @@ li input[type='checkbox'] {
       overflow-y: auto;
       white-space: nowrap;
       text-align: left;
-      background-color: $white;
-      border: 1px solid $light-gray2;
-      border-bottom-color: $gray5;
+      background-color: $light1;
+      border: 1px solid $light3;
+      border-bottom-color: $light2;
       border-radius: 4px;
 
       li {
@@ -435,11 +435,11 @@ body.sticky {
   hr {
     margin: 2em 0;
     border: none;
-    border-bottom: 1px solid $light-gray3;
+    border-bottom: 1px solid $light3;
   }
 
   iframe {
-    border: 1px solid $light-gray3;
+    border: 1px solid $light3;
   }
 
   table {
@@ -454,19 +454,19 @@ body.sticky {
   th {
     padding: 6px 13px;
     font-weight: $text-weight-heavy;
-    border: 1px solid $light-gray2;
+    border: 1px solid $light3;
   }
 
   td {
     padding: 6px 13px;
-    border: 1px solid $light-gray2;
+    border: 1px solid $light3;
   }
 
   tr {
-    border-top: 1px solid $gray5;
+    border-top: 1px solid $light2;
 
     &:nth-child(2n) {
-      background-color: $light-gray4;
+      background-color: $light3;
     }
   }
 
@@ -474,8 +474,8 @@ body.sticky {
     position: relative;
     margin: 2em 0;
     padding: 12px 24px 12px 30px;
-    background-color: $light-gray4;
-    border-left: 4px solid $rose5;
+    background-color: $light3;
+    border-left: 4px solid $red4;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 
@@ -492,7 +492,7 @@ body.sticky {
       font-weight: $text-weight-heavy;
       line-height: 20px;
       text-align: center;
-      background-color: $rose5;
+      background-color: $red4;
       border-radius: 100%;
       content: '!';
     }

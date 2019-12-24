@@ -6,7 +6,7 @@ exports[`build-component tool compiles package css bundle 1`] = `
  * Copyright 2019 We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */
-.text.svelte-10b3cch{color:red}.text.svelte-10b3cch:focus{background:#000}.wrapper.svelte-10b3cch>.text.svelte-10b3cch{margin-top:1rem}@media screen and (min-width:30em){body{margin:0}}
+.text.svelte-10b3cch.svelte-10b3cch{color:red}.text.svelte-10b3cch.svelte-10b3cch:focus{background:#000}.wrapper.svelte-10b3cch>.text.svelte-10b3cch{margin-top:1rem}@media screen and (min-width:30em){body{margin:0}}
 "
 `;
 

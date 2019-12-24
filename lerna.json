@@ -1,13 +1,10 @@
 {
   "version": "0.35.1",
-  "packages": [
-    "components/*",
-    "css",
-    "utils/*"
-  ],
+  "packages": ["components/*", "css", "utils/*"],
   "command": {
     "publish": {
-      "allowBranch": "master"
+      "allowBranch": "master",
+      "graphType": "all"
     },
     "version": {
       "signGitCommit": true,

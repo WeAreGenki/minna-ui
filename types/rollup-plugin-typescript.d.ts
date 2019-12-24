@@ -5,6 +5,16 @@ import { Plugin } from 'rollup';
 import { CompilerOptionsValue, TsConfigSourceFile } from 'typescript';
 
 interface RollupTypescriptOptions {
+  /** Other Typescript compiler options. */
+  /* eslint-disable @typescript-eslint/indent */
+  [option: string]:
+    | CompilerOptionsValue
+    | TsConfigSourceFile
+    | RollupTypescriptOptions['include']
+    | RollupTypescriptOptions['typescript']
+    | RollupTypescriptOptions['tslib']
+    | undefined;
+
   /**
    * Determine which files are transpiled by Typescript (all `.ts` and
    * `.tsx` files by default).
@@ -25,16 +35,6 @@ interface RollupTypescriptOptions {
   typescript?: typeof import('typescript');
   /** Overrides the injected TypeScript helpers with a custom version. */
   tslib?: typeof import('tslib');
-
-  /** Other Typescript compiler options. */
-  /* eslint-disable @typescript-eslint/indent */
-  [option: string]:
-    | CompilerOptionsValue
-    | TsConfigSourceFile
-    | RollupTypescriptOptions['include']
-    | RollupTypescriptOptions['typescript']
-    | RollupTypescriptOptions['tslib']
-    | undefined;
 }
 
 /** Seamless integration between Rollup and Typescript. */

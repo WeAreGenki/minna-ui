@@ -64,7 +64,7 @@
   .pl$(i) { padding-left: $value; }
 
   @each $bp in $breakpoints {
-    @include at-media($bp) {
+    @media $($bp) {
       .$(bp)-ma$(i) { margin: $value; }
       .$(bp)-mh$(i) { margin-right: $value; margin-left: $value; }
       .$(bp)-mv$(i) { margin-top: $value; margin-bottom: $value; }
@@ -145,7 +145,7 @@
 .mlu { margin-left: unset; }
 
 @each $bp in $breakpoints {
-  @include at-media($bp) {
+  @media $($bp) {
     .$(bp)-mh-auto { margin-right: auto; margin-left: auto; }
     .$(bp)-mv-auto { margin-top: auto; margin-bottom: auto; }
     .$(bp)-mt-auto { margin-top: auto; }

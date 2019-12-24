@@ -75,13 +75,19 @@
   color: $diagonal-dark-text-color;
   background-color: $diagonal-dark-background-color;
 
+  a {
+    color: $diagonal-dark-link-color;
+  }
+
   label,
   strong {
     color: $diagonal-dark-text-color;
   }
 
-  a {
-    color: $diagonal-dark-link-color;
+  .input,
+  .select,
+  .text-area {
+    border: $diagonal-dark-input-border;
   }
 
   .form-help {

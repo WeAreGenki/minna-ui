@@ -19,7 +19,7 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "build": "tsc && echo 'DONE'",
+    "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput",
     "prebuild": "rm -rf dist"
   },

@@ -223,16 +223,16 @@
     /* eslint-enable @typescript-eslint/no-magic-numbers */
   }
 
+  $: normalizedItems = items.map((item) =>
+    (item.id ? item : { id: item, text: item })
+  );
+
   $: filteredItems = (!isOpen || !filterable || inputText === '')
     ? normalizedItems
     : normalizedItems.filter(
       option => option.text
         .toLowerCase()
         .indexOf(inputText.toLowerCase()) > -1,
-    );
-
-  $: normalizedItems = items.map((item) =>
-    (item.id ? item : { id: item, text: item })
   );
 
   $: {
@@ -253,8 +253,8 @@
 </script>
 
 <style type="text/postcss">
+  @import '%%/import.css';
   @import './_select.css';
-  @import 'import.css';
 
   .hide {
     opacity: 0;
@@ -304,7 +304,7 @@
     text-align: left;
     background-color: $input-background-color;
     box-shadow: $select-shadow;
-    backface-visibility: hidden; /* promote to own layer to avoid repaints */
+    backface-visibility: hidden; /* Promote to own layer to avoid repaints */
     /* prettier-ignore */
     transition:
       transform $select-animate-speed-out ease-out,
@@ -319,7 +319,7 @@
       transform: translateY(-1rem);
     }
 
-    /* don't render when disabled for better performance */
+    /* Don't render when disabled for better performance */
     /* stylelint-disable-next-line a11y/no-display-none */
     .select-disabled > & {
       display: none;

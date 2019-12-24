@@ -2,7 +2,7 @@
 
 exports[`Svelte style preprocessor compiles a component's CSS 1`] = `
 "@media screen and (min-width: 30em){body{margin:0
-  }}.text.svelte-1ghwuak{color:rgb(255, 0, 0)}.text.svelte-1ghwuak:focus{background:rgb(0, 0, 0)}.wrapper.svelte-1ghwuak>.text.svelte-1ghwuak{margin-top:1rem}"
+  }}.text.svelte-1ghwuak.svelte-1ghwuak{color:rgb(255, 0, 0)}.text.svelte-1ghwuak.svelte-1ghwuak:focus{background:rgb(0, 0, 0)}.wrapper.svelte-1ghwuak>.text.svelte-1ghwuak{margin-top:1rem}"
 `;
 
 exports[`Svelte style preprocessor does not process without type attribute 1`] = `
@@ -63,12 +63,12 @@ exports[`Svelte style preprocessor processes a component 1`] = `
 <svelte:options immutable=\\"{true}\\" />
 
 <div class=\\"wrapper\\">
-  <div id=\\"name\\" class=\\"text\\">
-    test {name}
+  <div id=\\"name\\" class=\\"text\\" tabindex=\\"-1\\">
+    Name: {name}
   </div>
 
   <div id=\\"nameReversed\\" class=\\"text\\">
-    test <span>{reversed}</span>
+    Name: <span>{reversed}</span>
   </div>
 </div>
 "

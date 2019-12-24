@@ -54,7 +54,6 @@
   export let value;
   export let mini;
   export let disabled;
-  export let required; // FIXME: Add custom validation
 
   const dispatch = createEventDispatcher();
 
@@ -93,28 +92,27 @@
 </script>
 
 <style type="text/postcss">
+  @import '%%/import.css';
   @import './_switch.css';
-  @import 'import.css';
 
-  /* this purposely looks like .button and uses many .button variables */
-  /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
+  /* This purposely looks like .button and uses many .button variables */
   .switch {
     position: relative;
     display: inline-flex;
     width: $switch-width;
     padding: $switch-padding;
     color: $switch-off-text-color;
-    line-height: 1;
     text-align: center;
+    vertical-align: middle;
     background-color: $switch-off-background-color;
-    border-radius: $button-radius;
-    outline-offset: $switch-outline-offset;
+    border-radius: $switch-radius;
     box-shadow: $switch-inner-shadow, $switch-shadow;
-    backface-visibility: hidden; /* promote to own layer to avoid repaints */
+    backface-visibility: hidden; /* Promote to own layer to avoid repaints */
     cursor: pointer;
     /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
     transition: background-color $switch-animate-out-speed ease-out;
     transition-delay: 0s;
+    user-select: none;
 
     @if $switch-optimize {
       will-change: background-color;
@@ -126,11 +124,11 @@
     }
 
     &:hover {
-      outline: $switch-hover-outline;
+      /* FIXME: Add hover style */
     }
 
     &:focus {
-      outline: $switch-focus-outline;
+      /* FIXME: Add focus style */
     }
   }
 
@@ -158,7 +156,8 @@
     top: 0;
     bottom: 0;
     width: 50%;
-    background: $button-background-color;
+    background: $switch-slider-background-color;
+    border: $switch-slider-border;
     border-radius: $button-radius;
     box-shadow: $switch-slider-inner-shadow;
     transition: transform $switch-animate-in-speed ease-out;

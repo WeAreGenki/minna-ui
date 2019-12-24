@@ -35,7 +35,7 @@
 .dig { display: inline-grid; }
 
 @each $bp in $breakpoints {
-  @include at-media($bp) {
+  @media $($bp) {
     .$(bp)-dn { display: none; }
     .$(bp)-db { display: block; }
     .$(bp)-di { display: inline; }

@@ -3,6 +3,7 @@
 import merge from 'deepmerge';
 import postcss, { CssSyntaxError } from 'postcss';
 import postcssrc from 'postcss-load-config';
+// @ts-ignore
 import syntax from 'postcss-scss';
 import { Preprocessor } from 'svelte/types/compiler/preprocess';
 

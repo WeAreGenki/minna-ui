@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /**
  * @minna-ui/css
  * @author Max Milton <max@wearegenki.com>
@@ -19,11 +21,7 @@
  * @format
  */
 
-@charset 'utf-8';
-
-@import './_variables-color.css';
 @import './_variables.css';
-@import './mixins/at-media.css';
 @import './mixins/button.css';
 @import './mixins/font-face.css';
 @import './mixins/triangle.css';
@@ -46,5 +44,6 @@
 @import './_display.css';
 @import './_position.css';
 @import './_z-index.css';
+@import './_embed.css';
 @import './_utils.css';
 @import './_accessibility.css';

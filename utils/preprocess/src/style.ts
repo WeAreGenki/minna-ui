@@ -69,8 +69,7 @@ export const style = (
           (err as CssSyntaxError).showSourceCode(),
       );
     } else {
-      // eslint-disable-next-line no-console
-      throw console.error(err);
+      throw err;
     }
   }
 };

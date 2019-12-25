@@ -26,6 +26,7 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-floating-promises': ERROR,
+    '@typescript-eslint/no-throw-literal': ERROR,
     '@typescript-eslint/no-unnecessary-condition': [
       WARNING,
       { ignoreRhs: true },
@@ -35,5 +36,6 @@ module.exports = {
     '@typescript-eslint/require-array-sort-compare': WARNING,
     '@typescript-eslint/restrict-plus-operands': WARNING,
     'no-constant-condition': OFF, // Handled by `@typescript-eslint/no-unnecessary-condition`
+    'no-throw-literal': OFF, // Handled by `@typescript-eslint/no-throw-literal`
   },
 };

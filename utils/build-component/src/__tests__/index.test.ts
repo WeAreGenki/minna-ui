@@ -106,5 +106,6 @@ describe('build-component tool', () => {
     spy.mockImplementation(noop);
     await expect(build).rejects.toThrowErrorMatchingSnapshot();
     expect(spy).toHaveBeenCalledTimes(1);
+    spy.mockRestore();
   });
 });

@@ -124,4 +124,4 @@ This component can also be used alongside any JavaScript project, regardless of 
 
 ---
 
-© 2019 [We Are Genki](https://wearegenki.com)
+© 2020 [We Are Genki](https://wearegenki.com)

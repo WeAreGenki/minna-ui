@@ -74,4 +74,4 @@ Included plugins (in execution order):
 
 ---
 
-© 2019 [We Are Genki](https://wearegenki.com)
+© 2020 [We Are Genki](https://wearegenki.com)

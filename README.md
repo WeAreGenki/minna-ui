@@ -78,4 +78,4 @@ Minna UI is an Apache-2.0 licensed open source project. See [LICENCE](https://gi
 
 ---
 
-© 2019 [We Are Genki](https://wearegenki.com)
+© 2020 [We Are Genki](https://wearegenki.com)

@@ -7,7 +7,6 @@
 
 'use strict';
 
-const { basename } = require('path');
 const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
 
 /** @typedef {import('jest')} jest */
@@ -25,7 +24,8 @@ exports.process = (src, filename) => {
   const result = compile(normalised, {
     accessors: true, // Easy access to component internals for tests
     css: false,
-    filename: basename(filename),
+    dev: true,
+    filename,
     format: 'cjs',
     preserveWhitespace: true,
   });

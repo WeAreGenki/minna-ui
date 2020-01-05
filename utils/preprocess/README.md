@@ -74,4 +74,4 @@ console.log(myMarkup); // '<div><h1>My Title</h1></div>'
 
 ---
 
-© 2019 [We Are Genki](https://wearegenki.com)
+© 2020 [We Are Genki](https://wearegenki.com)

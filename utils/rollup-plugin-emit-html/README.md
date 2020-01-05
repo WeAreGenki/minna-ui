@@ -17,4 +17,4 @@ TODO: Write me :)
 
 ---
 
-© 2019 [We Are Genki](https://wearegenki.com)
+© 2020 [We Are Genki](https://wearegenki.com)

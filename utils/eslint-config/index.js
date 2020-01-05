@@ -139,6 +139,7 @@ module.exports = {
       ERROR,
       { allowSingleExtends: true },
     ],
+    '@typescript-eslint/no-extra-semi': ERROR,
     '@typescript-eslint/no-extraneous-class': ERROR,
     '@typescript-eslint/no-magic-numbers': [
       WARNING,
@@ -219,6 +220,7 @@ module.exports = {
     'no-console': ERROR,
     'no-debugger': ERROR,
     'no-empty': [ERROR, { allowEmptyCatch: true }],
+    'no-extra-semi': OFF, // Handled by `@typescript-eslint/no-extra-semi`
     'no-magic-numbers': OFF, // Handled by `@typescript-eslint/no-magic-numbers`
     'no-return-assign': [ERROR, 'except-parens'],
     'no-useless-constructor': OFF, // Handled by `@typescript-eslint/no-useless-constructor`

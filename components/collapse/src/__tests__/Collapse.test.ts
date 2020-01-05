@@ -8,14 +8,23 @@ import UseSlot from './__fixtures__/UseSlot.svelte';
 
 describe('Collapse component', () => {
   it('renders correctly with no props', () => {
-    expect.assertions(3);
-    function wrapper(): void {
-      const target = document.createElement('div');
-      new Collapse({ target });
-      expect(target.querySelector('.collapse-hide')).not.toBeNull();
-      expect(target.innerHTML).toMatchSnapshot();
-    }
-    expect(wrapper).not.toThrow();
+    expect.assertions(2);
+    const target = document.createElement('div');
+    new Collapse({ target });
+    expect(target.querySelector('.collapse-hide')).not.toBeNull();
+    expect(target.innerHTML).toMatchSnapshot();
+  });
+
+  it("doesn't log errors or warnings with required props", () => {
+    expect.assertions(2);
+    const spy1 = jest.spyOn(console, 'error');
+    const spy2 = jest.spyOn(console, 'warn');
+    const target = document.createElement('div');
+    new Collapse({ target });
+    expect(spy1).not.toHaveBeenCalled();
+    expect(spy2).not.toHaveBeenCalled();
+    spy1.mockRestore();
+    spy2.mockRestore();
   });
 
   it('renders correctly with textOpen/textClose props', async () => {

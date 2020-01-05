@@ -51,9 +51,9 @@
 
   export let textOn = 'ON';
   export let textOff = 'OFF';
+  export let mini = false;
+  export let disabled = false;
   export let value;
-  export let mini;
-  export let disabled;
 
   const dispatch = createEventDispatcher();
 

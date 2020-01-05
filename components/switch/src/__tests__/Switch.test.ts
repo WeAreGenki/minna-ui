@@ -5,19 +5,33 @@ import Switch from '../Switch.svelte';
 
 describe('Switch component', () => {
   it('renders correctly with no props', () => {
-    expect.assertions(7);
-    function wrapper(): void {
-      const target = document.createElement('div');
-      new Switch({ target });
-      const el = target.querySelector('.switch')!;
-      expect(el.getAttribute('tabindex')).toBe('0');
-      expect(el.getAttribute('disabled')).toBeNull();
-      expect(el.getAttribute('required')).toBeNull();
-      expect(document.querySelector('.switch-checked')).toBeNull();
-      expect(document.querySelector('.switch-disabled')).toBeNull();
-      expect(target.innerHTML).toMatchSnapshot();
-    }
-    expect(wrapper).not.toThrow();
+    expect.assertions(6);
+    const target = document.createElement('div');
+    new Switch({ target });
+    const el = target.querySelector('.switch')!;
+    expect(el.getAttribute('tabindex')).toBe('0');
+    expect(el.getAttribute('disabled')).toBeNull();
+    expect(el.getAttribute('required')).toBeNull();
+    expect(document.querySelector('.switch-checked')).toBeNull();
+    expect(document.querySelector('.switch-disabled')).toBeNull();
+    expect(target.innerHTML).toMatchSnapshot();
+  });
+
+  it("doesn't log errors or warnings with required props", () => {
+    expect.assertions(2);
+    const spy1 = jest.spyOn(console, 'error');
+    const spy2 = jest.spyOn(console, 'warn');
+    const target = document.createElement('div');
+    new Switch({
+      props: {
+        value: false,
+      },
+      target,
+    });
+    expect(spy1).not.toHaveBeenCalled();
+    expect(spy2).not.toHaveBeenCalled();
+    spy1.mockRestore();
+    spy2.mockRestore();
   });
 
   it('renders with value true', () => {

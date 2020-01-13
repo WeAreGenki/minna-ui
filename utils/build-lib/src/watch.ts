@@ -62,7 +62,6 @@ export function watch({
         console.log(new Date(Date.now()), '- Generated new bundle/s');
         break;
 
-      case 'FATAL':
       case 'ERROR':
         console.error(event.error);
         break;

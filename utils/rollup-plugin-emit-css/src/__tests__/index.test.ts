@@ -2,7 +2,7 @@
 
 import { readFileSync } from 'fs';
 import { utils as snapshotUtils } from 'jest-snapshot'; // eslint-disable-line import/no-extraneous-dependencies
-import { rollup } from 'rollup';
+import { OutputAsset, rollup } from 'rollup';
 import { emitCss } from '../index';
 
 const plainCssCode = readFileSync(
@@ -64,7 +64,7 @@ describe('Rollup emit CSS plugin', () => {
       name: 'emit-css-test',
     });
 
-    const asset = result.output.filter((chunk) => chunk.type === 'asset')[0];
+    const asset = result.output.filter((chunk) => chunk.type === 'asset')[0] as OutputAsset;
     expect(asset.source).toMatchInlineSnapshot(snapshotUtils.serialize(plainCssCode));
   });
 });

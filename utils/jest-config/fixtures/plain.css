@@ -1,0 +1,12 @@
+.link {
+  background: rgb(150, 150, 150);
+}
+
+.link:hover,
+.link:focus {
+  background: rgb(0, 0, 0);
+}
+
+.link:active {
+  background: rgb(0, 150, 10);
+}

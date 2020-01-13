@@ -50,7 +50,6 @@ const terserOpts = {
     side_effects: true,
   },
   mangle: true,
-  module: true,
   output: {
     comments: /^!|[@#]__PURE__/,
     wrap_iife: true,

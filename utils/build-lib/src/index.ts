@@ -4,14 +4,14 @@
 
 /* eslint-disable @typescript-eslint/no-require-imports, global-require, no-console, id-length */
 
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import typescript, { RollupTypescriptOptions } from '@rollup/plugin-typescript';
+import { makeLegalIdentifier } from '@rollup/pluginutils';
 import { statSync } from 'fs';
 import mri from 'mri';
 import { join } from 'path';
 import rollup from 'rollup';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
-import typescript, { RollupTypescriptOptions } from 'rollup-plugin-typescript';
-import { makeLegalIdentifier } from 'rollup-pluginutils';
 import { build } from './build';
 import { BuildLibProps, BuildLibResult } from './types';
 import { resolveEntryFile } from './utils';

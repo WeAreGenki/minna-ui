@@ -30,8 +30,8 @@
     "@rollup/plugin-typescript": "^2.1.0",
     "@rollup/pluginutils": "^3.0.5",
     "mri": "^1.1.4",
-    "rollup": "^1.29.0",
-    "tslib": "^1.9.3",
-    "typescript": "^3.7.3"
+    "rollup": "^1.29.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
   }
 }

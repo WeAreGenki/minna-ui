@@ -1442,10 +1442,15 @@
   resolved "https://registry.yarnpkg.com/@types/mri/-/mri-1.1.0.tgz#66555e4d797713789ea0fefdae0898d8170bf5af"
   integrity sha512-fMl88ZoZXOB7VKazJ6wUMpZc9QIn+jcigSFRf2K/rrw4DcXn+/uGxlWX8DDlcE7JkwgIZ7BDH+JgxZPlc/Ap3g==
 
-"@types/node@*", "@types/node@13.5.0", "@types/node@>= 8", "@types/node@^13.5.0":
+"@types/node@*", "@types/node@>= 8", "@types/node@^13.5.0":
   version "13.5.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.0.tgz#4e498dbf355795a611a87ae5ef811a8660d42662"
   integrity sha512-Onhn+z72D2O2Pb2ql2xukJ55rglumsVo1H6Fmyi8mlU9SvKdBk/pUSUAiBY/d9bAOF7VVWajX3sths/+g6ZiAQ==
+
+"@types/node@13.5.1":
+  version "13.5.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.1.tgz#6fae50892d1841f4b38b298e2f78fb68c5960cb9"
+  integrity sha512-Jj2W7VWQ2uM83f8Ls5ON9adxN98MvyJsMSASYFuSvrov8RMRY64Ayay7KV35ph1TSGIJ2gG9ZVDdEq3c3zaydA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -9451,10 +9456,10 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@1.29.1, rollup@^1.29.1:
-  version "1.29.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.29.1.tgz#8715d0a4ca439be3079f8095989ec8aa60f637bc"
-  integrity sha512-dGQ+b9d1FOX/gluiggTAVnTvzQZUEkCi/TwZcax7ujugVRHs0nkYJlV9U4hsifGEMojnO+jvEML2CJQ6qXgbHA==
+rollup@1.31.0:
+  version "1.31.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.31.0.tgz#e2a87212e96aa7850f3eb53fdd02cf89f2d2fe9a"
+  integrity sha512-9C6ovSyNeEwvuRuUUmsTpJcXac1AwSL1a3x+O5lpmQKZqi5mmrjauLeqIjvREC+yNRR8fPdzByojDng+af3nVw==
   dependencies:
     "@types/estree" "*"
     "@types/node" "*"
@@ -9467,6 +9472,15 @@ rollup@^0.63.4:
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "*"
+
+rollup@^1.29.1:
+  version "1.29.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.29.1.tgz#8715d0a4ca439be3079f8095989ec8aa60f637bc"
+  integrity sha512-dGQ+b9d1FOX/gluiggTAVnTvzQZUEkCi/TwZcax7ujugVRHs0nkYJlV9U4hsifGEMojnO+jvEML2CJQ6qXgbHA==
+  dependencies:
+    "@types/estree" "*"
+    "@types/node" "*"
+    acorn "^7.1.0"
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -10298,10 +10312,10 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-svelte@3.18.0:
-  version "3.18.0"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.18.0.tgz#39dc8314e3b0f660b945fe0e23abf65bba20a0ef"
-  integrity sha512-p3V6wcxkkKbWhCwty1tZ8nh9zXNKg/fUWwdzzh38ERUDnhCodiLzIFcp8LVSBPXy1JS4qfAZfjjujobHGt6AWQ==
+svelte@3.18.1:
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.18.1.tgz#db0f82cc46394ca8c9a9d183995e1ebfeea3bdd0"
+  integrity sha512-jl6VLGTytOjHu700LuXSX6LvwRKFLAxqT8McUD2f3NjMI6qakWXgXoVjT+/ZmXmr8DiwrN/074pA1o3Aye4bIA==
 
 svg-tags@^1.0.0:
   version "1.0.0"

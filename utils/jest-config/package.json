@@ -12,6 +12,7 @@
   "bugs": "https://github.com/WeAreGenki/minna-ui/issues",
   "main": "jest-preset.js",
   "files": [
+    "*.d.ts",
     "*.js",
     "fixtures",
     "mocks",
@@ -37,5 +38,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-circus": "^25.1.0",
     "sucrase": "^3.12.1"
+  },
+  "devDependencies": {
+    "@jest/transform": "25.1.0",
+    "@jest/types": "25.1.0"
   }
 }

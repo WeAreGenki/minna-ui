@@ -35,13 +35,9 @@ function getTransforms(filename) {
   return null;
 }
 
-/** @typedef {import('jest')} jest */
+/** @typedef {import('@jest/transform').Transformer['process']} TransformProcess */
 
-/**
- * @param {string} src - File source code.
- * @param {string} filename - File name.
- * @returns {jest.TransformedSource} Transformed source code.
- */
+/** @type {TransformProcess} */
 exports.process = (src, filename) => {
   const transforms = getTransforms(filename);
 

@@ -32,10 +32,10 @@
     "jest": "^25.0.0"
   },
   "dependencies": {
-    "@types/jest": "^24.9.1",
-    "@types/node": "^13.5.0",
+    "@types/jest": "^25.1.1",
+    "@types/node": "^13.7.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest-circus": "^25.0.0",
+    "jest-circus": "^25.1.0",
     "sucrase": "^3.12.1"
   }
 }

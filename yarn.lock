@@ -1180,10 +1180,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@types/autoprefixer@9.7.0":
-  version "9.7.0"
-  resolved "https://registry.yarnpkg.com/@types/autoprefixer/-/autoprefixer-9.7.0.tgz#977a6249f03d7d09608cec18dc8d7917653a9163"
-  integrity sha512-9hkjyWBFXTedisO1IhVRBeudzVA/b+X+d6/XqkXkCJBwmh1VWCUy42J+c4ZI6WTDnw4q2NEw+YufIQ9PobNNZg==
+"@types/autoprefixer@9.7.1":
+  version "9.7.1"
+  resolved "https://registry.yarnpkg.com/@types/autoprefixer/-/autoprefixer-9.7.1.tgz#1f0d5d943bcf7ac4ef79f9974c55e3c743027306"
+  integrity sha512-t7lu8/FJ0oVblHAJohM4F/Wm2JpWWmK6PnxlvOVzJXDq9YonXsHFQZrnvMVYP0NjO98hMTp1Ih7biYzjF0ldjQ==
   dependencies:
     "@types/browserslist" "*"
     postcss "7.x.x"

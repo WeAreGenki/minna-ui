@@ -4,14 +4,15 @@
 
 /* eslint-disable @typescript-eslint/camelcase */
 
+import { preprocess } from '@minna-ui/preprocess';
+import buble from '@rollup/plugin-buble';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import { basename } from 'path';
 import * as rollup from 'rollup';
-import buble from 'rollup-plugin-buble';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
+// @ts-ignore - Don't care about types in simple lib
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
-import { preprocess } from '@minna-ui/preprocess';
 
 interface CssResult {
   code: string;

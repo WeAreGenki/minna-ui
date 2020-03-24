@@ -157,10 +157,18 @@ export function emitHtml({
         }).trim();
 
         if (!inlineCss) {
-          this.emitAsset(cssFile, css);
+          this.emitFile({
+            name: cssFile,
+            source: css,
+            type: 'asset',
+          });
         }
 
-        this.emitAsset(htmlFile, html);
+        this.emitFile({
+          name: htmlFile,
+          source: html,
+          type: 'asset',
+        });
       } catch (err) {
         this.error(err);
       }

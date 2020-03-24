@@ -21,9 +21,9 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "eslint": "^6.0.1"
+    "eslint": "^6.0.0"
   },
   "dependencies": {
-    "resolve": "^1.14.2"
+    "resolve": "^1.15.1"
   }
 }

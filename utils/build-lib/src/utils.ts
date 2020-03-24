@@ -3,21 +3,24 @@
 import { statSync } from 'fs';
 import { join } from 'path';
 
+const files = [
+  'index.mjs',
+  'index.js',
+  'index.ts',
+  'index.jsx',
+  'index.tsx',
+  'src/index.mjs',
+  'src/index.js',
+  'src/index.ts',
+  'src/index.jsx',
+  'src/index.tsx',
+];
+
 /**
- * @param cwd - Current working directory.
+ * @param cwd - Full path to current working directory.
  * @returns Path to the matching entry file.
  */
 export function resolveEntryFile(cwd: string): string {
-  const files = [
-    'index.js',
-    'index.ts',
-    'index.jsx',
-    'index.tsx',
-    'src/index.js',
-    'src/index.ts',
-    'src/index.jsx',
-    'src/index.tsx',
-  ];
   let result = '';
   let index = 0;
 

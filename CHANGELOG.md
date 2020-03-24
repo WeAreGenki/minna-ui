@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased][]
 
+## [0.36.0][] - 2020-03-25
+
+### Changed
+
+- New CSS colours and various style improvements. Breaking change due to many changed CSS variable names. Still experimental and likely to be refactored in the near future.
+- New strategy for CSS magic imports. You'll see `@import '%%/import.css'` used in components. We'll have documentation about this at some point in the near future.
+- Updated package dependencies including `rollup` v2, `prettier` v2.
+
+### Fixed
+
+- `@minna-ui/rollup-plugin-postcss` - Not rebuilding on source file changes.
+
 ## [0.35.1][] - 2019-11-21
 
 ### Fixed
@@ -1031,7 +1043,8 @@ This is a large release centred around refactoring colours and simplifying and c
 
 - Initial public release 🎊
 
-[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.35.1...HEAD
+[unreleased]: https://github.com/WeAreGenki/ui/compare/v0.36.0...HEAD
+[0.36.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.35.1...v0.36.0
 [0.35.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.35.0...v0.35.1
 [0.35.0]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.1...v0.35.0
 [0.34.1]: https://github.com/WeAreGenki/minna-ui/compare/v0.34.0...v0.34.1

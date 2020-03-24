@@ -9,13 +9,7 @@
 
 const { compile } = require('svelte/compiler'); // eslint-disable-line import/no-extraneous-dependencies
 
-/** @typedef {import('jest')} jest */
-
-/**
- * @param {string} src - File source code.
- * @param {string} filename - File path.
- * @returns {jest.TransformedSource} Transformed source code.
- */
+/** @type {import('../types').JestTransformer} */
 exports.process = (src, filename) => {
   // Strip out <style> tags to prevent errors when unable to parse PostCSS etc.
   const re = /<style[^>]*>[\S\s]*?<\/style>/g;

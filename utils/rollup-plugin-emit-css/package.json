@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@types/clean-css": "^4.2.1",
-    "clean-css": "^4.2.1",
+    "clean-css": "^4.2.3",
     "rollup-pluginutils": "^2.8.2"
   }
 }

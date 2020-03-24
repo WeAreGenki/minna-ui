@@ -80,7 +80,11 @@ export function emitCss({
 
         const name = id.replace(extname(id), '');
 
-        this.emitAsset(`${name}.css`, css);
+        this.emitFile({
+          name: `${name}.css`,
+          source: css,
+          type: 'asset',
+        });
       };
 
       try {

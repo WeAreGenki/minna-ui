@@ -1,13 +1,17 @@
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+// @ts-ignore - Don't care about types in simple lib
 import mediaQueryPacker from 'css-mqpacker';
 import merge from 'deepmerge';
+// @ts-ignore - Don't care about types in simple lib
 import flexbugFixes from 'postcss-flexbugs-fixes';
 import postcss from 'postcss';
+// @ts-ignore - Don't care about types in simple lib
 import advancedVars from 'postcss-advanced-variables';
 // @ts-ignore - TODO: Uncomment once TS can deal with mjs correctly
 import colorModFunction from 'postcss-color-mod-function';
 import nested from 'postcss-nested';
+// @ts-ignore - Don't care about types in simple lib
 import atUse from 'postcss-use';
 import { aliasedResolve, ImportAlias } from './css-import-resolve';
 

@@ -1,7 +1,6 @@
 /** @jest-environment node */
 
 import { readFileSync } from 'fs';
-import { utils as snapshotUtils } from 'jest-snapshot'; // eslint-disable-line import/no-extraneous-dependencies
 import { OutputAsset, rollup } from 'rollup';
 import { emitCss } from '../index';
 
@@ -65,6 +64,6 @@ describe('Rollup emit CSS plugin', () => {
     });
 
     const asset = result.output.filter((chunk) => chunk.type === 'asset')[0] as OutputAsset;
-    expect(asset.source).toMatchInlineSnapshot(snapshotUtils.serialize(plainCssCode));
+    expect(asset.source).toMatchInlineSnapshot(`\n"${plainCssCode}"\n`);
   });
 });

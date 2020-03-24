@@ -26,7 +26,7 @@
     "useDefineForClassFields": true,
 
     "paths": {
-      "##/*": ["src/*"] // Webpack/Rollup/PostCSS alias
+      "##/*": ["src/*"] // Webpack/Rollup/PostCSS/Jest alias
     }
   },
   "exclude": [

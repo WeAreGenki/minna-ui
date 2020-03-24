@@ -16,6 +16,7 @@
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
     "lint:md": "remark --frail --quiet .",
     "lint:types": "tsc --noEmit",
+    "postinstall": "patch-package",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
     "prepack": "yarn build && yarn predocs",
     "prerelease": "yarn prepack && yarn lint && yarn test-ci",
@@ -29,11 +30,11 @@
     "test-ci": "jest --coverage --ci"
   },
   "devDependencies": {
-    "@types/autoprefixer": "9.6.1",
+    "@types/autoprefixer": "9.7.1",
     "@types/clean-css": "4.2.1",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
-    "@types/node": "13.5.1",
+    "@types/node": "13.9.3",
     "@types/postcss-load-config": "2.0.1",
     "@types/postcss-nested": "4.1.0",
     "@types/resolve": "1.14.0",
@@ -42,21 +43,22 @@
     "@wearegenki/renovate-config": "1.0.0",
     "docsify-cli": "4.4.0",
     "eslint": "6.8.0",
-    "jest": "25.0.0",
+    "jest": "25.1.0",
     "lerna": "3.20.2",
-    "postcss": "7.0.26",
+    "patch-package": "6.2.1",
+    "postcss": "7.0.27",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
-    "prettier": "1.19.1",
+    "prettier": "2.0.2",
     "remark-cli": "7.0.1",
-    "rollup": "1.31.0",
-    "stylelint": "13.0.0",
-    "svelte": "3.18.1",
-    "tslib": "1.10.0",
-    "typescript": "3.7.5"
+    "rollup": "2.2.0",
+    "stylelint": "13.2.1",
+    "svelte": "3.20.1",
+    "tslib": "1.11.1",
+    "typescript": "3.8.3"
   },
   "resolutions": {
-    "vfile": "^4.0.2"
+    "vfile": "^4.0.3"
   },
   "browserslist": {
     "production": [

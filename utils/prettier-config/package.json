@@ -17,9 +17,9 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "prettier": "^1.19.0"
+    "prettier": "^2.0.0"
   },
   "dependencies": {
-    "prettier-plugin-package2": "^0.0.2"
+    "prettier-plugin-package2": "^0.5.1"
   }
 }

@@ -7987,10 +7987,10 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier-plugin-package2@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-package2/-/prettier-plugin-package2-0.0.2.tgz#ca53e6b0abbd5862a78f22407433ce8636fdde26"
-  integrity sha512-uIm3/OTeVnRkP7CEOR9ygk4JLunY2INmUZVufDc6HdKnPQKlk19/eyUhMCxP/c2n1KjzUAYc3OwQ+V9Gicywmg==
+prettier-plugin-package2@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-package2/-/prettier-plugin-package2-0.5.1.tgz#1d9c02429b24f4e8ec6c60e52608e0110df152d0"
+  integrity sha512-IFqazCwPCUEebMd9rg87+h8YA0fiUvJ9GlzzUaakuMWDPR8y730mLJ1V2vKEO4aI6uInN6EaIwu7+5lBkijpIw==
 
 prettier@1.19.1:
   version "1.19.1"

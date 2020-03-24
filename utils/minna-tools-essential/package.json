@@ -1,6 +1,6 @@
 {
   "name": "minna-tools-essential",
-  "version": "0.35.0",
+  "version": "0.36.0",
   "publishConfig": {
     "access": "public"
   },
@@ -29,12 +29,12 @@
     "typescript": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/browserslist-config": "^0.35.0",
-    "@minna-ui/eslint-config": "^0.35.0",
-    "@minna-ui/jest-config": "^0.35.0",
-    "@minna-ui/prettier-config": "^0.35.0",
-    "@minna-ui/remark-config": "^0.35.0",
-    "@minna-ui/ts-config": "^0.35.0",
-    "@minna-ui/utils": "^0.35.0"
+    "@minna-ui/browserslist-config": "^0.36.0",
+    "@minna-ui/eslint-config": "^0.36.0",
+    "@minna-ui/jest-config": "^0.36.0",
+    "@minna-ui/prettier-config": "^0.36.0",
+    "@minna-ui/remark-config": "^0.36.0",
+    "@minna-ui/ts-config": "^0.36.0",
+    "@minna-ui/utils": "^0.36.0"
   }
 }

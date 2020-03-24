@@ -1,6 +1,6 @@
 {
   "name": "@minna-ui/eslint-config",
-  "version": "0.35.0",
+  "version": "0.36.0",
   "publishConfig": {
     "access": "public"
   },
@@ -26,7 +26,7 @@
     "typescript": "^3.5.0"
   },
   "dependencies": {
-    "@minna-ui/eslint-import-resolver": "^0.35.0",
+    "@minna-ui/eslint-import-resolver": "^0.36.0",
     "@types/eslint": "^6.1.8",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",

@@ -1,6 +1,6 @@
 {
   "name": "minna-tools",
-  "version": "0.35.1",
+  "version": "0.36.0",
   "publishConfig": {
     "access": "public"
   },
@@ -33,17 +33,17 @@
     "typescript": "^3.0.0"
   },
   "dependencies": {
-    "@minna-ui/browserslist-config": "^0.35.0",
-    "@minna-ui/eslint-config": "^0.35.0",
-    "@minna-ui/jest-config": "^0.35.0",
-    "@minna-ui/prettier-config": "^0.35.0",
-    "@minna-ui/remark-config": "^0.35.0",
-    "@minna-ui/rollup-plugin-emit-css": "^0.35.0",
-    "@minna-ui/rollup-plugin-emit-html": "^0.35.1",
-    "@minna-ui/rollup-plugin-postcss": "^0.35.0",
-    "@minna-ui/rollup-plugin-purgecss": "^0.35.0",
-    "@minna-ui/stylelint-config": "^0.35.0",
-    "@minna-ui/ts-config": "^0.35.0",
-    "@minna-ui/utils": "^0.35.0"
+    "@minna-ui/browserslist-config": "^0.36.0",
+    "@minna-ui/eslint-config": "^0.36.0",
+    "@minna-ui/jest-config": "^0.36.0",
+    "@minna-ui/prettier-config": "^0.36.0",
+    "@minna-ui/remark-config": "^0.36.0",
+    "@minna-ui/rollup-plugin-emit-css": "^0.36.0",
+    "@minna-ui/rollup-plugin-emit-html": "^0.36.0",
+    "@minna-ui/rollup-plugin-postcss": "^0.36.0",
+    "@minna-ui/rollup-plugin-purgecss": "^0.36.0",
+    "@minna-ui/stylelint-config": "^0.36.0",
+    "@minna-ui/ts-config": "^0.36.0",
+    "@minna-ui/utils": "^0.36.0"
   }
 }

@@ -34,7 +34,7 @@
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
-    "eslint-plugin-jsdoc": "^22.1.0",
+    "eslint-plugin-jsdoc": "^23.0.0",
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "^2.7.3"

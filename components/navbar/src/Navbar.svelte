@@ -188,7 +188,7 @@
     color: $navbar-link-color;
   }
 
-  .navbar-link-active {
+  [aria-current] {
     font-weight: $text-weight-heavy;
   }
 
@@ -248,16 +248,19 @@
     <div class="navbar-links {isOpen ? 'df' : 'dn'}">
       <a
         href="/"
-        class="navbar-link l-dn {current === undefined ? 'navbar-link-active' : ''}"
+        class="navbar-link l-dn"
+        aria-current="{current === undefined ? 'page' : undefined}"
       >
         Home
       </a>
 
       {#each items as item}
+      <!-- rel="{item.rel || ''}" -->
       <a
         href="{item.url}"
-        class="navbar-link {current === item.url ? 'navbar-link-active' : ''}"
-        rel="{item.rel || ''}"
+        class="navbar-link"
+        aria-current="{current === item.url ? 'page' : undefined}"
+        rel="{item.rel}"
       >
         {item.text}
       </a>

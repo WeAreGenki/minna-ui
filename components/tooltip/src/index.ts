@@ -1,7 +1,6 @@
 import { listen } from 'svelte/internal';
 
 // TODO: Remove this type once svelte ships with official types
-// TODO: Move this to a central place
 type SvelteAction = (
   node: HTMLElement,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,7 +14,7 @@ type SvelteAction = (
 /**
  * Tooltip Svelte action.
  */
-export const tooltip: SvelteAction = (node: HTMLElement, text: string) => {
+export const tooltip: SvelteAction = (node, text) => {
   const el = document.createElement('div');
   el.className = 'tooltip';
   el.textContent = text;

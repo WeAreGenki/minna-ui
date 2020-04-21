@@ -10,14 +10,12 @@
     "checkJs": true,
     "isolatedModules": true, // Ensure compatibility with sucrase & @babel/preset-typescript
     "noEmit": true,
-    "paths": {
-      "@minna-ui/*": ["components/*/src", "utils/*/src", "utils/*"]
-    },
     "sourceMap": true
   },
   "exclude": [
     "**/dist/*",
     "**/node_modules/*",
+    "node_modules",
     "test/coverage",
     "utils/eslint-config/__tests__/__fixtures__/*" // TODO: Disable this in the unit tests
   ]

@@ -255,12 +255,11 @@
       </a>
 
       {#each items as item}
-      <!-- rel="{item.rel || ''}" -->
       <a
         href="{item.url}"
         class="navbar-link"
         aria-current="{current === item.url ? 'page' : undefined}"
-        rel="{item.rel}"
+        rel="{item.rel || ''}"
       >
         {item.text}
       </a>

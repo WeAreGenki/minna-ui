@@ -51,7 +51,7 @@
     "postcss-scss": "2.0.0",
     "prettier": "2.0.5",
     "remark-cli": "8.0.0",
-    "rollup": "2.7.5",
+    "rollup": "2.8.2",
     "stylelint": "13.3.3",
     "svelte": "3.22.2",
     "tslib": "1.11.1",

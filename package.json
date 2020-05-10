@@ -46,7 +46,7 @@
     "jest": "25.2.3",
     "lerna": "3.20.2",
     "patch-package": "6.2.2",
-    "postcss": "7.0.27",
+    "postcss": "7.0.29",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "2.0.5",

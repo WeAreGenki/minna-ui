@@ -7,6 +7,7 @@ describe('Git describe', () => {
     expect.assertions(2);
     const description = gitDescribe();
     expect(typeof description).toBe('string');
-    expect(description).toMatch(/v\d+\.\d+\.\d+/);
+    // Either containing a version tag or just a short commit hash
+    expect(description).toMatch(/(v\d+\.\d+\.\d+)|(^\w{7}$)/);
   });
 });

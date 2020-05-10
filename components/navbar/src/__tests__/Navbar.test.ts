@@ -193,7 +193,7 @@ describe('Navbar component', () => {
     expect(navbarLinks.classList.contains('df')).toBe(true);
   });
 
-  it('adds class to active menu item', () => {
+  it('adds aria-current attribute to active menu item', () => {
     expect.assertions(2);
     const target = document.createElement('div');
     new Navbar({
@@ -205,8 +205,8 @@ describe('Navbar component', () => {
     });
     const linkPageTwo = target.querySelector('[href="page-two"]')!;
     const linkPageOne = target.querySelector('[href="page-one"]')!;
-    expect(linkPageTwo.classList.contains('navbar-link-active')).toBe(true);
-    expect(linkPageOne.classList.contains('navbar-link-active')).not.toBe(true);
+    expect(linkPageTwo.getAttribute('aria-current')).toBe('page');
+    expect(linkPageOne.getAttribute('aria-current')).toBeNull();
   });
 
   it('can dynamically add menu items', () => {

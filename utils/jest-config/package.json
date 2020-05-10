@@ -30,7 +30,7 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^26.0.0"
   },
   "dependencies": {
     "@types/jest": "^25.2.1",

@@ -24,11 +24,11 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "eslint": "^6.0.0 || ^7.0.0",
-    "jest": "^25.0.0",
+    "eslint": "^7.0.0",
+    "jest": "^26.0.0",
     "postcss": "^7.0.0",
     "prettier": "^2.0.0",
-    "remark-cli": "^7.0.0 || ^8.0.0",
+    "remark-cli": "^8.0.0",
     "stylelint": "^13.0.0",
     "typescript": "^3.0.0"
   },

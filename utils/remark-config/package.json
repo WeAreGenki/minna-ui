@@ -19,7 +19,7 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "remark-cli": "^7.0.0 || ^8.0.0"
+    "remark-cli": "^8.0.0"
   },
   "dependencies": {
     "remark-frontmatter": "^2.0.0",

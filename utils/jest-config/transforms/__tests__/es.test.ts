@@ -46,6 +46,7 @@ describe('ES transform', () => {
 
   it("doesn't modify .css files", () => {
     expect.assertions(1);
+    // @ts-ignore
     const { code } = process(sourceCss, sourceCssPath);
     expect(code).toStrictEqual(sourceCss);
   });

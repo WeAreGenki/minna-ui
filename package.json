@@ -16,7 +16,6 @@
     "lint:js": "eslint --ext html,js,md,mjs,svelte,svg,ts .",
     "lint:md": "remark --frail --quiet .",
     "lint:types": "tsc --noEmit",
-    "postinstall": "patch-package",
     "predocs": "rm -rf docs/_dist && build-css docs/_src docs/_dist --no-banner",
     "prepack": "yarn build && yarn predocs",
     "prerelease": "yarn prepack && yarn lint && yarn test-ci",
@@ -36,17 +35,16 @@
     "@types/mri": "1.1.0",
     "@types/node": "13.13.5",
     "@types/postcss-load-config": "2.0.1",
-    "@types/postcss-nested": "4.1.0",
+    "@types/postcss-nested": "4.2.3",
     "@types/resolve": "1.17.0",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.1",
     "@wearegenki/renovate-config": "1.0.0",
     "docsify-cli": "4.4.0",
     "eslint": "7.0.0",
-    "jest": "25.2.3",
+    "jest": "26.0.1",
     "lerna": "3.20.2",
-    "patch-package": "6.2.2",
-    "postcss": "7.0.27",
+    "postcss": "7.0.29",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.0.0",
     "prettier": "2.0.5",
@@ -56,9 +54,6 @@
     "svelte": "3.22.2",
     "tslib": "1.11.2",
     "typescript": "3.8.3"
-  },
-  "resolutions": {
-    "vfile": "^4.0.3"
   },
   "browserslist": {
     "production": [

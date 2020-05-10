@@ -19,9 +19,10 @@ beforeAll(async () => {
 describe('Svelte transform', () => {
   it('compiles and mounts a component', () => {
     expect.assertions(2);
-    const result = process(source, sourcePath);
-    expect(typeof result.code).toBe('string');
-    const { default: TestComponent } = eval(result.code);
+    // @ts-ignore
+    const { code } = process(source, sourcePath);
+    expect(typeof code).toBe('string');
+    const { default: TestComponent } = eval(code);
     const target = document.createElement('div');
     new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();
@@ -29,8 +30,9 @@ describe('Svelte transform', () => {
 
   it('has access to Svelte component internals when mounted', () => {
     expect.assertions(13);
-    const result = process(source, sourcePath);
-    const { default: TestComponent } = eval(result.code);
+    // @ts-ignore
+    const { code } = process(source, sourcePath);
+    const { default: TestComponent } = eval(code);
     const target = document.createElement('div');
     const component = new TestComponent({ target });
 

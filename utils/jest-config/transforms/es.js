@@ -35,7 +35,7 @@ function getTransforms(filename) {
   return null;
 }
 
-/** @type {import('../types').JestTransformer} */
+/** @type {import('@jest/transform/build/types').Transformer['process']} */
 exports.process = (src, filename) => {
   const transforms = getTransforms(filename);
 

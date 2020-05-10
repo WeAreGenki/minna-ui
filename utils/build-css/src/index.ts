@@ -68,6 +68,8 @@ interface ProcessCssResult {
  * @param opts - User defined options.
  * @param opts.banner - Banner to prepend to resulting code.
  * @param opts.from - File from.
+ * @param opts.optimize - Minify resulting code.
+ * @param opts.sourcemap - Generate sourcemap and add sourcemap URL to code.
  * @param opts.to - File to.
  */
 async function processCss({
@@ -88,9 +90,7 @@ async function processCss({
   warn('PostCSS', 'WARN', result.warnings());
 
   let code = result.css;
-  // eslint-disable-next-line prefer-destructuring
-  let map: string | { toString(): string } | undefined = result.map;
-  const hasMap = sourcemap && !!map;
+  let map = sourcemap && result.map ? result.map.toString() : '';
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const filePath = options.to!;
@@ -103,15 +103,15 @@ async function processCss({
         1: { all: true },
         2: { all: true },
       },
-      sourceMap: hasMap,
-    }).minify(code, map && map.toString ? map.toString() : '');
+      sourceMap: !!map,
+    }).minify(code, map);
 
     warn('CleanCSS', 'ERR', min.errors);
     warn('CleanCSS', 'WARN', min.warnings);
 
     const fileName = basename(filePath);
 
-    if (sourcemap) {
+    if (map) {
       // Add back source map comment because clean-css removes it
       code = `${min.styles}\n/*# sourceMappingURL=${fileName}.map */`;
       map = min.sourceMap;
@@ -122,8 +122,8 @@ async function processCss({
   await mkdir(dirPath, { recursive: true });
 
   await writeFile(filePath, code);
-  if (sourcemap) {
-    await writeFile(`${filePath}.map`, map);
+  if (map) {
+    await writeFile(`${filePath}.map`, map.toString());
   }
 
   return {

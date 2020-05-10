@@ -90,10 +90,8 @@ OPTIONS
     externals.some((key) => id === key || id.startsWith(`${key}/`));
 
   const typescriptOpts: RollupTypescriptOptions = {
-    exclude: /\.(post|p)?css$/,
-    module: 'esnext',
-    target: 'es2019', // FIXME: Why is this not inherited from `@minna-ui/ts-config`?
-    typescript: require('typescript'),
+    exclude: ['**/*.test.ts'],
+    include: ['*.ts', '*.mjs', '*.js', '**/*.ts', '**/*.mjs', '**/*.js'],
   };
 
   const tsConfigPath = join(cwd, tsconfig);

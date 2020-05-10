@@ -72,8 +72,10 @@ describe('Svelte markup preprocessor', () => {
     expect.assertions(1);
     const processed = await preprocess(source, opts);
     const result = compile(processed.toString());
+    // @ts-ignore
+    const { code } = transform(result.js.code, 'component.ts');
     // eslint-disable-next-line no-eval, security/detect-eval-with-expression
-    const TestComponent = eval(transform(result.js.code, 'component.ts').code);
+    const TestComponent = eval(code);
     const target = document.createElement('div');
     new TestComponent({ target });
     expect(target.innerHTML).toMatchSnapshot();

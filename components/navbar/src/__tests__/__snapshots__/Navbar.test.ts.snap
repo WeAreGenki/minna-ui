@@ -5,11 +5,11 @@ exports[`Navbar component can dynamically add menu items 1`] = `
 
     <a href=\\"/\\" class=\\"navbar-logo-link\\" title=\\"Home\\"><svg class=\\"navbar-logo\\"><use xlink:href=\\"#logo\\"></use></svg></a>
 
-    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn \\">Home</a>
+    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn\\">Home</a>
 
-      <a href=\\"page-one\\" class=\\"navbar-link \\" rel=\\"\\">Page One
-      </a><a href=\\"page-two\\" class=\\"navbar-link \\" rel=\\"\\">Page Two
-      </a><a href=\\"about\\" class=\\"navbar-link \\" rel=\\"\\">About Us
+      <a href=\\"page-one\\" class=\\"navbar-link\\" rel=\\"\\">Page One
+      </a><a href=\\"page-two\\" class=\\"navbar-link\\" rel=\\"\\">Page Two
+      </a><a href=\\"about\\" class=\\"navbar-link\\" rel=\\"\\">About Us
       </a></div></nav></header>"
 `;
 
@@ -18,11 +18,11 @@ exports[`Navbar component renders correctly with required props set 1`] = `
 
     <a href=\\"/\\" class=\\"navbar-logo-link\\" title=\\"Home\\"><svg class=\\"navbar-logo\\"><use xlink:href=\\"#logo\\"></use></svg></a>
 
-    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn \\">Home</a>
+    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn\\">Home</a>
 
-      <a href=\\"page-one\\" class=\\"navbar-link \\" rel=\\"\\">Page One
-      </a><a href=\\"page-two\\" class=\\"navbar-link \\" rel=\\"\\">Page Two
-      </a><a href=\\"about\\" class=\\"navbar-link \\" rel=\\"\\">About Us
+      <a href=\\"page-one\\" class=\\"navbar-link\\" rel=\\"\\">Page One
+      </a><a href=\\"page-two\\" class=\\"navbar-link\\" rel=\\"\\">Page Two
+      </a><a href=\\"about\\" class=\\"navbar-link\\" rel=\\"\\">About Us
       </a></div></nav></header>"
 `;
 
@@ -31,7 +31,7 @@ exports[`Navbar component renders custom markup when slot content is used 1`] = 
 
     <a href=\\"/\\" class=\\"navbar-logo-link\\" title=\\"Home\\">Custom Slot Content</a>
 
-    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn navbar-link-active\\">Home</a>
+    <div class=\\"navbar-links dn\\"><a href=\\"/\\" class=\\"navbar-link l-dn\\" aria-current=\\"page\\">Home</a>
 
       </div></nav></header>"
 `;

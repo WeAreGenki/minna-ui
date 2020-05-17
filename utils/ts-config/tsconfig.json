@@ -2,20 +2,18 @@
 
 {
   "compilerOptions": {
-    "target": "es2019", // Compatible with node v10
+    "target": "es2019", // Compatible with node v12
     "module": "esnext", // When building node libs without a bundler use `commonjs`
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "alwaysStrict": true,
+    "allowJs": true,
+    "checkJs": true,
 
     // Recommended in projects which have multiple output files or apps
     // "importHelpers": true,
-
-    // Recommended in projects which include .js files
-    // "allowJs": true,
-    // "checkJs": true,
 
     "strict": true,
     "allowUnreachableCode": false,
@@ -33,6 +31,8 @@
     "**/__sapper__/*",
     "**/dist/*",
     "**/node_modules/*",
-    "**/test/coverage/*"
+    "**/test/coverage/*",
+    "node_modules",
+    "test/coverage"
   ]
 }

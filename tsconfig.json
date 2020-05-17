@@ -5,9 +5,7 @@
 {
   "extends": "@minna-ui/ts-config",
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": ".",
-    "checkJs": true,
     "isolatedModules": true, // Ensure compatibility with sucrase & @babel/preset-typescript
     "noEmit": true,
     "sourceMap": true

@@ -45,6 +45,7 @@ interface EmitHtmlOptions {
  *
  * @param template - A HTML template to compile.
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function compileTemplate(template: string): Function {
   // eslint-disable-next-line
   return new Function('d', 'return `' + template + '`');

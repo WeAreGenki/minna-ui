@@ -3,8 +3,10 @@ import { minify } from './markup';
 /**
  * Minify whitespace in HTML contained in a tagged template literal.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function html(strings: TemplateStringsArray, ...values: any[]): string {
+export function html(
+  strings: TemplateStringsArray,
+  ...values: string[]
+): string {
   let code = '';
 
   strings.forEach((string, index) => {

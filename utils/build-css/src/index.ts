@@ -173,6 +173,10 @@ OPTIONS
   const pkgStyle = env.npm_package_style;
   const pkgMain = env.npm_package_main;
 
+  if (!pkgName) throw new Error('Expected package.json#name to be set');
+  if (!pkgVersion) throw new Error('Expected package.json#version to be set');
+  if (!pkgHomepage) throw new Error('Expected package.json#homepage to be set');
+
   const cssBanner = `/*!
  * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
@@ -232,6 +236,7 @@ OPTIONS
   } catch (err) {
     if (err.showSourceCode) {
       console.error(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         `[build-css] PostCSS error: ${err.message}:\n${err.showSourceCode()}`,
       );
     } else {

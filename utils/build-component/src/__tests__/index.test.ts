@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp, @typescript-eslint/no-non-null-assertion, @typescript-eslint/camelcase */
+/* eslint-disable security/detect-non-literal-fs-filename, security/detect-non-literal-regexp, @typescript-eslint/no-non-null-assertion */
 
 import fs from 'fs';
 import path from 'path';

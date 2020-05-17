@@ -2,8 +2,6 @@
  * Minna UI component compiler.
  */
 
-/* eslint-disable @typescript-eslint/camelcase */
-
 import { preprocess } from '@minna-ui/preprocess';
 import buble from '@rollup/plugin-buble';
 import commonjs from '@rollup/plugin-commonjs';
@@ -84,8 +82,12 @@ export async function run(
   process.env.NODE_ENV = env.NODE_ENV || 'production';
   const name = basename(pkgSvelte, '.svelte');
 
+  if (!pkgName) throw new Error('Expected package.json#name to be set');
+  if (!pkgVersion) throw new Error('Expected package.json#version to be set');
+  if (!pkgHomepage) throw new Error('Expected package.json#homepage to be set');
+
   const banner = `/*!
- * ${pkgName} v${pkgVersion} (${pkgHomepage})
+ * ${pkgName} v${pkgVersion} - ${pkgHomepage}
  * Copyright ${new Date().getFullYear()} We Are Genki
  * Apache 2.0 license - https://github.com/WeAreGenki/minna-ui/blob/master/LICENCE
  */`;
@@ -129,7 +131,7 @@ export async function run(
           customElement: true,
           preprocess,
           // FIXME: Make this customisable or use a new technique to name tags
-          tag: pkgName!.replace('@minna-ui/', 'minna-'),
+          tag: pkgName.replace('@minna-ui/', 'minna-'),
         }),
         resolve(),
         commonjs(),

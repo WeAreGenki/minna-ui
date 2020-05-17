@@ -97,7 +97,15 @@ module.exports = {
   },
   rules: {
     /* eslint-enable sort-keys */
-    '@typescript-eslint/ban-ts-ignore': WARNING,
+    '@typescript-eslint/ban-ts-comment': [
+      WARNING,
+      {
+        'ts-check': false,
+        'ts-expect-error': false,
+        'ts-ignore': true,
+        'ts-nocheck': true,
+      },
+    ],
     '@typescript-eslint/ban-types': [
       ERROR,
       {
@@ -125,7 +133,7 @@ module.exports = {
     ],
     '@typescript-eslint/indent': [
       ERROR,
-      2,
+      2, // Two spaces
       {
         // ESTree spec: https://github.com/estree/estree
         // TS node types: https://git.io/fj6bE
@@ -134,6 +142,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/member-ordering': ERROR,
+    '@typescript-eslint/naming-convention': ERROR,
     '@typescript-eslint/no-empty-function': ERROR,
     '@typescript-eslint/no-empty-interface': [
       ERROR,
@@ -209,7 +218,7 @@ module.exports = {
       {
         code: 80, // Consistency with prettier
         ignorePattern:
-          'eslint-disable|eslint-enable|@ts-ignore|stylelint-disable|@typedef',
+          'eslint-disable|eslint-enable|@ts-ignore|@ts-expect-error|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
@@ -376,15 +385,6 @@ module.exports = {
         node: false,
       },
       rules: legacyConfig.rules,
-    },
-
-    // Auto-generated declarations
-    {
-      files: ['*.css.d.ts', '*.pcss.d.ts'],
-      rules: {
-        '@typescript-eslint/interface-name-prefix': OFF,
-        '@typescript-eslint/member-delimiter-style': OFF,
-      },
     },
 
     // Markdown documentation files

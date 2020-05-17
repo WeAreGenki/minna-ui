@@ -73,7 +73,7 @@ module.exports = {
       {
         code: 100, // Consistency with prettier override
         ignorePattern:
-          'eslint-disable|eslint-enable|@ts-ignore|stylelint-disable|@typedef',
+          'eslint-disable|eslint-enable|@ts-ignore|@ts-expect-error|stylelint-disable|@typedef',
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,

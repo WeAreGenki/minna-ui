@@ -27,10 +27,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-floating-promises': ERROR,
     '@typescript-eslint/no-throw-literal': ERROR,
-    '@typescript-eslint/no-unnecessary-condition': [
-      WARNING,
-      { ignoreRhs: true },
-    ],
+    '@typescript-eslint/no-unnecessary-condition': WARNING,
     '@typescript-eslint/no-unnecessary-qualifier': ERROR,
     '@typescript-eslint/prefer-readonly': ERROR,
     '@typescript-eslint/require-array-sort-compare': WARNING,

@@ -16,7 +16,7 @@ $navbar-icon-color: $link-color !default;
 $navbar-logo-size-x: 6em !default;
 $navbar-logo-size-y: 1.4em !default;
 $navbar-link-color: $link-color !default;
-$navbar-border-color: $divider-black !default;
+$navbar-border-color: $divider-color !default;
 $navbar-links-padding: $nav-link-padding-y 0 !default;
 $navbar-link-padding: $nav-link-padding-y $nav-link-padding-x !default;
 $navbar-body-offset: 2.88em !default; /* offset to not cover page content */

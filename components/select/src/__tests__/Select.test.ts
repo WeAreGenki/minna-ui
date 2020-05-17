@@ -244,8 +244,7 @@ describe('Select component', () => {
     const event1 = new KeyboardEvent('keydown', { key: ' ' }); // spacebar
     select.dispatchEvent(event1);
     expect(component.isOpen).toBe(true);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - keyCode does actually exist!
+    // @ts-expect-error - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 32 });
     select.dispatchEvent(event2);
     expect(component.isOpen).toBe(true);

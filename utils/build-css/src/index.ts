@@ -162,8 +162,7 @@ OPTIONS
   -b --banner     Inject banner text atop the output (default true).
   -m --sourcemap  Generate code source maps (default true).
 `);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - Easier to deal with a wrong return type here than possible nulls tests
+    // @ts-expect-error
     return;
   }
 

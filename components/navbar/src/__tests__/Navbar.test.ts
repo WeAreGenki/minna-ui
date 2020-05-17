@@ -60,8 +60,7 @@ describe('Navbar component', () => {
       target,
     });
     expect(target.querySelector('.navbar-active')).toBeNull();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - We know we're writing to a read only property
+    // @ts-expect-error - We know we're writing to a read only property
     window.pageYOffset = 50;
     const event = new UIEvent('scroll');
     window.dispatchEvent(event);

@@ -122,7 +122,7 @@ export function emitHtml({
         }
 
         const jsFiles = Object.values(bundle).filter(
-          // @ts-ignore FIXME: Work how to best work with discriminating unions, ideally without type casting
+          // @ts-expect-error FIXME: Work how to best work with discriminating unions, ideally without type casting
           (chunk) => chunk.isEntry && chunk.fileName.endsWith('.js'),
         );
 

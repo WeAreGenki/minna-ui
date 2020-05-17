@@ -10,7 +10,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { basename } from 'path';
 import * as rollup from 'rollup';
-// @ts-ignore - Don't care about types in simple lib
+// @ts-expect-error - Don't care about types in simple lib
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 

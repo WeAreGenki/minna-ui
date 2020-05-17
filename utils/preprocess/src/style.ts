@@ -3,7 +3,7 @@
 import merge from 'deepmerge';
 import postcss, { CssSyntaxError } from 'postcss';
 import postcssrc from 'postcss-load-config';
-// @ts-ignore
+// @ts-expect-error - no included types
 import syntax from 'postcss-scss';
 import { Preprocessor } from 'svelte/types/compiler/preprocess';
 
@@ -20,7 +20,7 @@ interface StylePreprocessorOptions extends postcss.ProcessOptions {
  */
 export const style = (
   opts: StylePreprocessorOptions = {},
-  // @ts-ignore - FIXME: Contribute types fix upstream
+  // @ts-expect-error - FIXME: Contribute types fix upstream
 ): Preprocessor => async ({ attributes, content, filename }) => {
   if (attributes.type !== 'text/postcss') return;
 

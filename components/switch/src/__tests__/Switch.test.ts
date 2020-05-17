@@ -178,8 +178,7 @@ describe('Switch component', () => {
     await tick();
     expect(component.value).toBe(false);
     expect(target.querySelector('.switch-checked')).toBeNull();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - keyCode does actually exist!
+    // @ts-expect-error - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 13 });
     el.dispatchEvent(event2);
     await tick();
@@ -203,8 +202,7 @@ describe('Switch component', () => {
     const event2 = new KeyboardEvent('keydown', { key: 'Spacebar' });
     el.dispatchEvent(event2);
     expect(component.value).toBe(true);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - keyCode does actually exist!
+    // @ts-expect-error - keyCode does actually exist!
     const event3 = new KeyboardEvent('keydown', { keyCode: 32 });
     el.dispatchEvent(event3);
     expect(component.value).toBe(false);
@@ -242,8 +240,7 @@ describe('Switch component', () => {
     expect(component.value).toBe(true);
     component.value = false;
     expect(component.value).toBe(false);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore - keyCode does actually exist!
+    // @ts-expect-error - keyCode does actually exist!
     const event2 = new KeyboardEvent('keydown', { keyCode: 0 });
     el.dispatchEvent(event2);
     expect(component.value).toBe(false);

@@ -19,7 +19,7 @@ beforeAll(async () => {
 describe('Svelte transform', () => {
   it('compiles and mounts a component', () => {
     expect.assertions(2);
-    // @ts-ignore
+    // @ts-expect-error
     const { code } = process(source, sourcePath);
     expect(typeof code).toBe('string');
     const { default: TestComponent } = eval(code);
@@ -30,7 +30,7 @@ describe('Svelte transform', () => {
 
   it('has access to Svelte component internals when mounted', () => {
     expect.assertions(13);
-    // @ts-ignore
+    // @ts-expect-error
     const { code } = process(source, sourcePath);
     const { default: TestComponent } = eval(code);
     const target = document.createElement('div');

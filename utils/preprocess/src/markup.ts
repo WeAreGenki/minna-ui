@@ -61,6 +61,7 @@ type MarkupPreprocessor = PreprocessorGroup['markup'];
  *
  * @param opts - User defined options.
  * @param opts.enabled - Enable preprocessor to transform HTML code.
+ * @param opts.unsafe - Use potentially unsafe transforms.
  */
 export const markup = ({
   enabled = true,

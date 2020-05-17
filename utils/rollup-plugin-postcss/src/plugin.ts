@@ -30,7 +30,7 @@ function postcssRollup({
           {
             from: id,
             map: {
-              annotation: false as false,
+              annotation: false,
               inline: false,
             },
             syntax,

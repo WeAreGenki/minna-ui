@@ -67,7 +67,6 @@ $intent-success: $green5 !default;
 $intent-warning: $orange5 !default;
 $intent-danger: $red3 !default;
 $app-background-color: $light1 !default;
-$dark-app-background-color: $dark4 !default;
 $text-color: $dark4 !default;
 $text-color-muted: $dark1 !default;
 $text-color-disabled: color-mod($text-color-muted alpha(0.5)) !default;
@@ -75,21 +74,25 @@ $heading-color: $text-color !default;
 $link-color: $intent-primary !default;
 $link-color-hover: $link-color !default;
 $shadow-color: color-mod($dark4 blend($blue5 70%)) !default;
+$background-color-muted: $light2 !default;
+$divider-color: color-mod($dark5 alpha(0.15)) !default;
+$code-text-color: $purple5 !default;
+/* FIXME: Probably a waste to use alpha to set a colour tone */
+$code-background-color: color-mod($purple1 alpha(0.7)) !default;
+$code-border-color: $light5 !default;
+
+$dark-app-background-color: $dark4 !default;
 $dark-text-color: $light2 !default;
 $dark-text-color-muted: $light4 !default;
 /* prettier-ignore */
 $dark-text-color-disabled: color-mod($dark-text-color-muted alpha(0.5)) !default;
 $dark-heading-color: $dark-text-color !default;
 $dark-link-color: $blue2 !default;
-$background-color-muted: $light2 !default;
-$divider-black: color-mod($dark5 alpha(0.15)) !default;
-$dark-divider-black: color-mod($dark5 alpha(0.4)) !default;
-$dark-divider-white: color-mod($light1 alpha(0.15)) !default;
-$code-text-color: $purple5 !default;
+$dark-background-color-muted: $dark3 !default;
+$dark-divider-color: color-mod($light1 alpha(0.15)) !default;
 $dark-code-text-color: $purple1 !default;
-/* FIXME: Probably a waste to use alpha to set a colour tone */
-$code-background-color: color-mod($purple1 alpha(0.7)) !default;
 $dark-code-background-color: color-mod($purple5 alpha(0.3)) !default;
+$dark-code-border-color: $dark5 !default;
 
 /* Media queries */
 
@@ -189,7 +192,7 @@ $li-margin-between: 0.5em !default;
 $blockquote-text-size: 1.15em;
 $blockquote-footer-text-size: 0.9em;
 $hr-margin: 3em 0 !default;
-$hr-border: 1px solid $divider-black !default;
+$hr-border: 1px solid $divider-color !default;
 
 /* Accessibility */
 
@@ -211,7 +214,7 @@ $footer-text-color: $text-color-muted !default;
 
 $form-group-margin: 1.5rem !default;
 $label-margin: 0.5em !default;
-$label-text-color: $dark4 !default;
+$label-text-color: $text-color !default;
 $input-padding-x: 1em !default;
 $input-padding-y: 0.4em !default;
 $input-text-size: 1.2em !default;

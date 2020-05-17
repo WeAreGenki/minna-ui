@@ -69,7 +69,14 @@
       "@minna-ui/eslint-config",
       "@minna-ui/eslint-config/typed",
       "@minna-ui/eslint-config/svelte"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-module-boundary-types": "warn",
+      "@typescript-eslint/no-unsafe-assignment": "warn",
+      "@typescript-eslint/no-unsafe-call": "warn",
+      "@typescript-eslint/no-unsafe-member-access": "warn",
+      "@typescript-eslint/no-unsafe-return": "warn"
+    }
   },
   "eslintIgnore": [
     "**/dist/**",

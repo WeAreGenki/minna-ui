@@ -5,11 +5,15 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "checkJs": false,
     "declaration": true,
     "declarationMap": true,
     "isolatedModules": false,
     "noEmit": false
   },
-  "exclude": ["**/__tests__/*", "**/dist/*", "**/node_modules/*"]
+  "exclude": [
+    "**/__tests__/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "node_modules"
+  ]
 }

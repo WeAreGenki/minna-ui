@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: yarn run build
       - run: yarn run test-ci
         env:
           CI: true
@@ -34,5 +34,5 @@ jobs:
         with:
           node-version: 14
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: yarn run build
       - run: yarn run lint

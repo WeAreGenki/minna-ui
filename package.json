@@ -46,7 +46,7 @@
     "lerna": "3.21.0",
     "postcss": "7.0.29",
     "postcss-extend-rule": "3.0.0",
-    "postcss-scss": "2.0.0",
+    "postcss-scss": "2.1.0",
     "prettier": "2.0.5",
     "remark-cli": "8.0.0",
     "rollup": "2.10.0",

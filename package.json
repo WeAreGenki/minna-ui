@@ -51,7 +51,7 @@
     "remark-cli": "8.0.0",
     "rollup": "2.15.0",
     "stylelint": "13.6.0",
-    "svelte": "3.23.0",
+    "svelte": "3.23.1",
     "tslib": "1.13.0",
     "typescript": "3.8.3"
   },

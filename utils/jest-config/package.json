@@ -40,7 +40,7 @@
     "sucrase": "^3.13.0"
   },
   "devDependencies": {
-    "@jest/transform": "26.0.1",
-    "@jest/types": "26.0.1"
+    "@jest/transform": "26.1.0",
+    "@jest/types": "26.1.0"
   }
 }

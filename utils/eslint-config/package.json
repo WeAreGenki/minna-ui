@@ -28,8 +28,8 @@
   "dependencies": {
     "@minna-ui/eslint-import-resolver": "^0.36.0",
     "@types/eslint": "^7.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-import": "^2.20.2",

@@ -52,7 +52,7 @@
     "rollup": "2.23.0",
     "stylelint": "13.6.1",
     "svelte": "3.24.0",
-    "tslib": "1.13.0",
+    "tslib": "1.14.1",
     "typescript": "3.8.3"
   },
   "browserslist": {

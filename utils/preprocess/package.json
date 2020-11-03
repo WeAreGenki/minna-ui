@@ -42,7 +42,7 @@
     "postcss-scss": "^2.0.0"
   },
   "devDependencies": {
-    "postcss-nested": "4.2.1"
+    "postcss-nested": "4.2.3"
   },
   "sideEffects": false
 }

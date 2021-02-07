@@ -27,16 +27,16 @@
   },
   "dependencies": {
     "@minna-ui/eslint-import-resolver": "^0.36.0",
-    "@types/eslint": "^7.0.0",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
-    "@typescript-eslint/parser": "^3.9.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-html": "^6.0.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.13.0",
-    "eslint-plugin-jsdoc": "^30.0.0",
+    "@types/eslint": "^7.2.6",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jsdoc": "^31.6.0",
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^2.7.3"
+    "eslint-plugin-svelte3": "^3.0.0"
   }
 }

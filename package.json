@@ -34,7 +34,6 @@
     "@types/mri": "1.1.0",
     "@types/node": "14.14.25",
     "@types/postcss-load-config": "2.0.1",
-    "@types/postcss-nested": "4.2.3",
     "@types/resolve": "1.19.0",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.1",

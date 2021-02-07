@@ -33,11 +33,11 @@
     "jest": "^26.0.0"
   },
   "dependencies": {
-    "@types/jest": "^26.0.0",
-    "@types/node": "^14.0.1",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.25",
     "identity-obj-proxy": "^3.0.0",
-    "jest-circus": "^26.0.1",
-    "sucrase": "^3.14.0"
+    "jest-circus": "^26.6.3",
+    "sucrase": "^3.17.1"
   },
   "devDependencies": {
     "@jest/transform": "26.6.2",

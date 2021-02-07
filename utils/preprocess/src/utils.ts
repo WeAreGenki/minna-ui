@@ -3,10 +3,7 @@ import { minify } from './markup';
 /**
  * Minify whitespace in HTML contained in a tagged template literal.
  */
-export function html(
-  strings: TemplateStringsArray,
-  ...values: string[]
-): string {
+export function html(strings: TemplateStringsArray, ...values: any[]): string {
   let code = '';
 
   strings.forEach((string, index) => {

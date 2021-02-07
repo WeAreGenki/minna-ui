@@ -3,9 +3,8 @@
 import merge from 'deepmerge';
 import postcss, { CssSyntaxError } from 'postcss';
 import postcssrc from 'postcss-load-config';
-// @ts-expect-error - no included types
 import syntax from 'postcss-scss';
-import { Preprocessor } from 'svelte/types/compiler/preprocess';
+import type { Preprocessor } from 'svelte/types/compiler/preprocess/types';
 
 interface StylePreprocessorOptions extends postcss.ProcessOptions {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

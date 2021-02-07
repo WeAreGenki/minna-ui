@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 
-import { PreprocessorGroup } from 'svelte/types/compiler/preprocess';
+import { PreprocessorGroup } from 'svelte/types/compiler/preprocess/types';
 
 export function minify(source: string, unsafe = false): string {
   let code = `${source}`;
@@ -60,16 +60,11 @@ type MarkupPreprocessor = PreprocessorGroup['markup'];
  * Reduces the whitespace in svelte components to a minimum.
  *
  * @param opts - User defined options.
- * @param opts.enabled - Enable preprocessor to transform HTML code.
  * @param opts.unsafe - Use potentially unsafe transforms.
  */
-export const markup = ({
-  enabled = true,
-  unsafe = true,
-  // @ts-expect-error - FIXME: null is a valid return type, submit PR upstream
-} = {}): MarkupPreprocessor => ({ content }) => {
-  if (!enabled) return null;
-
+export const markup = ({ unsafe = true } = {}): MarkupPreprocessor => ({
+  content,
+}) => {
   const code = minify(content, unsafe);
 
   return { code };

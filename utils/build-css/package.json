@@ -31,11 +31,11 @@
   },
   "dependencies": {
     "@minna-ui/postcss-config": "^0.36.0",
-    "clean-css": "^4.2.3",
+    "clean-css": "^5.0.1",
     "mri": "^1.1.5",
-    "postcss-load-config": "^2.1.0"
+    "postcss-load-config": "^3.0.0"
   },
   "devDependencies": {
-    "del": "5.1.0"
+    "del": "6.0.0"
   }
 }

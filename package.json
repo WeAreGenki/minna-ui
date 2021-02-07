@@ -79,6 +79,7 @@
     }
   },
   "eslintIgnore": [
+    "**/*.bak/**",
     "**/dist/**",
     "**/node_modules/**",
     "/docs/index.html",
@@ -135,6 +136,7 @@
     "extends": "@minna-ui/stylelint-config",
     "ignoreFiles": [
       "**/*.d.ts",
+      "**/*.bak/**",
       "**/dist/**",
       "**/node_modules/**",
       "components/tooltip/README.md",

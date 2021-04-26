@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/autoprefixer": "9.7.2",
-    "@types/clean-css": "4.2.1",
+    "@types/clean-css": "4.2.4",
     "@types/cssnano": "4.0.0",
     "@types/mri": "1.1.0",
     "@types/node": "13.13.15",

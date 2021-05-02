@@ -5,34 +5,33 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # FIXME: Jest snapshots are different in node v10
-        # node-version: [10, 12, 14]
-        node-version: [12, 14]
+        # FIXME: Jest snapshots are different with node v10
+        # node-version: [10, 12, 14, 16]
+        node-version: [12, 14, 16]
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install --frozen-lockfile
       - run: yarn run build
       - run: yarn run test-ci
-        env:
-          CI: true
-      - name: report coverage
-        if: matrix.os == 'ubuntu-latest' && matrix.node-version == 14
+      - name: Report coverage
         run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          curl -Lo ./cc-test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
           chmod +x ./cc-test-reporter
-          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json test/coverage/lcov.info
-          ./cc-test-reporter upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }} || true
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
+          ./cc-test-reporter upload-coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - run: yarn install --frozen-lockfile
       - run: yarn run build
       - run: yarn run lint

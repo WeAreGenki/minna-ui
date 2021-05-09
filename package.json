@@ -50,7 +50,7 @@
     "prettier": "2.0.5",
     "remark-cli": "8.0.1",
     "rollup": "2.23.0",
-    "stylelint": "13.6.1",
+    "stylelint": "13.13.1",
     "svelte": "3.24.0",
     "tslib": "1.13.0",
     "typescript": "3.8.3"

@@ -20,6 +20,6 @@
     "prettier": "^2.0.0"
   },
   "dependencies": {
-    "prettier-plugin-package2": "^0.5.1"
+    "prettier-plugin-package2": "^0.6.0"
   }
 }

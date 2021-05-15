@@ -39,7 +39,6 @@
     "@types/resolve": "1.17.1",
     "@types/rollup-plugin-buble": "0.19.1",
     "@types/stylelint": "9.10.1",
-    "@wearegenki/renovate-config": "1.0.0",
     "docsify-cli": "4.4.1",
     "eslint": "7.5.0",
     "jest": "26.6.1",
@@ -117,11 +116,6 @@
         "lint-no-file-name-irregular-characters",
         "\\.a-zA-Z0-9-_"
       ]
-    ]
-  },
-  "renovate": {
-    "extends": [
-      "@wearegenki"
     ]
   },
   "stylelint": {

@@ -36,7 +36,7 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "postcss-load-config": "^2.0.0",
-    "postcss-scss": "^2.0.0",
+    "postcss-scss": "^3.0.0",
     "rollup-pluginutils": "^2.8.2"
   }
 }

@@ -37,7 +37,7 @@
     "deepmerge": "^4.2.2",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-color-mod-function": "^3.0.3",
-    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-flexbugs-fixes": "^5.0.0",
     "postcss-nested": "^4.2.1",
     "postcss-use": "^3.0.0"
   }

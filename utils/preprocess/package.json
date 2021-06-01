@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "deepmerge": "^4.2.2",
-    "postcss-load-config": "^2.0.0",
+    "postcss-load-config": "^3.0.0",
     "postcss-scss": "^2.0.0"
   },
   "devDependencies": {

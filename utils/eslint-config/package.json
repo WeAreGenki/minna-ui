@@ -37,6 +37,6 @@
     "eslint-plugin-jsdoc": "^30.0.0",
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-svelte3": "^2.7.3"
+    "eslint-plugin-svelte3": "^3.0.0"
   }
 }

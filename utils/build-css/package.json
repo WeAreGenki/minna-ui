@@ -27,7 +27,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "postcss": "^7.0.0"
+    "postcss": "^7.0.0 || ^8.0.0"
   },
   "dependencies": {
     "@minna-ui/postcss-config": "^0.36.0",

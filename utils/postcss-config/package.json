@@ -28,7 +28,7 @@
     "wearegenki"
   ],
   "peerDependencies": {
-    "postcss": "^7.0.0"
+    "postcss": "^7.0.0 || ^8.0.0"
   },
   "dependencies": {
     "autoprefixer": "^9.7.6",

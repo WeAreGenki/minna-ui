@@ -36,6 +36,6 @@
     "postcss-load-config": "^2.1.0"
   },
   "devDependencies": {
-    "del": "5.1.0"
+    "del": "6.1.1"
   }
 }

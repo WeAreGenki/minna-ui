@@ -46,7 +46,7 @@
     "postcss": "7.0.29",
     "postcss-extend-rule": "3.0.0",
     "postcss-scss": "2.1.1",
-    "prettier": "2.0.5",
+    "prettier": "2.7.1",
     "remark-cli": "8.0.1",
     "rollup": "2.23.0",
     "stylelint": "13.6.1",
